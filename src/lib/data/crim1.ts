@@ -1,19 +1,21 @@
 import type { LawModule } from '$lib/types';
+import { crim1ExtEssays, crim1ExtHtml, crim1ExtMcqs, crim1ExtTopics, crim1ExtWatchFor } from './crim1_ext';
 
 export const crim1: LawModule = {
 	id: "crim1",
 	title: "Criminal Law 1",
 	subjectCategory: "Criminal Law",
 	eyebrow: "Revised Penal Code · Book One",
-	description: "Fundamental principles, stages of execution, conspiracy, classification of felonies, and the justifying, exempting, mitigating, aggravating, and alternative circumstances.",
-	legalScope: "Revised Penal Code, Book One, Arts. 1–15",
+	description: "Fundamental principles, stages of execution, conspiracy, classification of felonies, modifying circumstances (Arts. 1–15), plus persons criminally liable, penalties, ISLaw, probation, extinction of criminal liability, and civil liability (Arts. 16–113).",
+	legalScope: "Revised Penal Code, Book One, Arts. 1–113; Indeterminate Sentence Law (Act 4103); Probation Law (P.D. 968 / R.A. 10707)",
 	topics: [
 		{"id":"basics","name":"Fundamentals","eyebrow":"RPC · ARTS. 1–5","desc":"Effectivity, characteristics of criminal law, extraterritoriality, felonies (dolo & culpa), mistake of fact, proximate cause, impossible crime, duty of the court."},
 		{"id":"stages","name":"Stages, Conspiracy & Classification","eyebrow":"RPC · ARTS. 6–10","desc":"Attempted, frustrated & consummated felonies, light felonies, conspiracy & proposal, classification under R.A. 10951, supplementary application."},
 		{"id":"justex","name":"Justifying & Exempting Circumstances","eyebrow":"RPC · ARTS. 11–12","desc":"Self-defense, defense of relatives & strangers, state of necessity, duty & obedience, BWS, insanity, minority, accident, compulsion, insuperable cause."},
 		{"id":"mitagg","name":"Mitigating, Aggravating & Alternative","eyebrow":"RPC · ARTS. 13–15","desc":"Privileged vs. ordinary mitigating, provocation, passion, surrender, treachery, premeditation, dwelling, band, recidivism, intoxication, relationship."},
+		...crim1ExtTopics,
 	],
-	studyGuideIntro: "Revised Penal Code, Book One, Arts. 1–15: fundamentals, stages of execution, conspiracy, classification of felonies, and the justifying, exempting, mitigating, aggravating, and alternative circumstances.",
+	studyGuideIntro: "Revised Penal Code, Book One, Arts. 1–113: fundamentals, stages of execution, conspiracy, classification of felonies, modifying circumstances (Arts. 1–15), persons criminally liable, penalties, ISLaw, probation, extinction of criminal liability, and civil liability (Arts. 16–113).",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exemption / exception"},{"color":"orange","label":"Exemption of the exemption"},{"color":"red","label":"Jurisprudence / doctrine"},{"color":"purple","label":"Classification / comparison"}],
 	studyGuideHtml: `<div class="sg-notes">
 <h2 class="sg-h2" id="class-discussion">Class Discussion</h2>
@@ -283,7 +285,7 @@ export const crim1: LawModule = {
   <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Reiteracion</td><td>Previously served sentence; crimes need not be under the same title; generic aggravating.</td></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Habitual delinquency</td><td>Within ten years from release or last conviction, convicted a third time or oftener of serious or less serious physical injuries, robbery, theft, estafa, or falsification; additional penalty (Art. 62).</td></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Quasi-recidivism</td><td>Commits a felony after final conviction, before beginning or while serving sentence; maximum period of the penalty for the new felony (Art. 160).</td></tr>
-</table></div>`,
+</table></div>` + crim1ExtHtml,
 	watchFor: {
 		"basics": `<strong>Watch for: exceptions built into the general rules.</strong>
     <ul>
@@ -315,7 +317,8 @@ export const crim1: LawModule = {
       <li>Treachery absorbs abuse of superior strength; dwelling does not apply when both parties live in the same house.</li>
       <li>Band needs more than three <em>armed</em> malefactors — count the weapons, not the people.</li>
     </ul>`,
-		"all": `<strong>Watch for: exceptions to the exceptions.</strong> Across Arts. 1–15, many rules that look absolute carry their own carve-outs — Art. 7's exception for crimes against persons or property, Art. 8's split treatment of sedition, the lucid-interval exception to insanity, the retreat-to-rearm exception to cessation of aggression, and the rule that unalleged aggravating circumstances are disregarded. These are classic examiner traps.`,
+		...crim1ExtWatchFor,
+		"all": `<strong>Watch for: exceptions to the exceptions.</strong> Across Arts. 1–113, many rules that look absolute carry their own carve-outs — Art. 7's exception for crimes against persons or property, Art. 8's split treatment of sedition, the lucid-interval exception to insanity, the retreat-to-rearm exception to cessation of aggression, the rule that unalleged aggravating circumstances are disregarded, Art. 20's carve-out for accessories who profit, and Colinares's exception to the appeal-bars-probation rule. These are classic examiner traps.`,
 	},
 	mcqs: [
 		{"id":"crim1:basics:1","topicId":"basics","topic":"Fundamentals","tag":"memorization","question":"During recitation, a professor asks when the Revised Penal Code took effect and what it replaced. Which is the BEST answer?","options":["It took effect on January 1, 1932, replacing the Spanish Penal Code of 1870 that was made effective here in 1887","It took effect on December 8, 1930, the date Act No. 3815 was approved, replacing the Spanish Penal Code of 1870","It took effect on January 1, 1932, replacing the 1850 Spanish Penal Code that remained in force until Act No. 3815","It took effect on July 4, 1946, upon independence, replacing the Old Penal Code carried over from the American regime"],"correctIndex":0,"explanation":"Art. 1: the RPC (Act No. 3815, approved Dec. 8, 1930) took effect on January 1, 1932. It superseded the Old Penal Code (the Spanish Código Penal of 1870, extended to the Philippines in 1887).","legalBasis":"Art. 1, RPC","hint":"Approval date and effectivity date are two different things.","optionExplanations":["Art. 1: the RPC (Act No. 3815, approved Dec. 8, 1930) took effect on January 1, 1932. It superseded the Old Penal Code (the Spanish Código Penal of 1870, extended to the Philippines in 1887).","Does not apply under Art. 1, RPC. Art. 1: the RPC (Act No. 3815, approved Dec. 8, 1930) took effect on January 1, 1932.","Does not apply under Art. 1, RPC. Art. 1: the RPC (Act No. 3815, approved Dec. 8, 1930) took effect on January 1, 1932.","Does not apply under Art. 1, RPC. Art. 1: the RPC (Act No. 3815, approved Dec. 8, 1930) took effect on January 1, 1932."]},
@@ -410,6 +413,7 @@ export const crim1: LawModule = {
 		{"id":"crim1:mitagg:22","topicId":"mitagg","topic":"Mitigating, Aggravating & Alternative","tag":"requisites","question":"X kills Y. Afterward, Z gives X money as a reward, although there was no prior agreement or promise between them. Which is the BEST answer?","options":["Price or reward is aggravating","Price or reward is aggravating, but only as to Z, who is the one who gave the reward","Price or reward is not aggravating: It was not offered before and did…","Price or reward is not aggravating: It applies only when the amount given…"],"correctIndex":2,"explanation":"Art. 14(11) requires that the price, reward, or promise be offered before the crime and be the inducement for it. A reward given afterward without prior agreement does not qualify.","legalBasis":"Art. 14(11) — Past exam","hint":"Did the money cause the killing?","optionExplanations":["X actually received money in connection with the killing.","Art. 14(11) requires that the price, reward, or promise be offered before the crime and be the inducement for it.","It was not offered before and did not induce the crime.","It applies only when the amount given is substantial."]},
 		{"id":"crim1:mitagg:23","topicId":"mitagg","topic":"Mitigating, Aggravating & Alternative","tag":"memorization","question":"An accused has one aggravating circumstance, one ordinary mitigating circumstance, and a privileged mitigating circumstance. Which is the BEST answer?","options":["All three offset one another, so the penalty is imposed in its medium period only","The aggravating offsets the privileged mitigating, leaving only one ordinary mitigating","The aggravating offsets the ordinary mitigating","The privileged mitigating cancels the aggravating, and the ordinary one lowers the degree"],"correctIndex":2,"explanation":"Ordinary mitigating circumstances can be offset by aggravating ones. Privileged mitigating circumstances cannot be offset and reduce the penalty by one or two degrees.","legalBasis":"Arts. 64, 69 — Ordinary vs. privileged mitigating","hint":"Which kind of mitigating circumstance can never be offset?","optionExplanations":["Does not apply under Arts. 64, 69 — Ordinary vs. privileged mitigating. Ordinary mitigating circumstances can be offset by aggravating ones.","Does not apply under Arts. 64, 69 — Ordinary vs. privileged mitigating. Ordinary mitigating circumstances can be offset by aggravating ones.","The privileged one still lowers the degree.","Does not apply under Arts. 64, 69 — Ordinary vs. privileged mitigating. Ordinary mitigating circumstances can be offset by aggravating ones."]},
 		{"id":"crim1:mitagg:24","topicId":"mitagg","topic":"Mitigating, Aggravating & Alternative","tag":"effects","question":"A 72-year-old man is convicted of homicide. Which is the BEST answer as to his age?","options":["His age is exempting","His age is a privileged mitigating circumstance that lowers the penalty by one degree","His age is an ordinary mitigating circumstance under Art. 13(2) of the RPC","His age is irrelevant"],"correctIndex":2,"explanation":"Being over 70 years of age is an ordinary mitigating circumstance under Art. 13(2). Under the class notes, it also barred the imposition of the death penalty (now prohibited by R.A. 9346).","legalBasis":"Art. 13(2) — Over 70 years of age","hint":"Look at Art. 13(2).","optionExplanations":["Persons over 70 lack full discernment under the RPC.","Does not apply under Art. 13(2) — Over 70 years of age. Being over 70 years of age is an ordinary mitigating circumstance under Art. 13(2).","Being over 70 years of age is an ordinary mitigating circumstance under Art. 13(2). Under the class notes, it also barred the imposition of the death penalty (now prohibited by R.A. 9346).","Only minority is recognized as a modifying circumstance."]},
+		...crim1ExtMcqs,
 	],
 	essays: [
 		{
@@ -713,5 +717,7 @@ export const crim1: LawModule = {
 		},
 	],
 };
+
+crim1.essays.push(...crim1ExtEssays);
 
 export default crim1;

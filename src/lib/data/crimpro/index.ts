@@ -25,6 +25,7 @@ import { renderComparisons } from './comparisons';
 import { mockItems, renderMockAnswers, renderMockExam } from './integrated';
 import { renderLastMinute, renderPrelim, renderStart } from './review';
 import { quizMcqs, quizTopics, quizWatchFor, renderQuizAnswers, renderQuizzes } from './quizzes';
+import { crimproFlipsAndTwistsHtml, crimproTwistMcqs, crimproTwistTopic, crimproTwistWatchFor } from './twists_ext';
 
 const ID = 'crimpro';
 
@@ -52,7 +53,8 @@ export const crimpro: LawModule = {
 		...quizTopics,
 		...rules.map((r) => ({ id: r.id, name: r.short, eyebrow: `RULE ${r.n}`, desc: r.title })),
 		{ id: 'prescription', name: 'Prescription (R110 Sec. 1)', eyebrow: 'SPECIAL MODULE', desc: 'Periods, interruption, the DENR case study' },
-		{ id: 'mock', name: 'Integrated mock exam', eyebrow: 'RULES 110–120', desc: 'Mixed-Rule questions; identify the Rule yourself' }
+		{ id: 'mock', name: 'Integrated mock exam', eyebrow: 'RULES 110–120', desc: 'Mixed-Rule questions; identify the Rule yourself' },
+		crimproTwistTopic
 	],
 	studyGuideIntro:
 		'Exam method and updates since Tiu, the topic map, one chapter per Rule (prescription module after Rule 110), the deadlines matrix, case review, consolidated comparisons, the mock exam with its separate answer key, the four practice quizzes with their key, and the last-minute sheet.',
@@ -75,19 +77,22 @@ export const crimpro: LawModule = {
 		renderMockAnswers(),
 		renderQuizzes(),
 		renderQuizAnswers(),
-		renderLastMinute(rules)
+		renderLastMinute(rules),
+		crimproFlipsAndTwistsHtml
 	].join('\n'),
 	watchFor: {
 		...Object.fromEntries(rules.map((r) => [r.id, r.watchFor])),
 		prescription: prescriptionWatchFor,
 		mock: MOCK_WATCH_FOR,
-		...quizWatchFor
+		...quizWatchFor,
+		twists_kit: crimproTwistWatchFor
 	},
 	mcqs: [
 		...rules.flatMap((r) => trueFalseMcqs(ID, r.id, r.short, r.practice)),
 		...trueFalseMcqs(ID, 'prescription', 'Prescription (R110 Sec. 1)', prescriptionPractice),
 		...trueFalseMcqs(ID, 'mock', 'Integrated mock exam', mockItems),
-		...quizMcqs(ID)
+		...quizMcqs(ID),
+		...crimproTwistMcqs
 	],
 	essays: [
 		...rules.flatMap((r) => situationalEssays(ID, r.id, `Rule ${r.n} — ${r.title}`, r.practice)),

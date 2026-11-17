@@ -9,6 +9,7 @@ import { ch11 } from './ch11';
 import { caseDigests, caseDrillMcqs, cases, renderCases } from './cases';
 import { examItems, renderIntegratedExam } from './integrated';
 import { renderReview, renderStart } from './review';
+import { statconKitEssays, statconKitGuideHtml } from './kit_ext';
 
 const ID = 'statcon2';
 
@@ -45,7 +46,7 @@ export const statcon2: LawModule = {
 		{ color: 'red', label: 'Case doctrine' },
 		{ color: 'purple', label: 'Application-level questions' }
 	],
-	studyGuideHtml: [renderStart(chapters, cases), ...chapters.map(renderChapter), renderCases(), renderIntegratedExam(), renderReview(chapters, cases)].join('\n'),
+	studyGuideHtml: [renderStart(chapters, cases), ...chapters.map(renderChapter), renderCases(), renderIntegratedExam(), renderReview(chapters, cases), statconKitGuideHtml].join('\n'),
 	watchFor: {
 		...Object.fromEntries(chapters.map((c) => [c.id, c.watchFor])),
 		cases: `<strong>Watch for: the clue that names the case.</strong>
@@ -63,7 +64,8 @@ export const statcon2: LawModule = {
 	essays: [
 		...chapters.flatMap((c) => alacEssays(ID, c.id, `Chapter ${c.roman} — ${c.title}`, c.practice)),
 		...cases.flatMap((c) => alacEssays(ID, c.id, 'Five Cases', c.exam)),
-		...alacEssays(ID, 'integrated', 'Integrated Examination', examItems())
+		...alacEssays(ID, 'integrated', 'Integrated Examination', examItems()),
+		...statconKitEssays
 	],
 	cases: caseDigests(ID)
 };

@@ -9,8 +9,23 @@ const KEYS = {
 	highlights: 'law_highlights',
 	highlightLabels: 'law_highlight_labels',
 	/** Added with the reader: last location, visited/studied topics, guide bookmarks, notes, recent searches. */
-	reading: 'sc_reading'
+	reading: 'sc_reading',
+	history: 'law_test_history'
 } as const;
+
+export interface TestHistoryEntry {
+	id: string;
+	subjectId: string;
+	subjectTitle: string;
+	topicId: string;
+	topicName: string;
+	mode: 'practice' | 'exam';
+	correct: number;
+	answered: number;
+	total: number;
+	secondsUsed?: number;
+	at: number;
+}
 
 /** Where the reader was, or what a guide bookmark points at. */
 export interface ReadingLocation {
@@ -166,6 +181,7 @@ class StorageStore {
 	highlights = $state<Record<string, UserHighlight>>({});
 	highlightLabels = $state<Record<HighlightColor, string>>({ ...DEFAULT_HIGHLIGHT_LABELS });
 	reading = $state<ReadingData>(emptyReading());
+	testHistory = $state<TestHistoryEntry[]>([]);
 	isLoaded = $state(false);
 	/** Set when the browser refuses a write (private mode, quota). Progress then lives only in memory. */
 	persistError = $state(false);
@@ -189,6 +205,7 @@ class StorageStore {
 				this.pending[KEYS.highlights] = JSON.stringify(this.highlights);
 				this.pending[KEYS.highlightLabels] = JSON.stringify(this.highlightLabels);
 				this.pending[KEYS.reading] = JSON.stringify(this.reading);
+				this.pending[KEYS.history] = JSON.stringify(this.testHistory);
 				if (this.skipPersist) {
 					this.skipPersist = false;
 					this.pending = {};
@@ -222,6 +239,21 @@ class StorageStore {
 		this.highlights = cleanHighlights(readJson(KEYS.highlights, isRecord, {}));
 		this.highlightLabels = cleanLabels(readJson(KEYS.highlightLabels, isRecord, {}));
 		this.reading = cleanReading(readJson(KEYS.reading, isRecord, {}));
+		this.testHistory = readJson(
+			KEYS.history,
+			(v): v is TestHistoryEntry[] =>
+				Array.isArray(v) &&
+				v.every(
+					(x) =>
+						isRecord(x) &&
+						typeof x.id === 'string' &&
+						typeof x.subjectId === 'string' &&
+						typeof x.correct === 'number' &&
+						typeof x.total === 'number' &&
+						typeof x.at === 'number'
+				),
+			[]
+		);
 		this.isLoaded = true;
 	}
 
@@ -245,6 +277,19 @@ class StorageStore {
 
 	clearMcqAttempt(questionId: string) {
 		delete this.mcqAttempts[questionId];
+	}
+
+	recordTestHistory(entry: Omit<TestHistoryEntry, 'id' | 'at'>) {
+		const item: TestHistoryEntry = {
+			...entry,
+			id: `h_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 6)}`,
+			at: Date.now()
+		};
+		this.testHistory = [item, ...this.testHistory].slice(0, 100);
+	}
+
+	clearTestHistory(subjectId?: string) {
+		this.testHistory = subjectId ? this.testHistory.filter((h) => h.subjectId !== subjectId) : [];
 	}
 
 	saveEssayDraft(essayId: string, draft: Partial<UserEssayDraft>) {
@@ -425,7 +470,8 @@ class StorageStore {
 				bookmarks: this.bookmarks,
 				highlights: this.highlights,
 				highlightLabels: this.highlightLabels,
-				reading: this.reading
+				reading: this.reading,
+				testHistory: this.testHistory
 			},
 			null,
 			2
@@ -470,6 +516,7 @@ class StorageStore {
 		if (isRecord(data.highlights)) this.highlights = cleanHighlights(data.highlights);
 		if (isRecord(data.highlightLabels)) this.highlightLabels = cleanLabels(data.highlightLabels);
 		if (isRecord(data.reading)) this.reading = cleanReading(data.reading);
+		if (Array.isArray(data.testHistory)) this.testHistory = data.testHistory as TestHistoryEntry[];
 	}
 
 	resetAllProgress() {
@@ -478,6 +525,7 @@ class StorageStore {
 		this.bookmarks = [];
 		this.highlights = {};
 		this.reading = emptyReading();
+		this.testHistory = [];
 		if (typeof window !== 'undefined') {
 			// Only our own keys — localStorage.clear() would also wipe the theme and any other app on this origin.
 			// Highlight labels are a preference, like the theme, so they stay.

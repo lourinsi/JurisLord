@@ -108,7 +108,10 @@ const GROUPS: Record<string, Rule[]> = {
 		{ title: 'Case pronouncements', test: (p) => p.sourceId === 'pfr_cases' },
 		{ title: 'Review', test: () => true }
 	],
-	consti1: [{ title: '1987 Constitution', test: () => true }],
+	consti1: [
+		{ title: '1987 Constitution', test: (p) => p.kind === 'guide' },
+		{ title: 'Assigned cases', test: () => true }
+	],
 	crim1: [
 		{ title: 'Discussion and principles', test: (p) => !/^part-/.test(p.id) },
 		{ title: 'Revised Penal Code, Book One', test: () => true }
@@ -127,6 +130,10 @@ const GROUPS: Record<string, Rule[]> = {
 		{ title: 'Chapters VI–XI', test: (p) => p.sourceId === 'statcon2' && (p.id === 'start-here' || p.id.startsWith('ch')) },
 		{ title: 'The five cases', test: (p) => p.id === 'five-cases' || p.kind === 'cases' },
 		{ title: 'Review', test: () => true }
+	],
+	philo: [
+		{ title: 'Lessons 10–13', test: (p) => p.id.startsWith('lesson-') },
+		{ title: 'Cases & Synthesis', test: () => true }
 	]
 };
 

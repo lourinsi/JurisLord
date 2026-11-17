@@ -242,7 +242,7 @@
 				{@const s = userStorage.stats(m.legacyIds)}
 				{@const r = userStorage.readingProgress(subjectUnits(m))}
 				{@const cont = userStorage.reading.lastBySubject[m.id]}
-				<article class="flex flex-col overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card transition-transform duration-150 hover:-translate-y-0.5 dark:border-[#2B434E]">
+				<article class="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1CB0F6]/70 dark:border-[#2B434E] dark:hover:border-[#1CB0F6]/70">
 					<!-- Colorful top header band -->
 					<div class={cn('h-2.5 w-full', themeColor.band)}></div>
 					<div class="flex flex-1 flex-col gap-4 p-5">
@@ -253,7 +253,7 @@
 						</div>
 						<div class="flex flex-col gap-1.5">
 							<h3 class="font-heading text-xl leading-snug font-extrabold">
-								<a href="/module/{m.id}" class="text-foreground no-underline hover:text-[#1CB0F6]">{m.title}</a>
+								<a href="/module/{m.id}" class="text-foreground no-underline after:absolute after:inset-0 after:z-0 group-hover:text-[#1CB0F6]">{m.title}</a>
 							</h3>
 							<p class="text-[0.8125rem] leading-relaxed font-semibold text-muted-foreground">{m.legalScope.length > 110 ? m.legalScope.slice(0, 108) + '…' : m.legalScope}</p>
 						</div>
@@ -281,7 +281,7 @@
 							{/if}
 						</dl>
 					</div>
-					<div class="flex flex-wrap gap-2 border-t-2 border-slate-100 bg-slate-50/70 px-5 py-3.5 dark:border-[#2B434E] dark:bg-[#15242B]">
+					<div class="relative z-10 flex flex-wrap gap-2 border-t-2 border-slate-100 bg-slate-50/70 px-5 py-3.5 dark:border-[#2B434E] dark:bg-[#15242B]">
 						{#if cont}
 							<a href={readHref(m.id, cont.partId, cont.anchor)} class="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5">Continue <ArrowRight class="size-3.5" strokeWidth={3} /></a>
 						{:else}

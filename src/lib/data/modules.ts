@@ -7,6 +7,7 @@ import { crim1Lloren } from './crim1_lloren';
 import { statcon } from './statcon';
 import { statcon2 } from './statcon2';
 import { crimpro } from './crimpro';
+import { philo } from './philo';
 import { canonicalModuleId } from './aliases';
 
 const single = (m: LawModule): Subject => ({ ...m, sources: [m], legacyIds: [m.id] });
@@ -49,7 +50,7 @@ const statutoryConstruction: Subject = {
 };
 
 /** Master index, in the order shown on the dashboard. A subject's `id` is also its URL slug. */
-export const modules: Subject[] = [personsAndFamily, single(consti1), single(crim1), single(crim1Lloren), single(crimpro), statutoryConstruction];
+export const modules: Subject[] = [personsAndFamily, single(consti1), single(crim1), single(crim1Lloren), single(crimpro), statutoryConstruction, single(philo)];
 
 /** Looks a subject up by slug, accepting the old slugs of merged subjects (`statcon2`, `pfr_cases`). */
 export function getModule(slug: string): Subject | undefined {

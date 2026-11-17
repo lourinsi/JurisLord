@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Bookmark, BookOpen, ChevronDown, Home, Menu, Moon, Search, SlidersHorizontal, Sun, X } from '@lucide/svelte';
+	import { Bookmark, BookOpen, ChevronDown, Flame, Home, Menu, Moon, Search, SlidersHorizontal, Sun, X } from '@lucide/svelte';
 	import { Popover, Dialog as DialogPrimitive } from 'bits-ui';
 	import { page } from '$app/state';
 	import { modules } from '$lib/data/modules';
+	import { answerKey } from '$lib/answerkey.svelte';
 	import { theme } from '$lib/stores/theme.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 	import { cn } from '$lib/utils';
@@ -92,6 +93,9 @@
 			<a href="/saved" class={navLink(path.startsWith('/saved'))} aria-current={path.startsWith('/saved') ? 'page' : undefined}>
 				<Bookmark class="size-4" strokeWidth={2.5} /> Saved
 			</a>
+			<a href="/exam-day" class={navLink(path.startsWith('/exam-day'))} aria-current={path.startsWith('/exam-day') ? 'page' : undefined}>
+				<Flame class="size-4 text-[#FF9600]" strokeWidth={2.5} /> Exam day
+			</a>
 		</nav>
 
 		<button
@@ -107,6 +111,16 @@
 		</button>
 
 		<div class="ml-auto flex shrink-0 items-center gap-1.5 sm:ml-0">
+			{#if answerKey.on}
+				<button
+					type="button"
+					onclick={() => answerKey.toggle()}
+					title="Model answers are showing everywhere. Click to turn off."
+					class="inline-flex h-9 cursor-pointer items-center gap-1 rounded-full border-2 border-[#E5B400] border-b-3 bg-[#FFF5CC] px-3 text-xs font-extrabold text-[#946200] whitespace-nowrap dark:border-[#FFC800]/50 dark:bg-[#FFC800]/20 dark:text-[#FFD633]"
+				>
+					🔑 Answer key <span class="font-bold opacity-80">· Turn off</span>
+				</button>
+			{/if}
 			<button type="button" onclick={() => ui.openSearch()} aria-label="Search" class="grid size-10 place-items-center rounded-2xl border-2 border-transparent text-slate-600 hover:bg-slate-100 hover:text-foreground sm:hidden dark:text-slate-300 dark:hover:bg-[#223842]">
 				<Search class="size-5" strokeWidth={2.5} />
 			</button>
@@ -149,6 +163,7 @@
 			</div>
 			<a href="/" onclick={() => (menuOpen = false)} class={cn(navLink(path === '/'), 'h-11')}><Home class="size-4" /> Home</a>
 			<a href="/saved" onclick={() => (menuOpen = false)} class={cn(navLink(path.startsWith('/saved')), 'h-11')}><Bookmark class="size-4" /> Saved</a>
+			<a href="/exam-day" onclick={() => (menuOpen = false)} class={cn(navLink(path.startsWith('/exam-day')), 'h-11')}><Flame class="size-4 text-[#FF9600]" /> Exam day</a>
 			<a href="/settings" onclick={() => (menuOpen = false)} class={cn(navLink(path.startsWith('/settings')), 'h-11')}><SlidersHorizontal class="size-4" /> Settings</a>
 			<p class="label-caps mt-4 px-3 pb-1">Subjects</p>
 			{#each modules as m (m.id)}

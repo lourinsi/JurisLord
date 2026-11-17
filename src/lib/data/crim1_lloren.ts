@@ -44,7 +44,7 @@ export const crim1Lloren: LawModule = {
 <li><strong>Accomplice in Frustrated Felony (Q18) &amp; Destierro (Q29):</strong> Art. 54 expressly gives the accomplice in a frustrated felony the penalty next lower than that for the frustrated felony (TRUE), and Art. 71 places <em>destierro</em> immediately one degree below <em>arresto mayor</em> (TRUE). The original key marked both False.</li>
 <li><strong>Light Felonies Against Persons (Q21):</strong> Under Art. 7, light felonies against persons or property are punishable even in the attempted or frustrated stage (so the statement that there is no attempted/frustrated stage is FALSE under Art. 7, though slight physical injuries is punished by result).</li>
 <li><strong>Recovery of Stolen Property from a Good-Faith Buyer (Q35):</strong> Under Art. 105 RPC and Art. 559 Civil Code, the owner <strong>can recover</strong> stolen property even from an innocent buyer in good faith (TRUE), unless bought at a public sale (where reimbursement is required).</li>
-<li><strong>Driving Without a License (Q52) &amp; Palay Thief (Q53):</strong> Violating R.A. 4136 is an <strong>offense</strong> (special law), though the original key called it an "infraction." Shooting a suspected palay thief after a warning shot is <strong>homicide</strong> (<em>People v. Apolinar</em>), not murder.</li>
+<li><strong>Driving Without a License (Q52) &amp; Palay Thief (Q53):</strong> Violating R.A. 4136 is an <strong>offense</strong> (special law), though the original key called it an "infraction." Shooting a suspected palay thief after a warning shot is <strong>murder</strong> (<em>People v. Apolinar</em>: defense of property can be invoked as a justifying circumstance only when coupled with an attack on the person entrusted with said property; life is more important than property).</li>
 </ul>`,
 		tf: `<ul>
 <li><strong>Correctional penalties prescription (Q3):</strong> Correctional penalties prescribe in <strong>10 years</strong> (arresto mayor in 5 years), not 15 years. Fifteen years is for afflictive penalties.</li>
@@ -346,7 +346,7 @@ export const crim1Lloren: LawModule = {
     <tr>
       <td class="art">53</td>
       <td>AA shot a man who he thought was stealing palay from his land after firing a warning shot. The shot resulted in the death of the victim.</td>
-      <td><span class="sg-dot" style="background:var(--red)"></span><strong>LIABLE FOR HOMICIDE (Corrected from key's Murder).</strong> Defense of property alone without unlawful aggression against the person does not justify killing (<em>People v. Apolinar</em>; Reyes, p. 169). Because AA fired a warning shot, there was no treachery, so the crime is Homicide (Art. 249), not Murder.</td>
+      <td><span class="sg-dot" style="background:var(--yellow)"></span><strong>LIABLE FOR MURDER (<em>People v. Apolinar</em>).</strong> Held: Defense of property is not as important as the right to life, and defense of property can be invoked as a justifying circumstance ONLY when it is coupled with an attack on the person of one entrusted with said property. Life is more important than property; therefore, liable for murder.</td>
     </tr>
     <tr>
       <td class="art">54</td>
@@ -1385,21 +1385,21 @@ export const crim1Lloren: LawModule = {
 			question:
 				'AA shot a man who he thought was stealing palay from his land after firing a warning shot. The shot resulted in the death of the victim. What is AA liable for?',
 			options: [
-				'Liable for Homicide',
+				'None of the above',
 				'Liable for Murder',
 				'Exempt under complete defense of property',
 				'Liable for Death Committed in a Tumultuous Affray'
 			],
 			optionExplanations: [
-				'Under People v. Apolinar, defense of property alone without unlawful aggression against the person does not justify killing, and the warning shot removed treachery, leaving Homicide (Art. 249).',
-				'Murder requires a qualifying circumstance like treachery; firing a warning shot first put the victim on guard, negating treachery (note: original key erroneously wrote Murder).',
+				'Incorrect — AA is liable for Murder under the reviewer and People v. Apolinar.',
+				'Held: Defense of property is not as important as right to life, and defense of property can be invoked as a justifying circumstance ONLY when it is coupled with an attack on the person of one entrusted with said property (People v. Apolinar). Life is more important than property. Therefore, liable for murder.',
 				'Complete defense of property does not justify taking a human life unless coupled with unlawful aggression against the person.',
 				'Death in a tumultuous affray (Art. 251) requires a confused, disorderly fight among several persons where the actual killer cannot be ascertained.'
 			],
-			correctIndex: 0,
+			correctIndex: 1,
 			explanation:
-				'Liable for Homicide (People v. Apolinar; Reyes, p. 169). Defense of property alone does not justify killing when there is no unlawful aggression against the person. Moreover, no qualifying circumstance (such as treachery) attended the killing because the warning shot put the victim on guard. Thus, the crime is Homicide under Art. 249, not Murder. (Note: The original key erroneously wrote "Liable for Murder.")',
-			legalBasis: 'Art. 11(1) & Art. 249, RPC — People v. Apolinar, C.A., 38 O.G. 2870 (Reyes, pp. 167, 169)'
+				'Held: Defense of property is not as important as right to life, and defense of property can be invoked as a justifying circumstance ONLY when it is coupled with an attack on the person of one entrusted with said property. (People v. Apolinar) Life is more important than property. Therefore, liable for murder.',
+			legalBasis: 'Art. 11(1) & Art. 248, RPC — People v. Apolinar, C.A., 38 O.G. 2870 (Reyes, pp. 167, 169)'
 		},
 		{
 			id: 'crim1_lloren:mcq:54',

@@ -8,6 +8,10 @@
  * here are new ids, so nothing already in the guide (or highlighted in it) moves.
  */
 
+import type { AlacEssay, CaseDigest, McqQuestion, ModuleTopic } from '$lib/types';
+import { DIGESTS as PFR_DIGESTS, DISTINCTIONS as PFR_DISTINCTIONS, GROUP_LABEL, PFR, SPOT as PFR_SPOT, TOPICS as PFR_TOPICS } from '$lib/pfr';
+import type { Kind } from '$lib/kit';
+
 type Color = 'yellow' | 'green' | 'blue' | 'orange' | 'red' | 'purple' | 'neutral';
 
 const badge = (color: Color, label: string) => `<span class="rv-badge rv-${color}">${label}</span>`;
@@ -351,3 +355,230 @@ ${ol([
 ])}
 <p class="rv-source">Codal text follows the Rabuya and Tiu reprints and the E.O. 209 text on Lawphil.</p>
 `;
+
+/* ------------------------------------------------------------------ *
+ * PFR Finals Coverage Extension (from consti-prep pfr.json,
+ * pfr-terms.json, pfr-why.json): CPG (Arts. 105–133), Separation of
+ * Property (Arts. 134–146), Adoption (RA 11642), Support (Arts. 194–208),
+ * Parental Authority (Arts. 209–233), Emancipation, Summary Proceedings,
+ * Absence & Civil Registry (Arts. 234–257; CC 381–396; RA 10172),
+ * plus 78 Enumerations, 40 Definitions, 11 Distinctions, 44 Finals
+ * Case Digests, 102 Finals MCQs, and 75 Finals ALAC Problems.
+ * ------------------------------------------------------------------ */
+
+const mdToHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+const KIND_DOT: Record<Kind, string> = {
+	req: 'green',
+	exc: 'blue',
+	exx: 'orange',
+	cls: 'purple',
+	doc: 'red',
+	mem: 'yellow',
+	list: 'yellow'
+};
+
+export const pfrFinalsTopics: ModuleTopic[] = [
+	{
+		id: 'cpg_sep',
+		name: 'CPG, Separation of Property & Cohabitation',
+		eyebrow: 'FAMILY CODE · ARTS. 105–148',
+		desc: 'Conjugal Partnership of Gains (exclusive vs. conjugal, Art. 118 installments, Art. 120 improvements, charges, 9-step liquidation), judicial separation of property, and Arts. 147–148.'
+	},
+	{
+		id: 'family_filiation',
+		name: 'Family, Family Home, Paternity & Filiation',
+		eyebrow: 'FAMILY CODE · ARTS. 149–182',
+		desc: 'Earnest efforts (Arts. 150–151), family home exemptions & ceilings (Arts. 152–162), presumption & impugning of legitimacy, primary vs. secondary proof, illegitimate children & legitimation.'
+	},
+	{
+		id: 'adoption_support',
+		name: 'Adoption (RA 11642) & Support',
+		eyebrow: 'RA 11642 · ARTS. 194–208',
+		desc: 'Administrative domestic adoption under NACC (who may adopt/be adopted, age gap, consent, rescission) and support (scope, order of liability, non-waiver of future support).'
+	},
+	{
+		id: 'parental_other',
+		name: 'Parental Authority, Emancipation, Summary Proceedings, Absence & Registry',
+		eyebrow: 'ARTS. 209–257 · CC 381–396 · RA 10172',
+		desc: 'Parental preference, tender-age rule, substitute vs. special parental authority, suspension/termination, emancipation, summary judicial proceedings, absence/presumptive death, and RA 9048/10172.'
+	}
+];
+
+function renderPfrGroupSection(groupNo: number, partRoman: string, partId: string, title: string): string {
+	const enums = PFR.enums.filter((e) => e.group === groupNo);
+	const terms = PFR.terms.filter((t) => t.group === groupNo);
+	const topics = PFR_TOPICS.filter((t) => t.group === groupNo);
+	const digests = PFR_DIGESTS.filter((c) => c.group === groupNo);
+
+	const topicCards = topics
+		.map(
+			(t) =>
+				`<div class="case-card"><div class="cname">${t.title} <span style="font-weight:400;opacity:0.78">(${t.cite})</span></div><div class="cdoc">${mdToHtml(t.rule)}</div></div>`
+		)
+		.join('\n');
+
+	const enumRows = enums
+		.map((e) => {
+			const dot = KIND_DOT[e.kind] ?? 'yellow';
+			const exoex = e.kind === 'exx' ? ' class="sg-row-exoex"' : '';
+			const itemsHtml = e.it
+				.map(([h, d], i) => {
+					const num = e.order ? `${i + 1}. ` : '• ';
+					return `<div>${num}<strong>${mdToHtml(h)}</strong>${d ? ` — ${mdToHtml(d)}` : ''}</div>`;
+				})
+				.join('');
+			return `  <tr${exoex}><td class="art"><span class="sg-dot" style="background:var(--${dot})"></span>${e.src}</td><td><strong>${mdToHtml(e.t)}</strong> (${e.it.length}${e.order ? ', in order' : ''})<div style="margin-top:4px">${itemsHtml}</div></td></tr>`;
+		})
+		.join('\n');
+
+	const termRows = terms
+		.map(
+			(t) =>
+				`  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span><strong>${mdToHtml(t.t)}</strong><div style="font-size:0.8em;opacity:0.75">${t.src}</div></td><td>${mdToHtml(t.d)}${t.x ? `<div style="margin-top:4px;color:var(--orange)"><strong>Don’t confuse with:</strong> ${mdToHtml(t.x)}</div>` : ''}</td></tr>`
+		)
+		.join('\n');
+
+	const digestCards = digests
+		.map(
+			(c) =>
+				`<div class="case-card"><div class="cname">${c.name} <span style="font-weight:400;opacity:0.78">(${c.cite})</span>${c.star ? ` · <span style="color:var(--orange)">★ Likely</span>` : ''}</div><div class="cdoc"><p><strong>Doctrine:</strong> ${mdToHtml(c.doctrine)}</p><p><strong>Facts:</strong> ${mdToHtml(c.facts)}</p><p><strong>Issue:</strong> ${mdToHtml(c.issue)}</p><p><strong>Ruling:</strong> ${mdToHtml(c.ruling)}</p></div></div>`
+		)
+		.join('\n');
+
+	return `
+<h2 class="sg-h2" id="${partId}">Part ${partRoman} — ${title}</h2>
+${topics.length ? `<h3 class="sg-h3" id="${partId}-rules">Core Rules &amp; Doctrines</h3>\n${topicCards}` : ''}
+${
+	enums.length
+		? `<h3 class="sg-h3" id="${partId}-enumerations">Enumerations &amp; Requisites (${enums.length} lists)</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Art. / Source</th><th>Enumeration &amp; Requisites</th></tr>
+${enumRows}
+</table></div>`
+		: ''
+}
+${
+	terms.length
+		? `<h3 class="sg-h3" id="${partId}-definitions">Definitions &amp; Distinctions (${terms.length} terms)</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Term</th><th>Definition &amp; Trap</th></tr>
+${termRows}
+</table></div>`
+		: ''
+}
+${digests.length ? `<h3 class="sg-h3" id="${partId}-cases">Assigned Cases (${digests.length})</h3>\n${digestCards}` : ''}`;
+}
+
+const distinctionTablesHtml = PFR_DISTINCTIONS.map(
+	(d, idx) => `<h3 class="sg-h3" id="pfr-distinction-${idx + 1}">${d.t}${d.hot ? ' ★' : ''}</h3>
+<div class="table-scroll"><table class="cmp-table">
+  <tr><th>Point</th>${d.head.map((h) => `<th>${mdToHtml(h)}</th>`).join('')}</tr>
+${d.rows.map(([label, ...vals]) => `  <tr><td class="aspect">${mdToHtml(label)}</td>${vals.map((v) => `<td>${mdToHtml(v)}</td>`).join('')}</tr>`).join('\n')}
+</table></div>`
+).join('\n\n');
+
+const pfrSpotterHtml = PFR_SPOT.map(
+	({ clue, topic }) =>
+		`  <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>${clue}</td><td><strong>${topic.title}</strong> (${topic.cite}) — ${mdToHtml(topic.rule)}</td></tr>`
+).join('\n');
+
+export const pfrFinalsHtml = [
+	renderPfrGroupSection(3, 'XV', 'part-xv-conjugal-partnership-of-gains-arts-105-133', 'Conjugal Partnership of Gains (Family Code, Arts. 105–133)'),
+	renderPfrGroupSection(4, 'XVI', 'part-xvi-separation-of-property-and-cohabitation-arts-134-148', 'Separation of Property & Cohabitation (Family Code, Arts. 134–148)'),
+	renderPfrGroupSection(7, 'XVII', 'part-xvii-adoption-ra-11642', 'Domestic Administrative Adoption (R.A. 11642)'),
+	renderPfrGroupSection(8, 'XVIII', 'part-xviii-support-arts-194-208', 'Support (Family Code, Arts. 194–208)'),
+	renderPfrGroupSection(9, 'XIX', 'part-xix-parental-authority-arts-209-233', 'Parental Authority (Family Code, Arts. 209–233)'),
+	renderPfrGroupSection(10, 'XX', 'part-xx-emancipation-summary-proceedings-absence-registry', 'Emancipation, Summary Proceedings, Absence & Civil Registry (Arts. 234–257; CC 381–396; RA 10172)'),
+	`<h2 class="sg-h2" id="pfr-finals-review-tools-distinctions-spotter">Review Tools — 11 Master Distinctions &amp; Fact-Pattern Spotter</h2>
+${distinctionTablesHtml}
+
+<h3 class="sg-h3" id="pfr-finals-fact-pattern-spotter">Fact-Pattern Spotter ("If the facts say…")</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>If the facts say…</th><th>Spot this topic &amp; rule</th></tr>
+${pfrSpotterHtml}
+</table></div>`
+].join('\n');
+
+export const pfrFinalsWatchFor: Record<string, string> = {
+	cpg_sep: `<strong>Watch for: CPG vs. ACP reversals, Art. 118 installment rules, and Art. 120 reverse accession.</strong>
+    <ul>
+      <li><strong>Fruits of exclusive property</strong> are <em>conjugal</em> under CPG (Art. 106/117[3]), whereas under ACP fruits of gratuitously acquired property stay exclusive unless the donor provides otherwise (Art. 92[1]).</li>
+      <li><strong>Art. 118 installments begun before marriage</strong>: ownership follows where <em>title</em> vested — if title vested before marriage, exclusive; if during marriage, conjugal — with reimbursement to the other fund upon liquidation.</li>
+      <li><strong>Art. 120 improvements on exclusive land</strong>: if the cost of the improvement + resulting increase in value exceeds the value of the land at the time of improvement, the entire property becomes <em>conjugal</em>, with reimbursement of the land's value at liquidation (ownership transfers only upon reimbursement).</li>
+      <li><strong>Art. 147 vs. Art. 148</strong>: Art. 147 presumes equal contributions and counts household care; Art. 148 (impediment exists) requires <em>proof of actual joint contribution</em> of money, property, or industry.</li>
+    </ul>`,
+	family_filiation: `<strong>Watch for: Art. 151 non-family exclusions, Art. 155 T-P-M-B exceptions, and Art. 172 vs. Art. 175 deadlines.</strong>
+    <ul>
+      <li><strong>Art. 150/151 earnest efforts</strong>: brothers-in-law, sisters-in-law, uncles/aunts, nephews/nieces, cousins, and strangers are <em>excluded</em>; including a stranger co-defendant dispenses with the requirement.</li>
+      <li><strong>Art. 155 family-home exceptions (T-P-M-B)</strong>: Taxes, Prior debts (incurred before constitution), Mortgages, and Builders/materialmen.</li>
+      <li><strong>Art. 172/175 proof of filiation</strong>: primary evidence (birth record, final judgment, admission in public or signed private handwritten instrument) may be brought during the <em>child's lifetime</em>; secondary evidence (open and continuous possession of status, other evidence) must be brought during the <em>putative parent's lifetime</em>.</li>
+    </ul>`,
+	adoption_support: `<strong>Watch for: RA 11642 administrative venue, age gaps, and future vs. past support.</strong>
+    <ul>
+      <li><strong>RA 11642</strong> moved domestic adoption from the courts to the <strong>NACC</strong> (administrative process); only the <em>adoptee</em> may petition to rescind,never the adopter (who may only disinherit on legal grounds).</li>
+      <li><strong>16-year age gap</strong> between adopter and adoptee is waived only if the adopter is the biological parent or the spouse of the adoptee's parent.</li>
+      <li><strong>Future support</strong> can never be waived, renounced, transmitted, or compromised (Art. 2035); <strong>support in arrears</strong> (past-due) may be waived or compromised.</li>
+    </ul>`,
+	parental_other: `<strong>Watch for: tender-age rule, substitute vs. special liability, and Art. 41 vs. CC 390–391.</strong>
+    <ul>
+      <li><strong>Art. 213 tender-age rule</strong>: no child under 7 shall be separated from the mother unless the court finds compelling reasons — applies even to an illegitimate child (who is under the mother's sole parental authority under Art. 176).</li>
+      <li><strong>Substitute (Art. 216) vs. Special (Art. 218) parental authority</strong>: special authority (school, administrators, teachers) attaches while the minor is under their supervision, instruction, or custody, and makes them <em>principally and solidarily</em> liable for the minor's damages, with parents Subsidiarily liable (Art. 219).</li>
+      <li><strong>Art. 41 (remarriage) vs. CC 390–391 (ordinary absence)</strong>: judicial declaration of presumptive death is needed <em>only</em> for remarriage under Art. 41 (4 years ordinary absence; 2 years in danger of death), and automatically terminates the subsequent marriage upon the recording of the reappearing spouse's affidavit of reappearance.</li>
+    </ul>`
+};
+
+const GROUP_TO_PFR_TOPIC: Record<number, { id: string; name: string }> = {
+	1: { id: 'proprel', name: 'Property Relations Between Husband & Wife' },
+	2: { id: 'proprel', name: 'Property Relations Between Husband & Wife' },
+	3: { id: 'cpg_sep', name: 'CPG, Separation of Property & Cohabitation' },
+	4: { id: 'cpg_sep', name: 'CPG, Separation of Property & Cohabitation' },
+	5: { id: 'family_filiation', name: 'Family, Family Home, Paternity & Filiation' },
+	6: { id: 'family_filiation', name: 'Family, Family Home, Paternity & Filiation' },
+	7: { id: 'adoption_support', name: 'Adoption (RA 11642) & Support' },
+	8: { id: 'adoption_support', name: 'Adoption (RA 11642) & Support' },
+	9: { id: 'parental_other', name: 'Parental Authority, Emancipation, Summary Proceedings, Absence & Registry' },
+	10: { id: 'parental_other', name: 'Parental Authority, Emancipation, Summary Proceedings, Absence & Registry' }
+};
+
+export const pfrFinalsMcqs: McqQuestion[] = (PFR.mcqs ?? []).map((m) => {
+	const t = GROUP_TO_PFR_TOPIC[m.group] ?? { id: 'proprel', name: 'Property Relations Between Husband & Wife' };
+	const optionExplanations = m.why?.map((w, idx) => (idx === m.a ? m.ex : w));
+	return {
+		id: `pfr:kit:${m.id}`,
+		topicId: t.id,
+		topic: t.name,
+		tag: m.star ? 'jurisprudence' : 'requisites',
+		question: m.q,
+		options: m.o,
+		optionExplanations,
+		correctIndex: m.a,
+		explanation: m.ex,
+		legalBasis: `PFR Finals · ${GROUP_LABEL[m.group]}`
+	};
+});
+
+export const pfrFinalsEssays: AlacEssay[] = PFR.problems.map((p) => ({
+	id: `pfr:kit:${p.pid}`,
+	title: `${p.topic.title} — ${p.label}`,
+	topic: `${p.topic.title} (${p.topic.cite})`,
+	factPattern: p.facts,
+	question: p.q || 'Resolve the problem using the ALAC method.',
+	modelAnswer: {
+		answer: p.alac[0] ?? '',
+		legalBasis: p.alac[1] ?? '',
+		application: p.alac[2] ?? '',
+		conclusion: p.alac[3] ?? ''
+	}
+}));
+
+export const pfrFinalsCases: CaseDigest[] = PFR_DIGESTS.map((c, idx) => ({
+	id: `pfr_cases:finals:${idx + 1}:${c.id}`,
+	title: c.name,
+	citation: c.cite,
+	topic: GROUP_LABEL[c.group] ?? 'Finals Coverage',
+	part: `Finals Coverage — Part ${['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][c.group]}: ${GROUP_LABEL[c.group]}`,
+	keyRule: c.doctrine,
+	summary: `${c.star ? '<strong>★ Likely Exam Case.</strong> ' : ''}<strong>Facts:</strong> ${c.facts} — <strong>Issue:</strong> ${c.issue} — <strong>Ruling:</strong> ${c.ruling} — <strong>Doctrine:</strong> ${c.doctrine}`
+}));
+

@@ -7,6 +7,7 @@
 	import * as Card from '$lib/components/ui/card';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { ALAC_FIELDS, ESSAY_STATUS, draftHasContent, draftWordCount, essayStatus, type AlacKey, type EssayStatus } from '$lib/alac';
+	import { answerKey } from '$lib/answerkey.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
 	import type { LawModule } from '$lib/types';
@@ -24,6 +25,7 @@
 
 	let showModel = $state(false);
 	let confirmClear = $state(false);
+	const modelShown = $derived(showModel || answerKey.on);
 
 	/** Previous/next follow the filtered list, keeping the open essay in it even if its status changed. */
 	const visible = $derived(lawModule.essays.filter((e) => filter === 'all' || statusOf(e.id) === filter || e.id === selectedId));
@@ -109,23 +111,23 @@
 				</div>
 
 				<div class="flex items-center gap-3">
-					<Switch id="reveal-{essay.id}" checked={showModel} onCheckedChange={(v) => (showModel = v)} />
+					<Switch id="reveal-{essay.id}" checked={modelShown} onCheckedChange={(v) => (showModel = v)} />
 					<label for="reveal-{essay.id}" class="flex cursor-pointer items-center gap-1.5 text-sm font-extrabold">
-						{#if showModel}<EyeOff class="size-4 text-[#1CB0F6]" />{:else}<Eye class="size-4 text-[#1CB0F6]" />{/if}
+						{#if modelShown}<EyeOff class="size-4 text-[#1CB0F6]" />{:else}<Eye class="size-4 text-[#1CB0F6]" />{/if}
 						Reveal model ALAC answer
 					</label>
 					<span class="text-xs font-bold text-muted-foreground">Try it yourself first.</span>
 				</div>
 
-				<section aria-label={showModel ? 'Your answer beside the model answer' : 'Your answer'} class="overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
-					{#if showModel}
+				<section aria-label={modelShown ? 'Your answer beside the model answer' : 'Your answer'} class="overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+					{#if modelShown}
 						<div class="grid grid-cols-2 border-b-2 border-slate-100 bg-slate-50 max-md:hidden dark:border-[#2B434E] dark:bg-[#15242B]">
 							<p class="label-caps px-4 py-2.5 text-[0.7rem]">Your answer</p>
 							<p class="label-caps border-l-2 border-slate-100 px-4 py-2.5 text-[0.7rem] dark:border-[#2B434E]">Model ALAC answer</p>
 						</div>
 					{/if}
 					{#each ALAC_FIELDS as f, fi (f.key)}
-						<div class={cn('grid', fi > 0 && 'border-t-2 border-slate-100 dark:border-[#2B434E]', showModel && 'md:grid-cols-2')}>
+						<div class={cn('grid', fi > 0 && 'border-t-2 border-slate-100 dark:border-[#2B434E]', modelShown && 'md:grid-cols-2')}>
 							<div class="flex min-w-0 flex-col gap-2 p-4 sm:p-5">
 								<label for="{essay.id}-{f.key}" class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
 									<span class={cn('grid size-8 place-items-center rounded-xl border-2 border-b-3 font-sans text-sm font-extrabold', f.badge)} aria-hidden="true">{f.letter}</span>
@@ -142,7 +144,7 @@
 									class={cn('min-h-20 rounded-2xl border-2 bg-slate-50 font-sans text-base leading-relaxed font-semibold md:text-base dark:bg-[#131F24]', f.ring)}
 								/>
 							</div>
-							{#if showModel}
+							{#if modelShown}
 								<div class="animate-duo-bounce-in flex min-w-0 flex-col gap-2 border-dashed bg-slate-50/70 p-4 max-md:border-t-2 sm:p-5 md:border-l-2 md:border-solid md:border-slate-100 dark:bg-[#15242B] dark:md:border-[#2B434E]">
 									<p class="flex items-center gap-2 text-sm font-extrabold"><span class="md:hidden">Model · </span>{f.name}</p>
 									<div class="rich font-sans text-[0.9875rem] leading-relaxed font-semibold">{@html essay.modelAnswer[f.key]}</div>
@@ -151,7 +153,7 @@
 						</div>
 					{/each}
 				</section>
-				{#if showModel}
+				{#if modelShown}
 					<p class="flex items-center gap-1.5 text-xs font-bold text-[#46A302] dark:text-[#7BE328]"><CircleCheck class="size-4" /> Compare your Legal Basis and Application line by line, then mark how it went.</p>
 				{/if}
 

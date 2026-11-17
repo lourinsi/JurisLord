@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Bookmark, Highlighter, Link2, NotebookPen, Pencil, Plus, Search, Target, Trash2, TriangleAlert } from '@lucide/svelte';
+	import { Bookmark, Highlighter, History, Link2, NotebookPen, Pencil, Plus, Search, Target, Trash2, TriangleAlert } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
@@ -11,11 +11,14 @@
 	import { partForScope, readHref, type Part } from '$lib/content';
 	import { userStorage, type UserNote } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
-	import { cn } from '$lib/utils';
+	import { cn, formatClock, pct } from '$lib/utils';
 	import type { Subject, UserHighlight } from '$lib/types';
 
-	type Tab = 'highlights' | 'notes' | 'bookmarks';
-	const tab = $derived((['notes', 'bookmarks'].includes(page.url.searchParams.get('tab') ?? '') ? page.url.searchParams.get('tab') : 'highlights') as Tab);
+	type Tab = 'highlights' | 'notes' | 'bookmarks' | 'history';
+	const tab = $derived((['notes', 'bookmarks', 'history'].includes(page.url.searchParams.get('tab') ?? '') ? page.url.searchParams.get('tab') : 'highlights') as Tab);
+	const historyItems = $derived(
+		userStorage.testHistory.filter((h) => !f || `${h.subjectTitle} ${h.topicName} ${h.mode}`.toLowerCase().includes(f))
+	);
 	const noteParam = $derived(page.url.searchParams.get('note') ?? '');
 	let filter = $state('');
 	const f = $derived(filter.trim().toLowerCase());
@@ -121,7 +124,8 @@
 			options={[
 				{ value: 'highlights', label: 'Highlights', count: highlightTotal },
 				{ value: 'notes', label: 'Notes', count: userStorage.reading.notes.length },
-				{ value: 'bookmarks', label: 'Bookmarks', count: userStorage.reading.bookmarks.length + userStorage.bookmarks.length }
+				{ value: 'bookmarks', label: 'Bookmarks', count: userStorage.reading.bookmarks.length + userStorage.bookmarks.length },
+				{ value: 'history', label: 'History', count: userStorage.testHistory.length }
 			]}
 		/>
 		<label class="flex h-11 min-w-0 flex-[1_1_16rem] items-center gap-2 rounded-2xl border-2 border-b-4 border-slate-200 bg-white px-3.5 text-muted-foreground focus-within:border-[#1CB0F6] sm:max-w-sm dark:border-[#2B434E] dark:bg-[#1A2C34]">
@@ -129,6 +133,9 @@
 			<input bind:value={filter} type="search" placeholder="Search your {tab}" aria-label="Search your {tab}" class="min-w-0 flex-1 bg-transparent text-sm font-bold text-foreground outline-none placeholder:font-semibold placeholder:text-muted-foreground" />
 		</label>
 		{#if tab === 'notes'}<Button onclick={newNote} class="ml-auto"><Plus /> New note</Button>{/if}
+		{#if tab === 'history' && userStorage.testHistory.length > 0}
+			<Button variant="outline" onclick={() => (userStorage.clearTestHistory(), ui.toast('Test history cleared'))} class="ml-auto"><Trash2 /> Clear history</Button>
+		{/if}
 	</div>
 
 	{#if tab === 'highlights'}
@@ -224,6 +231,39 @@
 				{/if}
 			</section>
 		</div>
+	{:else if tab === 'history'}
+		{#if !userStorage.testHistory.length}
+			<EmptyState icon={History} title="No test history yet">Submit a timed exam or reset a practice set to record your past scores here.</EmptyState>
+		{:else if !historyItems.length}
+			<EmptyState icon={Search} title="No history matches “{filter}”" />
+		{:else}
+			<div class="flex flex-col gap-3">
+				{#each historyItems as h (h.id)}
+					{@const scorePct = pct(h.correct, h.total)}
+					<a href="/module/{h.subjectId}/practice{h.topicId !== 'all' ? `?topic=${h.topicId}` : ''}" class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-5 py-4 text-foreground no-underline transition-all hover:-translate-y-0.5 hover:border-[#1CB0F6]/60 dark:border-[#2B434E]">
+						<div class="flex min-w-0 flex-col gap-1">
+							<div class="flex flex-wrap items-center gap-2">
+								<span class={cn('rounded-full px-2.5 py-0.5 text-[0.7rem] font-extrabold tracking-wide uppercase', h.mode === 'exam' ? 'bg-[#F3E8FF] text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' : 'bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]')}>
+									{h.mode === 'exam' ? 'Timed exam' : 'Practice'}
+								</span>
+								<span class="text-sm font-extrabold">{h.subjectTitle}</span>
+								<span class="text-xs font-bold text-muted-foreground">· {h.topicName}</span>
+							</div>
+							<span class="text-xs font-bold text-muted-foreground">
+								{new Date(h.at).toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}
+								{#if h.secondsUsed !== undefined}· {formatClock(h.secondsUsed)} used{/if}
+							</span>
+						</div>
+						<div class="flex items-center gap-3">
+							<span class="text-sm font-extrabold text-muted-foreground tabular-nums">{h.correct}/{h.total} ({h.answered} answered)</span>
+							<span class={cn('rounded-full px-3 py-1 text-sm font-extrabold tabular-nums', scorePct >= 75 ? 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]' : scorePct >= 50 ? 'bg-[#FFF5CC] text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]' : 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]')}>
+								{scorePct}%
+							</span>
+						</div>
+					</a>
+				{/each}
+			</div>
+		{/if}
 	{:else}
 		{#if !guideBookmarks.length && !mcqBookmarks.length}
 			<EmptyState icon={Bookmark} title={f ? `No bookmarks match “${filter}”` : 'No bookmarks yet'}>{#if !f}Bookmark a part or topic from the reader, or a question in MCQ practice.{/if}</EmptyState>

@@ -8,6 +8,7 @@
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
+	import { activeSubtabId, subtabsForSubject } from '$lib/subtabs';
 	import type { AlacEssay, Subject } from '$lib/types';
 
 	let {
@@ -15,7 +16,10 @@
 		mode,
 		onnavigate,
 		collapsible = true
-	}: { subject: Subject; mode: 'read' | 'practice' | 'essays'; onnavigate?: () => void; collapsible?: boolean } = $props();
+	}: { subject: Subject; mode: 'read' | 'practice' | 'essays' | 'subtab'; onnavigate?: () => void; collapsible?: boolean } = $props();
+
+	const subtabs = $derived(subtabsForSubject(subject.id).filter((t) => !['read', 'practice', 'essays'].includes(t.id) || (t.id === 'essays' && subject.id === 'philo')));
+	const activeSubtab = $derived(activeSubtabId(page.url.pathname, subject.id));
 
 	const partId = $derived(page.params.part ? decodeURIComponent(page.params.part) : '');
 	const hash = $derived(page.url.hash.slice(1));
@@ -46,7 +50,7 @@
 	// ---- Practice: topics ----
 	const topicParam = $derived(page.url.searchParams.get('topic') ?? 'all');
 	function practiceHref(topic: string) {
-		const u = new URLSearchParams(page.url.searchParams);
+		const u = new URLSearchParams(page.url.search);
 		u.delete('question');
 		if (topic === 'all') u.delete('topic');
 		else u.set('topic', topic);
@@ -240,7 +244,7 @@
 				</a>
 			{/each}
 		</nav>
-	{:else}
+	{:else if mode === 'essays'}
 		<div role="group" aria-label="Filter essays by status" class="flex flex-wrap gap-1.5">
 			{#each STATUSES as s (s)}
 				<a
@@ -270,6 +274,27 @@
 				{/each}
 			{:else}
 				<p class="px-2.5 py-3 text-sm font-semibold text-muted-foreground">No essays with this status.</p>
+			{/each}
+		</nav>
+	{:else}
+		<nav aria-label="{subject.title} study tools" class="flex flex-col gap-1">
+			<p class="label-caps px-2.5 pt-1 pb-1 text-[0.6875rem]">Finals Kit &amp; Subtabs</p>
+			{#each subtabs as t (t.id)}
+				<a
+					href="/module/{subject.id}/{t.path}"
+					onclick={() => onnavigate?.()}
+					aria-current={activeSubtab === t.id ? 'page' : undefined}
+					class={cn(
+						row,
+						'flex-col items-start gap-0.5 py-2',
+						activeSubtab === t.id
+							? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
+							: 'text-muted-foreground hover:bg-muted hover:text-foreground'
+					)}
+				>
+					<span class="truncate text-sm font-extrabold">{t.label}</span>
+					{#if t.desc}<span class="truncate text-[0.72rem] font-semibold opacity-80">{t.desc}</span>{/if}
+				</a>
 			{/each}
 		</nav>
 	{/if}

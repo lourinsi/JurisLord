@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
+	import SubjectSubtabs from '$lib/components/shell/SubjectSubtabs.svelte';
 	import { getModule } from '$lib/data/modules';
 
 	let { children } = $props();
@@ -31,5 +32,6 @@
 		<Button href="/"><ArrowLeft /> Back home</Button>
 	</div>
 {:else if subject.id === slug}
+	<SubjectSubtabs slug={subject.id} />
 	{@render children()}
 {/if}

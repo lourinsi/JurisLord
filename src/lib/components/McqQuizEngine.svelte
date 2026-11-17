@@ -16,7 +16,8 @@
 		Eye,
 		Inbox,
 		Flag,
-		BookOpen
+		BookOpen,
+		History
 	} from '@lucide/svelte';
 	import { onDestroy, untrack } from 'svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
@@ -94,6 +95,7 @@
 	let secondsLeft = $state(0);
 	let secondsUsed = $state(0);
 	let confirmSubmit = $state(false);
+	let confirmResetSet = $state(false);
 	/** Exam: questions marked to come back to. */
 	let flagged = $state<Record<string, boolean>>({});
 
@@ -239,6 +241,37 @@
 		hintOpen = false;
 	}
 
+	const topicLabel = $derived(topicId === 'all' ? 'All topics' : (topics.find((t) => t.id === topicId)?.name ?? 'Topic'));
+	const subjectHistory = $derived(
+		userStorage.testHistory.filter((h) => h.subjectId === lawModule.id && (topicId === 'all' || h.topicId === topicId))
+	);
+
+	function resetTest() {
+		const scope = lawModule.mcqs.filter((q) => topicId === 'all' || q.topicId === topicId);
+		const attempted = scope.filter((q) => !!userStorage.mcqAttempts[q.id]);
+		if (attempted.length > 0) {
+			const correct = attempted.filter((q) => userStorage.mcqAttempts[q.id]?.isCorrect).length;
+			userStorage.recordTestHistory({
+				subjectId: lawModule.id,
+				subjectTitle: lawModule.title,
+				topicId,
+				topicName: topicLabel,
+				mode: 'practice',
+				correct,
+				answered: attempted.length,
+				total: scope.length
+			});
+		}
+		for (const q of scope) {
+			userStorage.clearMcqAttempt(q.id);
+		}
+		filter = 'all';
+		rebuild();
+		report();
+		confirmResetSet = false;
+		ui.toast('Test progress reset (score saved to history)');
+	}
+
 	// ---- exam ----
 	function startExam() {
 		if (!total) return;
@@ -253,11 +286,29 @@
 	function submitExam() {
 		if (phase !== 'running') return;
 		secondsUsed = Math.round((Math.min(Date.now(), deadline) - startedAt) / 1000);
+		let correct = 0;
+		let answered = 0;
 		for (const id of sessionIds) {
 			const q = byId.get(id);
 			const sel = examAnswers[id];
-			if (q && sel !== undefined) userStorage.recordMcqAttempt(id, sel, sel === q.correctIndex);
+			if (q && sel !== undefined) {
+				answered++;
+				const ok = sel === q.correctIndex;
+				if (ok) correct++;
+				userStorage.recordMcqAttempt(id, sel, ok);
+			}
 		}
+		userStorage.recordTestHistory({
+			subjectId: lawModule.id,
+			subjectTitle: lawModule.title,
+			topicId,
+			topicName: topicLabel,
+			mode: 'exam',
+			correct,
+			answered,
+			total: sessionIds.length,
+			secondsUsed
+		});
 		phase = 'submitted';
 		confirmSubmit = false;
 		index = 0;
@@ -347,6 +398,16 @@
 						<span class={cn('rounded-full px-1.5 py-px text-[0.7rem] font-extrabold tabular-nums', filter === f.id ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500 dark:bg-[#223842] dark:text-slate-300')}>{filterCounts[f.id]}</span>
 					</button>
 				{/each}
+				{#if filterCounts.all - filterCounts.unanswered > 0}
+					<button
+						type="button"
+						onclick={() => (confirmResetSet = true)}
+						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-4 border-[#EA2B2B]/40 bg-[#FFDFE0] px-3 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all duration-150 hover:bg-[#FF4B4B] hover:text-white active:border-b-2 active:translate-y-0.5 dark:border-[#FF4B4B]/40 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878] dark:hover:bg-[#FF4B4B] dark:hover:text-white"
+						title="Clear all answers in this test"
+					>
+						<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
+					</button>
+				{/if}
 			</div>
 		</div>
 	{/if}
@@ -676,6 +737,43 @@
 		</section>
 		</div>
 	{/if}
+
+	{#if !examRunning && subjectHistory.length > 0}
+		<details class="group rounded-3xl border-2 border-b-4 border-slate-200 bg-card px-5 py-3.5 dark:border-[#2B434E]">
+			<summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-extrabold">
+				<span class="flex items-center gap-2">
+					<History class="size-4 text-[#1CB0F6]" strokeWidth={2.5} />
+					Past scores &amp; exam history
+					<span class="rounded-full bg-[#DDF4FF] px-2.5 py-0.5 text-xs font-extrabold text-[#1899D6] tabular-nums dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]">{subjectHistory.length}</span>
+				</span>
+				<span class="text-xs font-extrabold tracking-wide text-muted-foreground uppercase group-open:hidden">Show</span>
+				<span class="hidden text-xs font-extrabold tracking-wide text-muted-foreground uppercase group-open:inline">Hide</span>
+			</summary>
+			<div class="mt-3 space-y-2 border-t-2 border-slate-100 pt-3 dark:border-[#2B434E]">
+				{#each subjectHistory.slice(0, 10) as h (h.id)}
+					{@const scorePct = pct(h.correct, h.total)}
+					<div class="flex flex-wrap items-center justify-between gap-2 rounded-2xl border-2 border-slate-100 bg-slate-50/70 px-3.5 py-2.5 text-xs dark:border-[#2B434E] dark:bg-[#131F24]">
+						<div class="flex flex-wrap items-center gap-2">
+							<span class={cn('rounded-full px-2 py-0.5 text-[0.68rem] font-extrabold tracking-wide uppercase', h.mode === 'exam' ? 'bg-[#F3E8FF] text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' : 'bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]')}>
+								{h.mode === 'exam' ? 'Timed exam' : 'Practice'}
+							</span>
+							<span class="font-extrabold text-foreground">{h.topicName}</span>
+							<span class="font-bold text-muted-foreground">· {new Date(h.at).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+							{#if h.secondsUsed !== undefined}
+								<span class="font-bold text-muted-foreground tabular-nums">· {formatClock(h.secondsUsed)}</span>
+							{/if}
+						</div>
+						<div class="flex items-center gap-2">
+							<span class="font-extrabold text-muted-foreground tabular-nums">{h.correct}/{h.total} ({h.answered} answered)</span>
+							<span class={cn('rounded-full px-2.5 py-0.5 font-extrabold tabular-nums', scorePct >= 75 ? 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]' : scorePct >= 50 ? 'bg-[#FFF5CC] text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]' : 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]')}>
+								{scorePct}%
+							</span>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</details>
+	{/if}
 </div>
 
 <Dialog.Root bind:open={confirmSubmit}>
@@ -690,6 +788,21 @@
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (confirmSubmit = false)}>Keep working</Button>
 			<Button onclick={submitExam}>Submit anyway</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<Dialog.Root bind:open={confirmResetSet}>
+	<Dialog.Content class="sm:max-w-sm">
+		<Dialog.Header>
+			<Dialog.Title>Reset this test?</Dialog.Title>
+			<Dialog.Description>
+				This clears all {filterCounts.all - filterCounts.unanswered} saved answer{filterCounts.all - filterCounts.unanswered === 1 ? '' : 's'} in {topicId === 'all' ? lawModule.title : (topics.find((t) => t.id === topicId)?.name ?? 'this topic')} so you can start fresh. Bookmarks stay saved.
+			</Dialog.Description>
+		</Dialog.Header>
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (confirmResetSet = false)}>Cancel</Button>
+			<Button variant="destructive" onclick={resetTest}>Reset test</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

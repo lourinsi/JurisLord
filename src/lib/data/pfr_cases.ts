@@ -1,4 +1,5 @@
 import type { LawModule } from '$lib/types';
+import { pfrFinalsCases } from './pfr_ext';
 
 export const pfrCases: LawModule = {
 	id: "pfr_cases",
@@ -6,7 +7,7 @@ export const pfrCases: LawModule = {
 	subjectCategory: "Civil Law — Supplement",
 	eyebrow: "Case digest reference",
 	description: "A case-digest reference following the syllabus order: Preliminary Title, Human Relations, Persons, Marriage, Legal Separation, and the rights and obligations of spouses.",
-	legalScope: "Persons & Family Law — Court Pronouncements, Part One through Midterms",
+	legalScope: "Persons & Family Law — Court Pronouncements, Part One through Finals (Arts. 1–257, RA 11642)",
 	studyGuideHtml: `<div class="exoex-box"><span class="exoex-label">Unverified digests</span>A few recent or narrowly indexed citations (2020–2023, mostly administrative or labor-adjacent) have no reliable published digest. Their holdings are not confirmed, and they carry an <em>Unverified</em> badge.</div>
 <h2 class="sg-h2" id="parts-without-assigned-cases">Parts without assigned cases</h2>
 <p class="sg-intro"><strong>Book 1: Persons — Title I, Civil Personality.</strong> No cases are assigned for Juridical Capacity, Capacity to Act, Natural Persons, or Juridical Persons; this chapter is codal-provision only (Arts. 37–51).</p>`,
@@ -120,6 +121,7 @@ export const pfrCases: LawModule = {
 		{"id":"pfr_cases:103","title":"Macadangdang v. Court of AppealsUNVERIFIED","citation":"GR L-49542 (1980)","topic":"","part":"Family Code, Title 2: Legal Separation (Arts. 55–67)","keyRule":"Not verified; holding not confirmed.","summary":"Not verified; holding not confirmed.","unverified":true},
 		{"id":"pfr_cases:104","title":"Siochi v. GozonUNVERIFIED","citation":"GR 169900 (2010)","topic":"","part":"Family Code, Title 2: Legal Separation (Arts. 55–67)","keyRule":"Not verified; understood to concern the sale/disposition of conjugal property without the other spouse's consent and its effect in a legal-separation-adjacent property dispute.","summary":"Not verified; understood to concern the sale/disposition of conjugal property without the other spouse's consent and its effect in a legal-separation-adjacent property dispute. Confirm directly.","unverified":true},
 		{"id":"pfr_cases:105","title":"Go v. Court of AppealsUNVERIFIED","citation":"GR 114791 (1997)","topic":"","part":"Family Code, Title 3: Rights & Obligations Between Husband and Wife (Arts. 68–73)","keyRule":"Not verified; holding not confirmed.","summary":"Not verified; holding not confirmed.","unverified":true},
+		...pfrFinalsCases,
 	],
 };
 

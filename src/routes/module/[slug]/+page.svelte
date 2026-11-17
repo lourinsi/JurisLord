@@ -6,6 +6,7 @@
 	import StudyBar from '$lib/components/common/StudyBar.svelte';
 	import { CATEGORY_ACCENT, getModule } from '$lib/data/modules';
 	import { getParts, groupedParts, partForAnchor, readHref, subjectUnits, unitKey } from '$lib/content';
+	import { subtabsForSubject } from '$lib/subtabs';
 	import { essayStatus } from '$lib/alac';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
@@ -15,6 +16,7 @@
 	const accent = $derived(CATEGORY_ACCENT[subject.subjectCategory]);
 	const parts = $derived(getParts(subject));
 	const groups = $derived(groupedParts(subject));
+	const kitTabs = $derived(subtabsForSubject(subject.id).filter((t) => !['read', 'practice', 'essays'].includes(t.id) || (t.id === 'essays' && subject.id === 'philo')));
 
 	// Old links: /module/x?tab=mcq, ?tab=alac, and /module/x#some-anchor from the single-page guide.
 	$effect(() => {
@@ -112,7 +114,7 @@
 		{/if}
 		{#if subject.essays.length}
 			<a href="/module/{subject.id}/essays" class="flex flex-col gap-3 rounded-3xl border-2 border-b-4 border-slate-200 bg-card p-5 text-foreground no-underline transition-all duration-150 hover:-translate-y-0.5 hover:border-[#CE82FF]/70 dark:border-[#2B434E]">
-				<span class="flex items-center gap-2 text-sm font-extrabold tracking-wide uppercase"><PenLine class="size-4 text-[#CE82FF]" strokeWidth={2.5} /> ALAC essays</span>
+				<span class="flex items-center gap-2 text-sm font-extrabold tracking-wide uppercase"><PenLine class="size-4 text-[#CE82FF]" strokeWidth={2.5} /> {subject.id === 'philo' ? 'Essay practice' : 'ALAC essays'}</span>
 				<div class="flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-[#2B434E]">
 					<span class="relative rounded-full bg-[#CE82FF] transition-all duration-500 after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(essaysMastered, subject.essays.length)}%"></span>
 				</div>
@@ -120,6 +122,36 @@
 			</a>
 		{/if}
 	</div>
+
+	{#if kitTabs.length}
+		<section aria-labelledby="finals-kit-h" class="flex flex-col gap-3.5">
+			<div class="flex flex-wrap items-center justify-between gap-2">
+				<h2 id="finals-kit-h" class="font-heading text-xl font-extrabold">Finals Kit &amp; Study Subtabs</h2>
+				<a href="/module/{subject.id}/focus" class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#E5B400] bg-[#FFC800] px-3 py-1 text-xs font-extrabold tracking-wide text-slate-900 uppercase no-underline transition-transform hover:scale-105">
+					★ Start with Exam Focus <ArrowRight class="size-3.5" strokeWidth={2.5} />
+				</a>
+			</div>
+			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+				{#each kitTabs as t (t.id)}
+					<a
+						href="/module/{subject.id}/{t.path}"
+						class={cn(
+							'group flex flex-col justify-between gap-1.5 rounded-2xl border-2 border-b-4 p-4 text-foreground no-underline transition-all duration-150 hover:-translate-y-0.5',
+							t.star
+								? 'border-[#E5B400] bg-[#FFF5CC]/60 hover:border-[#E5B400] dark:border-[#FFC800]/50 dark:bg-[#FFC800]/15'
+								: 'border-slate-200 bg-card hover:border-[#1CB0F6]/70 dark:border-[#2B434E] dark:hover:border-[#1CB0F6]/70'
+						)}
+					>
+						<span class="flex items-center justify-between gap-2 text-sm font-extrabold tracking-wide uppercase group-hover:text-[#1CB0F6]">
+							{t.label}
+							<ArrowRight class="size-3.5 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" strokeWidth={2.5} />
+						</span>
+						{#if t.desc}<span class="text-xs leading-snug font-semibold text-muted-foreground">{t.desc}</span>{/if}
+					</a>
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	<div class="flex flex-wrap items-start gap-8">
 		<section aria-labelledby="contents" class="flex min-w-0 flex-[999_1_36rem] flex-col gap-4">

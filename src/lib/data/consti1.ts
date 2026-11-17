@@ -1,5 +1,5 @@
 import type { LawModule } from '$lib/types';
-import { artIXHtml, artVIIIAddendum, artXHtml, extEssays, extTopics, extWatchFor } from './consti1_ext';
+import { artIXHtml, artVIIIAddendum, artXHtml, constiKitCases, constiKitEssays, constiKitGuideHtml, extEssays, extTopics, extWatchFor } from './consti1_ext';
 
 export const consti1: LawModule = {
 	id: "consti1",
@@ -16,7 +16,8 @@ export const consti1: LawModule = {
 		{"id":"judicial","name":"The Judicial Department","eyebrow":"ART. VIII","desc":"Judicial power, judicial review requisites, political question doctrine, JBC, en banc rules, periods to decide."},
 		...extTopics,
 	],
-	studyGuideIntro: "Arts. I, II and IV to X of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course.",
+	cases: constiKitCases,
+	studyGuideIntro: "Arts. I, II and IV to X of the 1987 Constitution, plus the 28 assigned cases and 25 numbers to memorize. Art. III (Bill of Rights) excluded — separate course.",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exception"},{"color":"orange","label":"Exception of the exception"},{"color":"red","label":"Jurisprudence / doctrine"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="part-i-article-i-the-national-territory">Part I — Article I: The National Territory</h2>
 <div class="table-scroll"><table class="sg-table">
@@ -111,7 +112,7 @@ export const consti1: LawModule = {
   <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sec. 14</td><td>Decisions must state facts and law clearly — EXCEPT a minute resolution denying reconsideration for lack of merit, provided the court already fully explained its bases earlier in the same case.</td></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sec. 15</td><td>Periods to decide: SC 24 months; lower collegiate courts 12 months; all other lower courts 3 months.</td></tr>
 </table></div>
-<div class="case-card"><div class="cname">Lagman v. Medialdea</div><div class="cdoc">The Court's review of the sufficiency of the factual basis for martial law/suspension of the writ is sui generis — separate from the ordinary grave-abuse-of-discretion standard — and reviews only facts available to the President at the time of proclamation.</div></div>` + artVIIIAddendum + artIXHtml + artXHtml,
+<div class="case-card"><div class="cname">Lagman v. Medialdea</div><div class="cdoc">The Court's review of the sufficiency of the factual basis for martial law/suspension of the writ is sui generis — separate from the ordinary grave-abuse-of-discretion standard — and reviews only facts available to the President at the time of proclamation.</div></div>` + artVIIIAddendum + artIXHtml + artXHtml + constiKitGuideHtml,
 	watchFor: {
 		"territory_policies": `<strong>Watch for: exceptions to the exceptions.</strong>
     <ul>
@@ -592,7 +593,7 @@ export const consti1: LawModule = {
 				conclusion: "Mandamus will not lie. The decision whether to transmit the signed treaty to the Senate for concurrence rests solely within the President's discretion.",
 			}
 		},
-		...extEssays,
+		...extEssays, ...constiKitEssays,
 	],
 };
 

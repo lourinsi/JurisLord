@@ -1,4 +1,7 @@
-import type { AlacEssay, ModuleTopic } from '$lib/types';
+import type { AlacEssay, CaseDigest, ModuleTopic } from '$lib/types';
+import { CASES as CONSTI_KIT_CASES, PARTS as CONSTI_PARTS, PROBLEMS as CONSTI_PROBLEMS, type PartNo } from '$lib/problems';
+import { LIKELY_CASES } from '$lib/focus/consti';
+import rawConstiDigests from './kit/consti-digests.json';
 
 /*
  * Constitutional Law I — Article VIII in depth, Article IX (Constitutional Commissions) and Article X (Local
@@ -644,3 +647,101 @@ export const extEssays: AlacEssay[] = [
 		}
 	}
 ];
+
+/* ------------------------------------------------------------------ *
+ * Consti I Finals Kit — 28 Assigned Cases, 112 Problems (Case Drills
+ * + Same-Rule + Twist Twins), and 25 Numbers to Memorize
+ * ------------------------------------------------------------------ */
+
+const rawDigestsMap = rawConstiDigests as Record<string, { facts: string; issue: string; ruling: string }>;
+
+const mdToHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+export const constiKitCases: CaseDigest[] = CONSTI_KIT_CASES.map((c) => {
+	const d = rawDigestsMap[c.id] ?? { facts: '', issue: '', ruling: '' };
+	const star = LIKELY_CASES[c.id];
+	const parts: string[] = [];
+	if (star) parts.push(`<strong>★ Likely (${star})</strong>`);
+	parts.push(`<strong>Memory hook:</strong> ${c.hook}`);
+	if (d.facts) parts.push(`<strong>Facts:</strong> ${d.facts}`);
+	if (d.issue) parts.push(`<strong>Issue:</strong> ${d.issue}`);
+	if (d.ruling) parts.push(`<strong>Ruling:</strong> ${d.ruling}`);
+	if (c.doc.length) parts.push(`<strong>Key points:</strong> ${c.doc.map(mdToHtml).join(' · ')}`);
+	if (c.key) parts.push(`<strong>Exam trap:</strong> ${c.key}`);
+	return {
+		id: `consti1:case:${c.id}`,
+		title: c.name,
+		citation: c.cite,
+		topic: CONSTI_PARTS[c.part],
+		part: `Assigned Cases — Part ${['', 'I', 'II', 'III', 'IV'][c.part]}: ${CONSTI_PARTS[c.part]}`,
+		keyRule: c.rule,
+		summary: parts.join(' — ')
+	};
+});
+
+export const constiKitEssays: AlacEssay[] = CONSTI_PROBLEMS.map((p) => ({
+	id: `consti1:kit:${p.pid}`,
+	title: `${p.c.name} — ${p.label}`,
+	topic: `Finals Kit · ${CONSTI_PARTS[p.c.part]}`,
+	factPattern: p.facts,
+	question: p.q || 'Resolve the problem using the ALAC method.',
+	modelAnswer: {
+		answer: p.alac[0] ?? '',
+		legalBasis: p.alac[1] ?? '',
+		application: p.alac[2] ?? '',
+		conclusion: p.alac[3] ?? ''
+	}
+}));
+
+const CONSTI_NUMBERS_ROWS: [string, string, string][] = [
+	['2 months', 'Ban on appointments: from two months before the next presidential election until the end of the President’s term', 'Art. VII, Sec. 15'],
+	['4 steps', 'A valid appointment: signing, transmittal, receipt, acceptance. All must be done before the ban.', 'Velicaria-Garafil'],
+	['90 days', 'Fill a vacancy in the Supreme Court, counted from when the vacancy occurs', 'Art. VIII, Sec. 4(1)'],
+	['90 days', 'Fill a vacancy in a lower court, counted from submission of the JBC list', 'Art. VIII, Sec. 9'],
+	['7 members', 'Membership of the JBC', 'Art. VIII, Sec. 8(1)'],
+	['1', 'Representative of Congress in the JBC, with one vote', 'Chavez v. JBC'],
+	['At least 3', 'Nominees the JBC must submit for every vacancy', 'Art. VIII, Sec. 9'],
+	['4 years', 'Term of the regular (non-ex officio) members of the JBC', 'Art. VIII, Sec. 8(2)'],
+	['5 years', 'Service as a first-level court judge before promotion to a second-level court (JBC policy)', 'Villanueva v. JBC'],
+	['70 years', 'Retirement age of justices and judges', 'Art. VIII, Sec. 11'],
+	['Majority of all Members of Congress', 'Concurrence needed for an amnesty', 'Art. VII, Sec. 19'],
+	['2/3 of all Members of the Senate', 'Concurrence needed for a treaty or international agreement', 'Art. VII, Sec. 21'],
+	['30 days', 'Monetary Board reports to Congress on foreign loans, from the end of every quarter', 'Art. VII, Sec. 20'],
+	['1/3 of all Members of the House', 'Vote needed to impeach', 'Art. XI, Sec. 3(3)'],
+	['2/3 of all Members of the Senate', 'Vote needed to convict in an impeachment', 'Art. XI, Sec. 3(6)'],
+	['1 year', 'Period to file quo warranto; it does not run against the State', 'Republic v. Sereno'],
+	['7 years', 'Term of the Chairman and Commissioners of the CSC, COMELEC and COA, without reappointment', 'Art. IX-B, C, D, Sec. 1(2)'],
+	['Never over 7 years', 'Total service of a member of a Commission, counting a promotion to Chairman', 'Funa v. Villar'],
+	['7, 5, 3 years', 'Staggered terms of the first appointees to the Commissions', 'Art. IX-B, C, D, Sec. 1(2)'],
+	['35 years old', 'Minimum age of a member of the CSC, COMELEC or COA', 'Art. IX-B, C, D, Sec. 1(1)'],
+	['60 days', 'Period for a Commission to decide a case, from its submission', 'Art. IX-A, Sec. 7'],
+	['30 days', 'Period to bring a Commission’s decision to the Supreme Court on certiorari, from receipt', 'Art. IX-A, Sec. 7'],
+	['65 years', 'Compulsory retirement age in the career civil service', 'CSC v. Pililla Water District'],
+	['90 days / 45 days', 'Campaign period: national positions / House and local positions', 'Omnibus Election Code, Sec. 3; Peñera'],
+	['3 (J-C-O)', 'Bodies with fiscal autonomy: Judiciary, Constitutional Commissions, Ombudsman', 'CHREA v. CHR']
+];
+
+export const constiKitGuideHtml = `
+<h2 class="sg-h2" id="part-ix-assigned-cases-and-numbers">Part IX — Finals Coverage: 28 Assigned Cases &amp; Numbers to Memorize</h2>
+${([1, 2, 3, 4] as PartNo[])
+	.map((partNo) => {
+		const partCases = CONSTI_KIT_CASES.filter((c) => c.part === partNo);
+		const roman = ['', 'I', 'II', 'III', 'IV'][partNo];
+		return `<h3 class="sg-h3" id="consti-assigned-part-${partNo}">Part ${roman} — ${CONSTI_PARTS[partNo]} (${partCases.length} cases)</h3>
+${partCases
+	.map((c) => {
+		const d = rawDigestsMap[c.id];
+		const star = LIKELY_CASES[c.id];
+		return `<div class="case-card"><div class="cname">${c.n}. ${c.name} <span style="font-weight:400;opacity:0.78">(${c.cite})</span>${star ? ` · <span style="color:var(--orange)">★ Likely: ${star}</span>` : ''}</div><div class="cdoc"><p><strong>Memory hook:</strong> ${c.hook}</p><p><strong>Doctrine:</strong> ${c.rule}</p>${d ? `<p><strong>Facts:</strong> ${d.facts}</p><p><strong>Issue:</strong> ${d.issue}</p><p><strong>Ruling:</strong> ${d.ruling}</p>` : ''}${c.mem.length ? `<p><strong>Memorize:</strong> ${c.mem.map(mdToHtml).join(' · ')}</p>` : ''}${c.doc.length ? `<p><strong>Key points:</strong> ${c.doc.map(mdToHtml).join(' · ')}</p>` : ''}<p><strong>Exam trap:</strong> ${c.key}</p></div></div>`;
+	})
+	.join('\n')}`;
+	})
+	.join('\n\n')}
+
+<h3 class="sg-h3" id="consti-numbers-to-memorize">Numbers to Memorize (25 items)</h3>
+<div class="table-scroll"><table class="sg-table">
+  <tr><th>Number</th><th>What it measures</th><th>Basis</th></tr>
+${CONSTI_NUMBERS_ROWS.map(([num, what, basis]) => `  <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>${num}</td><td>${what}</td><td>${basis}</td></tr>`).join('\n')}
+</table></div>
+`;
+

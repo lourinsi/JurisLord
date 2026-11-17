@@ -1,18 +1,19 @@
 import type { LawModule } from '$lib/types';
-import { familyFiliationHtml, familyFiliationReview } from './pfr_ext';
+import { familyFiliationHtml, familyFiliationReview, pfrFinalsEssays, pfrFinalsHtml, pfrFinalsMcqs, pfrFinalsTopics, pfrFinalsWatchFor } from './pfr_ext';
 
 export const pfr: LawModule = {
 	id: "pfr",
 	title: "Persons & Family Relations",
 	subjectCategory: "Civil Law",
 	eyebrow: "Civil Code · Family Code",
-	description: "Effectivity and application of laws, civil personality, marriage, void and voidable unions, termination, property relations between spouses, the family and the family home, and paternity and filiation — with a color-coded codal guide.",
-	legalScope: "Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–182",
+	description: "Effectivity and application of laws, civil personality, marriage, void and voidable unions, termination, property relations (ACP, CPG, separation of property, Arts. 147–148), the family and family home, paternity and filiation, adoption (R.A. 11642), support, parental authority, emancipation, summary proceedings, absence, and civil registry.",
+	legalScope: "Civil Code Arts. 1–36, 37–51, 381–396 · Family Code Arts. 1–257 · R.A. 11642 · R.A. 9048 / R.A. 10172",
 	topics: [
 		{"id":"prelim","name":"Preliminary Title","eyebrow":"CIVIL CODE · ARTS. 1–18","desc":"Effectivity & publication, ignorance of law, retroactivity, repeal & waiver, stare decisis, conflict of laws, human relations."},
 		{"id":"persons","name":"Persons & Personality","eyebrow":"CIVIL CODE · ARTS. 37–51","desc":"Juridical capacity vs. capacity to act, restrictions, natural persons, juridical persons."},
 		{"id":"marriage","name":"Marriage","eyebrow":"FAMILY CODE · ARTS. 1–54, 147–162","desc":"Requisites, license & exemptions, void/voidable grounds, Art. 36 doctrine, termination, unions without marriage (Arts. 147–148) & family home."},
 		{"id":"proprel","name":"Property Relations Between Husband & Wife","eyebrow":"FAMILY CODE · ARTS. 74–104","desc":"Marriage settlements, donations propter nuptias, and the absolute community of property — from general provisions through liquidation."},
+		...pfrFinalsTopics,
 	],
 	studyGuideIntro: "Preliminary Title (Civil Code, Arts. 1–18) · Persons & Personality (Civil Code, Arts. 37–51) · Marriage, including Unions Without Marriage & Family Home (Family Code, Arts. 1–54, 147–162) · Property Relations Between Husband & Wife (Family Code, Arts. 74–104) · The Family, the Family Home, and Paternity & Filiation (Family Code, Arts. 149–182).",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exemption / exception"},{"color":"orange","label":"Exemption of the exemption / trap"},{"color":"purple","label":"Effect / reason"},{"color":"red","label":"Jurisprudence / doctrine"}],
@@ -532,7 +533,8 @@ ${familyFiliationHtml}
     <li><strong>Widow(er) remarrying without liquidation.</strong> Valid marriage under mandatory complete separation (Art. 103) — not a void marriage (contrast Arts. 52–53).</li>
   </ol>
 </div>
-${familyFiliationReview}`,
+${familyFiliationReview}
+${pfrFinalsHtml}`,
 	watchFor: {
 		"proprel": `<strong>Watch for: the exemption OF the exemption.</strong>
     <ul>
@@ -563,7 +565,8 @@ ${familyFiliationReview}`,
       <li>Art. 38 restrictions don't exempt a person from obligations arising from his own acts or property relations — a carve-out within the restriction itself.</li>
       <li>Art. 39 lists modifying circumstances but expressly excludes religious belief and political opinion — an exception baked into the enumeration.</li>
     </ul>`,
-		"all": `<strong>Watch for: exceptions to the exceptions.</strong> Across all four topics, several rules that look like blanket exemptions (Art. 34 marriage-license exemption, Art. 26 foreign-marriage validity, Art. 4 non-retroactivity, the family home's 10-year protection, Art. 84's one-fifth donation ceiling, Art. 86's revocable-not-void DPNs) carry their own built-in exceptions that defeat the exemption itself — these are classic examiner traps.`,
+		...pfrFinalsWatchFor,
+		"all": `<strong>Watch for: exceptions to the exceptions.</strong> Across all PFR topics, several rules that look like blanket exemptions (Art. 34 marriage-license exemption, Art. 26 foreign-marriage validity, Art. 4 non-retroactivity, the family home's 10-year protection, Art. 84's one-fifth donation ceiling, Art. 86's revocable-not-void DPNs, Art. 120 reverse accession, Art. 151 non-family exclusions, and RA 11642 administrative adoption) carry their own built-in exceptions that defeat the exemption itself — these are classic examiner traps.`,
 	},
 	mcqs: [
 		{"id":"pfr:prelim:1","topicId":"prelim","topic":"Preliminary Title","tag":"jurisprudence","question":"A newly issued revenue circular states that it 'shall take effect immediately upon signing.' The issuing agency argues this dispenses with the need for publication altogether, since the circular itself fixes an effectivity date. A taxpayer challenges an assessment issued under the circular before it was ever published anywhere. Which is the BEST answer regarding the circular's effectivity?","options":["Revenue circulars, unlike statutes, never require publication under any circumstance","The clause is void for vagueness, and the circular can never take effect at all","The 'immediate effectivity' clause only fixes the date once publication occurs","The clause is valid as written, and the circular took effect on the date of signing regardless of publication"],"correctIndex":2,"explanation":"Tañada v. Tuvera: an 'immediate effectivity' clause is read as fixing the date of effectivity as the date of publication, not as waiving publication — doing so would offend due process.","legalBasis":"Art. 2, Civil Code, as amended by E.O. No. 200 — Tañada v. Tuvera","hint":"Ask what the phrase actually waives — the date, or the requirement itself?","optionExplanations":["Does not apply under Art. 2, Civil Code, as amended by E.O. No. 200 — Tañada v. Tuvera. Tañada v.","Does not apply under Art. 2, Civil Code, as amended by E.O. No. 200 — Tañada v. Tuvera. Tañada v.","It does not dispense with the constitutionally required publication itself, following Tañada v. Tuvera.","Does not apply under Art. 2, Civil Code, as amended by E.O. No. 200 — Tañada v. Tuvera. Tañada v."]},
@@ -1380,5 +1383,8 @@ ${familyFiliationReview}`,
 		},
 	],
 };
+
+pfr.mcqs.push(...pfrFinalsMcqs);
+pfr.essays.push(...pfrFinalsEssays);
 
 export default pfr;

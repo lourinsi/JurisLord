@@ -11,9 +11,17 @@
 	let { children } = $props();
 
 	const subject = $derived(getModule(page.params.slug ?? '')!);
-	const mode = $derived<'read' | 'practice' | 'essays'>(page.url.pathname.includes('/practice') ? 'practice' : page.url.pathname.includes('/essays') ? 'essays' : 'read');
+	const mode = $derived<'read' | 'practice' | 'essays' | 'subtab'>(
+		page.url.pathname.includes('/practice')
+			? 'practice'
+			: page.url.pathname.includes('/essays') && subject.id !== 'philo'
+				? 'essays'
+				: page.url.pathname.includes('/read')
+					? 'read'
+					: 'subtab'
+	);
 	const part = $derived(page.params.part ? getPart(subject, decodeURIComponent(page.params.part)) : undefined);
-	const where = $derived(mode === 'practice' ? 'MCQ practice' : mode === 'essays' ? 'ALAC essays' : part ? part.label || part.title : 'Contents');
+	const where = $derived(mode === 'practice' ? 'MCQ practice' : mode === 'essays' ? 'ALAC essays' : part ? part.label || part.title : 'Study tools');
 	const showNav = $derived(!prefs.value.navCollapsed && !ui.focusMode);
 
 	// Close the phone sheet whenever the page changes.

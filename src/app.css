@@ -1,0 +1,853 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/source-serif-4';
+@import '@fontsource/cinzel/500.css';
+@import '@fontsource/cinzel/600.css';
+@import '@fontsource/cinzel/700.css';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+/* bits-ui state attributes, exposed under the names the shadcn-svelte components use. */
+@custom-variant data-open {
+	&:where([data-state='open']),
+	&:where([data-open]:not([data-open='false'])) {
+		@slot;
+	}
+}
+@custom-variant data-closed {
+	&:where([data-state='closed']),
+	&:where([data-closed]:not([data-closed='false'])) {
+		@slot;
+	}
+}
+@custom-variant data-checked {
+	&:where([data-state='checked']),
+	&:where([data-checked]:not([data-checked='false'])) {
+		@slot;
+	}
+}
+@custom-variant data-unchecked {
+	&:where([data-state='unchecked']),
+	&:where([data-unchecked]:not([data-unchecked='false'])) {
+		@slot;
+	}
+}
+@custom-variant data-active {
+	&:where([data-state='active']),
+	&:where([data-active]:not([data-active='false'])) {
+		@slot;
+	}
+}
+@custom-variant data-horizontal {
+	&:where([data-orientation='horizontal']) {
+		@slot;
+	}
+}
+@custom-variant data-vertical {
+	&:where([data-orientation='vertical']) {
+		@slot;
+	}
+}
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — a warm "paper & ink" palette tuned for long reading
+ * sessions. shadcn-svelte tokens first, then the legal-study semantics
+ * (the color legend used by the study guides and the ALAC method).
+ * ------------------------------------------------------------------ */
+:root {
+	--radius: 0.625rem;
+
+	--background: #efebdf;
+	--foreground: #20241f;
+	--card: #f9f6ee;
+	--card-foreground: #20241f;
+	--popover: #fbf9f3;
+	--popover-foreground: #20241f;
+	--primary: #23282a;
+	--primary-foreground: #f4f0e4;
+	--secondary: #e5dfce;
+	--secondary-foreground: #2a302c;
+	--muted: #e7e1d1;
+	--muted-foreground: #565d53;
+	--accent: #e3dcc8;
+	--accent-foreground: #20241f;
+	--destructive: #a23f31;
+	--border: #cfc6ae;
+	--input: #c4baa0;
+	--ring: #8a6d14;
+
+	--yellow: #8a6d14;
+	--green: #2f6b4b;
+	--blue: #2b5c84;
+	--purple: #5e4391;
+	--red: #9a3e30;
+	--orange: #a9531f;
+	--correct: #2f6b4b;
+	--incorrect: #9a3e30;
+
+	/* Layout */
+	--header-h: 3.5rem;
+	--nav-w: 18rem;
+	--rail-w: 14.5rem;
+	--measure: 45rem;
+	--leading: 1.7;
+
+	/* Reader highlights: marker hues, laid over text at --hl-alpha. */
+	--hl-yellow: #f7d23e;
+	--hl-green: #7fd18b;
+	--hl-blue: #7fb8f0;
+	--hl-pink: #f59ac0;
+	--hl-purple: #b9a0ef;
+	--hl-alpha: 50%;
+}
+
+.dark {
+	--background: #121518;
+	--foreground: #ece8dc;
+	--card: #1a1e22;
+	--card-foreground: #ece8dc;
+	--popover: #1e2328;
+	--popover-foreground: #ece8dc;
+	--primary: #e8e2d0;
+	--primary-foreground: #14181a;
+	--secondary: #252b30;
+	--secondary-foreground: #ece8dc;
+	--muted: #22282d;
+	--muted-foreground: #a5aba0;
+	--accent: #2a3137;
+	--accent-foreground: #ece8dc;
+	--destructive: #e48b79;
+	--border: #323a40;
+	--input: #3d474e;
+	--ring: #c9a94a;
+
+	--yellow: #d9b84e;
+	--green: #72c298;
+	--blue: #84b6e0;
+	--purple: #b39cdf;
+	--red: #e58c7b;
+	--orange: #ea9a60;
+	--correct: #72c298;
+	--incorrect: #e58c7b;
+
+	--hl-yellow: #e3c04a;
+	--hl-green: #6cc488;
+	--hl-blue: #6fa8e6;
+	--hl-pink: #e889b3;
+	--hl-purple: #a98fe6;
+	--hl-alpha: 32%;
+}
+
+@theme inline {
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+	/* Cinzel is the brand face only (wordmark, a subject's title on its overview). Headings use the serif. */
+	--font-display: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
+	--font-brand: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
+
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	--color-yellow: var(--yellow);
+	--color-green: var(--green);
+	--color-blue: var(--blue);
+	--color-purple: var(--purple);
+	--color-red: var(--red);
+	--color-orange: var(--orange);
+	--color-correct: var(--correct);
+	--color-incorrect: var(--incorrect);
+
+	/* ALAC: Answer · Legal basis · Application · Conclusion */
+	--color-alac-a: var(--blue);
+	--color-alac-l: var(--purple);
+	--color-alac-p: var(--green);
+	--color-alac-c: var(--orange);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+	body {
+		@apply bg-background font-sans text-foreground antialiased;
+	}
+	:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 2px;
+	}
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		::before,
+		::after {
+			animation-duration: 0.01ms !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+/* Headings: the reading serif. */
+@utility font-heading {
+	font-family: var(--font-serif);
+	letter-spacing: 0;
+}
+/* The wordmark and a subject's title on its overview. */
+@utility font-brand {
+	font-family: var(--font-brand);
+	letter-spacing: 0.02em;
+}
+/* Small uppercase label used for eyebrows and section labels across the app. */
+@utility label-caps {
+	font-family: var(--font-sans);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+
+/* ------------------------------------------------------------------ *
+ * Study-guide content. The HTML is first-party markup with its own
+ * semantic classes (carried over from the original static guides).
+ * `prose` sets the baseline; these rules restore the color-coded
+ * legend, tables, and callouts.
+ * ------------------------------------------------------------------ */
+.study-guide {
+	/* A size container, so narrow-column rules follow the column's width in rem — which shrinks as the text size grows. */
+	container: study-guide / inline-size;
+	overflow-wrap: break-word;
+	font-family: var(--font-serif);
+	font-size: 1.125rem;
+	line-height: var(--leading);
+	--tw-prose-body: var(--foreground);
+	--tw-prose-headings: var(--foreground);
+	--tw-prose-bold: var(--foreground);
+	--tw-prose-links: var(--blue);
+	--tw-prose-td-borders: var(--border);
+	--tw-prose-th-borders: var(--border);
+	--tw-prose-invert-body: var(--foreground);
+	--tw-prose-invert-headings: var(--foreground);
+	--tw-prose-invert-bold: var(--foreground);
+	--tw-prose-invert-links: var(--blue);
+	--tw-prose-invert-td-borders: var(--border);
+	--tw-prose-invert-th-borders: var(--border);
+}
+.study-guide .sg-h2 {
+	font-family: var(--font-serif);
+	font-weight: 600;
+	font-size: 1.5rem;
+	line-height: 1.25;
+	margin: 2.75rem 0 0.35rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid var(--border);
+	scroll-margin-top: 7rem;
+}
+/* The reader shows the part title as the page title, so the guide's own h2 stays for anchors and print only. */
+.reader .study-guide .sg-h2:first-child {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.study-guide .sg-h3 {
+	font-family: var(--font-serif);
+	font-weight: 600;
+	font-size: 1.375rem;
+	line-height: 1.3;
+	margin: 0 0 0.6rem;
+	scroll-margin-top: 7rem;
+}
+.study-guide [id] {
+	scroll-margin-top: 7rem;
+}
+.study-guide .sg-intro {
+	font-family: var(--font-sans);
+	font-size: 0.9rem;
+	color: var(--muted-foreground);
+	margin: 0.35rem 0 1rem;
+}
+.study-guide .table-scroll {
+	overflow-x: auto;
+	margin: 0.75rem 0 0.5rem;
+	-webkit-overflow-scrolling: touch;
+}
+.study-guide table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+	margin: 0;
+}
+.study-guide thead,
+.study-guide tbody {
+	border: 0;
+}
+.study-guide th {
+	font-family: var(--font-sans);
+	font-size: 0.72rem;
+	font-weight: 650;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+	text-align: left;
+	padding: 0.4rem 0.75rem 0.4rem 0;
+	border-bottom: 1px solid var(--border);
+	vertical-align: bottom;
+}
+.study-guide td {
+	padding: 0.65rem 0.75rem 0.65rem 0;
+	border-bottom: 1px solid var(--border);
+	vertical-align: top;
+	line-height: 1.55;
+}
+.study-guide td.art {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 0.82rem;
+	min-width: 5.5rem;
+	white-space: nowrap;
+}
+.study-guide .sg-notes td.art {
+	white-space: normal;
+	min-width: 8rem;
+	max-width: 14rem;
+}
+.study-guide .sg-dot {
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 9999px;
+	margin-right: 0.45rem;
+	flex: none;
+}
+.study-guide .sg-row-exoex > td {
+	background: color-mix(in oklab, var(--orange) 12%, transparent);
+}
+.study-guide .case-card {
+	border: 1px solid color-mix(in oklab, var(--red) 28%, transparent);
+	padding: 0.7rem 1rem;
+	margin: 0 0 0.75rem;
+	background: color-mix(in oklab, var(--red) 7%, transparent);
+	border-radius: var(--radius-lg);
+}
+.study-guide .case-card .cname {
+	font-family: var(--font-sans);
+	font-weight: 650;
+	font-size: 0.95rem;
+}
+.study-guide .case-card .cdoc {
+	font-family: var(--font-sans);
+	font-size: 0.875rem;
+	line-height: 1.55;
+	color: var(--muted-foreground);
+}
+.study-guide .exoex-box {
+	border: 1px solid color-mix(in oklab, var(--orange) 30%, transparent);
+	background: color-mix(in oklab, var(--orange) 10%, transparent);
+	padding: 0.85rem 1.1rem;
+	margin: 0.8rem 0 1.2rem;
+	font-family: var(--font-sans);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	border-radius: var(--radius-lg);
+}
+.study-guide .exoex-label {
+	display: block;
+	font-weight: 700;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin-bottom: 0.3rem;
+	color: var(--orange);
+}
+.study-guide .sg-example {
+	border: 1px solid color-mix(in oklab, var(--blue) 28%, transparent);
+	background: color-mix(in oklab, var(--blue) 8%, transparent);
+	padding: 0.85rem 1.1rem;
+	margin: 0.8rem 0 1.2rem;
+	font-family: var(--font-sans);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	border-radius: var(--radius-lg);
+}
+.study-guide .sg-example .exoex-label {
+	color: var(--blue);
+}
+.study-guide .cmp-table {
+	table-layout: auto;
+	min-width: 32rem;
+}
+.study-guide .cmp-table th {
+	border-bottom: 2px solid var(--border);
+	padding: 0.5rem 0.75rem;
+}
+.study-guide .cmp-table td {
+	padding: 0.65rem 0.75rem;
+}
+.study-guide .cmp-table td.aspect {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 0.82rem;
+	color: var(--muted-foreground);
+	min-width: 7.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reviewer blocks (Statutory Construction II): cards, colored boxes,
+ * practice questions and answer keys, ALAC rows, flashcards.
+ * Colors come from the legend tokens via a local --c.
+ * ------------------------------------------------------------------ */
+.study-guide .rv-yellow { --c: var(--yellow); }
+.study-guide .rv-green { --c: var(--green); }
+.study-guide .rv-blue { --c: var(--blue); }
+.study-guide .rv-orange { --c: var(--orange); }
+.study-guide .rv-red { --c: var(--red); }
+.study-guide .rv-purple { --c: var(--purple); }
+.study-guide .rv-neutral { --c: var(--muted-foreground); }
+
+.study-guide .rv-h4 {
+	font-family: var(--font-sans);
+	font-weight: 650;
+	font-size: 0.95rem;
+	margin: 1.4rem 0 0.45rem;
+}
+.study-guide .rv-card,
+.study-guide .rv-q,
+.study-guide .rv-ans {
+	border: 1px solid var(--border);
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	padding: 0.85rem 1.05rem;
+	margin: 0.8rem 0 1rem;
+}
+.study-guide .rv-card > :first-child,
+.study-guide .rv-q > :first-child,
+.study-guide .rv-ans > :first-child {
+	margin-top: 0;
+}
+.study-guide .rv-card-title {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 1.4;
+	margin: 0 0 0.35rem;
+}
+.study-guide .rv-num {
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.08rem 0.42rem;
+	border-radius: 0.3rem;
+	background: var(--secondary);
+	color: var(--secondary-foreground);
+	margin-right: 0.3rem;
+	white-space: nowrap;
+}
+.study-guide .rv-meta,
+.study-guide .rv-qhead {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.35rem;
+	margin: 0.2rem 0 0.5rem;
+}
+.study-guide .rv-badge {
+	font-family: var(--font-sans);
+	font-size: 0.7rem;
+	font-weight: 600;
+	line-height: 1.5;
+	padding: 0.05rem 0.5rem;
+	border-radius: 9999px;
+	border: 1px solid color-mix(in oklab, var(--c) 45%, transparent);
+	background: color-mix(in oklab, var(--c) 11%, transparent);
+	color: var(--c);
+}
+.study-guide .rv-source,
+.study-guide .rv-echo {
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	color: var(--muted-foreground);
+	margin: 0.2rem 0 0.5rem;
+}
+.study-guide .rv-box {
+	border: 1px solid color-mix(in oklab, var(--c) 28%, transparent);
+	background: color-mix(in oklab, var(--c) 9%, transparent);
+	padding: 0.8rem 1.05rem;
+	margin: 0.7rem 0 0.9rem;
+	border-radius: var(--radius-lg);
+	font-family: var(--font-serif);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+}
+.study-guide .rv-box p,
+.study-guide .rv-box ul,
+.study-guide .rv-box ol {
+	margin: 0.3rem 0;
+}
+.study-guide .rv-label {
+	display: block;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--c, var(--muted-foreground));
+	margin-bottom: 0.2rem;
+}
+.study-guide .rv-dl {
+	display: grid;
+	grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+	gap: 0.4rem 1rem;
+	margin: 0.5rem 0;
+	font-size: 0.96rem;
+}
+.study-guide .rv-dl dt {
+	font-family: var(--font-sans);
+	font-weight: 650;
+	font-size: 0.78rem;
+	color: var(--muted-foreground);
+	padding-top: 0.2rem;
+	margin: 0;
+}
+.study-guide .rv-dl dd {
+	margin: 0;
+	padding: 0;
+}
+.study-guide .rv-dl dd > ul,
+.study-guide .rv-dl dd > ol {
+	margin: 0;
+}
+@container study-guide (width < 37.5rem) {
+	.study-guide .rv-dl {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.1rem;
+	}
+	.study-guide .rv-dl dd {
+		margin-bottom: 0.5rem;
+	}
+}
+.study-guide .rv-question {
+	font-weight: 600;
+	margin: 0.3rem 0;
+}
+.study-guide ol.rv-options {
+	list-style: upper-alpha;
+	padding-left: 1.6rem;
+	margin: 0.35rem 0 0.4rem;
+}
+.study-guide ol.rv-options li {
+	margin: 0.15rem 0;
+}
+.study-guide .rv-ex,
+.study-guide .rv-cite {
+	color: var(--muted-foreground);
+}
+.study-guide .rv-cite {
+	font-family: var(--font-sans);
+	font-size: 0.78rem;
+}
+.study-guide .rv-skeleton {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 0.92rem;
+}
+.study-guide .rv-facts {
+	border-left: 3px solid var(--border);
+	padding-left: 0.85rem;
+	margin: 0.3rem 0 0.5rem;
+}
+.study-guide .rv-prop {
+	border-left: 3px solid var(--purple);
+	padding-left: 0.85rem;
+	margin: 0.4rem 0;
+	font-style: normal;
+	font-weight: 500;
+	quotes: none;
+}
+.study-guide .rv-verdict {
+	font-family: var(--font-sans);
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	margin: 0.2rem 0;
+}
+.study-guide .rv-true {
+	color: var(--correct);
+}
+.study-guide .rv-false {
+	color: var(--incorrect);
+}
+.study-guide .rv-expanded {
+	margin: 0.6rem 0;
+}
+.study-guide .rv-keys {
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	color: var(--muted-foreground);
+	border-top: 1px dashed var(--border);
+	padding-top: 0.45rem;
+	margin: 0.6rem 0 0;
+}
+.study-guide .rv-verify {
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	color: var(--orange);
+	margin: 0.3rem 0 0;
+}
+.study-guide .rv-alac {
+	display: grid;
+	gap: 0.5rem;
+	margin: 0.5rem 0;
+}
+.study-guide .rv-alac-row {
+	display: grid;
+	grid-template-columns: 1.8rem minmax(0, 1fr);
+	gap: 0.65rem;
+	align-items: start;
+}
+.study-guide .rv-alac-k {
+	display: grid;
+	place-items: center;
+	width: 1.8rem;
+	height: 1.8rem;
+	border-radius: 0.45rem;
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 0.85rem;
+	color: var(--c);
+	background: color-mix(in oklab, var(--c) 14%, transparent);
+	border: 1px solid color-mix(in oklab, var(--c) 40%, transparent);
+}
+.study-guide .rv-alac-a { --c: var(--blue); }
+.study-guide .rv-alac-l { --c: var(--purple); }
+.study-guide .rv-alac-p { --c: var(--green); }
+.study-guide .rv-alac-c { --c: var(--orange); }
+/* Criminal Procedure answer key: Issue and Explanation rows around the ALAC rows. */
+.study-guide .rv-alac-i { --c: var(--red); }
+.study-guide .rv-alac-e { --c: var(--muted-foreground); }
+.study-guide .rv-jump {
+	font-family: var(--font-sans);
+	font-size: 0.78rem;
+	margin: 0.5rem 0 0;
+	text-align: right;
+}
+@media print {
+	.study-guide .rv-jump {
+		display: none;
+	}
+}
+.study-guide .rv-flash {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 0.6rem;
+	margin: 0.6rem 0 1rem;
+}
+.study-guide details.rv-flip,
+.study-guide details.rv-reveal {
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: var(--card);
+	padding: 0.6rem 0.85rem;
+	font-family: var(--font-sans);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+.study-guide details.rv-reveal {
+	margin: 0.5rem 0 0.8rem;
+	background: color-mix(in oklab, var(--green) 5%, var(--card));
+}
+.study-guide details.rv-flip > summary,
+.study-guide details.rv-reveal > summary {
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+}
+.study-guide details.rv-flip > summary::-webkit-details-marker,
+.study-guide details.rv-reveal > summary::-webkit-details-marker {
+	display: none;
+}
+.study-guide details.rv-flip:not([open]) > summary::after {
+	content: 'Tap to reveal';
+	display: block;
+	margin-top: 0.3rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+.study-guide details.rv-reveal > summary {
+	color: var(--green);
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.study-guide details.rv-flip > div,
+.study-guide details.rv-reveal > div {
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px dashed var(--border);
+}
+.study-guide details > div > p:first-child {
+	margin-top: 0;
+}
+.study-guide .rv-check {
+	list-style: none;
+	padding-left: 0;
+}
+.study-guide .rv-check > li {
+	position: relative;
+	padding-left: 1.7rem;
+}
+.study-guide .rv-check > li::before {
+	content: '☐';
+	position: absolute;
+	left: 0.1rem;
+	color: var(--muted-foreground);
+}
+.study-guide .rv-recall > li {
+	margin: 0.4rem 0;
+}
+.study-guide .rv-cmp {
+	margin: 1rem 0 1.6rem;
+}
+.study-guide td > ol,
+.study-guide td > ul,
+.study-guide td > p:first-child {
+	margin-top: 0;
+}
+.study-guide td > ol:last-child,
+.study-guide td > ul:last-child {
+	margin-bottom: 0;
+}
+.study-guide .cmp-table .aspect {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 0.82rem;
+	color: var(--muted-foreground);
+}
+
+mark.sg-hit,
+mark.search-hit {
+	background: color-mix(in oklab, var(--yellow) 38%, transparent);
+	color: inherit;
+	border-radius: 0.2em;
+	padding: 0 0.1em;
+	box-shadow: 0 0 0 1px color-mix(in oklab, var(--yellow) 55%, transparent);
+}
+mark.sg-hit[data-active='true'] {
+	background: color-mix(in oklab, var(--orange) 55%, transparent);
+	box-shadow: 0 0 0 2px var(--orange);
+}
+
+/* Bar-exam source tag inside a fact pattern. */
+.bar-tag {
+	display: inline-block;
+	margin-right: 0.4rem;
+	padding: 0.05rem 0.45rem;
+	border-radius: 0.35rem;
+	background: color-mix(in oklab, var(--purple) 12%, transparent);
+	color: var(--purple);
+	font-family: var(--font-sans);
+	font-size: 0.7rem;
+	font-weight: 650;
+	letter-spacing: 0.06em;
+	vertical-align: 0.15em;
+}
+
+/* Matches in search results and palettes. */
+.search-results mark,
+.hit-text mark {
+	background: color-mix(in oklab, var(--ring) 22%, transparent);
+	color: inherit;
+	border-radius: 0.15em;
+	padding: 0 0.05em;
+	font-weight: 600;
+}
+
+/* Reader: one topic per section, collapsible. Hidden topics keep their text in the DOM, so highlights stay anchored. */
+.reader .sg-topic {
+	position: relative;
+	padding-top: 2rem;
+	margin-top: 1.25rem;
+	border-top: 1px solid var(--border);
+}
+.reader .sg-topic:first-child {
+	border-top: 0;
+	margin-top: 0;
+	padding-top: 0.5rem;
+}
+.reader .sg-topic .sg-h3 {
+	padding-right: 8.5rem;
+}
+.reader .sg-topic[data-collapsed='true'] > .sg-topic-body > :not(.sg-h3) {
+	display: none;
+}
+.reader .sg-topic[data-collapsed='true'] .sg-h3 {
+	margin-bottom: 0;
+}
+
+/* Model-answer / "watch for" HTML snippets rendered via {@html} */
+.rich p {
+	margin: 0 0 0.6rem;
+}
+.rich p:last-child {
+	margin-bottom: 0;
+}
+.rich ul {
+	list-style: disc;
+	padding-left: 1.25rem;
+	margin: 0.4rem 0;
+}
+.rich li {
+	margin: 0.3rem 0;
+}
+.rich strong,
+.rich b {
+	font-weight: 650;
+}
+
+@media print {
+	header,
+	nav,
+	.no-print {
+		display: none !important;
+	}
+}

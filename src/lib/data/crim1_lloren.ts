@@ -1100,6 +1100,12 @@ export const crim1Lloren: LawModule = {
 			question:
 				'A person who, at the time of his trial for one crime, shall have been previously convicted by final judgment of another crime embraced in the same title of the Revised Penal Code incurs what circumstance?',
 			options: ['Recidivism', 'Reiteracion (Habituality)', 'Habitual delinquency', 'Quasi-recidivism'],
+			optionExplanations: [
+				'Art. 14(9): applies when the previous final conviction is for a crime embraced in the same title of the RPC.',
+				'Art. 14(10): requires prior service of sentence for an offense carrying an equal or greater penalty (or two or more lighter ones), not necessarily under the same title.',
+				'Art. 62(5): requires a third or subsequent conviction within 10 years for specific crimes (serious/less serious physical injuries, robbery, theft, estafa, falsification).',
+				'Art. 160: applies when a person commits a new felony after conviction by final judgment, before beginning to serve or while serving sentence.'
+			],
 			correctIndex: 0,
 			explanation:
 				'Recidivism (Art. 14[9], RPC). A recidivist is one who, at the time of his trial for one crime, shall have been previously convicted by final judgment of another crime embraced in the same title of the Code.',
@@ -1112,6 +1118,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'exceptions',
 			question: 'Which of the following is NOT included in the pecuniary liabilities of the offender under Article 38 of the Revised Penal Code?',
 			options: ['Fine', 'Costs of the proceedings', 'Indemnification of consequential damages', 'Restitution'],
+			optionExplanations: [
+				'Fine is the fourth pecuniary liability listed under Art. 38.',
+				'Costs of the proceedings is the third pecuniary liability listed under Art. 38.',
+				'Indemnification of consequential damages is the second pecuniary liability listed under Art. 38.',
+				'Restitution (returning the very thing itself) is a civil liability under Arts. 104–105, not a pecuniary liability under Art. 38.'
+			],
 			correctIndex: 3,
 			explanation:
 				'Restitution. Art. 38 lists reparation of the damage caused, indemnification of consequential damages, fine, and costs of the proceedings as pecuniary liabilities. Restitution (returning the very thing itself) is a civil liability under Arts. 104–105, not a pecuniary liability under Art. 38.',
@@ -1124,16 +1136,16 @@ export const crim1Lloren: LawModule = {
 			tag: 'effects',
 			question: 'Is a 16-year-old criminally liable for committing serious physical injuries?',
 			options: [
-				'Liable with conditions',
-				'Completely exempt from criminal liability regardless of discernment',
-				'Criminally liable as an adult with full penalty because serious physical injuries is a less grave felony',
-				'Liable only for civil damages and community service without criminal responsibility even with discernment'
+				'Liable if acting with discernment',
+				'Completely exempt regardless of discernment',
+				'Liable as an adult with full penalty',
+				'Liable only for civil damages'
 			],
 			optionExplanations: [
-				'Only if acting with discernment, with privileged mitigation, diversion, and suspended sentence.',
-				'',
-				'',
-				''
+				'Under R.A. 9344 (as amended by R.A. 10630), a child above 15 and under 18 is liable if acting with discernment, subject to privileged mitigation, diversion, and suspended sentence.',
+				'Total exemption regardless of discernment applies only to children 15 years old or younger.',
+				'A minor above 15 and under 18 who acts with discernment is entitled to the privileged mitigating circumstance of minority (Art. 68[2]), not the full adult penalty.',
+				'Criminal liability still attaches if the child acted with discernment; civil liability only applies when discernment is absent.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1151,7 +1163,14 @@ export const crim1Lloren: LawModule = {
 				'Passion or obfuscation',
 				'Sufficient provocation',
 				'Incomplete justifying circumstance',
-				'Illness depriving the offender of willpower (Note: "diminishing" willpower is mitigating; "depriving" is exempting)'
+				'Illness depriving the offender of willpower'
+			],
+			optionExplanations: [
+				'Immediate vindication of a grave offense is mitigating under Art. 13(5).',
+				'Acting upon an impulse so powerful as naturally to produce passion or obfuscation is mitigating under Art. 13(6).',
+				'Sufficient provocation or threat immediately preceding the act is mitigating under Art. 13(4).',
+				'Incomplete justifying or exempting circumstances are mitigating under Art. 13(1).',
+				'Illness that completely deprives the offender of willpower/intelligence is an exempting circumstance (Art. 12[1]), whereas Art. 13(9) only mitigates illness that diminishes willpower.'
 			],
 			correctIndex: 4,
 			explanation:
@@ -1166,6 +1185,12 @@ export const crim1Lloren: LawModule = {
 			question:
 				'In criminal law, the primary function of punishment is to prevent potential and actual wrongdoers from committing crimes based on what theory?',
 			options: ['Utilitarian theory', 'Retributive theory', 'Absolutist theory', 'Restorative justice theory'],
+			optionExplanations: [
+				'Under the utilitarian theory, penalties are forward-looking and justified by deterrence and prevention of future crimes.',
+				'Retributive theory focuses on punishing offenders because they deserve it for past moral guilt, not primarily for deterrence.',
+				'Absolutist theory treats punishment as an end in itself (justice for its own sake), independent of future utility or prevention.',
+				'Restorative justice focuses on repairing harm and reconciling the offender, victim, and community rather than deterrence.'
+			],
 			correctIndex: 0,
 			explanation:
 				'Utilitarian theory. Under the utilitarian theory of punishment, the primary purpose of penalties is forward-looking deterrence and prevention of potential and actual wrongdoers.',
@@ -1179,6 +1204,12 @@ export const crim1Lloren: LawModule = {
 			question:
 				'Mr. BB pointed his gun at Ms. CC and asked for her phone, but she did not have it with her because her sister borrowed it. What was the crime committed?',
 			options: ['Attempted robbery', 'Impossible crime', 'Frustrated robbery', 'Grave coercion'],
+			optionExplanations: [
+				'Per Reyes (p. 88), the phone was absent only by accident (with her sister), and pointing a gun already constitutes grave threats (Art. 282), making it attempted robbery with intimidation.',
+				'Art. 4(2) requires inherent impossibility and that the act not violate another RPC provision; pointing a gun violates Art. 282 (note: the original quiz key marked Impossible crime under Intod).',
+				'Robbery is not frustrated here because the offender did not perform all acts of execution to take the property.',
+				'Grave coercion involves compelling another to do something against their will without authority of law, not an intent to gain by taking property.'
+			],
 			correctIndex: 0,
 			explanation:
 				'Attempted robbery (per Reyes, Art. 4, p. 88). In Reyes\' watch example, pointing a gun at B to rob him when B forgot his watch is attempted robbery with intimidation, not an impossible crime, because the object was missing by accident (with her sister), not by inherent impossibility (Art. 6, par. 3), and pointing a gun already constitutes grave threats (Art. 282), whereas Art. 4(2) requires that the act not violate another RPC provision. (Note: Check with your professor — the original quiz key answered "Impossible crime" following Intod v. CA.)',
@@ -1199,6 +1230,14 @@ export const crim1Lloren: LawModule = {
 				'In case of doubt, for the accused',
 				'None'
 			],
+			optionExplanations: [
+				'Retroactivity of favorable penal laws is governed by Art. 22, which is distinct from the pro reo rule of construction.',
+				'Effects of repeal or amendment concern whether criminal liability is extinguished, not resolving doubt in favor of the accused.',
+				'Suppletory application is governed by Art. 10 of the RPC.',
+				'Extraterritoriality is governed by Art. 2 of the RPC.',
+				'In dubio pro reo means that in case of doubt in penal laws or evidence, the doubt is resolved in favor of the accused.',
+				'One of the listed choices ("In case of doubt, for the accused") accurately states the principle.'
+			],
 			correctIndex: 4,
 			explanation:
 				'In case of doubt, for the accused (in dubio pro reo). Penal laws and reasonable doubts in evidence are resolved liberally in favor of the accused and strictly against the State.',
@@ -1212,6 +1251,12 @@ export const crim1Lloren: LawModule = {
 			question:
 				'A wants to rob B of his Rolex watch. Upon meeting, A pointed his gun at B, but B was not wearing his watch that day. Is there a crime committed?',
 			options: ['Impossible crime', 'Attempted robbery', 'Frustrated robbery', 'None of the above'],
+			optionExplanations: [
+				'Under Reyes (p. 88), the watch was missing by accident rather than inherent impossibility, and pointing the gun already constitutes grave threats (though the original key marked Impossible crime).',
+				'This is Reyes\' exact textbook example: pointing a gun to rob when the watch is accidentally absent constitutes attempted robbery with intimidation.',
+				'A did not perform all acts of execution of taking the watch, so robbery is not frustrated.',
+				'A crime was committed (attempted robbery under Reyes).'
+			],
 			correctIndex: 1,
 			explanation:
 				'B. Attempted robbery (per Reyes, Art. 4, p. 88). This is Reyes\' own textbook example: A points his gun at B to rob him of his watch, but B forgot to carry it. The watch was missing by accident, not inherent impossibility (Art. 6, par. 3), and pointing the gun is already grave threats (Art. 282), so Art. 4(2) does not apply. (Note: Check with your professor — the original key wrote "G. Impossible crime.")',
@@ -1225,10 +1270,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				"Budoy may avail of a mitigating circumstance because he was threatened that his father's house would be burned if he didn't kill his father (uncontrollable force/fear). Which is correct?",
 			options: [
-				'Budoy is under exempting from uncontrollable fear, not liable',
-				'Budoy is not under exempting from uncontrollable fear, but criminally liable for killing',
-				'Boboy is not under exempting circumstance, but criminally liable for killing his father',
+				'Budoy is exempt under uncontrollable fear',
+				'Budoy is not exempt, but criminally liable',
+				'Boboy is not exempt, but criminally liable',
 				'None of the above'
+			],
+			optionExplanations: [
+				'Art. 12(6) requires the threatened evil to be equal to or greater than the crime committed; burning a house is a lesser evil than parricide.',
+				'Budoy is not exempt under Art. 12(6) because the threatened evil is lesser, so he is criminally liable (with an incomplete exempting/mitigating circumstance under Art. 13[1]).',
+				'This option misnames the accused as "Boboy" instead of Budoy.',
+				'The second option accurately states Budoy\'s liability.'
 			],
 			correctIndex: 1,
 			explanation:
@@ -1242,6 +1293,11 @@ export const crim1Lloren: LawModule = {
 			tag: 'jurisprudence',
 			question: "Mr. CC demanded Mr. BB's phone at gunpoint, but the phone was not with him because his wife borrowed it.",
 			options: ['Attempted robbery', 'Frustrated robbery', 'None of the above'],
+			optionExplanations: [
+				'Per Reyes (p. 88), pointing a gun to rob when the item is accidentally absent is attempted robbery with intimidation.',
+				'The offender did not perform all acts of execution of taking the phone.',
+				'Attempted robbery is committed under Reyes (though the original key implied impossible crime).'
+			],
 			correctIndex: 0,
 			explanation:
 				'A. Attempted robbery (per Reyes, Art. 4, p. 88). Same facts as Reyes\' watch example: a gun is pointed to rob the victim, but the object is absent by accident (borrowed by his wife). Under Reyes, it is attempted robbery with intimidation (Art. 6, par. 3), not an impossible crime. (Note: Check with your professor — the original key marked "C. None of the above," implying impossible crime.)',
@@ -1254,6 +1310,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'jurisprudence',
 			question: 'The house burned only 10%. What stage of arson is it?',
 			options: ['Frustrated Arson', 'Consummated Arson', 'Attempted Arson', 'None of the Above'],
+			optionExplanations: [
+				'Arson is frustrated only when a blaze is set (all acts of execution performed) but no part of the house actually catches fire.',
+				'Under People v. Hernandez, arson is consummated the moment any part of the house, however small (even 10%), is burned.',
+				'Arson is attempted only when the offender starts setting up the fire but has not yet set the blaze itself.',
+				'Consummated arson applies once any part of the building is burned.'
+			],
 			correctIndex: 1,
 			explanation:
 				'B. Consummated Arson. Arson is consummated the moment any part of the house, however small (even 10% or a slight charring of the wall), is burned (People v. Hernandez, 54 Phil. 122; Reyes, p. 113).',
@@ -1266,6 +1328,13 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: 'Which does NOT belong in the grounds for total extinction of criminal liability?',
 			options: ['Death of the accused', 'Recognizance', 'Prescription of the crime', 'Amnesty', 'None'],
+			optionExplanations: [
+				'Death of the convict totally extinguishes criminal liability under Art. 89(1).',
+				'Recognizance is a mode of provisional release pending trial, not a ground for extinction of criminal liability under Art. 89.',
+				'Prescription of the crime totally extinguishes criminal liability under Art. 89(5).',
+				'Amnesty totally extinguishes criminal liability under Art. 89(3).',
+				'Recognizance is not an Art. 89 ground, so it is the correct exclusion.'
+			],
 			correctIndex: 1,
 			explanation:
 				'B. Recognizance. Under Art. 89 of the RPC, total extinction of criminal liability occurs by: death of the convict, service of sentence, amnesty, absolute pardon, prescription of the crime, prescription of the penalty, and marriage of the offended woman under Art. 344. Recognizance is a mode of release pending trial, not extinction of criminal liability.',
@@ -1279,6 +1348,12 @@ export const crim1Lloren: LawModule = {
 			question:
 				'BB committed rape against CC, who is under 12 years old, with a penalty of reclusion perpetua of 20–40 years, attended by the mitigating circumstance of voluntary surrender. What is the correct penalty to be imposed?',
 			options: ['Reclusion perpetua max', 'Reclusion perpetua med', 'Reclusion perpetua min', 'None of the choices'],
+			optionExplanations: [
+				'Reclusion perpetua is an indivisible penalty and has no maximum, medium, or minimum periods.',
+				'Even with a 20–40 year duration under R.A. 7659, reclusion perpetua remains indivisible (People v. Lucas) and is not divided into periods.',
+				'Mitigating circumstances do not lower a single indivisible penalty into a "minimum" period under Art. 63(1).',
+				'Under Art. 63(1), a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances.'
+			],
 			correctIndex: 3,
 			explanation:
 				'd. None of the choices (Reclusion perpetua). Under Art. 63 of the RPC, a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances. Even though R.A. 7659 set its duration at 20 years and 1 day to 40 years, reclusion perpetua remains an indivisible penalty and has no periods (People v. Lucas, G.R. Nos. 108172-73, Jan. 9, 1995).',
@@ -1291,6 +1366,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: "Mr. B drove without a driver's license. What did he commit?",
 			options: ['Felony', 'Offense', 'Infraction', 'None of the above'],
+			optionExplanations: [
+				'A felony is an act or omission punishable by the Revised Penal Code (Art. 3), not a special law.',
+				'Driving without a license violates a national special law (R.A. 4136), which is classified as an offense.',
+				'An infraction is a violation of a city or municipal ordinance (though the original key marked Infraction).',
+				'It is an offense under R.A. 4136.'
+			],
 			correctIndex: 1,
 			explanation:
 				'B) Offense (per Reyes, Art. 3). Driving without a license violates a national special law (R.A. 4136). A "felony" is a violation of the RPC; an "offense" is a violation of a special law; an "infraction" is a violation of a city or municipal ordinance. (Note: The original key marked "Infraction" — follow your professor if he classifies traffic violations as infractions.)',
@@ -1308,6 +1389,12 @@ export const crim1Lloren: LawModule = {
 				'Liable for Murder',
 				'Exempt under complete defense of property',
 				'Liable for Death Committed in a Tumultuous Affray'
+			],
+			optionExplanations: [
+				'Under People v. Apolinar, defense of property alone without unlawful aggression against the person does not justify killing, and the warning shot removed treachery, leaving Homicide (Art. 249).',
+				'Murder requires a qualifying circumstance like treachery; firing a warning shot first put the victim on guard, negating treachery (note: original key erroneously wrote Murder).',
+				'Complete defense of property does not justify taking a human life unless coupled with unlawful aggression against the person.',
+				'Death in a tumultuous affray (Art. 251) requires a confused, disorderly fight among several persons where the actual killer cannot be ascertained.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1327,10 +1414,10 @@ export const crim1Lloren: LawModule = {
 				'None of the choices'
 			],
 			optionExplanations: [
-				'',
-				'',
-				'',
-				'Completely EXEMPT from criminal liability.'
+				'Ordinary mitigating only lowers the penalty to the minimum period; it does not apply because the child is exempt.',
+				'Privileged mitigating (Art. 68[2]) applies to minors above 15 and under 18 who acted with discernment.',
+				'Alternative circumstances (Art. 15) are relationship, intoxication, and degree of instruction/education.',
+				'A child 15 years old or under is completely EXEMPT from criminal liability under R.A. 9344 (as amended by R.A. 10630).'
 			],
 			correctIndex: 3,
 			explanation:
@@ -1344,6 +1431,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: 'Mistake of the blow is:',
 			options: ['Aberratio Ictus', 'Praeter Intentionem', 'Error in personae', 'None of the above'],
+			optionExplanations: [
+				'Aberratio ictus is mistake in the blow — aiming at one person but hitting another due to lack of precision.',
+				'Praeter intentionem means the injurious result is greater than that intended.',
+				'Error in personae is mistake in identity of the victim.',
+				'Aberratio ictus is the exact Latin term for mistake in the blow.'
+			],
 			correctIndex: 0,
 			explanation:
 				'A. Aberratio Ictus. Mistake in the blow occurs when the offender aims at one person but hits another due to lack of precision.',
@@ -1356,6 +1449,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: 'Mistake in identity is:',
 			options: ['Aberratio Ictus', 'Praeter Intentionem', 'Error in personae', 'None of the above'],
+			optionExplanations: [
+				'Aberratio ictus is mistake in the blow, not mistake in identity.',
+				'Praeter intentionem means lack of intent to commit so grave a wrong as that committed.',
+				'Error in personae is mistake in identity — harming someone mistaken for the intended victim.',
+				'Error in personae is the exact Latin term for mistake in identity.'
+			],
 			correctIndex: 2,
 			explanation:
 				'C. Error in personae. Mistake in identity occurs when the offender inflicts injury on someone whom he mistook for his intended victim.',
@@ -1371,14 +1470,14 @@ export const crim1Lloren: LawModule = {
 			options: [
 				'Special aggravating circumstance',
 				'Qualifying circumstance',
-				'Separate offense of illegal possession of firearms prosecuted independently',
+				'Separate offense of illegal possession',
 				'Generic aggravating circumstance'
 			],
 			optionExplanations: [
-				'Always imposed in the MAXIMUM period (cannot be offset by ordinary mitigating).',
-				'Elevates homicide to murder automatically.',
-				'',
-				'Can be offset by voluntary surrender.'
+				'Always imposed in the MAXIMUM period (cannot be offset by ordinary mitigating circumstances under Palaganas v. People).',
+				'It does not qualify homicide into murder; it aggravates the crime committed.',
+				'When used in the commission of another crime, illegal possession is not prosecuted as a separate offense under Sec. 29 of R.A. 10591.',
+				'Generic aggravating can be offset by ordinary mitigating circumstances, whereas this special aggravating treatment fixes the penalty in the maximum.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1392,6 +1491,12 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: 'Under R.A. No. 10591 (Sec. 29), when the use of a loose firearm is inherent in the commission of a crime, how is the loose firearm treated?',
 			options: ['Aggravating circumstance', 'Mitigating circumstance', 'Exempting circumstance', 'Absolutory cause'],
+			optionExplanations: [
+				'Sec. 29 of R.A. 10591 expressly treats the use of a loose firearm, when inherent in the crime, as an aggravating circumstance.',
+				'Using an unlicensed firearm increases rather than reduces criminal liability.',
+				'It does not exempt the offender from criminal liability.',
+				'An absolutory cause exempts an offender for policy reasons; a loose firearm instead aggravates the penalty.'
+			],
 			correctIndex: 0,
 			explanation:
 				'Aggravating circumstance. Under Sec. 29 of R.A. 10591, the use of a loose firearm, when inherent in the commission of a crime, shall be considered as an aggravating circumstance.',
@@ -1407,10 +1512,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'A crime of homicide is committed with a prescribed penalty of reclusion temporal. The crime is committed without any aggravating or mitigating circumstance. Applying the Indeterminate Sentence Law, what is the maximum penalty (maximum term)?',
 			options: [
-				'Reclusion Temporal Medium (14 years, 8 months and 1 day to 17 years and 4 months)',
-				'Reclusion Temporal Minimum (12 years and 1 day to 14 years and 8 months)',
-				'Reclusion Temporal Maximum (17 years, 4 months and 1 day to 20 years)',
-				'Prision Mayor Medium (8 years and 1 day to 10 years)'
+				'Reclusion Temporal Medium',
+				'Reclusion Temporal Minimum',
+				'Reclusion Temporal Maximum',
+				'Prision Mayor Medium'
+			],
+			optionExplanations: [
+				'14 years, 8 months and 1 day to 17 years and 4 months — imposed in the medium period under Art. 64(1) when there are no modifying circumstances.',
+				'12 years and 1 day to 14 years and 8 months — applies only when there is a mitigating circumstance with no aggravating.',
+				'17 years, 4 months and 1 day to 20 years — applies only when there is an aggravating circumstance with no mitigating.',
+				'8 years and 1 day to 10 years — prision mayor is the range for the minimum term (next lower in degree), not the maximum term.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1424,10 +1535,16 @@ export const crim1Lloren: LawModule = {
 			tag: 'exceptions',
 			question: 'Mr. Hopeless committed suicide by jumping and fell onto his wife, causing her death. Is he liable for parricide?',
 			options: [
-				'No, Mr. Hopeless is not liable for parricide because attempting suicide is not a felony under the RPC',
-				'Yes, Mr. Hopeless is liable for parricide under Art. 4(1) because he caused a wrong different from that intended',
-				'Yes, Mr. Hopeless is liable for parricide with the mitigating circumstance of praeter intentionem',
-				'No, Mr. Hopeless is liable for an impossible crime instead of parricide'
+				'No, not liable for parricide',
+				'Yes, liable under Art. 4(1)',
+				'Yes, liable with praeter intentionem',
+				'No, liable for an impossible crime'
+			],
+			optionExplanations: [
+				'Attempting suicide is not a felony under the RPC (Art. 253 only punishes assisting suicide), so Art. 4(1) does not apply.',
+				'Art. 4(1) applies only when the offender is committing an intentional felony (dolo); suicide is not a felony.',
+				'Praeter intentionem is a mitigating circumstance that presupposes a felony was being committed.',
+				'Impossible crime (Art. 4[2]) requires intent to commit an offense against persons or property.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1442,10 +1559,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'A wife intended to poison her husband with powdered rat poison, but she mistakenly used Ajinomoto ("powder rat poison pero ajinomoto iya na gamit"). What crime is the wife liable for?',
 			options: [
-				'Impossible crime (employment of ineffectual means)',
+				'Impossible crime',
 				'Attempted parricide',
 				'Frustrated parricide',
-				'No crime at all because Ajinomoto is harmless'
+				'No crime at all'
+			],
+			optionExplanations: [
+				'Under Art. 4(2), she intended a crime against persons (parricide) but employed ineffectual means (harmless Ajinomoto).',
+				'Attempted parricide requires means capable of producing death; harmless seasoning cannot consummate parricide.',
+				'Frustrated parricide requires acts that would produce death as a consequence.',
+				'Art. 4(2) specifically punishes impossible crimes to suppress criminal tendencies even when the means fail.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1460,10 +1583,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'Mr. CC was convicted of theft by a first-level court and sentenced to 6 years of prision correccional in its maximum period. He appealed to the second-level court, which affirmed the sentence in toto. Can he apply for probation?',
 			options: [
-				'No, because his original 6-year sentence was already probationable and he perfected an appeal',
-				'Yes, because his 6-year sentence does not exceed the 6-year maximum for probation',
-				'Yes, because the appellate court affirmed the probationable sentence without increasing it',
-				'No, because theft is disqualified from the coverage of the Probation Law'
+				'No, because he perfected an appeal',
+				'Yes, because 6 years is probationable',
+				'Yes, because the sentence was affirmed',
+				'No, because theft is disqualified'
+			],
+			optionExplanations: [
+				'His original 6-year sentence was already probationable; perfecting an appeal bars probation under Sec. 4 of P.D. 968 (R.A. 10707 exception applies only when a non-probationable penalty is lowered on appeal).',
+				'Even though 6 years is within the probationable ceiling, appealing an already probationable sentence forfeits the right to apply.',
+				'Affirmance of a probationable sentence on appeal does not restore the right to apply for probation.',
+				'Theft is not among the crimes disqualified from probation under Sec. 9 of P.D. 968.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1478,10 +1607,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'A was convicted of frustrated murder by a second-level court and was sentenced to 8 years to 14 years of imprisonment. He appealed to the Court of Appeals, which modified the penalty and sentenced him to 4 years of prision correccional. Can he apply for probation?',
 			options: [
-				'Yes, because the appeal modified a non-probationable penalty into a probationable one (4 years of prision correccional)',
-				'No, because perfecting an appeal permanently waives probation in all cases',
-				'No, because frustrated murder is an offense against persons disqualified from probation',
-				'Yes, but only after he serves the minimum term of his modified sentence'
+				'Yes, he may apply for probation',
+				'No, appeal permanently waives probation',
+				'No, frustrated murder is disqualified',
+				'Yes, after serving the minimum term'
+			],
+			optionExplanations: [
+				'Under R.A. 10707 and Colinares v. People, when an appeal modifies a non-probationable penalty (8–14 yrs) into a probationable one (4 yrs), the accused may apply before finality.',
+				'R.A. 10707 carved out an express exception when the original sentence was non-probationable and was lowered on appeal.',
+				'Frustrated murder is not categorically excluded once the final modified penalty is within the 6-year probationable limit.',
+				'Probation is applied for before serving the sentence, within 15 days from notice of the modified judgment.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1495,10 +1630,16 @@ export const crim1Lloren: LawModule = {
 			tag: 'memorization',
 			question: 'Under the Flag State Rule in criminal law, what law governs a ship sailing on the high seas?',
 			options: [
-				'The laws of the country whose flag it flies (the country where the vessel is registered)',
-				'The laws of the country of nationality of the ship captain',
-				'The laws of the country where the ship last docked',
-				'The laws of the country of nationality of the majority of the passengers'
+				'Law of the country whose flag it flies',
+				'Law of the ship captain\'s nationality',
+				'Law of the last port of call',
+				'Law of the passengers\' majority nationality'
+			],
+			optionExplanations: [
+				'The country of registration (whose flag the vessel flies) exercises jurisdiction and control over the vessel on the high seas.',
+				'Jurisdiction follows the vessel\'s registration/flag, not the personal nationality of its captain.',
+				'The last port of call loses territorial jurisdiction once the vessel sails onto the high seas.',
+				'Passenger nationality does not determine the governing law of a ship on the high seas.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1513,10 +1654,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'Homicide (reclusion temporal) is committed with 1 generic aggravating circumstance, 2 privileged mitigating circumstances, and 1 ordinary mitigating circumstance. Applying the Indeterminate Sentence Law, what are the minimum and maximum terms?',
 			options: [
-				'Minimum: anywhere within arresto mayor (1 mo 1 d to 6 mos); Maximum: prision correccional medium (2 yrs 4 mos 1 d to 4 yrs 2 mos)',
-				'Minimum: anywhere within prision correccional (6 mos 1 d to 6 yrs); Maximum: prision mayor medium (8 yrs 1 d to 10 yrs)',
-				'Minimum: anywhere within prision mayor (6 yrs 1 d to 12 yrs); Maximum: reclusion temporal minimum (12 yrs 1 d to 14 yrs 8 mos)',
-				'Minimum: anywhere within arresto menor (1 to 30 days); Maximum: arresto mayor maximum (4 mos 1 d to 6 mos)'
+				'Min: arresto mayor; Max: prision correccional med',
+				'Min: prision correccional; Max: prision mayor med',
+				'Min: prision mayor; Max: reclusion temporal min',
+				'Min: arresto menor; Max: arresto mayor max'
+			],
+			optionExplanations: [
+				'Two privileged mitigating lower reclusion temporal by 2 degrees to prision correccional; 1 aggravating and 1 ordinary mitigating offset (medium); minimum is 1 degree lower (arresto mayor).',
+				'This lowers the penalty by only 1 degree instead of 2 degrees for the two privileged mitigating circumstances.',
+				'This fails to apply the two privileged mitigating circumstances before determining the minimum and maximum terms.',
+				'This lowers the penalty by 3 degrees instead of 2 degrees.'
 			],
 			correctIndex: 0,
 			explanation:

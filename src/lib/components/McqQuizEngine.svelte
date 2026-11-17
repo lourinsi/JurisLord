@@ -528,7 +528,7 @@
 										{#if revealed && isSel && !isRight}<span class="sr-only"> — your answer, incorrect</span>{/if}
 										{#if revealed && current.optionExplanations?.[optIdx]}
 											<span class={cn('mt-1.5 block text-xs leading-relaxed font-semibold', isRight ? 'text-[#46A302] dark:text-[#7BE328]' : isSel ? 'text-[#EA2B2B] dark:text-[#FF7878]' : 'text-muted-foreground')}>
-												{#if isRight}<span class="font-extrabold">✓ That's right! </span>{/if}{current.optionExplanations[optIdx]}
+												{#if isRight}<span class="mr-1 font-extrabold">✓ That's right!</span>{/if}{current.optionExplanations[optIdx]}
 											</span>
 										{/if}
 									</span>

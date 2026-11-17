@@ -66,11 +66,11 @@
 	];
 
 	const TAGS: Record<McqTag, { label: string; cls: string }> = {
-		memorization: { label: 'Memorization', cls: 'border-yellow/40 bg-yellow/12 text-yellow' },
-		requisites: { label: 'Requisites', cls: 'border-green/40 bg-green/12 text-green' },
-		exceptions: { label: 'Exceptions', cls: 'border-blue/40 bg-blue/12 text-blue' },
-		effects: { label: 'Effects', cls: 'border-purple/40 bg-purple/12 text-purple' },
-		jurisprudence: { label: 'Jurisprudence', cls: 'border-red/40 bg-red/12 text-red' }
+		memorization: { label: 'Memorization', cls: 'border-[#E5B400] bg-[#FFF5CC] text-[#946200] dark:border-[#FFC800]/50 dark:bg-[#FFC800]/20 dark:text-[#FFD633]' },
+		requisites: { label: 'Requisites', cls: 'border-[#46A302]/50 bg-[#D7FFB8] text-[#46A302] dark:border-[#58CC02]/50 dark:bg-[#58CC02]/20 dark:text-[#7BE328]' },
+		exceptions: { label: 'Exceptions', cls: 'border-[#1899D6]/50 bg-[#DDF4FF] text-[#1899D6] dark:border-[#1CB0F6]/50 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' },
+		effects: { label: 'Effects', cls: 'border-[#A55EEA]/50 bg-[#F3E8FF] text-[#8930C9] dark:border-[#CE82FF]/50 dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' },
+		jurisprudence: { label: 'Jurisprudence', cls: 'border-[#EA2B2B]/50 bg-[#FFDFE0] text-[#EA2B2B] dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]' }
 	};
 
 	const byId = $derived(new Map(lawModule.mcqs.map((q) => [q.id, q])));
@@ -330,15 +330,21 @@
 					{ value: 'exam', label: 'Timed exam' }
 				]}
 			/>
-			<div role="group" aria-label="Show questions" class="flex flex-wrap gap-1.5">
+			<div role="group" aria-label="Show questions" class="flex flex-wrap gap-2">
 				{#each FILTERS as f (f.id)}
 					<button
 						type="button"
 						aria-pressed={filter === f.id}
 						onclick={() => setFilter(f.id)}
-						class={cn('inline-flex h-8 items-center gap-1.5 rounded-md border px-3 text-[0.8125rem] font-medium transition-colors', filter === f.id ? 'border-primary bg-primary text-primary-foreground' : 'border-input bg-popover hover:bg-muted')}
+						class={cn(
+							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-4 px-3.5 text-xs font-extrabold tracking-wide uppercase transition-all duration-150 active:border-b-2 active:translate-y-0.5',
+							filter === f.id
+								? 'border-[#1899D6] bg-[#1CB0F6] text-white'
+								: 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-[#2B434E] dark:bg-[#1A2C34] dark:text-slate-300 dark:hover:bg-[#223842]'
+						)}
 					>
-						{f.label} <span class="tabular-nums opacity-70">{filterCounts[f.id]}</span>
+						{f.label}
+						<span class={cn('rounded-full px-1.5 py-px text-[0.7rem] font-extrabold tabular-nums', filter === f.id ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500 dark:bg-[#223842] dark:text-slate-300')}>{filterCounts[f.id]}</span>
 					</button>
 				{/each}
 			</div>
@@ -356,33 +362,33 @@
 			{/snippet}
 		</EmptyState>
 	{:else if mode === 'exam' && phase === 'setup'}
-		<Card.Root>
+		<Card.Root class="p-2">
 			<Card.Header>
-				<Card.Title class="font-heading text-lg">Timed exam</Card.Title>
-				<Card.Description>
+				<Card.Title class="font-heading text-xl font-extrabold">Timed exam</Card.Title>
+				<Card.Description class="font-semibold">
 					{total} question{total === 1 ? '' : 's'}. No feedback until you submit — answers are scored and added to your progress at the end.
 				</Card.Description>
 			</Card.Header>
 			<Card.Content class="space-y-4">
 				<label class="flex flex-wrap items-center gap-3 text-sm">
-					<span class="font-medium">Time allowed</span>
-					<Input type="number" min="1" max="360" bind:value={examMinutes} class="h-9 w-24" aria-label="Minutes allowed" />
-					<span class="text-muted-foreground">minutes · about {Math.max(1, Math.round((examMinutes * 60) / total))}s per question</span>
+					<span class="font-extrabold">Time allowed</span>
+					<Input type="number" min="1" max="360" bind:value={examMinutes} class="h-10 w-24 rounded-xl border-2 font-extrabold" aria-label="Minutes allowed" />
+					<span class="font-semibold text-muted-foreground">minutes · about {Math.max(1, Math.round((examMinutes * 60) / total))}s per question</span>
 				</label>
 				<Button size="lg" onclick={startExam} disabled={!examMinutes || examMinutes < 1}><Play /> Start exam</Button>
 			</Card.Content>
 		</Card.Root>
 	{:else if current}
 		{#if phase === 'submitted' && result}
-			<Card.Root class="border-primary/30">
+			<Card.Root class="border-[#58CC02] p-2">
 				<Card.Header>
-					<Card.Title class="flex items-center gap-2 font-heading text-lg"><Trophy class="size-5 text-yellow" /> Exam results</Card.Title>
+					<Card.Title class="flex items-center gap-2 font-heading text-xl font-extrabold"><Trophy class="size-6 text-[#FFC800]" /> Exam results</Card.Title>
 				</Card.Header>
 				<Card.Content class="space-y-5">
 					<div class="flex flex-wrap items-end gap-x-6 gap-y-2">
-						<p class="text-5xl font-semibold tabular-nums">{pct(result.correct, result.total)}<span class="text-2xl text-muted-foreground">%</span></p>
-						<p class="pb-1 text-sm text-muted-foreground">
-							<span class="font-medium text-foreground tabular-nums">{result.correct}</span> of {result.total} correct ·
+						<p class="text-5xl font-extrabold text-[#58CC02] tabular-nums">{pct(result.correct, result.total)}<span class="text-2xl text-muted-foreground">%</span></p>
+						<p class="pb-1 text-sm font-bold text-muted-foreground">
+							<span class="font-extrabold text-foreground tabular-nums">{result.correct}</span> of {result.total} correct ·
 							{result.skipped} unanswered · {formatClock(secondsUsed)} used
 						</p>
 					</div>
@@ -390,94 +396,101 @@
 						<ul class="space-y-2.5">
 							{#each result.byTopic as t (t.name)}
 								<li>
-									<div class="mb-1 flex justify-between gap-3 text-xs">
+									<div class="mb-1 flex justify-between gap-3 text-xs font-bold">
 										<span class="truncate">{t.name}</span>
 										<span class="shrink-0 tabular-nums text-muted-foreground">{t.correct}/{t.total}</span>
 									</div>
-									<Progress value={pct(t.correct, t.total)} class="h-1.5 [&>div]:bg-green" aria-label="{t.name}: {t.correct} of {t.total} correct" />
+									<Progress value={pct(t.correct, t.total)} class="h-3" aria-label="{t.name}: {t.correct} of {t.total} correct" />
 								</li>
 							{/each}
 						</ul>
 					{/if}
-					<div class="flex flex-wrap gap-2">
+					<div class="flex flex-wrap items-center gap-3">
 						<Button onclick={rebuild}><RotateCcw /> New exam</Button>
-						<p class="self-center text-sm text-muted-foreground">Review each question below — explanations are unlocked.</p>
+						<p class="text-sm font-semibold text-muted-foreground">Review each question below — explanations are unlocked.</p>
 					</div>
 				</Card.Content>
 			</Card.Root>
 		{/if}
 
 		{#if examRunning}
-			<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-30 flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-popover px-4 py-2.5 shadow-sm">
-				<span role="timer" aria-live="off" class={cn('inline-flex items-center gap-2 rounded-lg border border-input px-3 py-1 text-xl font-semibold tabular-nums', secondsLeft <= 60 && 'border-destructive text-destructive')}>
-					<Clock class="size-[1.1rem]" />
+			<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-30 flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-4 py-3 shadow-md dark:border-[#2B434E]">
+				<span role="timer" aria-live="off" class={cn('inline-flex items-center gap-2 rounded-xl border-2 border-b-3 border-slate-200 bg-slate-50 px-3 py-1 text-xl font-extrabold tabular-nums dark:border-[#2B434E] dark:bg-[#131F24]', secondsLeft <= 60 && 'border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]')}>
+					<Clock class="size-[1.1rem]" strokeWidth={2.5} />
 					{formatClock(secondsLeft)}
 					<span class="sr-only">remaining</span>
 				</span>
-				<span class="text-sm text-muted-foreground tabular-nums">{answeredInSet} of {total} answered{flaggedCount ? ` · ${flaggedCount} flagged` : ''}</span>
+				<span class="text-sm font-extrabold text-muted-foreground tabular-nums">{answeredInSet} of {total} answered{flaggedCount ? ` · ${flaggedCount} flagged` : ''}</span>
 				<Button onclick={requestSubmit}><Send /> Submit exam</Button>
 			</div>
 		{/if}
 
 		{#if mode === 'practice' && watchFor}
-			<details class="group rounded-xl border border-orange/40 bg-orange/8 px-4 py-3 text-sm">
-				<summary class="flex cursor-pointer list-none items-center gap-2 font-medium text-orange">
-					<TriangleAlert class="size-4" /> Watch for — common traps in {topicId === 'all' ? 'this subject' : (topics.find((t) => t.id === topicId)?.name ?? 'this topic')}
+			<details class="group rounded-2xl border-2 border-[#FF9600] border-b-4 bg-[#FFF4E5] px-4 py-3.5 text-sm dark:bg-[#FF9600]/15">
+				<summary class="flex cursor-pointer list-none items-center gap-2.5 font-extrabold text-[#C96B00] dark:text-[#FFAD33]">
+					<span class="grid size-7 shrink-0 place-items-center rounded-xl border-2 border-[#E07D00] bg-[#FF9600] text-white">
+						<TriangleAlert class="size-4" strokeWidth={2.5} />
+					</span>
+					<span>Watch for — common traps in {topicId === 'all' ? 'this subject' : (topics.find((t) => t.id === topicId)?.name ?? 'this topic')}</span>
 				</summary>
-				<div class="rich mt-3 leading-relaxed">{@html watchFor}</div>
+				<div class="rich mt-3 leading-relaxed font-semibold text-slate-800 dark:text-slate-100">{@html watchFor}</div>
 			</details>
 		{/if}
 
-		<div class="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_16rem]">
-		<div class="flex min-w-0 flex-col gap-4">
+		<div class="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_17.5rem]">
+		<div class="flex min-w-0 flex-col gap-5">
 		<!-- Progress + navigation -->
-		<div class="space-y-2">
-			<div class="flex items-center justify-between gap-3 text-sm">
-				<p class="font-medium">Question <span class="tabular-nums">{index + 1}</span> of <span class="tabular-nums">{total}</span></p>
-				<p class="text-muted-foreground tabular-nums">{answeredInSet} answered · {progressValue}%</p>
+		<div class="space-y-2.5">
+			<div class="flex flex-wrap items-center justify-between gap-3 text-sm">
+				<p class="font-extrabold tracking-wide uppercase">Question <span class="tabular-nums text-[#1CB0F6]">{index + 1}</span> of <span class="tabular-nums">{total}</span></p>
+				<span class="inline-flex items-center rounded-full border-2 border-[#46A302]/30 bg-[#D7FFB8] px-3 py-0.5 text-xs font-extrabold text-[#46A302] tabular-nums dark:border-[#58CC02]/40 dark:bg-[#58CC02]/20 dark:text-[#7BE328]">
+					{answeredInSet} / {total} · {progressValue}%
+				</span>
 			</div>
-			<Progress value={progressValue} class="h-2" aria-label="Questions answered in this set" />
+			<Progress value={progressValue} class="h-4" aria-label="Questions answered in this set" />
 		</div>
 
 		<div bind:this={cardEl} class="scroll-mt-20">
 			{#key current.id}
-				<Card.Root>
-					<Card.Header class="gap-3">
+				<Card.Root class="py-0">
+					<Card.Header class="gap-3.5 p-6 pb-4 md:p-8 md:pb-5">
 						<div class="flex items-start justify-between gap-3">
-							<div class="flex flex-wrap items-center gap-1.5">
-								<Badge variant="outline" class="h-auto max-w-full py-0.5 whitespace-normal">{current.topic}</Badge>
+							<div class="flex flex-wrap items-center gap-2">
+								<Badge variant="secondary" class="h-auto max-w-full py-1 whitespace-normal uppercase">{current.topic}</Badge>
 								{#if current.tag}
-									<Badge variant="outline" class={cn('h-auto', TAGS[current.tag].cls)}>{TAGS[current.tag].label}</Badge>
+									<Badge variant="outline" class={cn('h-auto py-1 uppercase', TAGS[current.tag].cls)}>{TAGS[current.tag].label}</Badge>
 								{/if}
 							</div>
-							{#if examRunning}
+							<div class="flex shrink-0 items-center gap-1">
+								{#if examRunning}
+									<Button
+										variant={flagged[current.id] ? 'outline' : 'ghost'}
+										size="sm"
+										class={cn('-mt-1 shrink-0', flagged[current.id] && 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:bg-[#FF9600]/20 dark:text-[#FFAD33]')}
+										aria-pressed={!!flagged[current.id]}
+										onclick={() => current && (flagged[current.id] = !flagged[current.id])}
+									>
+										<Flag /> {flagged[current.id] ? 'Flagged' : 'Flag for review'}
+									</Button>
+								{/if}
 								<Button
-									variant={flagged[current.id] ? 'outline' : 'ghost'}
-									size="sm"
-									class={cn('-mt-1 shrink-0', flagged[current.id] && 'border-orange/60 text-orange')}
-									aria-pressed={!!flagged[current.id]}
-									onclick={() => current && (flagged[current.id] = !flagged[current.id])}
+									variant="ghost"
+									size="icon"
+									class={cn('-mt-1 -mr-2 shrink-0 rounded-xl', userStorage.isBookmarked(current.id) && 'bg-[#FFF5CC] text-[#E5A000] dark:bg-[#FFC800]/20 dark:text-[#FFC800]')}
+									aria-pressed={userStorage.isBookmarked(current.id)}
+									aria-label={userStorage.isBookmarked(current.id) ? 'Remove bookmark' : 'Bookmark this question'}
+									title="Bookmark"
+									onclick={() => userStorage.toggleBookmark(current.id)}
 								>
-									<Flag /> {flagged[current.id] ? 'Flagged' : 'Flag for review'}
+									{#if userStorage.isBookmarked(current.id)}<BookmarkCheck class="size-5" />{:else}<Bookmark class="size-5" />{/if}
 								</Button>
-							{/if}
-							<Button
-								variant="ghost"
-								size="icon"
-								class={cn('-mt-1 -mr-2 shrink-0', userStorage.isBookmarked(current.id) && 'text-yellow')}
-								aria-pressed={userStorage.isBookmarked(current.id)}
-								aria-label={userStorage.isBookmarked(current.id) ? 'Remove bookmark' : 'Bookmark this question'}
-								title="Bookmark"
-								onclick={() => userStorage.toggleBookmark(current.id)}
-							>
-								{#if userStorage.isBookmarked(current.id)}<BookmarkCheck />{:else}<Bookmark />{/if}
-							</Button>
+							</div>
 						</div>
-						<Card.Title class="font-serif text-[1.125rem] leading-relaxed font-medium sm:text-xl">{current.question}</Card.Title>
+						<Card.Title class="font-sans text-[1.15rem] leading-relaxed font-extrabold text-foreground sm:text-xl">{current.question}</Card.Title>
 					</Card.Header>
 
-					<Card.Content class="space-y-4">
-						<div role="group" aria-label="Answer choices" class="space-y-2.5">
+					<Card.Content class="space-y-4 px-6 pb-6 md:px-8">
+						<div role="group" aria-label="Answer choices" class="space-y-3">
 							{#each order as optIdx, pos (optIdx)}
 								{@const isSel = selected === optIdx}
 								{@const isRight = optIdx === current.correctIndex}
@@ -487,30 +500,37 @@
 									aria-disabled={revealed}
 									onclick={() => choose(optIdx)}
 									class={cn(
-										'group flex w-full items-start gap-3 rounded-xl border bg-background p-3.5 text-left text-[0.95rem] leading-relaxed transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:p-4',
-										!revealed && 'hover:border-primary/50 hover:bg-accent/60',
-										!revealed && isSel && 'border-primary bg-accent',
+										'group flex w-full items-start gap-3.5 rounded-2xl border-2 border-b-4 bg-white p-4 text-left text-[0.96rem] leading-relaxed font-bold transition-all duration-150 focus-visible:ring-2 focus-visible:ring-[#1CB0F6] focus-visible:outline-none dark:bg-[#1A2C34]',
+										!revealed && 'border-slate-200 hover:bg-slate-50 active:border-b-2 active:translate-y-0.5 dark:border-[#2B434E] dark:hover:bg-[#223842]',
+										!revealed && isSel && 'animate-duo-pop border-[#1CB0F6] bg-[#DDF4FF] text-[#1899D6] dark:border-[#1CB0F6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]',
 										revealed && 'cursor-default',
-										revealed && isRight && 'border-correct bg-correct/12',
-										revealed && isSel && !isRight && 'border-incorrect bg-incorrect/12',
-										revealed && !isRight && !isSel && 'opacity-70'
+										revealed && isRight && 'animate-duo-pop border-[#58CC02] bg-[#D7FFB8] text-[#46A302] dark:border-[#58CC02] dark:bg-[#58CC02]/20 dark:text-[#7BE328]',
+										revealed && isSel && !isRight && 'animate-duo-shake border-[#FF4B4B] bg-[#FFDFE0] text-[#EA2B2B] dark:border-[#FF4B4B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]',
+										revealed && !isRight && !isSel && 'border-slate-200 opacity-65 dark:border-[#2B434E]'
 									)}
 								>
 									<span
 										class={cn(
-											'mt-0.5 grid size-6 shrink-0 place-items-center rounded-full border text-xs font-semibold',
-											isSel && !revealed && 'border-primary bg-primary text-primary-foreground',
-											revealed && isRight && 'border-correct bg-correct text-background',
-											revealed && isSel && !isRight && 'border-incorrect bg-incorrect text-background'
+											'mt-0.5 grid size-8 shrink-0 place-items-center rounded-xl border-2 border-b-3 text-xs font-extrabold transition-colors',
+											!isSel && !revealed && 'border-slate-200 bg-slate-50 text-slate-500 group-hover:border-[#1CB0F6]/60 group-hover:text-[#1899D6] dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-300',
+											isSel && !revealed && 'border-[#1899D6] bg-[#1CB0F6] text-white',
+											revealed && isRight && 'border-[#46A302] bg-[#58CC02] text-white',
+											revealed && isSel && !isRight && 'border-[#EA2B2B] bg-[#FF4B4B] text-white',
+											revealed && !isRight && !isSel && 'border-slate-200 bg-slate-50 text-slate-400 dark:border-[#2B434E] dark:bg-[#131F24]'
 										)}
 										aria-hidden="true"
 									>
-										{#if revealed && isRight}<CircleCheck class="size-4" />{:else if revealed && isSel}<CircleX class="size-4" />{:else}{letter(pos)}{/if}
+										{#if revealed && isRight}<CircleCheck class="size-4" strokeWidth={3} />{:else if revealed && isSel}<CircleX class="size-4" strokeWidth={3} />{:else}{letter(pos)}{/if}
 									</span>
-									<span class="min-w-0 flex-1">
-										{current.options[optIdx]}
+									<span class="min-w-0 flex-1 pt-0.5">
+										<span class="block">{current.options[optIdx]}</span>
 										{#if revealed && isRight}<span class="sr-only"> — correct answer</span>{/if}
 										{#if revealed && isSel && !isRight}<span class="sr-only"> — your answer, incorrect</span>{/if}
+										{#if revealed && current.optionExplanations?.[optIdx]}
+											<span class={cn('mt-1.5 block text-xs leading-relaxed font-semibold', isRight ? 'text-[#46A302] dark:text-[#7BE328]' : isSel ? 'text-[#EA2B2B] dark:text-[#FF7878]' : 'text-muted-foreground')}>
+												{#if isRight}<span class="font-extrabold">✓ That's right! </span>{/if}{current.optionExplanations[optIdx]}
+											</span>
+										{/if}
 									</span>
 								</button>
 							{/each}
@@ -518,45 +538,61 @@
 
 						{#if mode === 'practice' && !revealed && current.hint}
 							<div>
-								<Button variant="ghost" size="sm" onclick={() => (hintOpen = !hintOpen)} aria-expanded={hintOpen}>
+								<Button variant="ghost" size="sm" onclick={() => (hintOpen = !hintOpen)} aria-expanded={hintOpen} class="font-extrabold text-[#C96B00] hover:bg-[#FFF4E5] dark:text-[#FFAD33] dark:hover:bg-[#FF9600]/15">
 									<Lightbulb /> {hintOpen ? 'Hide hint' : 'Show hint'}
 								</Button>
 								{#if hintOpen}
-									<p class="mt-2 rounded-lg border border-yellow/40 bg-yellow/10 px-3 py-2 text-sm">{current.hint}</p>
+									<p class="animate-duo-bounce-in mt-2 rounded-2xl border-2 border-[#E5B400] border-b-4 bg-[#FFF5CC] px-4 py-3 text-sm font-bold text-[#946200] dark:border-[#FFC800]/50 dark:bg-[#FFC800]/15 dark:text-[#FFD633]">{current.hint}</p>
 								{/if}
 							</div>
 						{/if}
 
 						{#if revealed}
-							<div class="space-y-3" role="status">
+							{@const isCorrectAnswer = selected === current.correctIndex}
+							<div
+								class={cn(
+									'animate-duo-bounce-in space-y-3 rounded-2xl border-2 border-b-4 p-4 sm:p-5',
+									selected !== undefined && isCorrectAnswer && 'border-[#58CC02] bg-[#D7FFB8]/60 dark:border-[#58CC02] dark:bg-[#58CC02]/15',
+									selected !== undefined && !isCorrectAnswer && 'border-[#FF4B4B] bg-[#FFDFE0]/70 dark:border-[#FF4B4B] dark:bg-[#FF4B4B]/15',
+									selected === undefined && 'border-slate-200 bg-slate-50 dark:border-[#2B434E] dark:bg-[#131F24]'
+								)}
+								role="status"
+							>
 								{#if selected !== undefined}
-									<p class={cn('flex items-center gap-2 text-sm font-semibold', selected === current.correctIndex ? 'text-correct' : 'text-incorrect')}>
-										{#if selected === current.correctIndex}
-											<CircleCheck class="size-4" /> Correct
+									<div class="flex flex-wrap items-center gap-2.5">
+										{#if isCorrectAnswer}
+											<span class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#46A302] bg-[#58CC02] px-3 py-1 text-xs font-extrabold tracking-wide text-white uppercase">
+												<CircleCheck class="size-4" strokeWidth={2.75} /> Awesome! Correct
+											</span>
 										{:else}
-											<CircleX class="size-4" /> Not quite — the correct answer is {letter(order.indexOf(current.correctIndex))}.
+											<span class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#EA2B2B] bg-[#FF4B4B] px-3 py-1 text-xs font-extrabold tracking-wide text-white uppercase">
+												<CircleX class="size-4" strokeWidth={2.75} /> Not quite
+											</span>
+											<span class="text-sm font-extrabold text-[#EA2B2B] dark:text-[#FF7878]">
+												The correct answer is {letter(order.indexOf(current.correctIndex))}.
+											</span>
 										{/if}
-									</p>
+									</div>
 								{:else}
-									<p class="flex items-center gap-2 text-sm font-semibold text-muted-foreground"><Eye class="size-4" /> Not answered — the correct answer is {letter(order.indexOf(current.correctIndex))}.</p>
+									<p class="flex items-center gap-2 text-sm font-extrabold text-muted-foreground"><Eye class="size-4" /> Not answered — the correct answer is {letter(order.indexOf(current.correctIndex))}.</p>
 								{/if}
-								<Accordion.Root type="single" value="explain" class="rounded-xl border bg-muted/40 px-4">
+								<Accordion.Root type="single" value="explain" class="rounded-2xl border-2 border-slate-200/80 bg-white/90 px-4 dark:border-[#2B434E] dark:bg-[#1A2C34]/90">
 									<Accordion.Item value="explain" class="border-b-0">
-										<Accordion.Trigger class="py-3 text-sm font-semibold">Codal basis &amp; explanation</Accordion.Trigger>
+										<Accordion.Trigger class="py-3 text-sm font-extrabold tracking-wide uppercase">Codal basis &amp; explanation</Accordion.Trigger>
 										<Accordion.Content>
-											<div class="space-y-3 text-sm leading-relaxed">
+											<div class="space-y-3 pb-3 text-sm leading-relaxed">
 												{#if current.legalBasis}
-													<div>
-														<p class="text-xs font-semibold tracking-wider text-muted-foreground uppercase">Legal basis</p>
-														<p class="mt-0.5 font-medium">{current.legalBasis}</p>
+													<div class="rounded-xl bg-slate-50 p-3 dark:bg-[#131F24]">
+														<p class="text-xs font-extrabold tracking-wider text-[#1899D6] uppercase dark:text-[#66D1FF]">Legal basis</p>
+														<p class="mt-1 font-bold text-foreground">{current.legalBasis}</p>
 													</div>
 												{/if}
 												<div>
-													<p class="text-xs font-semibold tracking-wider text-muted-foreground uppercase">Explanation</p>
-													<p class="mt-0.5">{current.explanation}</p>
+													<p class="text-xs font-extrabold tracking-wider text-muted-foreground uppercase">Explanation</p>
+													<p class="mt-1 font-semibold text-foreground">{current.explanation}</p>
 												</div>
 												{#if guidePart}
-													<a href={readHref(lawModule.id, guidePart.id)} class="inline-flex items-center gap-1.5 text-sm font-medium no-underline hover:underline">
+													<a href={readHref(lawModule.id, guidePart.id)} class="inline-flex items-center gap-1.5 text-sm font-extrabold text-[#1CB0F6] no-underline hover:underline">
 														<BookOpen class="size-4" /> Read {guidePart.label || guidePart.title} in the guide
 													</a>
 												{/if}
@@ -568,11 +604,11 @@
 						{/if}
 					</Card.Content>
 
-					<Card.Footer class="flex-wrap justify-between gap-2">
+					<Card.Footer class="flex-wrap justify-between gap-3 border-t-2 border-slate-100 bg-slate-50/70 px-6 py-4 md:px-8 dark:border-[#2B434E] dark:bg-[#15242B]">
 						<Button variant="outline" onclick={() => go(index - 1)} disabled={index === 0}><ChevronLeft /> Previous</Button>
-						<div class="flex gap-2">
+						<div class="flex gap-2.5">
 							{#if mode === 'practice' && revealed}
-								<Button variant="ghost" onclick={retry}><RotateCcw /> Try again</Button>
+								<Button variant="outline" onclick={retry}><RotateCcw /> Try again</Button>
 							{/if}
 							<Button onclick={() => go(index + 1)} disabled={index >= total - 1}>Next <ChevronRight /></Button>
 						</div>
@@ -583,21 +619,21 @@
 
 		</div>
 		<!-- Question map -->
-		<section aria-label="Question map" class="rounded-xl border bg-card p-3 sm:p-4 xl:sticky xl:top-[calc(var(--header-h)+1.5rem)]">
-			<div class="mb-3 flex flex-wrap items-center justify-between gap-2">
-				<h3 class="text-sm font-semibold">Jump to question</h3>
-				<ul class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
-					<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-correct bg-correct/30"></span> Correct</li>
-					<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-incorrect bg-incorrect/30"></span> Incorrect</li>
+		<section aria-label="Question map" class="rounded-3xl border-2 border-b-4 border-slate-200 bg-card p-4 sm:p-5 xl:sticky xl:top-[calc(var(--header-h)+1.5rem)] dark:border-[#2B434E]">
+			<div class="mb-3.5 flex flex-wrap items-center justify-between gap-2">
+				<h3 class="text-sm font-extrabold tracking-wide uppercase">Jump to question</h3>
+				<ul class="flex flex-wrap gap-x-3 gap-y-1.5 text-xs font-bold text-muted-foreground">
+					<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#46A302] bg-[#58CC02]"></span> Correct</li>
+					<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#EA2B2B] bg-[#FF4B4B]"></span> Incorrect</li>
 					{#if examRunning}
-						<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-primary bg-primary/20"></span> Answered</li>
-						<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-dashed border-input"></span> Unanswered</li>
-						<li class="flex items-center gap-1"><span class="size-2 rounded-full bg-orange"></span> Flagged</li>
+						<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#1899D6] bg-[#DDF4FF]"></span> Answered</li>
+						<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-dashed border-slate-300 dark:border-[#2B434E]"></span> Unanswered</li>
+						<li class="flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-[#FF9600]"></span> Flagged</li>
 					{/if}
-					<li class="flex items-center gap-1"><span class="size-1.5 rounded-full bg-yellow"></span> Bookmarked</li>
+					<li class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-[#FFC800]"></span> Bookmarked</li>
 				</ul>
 			</div>
-			<div class="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-1.5 xl:grid-cols-5">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-2 xl:grid-cols-5">
 				{#each sessionIds as id, i (id)}
 					{@const st = mapState(id)}
 					<button
@@ -606,23 +642,36 @@
 						aria-label="Question {i + 1}{st === 'correct' ? ', correct' : st === 'incorrect' ? ', incorrect' : st === 'answered' ? ', answered' : examRunning ? ', unanswered' : ''}{flagged[id] ? ', flagged' : ''}{userStorage.isBookmarked(id) ? ', bookmarked' : ''}"
 						aria-current={i === index ? 'true' : undefined}
 						class={cn(
-							'relative h-9 rounded-md border text-xs font-medium tabular-nums transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
-							st === 'correct' && 'border-correct bg-correct/20 text-foreground',
-							st === 'incorrect' && 'border-2 border-incorrect bg-incorrect/20 text-foreground',
-							st === 'none' && examRunning && 'border-dashed',
-							st === 'answered' && 'border-primary bg-primary/15',
-							i === index && 'ring-2 ring-ring ring-offset-1 ring-offset-background'
+							'relative h-10 rounded-xl border-2 border-b-4 text-xs font-extrabold tabular-nums transition-all duration-150 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#1CB0F6] focus-visible:outline-none active:border-b-2 active:translate-y-0.5',
+							i === index
+								? 'z-10 scale-105 border-[#1899D6] bg-[#1CB0F6] text-white shadow-sm'
+								: st === 'correct'
+									? 'border-[#46A302] bg-[#58CC02] text-white'
+									: st === 'incorrect'
+										? 'border-[#EA2B2B] bg-[#FF4B4B] text-white'
+										: st === 'answered'
+											? 'border-[#1CB0F6] bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
+											: cn('border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-300 dark:hover:bg-[#223842]', examRunning && 'border-dashed')
 						)}
 					>
 						{i + 1}
-						{#if userStorage.isBookmarked(id)}<span class="absolute top-0.5 right-0.5 size-1.5 rounded-full bg-yellow"></span>{/if}
-						{#if flagged[id]}<span class="absolute -top-1 -left-1 size-2.5 rounded-full border-2 border-card bg-orange" aria-hidden="true"></span>{/if}
+						{#if i === index && (st === 'correct' || st === 'incorrect')}
+							<span class={cn('absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rounded-full border border-white', st === 'correct' ? 'bg-[#58CC02]' : 'bg-[#FF4B4B]')} aria-hidden="true"></span>
+						{/if}
+						{#if userStorage.isBookmarked(id)}<span class="absolute top-0.5 right-0.5 size-2 rounded-full border border-white bg-[#FFC800]"></span>{/if}
+						{#if flagged[id]}<span class="absolute -top-1 -left-1 size-2.5 rounded-full border-2 border-card bg-[#FF9600]" aria-hidden="true"></span>{/if}
 					</button>
 				{/each}
 			</div>
-			<p class="mt-3 hidden text-xs text-muted-foreground sm:block">
-				Keyboard: <kbd class="rounded border bg-muted px-1">←</kbd> <kbd class="rounded border bg-muted px-1">→</kbd> to move, <kbd class="rounded border bg-muted px-1">A</kbd>–<kbd class="rounded border bg-muted px-1">D</kbd> or
-				<kbd class="rounded border bg-muted px-1">1</kbd>–<kbd class="rounded border bg-muted px-1">4</kbd> to answer.
+			<p class="mt-4 hidden text-xs font-bold text-muted-foreground sm:block">
+				Keyboard:
+				<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">←</kbd>
+				<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">→</kbd>
+				to move,
+				<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">A</kbd>–<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">D</kbd>
+				or
+				<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">1</kbd>–<kbd class="rounded-lg border-2 border-b-3 border-slate-200 bg-slate-50 px-1.5 py-0.5 font-extrabold text-slate-700 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-200">4</kbd>
+				to answer.
 			</p>
 		</section>
 		</div>

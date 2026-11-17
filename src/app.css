@@ -1,10 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '@fontsource-variable/nunito';
 @import '@fontsource-variable/inter';
-@import '@fontsource-variable/source-serif-4';
-@import '@fontsource/cinzel/500.css';
-@import '@fontsource/cinzel/600.css';
-@import '@fontsource/cinzel/700.css';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
@@ -52,103 +49,141 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Design tokens — a warm "paper & ink" palette tuned for long reading
- * sessions. shadcn-svelte tokens first, then the legal-study semantics
- * (the color legend used by the study guides and the ALAC method).
+ * Design tokens — Playful & Tactile Duolingo-inspired gamified law
+ * palette. High-contrast vibrant accents on crisp Cloud White (light)
+ * and deep Navy-Slate (dark), paired with bubbly Nunito typography.
  * ------------------------------------------------------------------ */
 :root {
-	--radius: 0.625rem;
+	--radius: 1rem;
 
-	--background: #efebdf;
-	--foreground: #20241f;
-	--card: #f9f6ee;
-	--card-foreground: #20241f;
-	--popover: #fbf9f3;
-	--popover-foreground: #20241f;
-	--primary: #23282a;
-	--primary-foreground: #f4f0e4;
-	--secondary: #e5dfce;
-	--secondary-foreground: #2a302c;
-	--muted: #e7e1d1;
-	--muted-foreground: #565d53;
-	--accent: #e3dcc8;
-	--accent-foreground: #20241f;
-	--destructive: #a23f31;
-	--border: #cfc6ae;
-	--input: #c4baa0;
-	--ring: #8a6d14;
+	--background: #f7f9fc;
+	--foreground: #1e293b;
+	--card: #ffffff;
+	--card-foreground: #1e293b;
+	--popover: #ffffff;
+	--popover-foreground: #1e293b;
+	--primary: #58cc02;
+	--primary-foreground: #ffffff;
+	--secondary: #ebf2f7;
+	--secondary-foreground: #334155;
+	--muted: #eef2f6;
+	--muted-foreground: #64748b;
+	--accent: #ddf4ff;
+	--accent-foreground: #1899d6;
+	--destructive: #ff4b4b;
+	--border: #e5e7eb;
+	--input: #cbd5e1;
+	--ring: #1cb0f6;
 
-	--yellow: #8a6d14;
-	--green: #2f6b4b;
-	--blue: #2b5c84;
-	--purple: #5e4391;
-	--red: #9a3e30;
-	--orange: #a9531f;
-	--correct: #2f6b4b;
-	--incorrect: #9a3e30;
+	--yellow: #e5a000;
+	--green: #58cc02;
+	--blue: #1cb0f6;
+	--purple: #a55eea;
+	--red: #ff4b4b;
+	--orange: #ff9600;
+	--correct: #58cc02;
+	--incorrect: #ff4b4b;
+
+	/* Duolingo tactile palette tokens */
+	--duo-green: #58cc02;
+	--duo-green-dark: #46a302;
+	--duo-green-bg: #d7ffb8;
+	--duo-green-text: #46a302;
+	--duo-blue: #1cb0f6;
+	--duo-blue-dark: #1899d6;
+	--duo-blue-bg: #ddf4ff;
+	--duo-blue-text: #1899d6;
+	--duo-gold: #ffc800;
+	--duo-gold-dark: #e5b400;
+	--duo-gold-bg: #fff5cc;
+	--duo-gold-text: #946200;
+	--duo-red: #ff4b4b;
+	--duo-red-dark: #ea2b2b;
+	--duo-red-bg: #ffdfe0;
+	--duo-red-text: #ea2b2b;
+	--duo-purple: #ce82ff;
+	--duo-purple-dark: #a55eea;
+	--duo-purple-bg: #f3e8ff;
+	--duo-purple-text: #8930c9;
+	--duo-orange: #ff9600;
+	--duo-orange-dark: #e07d00;
+	--duo-orange-bg: #fff4e5;
+	--duo-orange-text: #c96b00;
 
 	/* Layout */
-	--header-h: 3.5rem;
-	--nav-w: 18rem;
-	--rail-w: 14.5rem;
+	--header-h: 4rem;
+	--nav-w: 18.5rem;
+	--rail-w: 15rem;
 	--measure: 45rem;
 	--leading: 1.7;
 
 	/* Reader highlights: marker hues, laid over text at --hl-alpha. */
-	--hl-yellow: #f7d23e;
-	--hl-green: #7fd18b;
-	--hl-blue: #7fb8f0;
-	--hl-pink: #f59ac0;
-	--hl-purple: #b9a0ef;
-	--hl-alpha: 50%;
+	--hl-yellow: #ffc800;
+	--hl-green: #58cc02;
+	--hl-blue: #1cb0f6;
+	--hl-pink: #ff6b9d;
+	--hl-purple: #ce82ff;
+	--hl-alpha: 35%;
 }
 
 .dark {
-	--background: #121518;
-	--foreground: #ece8dc;
-	--card: #1a1e22;
-	--card-foreground: #ece8dc;
-	--popover: #1e2328;
-	--popover-foreground: #ece8dc;
-	--primary: #e8e2d0;
-	--primary-foreground: #14181a;
-	--secondary: #252b30;
-	--secondary-foreground: #ece8dc;
-	--muted: #22282d;
-	--muted-foreground: #a5aba0;
-	--accent: #2a3137;
-	--accent-foreground: #ece8dc;
-	--destructive: #e48b79;
-	--border: #323a40;
-	--input: #3d474e;
-	--ring: #c9a94a;
+	--background: #131f24;
+	--foreground: #f1f5f9;
+	--card: #1a2c34;
+	--card-foreground: #f1f5f9;
+	--popover: #1f333d;
+	--popover-foreground: #f1f5f9;
+	--primary: #58cc02;
+	--primary-foreground: #ffffff;
+	--secondary: #223842;
+	--secondary-foreground: #e2e8f0;
+	--muted: #20343d;
+	--muted-foreground: #94a3b8;
+	--accent: #1b3b4b;
+	--accent-foreground: #66d1ff;
+	--destructive: #ff4b4b;
+	--border: #2b434e;
+	--input: #36525f;
+	--ring: #1cb0f6;
 
-	--yellow: #d9b84e;
-	--green: #72c298;
-	--blue: #84b6e0;
-	--purple: #b39cdf;
-	--red: #e58c7b;
-	--orange: #ea9a60;
-	--correct: #72c298;
-	--incorrect: #e58c7b;
+	--yellow: #ffc800;
+	--green: #58cc02;
+	--blue: #1cb0f6;
+	--purple: #ce82ff;
+	--red: #ff4b4b;
+	--orange: #ff9600;
+	--correct: #58cc02;
+	--incorrect: #ff4b4b;
 
-	--hl-yellow: #e3c04a;
-	--hl-green: #6cc488;
-	--hl-blue: #6fa8e6;
-	--hl-pink: #e889b3;
-	--hl-purple: #a98fe6;
-	--hl-alpha: 32%;
+	--duo-green-bg: rgba(88, 204, 2, 0.18);
+	--duo-green-text: #7be328;
+	--duo-blue-bg: rgba(28, 176, 246, 0.18);
+	--duo-blue-text: #66d1ff;
+	--duo-gold-bg: rgba(255, 200, 0, 0.18);
+	--duo-gold-text: #ffd633;
+	--duo-red-bg: rgba(255, 75, 75, 0.18);
+	--duo-red-text: #ff7c7c;
+	--duo-purple-bg: rgba(206, 130, 255, 0.18);
+	--duo-purple-text: #dda6ff;
+	--duo-orange-bg: rgba(255, 150, 0, 0.18);
+	--duo-orange-text: #ffad33;
+
+	--hl-yellow: #ffc800;
+	--hl-green: #58cc02;
+	--hl-blue: #1cb0f6;
+	--hl-pink: #ff6b9d;
+	--hl-purple: #ce82ff;
+	--hl-alpha: 28%;
 }
 
 @theme inline {
-	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
-	/* Cinzel is the brand face only (wordmark, a subject's title on its overview). Headings use the serif. */
-	--font-display: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
-	--font-brand: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
+	--font-sans: 'Nunito Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Nunito Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Nunito Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-brand: 'Nunito Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 6px);
+	--radius-md: calc(var(--radius) - 4px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
 
@@ -187,6 +222,68 @@
 	--color-alac-c: var(--orange);
 }
 
+@keyframes duo-pop {
+	0% {
+		transform: scale(1);
+	}
+	45% {
+		transform: scale(1.03);
+	}
+	75% {
+		transform: scale(0.99);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes duo-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-4px);
+	}
+	50% {
+		transform: translateX(4px);
+	}
+	75% {
+		transform: translateX(-2px);
+	}
+}
+
+@keyframes duo-bounce-in {
+	0% {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+	65% {
+		opacity: 1;
+		transform: translateY(-2px) scale(1.005);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes duo-wiggle {
+	0%,
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+	25% {
+		transform: rotate(-8deg) scale(1.07);
+	}
+	60% {
+		transform: rotate(7deg) scale(1.07);
+	}
+	85% {
+		transform: rotate(-3deg) scale(1.02);
+	}
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
@@ -196,7 +293,7 @@
 		-webkit-text-size-adjust: 100%;
 	}
 	body {
-		@apply bg-background font-sans text-foreground antialiased;
+		@apply bg-background font-sans font-semibold text-foreground antialiased;
 	}
 	:focus-visible {
 		outline: 2px solid var(--ring);
@@ -220,22 +317,40 @@
 	}
 }
 
-/* Headings: the reading serif. */
+@utility animate-duo-pop {
+	animation: duo-pop 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@utility animate-duo-shake {
+	animation: duo-shake 300ms ease-in-out;
+}
+
+@utility animate-duo-bounce-in {
+	animation: duo-bounce-in 340ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@utility animate-duo-wiggle {
+	animation: duo-wiggle 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Headings: bubbly rounded Nunito. */
 @utility font-heading {
-	font-family: var(--font-serif);
-	letter-spacing: 0;
+	font-family: var(--font-sans);
+	font-weight: 800;
+	letter-spacing: -0.01em;
 }
 /* The wordmark and a subject's title on its overview. */
 @utility font-brand {
 	font-family: var(--font-brand);
-	letter-spacing: 0.02em;
+	font-weight: 800;
+	letter-spacing: 0.01em;
 }
 /* Small uppercase label used for eyebrows and section labels across the app. */
 @utility label-caps {
 	font-family: var(--font-sans);
 	font-size: 0.75rem;
-	font-weight: 600;
-	letter-spacing: 0.1em;
+	font-weight: 800;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--muted-foreground);
 }
@@ -250,8 +365,9 @@
 	/* A size container, so narrow-column rules follow the column's width in rem — which shrinks as the text size grows. */
 	container: study-guide / inline-size;
 	overflow-wrap: break-word;
-	font-family: var(--font-serif);
-	font-size: 1.125rem;
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 1.0625rem;
 	line-height: var(--leading);
 	--tw-prose-body: var(--foreground);
 	--tw-prose-headings: var(--foreground);
@@ -267,13 +383,13 @@
 	--tw-prose-invert-th-borders: var(--border);
 }
 .study-guide .sg-h2 {
-	font-family: var(--font-serif);
-	font-weight: 600;
+	font-family: var(--font-sans);
+	font-weight: 800;
 	font-size: 1.5rem;
 	line-height: 1.25;
 	margin: 2.75rem 0 0.35rem;
-	padding-bottom: 0.4rem;
-	border-bottom: 1px solid var(--border);
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid var(--border);
 	scroll-margin-top: 7rem;
 }
 /* The reader shows the part title as the page title, so the guide's own h2 stays for anchors and print only. */
@@ -289,9 +405,9 @@
 	border: 0;
 }
 .study-guide .sg-h3 {
-	font-family: var(--font-serif);
-	font-weight: 600;
-	font-size: 1.375rem;
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 1.3125rem;
 	line-height: 1.3;
 	margin: 0 0 0.6rem;
 	scroll-margin-top: 7rem;
@@ -362,15 +478,16 @@
 	background: color-mix(in oklab, var(--orange) 12%, transparent);
 }
 .study-guide .case-card {
-	border: 1px solid color-mix(in oklab, var(--red) 28%, transparent);
-	padding: 0.7rem 1rem;
-	margin: 0 0 0.75rem;
-	background: color-mix(in oklab, var(--red) 7%, transparent);
-	border-radius: var(--radius-lg);
+	border: 2px solid color-mix(in oklab, var(--red) 35%, transparent);
+	border-bottom-width: 4px;
+	padding: 0.85rem 1.1rem;
+	margin: 0 0 0.85rem;
+	background: color-mix(in oklab, var(--red) 8%, var(--card));
+	border-radius: 1rem;
 }
 .study-guide .case-card .cname {
 	font-family: var(--font-sans);
-	font-weight: 650;
+	font-weight: 800;
 	font-size: 0.95rem;
 }
 .study-guide .case-card .cdoc {
@@ -380,36 +497,38 @@
 	color: var(--muted-foreground);
 }
 .study-guide .exoex-box {
-	border: 1px solid color-mix(in oklab, var(--orange) 30%, transparent);
-	background: color-mix(in oklab, var(--orange) 10%, transparent);
-	padding: 0.85rem 1.1rem;
-	margin: 0.8rem 0 1.2rem;
+	border: 2px solid color-mix(in oklab, var(--orange) 45%, transparent);
+	border-bottom-width: 4px;
+	background: var(--duo-orange-bg);
+	padding: 0.9rem 1.15rem;
+	margin: 0.85rem 0 1.25rem;
 	font-family: var(--font-sans);
 	font-size: 0.9375rem;
 	line-height: 1.6;
-	border-radius: var(--radius-lg);
+	border-radius: 1rem;
 }
 .study-guide .exoex-label {
 	display: block;
-	font-weight: 700;
-	font-size: 0.7rem;
+	font-weight: 800;
+	font-size: 0.72rem;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	letter-spacing: 0.08em;
 	margin-bottom: 0.3rem;
-	color: var(--orange);
+	color: var(--duo-orange-text);
 }
 .study-guide .sg-example {
-	border: 1px solid color-mix(in oklab, var(--blue) 28%, transparent);
-	background: color-mix(in oklab, var(--blue) 8%, transparent);
-	padding: 0.85rem 1.1rem;
-	margin: 0.8rem 0 1.2rem;
+	border: 2px solid color-mix(in oklab, var(--blue) 40%, transparent);
+	border-bottom-width: 4px;
+	background: var(--duo-blue-bg);
+	padding: 0.9rem 1.15rem;
+	margin: 0.85rem 0 1.25rem;
 	font-family: var(--font-sans);
 	font-size: 0.9375rem;
 	line-height: 1.6;
-	border-radius: var(--radius-lg);
+	border-radius: 1rem;
 }
 .study-guide .sg-example .exoex-label {
-	color: var(--blue);
+	color: var(--duo-blue-text);
 }
 .study-guide .cmp-table {
 	table-layout: auto;
@@ -452,11 +571,12 @@
 .study-guide .rv-card,
 .study-guide .rv-q,
 .study-guide .rv-ans {
-	border: 1px solid var(--border);
+	border: 2px solid var(--border);
+	border-bottom-width: 4px;
 	background: var(--card);
-	border-radius: var(--radius-lg);
-	padding: 0.85rem 1.05rem;
-	margin: 0.8rem 0 1rem;
+	border-radius: 1rem;
+	padding: 0.95rem 1.15rem;
+	margin: 0.85rem 0 1.05rem;
 }
 .study-guide .rv-card > :first-child,
 .study-guide .rv-q > :first-child,
@@ -508,13 +628,14 @@
 	margin: 0.2rem 0 0.5rem;
 }
 .study-guide .rv-box {
-	border: 1px solid color-mix(in oklab, var(--c) 28%, transparent);
-	background: color-mix(in oklab, var(--c) 9%, transparent);
-	padding: 0.8rem 1.05rem;
-	margin: 0.7rem 0 0.9rem;
-	border-radius: var(--radius-lg);
-	font-family: var(--font-serif);
-	font-size: 1.0625rem;
+	border: 2px solid color-mix(in oklab, var(--c) 35%, transparent);
+	border-bottom-width: 4px;
+	background: color-mix(in oklab, var(--c) 10%, var(--card));
+	padding: 0.85rem 1.1rem;
+	margin: 0.75rem 0 0.95rem;
+	border-radius: 1rem;
+	font-family: var(--font-sans);
+	font-size: 1.025rem;
 	line-height: 1.65;
 }
 .study-guide .rv-box p,
@@ -681,10 +802,11 @@
 }
 .study-guide details.rv-flip,
 .study-guide details.rv-reveal {
-	border: 1px solid var(--border);
-	border-radius: var(--radius-lg);
+	border: 2px solid var(--border);
+	border-bottom-width: 4px;
+	border-radius: 1rem;
 	background: var(--card);
-	padding: 0.6rem 0.85rem;
+	padding: 0.7rem 0.95rem;
 	font-family: var(--font-sans);
 	font-size: 0.9rem;
 	line-height: 1.55;

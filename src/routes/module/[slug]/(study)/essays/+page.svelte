@@ -31,12 +31,12 @@
 	{#if !subject.essays.length}
 		<EmptyState icon={PenLine} title="No ALAC essays in {subject.title} yet" />
 	{:else}
-		<details class="group rounded-xl border bg-card">
-			<summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium">
+		<details class="group rounded-2xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-extrabold">
 				The ALAC method: Answer, Legal basis, Application, Conclusion
-				<span class="text-xs text-muted-foreground group-open:hidden">Show</span><span class="hidden text-xs text-muted-foreground group-open:inline">Hide</span>
+				<span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-extrabold text-muted-foreground uppercase group-open:hidden dark:bg-[#223842]">Show</span><span class="hidden rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-extrabold text-muted-foreground uppercase group-open:inline dark:bg-[#223842]">Hide</span>
 			</summary>
-			<div class="border-t p-4"><AlacBanner bare /></div>
+			<div class="border-t-2 border-slate-100 p-4 dark:border-[#2B434E]"><AlacBanner bare /></div>
 		</details>
 		{#key essayId}
 			<AlacEssayEditor lawModule={subject} selectedId={essayId} filter={status} {onselect} />

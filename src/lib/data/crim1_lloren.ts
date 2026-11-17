@@ -1124,10 +1124,16 @@ export const crim1Lloren: LawModule = {
 			tag: 'effects',
 			question: 'Is a 16-year-old criminally liable for committing serious physical injuries?',
 			options: [
-				'Liable with conditions — only if acting with discernment, with privileged mitigation, diversion, and suspended sentence',
+				'Liable with conditions',
 				'Completely exempt from criminal liability regardless of discernment',
 				'Criminally liable as an adult with full penalty because serious physical injuries is a less grave felony',
 				'Liable only for civil damages and community service without criminal responsibility even with discernment'
+			],
+			optionExplanations: [
+				'Only if acting with discernment, with privileged mitigation, diversion, and suspended sentence.',
+				'',
+				'',
+				''
 			],
 			correctIndex: 0,
 			explanation:
@@ -1318,7 +1324,13 @@ export const crim1Lloren: LawModule = {
 				'Ordinary mitigating circumstance',
 				'Privileged mitigating circumstance',
 				'Alternative circumstance',
-				'None of the choices — completely EXEMPT from criminal liability'
+				'None of the choices'
+			],
+			optionExplanations: [
+				'',
+				'',
+				'',
+				'Completely EXEMPT from criminal liability.'
 			],
 			correctIndex: 3,
 			explanation:
@@ -1357,10 +1369,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'AA shot BB with the use of an unlicensed firearm. How is the use of the unlicensed firearm appreciated, and what period of the penalty is imposed?',
 			options: [
-				'Special aggravating circumstance — always imposed in the MAXIMUM period (cannot be offset by ordinary mitigating)',
-				'Qualifying circumstance — elevates homicide to murder automatically',
+				'Special aggravating circumstance',
+				'Qualifying circumstance',
 				'Separate offense of illegal possession of firearms prosecuted independently',
-				'Generic aggravating circumstance — can be offset by voluntary surrender'
+				'Generic aggravating circumstance'
+			],
+			optionExplanations: [
+				'Always imposed in the MAXIMUM period (cannot be offset by ordinary mitigating).',
+				'Elevates homicide to murder automatically.',
+				'',
+				'Can be offset by voluntary surrender.'
 			],
 			correctIndex: 0,
 			explanation:
@@ -1513,10 +1531,16 @@ export const crim1Lloren: LawModule = {
 			question:
 				'RRR was convicted of 11 counts of unjust vexation, and the sentence imposed upon him is 11 days of arresto menor per count. How many days of imprisonment shall be imposed, and why?',
 			options: [
-				'33 days — under the three-fold rule (Art. 70), the maximum duration of the sentence shall not exceed three times the most severe penalty imposed (3 × 11 days)',
-				'121 days — the offender must serve all 11 counts in full (11 × 11 days) without limitation',
-				'30 days — arresto menor cannot exceed 30 days even for multiple convictions',
-				'40 years — the absolute maximum limit under Art. 70 applies instead of the three-fold rule'
+				'33 days',
+				'121 days',
+				'30 days',
+				'40 years'
+			],
+			optionExplanations: [
+				'Under the three-fold rule (Art. 70), the maximum duration of the sentence shall not exceed three times the most severe penalty imposed (3 × 11 days).',
+				'The offender must serve all 11 counts in full (11 × 11 days) without limitation.',
+				'Arresto menor cannot exceed 30 days even for multiple convictions.',
+				'The absolute maximum limit under Art. 70 applies instead of the three-fold rule.'
 			],
 			correctIndex: 0,
 			explanation:

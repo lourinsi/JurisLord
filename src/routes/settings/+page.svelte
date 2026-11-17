@@ -87,18 +87,18 @@
 	</nav>
 
 	<div class="flex min-w-0 flex-[999_1_32rem] flex-col gap-5">
-		<h1 class="font-heading pb-1 text-[2rem] font-semibold">Settings</h1>
+		<h1 class="font-heading pb-1 text-3xl font-extrabold">Settings</h1>
 
-		<section id="appearance" aria-labelledby="h-appearance" class="scroll-mt-20 overflow-hidden rounded-xl border bg-card">
-			<h2 id="h-appearance" class="border-b px-5 py-4 text-[1.0625rem] font-semibold">Appearance</h2>
+		<section id="appearance" aria-labelledby="h-appearance" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-appearance" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Appearance</h2>
 			<div class={row}>
-				<div class={what}><span class="text-[0.9375rem] font-medium">Theme</span><span class="text-[0.8125rem] text-muted-foreground">System follows your device's setting.</span></div>
+				<div class={what}><span class="text-[0.9375rem] font-extrabold">Theme</span><span class="text-[0.8125rem] font-semibold text-muted-foreground">System follows your device's setting.</span></div>
 				<Segmented label="Theme" value={theme.mode} onchange={(v: ThemeMode) => theme.set(v)} options={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'system', label: 'System' }]} />
 			</div>
 		</section>
 
-		<section id="reading" aria-labelledby="h-reading" class="scroll-mt-20 overflow-hidden rounded-xl border bg-card">
-			<h2 id="h-reading" class="border-b px-5 py-4 text-[1.0625rem] font-semibold">Reading</h2>
+		<section id="reading" aria-labelledby="h-reading" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-reading" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Reading</h2>
 			<div class={row}>
 				<div class={what}><span class="text-[0.9375rem] font-medium">Text size</span><span class="text-[0.8125rem] text-muted-foreground">Scales every page; the layout adapts.</span></div>
 				<TextSizeControl />
@@ -121,43 +121,43 @@
 			</div>
 		</section>
 
-		<section id="labels" aria-labelledby="h-labels" class="scroll-mt-20 overflow-hidden rounded-xl border bg-card">
-			<h2 id="h-labels" class="border-b px-5 py-4 text-[1.0625rem] font-semibold">Highlight labels</h2>
+		<section id="labels" aria-labelledby="h-labels" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-labels" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Highlight labels</h2>
 			<div class="flex flex-col gap-3 px-5 py-4">
-				<p class="text-[0.8125rem] text-muted-foreground">Name what each color means to you. Labels apply in every subject and stay when you reset progress.</p>
+				<p class="text-[0.8125rem] font-semibold text-muted-foreground">Name what each color means to you. Labels apply in every subject and stay when you reset progress.</p>
 				<div class="grid gap-3 sm:grid-cols-2">
 					{#each HIGHLIGHT_COLORS as color (color)}
 						<label class="flex items-center gap-3">
-							<span class="size-6 shrink-0 rounded-md ring-1 ring-foreground/15" style="background:var(--hl-{color})" aria-hidden="true"></span>
+							<span class="size-6 shrink-0 rounded-lg ring-2 ring-foreground/15" style="background:var(--hl-{color})" aria-hidden="true"></span>
 							<span class="sr-only">Label for {COLOR_NAMES[color].toLowerCase()}</span>
-							<Input value={userStorage.highlightLabels[color]} oninput={(e) => userStorage.setHighlightLabel(color, e.currentTarget.value)} placeholder={COLOR_NAMES[color]} maxlength={24} />
+							<Input value={userStorage.highlightLabels[color]} oninput={(e) => userStorage.setHighlightLabel(color, e.currentTarget.value)} placeholder={COLOR_NAMES[color]} maxlength={24} class="rounded-xl border-2 font-bold" />
 						</label>
 					{/each}
 				</div>
 			</div>
 		</section>
 
-		<section id="search" aria-labelledby="h-search" class="scroll-mt-20 overflow-hidden rounded-xl border bg-card">
-			<h2 id="h-search" class="border-b px-5 py-4 text-[1.0625rem] font-semibold">Search</h2>
+		<section id="search" aria-labelledby="h-search" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-search" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Search</h2>
 			<div class={row}>
-				<label for="recent" class={what}><span class="text-[0.9375rem] font-medium">Keep recent searches</span><span class="text-[0.8125rem] text-muted-foreground">Shown when you open search with Ctrl K, ⌘K or /.</span></label>
+				<label for="recent" class={what}><span class="text-[0.9375rem] font-extrabold">Keep recent searches</span><span class="text-[0.8125rem] font-semibold text-muted-foreground">Shown when you open search with Ctrl K, ⌘K or /.</span></label>
 				<Switch id="recent" checked={prefs.value.keepRecentSearches} onCheckedChange={(v) => prefs.set('keepRecentSearches', v)} />
 			</div>
 			<div class={row}>
-				<div class={what}><span class="text-[0.9375rem] font-medium">Clear recent searches</span><span class="text-[0.8125rem] text-muted-foreground">{userStorage.reading.recentSearches.length} saved</span></div>
+				<div class={what}><span class="text-[0.9375rem] font-extrabold">Clear recent searches</span><span class="text-[0.8125rem] font-semibold text-muted-foreground">{userStorage.reading.recentSearches.length} saved</span></div>
 				<Button variant="outline" disabled={!userStorage.reading.recentSearches.length} onclick={() => (userStorage.clearRecentSearches(), ui.toast('Recent searches cleared'))}>Clear</Button>
 			</div>
 		</section>
 
-		<section id="data" aria-labelledby="h-data" class="scroll-mt-20 overflow-hidden rounded-xl border bg-card">
-			<h2 id="h-data" class="border-b px-5 py-4 text-[1.0625rem] font-semibold">Your data</h2>
+		<section id="data" aria-labelledby="h-data" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-data" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Your data</h2>
 			<div class="flex flex-col gap-3 px-5 py-4">
-				<p class="text-[0.8125rem] leading-relaxed text-muted-foreground">Everything is stored only in this browser: there's no account or server. Download a backup before clearing site data or switching devices.</p>
-				<dl class="grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
-					<div class="rounded-lg border bg-popover p-3"><dt class="text-xs text-muted-foreground">MCQs answered</dt><dd class="m-0 text-lg font-semibold tabular-nums">{stats.attempted}<span class="text-sm font-normal text-muted-foreground"> / {totals.mcqs}</span></dd></div>
-					<div class="rounded-lg border bg-popover p-3"><dt class="text-xs text-muted-foreground">Essays drafted</dt><dd class="m-0 text-lg font-semibold tabular-nums">{stats.essaysStarted}<span class="text-sm font-normal text-muted-foreground"> / {totals.essays}</span></dd></div>
-					<div class="rounded-lg border bg-popover p-3"><dt class="text-xs text-muted-foreground">Highlights</dt><dd class="m-0 text-lg font-semibold tabular-nums">{Object.keys(userStorage.highlights).length}</dd></div>
-					<div class="rounded-lg border bg-popover p-3"><dt class="text-xs text-muted-foreground">Notes</dt><dd class="m-0 text-lg font-semibold tabular-nums">{userStorage.reading.notes.length}</dd></div>
+				<p class="text-[0.8125rem] leading-relaxed font-semibold text-muted-foreground">Everything is stored only in this browser: there's no account or server. Download a backup before clearing site data or switching devices.</p>
+				<dl class="grid grid-cols-2 gap-2.5 text-sm sm:grid-cols-4">
+					<div class="rounded-2xl border-2 border-b-4 border-slate-200 bg-slate-50 p-3 dark:border-[#2B434E] dark:bg-[#131F24]"><dt class="text-xs font-extrabold text-muted-foreground uppercase">MCQs answered</dt><dd class="m-0 text-lg font-extrabold text-[#1CB0F6] tabular-nums">{stats.attempted}<span class="text-sm font-bold text-muted-foreground"> / {totals.mcqs}</span></dd></div>
+					<div class="rounded-2xl border-2 border-b-4 border-slate-200 bg-slate-50 p-3 dark:border-[#2B434E] dark:bg-[#131F24]"><dt class="text-xs font-extrabold text-muted-foreground uppercase">Essays drafted</dt><dd class="m-0 text-lg font-extrabold text-[#CE82FF] tabular-nums">{stats.essaysStarted}<span class="text-sm font-bold text-muted-foreground"> / {totals.essays}</span></dd></div>
+					<div class="rounded-2xl border-2 border-b-4 border-slate-200 bg-slate-50 p-3 dark:border-[#2B434E] dark:bg-[#131F24]"><dt class="text-xs font-extrabold text-muted-foreground uppercase">Highlights</dt><dd class="m-0 text-lg font-extrabold text-[#FFC800] tabular-nums">{Object.keys(userStorage.highlights).length}</dd></div>
+					<div class="rounded-2xl border-2 border-b-4 border-slate-200 bg-slate-50 p-3 dark:border-[#2B434E] dark:bg-[#131F24]"><dt class="text-xs font-extrabold text-muted-foreground uppercase">Notes</dt><dd class="m-0 text-lg font-extrabold text-[#58CC02] tabular-nums">{userStorage.reading.notes.length}</dd></div>
 				</dl>
 			</div>
 			{#if userStorage.persistError}

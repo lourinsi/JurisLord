@@ -110,11 +110,11 @@
 
 <div class="search-results mx-auto flex max-w-[75rem] flex-col gap-6 px-4 pt-8 pb-16 sm:px-8">
 	<h1 class="sr-only">Search</h1>
-	<form role="search" onsubmit={submit} class="flex h-14 items-center gap-3 rounded-xl border-[1.5px] border-muted-foreground/60 bg-popover px-4 focus-within:border-ring">
-		<Search class="size-5 shrink-0 text-muted-foreground" />
-		<input bind:value={input} type="search" aria-label="Search all subjects" placeholder="Search rules, doctrines, cases, questions" class="min-w-0 flex-1 bg-transparent text-lg font-medium text-foreground outline-none placeholder:font-normal placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden" />
-		{#if input}<button type="button" onclick={() => ((input = ''), setParams({ q: null }))} aria-label="Clear search" class="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted"><X class="size-4" /></button>{/if}
-		<button type="submit" class="h-10 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground">Search</button>
+	<form role="search" onsubmit={submit} class="flex h-14 items-center gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-4 focus-within:border-[#1CB0F6] dark:border-[#2B434E]">
+		<Search class="size-5 shrink-0 text-[#1CB0F6]" strokeWidth={2.5} />
+		<input bind:value={input} type="search" aria-label="Search all subjects" placeholder="Search rules, doctrines, cases, questions" class="min-w-0 flex-1 bg-transparent text-lg font-bold text-foreground outline-none placeholder:font-semibold placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden" />
+		{#if input}<button type="button" onclick={() => ((input = ''), setParams({ q: null }))} aria-label="Clear search" class="grid size-9 place-items-center rounded-xl text-muted-foreground hover:bg-muted"><X class="size-4" /></button>{/if}
+		<button type="submit" class="h-10 rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-4 text-xs font-extrabold tracking-wide text-white uppercase hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5">Search</button>
 	</form>
 
 	{#if q.trim().length >= 2}

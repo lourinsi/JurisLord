@@ -41,10 +41,12 @@
 		<div class="flex flex-wrap items-end justify-between gap-3">
 			<div class="flex flex-col gap-1.5">
 				<p class="label-caps">{topic?.eyebrow ?? 'All topics'}</p>
-				<h1 class="font-heading text-[1.875rem] leading-tight font-semibold">{topic?.name ?? 'MCQ practice'}</h1>
-				{#if topic?.desc}<p class="max-w-2xl text-[0.9375rem] text-muted-foreground">{topic.desc}</p>{/if}
+				<h1 class="font-heading text-3xl leading-tight font-extrabold">{topic?.name ?? 'MCQ practice'}</h1>
+				{#if topic?.desc}<p class="max-w-2xl text-[0.9375rem] font-semibold text-muted-foreground">{topic.desc}</p>{/if}
 			</div>
-			<p class="text-sm text-muted-foreground tabular-nums">{stats.attempted} of {subject.mcqs.length} answered in {subject.title}{stats.attempted ? ` · ${stats.accuracy}% correct` : ''}</p>
+			<p class="inline-flex items-center rounded-full border-2 border-[#1899D6]/30 bg-[#DDF4FF] px-3.5 py-1 text-xs font-extrabold text-[#1899D6] tabular-nums dark:border-[#1CB0F6]/40 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]">
+				{stats.attempted} / {subject.mcqs.length} answered{stats.attempted ? ` · ${stats.accuracy}% correct` : ''}
+			</p>
 		</div>
 	</header>
 

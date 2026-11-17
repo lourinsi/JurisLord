@@ -9,8 +9,8 @@
 <div
 	role="img"
 	aria-label="{label}: {studied} of {total} studied{visited ? `, ${visited} visited` : ''}"
-	class={cn('flex h-1.5 overflow-hidden rounded-full bg-muted', className)}
+	class={cn('flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-[#2B434E]', className)}
 >
-	<span class="bg-green" style="width:{pct(studied, total)}%"></span>
-	<span class="bg-green/30" style="width:{pct(visited, total)}%"></span>
+	<span class="relative bg-[#58CC02] transition-all duration-500 ease-out after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(studied, total)}%"></span>
+	<span class="bg-[#58CC02]/30 transition-all duration-500 ease-out" style="width:{pct(visited, total)}%"></span>
 </div>

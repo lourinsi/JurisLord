@@ -26,11 +26,11 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: '1987 Constitution full guide' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: 'Timed mock exam & self-grading', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & timed practice' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '15 most likely questions & ★ cases' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Numbers to memorize (self-test)' },
 				{ id: 'problems', path: 'problems', label: 'ALAC problems', desc: '112 case drills & twin problems (0–5 rubric)' },
 				{ id: 'cases', path: 'cases', label: 'Case digests', desc: '28 assigned cases with self-test' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & timed practice' },
 				{ id: 'essays', path: 'essays', label: 'Essays', desc: 'ALAC essay workspace' }
 			];
 		case 'crim1':
@@ -38,6 +38,7 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: 'RPC Book One full guide' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: 'Written mock exam with self-grading', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & timed practice' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '15 most likely questions & ★ items' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Penalties, fines, periods & prescription' },
 				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '71 lists in Recall & Study mode' },
@@ -45,25 +46,25 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 				{ id: 'problems', path: 'problems', label: 'ALAC problems', desc: '75 scenarios (0–5 rubric)' },
 				{ id: 'drill', path: 'drill', label: 'Flashcards', desc: 'Spaced-repetition flashcards' },
 				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: 'Penalty ladder & topic spotter' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & timed practice' },
 				{ id: 'essays', path: 'essays', label: 'Essays', desc: 'ALAC essay workspace' }
 			];
 		case 'crimpro':
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Rules 110–127 full guide' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: 'Mixed-rule mock exam & practice runs', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'True/false & quiz bank' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '15 most likely questions & 5 twist keys' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Numbers & deadlines to memorize' },
 				{ id: 'rules', path: 'rules', label: 'Rules 110–127', desc: 'Color-coded rule cards & hooks' },
 				{ id: 'twists', path: 'twists', label: 'Twist drills', desc: '22 linked case-file sets' },
 				{ id: 'flips', path: 'flips', label: 'One fact flips it', desc: '26 side-by-side flip pairs' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'True/false & quiz bank' },
 				{ id: 'essays', path: 'essays', label: 'Essays', desc: 'Situational ALAC essays' }
 			];
 		case 'pfr':
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Civil Code, Family Code & pronouncements' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: 'Written & MCQ mock exam', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Situational MCQ bank' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: 'Most likely PFR questions & ★ items' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Periods, amounts & ages to memorize' },
 				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '48 lists in Recall & Study mode' },
@@ -75,13 +76,13 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 				{ id: 'drill', path: 'drill', label: 'Flashcards', desc: 'Spaced-repetition flashcards' },
 				{ id: 'past', path: 'past', label: 'Past exam, checked', desc: 'Past exam items checked against codal' },
 				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: 'Scenario order, MCQ tricks & topic spotter' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Situational MCQ bank' },
 				{ id: 'essays', path: 'essays', label: 'Essays', desc: 'ALAC essay workspace' }
 			];
 		case 'statcon':
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Agpalo Chapters I–XI & 5 cases' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: 'Written mock exam with self-grading', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & case recall drill' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '14 most likely StatCon questions' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Periods, dates & ★ list counts' },
 				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '48 lists in Recall & Study mode' },
@@ -91,13 +92,13 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 				{ id: 'drill', path: 'drill', label: 'Flashcards', desc: 'Flashcards: lists, terms, maxims & cases' },
 				{ id: 'rules', path: 'rules', label: 'Rules and traps', desc: 'Chapter rules, limits & examiner traps' },
 				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: 'Templates & chapter finder' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice & case recall drill' },
 				{ id: 'essays', path: 'essays', label: 'Essays', desc: 'ALAC essay workspace' }
 			];
 		case 'philo':
 			return [
 				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Lessons 10–13 & jurisprudence guide' },
 				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: '40-minute 4-essay mock exam', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice check' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '14 likely questions & #1 model essay' },
 				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '16 lists in Recall & Study mode' },
 				{ id: 'essays', path: 'essays', label: 'Essay practice', desc: 'Define, differentiate, critique & opinion' },
@@ -107,8 +108,7 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 				{ id: 'compare', path: 'compare', label: 'Differentiate', desc: '4 schools, 15 pairings & 5 stage theories' },
 				{ id: 'critiques', path: 'critiques', label: 'Critiques', desc: 'Reusable paragraph & 14 critiques' },
 				{ id: 'drill', path: 'drill', label: 'Flashcards', desc: 'Flashcards: lists, terms & cases' },
-				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: '5 thinking moves & 4 question formulas' },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice check' }
+				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: '5 thinking moves & 4 question formulas' }
 			];
 		default:
 			return [

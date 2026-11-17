@@ -165,15 +165,6 @@
 			<div class="flex flex-wrap items-center justify-between gap-2">
 				<h2 id="finals-kit-h" class="font-heading text-xl font-extrabold">Finals Kit &amp; Study Subtabs</h2>
 				<div class="flex flex-wrap items-center gap-2">
-					{#if hiddenKitCount > 0}
-						<button
-							type="button"
-							onclick={() => (showAllKitTabs = !showAllKitTabs)}
-							class="inline-flex items-center gap-1.5 rounded-full border-2 border-slate-200 bg-card px-3 py-1 text-xs font-extrabold tracking-wide text-slate-700 uppercase transition-all hover:border-[#1CB0F6]/70 hover:text-[#1CB0F6] dark:border-[#2B434E] dark:text-slate-200"
-						>
-							{showAllKitTabs ? 'Show less' : `See more (${hiddenKitCount} more)`}
-						</button>
-					{/if}
 					<a href="/module/{subject.id}/exam" class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#E5B400] bg-[#FFC800] px-3 py-1 text-xs font-extrabold tracking-wide text-slate-900 uppercase no-underline transition-transform hover:scale-105">
 						★ Start with Mock Exam <ArrowRight class="size-3.5" strokeWidth={2.5} />
 					</a>

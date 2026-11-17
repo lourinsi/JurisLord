@@ -16,7 +16,44 @@
 	const accent = $derived(CATEGORY_ACCENT[subject.subjectCategory]);
 	const parts = $derived(getParts(subject));
 	const groups = $derived(groupedParts(subject));
-	const kitTabs = $derived(subtabsForSubject(subject.id).filter((t) => !['read', 'practice', 'essays'].includes(t.id) || (t.id === 'essays' && subject.id === 'philo')));
+
+	const PRIORITY_ORDER: Record<string, number> = {
+		exam: 1,
+		focus: 2,
+		numbers: 3,
+		enumerations: 4
+	};
+	const kitTabs = $derived(
+		subtabsForSubject(subject.id)
+			.filter((t) => !['read', 'practice', 'essays'].includes(t.id) || (t.id === 'essays' && subject.id === 'philo'))
+			.sort((a, b) => (PRIORITY_ORDER[a.id] ?? 99) - (PRIORITY_ORDER[b.id] ?? 99))
+	);
+
+	let showAllKitTabs = $state(false);
+	let kitGridEl = $state<HTMLDivElement | null>(null);
+	let oneRowCols = $state(4);
+
+	$effect(() => {
+		// Reset collapsed state when navigating between modules
+		subject.id;
+		showAllKitTabs = false;
+	});
+
+	$effect(() => {
+		if (!kitGridEl) return;
+		const updateCols = () => {
+			if (!kitGridEl) return;
+			const cols = getComputedStyle(kitGridEl).gridTemplateColumns.split(' ').filter(Boolean).length;
+			oneRowCols = Math.max(1, Math.min(4, cols || 4));
+		};
+		updateCols();
+		const ro = new ResizeObserver(updateCols);
+		ro.observe(kitGridEl);
+		return () => ro.disconnect();
+	});
+
+	const visibleKitTabs = $derived(showAllKitTabs ? kitTabs : kitTabs.slice(0, oneRowCols));
+	const hiddenKitCount = $derived(Math.max(0, kitTabs.length - oneRowCols));
 
 	// Old links: /module/x?tab=mcq, ?tab=alac, and /module/x#some-anchor from the single-page guide.
 	$effect(() => {
@@ -127,12 +164,23 @@
 		<section aria-labelledby="finals-kit-h" class="flex flex-col gap-3.5">
 			<div class="flex flex-wrap items-center justify-between gap-2">
 				<h2 id="finals-kit-h" class="font-heading text-xl font-extrabold">Finals Kit &amp; Study Subtabs</h2>
-				<a href="/module/{subject.id}/focus" class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#E5B400] bg-[#FFC800] px-3 py-1 text-xs font-extrabold tracking-wide text-slate-900 uppercase no-underline transition-transform hover:scale-105">
-					★ Start with Exam Focus <ArrowRight class="size-3.5" strokeWidth={2.5} />
-				</a>
+				<div class="flex flex-wrap items-center gap-2">
+					{#if hiddenKitCount > 0}
+						<button
+							type="button"
+							onclick={() => (showAllKitTabs = !showAllKitTabs)}
+							class="inline-flex items-center gap-1.5 rounded-full border-2 border-slate-200 bg-card px-3 py-1 text-xs font-extrabold tracking-wide text-slate-700 uppercase transition-all hover:border-[#1CB0F6]/70 hover:text-[#1CB0F6] dark:border-[#2B434E] dark:text-slate-200"
+						>
+							{showAllKitTabs ? 'Show less' : `See more (${hiddenKitCount} more)`}
+						</button>
+					{/if}
+					<a href="/module/{subject.id}/exam" class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#E5B400] bg-[#FFC800] px-3 py-1 text-xs font-extrabold tracking-wide text-slate-900 uppercase no-underline transition-transform hover:scale-105">
+						★ Start with Mock Exam <ArrowRight class="size-3.5" strokeWidth={2.5} />
+					</a>
+				</div>
 			</div>
-			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-				{#each kitTabs as t (t.id)}
+			<div bind:this={kitGridEl} class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+				{#each visibleKitTabs as t (t.id)}
 					<a
 						href="/module/{subject.id}/{t.path}"
 						class={cn(
@@ -150,6 +198,15 @@
 					</a>
 				{/each}
 			</div>
+			{#if hiddenKitCount > 0}
+				<button
+					type="button"
+					onclick={() => (showAllKitTabs = !showAllKitTabs)}
+					class="self-center rounded-xl border-2 border-slate-200 bg-card px-4 py-1.5 text-xs font-extrabold tracking-wide text-muted-foreground uppercase transition-all hover:border-[#1CB0F6]/70 hover:text-foreground dark:border-[#2B434E]"
+				>
+					{showAllKitTabs ? 'Show fewer subtabs' : `See more (${hiddenKitCount} more)`}
+				</button>
+			{/if}
 		</section>
 	{/if}
 

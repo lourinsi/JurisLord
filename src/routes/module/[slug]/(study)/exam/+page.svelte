@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import Breadcrumbs from '$lib/components/common/Breadcrumbs.svelte';
 	import ExamView from '$lib/components/kit/ExamView.svelte';
+	import McqQuizEngine from '$lib/components/McqQuizEngine.svelte';
 	import CrimProExamResults from '$lib/components/crimpro/ExamResults.svelte';
 	import CrimProExamRun from '$lib/components/crimpro/ExamRun.svelte';
 	import CrimProExamSetup from '$lib/components/crimpro/ExamSetup.svelte';
@@ -170,5 +171,7 @@
 		</div>
 	{:else if kit}
 		<ExamView {kit} />
+	{:else if subject.mcqs.length}
+		<McqQuizEngine lawModule={subject} topicId="all" initialMode="exam" initialFilter="all" initialQuestion="" />
 	{/if}
 </div>

@@ -13,13 +13,13 @@
 
 	const tabs = $derived([
 		{ href: kit.base, label: 'Overview' },
-		{ href: `${kit.base}/focus`, label: '★ Exam focus' },
+		{ href: `${kit.base}/exam`, label: '★ Mock exam' },
+		{ href: `${kit.base}/focus`, label: 'Exam focus' },
 		{ href: `${kit.base}/enumerations`, label: 'Enumerations' },
 		{ href: `${kit.base}/terms`, label: 'Definitions' },
 		...mid.map((t) => ({ href: `${kit.base}/${t.path}`, label: t.label })),
 		...(kit.mcqs ? [{ href: `${kit.base}/mcq`, label: 'MCQ drill' }] : []),
 		{ href: `${kit.base}/problems`, label: 'ALAC problems' },
-		{ href: `${kit.base}/exam`, label: 'Mock exam' },
 		{ href: `${kit.base}/drill`, label: 'Flashcards' },
 		...extra.map((t) => ({ href: `${kit.base}/${t.path}`, label: t.label })),
 		{ href: `${kit.base}/guide`, label: 'Answer guide' }

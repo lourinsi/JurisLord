@@ -2,11 +2,11 @@ import type { LawModule } from '$lib/types';
 
 export const crim1Lloren: LawModule = {
 	id: 'crim1_lloren',
-	title: 'Criminal Law 1 - Judge Lloren',
+	title: 'Criminal Law 1 - Justice lloren',
 	subjectCategory: 'Criminal Law',
 	eyebrow: 'Revised Penal Code · Book One · Whole Book',
 	description:
-		'Whole-book coverage for Criminal Law 1 under Judge Lloren: corrected quiz and answer key, plus the complete Indeterminate Sentence Law (ISLAW) computation guide, penalty graduation, modifying circumstances, stages of execution, civil liability, extinction of criminal liability, and probation.',
+		'Whole-book coverage for Criminal Law 1 under Justice lloren: corrected quiz and answer key, plus the complete Indeterminate Sentence Law (ISLAW) computation guide, penalty graduation, modifying circumstances, stages of execution, civil liability, extinction of criminal liability, and probation.',
 	legalScope: 'Whole book — Revised Penal Code, Book One (Arts. 1–113), Indeterminate Sentence Law (Act No. 4103) & Probation Law (P.D. No. 968, as amended by R.A. No. 10707)',
 	topics: [
 		{
@@ -29,7 +29,7 @@ export const crim1Lloren: LawModule = {
 		}
 	],
 	studyGuideIntro:
-		'Whole-book Criminal Law 1 reviewer for Judge Lloren: Part 1 presents the corrected quiz and answer key (checked against Reyes, RPC Book 1, with original key discrepancies flagged), and Part 2 presents the complete Indeterminate Sentence Law (Act No. 4103) computation guide, penalty duration tables, and worked scenarios.',
+		'Whole-book Criminal Law 1 reviewer for Justice lloren: Part 1 presents the corrected quiz and answer key (checked against Reyes, RPC Book 1, with original key discrepancies flagged), and Part 2 presents the complete Indeterminate Sentence Law (Act No. 4103) computation guide, penalty duration tables, and worked scenarios.',
 	legend: [
 		{ color: 'yellow', label: 'Correct rule / memorize' },
 		{ color: 'green', label: 'Reyes / statutory basis' },
@@ -40,7 +40,7 @@ export const crim1Lloren: LawModule = {
 	],
 	watchFor: {
 		all: `<ul>
-<li><strong>Attempted Robbery vs. Impossible Crime (Q44, Q46, Q48):</strong> When A points a gun at B to rob him of his watch or phone, but B left it at home or lent it to his sister/wife, <strong>Reyes (p. 88)</strong> classifies this as <strong>attempted robbery</strong> (the object was missing by accident, not inherent impossibility, and pointing a gun is already grave threats under Art. 282). However, the <strong>original quiz key</strong> classified it as an <strong>impossible crime</strong> (following <em>Intod v. CA</em>). Check which approach Judge Lloren grades by.</li>
+<li><strong>Attempted Robbery vs. Impossible Crime (Q44, Q46, Q48):</strong> When A points a gun at B to rob him of his watch or phone, but B left it at home or lent it to his sister/wife, <strong>Reyes (p. 88)</strong> classifies this as <strong>attempted robbery</strong> (the object was missing by accident, not inherent impossibility, and pointing a gun is already grave threats under Art. 282). However, the <strong>original quiz key</strong> classified it as an <strong>impossible crime</strong> (following <em>Intod v. CA</em>). Check which approach Justice lloren grades by.</li>
 <li><strong>Accomplice in Frustrated Felony (Q18) &amp; Destierro (Q29):</strong> Art. 54 expressly gives the accomplice in a frustrated felony the penalty next lower than that for the frustrated felony (TRUE), and Art. 71 places <em>destierro</em> immediately one degree below <em>arresto mayor</em> (TRUE). The original key marked both False.</li>
 <li><strong>Light Felonies Against Persons (Q21):</strong> Under Art. 7, light felonies against persons or property are punishable even in the attempted or frustrated stage (so the statement that there is no attempted/frustrated stage is FALSE under Art. 7, though slight physical injuries is punished by result).</li>
 <li><strong>Recovery of Stolen Property from a Good-Faith Buyer (Q35):</strong> Under Art. 105 RPC and Art. 559 Civil Code, the owner <strong>can recover</strong> stolen property even from an innocent buyer in good faith (TRUE), unless bought at a public sale (where reimbursement is required).</li>

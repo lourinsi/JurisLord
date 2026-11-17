@@ -75,7 +75,7 @@ SvelteKit 3 (Svelte 5 runes) · Tailwind v4 · shadcn-svelte.
 | Persons & Family Relations | Civil Law | Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–182 (through the family home, and paternity and filiation) · court pronouncements, Part One through Midterms | 134 | 52 | 105 |
 | Constitutional Law I | Political Law | 1987 Constitution Arts. I, II, IV–X | 40 | 54 | — |
 | Criminal Law 1 | Criminal Law | Revised Penal Code, Book One, Arts. 1–15 | 92 | 23 | — |
-| Criminal Law 1 - Judge Lloren | Criminal Law | Whole book — Revised Penal Code, Book One (Arts. 1–113), Indeterminate Sentence Law & Probation Law | 66 | 8 | — |
+| Criminal Law 1 - Justice lloren | Criminal Law | Whole book — Revised Penal Code, Book One (Arts. 1–113), Indeterminate Sentence Law & Probation Law | 66 | 8 | — |
 | Criminal Procedure | Remedial Law | Rules 110–127, from Tiu's 2017 notes, with later rulings flagged · four practice quizzes (Rules 110–114, 115–119, 120–124, 125–127) | 296 | 124 | — |
 | Statutory Construction | Legal Method | Agpalo, Chapters I–XI, and five cases | 177 | 50 | 5 |
 

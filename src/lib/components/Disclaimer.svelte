@@ -8,25 +8,34 @@
 
 	let { open = $bindable(false) }: { open?: boolean } = $props();
 	let dialog: HTMLDialogElement | undefined = $state();
-	let shownThisLoad = false;
+
+	function nextMidnightMs(): number {
+		const now = new Date();
+		return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0).getTime();
+	}
 
 	function seen(): boolean {
 		if (!browser) return true;
-		if (import.meta.env.DEV && !shownThisLoad) return false;
 		try {
-			return localStorage.getItem(KEY) === '1';
+			const raw = localStorage.getItem(KEY);
+			if (!raw) return false;
+			const parsed = JSON.parse(raw) as { expiresAt?: number };
+			if (typeof parsed.expiresAt === 'number' && Date.now() < parsed.expiresAt) {
+				return true;
+			}
+			localStorage.removeItem(KEY);
 		} catch {
-			return false;
+			/* invalid or legacy value */
 		}
+		return false;
 	}
 
 	function accept() {
 		try {
-			localStorage.setItem(KEY, '1');
+			localStorage.setItem(KEY, JSON.stringify({ expiresAt: nextMidnightMs() }));
 		} catch {
 			/* private mode: it will simply show again next visit */
 		}
-		shownThisLoad = true;
 		open = false;
 	}
 

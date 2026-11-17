@@ -19,7 +19,24 @@
 
 	const slug = $derived(page.params.slug ?? '');
 	const subject = $derived(getModule(slug)!);
-	const essayId = $derived(page.url.searchParams.get('essay') ?? subject.essays[0]?.id ?? '');
+	const source = $derived(page.url.searchParams.get('source') ?? 'all');
+	const sources = $derived.by(() => {
+		const s = new Set<string>();
+		for (const e of subject.essays) if (e.source) s.add(e.source);
+		return s.size > 0 ? ['all', ...s] : [];
+	});
+	const sourceCounts = $derived.by(() => {
+		const c: Record<string, number> = { all: subject.essays.length };
+		for (const e of subject.essays) if (e.source) c[e.source] = (c[e.source] ?? 0) + 1;
+		return c;
+	});
+	const rawEssayId = $derived(page.url.searchParams.get('essay') ?? '');
+	const essayId = $derived.by(() => {
+		const found = subject.essays.find((e) => e.id === rawEssayId);
+		if (found && (source === 'all' || found.source === source)) return found.id;
+		const firstMatch = subject.essays.find((e) => source === 'all' || e.source === source);
+		return firstMatch?.id ?? subject.essays[0]?.id ?? '';
+	});
 	const status = $derived.by(() => {
 		const s = page.url.searchParams.get('status') ?? 'all';
 		return (['new', 'drafted', 'review', 'mastered'].includes(s) ? s : 'all') as 'all' | EssayStatus;
@@ -29,6 +46,15 @@
 	function onselect(id: string) {
 		const url = new URL(page.url.href);
 		url.searchParams.set('essay', id);
+		goto(url);
+	}
+
+	function setSource(src: string) {
+		const url = new URL(page.url.href);
+		if (src === 'all') url.searchParams.delete('source');
+		else url.searchParams.set('source', src);
+		const firstMatch = subject.essays.find((e) => src === 'all' || e.source === src);
+		if (firstMatch) url.searchParams.set('essay', firstMatch.id);
 		goto(url);
 	}
 
@@ -149,8 +175,23 @@
 			</summary>
 			<div class="border-t-2 border-slate-100 p-4 dark:border-[#2B434E]"><AlacBanner bare /></div>
 		</details>
+		{#if sources.length > 0}
+			<div role="group" aria-label="Filter essays by source" class="flex flex-wrap gap-2">
+				{#each sources as src (src)}
+					<button
+						type="button"
+						onclick={() => setSource(src)}
+						aria-pressed={source === src}
+						class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-xl border-2 border-b-4 px-3 text-xs font-extrabold tracking-wide uppercase transition-all {source === src ? 'border-[#1899D6] bg-[#1CB0F6] text-white' : 'border-slate-200 bg-card text-foreground hover:bg-muted dark:border-[#2B434E]'}"
+					>
+						{src === 'all' ? 'All' : src}
+						<span class="tabular-nums opacity-75">{sourceCounts[src] ?? 0}</span>
+					</button>
+				{/each}
+			</div>
+		{/if}
 		{#key essayId}
-			<AlacEssayEditor lawModule={subject} selectedId={essayId} filter={status} {onselect} />
+			<AlacEssayEditor lawModule={subject} selectedId={essayId} filter={status} sourceFilter={source} {onselect} />
 		{/key}
 	{/if}
 </div>

@@ -82,6 +82,22 @@
 	);
 
 	let typed = '';
+	let tapCount = 0;
+	let lastTapAt = 0;
+
+	function onTouchEnd(e: TouchEvent) {
+		if (e.touches.length > 0 || e.changedTouches.length > 1) return;
+		const now = Date.now();
+		tapCount = now - lastTapAt <= 600 ? tapCount + 1 : 1;
+		lastTapAt = now;
+		if (tapCount >= 3) {
+			tapCount = 0;
+			if (!ui.llorenShown) {
+				ui.llorenShown = true;
+				ui.toast('Criminal Law I (Judge Lloren) is now visible.');
+			}
+		}
+	}
 
 	/** ⌘K / Ctrl+K anywhere, or "/" when not typing, opens search; typing "hoot" toggles answer key. */
 	function onKey(e: KeyboardEvent) {
@@ -125,7 +141,7 @@
 	<title>Juris Lord — Philippine Law Study Guide</title>
 </svelte:head>
 
-<svelte:window onkeydown={onKey} />
+<svelte:window onkeydown={onKey} ontouchend={onTouchEnd} />
 
 <a href="#main" class="sr-only z-50 rounded-md bg-primary px-3 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:top-2 focus:left-2">Skip to content</a>
 <AppHeader />

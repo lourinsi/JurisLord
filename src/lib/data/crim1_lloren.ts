@@ -1828,6 +1828,151 @@ export const crim1Lloren: LawModule = {
 					'RRR was sentenced to 11 days of arresto menor for each of the 11 counts, which would total 121 days if served in full. Because 121 days exceeds three times the most severe penalty (11 days), the Three-Fold Rule caps his service of sentence at 3 × 11 days = 33 days.',
 				conclusion: 'RRR shall serve a maximum of 33 days of imprisonment pursuant to the Three-Fold Rule under Article 70 of the RPC.'
 			}
+		},
+		{
+			id: 'crim1_lloren:alac:9',
+			title: '2026 Bar Q1 — Quasi-Recidivism Does Not Require the Same Title of the RPC',
+			topic: 'Quasi-Recidivism & Recidivism (Art. 160 & Art. 14[9])',
+			source: 'Bar Exam',
+			factPattern:
+				'Alfie, convicted of homicide, served his full sentence, reformed, and later voluntarily surrendered after a stabbing incident, pleading guilty to the resulting murder charge. The RTC refused to appreciate voluntary surrender and plea of guilt, reasoning that Alfie is a special aggravated repeat offender since homicide and murder fall under the same Title of the Revised Penal Code.',
+			question: 'Is the RTC correct?',
+			modelAnswer: {
+				answer: 'No, the RTC is not correct.',
+				legalBasis:
+					'Article 160 of the Revised Penal Code defines quasi-recidivism as the commission of a felony by one who has not yet begun serving, or is still serving, a sentence imposed by final judgment for a prior offense; nothing in Article 160 requires that the two offenses belong to the same Title of the Code. That same-Title requirement belongs to ordinary recidivism under Article 14, paragraph 9, an entirely separate aggravating circumstance. Article 160 further provides that a quasi-recidivist shall be punished in the maximum period of the penalty prescribed for the new felony, and jurisprudence has consistently held that this special aggravating circumstance cannot be offset by an ordinary mitigating circumstance (People v. Layson, G.R. No. L-25177, October 31, 1969; People v. Retania, G.R. No. L-34841, January 22, 1980).',
+				application:
+					'Here, Alfie had already completed service of his sentence for homicide before he committed the killing that led to his murder conviction, which places him outside Article 160 altogether, since quasi-recidivism applies only to one who commits a new felony before beginning or while still serving a prior sentence, not to one who had already finished serving it. At most, Alfie is an ordinary recidivist considering that homicide and murder are embraced in the same Title of the RPC, which has the effect of offsetting only one of the ordinary mitigating circumstances invoked by him.',
+				conclusion:
+					'Therefore, the RTC is incorrect: Alfie is not a quasi-recidivist because he had already fully served his homicide sentence when he committed the killing that led to his murder charge, and quasi-recidivism never required that the offenses share the same Title of the Code.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:10',
+			title: '2026 Bar Q3 — Territorial Jurisdiction Over Psychological Violence Under RA 9262 Committed Partly Abroad',
+			topic: 'Territoriality & Jurisdiction (Art. 2 & RA 9262)',
+			source: 'Bar Exam',
+			factPattern:
+				'Seth, a Filipino who acquired permanent residency in the Netherlands, had an affair with Noor there. His wife Maggie, in Quezon City, filed a case against him for psychological violence under RA 9262, citing the mental and emotional anguish she suffered because of his infidelity. Seth moved to quash for lack of territorial jurisdiction since the affair occurred abroad. The RTC granted the motion.',
+			question: 'Is the RTC correct?',
+			modelAnswer: {
+				answer: 'No, the RTC is incorrect.',
+				legalBasis:
+					'Under RA 9262, psychological violence is the means employed by the offender, while mental or emotional anguish is the essential element of the offense of violation of Section 5(i); where the offender\'s acts abroad, such as marital infidelity, caused the psychological or emotional harm actually suffered by the wife within Philippine territory, the crime is considered committed, in whole or in part, within the Philippines, since the essential element of mental and emotional anguish—without which there is no completed offense—occurred where the wife resided and suffered that harm (AAA v. BBB, G.R. No. 212448, January 11, 2018).',
+				application:
+					'Here, Maggie resided in Quezon City throughout the period in question and it was there that she experienced the mental and emotional anguish resulting from Seth\'s marital infidelity committed abroad. Since this suffering—the very element that completes the offense under Section 5(i)—took place within Quezon City, the RTC of Quezon City has territorial jurisdiction to try the case, notwithstanding that the underlying infidelity itself physically occurred in the Netherlands. Territorial jurisdiction in a continuing or transitory offense attaches wherever any essential element of the crime took place.',
+				conclusion:
+					'Hence, the RTC is incorrect in dismissing the case for lack of jurisdiction: since Maggie\'s psychological and emotional suffering, an essential element of the offense under Section 5(i) of RA 9262, occurred within Quezon City, the RTC of Quezon City retains jurisdiction over the offense.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:11',
+			title: '2026 Bar Q4 — Reckless Imprudence With Multiple Consequences Is Not a Complex Crime Under Article 48',
+			topic: 'Complex Crimes & Quasi-Offenses (Art. 48 & Art. 365)',
+			source: 'Bar Exam',
+			factPattern:
+				'Michael\'s single act of reckless driving caused a collision resulting in injuries to Moe, Larry, and Curly and PHP 390,000 in damage to the company vehicle. A single Information charged him with reckless imprudence resulting in multiple injuries and damage to property. Michael moved to quash for duplicity. The prosecution argued this was properly a complex crime under Article 48, with the penalty for the most serious offense imposed in its maximum period.',
+			question: 'Is the prosecution correct?',
+			modelAnswer: {
+				answer: 'No, the prosecution is incorrect.',
+				legalBasis:
+					'Reckless imprudence under Article 365 is not a mere means of committing separate intentional felonies but a single, distinct quasi-offense in itself, the gravamen of which is the mental attitude of the offender—his lack of precaution—rather than the various resulting harms. Article 48 on complex crimes, designed for the complexing of intentional felonies arising from a single act, is conceptually incompatible with and does not apply to quasi-offenses under Article 365, since the multiple consequences of a single reckless act are not separate felonies to be complexed but merely factors that determine the appropriate penalty for the single quasi-crime under Article 365\'s own graduated scheme (Ivler v. Modesto-San Pedro, G.R. No. 172716, November 17, 2010; Morales v. People, G.R. No. 240337-38, January 4, 2022).',
+				application:
+					'Here, Michael\'s single reckless act in driving gave rise to multiple consequences—injuries to three individuals and damage to the company vehicle—but these consequences do not transform the offense into two or more complexed felonies; they remain relevant only to computing the appropriate single penalty under Article 365. The Information charging Michael in a single count for reckless imprudence resulting in multiple injuries and damage to property is not defective for duplicity, since all consequences of a single quasi-offense must be alleged together in one Information, but the prosecution is wrong in invoking Article 48\'s complex-crime framework and its "most serious crime in its maximum period" formula to compute the penalty.',
+				conclusion:
+					'Therefore, the prosecution is incorrect: Michael\'s single act of reckless imprudence with multiple consequences is properly charged as one offense under Article 365, not as a complex crime under Article 48, and the applicable penalty must be determined under Article 365\'s own rules.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:12',
+			title: '2026 Bar Q6 — The Three-Fold Rule Under Article 70 Governs Service, Not Imposition, of Multiple Penalties',
+			topic: 'Service of Sentence (Art. 70)',
+			source: 'Bar Exam',
+			factPattern:
+				'Rico was convicted of four counts of sexual abuse under Section 5(b) of RA 7610, each penalized with an indeterminate sentence of 11 years of prision mayor to 18 years of reclusion temporal. He argues that, applying the three-fold rule and the 40-year cap, the trial court should have imposed a maximum penalty of 40 years across all four cases.',
+			question: 'Is Rico correct?',
+			modelAnswer: {
+				answer: 'No, Rico is incorrect.',
+				legalBasis:
+					'The three-fold rule under Article 70 of the Revised Penal Code governs only the service of multiple penalties already validly imposed for separate convictions; it does not limit or alter the penalty that a court must impose for each individual crime of which an accused is found guilty. The trial court has no discretion to disregard the proper indeterminate penalty prescribed by law for each count simply because the accused faces multiple counts; each count must be penalized on its own terms, and it is only when the convict actually serves these several sentences that Article 70 operates to cap the total period of imprisonment actually served at three times the most severe penalty imposed, and in no case more than 40 years.',
+				application:
+					'Here, the trial court correctly imposed the indeterminate penalty of 11 years of prision mayor, as minimum, to 18 years of reclusion temporal, as maximum, for each of Rico\'s four separate counts of sexual abuse, since Article 70 has no bearing on how the court fixes the penalty at the point of conviction and sentencing. It is only at the point when Rico begins serving these four separate sentences successively that the three-fold rule will operate to ensure that he does not actually serve more than three times 18 years, or 40 years, whichever is lower.',
+				conclusion:
+					'Hence, Rico is incorrect: the trial court properly imposed the full indeterminate penalty for each of the four counts, and the three-fold rule and 40-year cap under Article 70 apply only at the stage of actually serving the aggregate sentences, not at the stage of imposing the penalty for each conviction.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:13',
+			title: '2026 Bar Q7 — Recidivist Status Excludes an Accused from Crediting Preventive Imprisonment Under RA 10592',
+			topic: 'Preventive Imprisonment & Recidivism (Art. 29 & RA 10592)',
+			source: 'Bar Exam',
+			factPattern:
+				'Kardo, previously convicted of serious physical injuries, was charged with murder and detained without bail for three years before the trial court granted his belated Petition for Bail. He was ultimately convicted only of homicide and sentenced to nine years of prision mayor to fifteen years of reclusion temporal.',
+			question: 'Is Kardo entitled to credit for his three years of preventive imprisonment?',
+			modelAnswer: {
+				answer: 'No, Kardo is not entitled to any credit for his three years of preventive imprisonment.',
+				legalBasis:
+					'Article 29 of the Revised Penal Code, as amended by Republic Act No. 10592, grants an accused who has undergone preventive imprisonment full credit for that period in the service of his sentence, provided he agrees in writing, after being informed of the effects and with the assistance of counsel, to abide by the same disciplinary rules imposed on convicted prisoners; if he declines to so agree, he is credited only four-fifths of the preventive imprisonment period. Both of these crediting options, however, apply only to detainees who are not recidivists; the amended provision expressly excepts from the entire crediting scheme those who are recidivists or have been previously convicted twice or more of any crime, disqualifying a recidivist from both full credit and the four-fifths fallback.',
+				application:
+					'Here, Kardo\'s prior conviction for serious physical injuries and his present conviction for homicide both fall under Title Eight of the Revised Penal Code (Crimes Against Persons), satisfying the definition of recidivism under Article 14, paragraph 9. While recidivism must be specifically alleged in the Information before a court may appreciate it as an aggravating circumstance affecting the imposable penalty for the new crime, Article 29\'s exclusion of recidivists from crediting preventive imprisonment is not conditioned on such an allegation; the exclusion operates simply by virtue of the accused\'s status as a recidivist established by his own record of prior conviction. Since Kardo is a recidivist, he falls outside Article 29\'s crediting scheme entirely.',
+				conclusion:
+					'Therefore, Kardo is not entitled to any credit for his three years of preventive imprisonment against his homicide sentence, since his status as a recidivist excludes him altogether from Article 29\'s crediting provisions under RA 10592.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:14',
+			title: '2026 Bar Q8 — Indeterminate Sentence Law Does Not Apply Where the Special Law Prescribes a Single, Fixed Penalty',
+			topic: 'Indeterminate Sentence Law & Penalties',
+			source: 'Bar Exam',
+			factPattern:
+				'Abeto was convicted of trafficking in persons under Section 4(c) of RA 9208, which Section 10(a) penalizes with a single fixed term of twenty years imprisonment. The trial court imposed a straight 20-year penalty. Abeto argues he should have received a minimum and maximum term to be eligible for parole under the Indeterminate Sentence Law.',
+			question: 'Is Abeto correct?',
+			modelAnswer: {
+				answer: 'No, Abeto is incorrect.',
+				legalBasis:
+					'The Indeterminate Sentence Law, as applied to offenses punished under special laws, requires the court to impose a maximum term that shall not exceed the maximum fixed by the special law and a minimum term that shall not be less than the minimum prescribed by the same law; this mechanism presupposes that the special law itself provides a range—a minimum and a maximum—from which the court may draw the two terms of the indeterminate sentence. Where the special law instead prescribes only a single, fixed penalty with no range at all, there is no minimum or maximum for the court to select from, and the straight penalty as written in the law must be imposed exactly as prescribed (People v. Ducosin, 59 Phil. 109 [1933]).',
+				application:
+					'Here, Section 10(a) of RA 9208 fixes the penalty for a violation of Section 4 at a single term of twenty years imprisonment, without providing any range of years from which a minimum and maximum could be derived. Since there is no statutory range to work with, the trial court had no basis to construct an indeterminate sentence and correctly imposed the straight penalty of 20 years exactly as the law provides.',
+				conclusion:
+					'Thus, Abeto is incorrect: the Indeterminate Sentence Law cannot apply where the special law prescribes only a single, fixed penalty rather than a range of penalties, leaving the trial court no option but to impose the straight statutory penalty of 20 years.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:15',
+			title: '2026 Bar Q9 — Fixing the Penalty for Reckless Imprudence Resulting in Homicide With a Privileged Mitigating Circumstance',
+			topic: 'Indeterminate Sentence Law & Penalties',
+			source: 'Bar Exam',
+			factPattern:
+				'Tom, 17 years old, was convicted of reckless imprudence resulting in homicide, punishable by prision correccional in its medium and maximum periods. Considering the privileged mitigating circumstance of minority, the trial court imposed a straight penalty of four months and one day of arresto mayor.',
+			question: 'Is the trial court correct?',
+			modelAnswer: {
+				answer: 'No, the trial court is incorrect.',
+				legalBasis:
+					'Where the penalty prescribed by law is a divisible one composed of distinct periods, the court cannot simply impose a straight penalty even after applying the privileged mitigating circumstance of minority. Article 365 offenses, though found in the Revised Penal Code, must still be penalized applying the Indeterminate Sentence Law\'s rule for felonies under the Code, requiring both a minimum and a maximum term.',
+				application:
+					'Here, the privileged mitigating circumstance of minority properly lowers the imposable penalty by one degree, since Tom was seventeen years old at the time of the incident. Prision correccional in its medium and maximum periods, lowered by one degree, becomes arresto mayor in its maximum period to prision correccional in its minimum period. Applying the Indeterminate Sentence Law, the maximum term of the indeterminate sentence should be taken from this new range, while the minimum term should be taken from the range next lower still—arresto mayor in its minimum and medium periods. A straight penalty of four months and one day, being merely the minimum extreme of the arresto mayor maximum to prision correccional minimum range, is not an indeterminate sentence with a proper minimum and maximum term as the law requires.',
+				conclusion:
+					'Hence, the trial court is incorrect: after applying the privileged mitigating circumstance of minority to lower the penalty by one degree to arresto mayor in its maximum period to prision correccional in its minimum period, the court should have imposed an indeterminate sentence with a minimum from arresto mayor in its minimum and medium periods and a maximum from arresto mayor in its maximum period to prision correccional in its minimum period.'
+			}
+		},
+		{
+			id: 'crim1_lloren:alac:16',
+			title: '2026 Bar Q10 — Prescription of a Light Offense Discovered Years Later and the Effect of the Offenders\' Absence from the Philippines',
+			topic: 'Prescription of Crimes (Arts. 90–91)',
+			source: 'Bar Exam',
+			factPattern:
+				'Manuel was mugged by unknown assailants and suffered injuries requiring 10 days of medical attention. Six years later, he learned from a former classmate that siblings Lucio and Dencio committed the mugging before immediately leaving for the United States, only recently returning to the Philippines. Charges for less serious physical injuries, punishable by arresto mayor, were filed against them. They invoke prescription; Manuel argues the period only began upon his recent discovery of their identities, and that their absence abroad, given the Philippines\' extradition treaty with the United States, should not have tolled prescription in their favor.',
+			question: 'As the trial judge, how would you rule on the issue of prescription?',
+			modelAnswer: {
+				answer:
+					'As the trial judge, I would rule that the prescriptive period commenced to run only upon Manuel\'s actual discovery of the identity of his offenders, and that the offenders\' absence from the Philippines properly tolled the running of prescription regardless of any extradition treaty.',
+				legalBasis:
+					'Under Article 91 of the Revised Penal Code, the period of prescription for a crime begins to run from the day of its discovery by the offended party, the authorities, or their agents, not merely from the day the crime was committed, particularly where the identity of the offender was genuinely unknown to the offended party despite the commission of the crime being known. Under the same article, prescription does not run while the offender is absent from the Philippine Archipelago, a rule that applies regardless of whether an extradition treaty exists between the Philippines and the country where the offender is staying, since Article 91 draws no such distinction (People v. Alagao, G.R. No. L-20721, April 30, 1966; Del Rosario v. People, G.R. No. 235739, July 22, 2019).',
+				application:
+					'Here, less serious physical injuries, punishable by arresto mayor, prescribes in five years under Article 90. The prescriptive period began to run only when Manuel actually discovered the identity of Lucio and Dencio as his attackers, since before that, despite knowing a crime had been committed against him, he had no means of identifying who to charge. Furthermore, Lucio and Dencio\'s immediate departure for the United States the day after the mugging tolled the running of the prescriptive period for the entire duration of their stay abroad, regardless of the extradition treaty between the Philippines and the United States.',
+				conclusion:
+					'Therefore, I would rule that the prescriptive period began only upon Manuel\'s discovery of the identities of Lucio and Dencio, and that this same period was tolled for the entire duration of their absence in the United States regardless of the extradition treaty, meaning prescription has not set in against them.'
+			}
 		}
 	]
 };

@@ -17,8 +17,9 @@
 		lawModule,
 		selectedId,
 		filter = 'all',
+		sourceFilter = 'all',
 		onselect
-	}: { lawModule: LawModule; selectedId: string; filter?: 'all' | EssayStatus; onselect: (id: string) => void } = $props();
+	}: { lawModule: LawModule; selectedId: string; filter?: 'all' | EssayStatus; sourceFilter?: string; onselect: (id: string) => void } = $props();
 
 	const statusOf = (id: string): EssayStatus => essayStatus(userStorage.essayDrafts[id]);
 	const STATUS_UI = ESSAY_STATUS;
@@ -28,7 +29,13 @@
 	const modelShown = $derived(showModel || answerKey.on);
 
 	/** Previous/next follow the filtered list, keeping the open essay in it even if its status changed. */
-	const visible = $derived(lawModule.essays.filter((e) => filter === 'all' || statusOf(e.id) === filter || e.id === selectedId));
+	const visible = $derived(
+		lawModule.essays.filter(
+			(e) =>
+				(sourceFilter === 'all' || e.source === sourceFilter) &&
+				(filter === 'all' || statusOf(e.id) === filter || e.id === selectedId)
+		)
+	);
 	const essay = $derived(lawModule.essays.find((e) => e.id === selectedId) ?? lawModule.essays[0]);
 	const position = $derived(visible.findIndex((e) => e.id === essay?.id));
 	const draft = $derived(essay ? userStorage.essayDrafts[essay.id] : undefined);

@@ -70,26 +70,46 @@
 	});
 	const practiceTopics = $derived((subject.topics ?? []).filter((t) => topicCounts.get(t.id)?.total));
 
-	// ---- Essays: status + list ----
+	// ---- Essays: status + source + list ----
 	const STATUSES: ('all' | EssayStatus)[] = ['all', 'new', 'drafted', 'review', 'mastered'];
 	const statusParam = $derived((page.url.searchParams.get('status') ?? 'all') as 'all' | EssayStatus);
+	const sourceParam = $derived(page.url.searchParams.get('source') ?? 'all');
 	const essayParam = $derived(page.url.searchParams.get('essay') ?? subject.essays[0]?.id ?? '');
 	const statusOf = (e: AlacEssay) => essayStatus(userStorage.essayDrafts[e.id]);
+	const sources = $derived.by(() => {
+		const s = new Set<string>();
+		for (const e of subject.essays) if (e.source) s.add(e.source);
+		return s.size > 0 ? ['all', ...s] : [];
+	});
+	const sourceCounts = $derived.by(() => {
+		const c: Record<string, number> = { all: subject.essays.length };
+		for (const e of subject.essays) {
+			if (e.source) c[e.source] = (c[e.source] ?? 0) + 1;
+		}
+		return c;
+	});
 	const statusCounts = $derived.by(() => {
-		const c: Record<'all' | EssayStatus, number> = { all: subject.essays.length, new: 0, drafted: 0, review: 0, mastered: 0 };
-		for (const e of subject.essays) c[statusOf(e)]++;
+		const c: Record<'all' | EssayStatus, number> = { all: 0, new: 0, drafted: 0, review: 0, mastered: 0 };
+		for (const e of subject.essays) {
+			if (sourceParam !== 'all' && e.source !== sourceParam) continue;
+			c.all++;
+			c[statusOf(e)]++;
+		}
 		return c;
 	});
 	const essayGroups = $derived.by(() => {
 		const map = new Map<string, AlacEssay[]>();
 		for (const e of subject.essays) {
+			if (sourceParam !== 'all' && e.source !== sourceParam && e.id !== essayParam) continue;
 			if (statusParam !== 'all' && statusOf(e) !== statusParam && e.id !== essayParam) continue;
 			map.set(e.topic, [...(map.get(e.topic) ?? []), e]);
 		}
 		return [...map.entries()];
 	});
-	const essayHref = (id: string, status = statusParam) => `/module/${subject.id}/essays?essay=${encodeURIComponent(id)}${status !== 'all' ? `&status=${status}` : ''}`;
-	const statusHref = (s: 'all' | EssayStatus) => `/module/${subject.id}/essays?essay=${encodeURIComponent(essayParam)}${s !== 'all' ? `&status=${s}` : ''}`;
+	const essayHref = (id: string, status = statusParam, source = sourceParam) =>
+		`/module/${subject.id}/essays?essay=${encodeURIComponent(id)}${status !== 'all' ? `&status=${status}` : ''}${source !== 'all' ? `&source=${encodeURIComponent(source)}` : ''}`;
+	const statusHref = (s: 'all' | EssayStatus) => essayHref(essayParam, s, sourceParam);
+	const sourceHref = (src: string) => essayHref(essayParam, statusParam, src);
 
 	let switcherOpen = $state(false);
 	const tabHref = (m: 'read' | 'practice' | 'essays') => {
@@ -245,6 +265,19 @@
 			{/each}
 		</nav>
 	{:else if mode === 'essays'}
+		{#if sources.length > 0}
+			<div role="group" aria-label="Filter essays by source" class="mb-1.5 flex flex-wrap gap-1.5">
+				{#each sources as src (src)}
+					<a
+						href={sourceHref(src)}
+						aria-current={sourceParam === src ? 'true' : undefined}
+						class={cn('inline-flex h-8 items-center gap-1.5 rounded-xl border-2 border-b-3 px-2.5 text-xs font-extrabold tracking-wide uppercase no-underline transition-all', sourceParam === src ? 'border-[#1899D6] bg-[#1CB0F6] text-white' : 'border-slate-200 bg-white text-foreground hover:bg-muted dark:border-[#2B434E] dark:bg-[#131F24]')}
+					>
+						{src === 'all' ? 'All' : src} <span class="tabular-nums opacity-75">{sourceCounts[src] ?? 0}</span>
+					</a>
+				{/each}
+			</div>
+		{/if}
 		<div role="group" aria-label="Filter essays by status" class="flex flex-wrap gap-1.5">
 			{#each STATUSES as s (s)}
 				<a

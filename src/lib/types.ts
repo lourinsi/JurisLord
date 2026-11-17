@@ -26,6 +26,8 @@ export interface AlacEssay {
 	id: string;
 	title: string;
 	topic: string;
+	/** Optional source/exam tag for filtering, e.g. 'Midterms', 'Bar Exam'. */
+	source?: string;
 	factPattern: string;
 	/** The question the examiner asks, e.g. "Is Juan liable? Discuss, using the ALAC method." */
 	question?: string;

@@ -83,7 +83,7 @@
 		<Button variant="ghost" href="/"><ArrowLeft class="size-4" /> Back home</Button>
 	</div>
 {:else if subject.id === slug}
-	{#if subject.id === 'crim1_lloren'}
+	{#if subject.id === 'crim1_lloren' && page.url.pathname.startsWith('/module/crim1_lloren/practice')}
 		<div
 			aria-hidden="true"
 			class="pointer-events-none fixed inset-0 z-30 flex items-center justify-center overflow-hidden select-none"

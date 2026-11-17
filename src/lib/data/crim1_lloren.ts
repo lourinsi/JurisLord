@@ -1391,15 +1391,15 @@ export const crim1Lloren: LawModule = {
 				'Liable for Death Committed in a Tumultuous Affray'
 			],
 			optionExplanations: [
-				'Incorrect — AA is liable for Murder under the reviewer and People v. Apolinar.',
-				'Held: Defense of property is not as important as right to life, and defense of property can be invoked as a justifying circumstance ONLY when it is coupled with an attack on the person of one entrusted with said property (People v. Apolinar). Life is more important than property. Therefore, liable for murder.',
+				'Correct — AA is liable for Homicide (not Murder). Defense of property does not justify killing unless coupled with an attack on the person, and there was no treachery because he shouted a warning and fired in the air first (People v. Anastacio Apolinar, 38 O.G. 2870).',
+				'Incorrect — There was no treachery (alevosia) or other qualifying circumstance to elevate the killing to Murder, because AA shouted a warning and fired a warning shot in the air first.',
 				'Complete defense of property does not justify taking a human life unless coupled with unlawful aggression against the person.',
 				'Death in a tumultuous affray (Art. 251) requires a confused, disorderly fight among several persons where the actual killer cannot be ascertained.'
 			],
-			correctIndex: 1,
+			correctIndex: 0,
 			explanation:
-				'Held: Defense of property is not as important as right to life, and defense of property can be invoked as a justifying circumstance ONLY when it is coupled with an attack on the person of one entrusted with said property. (People v. Apolinar) Life is more important than property. Therefore, liable for murder.',
-			legalBasis: 'Art. 11(1) & Art. 248, RPC — People v. Apolinar, C.A., 38 O.G. 2870 (Reyes, pp. 167, 169)'
+				'None of the above — AA is liable for HOMICIDE. In People v. Anastacio Apolinar (38 O.G. 2870), the Court of Appeals held that defense of property does not justify killing unless coupled with an attack on the person of one entrusted with said property, as life is more important than property. However, there was no Murder because AA shouted a warning and fired in the air first, negating treachery.',
+			legalBasis: 'Art. 11(1) & Art. 249, RPC — People v. Anastacio Apolinar, C.A., 38 O.G. 2870 (Reyes, pp. 167, 169)'
 		},
 		{
 			id: 'crim1_lloren:mcq:54',

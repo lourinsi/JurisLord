@@ -272,6 +272,22 @@
 		ui.toast('Test progress reset (score saved to history)');
 	}
 
+	function resetWrongInPractice() {
+		const scope = lawModule.mcqs.filter((q) => topicId === 'all' || q.topicId === topicId);
+		let cleared = 0;
+		for (const q of scope) {
+			const att = userStorage.mcqAttempts[q.id];
+			if (att && !att.isCorrect) {
+				userStorage.clearMcqAttempt(q.id);
+				cleared++;
+			}
+		}
+		if (filter === 'incorrect') filter = 'all';
+		rebuild();
+		report();
+		ui.toast(`Reset ${cleared} wrong answer${cleared === 1 ? '' : 's'} (correct answers kept)`);
+	}
+
 	// ---- exam ----
 	function startExam() {
 		if (!total) return;
@@ -281,6 +297,30 @@
 		deadline = startedAt + Math.max(1, examMinutes) * 60_000;
 		secondsLeft = Math.ceil((deadline - Date.now()) / 1000);
 		phase = 'running';
+	}
+
+	function retakeWrongInExam() {
+		if (!total) return;
+		const nextAnswers: Record<string, number> = {};
+		let kept = 0;
+		let firstWrongIndex = -1;
+		sessionIds.forEach((id, i) => {
+			const q = byId.get(id);
+			if (q && examAnswers[id] === q.correctIndex) {
+				nextAnswers[id] = examAnswers[id];
+				kept++;
+			} else if (firstWrongIndex === -1) {
+				firstWrongIndex = i;
+			}
+		});
+		examAnswers = nextAnswers;
+		flagged = {};
+		index = firstWrongIndex >= 0 ? firstWrongIndex : 0;
+		startedAt = Date.now();
+		deadline = startedAt + Math.max(1, examMinutes) * 60_000;
+		secondsLeft = Math.ceil((deadline - Date.now()) / 1000);
+		phase = 'running';
+		ui.toast(`Retaking ${total - kept} wrong/unanswered — ${kept} correct kept`);
 	}
 
 	function submitExam() {
@@ -398,6 +438,16 @@
 						<span class={cn('rounded-full px-1.5 py-px text-[0.7rem] font-extrabold tabular-nums', filter === f.id ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500 dark:bg-[#223842] dark:text-slate-300')}>{filterCounts[f.id]}</span>
 					</button>
 				{/each}
+				{#if filterCounts.incorrect > 0}
+					<button
+						type="button"
+						onclick={resetWrongInPractice}
+						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-4 border-[#FF9600]/40 bg-[#FFF4E5] px-3 text-xs font-extrabold tracking-wide text-[#C96B00] uppercase transition-all duration-150 hover:bg-[#FF9600] hover:text-white active:border-b-2 active:translate-y-0.5 dark:border-[#FF9600]/40 dark:bg-[#FF9600]/15 dark:text-[#FFAD33] dark:hover:bg-[#FF9600] dark:hover:text-white"
+						title="Reset only wrong answers and keep correct ones"
+					>
+						<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset wrong ({filterCounts.incorrect})
+					</button>
+				{/if}
 				{#if filterCounts.all - filterCounts.unanswered > 0}
 					<button
 						type="button"
@@ -467,7 +517,10 @@
 						</ul>
 					{/if}
 					<div class="flex flex-wrap items-center gap-3">
-						<Button onclick={rebuild}><RotateCcw /> New exam</Button>
+						{#if result.correct < result.total}
+							<Button onclick={retakeWrongInExam}><RotateCcw /> Retake wrong ({result.total - result.correct})</Button>
+						{/if}
+						<Button variant={result.correct < result.total ? 'outline' : 'default'} onclick={rebuild}><RotateCcw /> New exam</Button>
 						<p class="text-sm font-semibold text-muted-foreground">Review each question below — explanations are unlocked.</p>
 					</div>
 				</Card.Content>

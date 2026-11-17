@@ -9,7 +9,7 @@
 		'grid h-8 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40';
 </script>
 
-<div role="group" aria-label="Text size" class={cn('inline-flex items-center rounded-lg border border-input bg-popover p-[3px]', className)}>
+<div role="group" aria-label="Text size" class={cn('inline-flex items-center rounded-2xl border-2 border-b-4 border-slate-200 bg-white p-1 dark:border-[#2B434E] dark:bg-[#131F24]', className)}>
 	<button type="button" class={cn(button, 'w-9')} aria-label="Smaller text" title="Smaller text" disabled={!textSize.canDecrease} onclick={() => textSize.decrease()}>
 		<AArrowDown class="size-4" />
 	</button>

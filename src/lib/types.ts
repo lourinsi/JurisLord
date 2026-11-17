@@ -13,6 +13,8 @@ export interface McqQuestion {
 	tag?: McqTag;
 	question: string;
 	options: string[];
+	/** Per-option explanation shown after answering (indexed to match `options`). */
+	optionExplanations?: string[];
 	correctIndex: number;
 	explanation: string;
 	/** Codal provision / jurisprudence cited for the item. */

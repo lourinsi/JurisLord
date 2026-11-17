@@ -25,24 +25,24 @@
 
 <div class="flex min-h-[calc(100dvh-var(--header-h))] items-stretch">
 	{#if showNav}
-		<aside aria-label="Subject navigator" class="no-print sticky top-(--header-h) h-[calc(100dvh-var(--header-h))] w-(--nav-w) shrink-0 overflow-y-auto overscroll-contain border-r bg-card px-3 pt-4 pb-10 max-lg:hidden">
+		<aside aria-label="Subject navigator" class="no-print sticky top-(--header-h) h-[calc(100dvh-var(--header-h))] w-(--nav-w) shrink-0 overflow-y-auto overscroll-contain border-r-2 border-slate-200 bg-card px-3.5 pt-4 pb-10 max-lg:hidden dark:border-[#2B434E]">
 			<SubjectNav {subject} {mode} />
 		</aside>
 	{/if}
 
 	<div class="min-w-0 flex-1">
 		<!-- Phones and tablets: the navigator lives in a sheet behind this bar. -->
-		<div class="no-print sticky top-(--header-h) z-30 flex h-12 items-center gap-2 border-b bg-background/95 px-3 backdrop-blur lg:hidden" class:hidden={ui.focusMode}>
-			<button type="button" onclick={() => (ui.navOpen = true)} class="inline-flex h-10 items-center gap-2 rounded-lg border border-input bg-popover px-3 text-sm font-medium">
+		<div class="no-print sticky top-(--header-h) z-30 flex h-13 items-center gap-2.5 border-b-2 border-slate-200 bg-background/95 px-3 backdrop-blur lg:hidden dark:border-[#2B434E]" class:hidden={ui.focusMode}>
+			<button type="button" onclick={() => (ui.navOpen = true)} class="inline-flex h-9 items-center gap-2 rounded-xl border-2 border-b-3 border-slate-200 bg-white px-3 text-xs font-extrabold tracking-wide uppercase dark:border-[#2B434E] dark:bg-[#1A2C34]">
 				<Menu class="size-4" /> Contents
 			</button>
-			<span class="min-w-0 flex-1 truncate text-sm text-muted-foreground">{subject.title} · <span class="text-foreground">{where}</span></span>
+			<span class="min-w-0 flex-1 truncate text-sm font-bold text-muted-foreground">{subject.title} · <span class="font-extrabold text-foreground">{where}</span></span>
 		</div>
 		{#if prefs.value.navCollapsed && !ui.focusMode}
 			<button
 				type="button"
 				onclick={() => prefs.set('navCollapsed', false)}
-				class="no-print fixed top-[calc(var(--header-h)+0.75rem)] left-3 z-30 inline-flex h-10 items-center gap-2 rounded-lg border border-input bg-popover px-3 text-sm font-medium shadow-sm max-lg:hidden"
+				class="no-print fixed top-[calc(var(--header-h)+0.75rem)] left-3 z-30 inline-flex h-10 items-center gap-2 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-3.5 text-xs font-extrabold tracking-wide uppercase shadow-sm max-lg:hidden dark:border-[#2B434E]"
 				aria-label="Show navigator"
 			>
 				<PanelLeft class="size-4" /> Contents

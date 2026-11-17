@@ -101,14 +101,14 @@
 
 	const ICON = { guide: BookOpen, case: FileText, mcq: Target, essay: PenLine } as const;
 	const where = (h: SearchHit) => [scope === 'all' ? h.doc.subjectTitle : '', ...h.doc.path].filter(Boolean).join(' · ');
-	const scopeBtn = (on: boolean) => cn('h-8 rounded-md border px-2.5 text-xs font-medium transition-colors', on ? 'border-primary bg-primary text-primary-foreground' : 'border-input text-muted-foreground hover:text-foreground');
+	const scopeBtn = (on: boolean) => cn('h-8 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all', on ? 'border-[#1899D6] bg-[#1CB0F6] text-white' : 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#1A2C34]');
 </script>
 
 <DialogPrimitive.Root bind:open={ui.searchOpen}>
 	<DialogPrimitive.Portal>
-		<DialogPrimitive.Overlay class="fixed inset-0 z-50 bg-black/45" />
+		<DialogPrimitive.Overlay class="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px]" />
 		<DialogPrimitive.Content
-			class="fixed top-[8vh] left-1/2 z-50 flex max-h-[84dvh] w-[min(46rem,calc(100vw-1.5rem))] -translate-x-1/2 flex-col overflow-hidden rounded-xl border bg-popover shadow-2xl outline-none max-sm:top-2 max-sm:max-h-[calc(100dvh-1rem)]"
+			class="fixed top-[8vh] left-1/2 z-50 flex max-h-[84dvh] w-[min(46rem,calc(100vw-1.5rem))] -translate-x-1/2 flex-col overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-popover shadow-2xl outline-none max-sm:top-2 max-sm:max-h-[calc(100dvh-1rem)] dark:border-[#2B434E]"
 			onOpenAutoFocus={(e) => {
 				e.preventDefault();
 				input?.focus();
@@ -116,8 +116,8 @@
 			}}
 		>
 			<DialogPrimitive.Title class="sr-only">Search</DialogPrimitive.Title>
-			<div class="flex h-14 shrink-0 items-center gap-3 border-b px-4">
-				<Search class="size-5 shrink-0 text-muted-foreground" />
+			<div class="flex h-14 shrink-0 items-center gap-3 border-b-2 border-slate-100 px-4 dark:border-[#2B434E]">
+				<Search class="size-5 shrink-0 text-[#1CB0F6]" strokeWidth={2.5} />
 				<input
 					bind:this={input}
 					bind:value={query}
@@ -129,16 +129,16 @@
 					aria-label="Search"
 					aria-controls="palette-results"
 					aria-activedescendant={flat.length ? `palette-opt-${active}` : undefined}
-					class="h-full min-w-0 flex-1 bg-transparent text-[1.0625rem] text-foreground outline-none placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden"
+					class="h-full min-w-0 flex-1 bg-transparent text-[1.0625rem] font-bold text-foreground outline-none placeholder:font-semibold placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden"
 				/>
 				{#if query}
-					<button type="button" onclick={() => ((query = ''), input?.focus())} class="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-muted" aria-label="Clear search"><X class="size-4" /></button>
+					<button type="button" onclick={() => ((query = ''), input?.focus())} class="grid size-8 place-items-center rounded-xl text-muted-foreground hover:bg-muted" aria-label="Clear search"><X class="size-4" /></button>
 				{/if}
-				<DialogPrimitive.Close class="rounded-md border px-1.5 py-0.5 text-xs text-muted-foreground hover:text-foreground">Esc</DialogPrimitive.Close>
+				<DialogPrimitive.Close class="rounded-xl border-2 border-b-3 border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-extrabold text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]">Esc</DialogPrimitive.Close>
 			</div>
 
 			{#if subject}
-				<div role="group" aria-label="Search in" class="flex shrink-0 flex-wrap gap-1.5 border-b px-4 py-2.5">
+				<div role="group" aria-label="Search in" class="flex shrink-0 flex-wrap gap-1.5 border-b-2 border-slate-100 px-4 py-2.5 dark:border-[#2B434E]">
 					<button type="button" class={scopeBtn(scope === 'all')} aria-pressed={scope === 'all'} onclick={() => ((scope = 'all'), input?.focus())}>All subjects</button>
 					<button type="button" class={scopeBtn(scope === 'subject')} aria-pressed={scope === 'subject'} onclick={() => ((scope = 'subject'), input?.focus())}>{subject.title}</button>
 					{#if part}

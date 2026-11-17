@@ -105,12 +105,12 @@
 	const date = (t: number) => new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 </script>
 
-<svelte:head><title>Saved — Subpoena Colada</title></svelte:head>
+<svelte:head><title>Saved — Juris Lord</title></svelte:head>
 
 <div class="mx-auto flex max-w-[75rem] flex-col gap-6 px-4 pt-8 pb-16 sm:px-8">
 	<header class="flex flex-col gap-2">
-		<h1 class="font-heading text-[2rem] font-semibold">Saved</h1>
-		<p class="text-[0.9375rem] text-muted-foreground">Everything you've marked, across subjects. Each item opens where you saved it.</p>
+		<h1 class="font-heading text-3xl font-extrabold">Saved</h1>
+		<p class="text-[0.9375rem] font-semibold text-muted-foreground">Everything you've marked, across subjects. Each item opens where you saved it.</p>
 	</header>
 
 	<div class="flex flex-wrap items-center gap-3">
@@ -124,9 +124,9 @@
 				{ value: 'bookmarks', label: 'Bookmarks', count: userStorage.reading.bookmarks.length + userStorage.bookmarks.length }
 			]}
 		/>
-		<label class="flex h-10 min-w-0 flex-[1_1_16rem] items-center gap-2 rounded-lg border border-input bg-popover px-3 text-muted-foreground focus-within:border-ring sm:max-w-sm">
-			<Search class="size-4 shrink-0" />
-			<input bind:value={filter} type="search" placeholder="Search your {tab}" aria-label="Search your {tab}" class="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground" />
+		<label class="flex h-11 min-w-0 flex-[1_1_16rem] items-center gap-2 rounded-2xl border-2 border-b-4 border-slate-200 bg-white px-3.5 text-muted-foreground focus-within:border-[#1CB0F6] sm:max-w-sm dark:border-[#2B434E] dark:bg-[#1A2C34]">
+			<Search class="size-4 shrink-0 text-[#1CB0F6]" />
+			<input bind:value={filter} type="search" placeholder="Search your {tab}" aria-label="Search your {tab}" class="min-w-0 flex-1 bg-transparent text-sm font-bold text-foreground outline-none placeholder:font-semibold placeholder:text-muted-foreground" />
 		</label>
 		{#if tab === 'notes'}<Button onclick={newNote} class="ml-auto"><Plus /> New note</Button>{/if}
 	</div>

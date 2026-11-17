@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-	{#if !subject}<title>Subject not found — Subpoena Colada</title>{/if}
+	{#if !subject}<title>Subject not found — Juris Lord</title>{/if}
 </svelte:head>
 
 {#if !subject}

@@ -3,6 +3,7 @@ import { pfr } from './pfr';
 import { pfrCases } from './pfr_cases';
 import { consti1 } from './consti1';
 import { crim1 } from './crim1';
+import { crim1Lloren } from './crim1_lloren';
 import { statcon } from './statcon';
 import { statcon2 } from './statcon2';
 import { crimpro } from './crimpro';
@@ -48,7 +49,7 @@ const statutoryConstruction: Subject = {
 };
 
 /** Master index, in the order shown on the dashboard. A subject's `id` is also its URL slug. */
-export const modules: Subject[] = [personsAndFamily, single(consti1), single(crim1), single(crimpro), statutoryConstruction];
+export const modules: Subject[] = [personsAndFamily, single(consti1), single(crim1), single(crim1Lloren), single(crimpro), statutoryConstruction];
 
 /** Looks a subject up by slug, accepting the old slugs of merged subjects (`statcon2`, `pfr_cases`). */
 export function getModule(slug: string): Subject | undefined {

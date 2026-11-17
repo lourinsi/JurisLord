@@ -417,7 +417,7 @@ class StorageStore {
 	exportJson() {
 		return JSON.stringify(
 			{
-				app: 'subpoena-colada',
+				app: 'juris-lord',
 				version: 3,
 				exportedAt: new Date().toISOString(),
 				mcqAttempts: this.mcqAttempts,
@@ -440,8 +440,8 @@ class StorageStore {
 		} catch {
 			throw new Error('That file is not valid JSON.');
 		}
-		if (!isRecord(data) || (data.app !== 'subpoena-colada' && data.app !== 'law-reviewer') || !isRecord(data.mcqAttempts) || !isRecord(data.essayDrafts) || !Array.isArray(data.bookmarks)) {
-			throw new Error('This file is not a Subpoena Colada progress export.');
+		if (!isRecord(data) || (data.app !== 'juris-lord' && data.app !== 'subpoena-colada' && data.app !== 'law-reviewer') || !isRecord(data.mcqAttempts) || !isRecord(data.essayDrafts) || !Array.isArray(data.bookmarks)) {
+			throw new Error('This file is not a Juris Lord progress export.');
 		}
 		const reading = isRecord(data.reading) ? cleanReading(data.reading) : null;
 		return {

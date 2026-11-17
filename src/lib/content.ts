@@ -113,6 +113,10 @@ const GROUPS: Record<string, Rule[]> = {
 		{ title: 'Discussion and principles', test: (p) => !/^part-/.test(p.id) },
 		{ title: 'Revised Penal Code, Book One', test: () => true }
 	],
+	crim1_lloren: [
+		{ title: 'Quiz & Corrected Key', test: (p) => p.id.startsWith('part-1') },
+		{ title: 'Indeterminate Sentence Law Guide', test: () => true }
+	],
 	crimpro: [
 		{ title: 'Start', test: (p) => p.id === 'start-here' || p.id === 'prelim' },
 		{ title: 'Rules 110–127', test: (p) => /^r1\d\d$/.test(p.id) || p.id.startsWith('prescription') },

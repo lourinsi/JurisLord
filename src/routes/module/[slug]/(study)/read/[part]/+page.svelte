@@ -302,7 +302,7 @@
 </script>
 
 <svelte:head>
-	<title>{part ? `${part.label || part.title} — ${subject.title}` : subject.title} — Subpoena Colada</title>
+	<title>{part ? `${part.label || part.title} — ${subject.title}` : subject.title} — Juris Lord</title>
 </svelte:head>
 
 <svelte:window onbeforeprint={() => (collapsed = {})} />
@@ -351,14 +351,14 @@
 				<p class="text-sm text-muted-foreground">This part is a single section.</p>
 			{/if}
 		</div>
-		<div class="flex flex-col gap-2.5 rounded-xl border bg-card p-4">
+		<div class="flex flex-col gap-2.5 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-4 dark:border-[#2B434E]">
 			<p class="label-caps text-[0.7rem]">{part.label || 'This part'} progress</p>
 			<StudyBar studied={progress.studied} visited={progress.visited} total={progress.total} label="{part.title} progress" />
-			<p class="text-[0.8125rem] text-muted-foreground">
+			<p class="text-[0.8125rem] font-bold text-muted-foreground">
 				{progress.studied} of {progress.total} {progress.total === 1 ? 'section' : 'topics'} studied{progress.visited ? ` · ${progress.visited} visited` : ''}
 			</p>
 		</div>
-		<button type="button" onclick={addNote} class="inline-flex items-center gap-2 self-start text-[0.8125rem] text-muted-foreground hover:text-foreground">
+		<button type="button" onclick={addNote} class="inline-flex items-center gap-2 self-start rounded-xl px-2 py-1 text-[0.8125rem] font-extrabold text-[#1CB0F6] hover:bg-[#DDF4FF] dark:hover:bg-[#1CB0F6]/15">
 			<NotebookPen class="size-4" /> Add a note to this part
 		</button>
 	{/if}
@@ -393,8 +393,8 @@
 				<Breadcrumbs items={breadcrumbs} />
 				<div class="flex flex-col gap-2">
 					<p class="label-caps">{part.group ? `${part.group} · ` : ''}Part {part.index + 1} of {parts.length}</p>
-					<h1 class="font-heading text-[1.875rem] leading-tight font-semibold text-balance sm:text-[2.125rem]">
-						{#if part.label}<span class="text-muted-foreground">{part.label} — </span>{/if}{part.name}
+					<h1 class="font-heading text-[1.875rem] leading-tight font-extrabold text-balance sm:text-[2.2rem]">
+						{#if part.label}<span class="text-[#1CB0F6]">{part.label} — </span>{/if}{part.name}
 					</h1>
 				</div>
 				<div class="no-print flex flex-wrap items-center gap-2">
@@ -403,9 +403,9 @@
 							type="button"
 							onclick={() => userStorage.setStudied(partKeys, !partStudied)}
 							aria-pressed={partStudied}
-							class={cn('inline-flex h-10 items-center gap-2 rounded-lg border px-3 text-sm font-medium', partStudied ? 'border-green/50 bg-green/10 text-green' : 'border-input bg-popover hover:bg-muted')}
+							class={cn('inline-flex h-10 items-center gap-2 rounded-2xl border-2 border-b-4 px-3.5 text-xs font-extrabold tracking-wide uppercase transition-all active:border-b-2 active:translate-y-0.5', partStudied ? 'border-[#46A302] bg-[#58CC02] text-white' : 'border-slate-200 bg-white text-foreground hover:bg-slate-50 dark:border-[#2B434E] dark:bg-[#1A2C34]')}
 						>
-							<Check class="size-4" />
+							<Check class="size-4" strokeWidth={2.5} />
 							{partStudied ? 'Studied' : part.units.length > 1 ? 'Mark all studied' : 'Mark as studied'}
 						</button>
 					{/if}
@@ -413,26 +413,26 @@
 						type="button"
 						onclick={() => toggleBookmark()}
 						aria-pressed={!!userStorage.guideBookmark(subject.id, part.id)}
-						class="inline-flex h-10 items-center gap-2 rounded-lg border border-input bg-popover px-3 text-sm font-medium hover:bg-muted"
+						class="inline-flex h-10 items-center gap-2 rounded-2xl border-2 border-b-4 border-slate-200 bg-white px-3.5 text-xs font-extrabold tracking-wide uppercase transition-all hover:bg-slate-50 active:border-b-2 active:translate-y-0.5 dark:border-[#2B434E] dark:bg-[#1A2C34]"
 					>
-						{#if userStorage.guideBookmark(subject.id, part.id)}<BookmarkCheck class="size-4 text-yellow" /> Bookmarked{:else}<Bookmark class="size-4" /> Bookmark{/if}
+						{#if userStorage.guideBookmark(subject.id, part.id)}<BookmarkCheck class="size-4 text-[#FFC800]" /> Bookmarked{:else}<Bookmark class="size-4" /> Bookmark{/if}
 					</button>
-					<button type="button" onclick={() => ui.openSearch('', 'part')} class="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+					<button type="button" onclick={() => ui.openSearch('', 'part')} class="inline-flex h-10 items-center gap-2 rounded-2xl px-3 text-xs font-extrabold tracking-wide text-muted-foreground uppercase hover:bg-muted hover:text-foreground">
 						<Search class="size-4" /> Search {part.label || 'this part'}
 					</button>
 					<Popover.Root bind:open={settingsOpen}>
-						<Popover.Trigger class="inline-flex h-10 items-center rounded-lg px-3 font-serif text-[0.9375rem] font-semibold text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Reading settings">Aa</Popover.Trigger>
+						<Popover.Trigger class="inline-flex h-10 items-center rounded-2xl px-3 text-sm font-extrabold text-muted-foreground hover:bg-muted hover:text-foreground" aria-label="Reading settings">Aa</Popover.Trigger>
 						<Popover.Portal>
-							<Popover.Content sideOffset={6} align="start" class="z-50 w-80 rounded-xl border bg-popover p-4 shadow-lg outline-none">
+							<Popover.Content sideOffset={6} align="start" class="z-50 w-80 rounded-3xl border-2 border-b-4 border-slate-200 bg-popover p-4 shadow-xl outline-none dark:border-[#2B434E]">
 								<ReadingSettings compact />
 							</Popover.Content>
 						</Popover.Portal>
 					</Popover.Root>
-					<button type="button" onclick={() => (sheetOpen = true)} class="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground xl:hidden">
+					<button type="button" onclick={() => (sheetOpen = true)} class="inline-flex h-10 items-center gap-2 rounded-2xl px-3 text-xs font-extrabold tracking-wide text-muted-foreground uppercase hover:bg-muted hover:text-foreground xl:hidden">
 						<ListTree class="size-4" /> On this page
 					</button>
 					{#if part.topics.length > 1}
-						<button type="button" onclick={() => (collapsed = Object.fromEntries(part.topics.map((t) => [t.id, allOpen])))} class="inline-flex h-10 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+						<button type="button" onclick={() => (collapsed = Object.fromEntries(part.topics.map((t) => [t.id, allOpen])))} class="inline-flex h-10 items-center rounded-2xl px-3 text-xs font-extrabold tracking-wide text-muted-foreground uppercase hover:bg-muted hover:text-foreground">
 							{allOpen ? 'Collapse all' : 'Expand all'}
 						</button>
 					{/if}
@@ -441,11 +441,11 @@
 
 			{#if intro || legend.length}
 				<div class="mb-8 flex flex-col gap-3">
-					{#if intro}<p class="text-[0.9375rem] leading-relaxed text-muted-foreground">{intro}</p>{/if}
+					{#if intro}<p class="text-[0.9375rem] leading-relaxed font-semibold text-muted-foreground">{intro}</p>{/if}
 					{#if legend.length}
-						<ul class="flex flex-wrap gap-x-4 gap-y-1.5 rounded-lg border bg-card px-3.5 py-2.5 text-xs" aria-label="Color legend">
+						<ul class="flex flex-wrap gap-x-4 gap-y-1.5 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-4 py-3 text-xs font-bold dark:border-[#2B434E]" aria-label="Color legend">
 							{#each legend as item (item.label)}
-								<li class="flex items-center gap-1.5"><span class="size-2.5 rounded-full" style="background:var(--{item.color})" aria-hidden="true"></span>{item.label}</li>
+								<li class="flex items-center gap-1.5"><span class="size-3 rounded-full" style="background:var(--{item.color})" aria-hidden="true"></span>{item.label}</li>
 							{/each}
 						</ul>
 					{/if}
@@ -490,16 +490,16 @@
 							</div>
 							<ul class="flex flex-col gap-3">
 								{#each g.cases as c (c.id)}
-									<li id={caseAnchor(c.id)} data-hl-scope="case:{c.id}" class={cn('scroll-mt-28 rounded-xl border bg-card p-4', c.unverified && 'border-orange/50')}>
+									<li id={caseAnchor(c.id)} data-hl-scope="case:{c.id}" class={cn('scroll-mt-28 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-5 dark:border-[#2B434E]', c.unverified && 'border-[#FF9600]')}>
 										<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-											<h3 class="font-sans text-base font-semibold"><Highlight text={c.title} {query} /></h3>
+											<h3 class="font-sans text-base font-extrabold"><Highlight text={c.title} {query} /></h3>
 											<div class="flex items-center gap-1.5">
-												{#if c.unverified}<Badge variant="outline" class="gap-1 border-orange/50 text-orange"><TriangleAlert /> Unverified</Badge>{/if}
+												{#if c.unverified}<Badge variant="outline" class="gap-1 border-[#FF9600] text-[#C96B00]"><TriangleAlert /> Unverified</Badge>{/if}
 												<Badge variant="secondary" class="font-mono text-[0.7rem]"><Highlight text={c.citation} {query} /></Badge>
 											</div>
 										</div>
-										<p class="mt-2 font-serif text-[1.0625rem] leading-relaxed font-medium"><Highlight text={c.keyRule} {query} /></p>
-										{#if rest(c)}<p class="mt-2 font-serif text-[0.9375rem] leading-relaxed text-muted-foreground"><Highlight text={rest(c)} {query} /></p>{/if}
+										<p class="mt-2 font-sans text-[1.025rem] leading-relaxed font-bold"><Highlight text={c.keyRule} {query} /></p>
+										{#if rest(c)}<p class="mt-2 font-sans text-[0.9375rem] leading-relaxed font-semibold text-muted-foreground"><Highlight text={rest(c)} {query} /></p>{/if}
 									</li>
 								{/each}
 							</ul>
@@ -510,15 +510,15 @@
 
 			<nav aria-label="Previous and next part" class="no-print mt-12 grid gap-3 sm:grid-cols-2">
 				{#if prev}
-					<a href={readHref(subject.id, prev.id)} class="flex flex-col gap-1 rounded-xl border border-input p-4 text-foreground no-underline hover:bg-card">
-						<span class="flex items-center gap-1.5 text-[0.8125rem] text-muted-foreground"><ArrowLeft class="size-3.5" /> Previous</span>
-						<span class="font-heading text-[1.0625rem] font-semibold">{prev.label ? `${prev.label} — ${prev.name}` : prev.title}</span>
+					<a href={readHref(subject.id, prev.id)} class="flex flex-col gap-1 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-4 text-foreground no-underline transition-all hover:-translate-y-0.5 hover:border-[#1CB0F6]/60 dark:border-[#2B434E]">
+						<span class="flex items-center gap-1.5 text-xs font-extrabold tracking-wide text-muted-foreground uppercase"><ArrowLeft class="size-3.5" /> Previous</span>
+						<span class="font-heading text-[1.0625rem] font-extrabold">{prev.label ? `${prev.label} — ${prev.name}` : prev.title}</span>
 					</a>
 				{:else}<span></span>{/if}
 				{#if next}
-					<a href={readHref(subject.id, next.id)} class="flex flex-col gap-1 rounded-xl border border-input p-4 text-right text-foreground no-underline hover:bg-card">
-						<span class="flex items-center justify-end gap-1.5 text-[0.8125rem] text-muted-foreground">Next <ArrowRight class="size-3.5" /></span>
-						<span class="font-heading text-[1.0625rem] font-semibold">{next.label ? `${next.label} — ${next.name}` : next.title}</span>
+					<a href={readHref(subject.id, next.id)} class="flex flex-col gap-1 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-4 text-right text-foreground no-underline transition-all hover:-translate-y-0.5 hover:border-[#58CC02]/60 dark:border-[#2B434E]">
+						<span class="flex items-center justify-end gap-1.5 text-xs font-extrabold tracking-wide text-[#46A302] uppercase dark:text-[#7BE328]">Next <ArrowRight class="size-3.5" /></span>
+						<span class="font-heading text-[1.0625rem] font-extrabold">{next.label ? `${next.label} — ${next.name}` : next.title}</span>
 					</a>
 				{/if}
 			</nav>

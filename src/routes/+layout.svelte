@@ -49,7 +49,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Subpoena Colada — Philippine Law Study Guide</title>
+	<title>Juris Lord — Philippine Law Study Guide</title>
 </svelte:head>
 
 <svelte:window onkeydown={onKey} />

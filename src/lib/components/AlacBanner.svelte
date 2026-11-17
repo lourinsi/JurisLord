@@ -12,23 +12,23 @@
 	];
 </script>
 
-<section aria-label="The ALAC method" class={cn(!bare && 'rounded-xl border bg-card p-4 sm:p-5')}>
+<section aria-label="The ALAC method" class={cn(!bare && 'rounded-3xl border-2 border-b-4 border-slate-200 bg-card p-5 sm:p-6 dark:border-[#2B434E]')}>
 	{#if !bare}
 		<div class="mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-			<h2 class="font-heading text-lg font-semibold">The ALAC Method</h2>
-			<p class="text-sm text-muted-foreground">The four-part structure every bar essay answer should follow.</p>
+			<h2 class="font-heading text-lg font-extrabold">The ALAC Method</h2>
+			<p class="text-sm font-semibold text-muted-foreground">The four-part structure every bar essay answer should follow.</p>
 		</div>
 	{/if}
 	<ol class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 		{#each ALAC_FIELDS as f, i (f.key)}
-			<li class="relative flex gap-3 rounded-lg border bg-background/60 p-3">
-				<span class={cn('grid size-9 shrink-0 place-items-center rounded-md border font-serif text-lg font-bold', f.badge)} aria-hidden="true">{f.letter}</span>
+			<li class="relative flex gap-3 rounded-2xl border-2 border-slate-200 bg-slate-50/80 p-3 dark:border-[#2B434E] dark:bg-[#131F24]">
+				<span class={cn('grid size-9 shrink-0 place-items-center rounded-xl border-2 border-b-3 font-sans text-lg font-extrabold', f.badge)} aria-hidden="true">{f.letter}</span>
 				<div class="min-w-0">
-					<p class="text-sm font-semibold">
+					<p class="text-sm font-extrabold">
 						<span class="sr-only">{f.letter} — </span>{f.name}
 					</p>
 					{#if !compact}
-						<p class="mt-0.5 text-[0.8rem] leading-snug text-muted-foreground">{blurbs[i]}</p>
+						<p class="mt-0.5 text-[0.8rem] leading-snug font-semibold text-muted-foreground">{blurbs[i]}</p>
 					{/if}
 				</div>
 			</li>

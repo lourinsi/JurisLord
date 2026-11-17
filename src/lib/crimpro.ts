@@ -56,8 +56,8 @@ export interface Flip {
 	ref: string;
 }
 
-/** [number, what it is for, rule] */
-export type NumberRow = [string, string, string];
+/** [number, what it is for, rule, optional key note] */
+export type NumberRow = [string, string, string] | [string, string, string, string];
 
 const data = raw as unknown as { R: Rule[]; S: TwistSet[]; F: Flip[]; N: NumberRow[] };
 

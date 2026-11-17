@@ -4,7 +4,8 @@
 	import Breadcrumbs from '$lib/components/common/Breadcrumbs.svelte';
 	import NumberTable from '$lib/components/NumberTable.svelte';
 	import { getModule } from '$lib/data/modules';
-	import { NUMBERS as CRIMPRO_NUMBERS } from '$lib/crimpro';
+	import { NUMBERS as CRIMPRO_NUMBERS, type NumberRow } from '$lib/crimpro';
+	import { CRIMPRO_FINALS_TOPICS } from '$lib/crimpro-finals';
 	import { STATCON } from '$lib/statcon';
 
 	const slug = $derived(page.params.slug ?? '');
@@ -91,7 +92,10 @@
 		.map((e) => [String(e.it.length), e.t, `List ${e.id}`]);
 
 	// Crim Pro numbers
-	const crimproRows: [string, string, string][] = CRIMPRO_NUMBERS.map(([n, what, rule]) => [n, what, `Rule ${rule}`]);
+	const crimproRows: NumberRow[] = CRIMPRO_NUMBERS.map(([n, what, rule, note]) => {
+		const src = /^\d/.test(rule) ? `Rule ${rule}` : rule;
+		return note ? [n, what, src, note] : [n, what, src];
+	});
 
 	// Crim Law I tables
 	type Table = { title: string; head?: string[]; rows: string[][]; note?: string };
@@ -178,6 +182,7 @@
 		['Children (RA 9344)', '15 or below exempt; over 15 under 18 exempt unless with discernment; suspended sentence until 21']
 	];
 	let crimHide = $state(false);
+	let crimClustered = $state(false);
 	const crimShown = new SvelteSet<string>();
 	function setCrimHide(v: boolean) {
 		crimHide = v;
@@ -187,6 +192,30 @@
 		if (crimShown.has(id)) crimShown.delete(id);
 		else crimShown.add(id);
 	}
+
+	const crimClusterRows: NumberRow[] = $derived.by(() => {
+		const out: NumberRow[] = [];
+		for (const t of crimTables) {
+			const [topic, srcPart] = t.title.split('·').map((s) => s.trim());
+			const src = srcPart || topic;
+			for (const [label, ...vals] of t.rows) {
+				if (t.head && t.head.length > 2) {
+					vals.forEach((v, idx) => {
+						if (v && v !== '—') {
+							const col = t.head![idx + 1];
+							out.push([v, `${topic} — ${label} (${col})`, src]);
+						}
+					});
+				} else if (vals[0]) {
+					out.push([vals[0], `${topic}: ${label}`, src]);
+				}
+			}
+		}
+		for (const [k, v] of crimOther) {
+			out.push([v, k, 'Arts. 16–113']);
+		}
+		return out;
+	});
 </script>
 
 <svelte:head><title>Numbers to Memorize — {subject.title} — Juris Lord</title></svelte:head>
@@ -211,8 +240,8 @@
 		</div>
 	{:else if slug === 'crimpro'}
 		<div class="stack" style="gap:12px">
-			<p class="muted" style="max-width:64ch">Hide the numbers and test yourself. Tap a blurred number to check it.</p>
-			<NumberTable rows={crimproRows} />
+			<p class="muted" style="max-width:64ch">Hide the numbers and test yourself. Tap a blurred number to check it. Filter by rule range, toggle custom rules, or select <b>★ FINALS</b> for the 5 Final Exam Notes topics.</p>
+			<NumberTable rows={crimproRows} finalsTopics={CRIMPRO_FINALS_TOPICS} />
 		</div>
 	{:else if slug === 'statcon'}
 		<div class="stack" style="gap:18px">
@@ -229,44 +258,58 @@
 				Every number to memorize in Arts. 16–113. Fines follow <b>RA 10951 (2017)</b>. Switch to self-test, say the
 				number, then tap it to check.
 			</p>
-			<div class="seg" role="group" aria-label="Number visibility" style="align-self:flex-start">
-				<button aria-pressed={!crimHide} onclick={() => setCrimHide(false)}>Show numbers</button>
-				<button aria-pressed={crimHide} onclick={() => setCrimHide(true)}>Hide numbers (self-test)</button>
-			</div>
+			{#if crimClustered}
+				<div class="seg" role="group" aria-label="Grouping mode" style="align-self:flex-start">
+					<button aria-pressed={!crimClustered} onclick={() => (crimClustered = false)}>Topic tables</button>
+					<button aria-pressed={crimClustered} onclick={() => (crimClustered = true)}>Cluster similar</button>
+				</div>
+				<NumberTable rows={crimClusterRows} title="Clustered numbers (Arts. 16–113)" defaultClustered={true} />
+			{:else}
+				<div class="between wrap" style="gap:8px">
+					<div class="seg" role="group" aria-label="Grouping mode">
+						<button aria-pressed={!crimClustered} onclick={() => (crimClustered = false)}>Topic tables</button>
+						<button aria-pressed={crimClustered} onclick={() => (crimClustered = true)}>Cluster similar</button>
+					</div>
+					<div class="seg" role="group" aria-label="Number visibility">
+						<button aria-pressed={!crimHide} onclick={() => setCrimHide(false)}>Show numbers</button>
+						<button aria-pressed={crimHide} onclick={() => setCrimHide(true)}>Hide numbers (self-test)</button>
+					</div>
+				</div>
 
-			{#snippet val(id: string, v: string)}
-				{#if crimHide}
-					<button class="v" class:blur={!crimShown.has(id)} onclick={() => toggleCrim(id)} aria-label={crimShown.has(id) ? v : 'Reveal this number'}>{v}</button>
-				{:else}{v}{/if}
-			{/snippet}
+				{#snippet val(id: string, v: string)}
+					{#if crimHide}
+						<button class="v" class:blur={!crimShown.has(id)} onclick={() => toggleCrim(id)} aria-label={crimShown.has(id) ? v : 'Reveal this number'}>{v}</button>
+					{:else}{v}{/if}
+				{/snippet}
 
-			<div class="crim-grid">
-				{#each crimTables as t (t.title)}
-					<section class="blk k-mem">
-						<h4>{t.title}</h4>
-						<div style="overflow-x:auto">
-							<table>
-								{#if t.head}<thead><tr>{#each t.head as h, i (i)}<th>{h}</th>{/each}</tr></thead>{/if}
-								<tbody>
-									{#each t.rows as [label, ...vals] (label)}
-										<tr>
-											<th scope="row">{label}</th>
-											{#each vals as v, i (i)}<td>{@render val(`${t.title}|${label}|${i}`, v)}</td>{/each}
-										</tr>
-									{/each}
-								</tbody>
-							</table>
-						</div>
-						{#if t.note}<p class="muted note-s">{t.note}</p>{/if}
+				<div class="crim-grid">
+					{#each crimTables as t (t.title)}
+						<section class="blk k-mem">
+							<h4>{t.title}</h4>
+							<div style="overflow-x:auto">
+								<table>
+									{#if t.head}<thead><tr>{#each t.head as h, i (i)}<th>{h}</th>{/each}</tr></thead>{/if}
+									<tbody>
+										{#each t.rows as [label, ...vals] (label)}
+											<tr>
+												<th scope="row">{label}</th>
+												{#each vals as v, i (i)}<td>{@render val(`${t.title}|${label}|${i}`, v)}</td>{/each}
+											</tr>
+										{/each}
+									</tbody>
+								</table>
+							</div>
+							{#if t.note}<p class="muted note-s">{t.note}</p>{/if}
+						</section>
+					{/each}
+					<section class="blk k-mem wide">
+						<h4>Other numbers</h4>
+						<ul>
+							{#each crimOther as [k, v] (k)}<li><b>{k}:</b> {@render val(k, v)}</li>{/each}
+						</ul>
 					</section>
-				{/each}
-				<section class="blk k-mem wide">
-					<h4>Other numbers</h4>
-					<ul>
-						{#each crimOther as [k, v] (k)}<li><b>{k}:</b> {@render val(k, v)}</li>{/each}
-					</ul>
-				</section>
-			</div>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>

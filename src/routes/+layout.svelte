@@ -60,9 +60,12 @@
 	{@render children()}
 </main>
 {#if !study}
-	<footer class="no-print mx-auto max-w-[75rem] px-4 pt-6 pb-10 text-center text-xs text-muted-foreground sm:px-8">
-		Study aid only — not a substitute for the full codal text. Your answers, drafts, notes and highlights stay in this browser.
-		<a href="/legacy/index.html" class="underline underline-offset-2 hover:text-foreground">Previous version</a>
+	<footer class="no-print mx-auto max-w-[75rem] space-y-1 px-4 pt-6 pb-10 text-center text-xs text-muted-foreground sm:px-8">
+		<p>
+			Study aid only — not a substitute for the full codal text. Your answers, drafts, notes and highlights stay in this browser.
+			<a href="/legacy/index.html" class="underline underline-offset-2 hover:text-foreground">Previous version</a>
+		</p>
+		<p>amended by lourinsi · original code from serocode</p>
 	</footer>
 {/if}
 <SearchPalette />

@@ -16,6 +16,10 @@ class UiStore {
 	navOpen = $state(false);
 	/** An exam in progress hides the navigator so nothing competes with the questions. */
 	focusMode = $state(false);
+	/** Whether the hidden `crim1_lloren` module card is revealed on the home page (unhidden by typing "lloren"). */
+	llorenShown = $state(false);
+	/** Whether the user has entered the password ("UFAKMAIWAYP") to access `/module/crim1_lloren`. */
+	llorenUnlocked = $state(false);
 	toasts = $state<Toast[]>([]);
 	#next = 1;
 

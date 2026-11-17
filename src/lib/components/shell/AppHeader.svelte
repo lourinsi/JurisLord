@@ -11,6 +11,7 @@
 	const path = $derived(page.url.pathname);
 	const inSubject = $derived(path.startsWith('/module/'));
 	const currentSubject = $derived(inSubject ? page.params.slug : undefined);
+	const visibleModules = $derived(modules.filter((m) => m.id !== 'crim1_lloren' || ui.llorenShown));
 
 	let subjectsOpen = $state(false);
 	let menuOpen = $state(false);
@@ -70,7 +71,7 @@
 				<Popover.Portal>
 					<Popover.Content sideOffset={8} align="start" class="z-50 w-80 rounded-3xl border-2 border-b-4 border-slate-200 bg-popover p-2 shadow-xl outline-none dark:border-[#2B434E]">
 						<ul class="flex flex-col gap-1">
-							{#each modules as m (m.id)}
+							{#each visibleModules as m (m.id)}
 								<li>
 									<a
 										href="/module/{m.id}"
@@ -166,7 +167,7 @@
 			<a href="/exam-day" onclick={() => (menuOpen = false)} class={cn(navLink(path.startsWith('/exam-day')), 'h-11')}><Flame class="size-4 text-[#FF9600]" /> Exam day</a>
 			<a href="/settings" onclick={() => (menuOpen = false)} class={cn(navLink(path.startsWith('/settings')), 'h-11')}><SlidersHorizontal class="size-4" /> Settings</a>
 			<p class="label-caps mt-4 px-3 pb-1">Subjects</p>
-			{#each modules as m (m.id)}
+			{#each visibleModules as m (m.id)}
 				<a href="/module/{m.id}" onclick={() => (menuOpen = false)} class={cn(navLink(currentSubject === m.id), 'h-11 justify-start normal-case')}>{m.title}</a>
 			{/each}
 		</DialogPrimitive.Content>

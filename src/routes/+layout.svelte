@@ -100,6 +100,16 @@
 				flipAnswerKey();
 				return;
 			}
+			if (typed.endsWith('lloren')) {
+				typed = '';
+				ui.llorenShown = !ui.llorenShown;
+				ui.toast(
+					ui.llorenShown
+						? 'Criminal Law I (Judge Lloren) is now visible.'
+						: 'Criminal Law I (Judge Lloren) hidden.'
+				);
+				return;
+			}
 		}
 		if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey || ui.searchOpen || inInput) return;
 		if (document.querySelector('[role="dialog"]')) return;

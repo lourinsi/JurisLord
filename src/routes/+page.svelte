@@ -5,13 +5,18 @@
 	import { getParts, readHref, subjectUnits } from '$lib/content';
 	import { draftHasContent } from '$lib/alac';
 	import { userStorage } from '$lib/stores/storage.svelte';
+	import { ui } from '$lib/stores/ui.svelte';
 	import { cn, pct } from '$lib/utils';
 	import type { SubjectCategory } from '$lib/types';
 
 	let category = $state<CategoryFilter>('All');
 
 	const stats = $derived(userStorage.stats());
-	const shown = $derived(modules.filter((m) => matchesCategory(m.subjectCategory, category)));
+	const shown = $derived(
+		modules.filter(
+			(m) => (m.id !== 'crim1_lloren' || ui.llorenShown) && matchesCategory(m.subjectCategory, category)
+		)
+	);
 	const last = $derived(userStorage.reading.last);
 	const lastSubject = $derived(last ? getModule(last.subjectId) : undefined);
 	const recent = $derived(userStorage.reading.recent.filter((r) => !(last && r.subjectId === last.subjectId && r.partId === last.partId)).slice(0, 4));

@@ -1,5 +1,5 @@
 import type { Subject } from '$lib/types';
-import { modules } from '$lib/data/modules';
+import { loadedSubjectCount, modules } from '$lib/data/modules';
 import { caseAnchor, getParts, readHref, textOf, type Part } from '$lib/content';
 
 /**
@@ -49,6 +49,7 @@ export interface SearchHit {
 
 let index: SearchDoc[] | null = null;
 let vocabulary: Map<string, number> | null = null;
+let indexedCount = -1;
 
 /** Element ids worth jumping to: sections, cases, comparisons, questions. Tiny inline anchors are skipped. */
 const HEADING_IN_SEGMENT = /<(h[2-4])\b[^>]*>([\s\S]*?)<\/\1>|<(?:div|p|span)\b[^>]*class="[^"]*\b(?:rv-card-title|cname)\b[^"]*"[^>]*>([\s\S]*?)<\/(?:div|p|span)>/;
@@ -89,7 +90,10 @@ function makeDoc(d: Omit<SearchDoc, 'subjectId' | 'subjectTitle' | 'lt' | 'lp' |
 }
 
 export function buildIndex(): SearchDoc[] {
-	if (index) return index;
+	const currentCount = loadedSubjectCount();
+	if (index && indexedCount === currentCount) return index;
+	indexedCount = currentCount;
+	vocabulary = null;
 	const docs: SearchDoc[] = [];
 	for (const subject of modules) {
 		for (const part of getParts(subject)) {

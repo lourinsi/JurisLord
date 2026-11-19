@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { ArrowRight, BookOpen, Bookmark, Flame, PenLine, Sparkles, Target, Zap } from '@lucide/svelte';
 	import StudyBar from '$lib/components/common/StudyBar.svelte';
-	import { CATEGORY_FILTERS, getModule, matchesCategory, modules, subjectForItem, totals, type CategoryFilter } from '$lib/data/modules';
-	import { getParts, readHref, subjectUnits } from '$lib/content';
+	import { CATEGORY_FILTERS, getModule, loadSubject, matchesCategory, modules, subjectForItem, totals, type CategoryFilter } from '$lib/data/modules';
+	import { readHref, subjectUnits } from '$lib/content';
 	import { draftHasContent } from '$lib/alac';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 	import { cn, pct } from '$lib/utils';
-	import type { SubjectCategory } from '$lib/types';
+	import type { Subject, SubjectCategory } from '$lib/types';
 
 	let category = $state<CategoryFilter>('All');
 
@@ -28,6 +28,10 @@
 		for (const a of Object.values(userStorage.mcqAttempts)) if (!best || a.timestamp > best.at) best = { id: a.questionId, at: a.timestamp };
 		if (!best) return null;
 		const subject = subjectForItem(best.id);
+		if (subject && !subject.mcqs.length) {
+			void loadSubject(subject.id, 'practice');
+			return null;
+		}
 		const q = subject?.mcqs.find((x) => x.id === best.id);
 		if (!subject || !q) return null;
 		const inTopic = subject.mcqs.filter((x) => x.topicId === q.topicId);
@@ -42,6 +46,10 @@
 			.sort((a, b) => b.updatedAt - a.updatedAt)[0];
 		if (!d) return null;
 		const subject = subjectForItem(d.essayId);
+		if (subject && !subject.essays.length) {
+			void loadSubject(subject.id, 'essays');
+			return null;
+		}
 		const e = subject?.essays.find((x) => x.id === d.essayId);
 		return subject && e ? { subject, essay: e, at: d.updatedAt } : null;
 	});
@@ -50,7 +58,22 @@
 		const days = Math.floor((Date.now() - t) / 86_400_000);
 		return days <= 0 ? 'today' : days === 1 ? 'yesterday' : `${days} days ago`;
 	};
-	const firstPart = (id: string) => getParts(getModule(id)!)[0]?.id ?? '';
+
+	function subjectReadingProgress(m: Subject) {
+		if (m.sources.length > 0) {
+			return userStorage.readingProgress(subjectUnits(m));
+		}
+		const prefix = `${m.id}:`;
+		let studied = 0;
+		let visited = 0;
+		for (const k of Object.keys(userStorage.reading.studied)) {
+			if (k.startsWith(prefix)) studied++;
+		}
+		for (const k of Object.keys(userStorage.reading.visited)) {
+			if (k.startsWith(prefix) && !userStorage.reading.studied[k]) visited++;
+		}
+		return { studied, visited, total: m.unitCount ?? 0 };
+	}
 
 	const CATEGORY_THEME: Record<SubjectCategory, { band: string; pill: string; bar: string }> = {
 		'Civil Law': {
@@ -245,7 +268,9 @@
 			{#each shown as m (m.id)}
 				{@const themeColor = CATEGORY_THEME[m.subjectCategory]}
 				{@const s = userStorage.stats(m.legacyIds)}
-				{@const r = userStorage.readingProgress(subjectUnits(m))}
+				{@const r = subjectReadingProgress(m)}
+				{@const mMcqs = m.mcqs.length || m.mcqCount || 0}
+				{@const mEssays = m.essays.length || m.essayCount || 0}
 				{@const cont = userStorage.reading.lastBySubject[m.id]}
 				<article class="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1CB0F6]/70 dark:border-[#2B434E] dark:hover:border-[#1CB0F6]/70">
 					<!-- Colorful top header band -->
@@ -266,23 +291,23 @@
 							<dt class="flex items-center gap-1.5 font-bold text-slate-600 dark:text-slate-300"><BookOpen class="size-3.5 text-[#58CC02]" strokeWidth={2.5} />Read</dt>
 							<dd class="m-0"><StudyBar studied={r.studied} visited={r.visited} total={r.total} label="{m.title} reading" /></dd>
 							<dd class="m-0 rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-extrabold text-slate-700 tabular-nums dark:bg-[#223842] dark:text-slate-200">{r.studied}/{r.total}</dd>
-							{#if m.mcqs.length}
+							{#if mMcqs}
 								<dt class="flex items-center gap-1.5 font-bold text-slate-600 dark:text-slate-300"><Target class="size-3.5 text-[#1CB0F6]" strokeWidth={2.5} />MCQs</dt>
 								<dd class="m-0">
 									<div class="flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-[#2B434E]">
-										<span class="relative rounded-full bg-[#1CB0F6] transition-all duration-500 after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(s.attempted, m.mcqs.length)}%"></span>
+										<span class="relative rounded-full bg-[#1CB0F6] transition-all duration-500 after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(s.attempted, mMcqs)}%"></span>
 									</div>
 								</dd>
-								<dd class="m-0 rounded-full bg-[#DDF4FF] px-2 py-0.5 text-[0.7rem] font-extrabold text-[#1899D6] tabular-nums dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]">{s.attempted}/{m.mcqs.length}</dd>
+								<dd class="m-0 rounded-full bg-[#DDF4FF] px-2 py-0.5 text-[0.7rem] font-extrabold text-[#1899D6] tabular-nums dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]">{s.attempted}/{mMcqs}</dd>
 							{/if}
-							{#if m.essays.length}
+							{#if mEssays}
 								<dt class="flex items-center gap-1.5 font-bold text-slate-600 dark:text-slate-300"><PenLine class="size-3.5 text-[#CE82FF]" strokeWidth={2.5} />Essays</dt>
 								<dd class="m-0">
 									<div class="flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-[#2B434E]">
-										<span class="relative rounded-full bg-[#CE82FF] transition-all duration-500 after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(s.mastered, m.essays.length)}%"></span>
+										<span class="relative rounded-full bg-[#CE82FF] transition-all duration-500 after:pointer-events-none after:absolute after:inset-x-1 after:top-[2px] after:h-[28%] after:rounded-full after:bg-white/30" style="width:{pct(s.mastered, mEssays)}%"></span>
 									</div>
 								</dd>
-								<dd class="m-0 rounded-full bg-[#F3E8FF] px-2 py-0.5 text-[0.7rem] font-extrabold text-[#8930C9] tabular-nums dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]">{s.mastered}/{m.essays.length}</dd>
+								<dd class="m-0 rounded-full bg-[#F3E8FF] px-2 py-0.5 text-[0.7rem] font-extrabold text-[#8930C9] tabular-nums dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]">{s.mastered}/{mEssays}</dd>
 							{/if}
 						</dl>
 					</div>
@@ -290,10 +315,10 @@
 						{#if cont}
 							<a href={readHref(m.id, cont.partId, cont.anchor)} class="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5">Continue <ArrowRight class="size-3.5" strokeWidth={3} /></a>
 						{:else}
-							<a href={readHref(m.id, firstPart(m.id))} class="inline-flex h-9 flex-1 items-center justify-center rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5">Start reading</a>
+							<a href="/module/{m.id}/read" class="inline-flex h-9 flex-1 items-center justify-center rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5">Start reading</a>
 						{/if}
 						<a href="/module/{m.id}" class="inline-flex h-9 items-center justify-center rounded-xl border-2 border-slate-200 border-b-4 bg-white px-3 text-xs font-extrabold tracking-wide text-slate-700 uppercase no-underline transition-all hover:bg-slate-50 active:border-b-2 active:translate-y-0.5 dark:border-[#2B434E] dark:bg-[#1A2C34] dark:text-slate-200 dark:hover:bg-[#223842]">Overview</a>
-						{#if m.mcqs.length}<a href="/module/{m.id}/practice" class="inline-flex h-9 items-center justify-center rounded-xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#18A2E4] active:border-b-2 active:translate-y-0.5">Practice</a>{/if}
+						{#if mMcqs}<a href="/module/{m.id}/practice" class="inline-flex h-9 items-center justify-center rounded-xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-3 text-xs font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#18A2E4] active:border-b-2 active:translate-y-0.5">Practice</a>{/if}
 					</div>
 				</article>
 			{/each}

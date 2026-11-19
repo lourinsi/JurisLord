@@ -3,7 +3,7 @@
 	import { Dialog as DialogPrimitive } from 'bits-ui';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { getModule } from '$lib/data/modules';
+	import { getModule, loadAllSubjects } from '$lib/data/modules';
 	import { getPart, readHref } from '$lib/content';
 	import { buildIndex, search, suggest, KIND_LABEL, type SearchHit } from '$lib/search';
 	import { prefs } from '$lib/stores/prefs.svelte';
@@ -22,16 +22,19 @@
 	const subject = $derived(page.params.slug ? getModule(page.params.slug) : undefined);
 	const part = $derived(subject && page.params.part ? getPart(subject, decodeURIComponent(page.params.part)) : undefined);
 
-	// Opening: take the seed and scope, build the index off the main path so the dialog paints first.
+	// Opening: take the seed and scope, load subjects on demand and build the index off the main path so the dialog paints first.
 	$effect(() => {
 		if (!ui.searchOpen) return;
 		query = ui.searchSeed;
 		debounced = ui.searchSeed;
 		scope = ui.searchScope === 'part' && part ? 'part' : ui.searchScope === 'subject' && subject ? 'subject' : 'all';
 		active = 0;
-		if (!ready) setTimeout(() => {
-			buildIndex();
-			ready = true;
+		ready = false;
+		setTimeout(() => {
+			void loadAllSubjects().then(() => {
+				buildIndex();
+				ready = true;
+			});
 		}, 0);
 	});
 

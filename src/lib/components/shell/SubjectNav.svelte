@@ -25,6 +25,8 @@
 	const partId = $derived(page.params.part ? decodeURIComponent(page.params.part) : '');
 	const hash = $derived(page.url.hash.slice(1));
 	const accent = $derived(CATEGORY_ACCENT[subject.subjectCategory]);
+	const subjectMcqTotal = $derived(subject.mcqs.length || subject.mcqCount || 0);
+	const subjectEssayTotal = $derived(subject.essays.length || subject.essayCount || 0);
 
 	// ---- Read: groups → parts → topics ----
 	let filter = $state('');
@@ -155,8 +157,10 @@
 			<Popover.Portal>
 				<Popover.Content sideOffset={6} align="start" class="z-[60] w-72 rounded-2xl border-2 border-b-4 border-slate-200 bg-popover p-1.5 shadow-xl outline-none dark:border-[#2B434E]">
 					{#each modules as m (m.id)}
+						{@const mMcqs = m.mcqs.length || m.mcqCount || 0}
+						{@const mEssays = m.essays.length || m.essayCount || 0}
 						<a
-							href={mode === 'read' ? `/module/${m.id}/read` : `/module/${m.id}/${mode === 'practice' && m.mcqs.length ? 'practice' : mode === 'essays' && m.essays.length ? 'essays' : 'read'}`}
+							href={mode === 'read' ? `/module/${m.id}/read` : `/module/${m.id}/${mode === 'practice' && mMcqs ? 'practice' : mode === 'essays' && mEssays ? 'essays' : 'read'}`}
 							onclick={() => ((switcherOpen = false), onnavigate?.())}
 							aria-current={m.id === subject.id ? 'page' : undefined}
 							class={cn('flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-bold text-foreground no-underline hover:bg-muted', m.id === subject.id && 'bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]')}
@@ -177,13 +181,13 @@
 
 	<nav aria-label="{subject.title} sections" class="grid grid-cols-3 gap-1 rounded-2xl border-2 border-slate-200 bg-slate-100 p-1 dark:border-[#2B434E] dark:bg-[#131F24]">
 		<a href={tabHref('read')} onclick={() => onnavigate?.()} aria-current={mode === 'read' ? 'page' : undefined} class={tab(mode === 'read')}>Read</a>
-		{#if subject.mcqs.length}
-			<a href={tabHref('practice')} onclick={() => onnavigate?.()} aria-current={mode === 'practice' ? 'page' : undefined} class={tab(mode === 'practice')}>MCQs <span class={cn('text-[0.7rem] font-extrabold tabular-nums', mode === 'practice' ? 'opacity-90' : 'opacity-70')}>{subject.mcqs.length}</span></a>
+		{#if subjectMcqTotal}
+			<a href={tabHref('practice')} onclick={() => onnavigate?.()} aria-current={mode === 'practice' ? 'page' : undefined} class={tab(mode === 'practice')}>MCQs <span class={cn('text-[0.7rem] font-extrabold tabular-nums', mode === 'practice' ? 'opacity-90' : 'opacity-70')}>{subjectMcqTotal}</span></a>
 		{:else}
 			<span class={cn(tab(false), 'opacity-50')} aria-disabled="true">MCQs</span>
 		{/if}
-		{#if subject.essays.length}
-			<a href={tabHref('essays')} onclick={() => onnavigate?.()} aria-current={mode === 'essays' ? 'page' : undefined} class={tab(mode === 'essays')}>Essays <span class={cn('text-[0.7rem] font-extrabold tabular-nums', mode === 'essays' ? 'opacity-90' : 'opacity-70')}>{subject.essays.length}</span></a>
+		{#if subjectEssayTotal}
+			<a href={tabHref('essays')} onclick={() => onnavigate?.()} aria-current={mode === 'essays' ? 'page' : undefined} class={tab(mode === 'essays')}>Essays <span class={cn('text-[0.7rem] font-extrabold tabular-nums', mode === 'essays' ? 'opacity-90' : 'opacity-70')}>{subjectEssayTotal}</span></a>
 		{:else}
 			<span class={cn(tab(false), 'opacity-50')} aria-disabled="true">Essays</span>
 		{/if}

@@ -1,7 +1,5 @@
 import type { AnyNumberRow } from '$lib/cluster-numbers';
-import { NUMBERS as CRIMPRO_NUMBERS } from '$lib/crimpro';
-import { CRIMPRO_FINALS_TOPICS, type FinalsTopic } from '$lib/crimpro-finals';
-import { STATCON } from '$lib/statcon';
+import type { FinalsTopic } from '$lib/crimpro-finals';
 
 export interface NumberSection {
 	title?: string;
@@ -378,21 +376,6 @@ function statconCountPrompt(title: string): string {
 	return `Number of ${lowered}`;
 }
 
-const statconCounts: AnyNumberRow[] = STATCON.enums
-	.filter((e) => STATCON.focus.enums?.[e.id])
-	.map((e) => [
-		String(e.it.length),
-		statconCountPrompt(e.t),
-		`List ${e.id}`,
-		STATCON.focus.enums![e.id]
-	]);
-
-// ---- Criminal Procedure ----
-const crimproRows: AnyNumberRow[] = CRIMPRO_NUMBERS.map(([n, what, rule, note]) => {
-	const src = /^\d/.test(rule) ? `Rule ${rule}` : rule;
-	return note ? [n, what, src, note] : [n, what, src];
-});
-
 // ---- Criminal Law I ----
 const crimTables: TopicGridTable[] = [
 	{
@@ -533,33 +516,61 @@ const crim1NumbersConfig: SubjectNumbersConfig = {
 };
 
 /**
- * Subject-agnostic registry of Numbers tables keyed by subject slug.
- * Registering any subject here automatically enables its "Numbers" subtab and page.
+ * Dynamically loads the Numbers configuration for a single subject slug on demand,
+ * so heavy subject datasets (`crimpro-finals`, `crimpro.json`, `statcon.json`) are only downloaded when that subject's Numbers tab is opened.
  */
-export const NUMBERS_BY_SUBJECT: Record<string, SubjectNumbersConfig> = {
-	consti1: {
-		desc: 'Numbers to memorize (self-test)',
-		intro: 'Every period, vote, age and count you may be asked for in this coverage. Hide the numbers, say each one, then tap to check.',
-		sections: [{ rows: constiRows }]
-	},
-	pfr: {
-		desc: 'Periods, amounts & ages to memorize',
-		intro: 'Every period, amount and age to memorize in this coverage. Hide the numbers, say each one, then tap to check.',
-		sections: [{ rows: pfrRows }]
-	},
-	crimpro: {
-		desc: 'Numbers & deadlines to memorize',
-		intro: 'Hide the numbers and test yourself. Tap a blurred number to check it. Filter by rule range, toggle custom rules, or select ★ FINALS for the 5 Final Exam Notes topics.',
-		sections: [{ rows: crimproRows, finalsTopics: CRIMPRO_FINALS_TOPICS }]
-	},
-	statcon: {
-		desc: 'Periods, dates & ★ list counts',
-		intro: 'StatCon has few numbers. Learn the periods, then the count of each ★ Likely list: writing “There are four…” first gives you the slots to fill.',
-		sections: [
-			{ title: 'Periods and dates', rows: statconFixed },
-			{ title: 'How many items? (★ Likely lists)', rows: statconCounts }
-		]
-	},
-	crim1: crim1NumbersConfig,
-	crim1_lloren: crim1NumbersConfig
-};
+export async function loadNumbersForSubject(slug: string): Promise<SubjectNumbersConfig | undefined> {
+	switch (slug) {
+		case 'consti1':
+			return {
+				desc: 'Numbers to memorize (self-test)',
+				intro: 'Every period, vote, age and count you may be asked for in this coverage. Hide the numbers, say each one, then tap to check.',
+				sections: [{ rows: constiRows }]
+			};
+		case 'pfr':
+			return {
+				desc: 'Periods, amounts & ages to memorize',
+				intro: 'Every period, amount and age to memorize in this coverage. Hide the numbers, say each one, then tap to check.',
+				sections: [{ rows: pfrRows }]
+			};
+		case 'crimpro': {
+			const [{ NUMBERS: CRIMPRO_NUMBERS }, { CRIMPRO_FINALS_TOPICS }] = await Promise.all([
+				import('$lib/crimpro'),
+				import('$lib/crimpro-finals')
+			]);
+			const crimproRows: AnyNumberRow[] = CRIMPRO_NUMBERS.map(([n, what, rule, note]) => {
+				const src = /^\d/.test(rule) ? `Rule ${rule}` : rule;
+				return note ? [n, what, src, note] : [n, what, src];
+			});
+			return {
+				desc: 'Numbers & deadlines to memorize',
+				intro: 'Hide the numbers and test yourself. Tap a blurred number to check it. Filter by rule range, toggle custom rules, or select ★ FINALS for the 5 Final Exam Notes topics.',
+				sections: [{ rows: crimproRows, finalsTopics: CRIMPRO_FINALS_TOPICS }]
+			};
+		}
+		case 'statcon': {
+			const { STATCON } = await import('$lib/statcon');
+			const statconCounts: AnyNumberRow[] = STATCON.enums
+				.filter((e) => STATCON.focus.enums?.[e.id])
+				.map((e) => [
+					String(e.it.length),
+					statconCountPrompt(e.t),
+					`List ${e.id}`,
+					STATCON.focus.enums![e.id]
+				]);
+			return {
+				desc: 'Periods, dates & ★ list counts',
+				intro: 'StatCon has few numbers. Learn the periods, then the count of each ★ Likely list: writing “There are four…” first gives you the slots to fill.',
+				sections: [
+					{ title: 'Periods and dates', rows: statconFixed },
+					{ title: 'How many items? (★ Likely lists)', rows: statconCounts }
+				]
+			};
+		}
+		case 'crim1':
+		case 'crim1_lloren':
+			return crim1NumbersConfig;
+		default:
+			return undefined;
+	}
+}

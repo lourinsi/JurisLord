@@ -1,5 +1,3 @@
-import { CRIMPRO_REQUISITE_TOPICS } from './crimpro-requisites';
-
 export interface RequisiteItem {
 	num: number;
 	/** Standalone question / legal trigger displayed in the "What it is for" column. */
@@ -33,15 +31,23 @@ export interface SubjectRequisitesConfig {
 }
 
 /**
- * Subject-agnostic registry of Requisites drills keyed by subject slug.
- * Registering any subject here automatically enables its "Requisites" subtab, overview card, and page.
+ * Dynamically loads a subject's Requisites dataset on demand when `/module/[slug]/requisites` is opened.
  */
-export const REQUISITES_BY_SUBJECT: Record<string, SubjectRequisitesConfig> = {
-	crimpro: {
-		title: 'CrimPro Finals Requisites Drill',
-		desc: '47 Q&A requisites & rules drill (self-test)',
-		intro:
-			'Hide the requisites and test yourself across all five exam topics. Tap any blurred answer to reveal the requisites and notes, or switch to Shuffled drill to recite them out of order.',
-		topics: CRIMPRO_REQUISITE_TOPICS
+export async function loadRequisitesForSubject(
+	slug: string
+): Promise<SubjectRequisitesConfig | undefined> {
+	switch (slug) {
+		case 'crimpro': {
+			const { CRIMPRO_REQUISITE_TOPICS } = await import('./crimpro-requisites');
+			return {
+				title: 'CrimPro Finals Requisites Drill',
+				desc: '47 Q&A requisites & rules drill (self-test)',
+				intro:
+					'Hide the requisites and test yourself across all five exam topics. Tap any blurred answer to reveal the requisites and notes, or switch to Shuffled drill to recite them out of order.',
+				topics: CRIMPRO_REQUISITE_TOPICS
+			};
+		}
+		default:
+			return undefined;
 	}
-};
+}

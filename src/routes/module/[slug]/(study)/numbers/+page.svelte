@@ -4,12 +4,20 @@
 	import Breadcrumbs from '$lib/components/common/Breadcrumbs.svelte';
 	import NumberTable from '$lib/components/NumberTable.svelte';
 	import { getModule } from '$lib/data/modules';
-	import { NUMBERS_BY_SUBJECT } from '$lib/numbers-registry';
+	import { loadNumbersForSubject, type SubjectNumbersConfig } from '$lib/numbers-registry';
 	import type { AnyNumberRow } from '$lib/cluster-numbers';
 
 	const slug = $derived(page.params.slug ?? '');
 	const subject = $derived(getModule(slug)!);
-	const config = $derived(NUMBERS_BY_SUBJECT[slug]);
+	let config = $state<SubjectNumbersConfig | undefined>(undefined);
+
+	$effect(() => {
+		const s = slug;
+		config = undefined;
+		void loadNumbersForSubject(s).then((cfg) => {
+			if (slug === s) config = cfg;
+		});
+	});
 
 	let gridHide = $state(false);
 	let gridClustered = $state(false);

@@ -3,11 +3,19 @@
 	import Breadcrumbs from '$lib/components/common/Breadcrumbs.svelte';
 	import RequisitesTable from '$lib/components/RequisitesTable.svelte';
 	import { getModule } from '$lib/data/modules';
-	import { REQUISITES_BY_SUBJECT } from '$lib/requisites';
+	import { loadRequisitesForSubject, type SubjectRequisitesConfig } from '$lib/requisites';
 
 	const slug = $derived(page.params.slug ?? '');
 	const subject = $derived(getModule(slug)!);
-	const reqConfig = $derived(REQUISITES_BY_SUBJECT[slug]);
+	let reqConfig = $state<SubjectRequisitesConfig | undefined>(undefined);
+
+	$effect(() => {
+		const s = slug;
+		reqConfig = undefined;
+		void loadRequisitesForSubject(s).then((cfg) => {
+			if (slug === s) reqConfig = cfg;
+		});
+	});
 </script>
 
 <svelte:head><title>Requisites — {subject.title} — Juris Lord</title></svelte:head>

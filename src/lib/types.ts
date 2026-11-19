@@ -90,6 +90,10 @@ export interface LawModule {
 	mcqs: McqQuestion[];
 	essays: AlacEssay[];
 	cases?: CaseDigest[];
+	/** Baseline counts on lightweight shells before full sections are lazy-loaded. */
+	mcqCount?: number;
+	essayCount?: number;
+	unitCount?: number;
 }
 
 /**

@@ -212,6 +212,7 @@ function parse(subject: Subject): Part[] {
 export const caseAnchor = (caseId: string) => `digest-${caseId.replace(/[^A-Za-z0-9_-]/g, '-')}`;
 
 export function getParts(subject: Subject): Part[] {
+	if (!subject.sources.length) return [];
 	let parts = cache.get(subject.id);
 	if (!parts) cache.set(subject.id, (parts = parse(subject)));
 	return parts;

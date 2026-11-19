@@ -166,13 +166,13 @@
 				<button
 					class:blurred
 					onclick={() => toggleShown(key)}
-					aria-label={blurred ? `Reveal the number for: ${what}` : undefined}>{n}</button
-				>
+					aria-label={blurred ? `Reveal the number for: ${what}` : undefined}
+				>{blurred ? '••••••••••••' : n}</button>
 			{:else}{n}{/if}
 		</td>
 		<td>
 			<div>{what}</div>
-			{#if note}
+			{#if note && !blurred}
 				<p class="note"><span class="note-label">Note:</span> {note}</p>
 			{/if}
 		</td>
@@ -673,7 +673,11 @@
 		transition: filter 0.15s;
 	}
 	.n button.blurred {
-		filter: blur(6px);
+		display: inline-block;
+		width: 12ch;
+		overflow: hidden;
+		white-space: nowrap;
+		filter: blur(5px);
 		user-select: none;
 	}
 	.src {

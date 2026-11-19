@@ -1014,6 +1014,11 @@ mark.sg-hit[data-active='true'] {
 	padding-left: 1.25rem;
 	margin: 0.4rem 0;
 }
+.rich ol {
+	list-style: decimal;
+	padding-left: 1.25rem;
+	margin: 0.4rem 0;
+}
 .rich li {
 	margin: 0.3rem 0;
 }

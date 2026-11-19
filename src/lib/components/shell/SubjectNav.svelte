@@ -74,7 +74,13 @@
 	const STATUSES: ('all' | EssayStatus)[] = ['all', 'new', 'drafted', 'review', 'mastered'];
 	const statusParam = $derived((page.url.searchParams.get('status') ?? 'all') as 'all' | EssayStatus);
 	const sourceParam = $derived(page.url.searchParams.get('source') ?? 'all');
-	const essayParam = $derived(page.url.searchParams.get('essay') ?? subject.essays[0]?.id ?? '');
+	const rawEssayParam = $derived(page.url.searchParams.get('essay') ?? '');
+	const essayParam = $derived.by(() => {
+		const found = subject.essays.find((e) => e.id === rawEssayParam);
+		if (found && (sourceParam === 'all' || found.source === sourceParam)) return found.id;
+		const firstMatch = subject.essays.find((e) => sourceParam === 'all' || e.source === sourceParam);
+		return firstMatch?.id ?? subject.essays[0]?.id ?? '';
+	});
 	const statusOf = (e: AlacEssay) => essayStatus(userStorage.essayDrafts[e.id]);
 	const sources = $derived.by(() => {
 		const s = new Set<string>();
@@ -109,7 +115,14 @@
 	const essayHref = (id: string, status = statusParam, source = sourceParam) =>
 		`/module/${subject.id}/essays?essay=${encodeURIComponent(id)}${status !== 'all' ? `&status=${status}` : ''}${source !== 'all' ? `&source=${encodeURIComponent(source)}` : ''}`;
 	const statusHref = (s: 'all' | EssayStatus) => essayHref(essayParam, s, sourceParam);
-	const sourceHref = (src: string) => essayHref(essayParam, statusParam, src);
+	const sourceHref = (src: string) => {
+		const current = subject.essays.find((e) => e.id === essayParam);
+		const target =
+			current && (src === 'all' || current.source === src)
+				? current.id
+				: (subject.essays.find((e) => src === 'all' || e.source === src)?.id ?? essayParam);
+		return essayHref(target, statusParam, src);
+	};
 
 	let switcherOpen = $state(false);
 	const tabHref = (m: 'read' | 'practice' | 'essays') => {

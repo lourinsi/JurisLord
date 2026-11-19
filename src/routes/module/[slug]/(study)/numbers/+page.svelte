@@ -12,84 +12,362 @@
 	const subject = $derived(getModule(slug)!);
 
 	// Consti I numbers
-	const constiRows: [string, string, string][] = [
-		['2 months', 'Ban on appointments: from two months before the next presidential election until the end of the President’s term', 'Art. VII, Sec. 15'],
-		['4 steps', 'A valid appointment: signing, transmittal, receipt, acceptance. All must be done before the ban.', 'Velicaria-Garafil'],
-		['90 days', 'Fill a vacancy in the Supreme Court, counted from when the vacancy occurs', 'Art. VIII, Sec. 4(1)'],
-		['90 days', 'Fill a vacancy in a lower court, counted from submission of the JBC list', 'Art. VIII, Sec. 9'],
-		['7 members', 'Membership of the JBC', 'Art. VIII, Sec. 8(1)'],
-		['1', 'Representative of Congress in the JBC, with one vote', 'Chavez v. JBC'],
-		['At least 3', 'Nominees the JBC must submit for every vacancy', 'Art. VIII, Sec. 9'],
-		['4 years', 'Term of the regular (non-ex officio) members of the JBC', 'Art. VIII, Sec. 8(2)'],
-		['5 years', 'Service as a first-level court judge before promotion to a second-level court (JBC policy)', 'Villanueva v. JBC'],
-		['70 years', 'Retirement age of justices and judges', 'Art. VIII, Sec. 11'],
-		['Majority of all Members of Congress', 'Concurrence needed for an amnesty', 'Art. VII, Sec. 19'],
-		['2/3 of all Members of the Senate', 'Concurrence needed for a treaty or international agreement', 'Art. VII, Sec. 21'],
-		['30 days', 'Monetary Board reports to Congress on foreign loans, from the end of every quarter', 'Art. VII, Sec. 20'],
-		['1/3 of all Members of the House', 'Vote needed to impeach', 'Art. XI, Sec. 3(3)'],
-		['2/3 of all Members of the Senate', 'Vote needed to convict in an impeachment', 'Art. XI, Sec. 3(6)'],
-		['1 year', 'Period to file quo warranto; it does not run against the State', 'Republic v. Sereno'],
-		['7 years', 'Term of the Chairman and Commissioners of the CSC, COMELEC and COA, without reappointment', 'Art. IX-B, C, D, Sec. 1(2)'],
-		['Never over 7 years', 'Total service of a member of a Commission, counting a promotion to Chairman', 'Funa v. Villar'],
-		['7, 5, 3 years', 'Staggered terms of the first appointees to the Commissions', 'Art. IX-B, C, D, Sec. 1(2)'],
-		['35 years old', 'Minimum age of a member of the CSC, COMELEC or COA', 'Art. IX-B, C, D, Sec. 1(1)'],
-		['60 days', 'Period for a Commission to decide a case, from its submission', 'Art. IX-A, Sec. 7'],
-		['30 days', 'Period to bring a Commission’s decision to the Supreme Court on certiorari, from receipt', 'Art. IX-A, Sec. 7'],
-		['65 years', 'Compulsory retirement age in the career civil service', 'CSC v. Pililla Water District'],
-		['90 days / 45 days', 'Campaign period: national positions / House and local positions', 'Omnibus Election Code, Sec. 3; Peñera'],
-		['3 (J-C-O)', 'Bodies with fiscal autonomy: Judiciary, Constitutional Commissions, Ombudsman', 'CHREA v. CHR']
+	const constiRows: NumberRow[] = [
+		[
+			'2 months',
+			'Window prior to the next presidential election (running until the end of the President’s term) during which the midnight appointment ban applies',
+			'Art. VII, Sec. 15',
+			'Applies to executive appointments by the President or Acting President, except temporary appointments to executive positions when continued vacancies will prejudice public service or endanger public safety. Does not apply to judicial appointments (De Castro v. JBC).'
+		],
+		[
+			'4 steps',
+			'Number of sequential stages required to complete a valid appointment before the appointment ban takes effect',
+			'Velicaria-Garafil v. Office of the President',
+			'The 4 steps: (1) Signing of the appointment; (2) Transmittal; (3) Receipt; and (4) Acceptance by the appointee.'
+		],
+		[
+			'90 days',
+			'Period within which the President must fill a vacancy in the Supreme Court, counted from when the vacancy occurs',
+			'Art. VIII, Sec. 4(1)'
+		],
+		[
+			'90 days',
+			'Period within which the President must fill a vacancy in a lower court, counted from submission of the JBC list',
+			'Art. VIII, Sec. 9'
+		],
+		[
+			'7 members',
+			'Total number of members composing the Judicial and Bar Council (JBC)',
+			'Art. VIII, Sec. 8(1)',
+			'3 ex officio (Chief Justice as Chair, Secretary of Justice, 1 representative of Congress) + 4 regular members (IBP representative, law professor, retired SC Justice, private sector representative).'
+		],
+		[
+			'1 representative (1 vote)',
+			'Number of representatives (and votes) Congress is entitled to in the Judicial and Bar Council (JBC)',
+			'Art. VIII, Sec. 8(1); Chavez v. JBC',
+			'Having one representative each from the Senate and House with separate votes or rotating half-votes violates the constitutional text.'
+		],
+		[
+			'At least 3',
+			'Minimum number of nominees the Judicial and Bar Council (JBC) must submit to the President for every judicial vacancy',
+			'Art. VIII, Sec. 9'
+		],
+		[
+			'4 years',
+			'Term of office of the regular (non-ex officio) members of the Judicial and Bar Council (JBC)',
+			'Art. VIII, Sec. 8(2)'
+		],
+		[
+			'5 years',
+			'Minimum years of service as a first-level court judge required before promotion to a second-level court (JBC policy)',
+			'Villanueva v. JBC'
+		],
+		[
+			'70 years',
+			'Compulsory retirement age of Supreme Court Justices and judges of lower courts (during good behavior)',
+			'Art. VIII, Sec. 11'
+		],
+		[
+			'Majority of all Members of Congress',
+			'Congressional voting threshold (concurrence) required for the President to grant an amnesty',
+			'Art. VII, Sec. 19'
+		],
+		[
+			'2/3 of all Members of the Senate',
+			'Senate voting threshold (concurrence) required for a treaty or international agreement to be valid and effective',
+			'Art. VII, Sec. 21'
+		],
+		[
+			'30 days',
+			'Period counted from the end of every quarter within which the Monetary Board must submit a complete report to Congress on foreign loans',
+			'Art. VII, Sec. 20'
+		],
+		[
+			'1/3 of all Members of the House',
+			'House of Representatives voting threshold required to affirm a favorable resolution with the Articles of Impeachment (or verify an impeachment complaint)',
+			'Art. XI, Sec. 3(3)'
+		],
+		[
+			'2/3 of all Members of the Senate',
+			'Senate voting threshold required to convict an impeachable official in an impeachment trial',
+			'Art. XI, Sec. 3(6)'
+		],
+		[
+			'1 year',
+			'Reglementary period to file a petition for quo warranto, counted from ouster or when the right of action accrues',
+			'Rule 66; Republic v. Sereno',
+			'Prescription does not run against the State (Republic v. Sereno).'
+		],
+		[
+			'7 years',
+			'Full term of the Chairman and Commissioners of the CSC, COMELEC, and COA, without reappointment',
+			'Art. IX-B, C, D, Sec. 1(2)'
+		],
+		[
+			'Never over 7 years',
+			'Maximum aggregate tenure a member of a Constitutional Commission may serve in total, including a promotion from Commissioner to Chairman',
+			'Funa v. Villar'
+		],
+		[
+			'7, 5, 3 years',
+			'Staggered rotational terms of the first appointees to the Constitutional Commissions (Chairman / 1st Commissioner / 2nd Commissioner)',
+			'Art. IX-B, C, D, Sec. 1(2)'
+		],
+		[
+			'35 years old',
+			'Minimum age qualification at the time of appointment for a Chairman or Commissioner of the CSC, COMELEC, or COA',
+			'Art. IX-B, C, D, Sec. 1(1)'
+		],
+		[
+			'60 days',
+			'Period within which each Constitutional Commission must decide any case or matter brought before it, counted from the date of its submission for decision or resolution',
+			'Art. IX-A, Sec. 7'
+		],
+		[
+			'30 days',
+			'Period within which an aggrieved party may bring a Constitutional Commission’s decision, order, or ruling to the Supreme Court on certiorari, counted from receipt of a copy thereof',
+			'Art. IX-A, Sec. 7'
+		],
+		[
+			'65 years',
+			'Compulsory retirement age in the career civil service',
+			'CSC v. Pililla Water District'
+		],
+		[
+			'90 days / 45 days',
+			'Campaign period duration before election day for (1) national positions (President, VP, Senators, Party-List) and (2) House of Representatives and local positions',
+			'Omnibus Election Code, Sec. 3; Peñera'
+		],
+		[
+			'3 bodies (Judiciary, Constitutional Commissions, Ombudsman)',
+			'Number and identity of constitutional bodies granted fiscal autonomy under the 1987 Constitution',
+			'Arts. VIII, IX-A, XI; CHREA v. CHR',
+			'The Commission on Human Rights (CHR) does NOT enjoy fiscal autonomy (CHREA v. CHR).'
+		]
 	];
 
 	// PFR numbers
-	const pfrRows: [string, string, string][] = [
-		['1/5', 'Limit on donations between future spouses in the settlement, when the regime is not ACP', 'Family Code, Art. 84'],
-		['5 years', 'Wife’s recourse to court when the husband’s decision on administration prevails', 'Art. 96, 124'],
-		['3 months', 'Absence without news that is prima facie proof of abandonment', 'Art. 101'],
-		['1 year', 'Liquidate the community or partnership after a spouse’s death, if there is no judicial settlement', 'Art. 103, 130'],
-		['Below 7', 'Children deemed to choose the mother for the conjugal dwelling', 'Art. 102(6), 129(9)'],
-		['At least 1 year', 'Separation in fact as a ground for judicial separation of property', 'Art. 135(6)'],
-		['5 years', 'Innocent spouse’s period to revoke a donation propter nuptias after legal separation', 'Art. 64'],
-		['P300,000 / P200,000', 'Value limit of the family home: urban / rural (codal values)', 'Art. 157'],
-		['10 years', 'Family home continues after the death of the spouses or the head (or while a minor beneficiary lives there)', 'Art. 159'],
-		['Majority of beneficiaries of legal age', 'Written consent needed (with the constitutor and the spouse) to sell or encumber the family home', 'Art. 158'],
-		['1', 'Family homes a person may constitute or be a beneficiary of', 'Art. 161'],
-		['August 3, 1988', 'Family Code effectivity; debts before it are not covered by the family-home exemption', 'Art. 162; Modequillo'],
-		['120 of 300 days', 'Period before birth in which physical impossibility of intercourse must exist to impugn legitimacy', 'Art. 166'],
-		['1 / 2 / 3 years', 'Period to impugn legitimacy: same place / elsewhere in the Philippines / abroad', 'Art. 170'],
-		['180 and 300 days', 'Presumptions on a child born after the mother remarries', 'Art. 168'],
-		['5 years', 'Heirs’ action to claim legitimacy when the child dies a minor or insane', 'Art. 173'],
-		['5 years', 'Period to impugn legitimation, from when the cause of action accrues', 'Art. 182'],
-		['Below 18', 'Parents’ minority at conception that does not bar legitimation', 'Art. 177 (RA 9858)'],
-		['25 (27 inter-country)', 'Minimum age of an adopter', 'RA 11642'],
-		['16 years', 'Required age gap between adopter and adoptee (waived for a biological parent or the parent’s spouse)', 'RA 11642'],
-		['5 years', 'Residence in the Philippines required of a foreign adopter', 'RA 11642'],
-		['3 years', 'An adult treated as the adopter’s own child, who may be adopted', 'RA 11642'],
-		['10 years or older', 'Children whose written consent to the adoption is needed', 'RA 11642'],
-		['6 months', 'Wait after the parents’ death before adoption proceedings', 'RA 11642'],
-		['Under 7', 'Tender-age rule: child stays with the mother absent compelling reasons', 'Art. 213'],
-		['Over 7', 'Age from which the child’s choice of parent is considered', 'Art. 213'],
-		['Over 21', 'Age of the oldest sibling or actual custodian who exercises substitute parental authority', 'Art. 216'],
-		['P50,000 / 10%', 'Child’s property or income above which parents must post a bond of at least 10%', 'Art. 225'],
-		['18 / 21', 'Age of emancipation / age until which parental consent to marry is needed', 'Arts. 234, 236'],
-		['2 years (5 with administrator)', 'Absence without news before a person may be declared absent', 'Civil Code, Art. 384'],
-		['6 months', 'After publication, when a declaration of absence takes effect', 'Civil Code, Art. 386'],
-		['7 years (10 for succession; 5 if over 75)', 'Absence before a person is presumed dead', 'Civil Code, Art. 390'],
-		['4 years', 'Absence in danger of death before a person is presumed dead', 'Civil Code, Art. 391'],
-		['4 years (2 in danger cases)', 'Absence before the present spouse may remarry, with a court declaration', 'Family Code, Art. 41'],
-		['Day and month', 'Parts of the birth date the civil registrar may correct (not the year)', 'RA 10172']
+	const pfrRows: NumberRow[] = [
+		[
+			'1/5',
+			'Maximum portion of present property that future spouses may donate to each other in their marriage settlements when the property regime is not Absolute Community of Property (ACP)',
+			'Family Code, Art. 84'
+		],
+		[
+			'5 years',
+			'Prescriptive period counted from the date of the contract implementing the husband’s decision within which the wife may seek recourse from the court when his decision on ACP/CPG administration prevails',
+			'Arts. 96, 124'
+		],
+		[
+			'3 months',
+			'Duration of a spouse’s absence from the conjugal dwelling without any information as to their whereabouts that creates a prima facie presumption of abandonment',
+			'Art. 101'
+		],
+		[
+			'1 year',
+			'Period counted from the death of a spouse within which the surviving spouse must liquidate the ACP or CPG extrajudicially if no judicial settlement proceeding is instituted',
+			'Arts. 103, 130'
+		],
+		[
+			'Below 7',
+			'Age threshold of children deemed by law to have chosen the mother when awarding the conjugal dwelling upon dissolution of the ACP or CPG',
+			'Arts. 102(6), 129(9)'
+		],
+		[
+			'At least 1 year',
+			'Minimum duration of separation in fact between spouses (with reconciliation highly improbable) to constitute a sufficient cause for judicial separation of property',
+			'Art. 135(6)'
+		],
+		[
+			'5 years',
+			'Period counted from the finality of the decree of legal separation within which the innocent spouse’s action to revoke a donation propter nuptias prescribes',
+			'Art. 64'
+		],
+		[
+			'₱300,000 / ₱200,000',
+			'Maximum actual value limits of a family home at the time of constitution in (1) urban areas and (2) rural areas (codal limits)',
+			'Art. 157'
+		],
+		[
+			'10 years',
+			'Minimum period the family home continues after the death of both spouses or the unmarried head of a family (or for as long as there is a minor beneficiary)',
+			'Art. 159'
+		],
+		[
+			'Majority of beneficiaries of legal age',
+			'Proportion of beneficiaries of legal age whose written consent is required (in addition to the person who constituted it and their spouse) to sell, alienate, donate, assign, or encumber the family home',
+			'Art. 158'
+		],
+		[
+			'1',
+			'Maximum number of family homes a person may constitute, or be a beneficiary of, for purposes of the Family Code exemption',
+			'Art. 161'
+		],
+		[
+			'August 3, 1988',
+			'Effectivity date of the Family Code; debts contracted prior to this date are not covered by the automatic family-home execution exemption',
+			'Art. 162; Modequillo'
+		],
+		[
+			'120 days (first 120 of 300 days before birth)',
+			'Window preceding the birth of a child during which physical impossibility of sexual intercourse between husband and wife must exist to impugn legitimacy',
+			'Art. 166'
+		],
+		[
+			'1 / 2 / 3 years',
+			'Prescriptive periods to bring an action to impugn a child’s legitimacy, counted from knowledge of the birth or its recording in the civil register, if the husband or heirs reside in: (1) the same city/municipality; (2) elsewhere in the Philippines; or (3) abroad',
+			'Art. 170'
+		],
+		[
+			'180 and 300 days',
+			'Critical day thresholds governing whether a child born after the mother’s subsequent marriage is presumed conceived during the former marriage or the subsequent marriage',
+			'Art. 168',
+			'Born before 180 days after the solemnization of the subsequent marriage (and within 300 days after termination of the former marriage) → presumed former marriage; born after 180 days following the subsequent marriage → presumed subsequent marriage.'
+		],
+		[
+			'5 years',
+			'Period within which the heirs of a child may file an action to claim legitimacy if the child dies during minority or in a state of insanity',
+			'Art. 173'
+		],
+		[
+			'5 years',
+			'Prescriptive period within which prejudiced persons may bring an action to impugn legitimation, counted from the time their cause of action accrues',
+			'Art. 182'
+		],
+		[
+			'Below 18',
+			'Age disqualification of parents at the time of conception that no longer bars legitimation of their child under R.A. 9858',
+			'Art. 177 (R.A. 9858)'
+		],
+		[
+			'25 years old (27 inter-country)',
+			'Minimum age requirement for a domestic adopter (and for an inter-country adopter) under R.A. 11642',
+			'R.A. 11642'
+		],
+		[
+			'16 years',
+			'Minimum required age gap between adopter and adoptee under R.A. 11642 (waived if the adopter is the biological parent or the spouse of the adoptee’s parent)',
+			'R.A. 11642'
+		],
+		[
+			'5 years',
+			'Minimum continuous residence in the Philippines required of an alien/foreign adopter prior to filing a petition for domestic adoption under R.A. 11642',
+			'R.A. 11642'
+		],
+		[
+			'3 years',
+			'Minimum period an adult adoptee must have been consistently considered and treated as the adopter’s own child since minority (or prior to filing) to be eligible for adoption under R.A. 11642',
+			'R.A. 11642'
+		],
+		[
+			'10 years or older',
+			'Minimum age of an adoptee whose written consent to the adoption is required under R.A. 11642',
+			'R.A. 11642'
+		],
+		[
+			'6 months',
+			'Mandatory waiting period after the death of the biological parents before adoption proceedings of an orphaned child may be initiated under R.A. 11642',
+			'R.A. 11642'
+		],
+		[
+			'Under 7',
+			'Age threshold under the tender-age rule below which no child shall be separated from the mother unless the court finds compelling reasons',
+			'Art. 213'
+		],
+		[
+			'Over 7',
+			'Age threshold above which the court must take into account the child’s choice of parent in custody disputes (unless the chosen parent is unfit)',
+			'Art. 213'
+		],
+		[
+			'Over 21',
+			'Minimum age requirement for the oldest brother/sister or actual custodian to exercise substitute parental authority in default of parents or a judicially appointed guardian',
+			'Art. 216'
+		],
+		[
+			'₱50,000 / at least 10%',
+			'Market value of a child’s property or annual income above which parents must furnish a judicial bond, and the minimum percentage of that value the bond must cover',
+			'Art. 225'
+		],
+		[
+			'18 / 21',
+			'Age of majority/emancipation, and the age threshold below which parental consent is required for marriage',
+			'Arts. 234, 236'
+		],
+		[
+			'2 years (5 with administrator)',
+			'Period of absence without news before a person may be judicially declared an absentee (or if the absentee left an administrator in charge of their property)',
+			'Civil Code, Art. 384'
+		],
+		[
+			'6 months',
+			'Waiting period after publication in a newspaper of general circulation before a judicial declaration of absence takes effect',
+			'Civil Code, Art. 386'
+		],
+		[
+			'7 years (10 for succession; 5 if over 75)',
+			'Period of ordinary absence required before a person is presumed dead for general purposes (and special periods for opening succession, or if the absentee disappeared after age 75)',
+			'Civil Code, Art. 390'
+		],
+		[
+			'4 years',
+			'Period of qualified absence (disappearance in danger of death) required before a person is presumed dead under the Civil Code',
+			'Civil Code, Art. 391'
+		],
+		[
+			'4 years (2 in danger cases)',
+			'Period of continuous absence (and shortened period in danger-of-death cases) required before the present spouse may contract a subsequent marriage upon a judicial declaration of presumptive death',
+			'Family Code, Art. 41'
+		],
+		[
+			'Day and month (excluding the year)',
+			'Specific components of a person’s date of birth that the city or municipal civil registrar may administratively correct under R.A. 10172',
+			'R.A. 10172'
+		]
 	];
 
 	// StatCon numbers
-	const statconFixed: [string, string, string][] = [
-		['24 months', 'Supreme Court: period to decide a case from submission', 'Art. VIII, Sec. 15(1)'],
-		['12 months', 'Lower collegiate courts: period to decide, unless reduced by the Supreme Court', 'Art. VIII, Sec. 15(1)'],
-		['3 months', 'All other lower courts: period to decide', 'Art. VIII, Sec. 15(1)'],
-		['60 days', 'Constitutional Commissions: period to decide', 'Art. IX-A, Sec. 7'],
-		['1899 · 1935 · 1943 · 1973 · 1986 · 1987', 'The Philippine constitutions, in order (1986 is the provisional Freedom Constitution)', 'Ch. XI']
+	const statconFixed: NumberRow[] = [
+		[
+			'24 months',
+			'Maximum period within which the Supreme Court must decide or resolve a case or matter, counted from the date of its submission',
+			'Art. VIII, Sec. 15(1)'
+		],
+		[
+			'12 months',
+			'Maximum period within which lower collegiate courts (e.g., Court of Appeals, Sandiganbayan, CTA) must decide or resolve a case from submission, unless reduced by the Supreme Court',
+			'Art. VIII, Sec. 15(1)'
+		],
+		[
+			'3 months',
+			'Maximum period within which all other lower courts (RTC, MTC, etc.) must decide or resolve a case from submission',
+			'Art. VIII, Sec. 15(1)'
+		],
+		[
+			'60 days',
+			'Maximum period within which each Constitutional Commission must decide or resolve any case or matter brought before it, counted from the date of submission',
+			'Art. IX-A, Sec. 7'
+		],
+		[
+			'1899 · 1935 · 1943 · 1973 · 1986 · 1987',
+			'Chronological years of the six Philippine constitutions (including the provisional Freedom Constitution)',
+			'Ch. XI',
+			'1899 (Malolos), 1935, 1943, 1973, 1986 (Provisional Freedom Constitution), 1987.'
+		]
 	];
-	const statconCounts: [string, string, string][] = STATCON.enums
+	function statconCountPrompt(title: string): string {
+		const cleaned = title.replace(/^(?:Two|The three)\s+/i, '');
+		const lowered = cleaned.charAt(0).toLowerCase() + cleaned.slice(1);
+		return `Number of ${lowered}`;
+	}
+	const statconCounts: NumberRow[] = STATCON.enums
 		.filter((e) => STATCON.focus.enums?.[e.id])
-		.map((e) => [String(e.it.length), e.t, `List ${e.id}`]);
+		.map((e) => [
+			String(e.it.length),
+			statconCountPrompt(e.t),
+			`List ${e.id}`,
+			STATCON.focus.enums![e.id]
+		]);
 
 	// Crim Pro numbers
 	const crimproRows: NumberRow[] = CRIMPRO_NUMBERS.map(([n, what, rule, note]) => {
@@ -169,17 +447,60 @@
 			]
 		}
 	];
-	const crimOther: [string, string][] = [
-		['Preventive imprisonment credit', 'full if he agrees in writing; 4/5 if not; for RP, deducted from 30 years'],
-		['Subsidiary imprisonment', 'max 1/3 of the term, never over 1 year; fine only: 6 months (grave/less grave), 15 days (light)'],
-		['Three-fold rule', '3× the most severe penalty, max 40 years'],
-		['Habitual delinquency', 'within 10 years; 3rd conviction; total cap 30 years'],
-		['Prision correccional over…', '18 months: perpetual special disqualification from suffrage'],
-		['Bond to keep the peace not given', 'detention up to 6 months (grave/less grave) or 30 days (light)'],
-		['Destierro radius', '25 to 250 km'],
-		['Probation', 'max term not more than 6 years; period up to 2 years (term ≤ 1 year) or 6 years'],
-		['ISLaw', 'not for a maximum term of 1 year or less'],
-		['Children (RA 9344)', '15 or below exempt; over 15 under 18 exempt unless with discernment; suspended sentence until 21']
+	const crimOther: NumberRow[] = [
+		[
+			'Full (with written agreement); 4/5 (without); deducted from 30 years for RP',
+			'Credit for preventive imprisonment toward service of sentence (and baseline deduction when penalty is reclusion perpetua)',
+			'Art. 29',
+			'Recidivists and those who failed to surrender voluntarily when summoned get no preventive imprisonment credit.'
+		],
+		[
+			'Max 1/3 of term (never > 1 year); fine only: 6 months (grave/less grave) or 15 days (light)',
+			'Maximum duration of subsidiary imprisonment when the convict has no property to pay the fine',
+			'Art. 39',
+			'Covers only the fine, never civil indemnity or reparation; never imposed when the principal penalty is higher than prision correccional.'
+		],
+		[
+			'3× the most severe penalty, max 40 years',
+			'Maximum aggregate duration of service of multiple penalties under the Three-Fold Rule',
+			'Art. 70'
+		],
+		[
+			'Within 10 years; 3rd conviction; total cap 30 years',
+			'Timeframe from last release/conviction, conviction count, and total sentence cap for habitual delinquency',
+			'Art. 62(5)',
+			'Applies to robbery, estafa, theft, serious/less serious physical injuries, and falsification (R-E-T-S-F-L).'
+		],
+		[
+			'Over 18 months',
+			'Minimum duration of prision correccional that carries perpetual special disqualification from the right of suffrage',
+			'Art. 43'
+		],
+		[
+			'Up to 6 months (grave/less grave) or 30 days (light)',
+			'Maximum detention period when an offender fails to post a bond to keep the peace',
+			'Art. 35'
+		],
+		[
+			'25 km to 250 km radius',
+			'Prohibited entry radius from the designated place under the penalty of destierro',
+			'Art. 87'
+		],
+		[
+			'Imposable term ≤ 6 years; probation period up to 2 years (term ≤ 1 yr) or 6 years (term > 1 yr)',
+			'Maximum imposable sentence eligible for probation, and the maximum duration of the probation period',
+			'P.D. 968 / R.A. 10707'
+		],
+		[
+			'More than 1 year (excluded if max term ≤ 1 year)',
+			'Minimum imposable maximum term required for the Indeterminate Sentence Law (ISLaw) to apply',
+			'Act No. 4103, Sec. 2'
+		],
+		[
+			'15 or below: exempt; >15 to <18: exempt unless with discernment; suspended sentence until age 21',
+			'Minimum age of criminal responsibility, discernment age bracket, and maximum age of suspended sentence for children in conflict with the law',
+			'R.A. 9344'
+		]
 	];
 	let crimHide = $state(false);
 	let crimClustered = $state(false);
@@ -203,16 +524,35 @@
 					vals.forEach((v, idx) => {
 						if (v && v !== '—') {
 							const col = t.head![idx + 1];
-							out.push([v, `${topic} — ${label} (${col})`, src]);
+							let prompt = `${topic} — ${label} (${col})`;
+							if (topic.startsWith('Periods of divisible penalties')) {
+								prompt = `${col} period duration of ${label}`;
+							} else if (topic.startsWith('Degrees lower')) {
+								prompt = `Number of degrees lower than the prescribed penalty for a ${col.toLowerCase()} felony committed by a ${label.toLowerCase()}`;
+							} else if (topic.startsWith('Prescription')) {
+								prompt = `Prescriptive period (${col.toLowerCase()}) for felonies punishable by ${label}`;
+							}
+							out.push([v, prompt, src]);
 						}
 					});
 				} else if (vals[0]) {
-					out.push([vals[0], `${topic}: ${label}`, src]);
+					let prompt = `${topic}: ${label}`;
+					if (topic.startsWith('Duration of penalties')) {
+						prompt = `Statutory duration of the penalty of ${label}`;
+					} else if (topic.startsWith('Fines')) {
+						prompt = `Statutory fine range for ${label} penalties or felonies under R.A. 10951`;
+					} else if (topic.startsWith('Good conduct time allowance')) {
+						prompt = label.startsWith('STAL')
+							? 'Special Time Allowance for Loyalty (STAL) deduction on sentence during calamity or catastrophe'
+							: `Good Conduct Time Allowance (GCTA) monthly deduction during ${label} of imprisonment`;
+					}
+					out.push([vals[0], prompt, src]);
 				}
 			}
 		}
-		for (const [k, v] of crimOther) {
-			out.push([v, k, 'Arts. 16–113']);
+		for (const row of crimOther) {
+			const [ans, what, src, note] = row;
+			out.push(note ? [ans, what, src, note] : [ans, what, src]);
 		}
 		return out;
 	});
@@ -278,7 +618,8 @@
 
 				{#snippet val(id: string, v: string)}
 					{#if crimHide}
-						<button class="v" class:blur={!crimShown.has(id)} onclick={() => toggleCrim(id)} aria-label={crimShown.has(id) ? v : 'Reveal this number'}>{v}</button>
+						{@const isBlurred = !crimShown.has(id)}
+						<button class="v" class:blur={isBlurred} onclick={() => toggleCrim(id)} aria-label={isBlurred ? 'Reveal this number' : v}>{isBlurred ? '••••••••••••' : v}</button>
 					{:else}{v}{/if}
 				{/snippet}
 
@@ -299,13 +640,20 @@
 									</tbody>
 								</table>
 							</div>
-							{#if t.note}<p class="muted note-s">{t.note}</p>{/if}
+							{#if t.note && !crimHide}<p class="muted note-s">{t.note}</p>{/if}
 						</section>
 					{/each}
 					<section class="blk k-mem wide">
 						<h4>Other numbers</h4>
 						<ul>
-							{#each crimOther as [k, v] (k)}<li><b>{k}:</b> {@render val(k, v)}</li>{/each}
+							{#each crimOther as [ans, what, , note] (what)}
+								<li>
+									<b>{what}:</b> {@render val(what, ans)}
+									{#if note && (!crimHide || crimShown.has(what))}
+										<span class="muted note-s"> — {note}</span>
+									{/if}
+								</li>
+							{/each}
 						</ul>
 					</section>
 				</div>
@@ -362,7 +710,11 @@
 		transition: filter 0.15s;
 	}
 	.v.blur {
-		filter: blur(6px);
+		display: inline-block;
+		width: 12ch;
+		overflow: hidden;
+		white-space: nowrap;
+		filter: blur(5px);
 		user-select: none;
 	}
 </style>

@@ -105,7 +105,7 @@ function parseRow(n: string, what: string): ParsedRow {
 
 	// 2. Years (check before days/months so ranges like "1 year 1 day – 6 years" or "20 years 1 day – 40 years" classify as years)
 	if (/\byears?\b/.test(noParen)) {
-		const rangeEnd = noParen.match(/[–\-]\s*(\d+)\s*years?\b/);
+		const rangeEnd = noParen.match(/(?:[–\-]|\bto)\s*(\d+)\s*years?\b/);
 		if (rangeEnd) {
 			return { kind: 'years', val: Number(rangeEnd[1]) };
 		}

@@ -26,6 +26,7 @@ import { mockItems, renderMockAnswers, renderMockExam } from './integrated';
 import { renderLastMinute, renderPrelim, renderStart } from './review';
 import { quizMcqs, quizTopics, quizWatchFor, renderQuizAnswers, renderQuizzes } from './quizzes';
 import { crimproFlipsAndTwistsHtml, crimproTwistMcqs, crimproTwistTopic, crimproTwistWatchFor } from './twists_ext';
+import { crimproFinalsEssays } from './finals_essays';
 
 const ID = 'crimpro';
 
@@ -97,7 +98,8 @@ export const crimpro: LawModule = {
 	essays: [
 		...rules.flatMap((r) => situationalEssays(ID, r.id, `Rule ${r.n} — ${r.title}`, r.practice)),
 		...situationalEssays(ID, 'prescription', 'Prescription Module', prescriptionPractice),
-		...situationalEssays(ID, 'mock', 'Integrated Mock Exam', mockItems)
+		...situationalEssays(ID, 'mock', 'Integrated Mock Exam', mockItems),
+		...crimproFinalsEssays
 	]
 };
 

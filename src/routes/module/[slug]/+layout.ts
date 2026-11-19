@@ -12,6 +12,8 @@ export const load: LayoutLoad = async ({ params, url }) => {
 
 	if (subtab === 'overview') {
 		tasks.push(loadSubject(slug, 'all'));
+	} else if (subtab === 'exam') {
+		// Handled by `(study)/exam/+page.ts` which loads all exam pools for this subject in parallel.
 	} else if (subtab === 'read') {
 		tasks.push(loadSubject(slug, 'read'));
 	} else if (subtab === 'practice') {
@@ -28,9 +30,6 @@ export const load: LayoutLoad = async ({ params, url }) => {
 		tasks.push(loadRequisitesForSubject(slug));
 	} else if (KIT_SUBTAB_PATHS.has(subtab) || subtab === 'twists' || subtab === 'flips') {
 		tasks.push(loadKitForSubject(slug));
-		if (subtab === 'exam' && slug === 'consti1') {
-			tasks.push(loadSubject(slug, 'practice'));
-		}
 	} else {
 		tasks.push(loadSubject(slug, 'all'));
 	}

@@ -4,31 +4,36 @@ const Q1_FACTS =
 	'Mayor Arthur (Salary Grade 27) and Treasurer Brenda (Salary Grade 24) of the Municipality of San Jose were charged with Malversation of Public Funds under Article 217 of the Revised Penal Code for allegedly misappropriating ₱850,000.00 from the municipal treasury. Separately, Arthur was charged with violating a municipal curfew ordinance enacted by San Jose, which carries a fine of ₱2,500.00 and 15 days of imprisonment.<br><br>The private complainant filed the criminal complaint for the ordinance violation before the Office of the Provincial Prosecutor 55 days after the incident occurred. After conducting preliminary screening, the Prosecutor filed the Information in the Municipal Trial Court (MTC) on the 70th day. Arthur moved to quash the ordinance charge on the ground of prescription.<br><br>In a third incident, Brenda issued a corporate check amounting to ₱500,000.00 to a supplier, Charlie, drawn against insufficient funds. Charlie filed a criminal action for violation of Batas Pambansa Blg. 22 against Brenda before the MTCC, but expressly manifested in the complaint that he was reserving his right to institute a separate civil action to recover the ₱500,000.00 debt in the Regional Trial Court.';
 
 const Q2_FACTS =
-	'Police officers received an unverified anonymous tip via text message stating that a man wearing a red cap and oversized jacket at a bus terminal was carrying an illegal firearm. Arriving at the terminal, officers spotted Dennis wearing a red cap and oversized jacket. Dennis was merely standing in line eating bread. Approaching him, Officer Oscar immediately ordered Dennis to raise his hands and conducted a physical body search, which yielded an unlicensed .38 caliber revolver concealed under his jacket.<br><br>Simultaneously, other officers arrived at the rented apartment of Dennis\'s associate, Eric, armed with a valid Search Warrant particularly describing "two stolen laptops." After searching the living room, Officer Perez saw a half-closed bedroom door. Perez pushed the door open, stepped inside, and noticed a closed leather pouch on top of the desk. Perez unzipped the pouch and discovered three transparent plastic sachets containing <em>shabu</em>. Perez seized the drugs, invoking the Plain View Doctrine.<br><br>During the implementation of the search warrant at Eric\'s apartment, the police officers did not wear body-worn cameras (BWCs). Instead, they brought two smartphone Alternative Recording Devices (ARDs) without securing prior leave or authorization from the issuing court, claiming they forgot their issued BWCs at the station.';
+	'In the aftermath of catastrophic flooding in the City of San Mateo, an investigative audit conducted by the Commission on Audit (COA) uncovered that a ₱150,000,000.00 river wall and flood-mitigation project was a "ghost project." The project had been declared 100% complete and fully disbursed, but no actual construction had taken place.<br><br>The audit implicated the following individuals in a criminal conspiracy:<br>1. <strong>Engr. Dominador</strong>, the DPWH Regional Director (<strong>Salary Grade 28</strong>), who approved the contracts and certified completion;<br>2. <strong>Engr. Bernardo</strong>, the DPWH Project Inspector (<strong>Salary Grade 22</strong>), who prepared the false inspection reports; and<br>3. <strong>Mr. Victor</strong>, the private contractor and owner of Apex Builders, who received the government disbursements and kicked back ₱20,000,000.00.';
 
 const Q3_FACTS =
-	'Felix was charged before the Regional Trial Court with Rape under Article 266-A, paragraph 1 of the RPC (punishable by <em>reclusion perpetua</em>). During the inquest, the investigating prosecutor evaluated the case under DOJ Department Circular No. 15 and recommended the filing of an Information. After the Information was filed in the RTC, Felix immediately filed a Petition for Bail, asserting that under DOJ DC 15, the prosecutor’s threshold of evidence is only executive and cannot deprive him of his constitutional right to bail. The RTC granted bail without conducting a hearing, stating that the prosecutor\'s resolution was complete on its face.<br><br>Prior to arraignment, the prosecutor discovered that the original Information mistakenly charged Felix as a mere "accomplice." Without securing leave of court, the prosecutor filed an Amended Information charging Felix as the "sole principal." Over Felix’s objection, the court admitted the amendment.<br><br>Following his arraignment where he pleaded Not Guilty, Felix filed a Motion to Quash the Information on two grounds: (1) that the facts charged do not constitute an offense; and (2) that the arresting officers failed to inform him of his rights under R.A. 7438 during custodial investigation.';
-
-const Q4_FACTS =
-	'George was indicted for Homicide. During trial, the prosecution presented its material eyewitnesses and formally rested its case. George’s counsel immediately filed a Demurrer to Evidence directly in court, without asking for or obtaining leave of court, claiming the prosecution’s witnesses were uncorroborated and incredible.<br><br>The trial court issued an order denying the Demurrer to Evidence for lack of merit. During the next scheduled hearing, George\'s counsel stood up to present George and two defense alibi witnesses. The prosecutor objected, arguing that George was legally barred from presenting any evidence.<br><br>Separately, assume the trial court instead <em>granted</em> George\'s Demurrer to Evidence and dismissed the case on the ground of insufficient evidence. The private prosecutor filed an ordinary Notice of Appeal with the Court of Appeals, asserting that the trial judge misappreciated the weight of the testimonies.';
-
-const Q5_FACTS =
-	'Henry was tried for Serious Physical Injuries before the RTC. He attended all trial hearings while out on bail. The court scheduled the Promulgation of Judgment for November 3, 2026, and due notice was served on Henry at his address of record and on his defense counsel. On the date of promulgation, Henry failed to appear without submitting any explanation. The RTC proceeded with the Promulgation of Judgment <em>in absentia</em> by reading the dispositive portion convicting Henry and recording it in the criminal docket. The judge simultaneously ordered the forfeiture of his bail bond and issued a warrant of arrest.<br><br>Twenty (20) days later, Henry\'s counsel filed a Notice of Appeal before the RTC, explaining that Henry simply overslept on promulgation day.<br><br>In another case before the MTC, Ian was convicted of Less Serious Physical Injuries. Ian timely appealed to the RTC. The RTC ordered Ian to submit an Appeal Memorandum within 15 days, but Ian’s counsel failed to file it. The RTC dismissed Ian’s appeal outright for failure to prosecute.';
-
-const Q6_FACTS =
 	'On February 1, 2026, Arthur assaulted Benjamin during a traffic altercation, inflicting contusions that incapacitated Benjamin for four (4) days (Slight Physical Injuries). On March 5, 2026, Benjamin reported the altercation to the police precinct, where the desk sergeant recorded the incident in the Police Blotter. However, Benjamin filed his Complaint-Affidavit before the Office of the City Prosecutor only on April 20, 2026.<br><br>Arthur filed a Motion to Quash the Information on the ground that the offense had prescribed. The prosecution opposed the motion, arguing that the entry of the incident in the police blotter on March 5, 2026, interrupted the running of the prescriptive period.';
 
-const Q7_FACTS =
+const Q4_FACTS =
+	'Police officers received an unverified anonymous tip via text message stating that a man wearing a red cap and oversized jacket at a bus terminal was carrying an illegal firearm. Arriving at the terminal, officers spotted Dennis wearing a red cap and oversized jacket. Dennis was merely standing in line eating bread. Approaching him, Officer Oscar immediately ordered Dennis to raise his hands and conducted a physical body search, which yielded an unlicensed .38 caliber revolver concealed under his jacket.<br><br>Simultaneously, other officers arrived at the rented apartment of Dennis\'s associate, Eric, armed with a valid Search Warrant particularly describing "two stolen laptops." After searching the living room, Officer Perez saw a half-closed bedroom door. Perez pushed the door open, stepped inside, and noticed a closed leather pouch on top of the desk. Perez unzipped the pouch and discovered three transparent plastic sachets containing <em>shabu</em>. Perez seized the drugs, invoking the Plain View Doctrine.<br><br>During the implementation of the search warrant at Eric\'s apartment, the police officers did not wear body-worn cameras (BWCs). Instead, they brought two smartphone Alternative Recording Devices (ARDs) without securing prior leave or authorization from the issuing court, claiming they forgot their issued BWCs at the station.';
+
+const Q5_FACTS =
 	'A Regional Trial Court issued a search warrant specifically commanding police operatives to search the "living room and garage of House No. 88, Acacia Street" for an unlicensed .45 caliber pistol. During the search, operatives found nothing in the living room or garage. An operative subsequently walked into an adjacent dining room—which was not mentioned in the warrant—and observed an opaque brown paper bag sitting on top of the dining table.<br><br>Suspecting that the bag contained contraband, the operative picked up and opened the paper bag, discovering inside three (3) heat-sealed plastic sachets of methamphetamine hydrochloride (<em>shabu</em>). During trial, the accused moved to suppress the evidence, while the prosecution argued that the seized drugs were admissible under the Plain View Doctrine.';
+
+const Q6_FACTS =
+	'Felix was charged before the Regional Trial Court with Rape under Article 266-A, paragraph 1 of the RPC (punishable by <em>reclusion perpetua</em>). During the inquest, the investigating prosecutor evaluated the case under DOJ Department Circular No. 15 and recommended the filing of an Information. After the Information was filed in the RTC, Felix immediately filed a Petition for Bail, asserting that under DOJ DC 15, the prosecutor’s threshold of evidence is only executive and cannot deprive him of his constitutional right to bail. The RTC granted bail without conducting a hearing, stating that the prosecutor\'s resolution was complete on its face.<br><br>Prior to arraignment, the prosecutor discovered that the original Information mistakenly charged Felix as a mere "accomplice." Without securing leave of court, the prosecutor filed an Amended Information charging Felix as the "sole principal." Over Felix’s objection, the court admitted the amendment.<br><br>Following his arraignment where he pleaded Not Guilty, Felix filed a Motion to Quash the Information on two grounds: (1) that the facts charged do not constitute an offense; and (2) that the arresting officers failed to inform him of his rights under R.A. 7438 during custodial investigation.';
+
+const Q7_FACTS =
+	'George was indicted for Homicide. During trial, the prosecution presented its material eyewitnesses and formally rested its case. George’s counsel immediately filed a Demurrer to Evidence directly in court, without asking for or obtaining leave of court, claiming the prosecution’s witnesses were uncorroborated and incredible.<br><br>The trial court issued an order denying the Demurrer to Evidence for lack of merit. During the next scheduled hearing, George\'s counsel stood up to present George and two defense alibi witnesses. The prosecutor objected, arguing that George was legally barred from presenting any evidence.<br><br>Separately, assume the trial court instead <em>granted</em> George\'s Demurrer to Evidence and dismissed the case on the ground of insufficient evidence. The private prosecutor filed an ordinary Notice of Appeal with the Court of Appeals, asserting that the trial judge misappreciated the weight of the testimonies.';
 
 const Q8_FACTS =
 	'An Information for Estafa was submitted for decision before Branch 15 of the Regional Trial Court. Two and a half years elapsed without the judge rendering a decision. The accused filed a formal motion invoking his constitutional rights and praying for the outright dismissal of the case. The judge denied the motion, explaining that his branch had a heavy docket of over 1,500 active cases, that his legal researcher had resigned, and that no prejudice was suffered by the accused.';
 
 const Q9_FACTS =
+	'Henry was tried for Serious Physical Injuries before the RTC. He attended all trial hearings while out on bail. The court scheduled the Promulgation of Judgment for November 3, 2026, and due notice was served on Henry at his address of record and on his defense counsel. On the date of promulgation, Henry failed to appear without submitting any explanation. The RTC proceeded with the Promulgation of Judgment <em>in absentia</em> by reading the dispositive portion convicting Henry and recording it in the criminal docket. The judge simultaneously ordered the forfeiture of his bail bond and issued a warrant of arrest.<br><br>Twenty (20) days later, Henry\'s counsel filed a Notice of Appeal before the RTC, explaining that Henry simply overslept on promulgation day.<br><br>In another case before the MTC, Ian was convicted of Less Serious Physical Injuries. Ian timely appealed to the RTC. The RTC ordered Ian to submit an Appeal Memorandum within 15 days, but Ian’s counsel failed to file it. The RTC dismissed Ian’s appeal outright for failure to prosecute.';
+
+const Q10_FACTS =
 	'In a high-profile prosecution for Plunder involving ghost flood control projects, the trial judge issued an order dismissing the case on a Friday afternoon immediately after the prosecution rested its case. The dismissal was made <em>motu proprio</em> without giving the prosecution an opportunity to file its formal offer of evidence or to oppose the termination of the case. When the public prosecutor filed a Notice of Appeal, the judge disallowed it on the ground that the dismissal was an acquittal protected by Double Jeopardy.';
 
 export const crimproFinalsEssays: AlacEssay[] = [
-	// Part 1: Jurisdiction, Prescription & Civil Liability
+	// =========================================================================
+	// Part 1: Jurisdiction, Prescription & Civil Liability (Q1–Q3)
+	// =========================================================================
 	{
 		id: 'crimpro:alac:finals-1a',
 		title: 'Q1(a) — Malversation Jurisdiction',
@@ -77,14 +82,70 @@ export const crimproFinalsEssays: AlacEssay[] = [
 			conclusion: 'The reservation is invalid, and the MTCC shall hear and adjudicate both the criminal liability and the civil liability for the check\'s value.'
 		}
 	},
-
-	// Part 2: Arrests, Searches & Warrants
 	{
-		id: 'crimpro:alac:finals-2a',
-		title: 'Q2(a) — Stop-and-Frisk (Anonymous Tip)',
-		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
+		id: 'crimpro:alac:finals-10a',
+		title: 'Q2(a) — Ghost Project: Investigative & Prosecutorial Agencies',
+		topic: 'Finals · Part 1: Jurisdiction, Prescription & Civil Liability',
 		source: 'Finals',
 		factPattern: Q2_FACTS,
+		question:
+			'(a) Identify the government agencies and personalities authorized by law to investigate and prosecute the criminal anomalies surrounding the flood control project. Explain their respective mandates.',
+		modelAnswer: {
+			answer:
+				'The authorized agencies are: (1) the Office of the Ombudsman (primary investigative and prosecutorial authority), (2) the Commission on Audit (COA) (exclusive audit and evidence-gathering authority), and (3) the Department of Justice (DOJ) / National Prosecution Service (NPS) (concurrent investigative and prosecutorial authority).',
+			legalBasis:
+				'<ol><li><strong>Office of the Ombudsman (Art. XI, Sec. 13, 1987 Constitution; R.A. 6770):</strong> Exercises primary jurisdiction to investigate and prosecute criminal complaints against public officials and employees for crimes committed in relation to public office, including Plunder (R.A. 7080), Graft and Corrupt Practices (R.A. 3019), and Malversation (Art. 217, RPC), as well as private individuals acting in conspiracy with public officers.</li><li><strong>Commission on Audit (Art. IX-D, Sec. 2, 1987 Constitution):</strong> Possesses exclusive constitutional authority to audit and examine the expenditure and use of government funds, perform fraud audits, issue Notices of Disallowance, and execute Audit Investigation Reports and Joint Affidavits.</li><li><strong>Department of Justice / National Prosecution Service (R.A. 10071):</strong> Exercises general authority to investigate and prosecute all criminal offenses and shares concurrent jurisdiction to conduct preliminary investigations, particularly over private contractors and lower-ranked public officers when endorsed by law enforcement agencies (e.g., NBI or PNP-CIDG).</li></ol>',
+			application:
+				'In the San Mateo ghost flood-control project, the COA state auditors do not directly file Informations in court, but their fraud audit, Notices of Disallowance, and Audit Investigation Reports supply the primary documentary and expert evidence submitted to the Ombudsman. The Ombudsman exercises primary authority to investigate and indict Engr. Dominador, Engr. Bernardo, and private contractor Mr. Victor as co-conspirators, while the DOJ/NPS holds concurrent preliminary investigation authority, especially for Mr. Victor and Engr. Bernardo.',
+			conclusion:
+				'The Office of the Ombudsman, the COA, and the DOJ/NPS each play distinct, complementary statutory roles in investigating and prosecuting the ghost project anomaly.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-10b',
+		title: 'Q2(b) — Ghost Project: Sandiganbayan Jurisdiction & Co-Conspirators',
+		topic: 'Finals · Part 1: Jurisdiction, Prescription & Civil Liability',
+		source: 'Finals',
+		factPattern: Q2_FACTS,
+		question:
+			'(b) Before which judicial court or tribunal should the criminal charges for Plunder (R.A. 7080) and Violation of the Anti-Graft and Corrupt Practices Act (R.A. 3019) be filed against Engr. Dominador, Engr. Bernardo, and Mr. Victor? Explain the jurisdictional basis for each.',
+		modelAnswer: {
+			answer:
+				'The criminal Informations for Plunder and Violation of R.A. 3019 against all three co-conspirators—Engr. Dominador, Engr. Bernardo, and Mr. Victor—must be filed with the Sandiganbayan.',
+			legalBasis:
+				'<p>Under <strong>Presidential Decree No. 1606, as amended by R.A. 8249 and R.A. 10660</strong>, exclusive original jurisdiction is vested in the Sandiganbayan when three requisites concur: (1) <strong>Salary Grade Threshold</strong> — the principal accused holds a position classified as <strong>Salary Grade 27 or higher (SG 27+)</strong>; (2) <strong>Office Nexus</strong> — the offense was committed <strong>in relation to public office</strong>; and (3) <strong>Monetary/Damage Threshold (R.A. 10660)</strong> — in graft, bribery, or malversation cases, the damage to the government or value of the subject matter <strong>exceeds ₱1,000,000.00</strong>.</p><p>Furthermore, <strong>Section 4 of P.D. 1606</strong> explicitly provides that private individuals and public officers holding positions below SG 27 who are charged as co-principals, accomplices, or accessories in conspiracy with an SG 27+ official fall under the exclusive original jurisdiction of the Sandiganbayan.</p>',
+			application:
+				'<p><strong>As to Engr. Dominador (Regional Director, SG 28):</strong> He satisfies all three requisites—he is SG 28, he approved the contracts and certified completion in direct relation to his public office, and the ₱150,000,000.00 damage far exceeds the ₱1,000,000.00 threshold under R.A. 10660.</p><p><strong>As to Engr. Bernardo (SG 22) and Mr. Victor (Private Contractor):</strong> Although Engr. Bernardo is below SG 27 and Mr. Victor is a private individual, both are charged as co-conspirators with Engr. Dominador (an SG 28 official) in an anomaly exceeding ₱1,000,000.00.</p>',
+			conclusion:
+				'Accordingly, the Sandiganbayan acquires exclusive original jurisdiction over all three accused in a single Information.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-6',
+		title: 'Q3 — Prescription of Light Offenses & Police Blotters',
+		topic: 'Finals · Part 1: Jurisdiction, Prescription & Civil Liability',
+		source: 'Finals',
+		factPattern: Q3_FACTS,
+		question: 'How should the court rule on the Motion to Quash? Explain.',
+		modelAnswer: {
+			answer: 'The court should GRANT the Motion to Quash.',
+			legalBasis:
+				'<p>Under Article 90 of the Revised Penal Code, Slight Physical Injuries, which is punished by <em>arresto menor</em>, is a light offense that prescribes in <strong>two (2) months (60 days)</strong>.</p><p>Jurisprudence firmly establishes that <strong>entry of an incident in a police blotter does NOT toll or interrupt the running of the prescriptive period</strong>. A police blotter is merely an internal police administrative and logbook entry; it does not constitute the formal institution of criminal proceedings contemplated by Article 91 of the Revised Penal Code and Rule 110 of the Rules of Court (<em>People v. Consebido</em>, En Banc, 2025). The running of prescription is interrupted only by the filing of the complaint before the Office of the Prosecutor or directly with the court.</p>',
+			application:
+				'From the commission of the crime on February 1, 2026, until the filing of the complaint before the City Prosecutor on April 20, 2026, seventy-eight (78) days had elapsed. The March 5, 2026 police blotter entry did not stop the prescriptive clock. Since the two-month (60-day) period had already expired without any valid prosecutorial or judicial proceeding being instituted, the crime was extinguished by prescription under Article 89(3) of the RPC.',
+			conclusion: 'Consequently, the Information must be quashed under Rule 117, Section 3(g) of the Rules of Court.'
+		}
+	},
+
+	// =========================================================================
+	// Part 2: Arrests, Searches & Warrants (Q4–Q5)
+	// =========================================================================
+	{
+		id: 'crimpro:alac:finals-2a',
+		title: 'Q4(a) — Stop-and-Frisk (Anonymous Tip)',
+		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
+		source: 'Finals',
+		factPattern: Q4_FACTS,
 		question: '(a) Was the warrantless search on Dennis valid under the Stop-and-Frisk doctrine?',
 		modelAnswer: {
 			answer: 'No, the warrantless search of Dennis was illegal and invalid.',
@@ -97,10 +158,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-2b',
-		title: 'Q2(b) — Plain View Doctrine',
+		title: 'Q4(b) — Plain View Doctrine',
 		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
 		source: 'Finals',
-		factPattern: Q2_FACTS,
+		factPattern: Q4_FACTS,
 		question: '(b) Can the seized shabu in Eric’s apartment be admitted in evidence under the Plain View Doctrine?',
 		modelAnswer: {
 			answer: 'No, the <em>shabu</em> cannot be admitted under the Plain View Doctrine.',
@@ -113,10 +174,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-2c',
-		title: 'Q2(c) — Body-Worn Camera & ARD Rules',
+		title: 'Q4(c) — Body-Worn Camera & ARD Rules',
 		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
 		source: 'Finals',
-		factPattern: Q2_FACTS,
+		factPattern: Q4_FACTS,
 		question: '(c) What is the legal consequence of the officers\' unauthorized use of ARDs under the Body-Worn Camera (BWC) Rules?',
 		modelAnswer: {
 			answer: 'The unauthorized use of ARDs renders the seized items vulnerable to suppression and subjects the officers to contempt and administrative sanctions.',
@@ -128,14 +189,33 @@ export const crimproFinalsEssays: AlacEssay[] = [
 				'Under Rule 3, Section 7 of A.M. No. 21-06-08-SC, failure to observe the BWC requirement without justifiable cause renders the evidence obtained inadmissible upon proper motion to suppress by the affected party, and subjects the officers to indirect contempt of court.'
 		}
 	},
+	{
+		id: 'crimpro:alac:finals-7',
+		title: 'Q5 — Warrant Scope, Closed Containers & Plain View',
+		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
+		source: 'Finals',
+		factPattern: Q5_FACTS,
+		question: 'Is the warrantless seizure of the drugs valid under the Plain View Doctrine? Explain.',
+		modelAnswer: {
+			answer: 'NO, the warrantless seizure is INVALID, and the dangerous drugs are inadmissible.',
+			legalBasis:
+				'<p>For the Plain View Doctrine to validly apply, four requisites must concur: (1) a <strong>prior valid intrusion</strong> based on a lawful circumstance; (2) <strong>inadvertent discovery</strong> of the evidence; (3) <strong>immediate apparent illegality</strong> of the item without further search; and (4) the item must be <strong>open to eye and hand</strong> without opening closed containers (<em>United Laboratories v. Isip</em>; <em>People v. Nuevas</em>).</p><p>Under the "package rule," objects enclosed within an opaque container cannot be considered in plain view because their illicit nature is not immediately apparent to the eye.</p>',
+			application:
+				'<p>First, the search warrant strictly designated the living room and garage as the places to be searched. Entering the unlisted dining room was an unauthorized excursion exceeding the four corners of the warrant, thereby destroying the requirement of a prior valid intrusion.</p><p>Second, the drugs were concealed inside an opaque brown paper bag. Opening the paper bag was an active, secondary search rather than an inadvertent plain-view discovery.</p>',
+			conclusion:
+				'Because the Plain View Doctrine does not apply, the seizure violated the accused’s constitutional right against unreasonable searches, rendering the seized drugs inadmissible under the Exclusionary Rule (Article III, Section 3[2], 1987 Constitution).'
+		}
+	},
 
-	// Part 3: Pre-Trial Proceedings & Bail
+	// =========================================================================
+	// Part 3: Pre-Trial Proceedings & Bail (Q6)
+	// =========================================================================
 	{
 		id: 'crimpro:alac:finals-3a',
-		title: 'Q3(a) — Mandatory Bail Hearing (DOJ DC 15)',
+		title: 'Q6(a) — Mandatory Bail Hearing (DOJ DC 15)',
 		topic: 'Finals · Part 3: Pre-Trial Proceedings & Bail',
 		source: 'Finals',
-		factPattern: Q3_FACTS,
+		factPattern: Q6_FACTS,
 		question: '(a) Was the trial court’s order granting bail without a hearing valid?',
 		modelAnswer: {
 			answer: 'No, the trial court\'s order granting bail without a hearing is void.',
@@ -148,10 +228,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-3b',
-		title: 'Q3(b) — Pre-Arraignment Amendment',
+		title: 'Q6(b) — Pre-Arraignment Amendment',
 		topic: 'Finals · Part 3: Pre-Trial Proceedings & Bail',
 		source: 'Finals',
-		factPattern: Q3_FACTS,
+		factPattern: Q6_FACTS,
 		question: '(b) Was the pre-arraignment amendment upgrading Felix from accomplice to principal valid without leave of court?',
 		modelAnswer: {
 			answer: 'Yes, the amendment upgrading Felix’s liability from accomplice to principal was valid.',
@@ -164,10 +244,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-3c',
-		title: 'Q3(c) — Post-Arraignment Motion to Quash',
+		title: 'Q6(c) — Post-Arraignment Motion to Quash',
 		topic: 'Finals · Part 3: Pre-Trial Proceedings & Bail',
 		source: 'Finals',
-		factPattern: Q3_FACTS,
+		factPattern: Q6_FACTS,
 		question: '(c) How should the trial court rule on Felix’s post-arraignment Motion to Quash?',
 		modelAnswer: {
 			answer: 'The trial court should entertain the first ground (failure to state an offense), but summarily dismiss the second ground (custodial investigation irregularities) as waived.',
@@ -179,13 +259,15 @@ export const crimproFinalsEssays: AlacEssay[] = [
 		}
 	},
 
-	// Part 4: Trial, Evidence & Demurrer
+	// =========================================================================
+	// Part 4: Trial, Evidence & Demurrer (Q7–Q8)
+	// =========================================================================
 	{
 		id: 'crimpro:alac:finals-4a',
-		title: 'Q4(a) — Demurrer Without Leave of Court',
+		title: 'Q7(a) — Demurrer Without Leave of Court',
 		topic: 'Finals · Part 4: Trial, Evidence & Demurrer',
 		source: 'Finals',
-		factPattern: Q4_FACTS,
+		factPattern: Q7_FACTS,
 		question: '(a) Did the trial court correctly bar George from presenting defense evidence following the denial of his demurrer?',
 		modelAnswer: {
 			answer: 'Yes, the trial court correctly barred George from presenting evidence.',
@@ -198,10 +280,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-4b',
-		title: 'Q4(b) — Appealability of Granted Demurrer',
+		title: 'Q7(b) — Appealability of Granted Demurrer',
 		topic: 'Finals · Part 4: Trial, Evidence & Demurrer',
 		source: 'Finals',
-		factPattern: Q4_FACTS,
+		factPattern: Q7_FACTS,
 		question: '(b) Is the trial court’s order granting George’s demurrer appealable by the prosecution?',
 		modelAnswer: {
 			answer: 'No, the order granting the demurrer is not appealable.',
@@ -214,10 +296,10 @@ export const crimproFinalsEssays: AlacEssay[] = [
 	},
 	{
 		id: 'crimpro:alac:finals-4c',
-		title: 'Q4(c) — Speedy Trial vs. Speedy Disposition',
+		title: 'Q7(c) — Speedy Trial vs. Speedy Disposition',
 		topic: 'Finals · Part 4: Trial, Evidence & Demurrer',
 		source: 'Finals',
-		factPattern: Q4_FACTS,
+		factPattern: Q7_FACTS,
 		question: '(c) Distinguish between the Right to a Speedy Trial and the Right to the Speedy Disposition of Cases.',
 		modelAnswer: {
 			answer: 'The Right to a Speedy Trial and the Right to the Speedy Disposition of Cases are distinguished as follows: Speedy Trial (Art. III, Sec. 14) applies exclusively to the accused in criminal judicial proceedings from arraignment to promulgation of judgment, whereas Speedy Disposition of Cases (Art. III, Sec. 16) is a broader constitutional guarantee protecting all persons across all judicial, quasi-judicial, administrative, and investigatory proceedings.',
@@ -227,75 +309,6 @@ export const crimproFinalsEssays: AlacEssay[] = [
 				'Comparing the two rights point by point: (1) <strong>Persons protected</strong> — Speedy Trial protects only the accused in a criminal case, whereas Speedy Disposition protects all persons and all parties; (2) <strong>Proceedings covered</strong> — Speedy Trial applies only to criminal judicial proceedings, whereas Speedy Disposition covers judicial, quasi-judicial, administrative, and investigatory proceedings; and (3) <strong>Stage and enforcement</strong> — Speedy Trial covers the period from arraignment up to promulgation of judgment under Rule 119 and R.A. 8493 continuous trial deadlines (30 days from pre-trial order to commence; 180-day overall trial limit), whereas Speedy Disposition extends outside trial proper to fact-finding and preliminary investigations before the Ombudsman or the DOJ.',
 			conclusion:
 				'Thus, the Right to a Speedy Trial governs the trial proper of an accused in a criminal case, while the Right to the Speedy Disposition of Cases protects all parties across all stages and types of proceedings, including preliminary and fact-finding investigations.'
-		}
-	},
-
-	// Part 5: Judgment & Post-Judgment Remedies
-	{
-		id: 'crimpro:alac:finals-5a',
-		title: 'Q5(a) — Promulgation in Absentia & Appeal',
-		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
-		source: 'Finals',
-		factPattern: Q5_FACTS,
-		question: '(a) Did Henry validly perfect his appeal from the judgment promulgated in absentia?',
-		modelAnswer: {
-			answer: 'No, Henry forfeited his right to appeal.',
-			legalBasis:
-				'<p>Under Rule 120, Section 6 of the Rules of Court (<em>Estrada v. People</em>, G.R. No. 162371), if the accused fails to appear at the promulgation of judgment without justifiable cause, the promulgation shall be made by recording the judgment in the criminal docket. <strong>The accused loses the remedies available against the judgment, including the right to appeal.</strong></p><p>To regain these remedies, the accused must <strong>surrender within fifteen (15) days from date of promulgation</strong> and file a Motion for Leave of Court to avail of remedies, proving that his absence was due to a justifiable cause.</p>',
-			application:
-				'Henry failed to surrender within the non-extendible 15-day period; his counsel merely filed a Notice of Appeal on the 20th day. Furthermore, oversleeping does not constitute a justifiable reason in law.',
-			conclusion: 'The judgment of conviction has become final and executory. Henry lost his right to appeal.'
-		}
-	},
-	{
-		id: 'crimpro:alac:finals-5b',
-		title: 'Q5(b) — Failure to File Appeal Memorandum',
-		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
-		source: 'Finals',
-		factPattern: Q5_FACTS,
-		question: '(b) Was the RTC\'s outright dismissal of Ian\'s criminal appeal due to the failure to file an Appeal Memorandum valid?',
-		modelAnswer: {
-			answer: 'No, the RTC’s outright dismissal of Ian’s appeal was invalid.',
-			legalBasis:
-				'<p>Under Rule 122, Section 9(b) of the Revised Rules of Criminal Procedure, as interpreted in the landmark case of <strong><em>Sanico v. People</em> (G.R. No. 198753)</strong>, the failure of the appellant to file an Appeal Memorandum in an appeal from the MTC to the RTC <strong>is NOT a ground for the dismissal of a criminal appeal</strong>.</p><p>Unlike in civil appeals governed by Rule 40 where the failure to submit a memorandum results in dismissal, in criminal cases the life and personal liberty of the accused are at stake. Therefore, the RTC is under a mandatory duty to <strong>decide the appeal on the merits based on the original trial record and transcripts of stenographic notes (TSNs)</strong> transmitted by the first-level court.</p>',
-			application:
-				'The RTC applied the civil procedure rule erroneously. Ian\'s counsel\'s procedural omission did not divest the RTC of its duty to review the correctness of the conviction on the basis of the trial records.',
-			conclusion: 'The dismissal was improper. The RTC must reinstate the appeal and adjudicate the case on its merits.'
-		}
-	},
-
-	// Continuation — Additional Finals ALAC Essays (Q6–Q9)
-	{
-		id: 'crimpro:alac:finals-6',
-		title: 'Q6 — Prescription of Light Offenses & Police Blotters',
-		topic: 'Finals · Part 1: Jurisdiction, Prescription & Civil Liability',
-		source: 'Finals',
-		factPattern: Q6_FACTS,
-		question: 'How should the court rule on the Motion to Quash? Explain.',
-		modelAnswer: {
-			answer: 'The court should GRANT the Motion to Quash.',
-			legalBasis:
-				'<p>Under Article 90 of the Revised Penal Code, Slight Physical Injuries, which is punished by <em>arresto menor</em>, is a light offense that prescribes in <strong>two (2) months (60 days)</strong>.</p><p>Jurisprudence firmly establishes that <strong>entry of an incident in a police blotter does NOT toll or interrupt the running of the prescriptive period</strong>. A police blotter is merely an internal police administrative and logbook entry; it does not constitute the formal institution of criminal proceedings contemplated by Article 91 of the Revised Penal Code and Rule 110 of the Rules of Court (<em>People v. Consebido</em>, En Banc, 2025). The running of prescription is interrupted only by the filing of the complaint before the Office of the Prosecutor or directly with the court.</p>',
-			application:
-				'From the commission of the crime on February 1, 2026, until the filing of the complaint before the City Prosecutor on April 20, 2026, seventy-eight (78) days had elapsed. The March 5, 2026 police blotter entry did not stop the prescriptive clock. Since the two-month (60-day) period had already expired without any valid prosecutorial or judicial proceeding being instituted, the crime was extinguished by prescription under Article 89(3) of the RPC.',
-			conclusion: 'Consequently, the Information must be quashed under Rule 117, Section 3(g) of the Rules of Court.'
-		}
-	},
-	{
-		id: 'crimpro:alac:finals-7',
-		title: 'Q7 — Warrant Scope, Closed Containers & Plain View',
-		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
-		source: 'Finals',
-		factPattern: Q7_FACTS,
-		question: 'Is the warrantless seizure of the drugs valid under the Plain View Doctrine? Explain.',
-		modelAnswer: {
-			answer: 'NO, the warrantless seizure is INVALID, and the dangerous drugs are inadmissible.',
-			legalBasis:
-				'<p>For the Plain View Doctrine to validly apply, four requisites must concur: (1) a <strong>prior valid intrusion</strong> based on a lawful circumstance; (2) <strong>inadvertent discovery</strong> of the evidence; (3) <strong>immediate apparent illegality</strong> of the item without further search; and (4) the item must be <strong>open to eye and hand</strong> without opening closed containers (<em>United Laboratories v. Isip</em>; <em>People v. Nuevas</em>).</p><p>Under the "package rule," objects enclosed within an opaque container cannot be considered in plain view because their illicit nature is not immediately apparent to the eye.</p>',
-			application:
-				'<p>First, the search warrant strictly designated the living room and garage as the places to be searched. Entering the unlisted dining room was an unauthorized excursion exceeding the four corners of the warrant, thereby destroying the requirement of a prior valid intrusion.</p><p>Second, the drugs were concealed inside an opaque brown paper bag. Opening the paper bag was an active, secondary search rather than an inadvertent plain-view discovery.</p>',
-			conclusion:
-				'Because the Plain View Doctrine does not apply, the seizure violated the accused’s constitutional right against unreasonable searches, rendering the seized drugs inadmissible under the Exclusionary Rule (Article III, Section 3[2], 1987 Constitution).'
 		}
 	},
 	{
@@ -333,12 +346,48 @@ export const crimproFinalsEssays: AlacEssay[] = [
 				'Both Rule 65 Mandamus and an administrative complaint before the JIB/OCA are available against the judge.'
 		}
 	},
+
+	// =========================================================================
+	// Part 5: Judgment & Post-Judgment Remedies (Q9–Q10)
+	// =========================================================================
 	{
-		id: 'crimpro:alac:finals-9',
-		title: 'Q9 — Prosecution’s Remedy Against a Sham Acquittal',
+		id: 'crimpro:alac:finals-5a',
+		title: 'Q9(a) — Promulgation in Absentia & Appeal',
 		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
 		source: 'Finals',
 		factPattern: Q9_FACTS,
+		question: '(a) Did Henry validly perfect his appeal from the judgment promulgated in absentia?',
+		modelAnswer: {
+			answer: 'No, Henry forfeited his right to appeal.',
+			legalBasis:
+				'<p>Under Rule 120, Section 6 of the Rules of Court (<em>Estrada v. People</em>, G.R. No. 162371), if the accused fails to appear at the promulgation of judgment without justifiable cause, the promulgation shall be made by recording the judgment in the criminal docket. <strong>The accused loses the remedies available against the judgment, including the right to appeal.</strong></p><p>To regain these remedies, the accused must <strong>surrender within fifteen (15) days from date of promulgation</strong> and file a Motion for Leave of Court to avail of remedies, proving that his absence was due to a justifiable cause.</p>',
+			application:
+				'Henry failed to surrender within the non-extendible 15-day period; his counsel merely filed a Notice of Appeal on the 20th day. Furthermore, oversleeping does not constitute a justifiable reason in law.',
+			conclusion: 'The judgment of conviction has become final and executory. Henry lost his right to appeal.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-5b',
+		title: 'Q9(b) — Failure to File Appeal Memorandum',
+		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
+		source: 'Finals',
+		factPattern: Q9_FACTS,
+		question: '(b) Was the RTC\'s outright dismissal of Ian\'s criminal appeal due to the failure to file an Appeal Memorandum valid?',
+		modelAnswer: {
+			answer: 'No, the RTC’s outright dismissal of Ian’s appeal was invalid.',
+			legalBasis:
+				'<p>Under Rule 122, Section 9(b) of the Revised Rules of Criminal Procedure, as interpreted in the landmark case of <strong><em>Sanico v. People</em> (G.R. No. 198753)</strong>, the failure of the appellant to file an Appeal Memorandum in an appeal from the MTC to the RTC <strong>is NOT a ground for the dismissal of a criminal appeal</strong>.</p><p>Unlike in civil appeals governed by Rule 40 where the failure to submit a memorandum results in dismissal, in criminal cases the life and personal liberty of the accused are at stake. Therefore, the RTC is under a mandatory duty to <strong>decide the appeal on the merits based on the original trial record and transcripts of stenographic notes (TSNs)</strong> transmitted by the first-level court.</p>',
+			application:
+				'The RTC applied the civil procedure rule erroneously. Ian\'s counsel\'s procedural omission did not divest the RTC of its duty to review the correctness of the conviction on the basis of the trial records.',
+			conclusion: 'The dismissal was improper. The RTC must reinstate the appeal and adjudicate the case on its merits.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-9',
+		title: 'Q10 — Prosecution’s Remedy Against a Sham Acquittal',
+		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
+		source: 'Finals',
+		factPattern: Q10_FACTS,
 		question: 'What is the proper procedural remedy of the prosecution against the judge’s actions? Explain.',
 		modelAnswer: {
 			answer:

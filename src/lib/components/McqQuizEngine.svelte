@@ -17,12 +17,16 @@
 		Inbox,
 		Flag,
 		BookOpen,
-		History
+		History,
+		Volume2,
+		VolumeX
 	} from '@lucide/svelte';
 	import { onDestroy, untrack } from 'svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import { getPart, readHref } from '$lib/content';
+	import { playMcqSound } from '$lib/sound';
+	import { prefs } from '$lib/stores/prefs.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
@@ -32,6 +36,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
 	import { userStorage } from '$lib/stores/storage.svelte';
+	import { topicsForSubject } from '$lib/topics';
 	import { cn, formatClock, pct, seededOrder } from '$lib/utils';
 	import type { McqQuestion, McqTag, Subject } from '$lib/types';
 
@@ -75,7 +80,7 @@
 	};
 
 	const byId = $derived(new Map(lawModule.mcqs.map((q) => [q.id, q])));
-	const topics = $derived(lawModule.topics ?? []);
+	const topics = $derived(topicsForSubject(lawModule));
 
 	// svelte-ignore state_referenced_locally — the page re-mounts the engine per topic
 	let mode = $state<Mode>(initialMode);
@@ -230,7 +235,9 @@
 	function choose(optionIndex: number) {
 		if (!current || revealed) return;
 		if (mode === 'practice') {
-			userStorage.recordMcqAttempt(current.id, optionIndex, optionIndex === current.correctIndex);
+			const isCorrect = optionIndex === current.correctIndex;
+			userStorage.recordMcqAttempt(current.id, optionIndex, isCorrect);
+			playMcqSound(isCorrect);
 		} else if (examRunning) {
 			examAnswers[current.id] = optionIndex;
 		}
@@ -458,6 +465,28 @@
 						<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
 					</button>
 				{/if}
+				<button
+					type="button"
+					aria-pressed={prefs.value.soundEnabled}
+					onclick={() => {
+						const next = !prefs.value.soundEnabled;
+						prefs.set('soundEnabled', next);
+						if (next) playMcqSound(true, true);
+					}}
+					class={cn(
+						'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-4 px-3 text-xs font-extrabold tracking-wide uppercase transition-all duration-150 active:border-b-2 active:translate-y-0.5',
+						prefs.value.soundEnabled
+							? 'border-[#46A302]/45 bg-[#D7FFB8]/65 text-[#46A302] hover:bg-[#D7FFB8] dark:border-[#58CC02]/45 dark:bg-[#58CC02]/15 dark:text-[#7BE328]'
+							: 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50 dark:border-[#2B434E] dark:bg-[#1A2C34] dark:text-slate-400 dark:hover:bg-[#223842]'
+					)}
+					title={prefs.value.soundEnabled ? 'Sound effects on (adjust volume in Settings)' : 'Sound effects muted — tap to turn on'}
+				>
+					{#if prefs.value.soundEnabled}
+						<Volume2 class="size-3.5" strokeWidth={2.5} /> Sound on
+					{:else}
+						<VolumeX class="size-3.5" strokeWidth={2.5} /> Muted
+					{/if}
+				</button>
 			</div>
 		</div>
 	{/if}

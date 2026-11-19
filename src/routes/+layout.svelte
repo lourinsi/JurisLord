@@ -12,6 +12,7 @@
 	import { textSize } from '$lib/stores/textSize.svelte';
 	import { theme } from '$lib/stores/theme.svelte';
 	import { prefs, LINE_HEIGHT, LINE_WIDTH_REM } from '$lib/stores/prefs.svelte';
+	import { isStudyPath } from '$lib/subtabs';
 	import { ui } from '$lib/stores/ui.svelte';
 	import type { LayoutProps } from './$types';
 
@@ -133,7 +134,7 @@
 		ui.openSearch('', page.params.part ? 'part' : page.params.slug ? 'subject' : '');
 	}
 
-	const study = $derived(/^\/module\/[^/]+\/(read|practice|essays|focus|numbers|enumerations|terms|cases|problems|exam|drill|guide|twists|rules|flips|distinctions|mcq|past|thinkers|compare|critiques)/.test(page.url.pathname));
+	const study = $derived(isStudyPath(page.url.pathname));
 </script>
 
 <svelte:head>

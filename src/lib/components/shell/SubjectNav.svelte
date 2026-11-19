@@ -9,6 +9,7 @@
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
 	import { activeSubtabId, subtabsForSubject } from '$lib/subtabs';
+	import { topicsForSubject } from '$lib/topics';
 	import type { AlacEssay, Subject } from '$lib/types';
 
 	let {
@@ -68,7 +69,7 @@
 		}
 		return out;
 	});
-	const practiceTopics = $derived((subject.topics ?? []).filter((t) => topicCounts.get(t.id)?.total));
+	const practiceTopics = $derived(topicsForSubject(subject));
 
 	// ---- Essays: status + source + list ----
 	const STATUSES: ('all' | EssayStatus)[] = ['all', 'new', 'drafted', 'review', 'mastered'];

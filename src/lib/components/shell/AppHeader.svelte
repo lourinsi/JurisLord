@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { Bookmark, BookOpen, ChevronDown, Flame, Home, Menu, Moon, Search, SlidersHorizontal, Sun, X } from '@lucide/svelte';
+	import { Bookmark, BookOpen, ChevronDown, Flame, Home, Menu, Moon, Search, SlidersHorizontal, Sun, Volume2, VolumeX, X } from '@lucide/svelte';
 	import { Popover, Dialog as DialogPrimitive } from 'bits-ui';
 	import { page } from '$app/state';
 	import { modules } from '$lib/data/modules';
 	import { answerKey } from '$lib/answerkey.svelte';
+	import { playMcqSound } from '$lib/sound';
+	import { prefs } from '$lib/stores/prefs.svelte';
 	import { theme } from '$lib/stores/theme.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 	import { cn } from '$lib/utils';
@@ -124,6 +126,23 @@
 			{/if}
 			<button type="button" onclick={() => ui.openSearch()} aria-label="Search" class="grid size-10 place-items-center rounded-2xl border-2 border-transparent text-slate-600 hover:bg-slate-100 hover:text-foreground sm:hidden dark:text-slate-300 dark:hover:bg-[#223842]">
 				<Search class="size-5" strokeWidth={2.5} />
+			</button>
+			<button
+				type="button"
+				onclick={() => {
+					const next = !prefs.value.soundEnabled;
+					prefs.set('soundEnabled', next);
+					if (next) playMcqSound(true, true);
+				}}
+				aria-label={prefs.value.soundEnabled ? 'Mute sound effects' : 'Turn on sound effects'}
+				aria-pressed={prefs.value.soundEnabled}
+				title={prefs.value.soundEnabled ? `Sound effects on (${prefs.value.soundVolume}%) — click to mute` : 'Sound effects muted — click to turn on'}
+				class={cn(
+					'grid size-10 place-items-center rounded-2xl border-2 border-b-4 border-slate-200 bg-white text-slate-700 transition-all hover:bg-slate-50 active:border-b-2 active:translate-y-0.5 dark:border-[#2B434E] dark:bg-[#1A2C34] dark:text-slate-200 dark:hover:bg-[#223842]',
+					!prefs.value.soundEnabled && 'text-slate-400 dark:text-slate-500'
+				)}
+			>
+				{#if prefs.value.soundEnabled}<Volume2 class="size-[1.15rem] text-[#58CC02]" strokeWidth={2.5} />{:else}<VolumeX class="size-[1.15rem]" strokeWidth={2.5} />{/if}
 			</button>
 			<button
 				type="button"

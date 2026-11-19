@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Download, TriangleAlert, Upload } from '@lucide/svelte';
+	import { Download, TriangleAlert, Upload, Volume2, VolumeX } from '@lucide/svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import TextSizeControl from '$lib/components/TextSizeControl.svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -8,6 +8,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { totals } from '$lib/data/modules';
 	import { COLOR_NAMES, HIGHLIGHT_COLORS } from '$lib/highlights.svelte';
+	import { playMcqSound } from '$lib/sound';
 	import { prefs, type LineSpacing, type LineWidth, type SectionsOpen } from '$lib/stores/prefs.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { theme, type ThemeMode } from '$lib/stores/theme.svelte';
@@ -70,6 +71,7 @@
 	const what = 'flex min-w-0 flex-[1_1_16rem] flex-col gap-0.5';
 	const nav = [
 		{ id: 'appearance', label: 'Appearance' },
+		{ id: 'sound', label: 'Sound' },
 		{ id: 'reading', label: 'Reading' },
 		{ id: 'labels', label: 'Highlight labels' },
 		{ id: 'search', label: 'Search' },
@@ -94,6 +96,60 @@
 			<div class={row}>
 				<div class={what}><span class="text-[0.9375rem] font-extrabold">Theme</span><span class="text-[0.8125rem] font-semibold text-muted-foreground">System follows your device's setting.</span></div>
 				<Segmented label="Theme" value={theme.mode} onchange={(v: ThemeMode) => theme.set(v)} options={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'system', label: 'System' }]} />
+			</div>
+		</section>
+
+		<section id="sound" aria-labelledby="h-sound" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+			<h2 id="h-sound" class="border-b-2 border-slate-100 px-5 py-4 text-[1.0625rem] font-extrabold dark:border-[#2B434E]">Sound</h2>
+			<div class={row}>
+				<label for="sound-enabled" class={what}>
+					<span class="text-[0.9375rem] font-extrabold">MCQ sound effects</span>
+					<span class="text-[0.8125rem] font-semibold text-muted-foreground">Plays a soft chime on right answers and a low tone on wrong answers across all MCQ quizzes and drills.</span>
+				</label>
+				<Switch
+					id="sound-enabled"
+					checked={prefs.value.soundEnabled}
+					onCheckedChange={(v) => {
+						prefs.set('soundEnabled', v);
+						if (v) playMcqSound(true, true);
+					}}
+				/>
+			</div>
+			<div class={row}>
+				<label for="sound-volume" class={what}>
+					<span class="text-[0.9375rem] font-extrabold">Sound volume</span>
+					<span class="text-[0.8125rem] font-semibold text-muted-foreground">Adjust loudness ({prefs.value.soundVolume}%).</span>
+				</label>
+				<div class="flex items-center gap-3">
+					{#if prefs.value.soundEnabled && prefs.value.soundVolume > 0}
+						<Volume2 class="size-4 shrink-0 text-[#58CC02]" strokeWidth={2.5} />
+					{:else}
+						<VolumeX class="size-4 shrink-0 text-muted-foreground" strokeWidth={2.5} />
+					{/if}
+					<input
+						id="sound-volume"
+						type="range"
+						min="0"
+						max="100"
+						step="5"
+						value={prefs.value.soundVolume}
+						oninput={(e) => prefs.set('soundVolume', Number(e.currentTarget.value))}
+						onchange={() => playMcqSound(true, true)}
+						class="h-2 w-36 cursor-pointer accent-[#58CC02] sm:w-44"
+						aria-label="Sound volume"
+					/>
+					<span class="w-10 text-right text-xs font-extrabold tabular-nums text-muted-foreground">{prefs.value.soundVolume}%</span>
+				</div>
+			</div>
+			<div class={row}>
+				<div class={what}>
+					<span class="text-[0.9375rem] font-extrabold">Preview sounds</span>
+					<span class="text-[0.8125rem] font-semibold text-muted-foreground">Test both sound effects at your current volume.</span>
+				</div>
+				<div class="flex flex-wrap gap-2">
+					<Button variant="outline" size="sm" onclick={() => playMcqSound(true, true)}>Test Right (Ting)</Button>
+					<Button variant="outline" size="sm" onclick={() => playMcqSound(false, true)}>Test Wrong (Error)</Button>
+				</div>
 			</div>
 		</section>
 

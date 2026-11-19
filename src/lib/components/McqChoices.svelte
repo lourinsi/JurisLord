@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { md } from '$lib/text';
 	import { answerKey } from '$lib/answerkey.svelte';
+	import { playMcqSound } from '$lib/sound';
 	import type { Mcq } from '$lib/mcq';
 
 	let {
@@ -28,6 +30,15 @@
 	/** Answer-key easter egg: show the right choice before (or without) a reveal. */
 	const keyed = $derived(answerKey.on && !reveal);
 	const LETTERS = 'ABCDEFG';
+
+	// Automatically play right/wrong audio feedback whenever an answer transitions from unrevealed to revealed.
+	let prevReveal = untrack(() => reveal);
+	$effect(() => {
+		if (!prevReveal && reveal && picked !== null) {
+			playMcqSound(picked === q.a);
+		}
+		prevReveal = reveal;
+	});
 
 	function onkeydown(e: KeyboardEvent) {
 		if (!keys || locked || !onpick || e.metaKey || e.ctrlKey || e.altKey) return;

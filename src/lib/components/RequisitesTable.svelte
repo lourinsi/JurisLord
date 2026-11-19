@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SvelteSet } from 'svelte/reactivity';
-	import type { RequisiteItem, RequisiteTopic } from '$lib/crimpro-requisites';
+	import type { RequisiteItem, RequisiteTopic } from '$lib/requisites';
 
 	let {
 		topics,

@@ -13,6 +13,9 @@ export interface Prefs {
 	rememberPosition: boolean;
 	keepRecentSearches: boolean;
 	navCollapsed: boolean;
+	soundEnabled: boolean;
+	/** Volume from 0 to 100. */
+	soundVolume: number;
 }
 
 const KEY = 'sc_prefs';
@@ -23,7 +26,9 @@ const DEFAULTS: Prefs = {
 	sectionsOpen: 'all',
 	rememberPosition: true,
 	keepRecentSearches: true,
-	navCollapsed: false
+	navCollapsed: false,
+	soundEnabled: true,
+	soundVolume: 70
 };
 
 const OPTIONS = {
@@ -40,7 +45,11 @@ function read(): Prefs {
 			const v = raw[k];
 			if (typeof v === 'string' && (OPTIONS[k] as readonly string[]).includes(v)) (out as Record<string, unknown>)[k] = v;
 		}
-		for (const k of ['rememberPosition', 'keepRecentSearches', 'navCollapsed'] as const) if (typeof raw[k] === 'boolean') out[k] = raw[k] as boolean;
+		for (const k of ['rememberPosition', 'keepRecentSearches', 'navCollapsed', 'soundEnabled'] as const)
+			if (typeof raw[k] === 'boolean') out[k] = raw[k] as boolean;
+		if (typeof raw.soundVolume === 'number' && Number.isFinite(raw.soundVolume)) {
+			out.soundVolume = Math.max(0, Math.min(100, Math.round(raw.soundVolume)));
+		}
 		return out;
 	} catch {
 		return { ...DEFAULTS };

@@ -1,4 +1,6 @@
 import { CRIMLAW } from './crimlaw';
+import { NUMBERS_BY_SUBJECT } from './numbers-registry';
+import { REQUISITES_BY_SUBJECT } from './requisites';
 import { PFR } from './pfr';
 import { STATCON } from './statcon';
 import { PHILO } from './philo';
@@ -12,6 +14,48 @@ export interface SubtabItem {
 	star?: boolean;
 }
 
+/** Display priority on the subject overview Finals Kit grid. */
+export const SUBTAB_PRIORITY: Record<string, number> = {
+	exam: 1,
+	focus: 2,
+	numbers: 3,
+	requisites: 4,
+	enumerations: 5
+};
+
+/** Every study subtab route segment under `/module/[slug]/<segment>`. */
+export const ALL_STUDY_SUBTAB_PATHS = new Set<string>([
+	'read',
+	'practice',
+	'essays',
+	'focus',
+	'numbers',
+	'requisites',
+	'enumerations',
+	'terms',
+	'cases',
+	'problems',
+	'exam',
+	'drill',
+	'guide',
+	'twists',
+	'rules',
+	'flips',
+	'distinctions',
+	'mcq',
+	'past',
+	'thinkers',
+	'compare',
+	'critiques'
+]);
+
+/** Returns true when `pathname` is inside any study subtab route (`/module/<slug>/<subtab>`). */
+export function isStudyPath(pathname: string): boolean {
+	const m = /^\/module\/[^/]+\/([^/]+)/.exec(pathname);
+	if (!m) return false;
+	return ALL_STUDY_SUBTAB_PATHS.has(m[1]);
+}
+
 export function kitForSubject(slug: string): Kit | undefined {
 	if (slug === 'crim1' || slug === 'crim1_lloren') return { ...CRIMLAW, base: `/module/${slug}` };
 	if (slug === 'pfr') return PFR;
@@ -21,6 +65,31 @@ export function kitForSubject(slug: string): Kit | undefined {
 }
 
 export function subtabsForSubject(slug: string): SubtabItem[] {
+	const base = baseSubtabsForSubject(slug);
+
+	// Dynamically attach Numbers for any subject registered in NUMBERS_BY_SUBJECT
+	const numCfg = NUMBERS_BY_SUBJECT[slug];
+	if (numCfg && !base.some((t) => t.id === 'numbers')) {
+		const focusIdx = base.findIndex((t) => t.id === 'focus');
+		const item: SubtabItem = { id: 'numbers', path: 'numbers', label: 'Numbers', desc: numCfg.desc };
+		if (focusIdx >= 0) base.splice(focusIdx + 1, 0, item);
+		else base.push(item);
+	}
+
+	// Dynamically attach Requisites for any subject registered in REQUISITES_BY_SUBJECT
+	const reqCfg = REQUISITES_BY_SUBJECT[slug];
+	if (reqCfg && !base.some((t) => t.id === 'requisites')) {
+		const numIdx = base.findIndex((t) => t.id === 'numbers');
+		const item: SubtabItem = { id: 'requisites', path: 'requisites', label: 'Requisites', desc: reqCfg.desc };
+		if (numIdx >= 0) base.splice(numIdx + 1, 0, item);
+		else base.push(item);
+	}
+
+	for (const t of base) ALL_STUDY_SUBTAB_PATHS.add(t.path);
+	return base;
+}
+
+function baseSubtabsForSubject(slug: string): SubtabItem[] {
 	switch (slug) {
 		case 'consti1':
 			return [

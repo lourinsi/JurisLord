@@ -6,7 +6,7 @@
 	import StudyBar from '$lib/components/common/StudyBar.svelte';
 	import { CATEGORY_ACCENT, getModule } from '$lib/data/modules';
 	import { getParts, groupedParts, partForAnchor, readHref, subjectUnits, unitKey } from '$lib/content';
-	import { subtabsForSubject } from '$lib/subtabs';
+	import { SUBTAB_PRIORITY, subtabsForSubject } from '$lib/subtabs';
 	import { essayStatus } from '$lib/alac';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
@@ -17,17 +17,10 @@
 	const parts = $derived(getParts(subject));
 	const groups = $derived(groupedParts(subject));
 
-	const PRIORITY_ORDER: Record<string, number> = {
-		exam: 1,
-		focus: 2,
-		numbers: 3,
-		requisites: 4,
-		enumerations: 5
-	};
 	const kitTabs = $derived(
 		subtabsForSubject(subject.id)
 			.filter((t) => !['read', 'practice', 'essays'].includes(t.id) || (t.id === 'essays' && subject.id === 'philo'))
-			.sort((a, b) => (PRIORITY_ORDER[a.id] ?? 99) - (PRIORITY_ORDER[b.id] ?? 99))
+			.sort((a, b) => (SUBTAB_PRIORITY[a.id] ?? 99) - (SUBTAB_PRIORITY[b.id] ?? 99))
 	);
 
 	let showAllKitTabs = $state(false);

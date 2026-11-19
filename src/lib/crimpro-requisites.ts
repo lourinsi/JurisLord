@@ -1,27 +1,4 @@
-export interface RequisiteItem {
-	num: number;
-	/** Standalone question / legal trigger displayed in the "What it is for" column. */
-	question: string;
-	/**
-	 * Answer shown in the "Requisites" column.
-	 * - Single item (`items.length === 1`): renders as a concise 1-word / short-phrase answer.
-	 * - Multiple items (`items.length > 1`): renders as a numbered enumeration (1., 2., 3., ...).
-	 */
-	answers: string[];
-	/** Optional callout label in "What it is for" (e.g. "Fatal Flaw", "Effect", "Ceiling"). */
-	noteLabel?: string;
-	/** Detailed explanation/caveat displayed under "What it is for" — hidden while blurred in self-test mode. */
-	note?: string;
-	source: string;
-}
-
-export interface RequisiteTopic {
-	id: string;
-	num: number;
-	title: string;
-	shortTitle: string;
-	items: RequisiteItem[];
-}
+import type { RequisiteTopic } from './requisites';
 
 export const CRIMPRO_REQUISITE_TOPICS: RequisiteTopic[] = [
 	{
@@ -450,3 +427,4 @@ export const CRIMPRO_REQUISITE_TOPICS: RequisiteTopic[] = [
 		]
 	}
 ];
+

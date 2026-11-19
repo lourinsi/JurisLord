@@ -3,10 +3,11 @@
 	import Breadcrumbs from '$lib/components/common/Breadcrumbs.svelte';
 	import RequisitesTable from '$lib/components/RequisitesTable.svelte';
 	import { getModule } from '$lib/data/modules';
-	import { CRIMPRO_REQUISITE_TOPICS } from '$lib/crimpro-requisites';
+	import { REQUISITES_BY_SUBJECT } from '$lib/requisites';
 
 	const slug = $derived(page.params.slug ?? '');
 	const subject = $derived(getModule(slug)!);
+	const reqConfig = $derived(REQUISITES_BY_SUBJECT[slug]);
 </script>
 
 <svelte:head><title>Requisites — {subject.title} — Juris Lord</title></svelte:head>
@@ -24,13 +25,10 @@
 		<h1 class="font-heading text-3xl leading-tight font-extrabold">Requisites</h1>
 	</header>
 
-	{#if slug === 'crimpro'}
+	{#if reqConfig}
 		<div class="stack" style="gap:12px">
-			<p class="muted" style="max-width:66ch">
-				Hide the requisites and test yourself across all five exam topics. Tap any blurred answer to reveal the
-				requisites and notes, or switch to <b>Shuffled drill</b> to recite them out of order.
-			</p>
-			<RequisitesTable topics={CRIMPRO_REQUISITE_TOPICS} title="CrimPro Finals Requisites Drill" />
+			<p class="muted" style="max-width:66ch">{reqConfig.intro}</p>
+			<RequisitesTable topics={reqConfig.topics} title={reqConfig.title} />
 		</div>
 	{:else}
 		<div class="card p-6 text-sm text-muted-foreground">

@@ -21,7 +21,8 @@
 		exam: 1,
 		focus: 2,
 		numbers: 3,
-		enumerations: 4
+		requisites: 4,
+		enumerations: 5
 	};
 	const kitTabs = $derived(
 		subtabsForSubject(subject.id)

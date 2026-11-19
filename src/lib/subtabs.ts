@@ -55,6 +55,7 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'True/false & quiz bank' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '15 most likely questions & 5 twist keys' },
 				{ id: 'numbers', path: 'numbers', label: 'Numbers', desc: 'Numbers & deadlines to memorize' },
+				{ id: 'requisites', path: 'requisites', label: 'Requisites', desc: '47 Q&A requisites & rules drill (self-test)' },
 				{ id: 'rules', path: 'rules', label: 'Rules 110–127', desc: 'Color-coded rule cards & hooks' },
 				{ id: 'twists', path: 'twists', label: 'Twist drills', desc: '22 linked case-file sets' },
 				{ id: 'flips', path: 'flips', label: 'One fact flips it', desc: '26 side-by-side flip pairs' },

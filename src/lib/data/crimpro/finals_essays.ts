@@ -15,6 +15,18 @@ const Q4_FACTS =
 const Q5_FACTS =
 	'Henry was tried for Serious Physical Injuries before the RTC. He attended all trial hearings while out on bail. The court scheduled the Promulgation of Judgment for November 3, 2026, and due notice was served on Henry at his address of record and on his defense counsel. On the date of promulgation, Henry failed to appear without submitting any explanation. The RTC proceeded with the Promulgation of Judgment <em>in absentia</em> by reading the dispositive portion convicting Henry and recording it in the criminal docket. The judge simultaneously ordered the forfeiture of his bail bond and issued a warrant of arrest.<br><br>Twenty (20) days later, Henry\'s counsel filed a Notice of Appeal before the RTC, explaining that Henry simply overslept on promulgation day.<br><br>In another case before the MTC, Ian was convicted of Less Serious Physical Injuries. Ian timely appealed to the RTC. The RTC ordered Ian to submit an Appeal Memorandum within 15 days, but Ian’s counsel failed to file it. The RTC dismissed Ian’s appeal outright for failure to prosecute.';
 
+const Q6_FACTS =
+	'On February 1, 2026, Arthur assaulted Benjamin during a traffic altercation, inflicting contusions that incapacitated Benjamin for four (4) days (Slight Physical Injuries). On March 5, 2026, Benjamin reported the altercation to the police precinct, where the desk sergeant recorded the incident in the Police Blotter. However, Benjamin filed his Complaint-Affidavit before the Office of the City Prosecutor only on April 20, 2026.<br><br>Arthur filed a Motion to Quash the Information on the ground that the offense had prescribed. The prosecution opposed the motion, arguing that the entry of the incident in the police blotter on March 5, 2026, interrupted the running of the prescriptive period.';
+
+const Q7_FACTS =
+	'A Regional Trial Court issued a search warrant specifically commanding police operatives to search the "living room and garage of House No. 88, Acacia Street" for an unlicensed .45 caliber pistol. During the search, operatives found nothing in the living room or garage. An operative subsequently walked into an adjacent dining room—which was not mentioned in the warrant—and observed an opaque brown paper bag sitting on top of the dining table.<br><br>Suspecting that the bag contained contraband, the operative picked up and opened the paper bag, discovering inside three (3) heat-sealed plastic sachets of methamphetamine hydrochloride (<em>shabu</em>). During trial, the accused moved to suppress the evidence, while the prosecution argued that the seized drugs were admissible under the Plain View Doctrine.';
+
+const Q8_FACTS =
+	'An Information for Estafa was submitted for decision before Branch 15 of the Regional Trial Court. Two and a half years elapsed without the judge rendering a decision. The accused filed a formal motion invoking his constitutional rights and praying for the outright dismissal of the case. The judge denied the motion, explaining that his branch had a heavy docket of over 1,500 active cases, that his legal researcher had resigned, and that no prejudice was suffered by the accused.';
+
+const Q9_FACTS =
+	'In a high-profile prosecution for Plunder involving ghost flood control projects, the trial judge issued an order dismissing the case on a Friday afternoon immediately after the prosecution rested its case. The dismissal was made <em>motu proprio</em> without giving the prosecution an opportunity to file its formal offer of evidence or to oppose the termination of the case. When the public prosecutor filed a Notice of Appeal, the judge disallowed it on the ground that the dismissal was an acquittal protected by Double Jeopardy.';
+
 export const crimproFinalsEssays: AlacEssay[] = [
 	// Part 1: Jurisdiction, Prescription & Civil Liability
 	{
@@ -249,6 +261,94 @@ export const crimproFinalsEssays: AlacEssay[] = [
 			application:
 				'The RTC applied the civil procedure rule erroneously. Ian\'s counsel\'s procedural omission did not divest the RTC of its duty to review the correctness of the conviction on the basis of the trial records.',
 			conclusion: 'The dismissal was improper. The RTC must reinstate the appeal and adjudicate the case on its merits.'
+		}
+	},
+
+	// Continuation — Additional Finals ALAC Essays (Q6–Q9)
+	{
+		id: 'crimpro:alac:finals-6',
+		title: 'Q6 — Prescription of Light Offenses & Police Blotters',
+		topic: 'Finals · Part 1: Jurisdiction, Prescription & Civil Liability',
+		source: 'Finals',
+		factPattern: Q6_FACTS,
+		question: 'How should the court rule on the Motion to Quash? Explain.',
+		modelAnswer: {
+			answer: 'The court should GRANT the Motion to Quash.',
+			legalBasis:
+				'<p>Under Article 90 of the Revised Penal Code, Slight Physical Injuries, which is punished by <em>arresto menor</em>, is a light offense that prescribes in <strong>two (2) months (60 days)</strong>.</p><p>Jurisprudence firmly establishes that <strong>entry of an incident in a police blotter does NOT toll or interrupt the running of the prescriptive period</strong>. A police blotter is merely an internal police administrative and logbook entry; it does not constitute the formal institution of criminal proceedings contemplated by Article 91 of the Revised Penal Code and Rule 110 of the Rules of Court (<em>People v. Consebido</em>, En Banc, 2025). The running of prescription is interrupted only by the filing of the complaint before the Office of the Prosecutor or directly with the court.</p>',
+			application:
+				'From the commission of the crime on February 1, 2026, until the filing of the complaint before the City Prosecutor on April 20, 2026, seventy-eight (78) days had elapsed. The March 5, 2026 police blotter entry did not stop the prescriptive clock. Since the two-month (60-day) period had already expired without any valid prosecutorial or judicial proceeding being instituted, the crime was extinguished by prescription under Article 89(3) of the RPC.',
+			conclusion: 'Consequently, the Information must be quashed under Rule 117, Section 3(g) of the Rules of Court.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-7',
+		title: 'Q7 — Warrant Scope, Closed Containers & Plain View',
+		topic: 'Finals · Part 2: Arrests, Searches & Warrants',
+		source: 'Finals',
+		factPattern: Q7_FACTS,
+		question: 'Is the warrantless seizure of the drugs valid under the Plain View Doctrine? Explain.',
+		modelAnswer: {
+			answer: 'NO, the warrantless seizure is INVALID, and the dangerous drugs are inadmissible.',
+			legalBasis:
+				'<p>For the Plain View Doctrine to validly apply, four requisites must concur: (1) a <strong>prior valid intrusion</strong> based on a lawful circumstance; (2) <strong>inadvertent discovery</strong> of the evidence; (3) <strong>immediate apparent illegality</strong> of the item without further search; and (4) the item must be <strong>open to eye and hand</strong> without opening closed containers (<em>United Laboratories v. Isip</em>; <em>People v. Nuevas</em>).</p><p>Under the "package rule," objects enclosed within an opaque container cannot be considered in plain view because their illicit nature is not immediately apparent to the eye.</p>',
+			application:
+				'<p>First, the search warrant strictly designated the living room and garage as the places to be searched. Entering the unlisted dining room was an unauthorized excursion exceeding the four corners of the warrant, thereby destroying the requirement of a prior valid intrusion.</p><p>Second, the drugs were concealed inside an opaque brown paper bag. Opening the paper bag was an active, secondary search rather than an inadvertent plain-view discovery.</p>',
+			conclusion:
+				'Because the Plain View Doctrine does not apply, the seizure violated the accused’s constitutional right against unreasonable searches, rendering the seized drugs inadmissible under the Exclusionary Rule (Article III, Section 3[2], 1987 Constitution).'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-8a',
+		title: 'Q8(a) — Systemic Judicial Delay (Motion to Dismiss)',
+		topic: 'Finals · Part 4: Trial, Evidence & Demurrer',
+		source: 'Finals',
+		factPattern: Q8_FACTS,
+		question: '(a) Is the trial judge’s denial of the motion to dismiss correct? Explain.',
+		modelAnswer: {
+			answer: 'NO, the trial judge’s denial is INCORRECT.',
+			legalBasis:
+				'<p>Under Article III, Section 16 (Right to Speedy Disposition of Cases) and Article III, Section 14(2) (Right to a Speedy Trial) of the 1987 Constitution, and applying the <em>Barker v. Wingo</em> balancing test adopted in <em>Cagang v. Sandiganbayan</em>, an unexcused delay of two and a half years to render judgment after submission is vexatious, capricious, and oppressive.</p><p>The Supreme Court has consistently ruled that <strong>heavy caseloads, docket congestion, and lack of branch personnel do not justify systemic judicial delay</strong>. If a judge cannot decide a case within the mandatory 90-day period under Article VIII, Section 15 of the Constitution, the judge must seasonably request an extension of time from the Supreme Court.</p>',
+			application:
+				'Branch 15 allowed two and a half years to lapse after the Estafa case was submitted for decision without securing an extension from the Supreme Court. Neither the 1,500-case docket nor the resignation of a legal researcher excuses this constitutional breach.',
+			conclusion:
+				'The motion to dismiss should have been granted. Dismissal of a criminal case for violation of the right to speedy trial/disposition operates as an ACQUITTAL on the merits, and Double Jeopardy attaches immediately.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-8b',
+		title: 'Q8(b) — Remedies Against Systemic Judicial Delay',
+		topic: 'Finals · Part 4: Trial, Evidence & Demurrer',
+		source: 'Finals',
+		factPattern: Q8_FACTS,
+		question: '(b) What other legal or administrative remedies may be taken against the judge?',
+		modelAnswer: {
+			answer:
+				'The aggrieved party may file (1) a Petition for Mandamus under Rule 65 before the Court of Appeals, and (2) an Administrative Complaint before the Judicial Integrity Board (JIB) / Office of the Court Administrator (OCA).',
+			legalBasis:
+				'<ol><li><strong>Petition for Mandamus (Rule 65):</strong> The rendition of a decision within the mandatory constitutional 90-day period (Article VIII, Section 15, 1987 Constitution) is a mandatory ministerial duty enforceable by mandamus.</li><li><strong>Administrative Complaint with the Judicial Integrity Board (JIB) / Office of the Court Administrator (OCA):</strong> Undue delay in rendering a decision beyond the reglementary period without an approved extension constitutes Gross Inefficiency and Undue Delay in Rendering a Decision, warranting disciplinary sanctions, fines, or suspension (<em>OCA v. Janolo</em>).</li></ol>',
+			application:
+				'Either the accused or the State may seek a writ of mandamus from the Court of Appeals to compel the Branch 15 judge to perform his ministerial duty of rendering judgment, and simultaneously initiate administrative proceedings before the JIB/OCA to hold the judge administratively liable for gross inefficiency and undue delay.',
+			conclusion:
+				'Both Rule 65 Mandamus and an administrative complaint before the JIB/OCA are available against the judge.'
+		}
+	},
+	{
+		id: 'crimpro:alac:finals-9',
+		title: 'Q9 — Prosecution’s Remedy Against a Sham Acquittal',
+		topic: 'Finals · Part 5: Judgment & Post-Judgment Remedies',
+		source: 'Finals',
+		factPattern: Q9_FACTS,
+		question: 'What is the proper procedural remedy of the prosecution against the judge’s actions? Explain.',
+		modelAnswer: {
+			answer:
+				'The proper procedural remedy is for the State, through the Office of the Solicitor General (OSG), to file a Petition for Certiorari under Rule 65 before the appropriate higher appellate court.',
+			legalBasis:
+				'<p>While the general rule is that an acquittal cannot be appealed by the prosecution due to the constitutional bar against Double Jeopardy, this rule admits of a well-settled exception: <strong>when the trial court acted with grave abuse of discretion amounting to lack or excess of jurisdiction, or conducted a sham trial that denied the prosecution its right to due process</strong> (<em>Galman v. Sandiganbayan</em>; <em>People v. Velasco</em>).</p><p>A decision rendered in violation of due process is void <em>ab initio</em>, and because a void order has no legal existence, double jeopardy never attaches.</p>',
+			application:
+				'By <em>motu proprio</em> dismissing the Plunder case immediately after the prosecution rested—without affording the prosecution the opportunity to file its formal offer of documentary exhibits or to be heard—the trial court flagrantly denied the State due process of law. Consequently, the dismissal order is void <em>ab initio</em> and did not trigger double jeopardy.',
+			conclusion:
+				'A Petition for Certiorari under Rule 65 (filed through the OSG) is the proper remedy to declare the dismissal void and remand the case for continuation of proceedings.'
 		}
 	}
 ];

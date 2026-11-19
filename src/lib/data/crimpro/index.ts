@@ -27,6 +27,7 @@ import { renderLastMinute, renderPrelim, renderStart } from './review';
 import { quizMcqs, quizTopics, quizWatchFor, renderQuizAnswers, renderQuizzes } from './quizzes';
 import { crimproFlipsAndTwistsHtml, crimproTwistMcqs, crimproTwistTopic, crimproTwistWatchFor } from './twists_ext';
 import { crimproFinalsEssays } from './finals_essays';
+import { crimproFinalsMcqs, crimproFinalsTopic, crimproFinalsWatchFor } from './finals_mcqs';
 
 const ID = 'crimpro';
 
@@ -51,6 +52,7 @@ export const crimpro: LawModule = {
 		'Prosecution of offenses through appeal and search and seizure: institution and prescription, the civil action, preliminary investigation, arrest, bail, rights of the accused, arraignment, motion to quash, pre-trial, trial, judgment, new trial, appeal, appellate procedure, search warrants and provisional remedies — Rule by Rule, with deadlines, traps, problem banks, four practice quizzes and a mock exam.',
 	legalScope: 'Revised Rules of Criminal Procedure, Rules 110–127; Tiu, Criminal Procedure notes (Ateneo, 2017); later rulings and issuances flagged where they change the notes',
 	topics: [
+		crimproFinalsTopic,
 		...quizTopics,
 		...rules.map((r) => ({ id: r.id, name: r.short, eyebrow: `RULE ${r.n}`, desc: r.title })),
 		{ id: 'prescription', name: 'Prescription (R110 Sec. 1)', eyebrow: 'SPECIAL MODULE', desc: 'Periods, interruption, the DENR case study' },
@@ -82,6 +84,7 @@ export const crimpro: LawModule = {
 		crimproFlipsAndTwistsHtml
 	].join('\n'),
 	watchFor: {
+		finals: crimproFinalsWatchFor,
 		...Object.fromEntries(rules.map((r) => [r.id, r.watchFor])),
 		prescription: prescriptionWatchFor,
 		mock: MOCK_WATCH_FOR,
@@ -93,7 +96,8 @@ export const crimpro: LawModule = {
 		...trueFalseMcqs(ID, 'prescription', 'Prescription (R110 Sec. 1)', prescriptionPractice),
 		...trueFalseMcqs(ID, 'mock', 'Integrated mock exam', mockItems),
 		...quizMcqs(ID),
-		...crimproTwistMcqs
+		...crimproTwistMcqs,
+		...crimproFinalsMcqs
 	],
 	essays: [
 		...rules.flatMap((r) => situationalEssays(ID, r.id, `Rule ${r.n} — ${r.title}`, r.practice)),

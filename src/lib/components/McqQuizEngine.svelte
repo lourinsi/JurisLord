@@ -25,6 +25,7 @@
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import { getPart, readHref } from '$lib/content';
+	import { canShuffle } from '$lib/mcq';
 	import { playMcqSound } from '$lib/sound';
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
@@ -113,7 +114,7 @@
 	const order = $derived.by(() => {
 		if (!current) return [];
 		const opts = current.options;
-		if (opts.length <= 2) return opts.map((_, i) => i);
+		if (opts.length <= 2 || !canShuffle({ o: opts })) return opts.map((_, i) => i);
 		if (/^(none\b|illness depriving)/i.test(opts[opts.length - 1])) {
 			return [...seededOrder(opts.length - 1, current.id), opts.length - 1];
 		}

@@ -15,5 +15,9 @@ export interface Mcq {
  * ("Both B and C are correct", "None of the choices"), because moving the choices would break it.
  */
 export function canShuffle(q: Pick<Mcq, 'o'>): boolean {
-	return !q.o.some((o) => /\b(none|all) of the (choices|above)\b|\bboth [A-G] and [A-G]\b/i.test(o));
+	return !q.o.some((o) =>
+		/\b(none|all) of the (choices|above)\b|\bboth [A-G] and [A-G]\b|\b[a-c](?:,\s*[a-c],?)?\s+and\s+[a-c]\s+are\s+true\b|\b[a-c]\s+is\s+true\b/i.test(
+			o
+		)
+	);
 }

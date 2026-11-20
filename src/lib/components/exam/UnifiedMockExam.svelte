@@ -462,7 +462,11 @@
 			graded: false,
 			items: missedEntries.map((it) => {
 				const q = bank.mcqById[it.id];
-				return { kind: 'mcq', id: it.id, order: shuffledIndices(q?.options.length ?? 4) };
+				const opts = q?.options ?? [];
+				const order = canShuffle({ o: opts })
+					? shuffledIndices(opts.length || 4)
+					: opts.map((_, i) => i);
+				return { kind: 'mcq', id: it.id, order };
 			}),
 			answers: {},
 			marks: {}
@@ -651,7 +655,7 @@
 		{ key: 'p', letter: 'A', label: 'Application', placeholder: 'Here, applying the facts to the requisites…', rows: 4 },
 		{ key: 'c', letter: 'C', label: 'Conclusion', placeholder: 'Therefore, …', rows: 2 }
 	];
-	const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+	const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 	const fmtDate = (t: number) =>
 		new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });

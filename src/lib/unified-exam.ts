@@ -226,7 +226,7 @@ const isFinalsText = (s?: string) => !!s && /\bfinals?\b/i.test(s);
  */
 const FINALS_MCQ_TOPICS_BY_SUBJECT: Record<string, ReadonlySet<string>> = {
 	pfr: new Set(['cpg_sep', 'family_filiation', 'adoption_support', 'parental_other']),
-	consti1: new Set(['executive', 'judicial', 'commissions', 'local_gov']),
+	consti1: new Set(['finals']),
 	crim1: new Set(['persons_liable', 'penalties_general', 'penalties_application', 'extinction_civil']),
 	crim1_lloren: new Set(['tf', 'mcq', 'problems']),
 	crimpro: new Set(['finals', 'quiz_finals']),

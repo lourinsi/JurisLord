@@ -64,7 +64,7 @@ const INITIAL_SHELLS: Subject[] = [
 		'1987 Constitution · Structure of Government',
 		'Preliminary concepts, national territory, declaration of principles, citizenship, legislative, executive, judicial departments, constitutional commissions, and accountability of public officers.',
 		'1987 Constitution of the Republic of the Philippines, Articles I–II, IV, VI–XI',
-		{ mcqCount: 40, essayCount: 166, unitCount: 31 }
+		{ mcqCount: 250, essayCount: 166, unitCount: 31 }
 	),
 	makeShell(
 		'crim1',
@@ -120,7 +120,7 @@ export const modules = $state<Subject[]>([...INITIAL_SHELLS]);
 /** Reactive aggregate counts across all modules (accurate immediately before any full subject chunks load). */
 export const totals = $state({
 	modules: INITIAL_SHELLS.length,
-	mcqs: 1136,
+	mcqs: 1346,
 	essays: 632,
 	cases: 192
 });

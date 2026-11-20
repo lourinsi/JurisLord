@@ -13,7 +13,7 @@
 	const path = $derived(page.url.pathname);
 	const inSubject = $derived(path.startsWith('/module/'));
 	const currentSubject = $derived(inSubject ? page.params.slug : undefined);
-	const visibleModules = $derived(modules.filter((m) => m.id !== 'crim1_lloren' || ui.llorenShown));
+	const visibleModules = modules;
 
 	let subjectsOpen = $state(false);
 	let menuOpen = $state(false);

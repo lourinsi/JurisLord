@@ -7,7 +7,6 @@ export interface Toast {
 	action?: { label: string; run: () => void };
 }
 
-const LLOREN_SHOWN_KEY = 'juris_lloren_shown';
 const LLOREN_UNLOCKED_KEY = 'juris_lloren_unlocked';
 
 function nextMidnightMs(): number {
@@ -53,8 +52,6 @@ class UiStore {
 	navOpen = $state(false);
 	/** An exam in progress hides the navigator so nothing competes with the questions. */
 	focusMode = $state(false);
-	/** Whether the hidden `crim1_lloren` module card is revealed on the home page (persists until 12am). */
-	#llorenShown = $state(readDailyFlag(LLOREN_SHOWN_KEY));
 	/** Whether the user has entered the password ("UFAKMAIWAYP") to access `/module/crim1_lloren` (persists until 12am). */
 	#llorenUnlocked = $state(readDailyFlag(LLOREN_UNLOCKED_KEY));
 	toasts = $state<Toast[]>([]);
@@ -69,19 +66,9 @@ class UiStore {
 	#scheduleMidnightReset() {
 		const msUntilMidnight = Math.max(1000, nextMidnightMs() - Date.now());
 		setTimeout(() => {
-			this.llorenShown = false;
 			this.llorenUnlocked = false;
 			this.#scheduleMidnightReset();
 		}, msUntilMidnight);
-	}
-
-	get llorenShown() {
-		return this.#llorenShown;
-	}
-
-	set llorenShown(v: boolean) {
-		this.#llorenShown = v;
-		writeDailyFlag(LLOREN_SHOWN_KEY, v);
 	}
 
 	get llorenUnlocked() {

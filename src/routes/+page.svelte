@@ -13,9 +13,7 @@
 
 	const stats = $derived(userStorage.stats());
 	const shown = $derived(
-		modules.filter(
-			(m) => (m.id !== 'crim1_lloren' || ui.llorenShown) && matchesCategory(m.subjectCategory, category)
-		)
+		modules.filter((m) => matchesCategory(m.subjectCategory, category))
 	);
 	const last = $derived(userStorage.reading.last);
 	const lastSubject = $derived(last ? getModule(last.subjectId) : undefined);

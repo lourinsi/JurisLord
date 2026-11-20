@@ -16,6 +16,8 @@ export interface Prefs {
 	soundEnabled: boolean;
 	/** Volume from 0 to 100. */
 	soundVolume: number;
+	/** Show the "Take a mock exam or study?" modal when opening a subject. */
+	showSubjectEntryModal: boolean;
 }
 
 const KEY = 'sc_prefs';
@@ -28,7 +30,8 @@ const DEFAULTS: Prefs = {
 	keepRecentSearches: true,
 	navCollapsed: false,
 	soundEnabled: true,
-	soundVolume: 70
+	soundVolume: 70,
+	showSubjectEntryModal: true
 };
 
 const OPTIONS = {
@@ -45,7 +48,7 @@ function read(): Prefs {
 			const v = raw[k];
 			if (typeof v === 'string' && (OPTIONS[k] as readonly string[]).includes(v)) (out as Record<string, unknown>)[k] = v;
 		}
-		for (const k of ['rememberPosition', 'keepRecentSearches', 'navCollapsed', 'soundEnabled'] as const)
+		for (const k of ['rememberPosition', 'keepRecentSearches', 'navCollapsed', 'soundEnabled', 'showSubjectEntryModal'] as const)
 			if (typeof raw[k] === 'boolean') out[k] = raw[k] as boolean;
 		if (typeof raw.soundVolume === 'number' && Number.isFinite(raw.soundVolume)) {
 			out.soundVolume = Math.max(0, Math.min(100, Math.round(raw.soundVolume)));

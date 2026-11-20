@@ -4,7 +4,9 @@
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
 	import SubjectSubtabs from '$lib/components/shell/SubjectSubtabs.svelte';
+	import SubjectEntryModal from '$lib/components/SubjectEntryModal.svelte';
 	import { getModule } from '$lib/data/modules';
+	import { prefs } from '$lib/stores/prefs.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 
 	let { children } = $props();
@@ -14,6 +16,21 @@
 
 	let passwordInput = $state('');
 	let passwordError = $state(false);
+	let promptedSubjectId = $state('');
+	let showEntryModal = $state(false);
+
+	$effect(() => {
+		if (!subject || subject.id !== slug) return;
+		if (slug === 'crim1_lloren' && !ui.llorenUnlocked) return;
+		if (promptedSubjectId === subject.id) return;
+		promptedSubjectId = subject.id;
+		const params = page.url.searchParams;
+		if (!prefs.value.showSubjectEntryModal || params.get('autostart') === '1' || params.get('setup') === '1') {
+			showEntryModal = false;
+			return;
+		}
+		showEntryModal = true;
+	});
 
 	function submitPassword(e: SubmitEvent) {
 		e.preventDefault();
@@ -97,4 +114,5 @@
 	{/if}
 	<SubjectSubtabs slug={subject.id} />
 	{@render children()}
+	<SubjectEntryModal {subject} bind:open={showEntryModal} />
 {/if}

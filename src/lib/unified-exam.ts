@@ -49,6 +49,7 @@ export interface UnifiedEnumItem {
 	order?: boolean;
 	mem?: string;
 	items: [string, string][];
+	isFinals?: boolean;
 }
 
 export interface UnifiedTermItem {
@@ -57,6 +58,7 @@ export interface UnifiedTermItem {
 	definition: string;
 	src: string;
 	dontConfuse?: string;
+	isFinals?: boolean;
 }
 
 export interface UnifiedRequisiteItem {
@@ -106,8 +108,25 @@ export interface SubjectExamBank {
 	numById: Record<string, UnifiedNumberItem>;
 	hasFinalsMcqs: boolean;
 	hasFinalsEssays: boolean;
+	hasFinalsEnums: boolean;
+	hasFinalsTerms: boolean;
+	hasFinalsReqs: boolean;
 	hasFinalsNums: boolean;
 	hasFinalsPreset: boolean;
+}
+
+export type ScopePreset = 'all' | 'finals' | 'missed' | 'new';
+
+export interface UnifiedExamSettings {
+	mode: 'exam' | 'practice';
+	scopePreset: ScopePreset;
+	mcqFilter: string;
+	essayFilter: string;
+	enumFilter: 'all' | 'finals';
+	termFilter: 'all' | 'finals';
+	numFilter: 'all' | 'finals';
+	timerChoice: 'none' | 'auto' | '15' | '30' | '45' | '60' | '90';
+	counts: Record<ExamItemKind, number>;
 }
 
 export interface UnifiedExamEntry {
@@ -201,6 +220,44 @@ export const PART_ORDER: ExamItemKind[] = ['mcq', 'essay', 'enum', 'term', 'req'
 
 const isFinalsText = (s?: string) => !!s && /\bfinals?\b/i.test(s);
 
+/**
+ * Curated Finals topic IDs per subject so every subject has a starred ★ FINALS scope preset
+ * covering its finals exam topics/materials.
+ */
+const FINALS_MCQ_TOPICS_BY_SUBJECT: Record<string, ReadonlySet<string>> = {
+	pfr: new Set(['cpg_sep', 'family_filiation', 'adoption_support', 'parental_other']),
+	consti1: new Set(['executive', 'judicial', 'commissions', 'local_gov']),
+	crim1: new Set(['persons_liable', 'penalties_general', 'penalties_application', 'extinction_civil']),
+	crim1_lloren: new Set(['tf', 'mcq', 'problems']),
+	crimpro: new Set(['finals', 'quiz_finals']),
+	statcon: new Set(['ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'cases', 'integrated']),
+	philo: new Set(['l10', 'l11', 'l12', 'l13', 'l14'])
+};
+
+function isFinalsMcqForSubject(
+	subjectId: string,
+	q: { id: string; topicId: string; topicName: string; legalBasis?: string }
+): boolean {
+	if (FINALS_MCQ_TOPICS_BY_SUBJECT[subjectId]?.has(q.topicId)) return true;
+	if (isFinalsText(q.topicId) || isFinalsText(q.topicName) || isFinalsText(q.legalBasis)) return true;
+	if (q.id.includes(':kit:') || q.id.startsWith('statcon2:')) return true;
+	return false;
+}
+
+function isFinalsEssayForSubject(
+	subjectId: string,
+	e: { id: string; topic: string; source?: string }
+): boolean {
+	if (isFinalsText(e.source) || isFinalsText(e.topic)) return true;
+	if (e.id.includes(':kit:') || e.id.startsWith('statcon2:') || e.id.startsWith('pfr:ff:')) return true;
+	if (subjectId === 'consti1') {
+		const m = /^consti1:alac:(\d+)$/.exec(e.id);
+		if (m && Number(m[1]) >= 32) return true;
+	}
+	if (subjectId === 'crim1_lloren' && e.source !== 'Bar Exam') return true;
+	return false;
+}
+
 export function buildSubjectExamBank(opts: {
 	subject: Subject;
 	kit?: Kit;
@@ -232,7 +289,12 @@ export function buildSubjectExamBank(opts: {
 			correctIndex: q.correctIndex,
 			explanation: q.explanation,
 			legalBasis: q.legalBasis,
-			isFinals: isFinalsText(tid) || isFinalsText(tname)
+			isFinals: isFinalsMcqForSubject(subject.id, {
+				id: q.id,
+				topicId: tid,
+				topicName: tname,
+				legalBasis: q.legalBasis
+			})
 		});
 	}
 
@@ -240,7 +302,7 @@ export function buildSubjectExamBank(opts: {
 		const groupMap = new Map(kit.groups.map((g) => [g.id, g.short]));
 		for (const km of kit.mcqs) {
 			const id = `${subject.id}:kitmcq:${km.id}`;
-			if (seenMcqIds.has(id)) continue;
+			if (seenMcqIds.has(id) || seenMcqIds.has(`${subject.id}:kit:${km.id}`)) continue;
 			seenMcqIds.add(id);
 			const gName = groupMap.get(km.group) ?? `Group ${km.group}`;
 			mcqs.push({
@@ -253,20 +315,29 @@ export function buildSubjectExamBank(opts: {
 				correctIndex: km.a,
 				explanation: km.ex,
 				legalBasis: gName,
-				isFinals: false
+				isFinals: true
 			});
 		}
 	}
 
 	// Build MCQ topic list preserving discovered order
+	const subjectFinalsTopics = FINALS_MCQ_TOPICS_BY_SUBJECT[subject.id];
 	const mcqTopicCounts = new Map<string, { name: string; count: number; isFinals: boolean }>();
 	for (const t of discoveredTopics) {
-		mcqTopicCounts.set(t.id, { name: t.name, count: 0, isFinals: isFinalsText(t.id) || isFinalsText(t.name) });
+		mcqTopicCounts.set(t.id, {
+			name: t.name,
+			count: 0,
+			isFinals: Boolean(subjectFinalsTopics?.has(t.id) || isFinalsText(t.id) || isFinalsText(t.name))
+		});
 	}
 	for (const q of mcqs) {
 		const existing = mcqTopicCounts.get(q.topicId);
-		if (existing) existing.count++;
-		else mcqTopicCounts.set(q.topicId, { name: q.topicName, count: 1, isFinals: !!q.isFinals });
+		if (existing) {
+			existing.count++;
+			if (q.isFinals && subjectFinalsTopics?.has(q.topicId)) existing.isFinals = true;
+		} else {
+			mcqTopicCounts.set(q.topicId, { name: q.topicName, count: 1, isFinals: !!q.isFinals });
+		}
 	}
 	const mcqTopics: FilterOption[] = [...mcqTopicCounts.entries()]
 		.filter(([, v]) => v.count > 0)
@@ -276,26 +347,38 @@ export function buildSubjectExamBank(opts: {
 	const essays: UnifiedEssayItem[] = [];
 	const seenEssayIds = new Set<string>();
 
-	for (const e of subject.essays) {
-		if (seenEssayIds.has(e.id)) continue;
-		seenEssayIds.add(e.id);
-		essays.push({
-			id: e.id,
-			title: e.title,
-			topic: e.topic,
-			source: e.source,
-			format: 'alac',
-			factPattern: e.factPattern,
-			question: e.question,
-			modelAnswer: e.modelAnswer,
-			isFinals: isFinalsText(e.source) || isFinalsText(e.topic)
-		});
+	// For Philosophy of Law, `philoEssays` provides the native 4-type written essays with star flags,
+	// so skip the ALAC-adapted mirror in `subject.essays` when `philoEssays` is provided.
+	if (!philoEssays?.length) {
+		for (const e of subject.essays) {
+			if (seenEssayIds.has(e.id)) continue;
+			seenEssayIds.add(e.id);
+			const isFinals = isFinalsEssayForSubject(subject.id, e);
+			const source = e.source ?? (isFinals ? 'Finals' : undefined);
+			essays.push({
+				id: e.id,
+				title: e.title,
+				topic: e.topic,
+				source,
+				format: 'alac',
+				factPattern: e.factPattern,
+				question: e.question,
+				modelAnswer: e.modelAnswer,
+				isFinals
+			});
+		}
 	}
 
 	if (kit?.problems?.length) {
 		for (const p of kit.problems) {
 			const id = `${subject.id}:kitprob:${p.pid}`;
-			if (seenEssayIds.has(id)) continue;
+			if (
+				seenEssayIds.has(id) ||
+				seenEssayIds.has(`${subject.id}:kit:${p.pid}`) ||
+				seenEssayIds.has(`statcon2:kit:${p.pid}`)
+			) {
+				continue;
+			}
 			seenEssayIds.add(id);
 			essays.push({
 				id,
@@ -312,7 +395,7 @@ export function buildSubjectExamBank(opts: {
 					conclusion: p.alac[3] ?? ''
 				},
 				keyPoint: p.key,
-				isFinals: false
+				isFinals: true
 			});
 		}
 	}
@@ -320,7 +403,7 @@ export function buildSubjectExamBank(opts: {
 	if (constiProblems?.length) {
 		for (const p of constiProblems) {
 			const id = `${subject.id}:constiprob:${p.pid}`;
-			if (seenEssayIds.has(id)) continue;
+			if (seenEssayIds.has(id) || seenEssayIds.has(`${subject.id}:kit:${p.pid}`)) continue;
 			seenEssayIds.add(id);
 			essays.push({
 				id,
@@ -337,7 +420,7 @@ export function buildSubjectExamBank(opts: {
 					conclusion: p.alac[3] ?? ''
 				},
 				keyPoint: p.key,
-				isFinals: false
+				isFinals: true
 			});
 		}
 	}
@@ -357,7 +440,7 @@ export function buildSubjectExamBank(opts: {
 				id,
 				title: `${typeLabels[pe.type] ?? pe.type}: ${pe.q.slice(0, 68)}${pe.q.length > 68 ? '…' : ''}`,
 				topic: typeLabels[pe.type] ?? pe.type,
-				source: 'Finals Essay Bank',
+				source: pe.star ? 'Finals Focus' : 'Essay Bank',
 				format: 'written',
 				factPattern: pe.q,
 				modelParagraphs: pe.a,
@@ -390,22 +473,28 @@ export function buildSubjectExamBank(opts: {
 		.map(([id, v]) => ({ id, label: v.label, count: v.count, isFinals: v.isFinals }));
 
 	// ---- 3. Enumerations ----
+	const likelyEnums = kit?.focus?.enums ?? {};
+	const hasLikelyEnums = Object.keys(likelyEnums).length > 0;
 	const enums: UnifiedEnumItem[] = (kit?.enums ?? []).map((e) => ({
 		id: `${subject.id}:enum:${e.id}`,
 		title: e.t,
 		src: e.src,
 		order: e.order,
 		mem: e.mem,
-		items: e.it
+		items: e.it,
+		isFinals: hasLikelyEnums ? Boolean(likelyEnums[e.id]) : true
 	}));
 
 	// ---- 4. Definitions ----
+	const likelyTerms = kit?.focus?.terms ?? {};
+	const hasLikelyTerms = Object.keys(likelyTerms).length > 0;
 	const terms: UnifiedTermItem[] = (kit?.terms ?? []).map((t) => ({
 		id: `${subject.id}:term:${t.id}`,
 		term: t.t,
 		definition: t.d,
 		src: t.src,
-		dontConfuse: t.x
+		dontConfuse: t.x,
+		isFinals: hasLikelyTerms ? Boolean(likelyTerms[t.id]) : true
 	}));
 
 	// ---- 5. Requisites ----
@@ -432,7 +521,13 @@ export function buildSubjectExamBank(opts: {
 	const nums: UnifiedNumberItem[] = [];
 	if (numbers) {
 		let idx = 0;
+		const hasExplicitFinalsSections =
+			(numbers.sections ?? []).some(
+				(s) => (s.finalsTopics?.length ?? 0) > 0 || s.title?.includes('★') || isFinalsText(s.title)
+			);
 		for (const sec of numbers.sections ?? []) {
+			const secIsFinals =
+				!hasExplicitFinalsSections || Boolean(sec.title?.includes('★') || isFinalsText(sec.title));
 			for (const row of sec.rows) {
 				const [value, prompt, source, note] = row;
 				nums.push({
@@ -442,7 +537,7 @@ export function buildSubjectExamBank(opts: {
 					source,
 					note,
 					group: sec.title ?? 'Numbers',
-					isFinals: false
+					isFinals: secIsFinals
 				});
 			}
 			for (const ft of sec.finalsTopics ?? []) {
@@ -472,7 +567,7 @@ export function buildSubjectExamBank(opts: {
 					source,
 					note,
 					group: numbers.topicGrid.clusterTitle,
-					isFinals: false
+					isFinals: true
 				});
 			}
 		}
@@ -480,8 +575,17 @@ export function buildSubjectExamBank(opts: {
 
 	const hasFinalsMcqs = mcqs.some((q) => q.isFinals);
 	const hasFinalsEssays = essays.some((e) => e.isFinals);
+	const hasFinalsEnums = enums.some((e) => e.isFinals);
+	const hasFinalsTerms = terms.some((t) => t.isFinals);
+	const hasFinalsReqs = reqs.length > 0;
 	const hasFinalsNums = nums.some((n) => n.isFinals);
-	const hasFinalsPreset = hasFinalsMcqs || hasFinalsEssays || reqs.length > 0 || hasFinalsNums;
+	const hasFinalsPreset =
+		hasFinalsMcqs ||
+		hasFinalsEssays ||
+		hasFinalsEnums ||
+		hasFinalsTerms ||
+		hasFinalsReqs ||
+		hasFinalsNums;
 
 	return {
 		subjectId: subject.id,
@@ -501,6 +605,9 @@ export function buildSubjectExamBank(opts: {
 		numById: Object.fromEntries(nums.map((n) => [n.id, n])),
 		hasFinalsMcqs,
 		hasFinalsEssays,
+		hasFinalsEnums,
+		hasFinalsTerms,
+		hasFinalsReqs,
 		hasFinalsNums,
 		hasFinalsPreset
 	};
@@ -644,6 +751,103 @@ export function formatClock(secs: number): string {
 // ---------- Per-subject session persistence ----------
 
 const STORAGE_PREFIX = 'juris-lord-unified-exam-v1:';
+const SETTINGS_PREFIX = 'juris-lord-unified-exam-settings-v1:';
+
+export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings {
+	const finalsMcqs = bank.mcqs.filter((q) => q.isFinals).length;
+	const finalsEssays = bank.essays.filter((e) => e.isFinals).length;
+	const finalsEnums = bank.enums.filter((e) => e.isFinals).length;
+	const finalsTerms = bank.terms.filter((t) => t.isFinals).length;
+
+	return {
+		mode: 'exam',
+		scopePreset: bank.hasFinalsPreset ? 'finals' : 'all',
+		mcqFilter: bank.hasFinalsMcqs ? 'finals_all' : 'all',
+		essayFilter: bank.hasFinalsEssays ? 'finals_all' : 'all',
+		enumFilter: bank.hasFinalsEnums ? 'finals' : 'all',
+		termFilter: bank.hasFinalsTerms ? 'finals' : 'all',
+		numFilter: bank.hasFinalsNums ? 'finals' : 'all',
+		timerChoice: 'auto',
+		counts: {
+			mcq: bank.mcqs.length ? Math.min(10, finalsMcqs || bank.mcqs.length) : 0,
+			essay: bank.essays.length ? Math.min(2, finalsEssays || bank.essays.length) : 0,
+			enum: bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
+			term: bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
+			req: bank.reqs.length ? Math.min(3, bank.reqs.length) : 0,
+			num: 0
+		}
+	};
+}
+
+export function loadSavedExamSettings(
+	subjectId: string,
+	bank?: SubjectExamBank
+): UnifiedExamSettings | null {
+	if (typeof window === 'undefined') return bank ? defaultExamSettings(bank) : null;
+	try {
+		const raw = localStorage.getItem(SETTINGS_PREFIX + subjectId);
+		if (!raw) return bank ? defaultExamSettings(bank) : null;
+		const parsed = JSON.parse(raw) as Partial<UnifiedExamSettings>;
+		if (!parsed || typeof parsed !== 'object' || !parsed.counts) {
+			return bank ? defaultExamSettings(bank) : null;
+		}
+		const fallback = bank
+			? defaultExamSettings(bank)
+			: {
+					mode: 'exam' as const,
+					scopePreset: 'finals' as const,
+					mcqFilter: 'finals_all',
+					essayFilter: 'finals_all',
+					enumFilter: 'finals' as const,
+					termFilter: 'finals' as const,
+					numFilter: 'finals' as const,
+					timerChoice: 'auto' as const,
+					counts: { mcq: 10, essay: 2, enum: 2, term: 2, req: 3, num: 0 }
+				};
+		return {
+			mode: parsed.mode === 'practice' ? 'practice' : 'exam',
+			scopePreset: parsed.scopePreset ?? fallback.scopePreset,
+			mcqFilter: parsed.mcqFilter ?? fallback.mcqFilter,
+			essayFilter: parsed.essayFilter ?? fallback.essayFilter,
+			enumFilter: parsed.enumFilter ?? fallback.enumFilter,
+			termFilter: parsed.termFilter ?? fallback.termFilter,
+			numFilter: parsed.numFilter ?? fallback.numFilter,
+			timerChoice: parsed.timerChoice ?? fallback.timerChoice,
+			counts: {
+				mcq: parsed.counts.mcq ?? fallback.counts.mcq,
+				essay: parsed.counts.essay ?? fallback.counts.essay,
+				enum: parsed.counts.enum ?? fallback.counts.enum,
+				term: parsed.counts.term ?? fallback.counts.term,
+				req: parsed.counts.req ?? fallback.counts.req,
+				num: parsed.counts.num ?? fallback.counts.num
+			}
+		};
+	} catch {
+		return bank ? defaultExamSettings(bank) : null;
+	}
+}
+
+export function hasCustomExamSettings(subjectId: string): boolean {
+	if (typeof window === 'undefined') return false;
+	try {
+		return localStorage.getItem(SETTINGS_PREFIX + subjectId) !== null;
+	} catch {
+		return false;
+	}
+}
+
+export function saveExamSettings(
+	subjectId: string,
+	settings: UnifiedExamSettings | null
+): void {
+	if (typeof window === 'undefined') return;
+	try {
+		if (!settings) localStorage.removeItem(SETTINGS_PREFIX + subjectId);
+		else localStorage.setItem(SETTINGS_PREFIX + subjectId, JSON.stringify(settings));
+	} catch {
+		// ignore quota errors
+	}
+}
 
 export function loadSavedExamSession(subjectId: string): UnifiedExamSession | null {
 	if (typeof window === 'undefined') return null;

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
+	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
 	import {
 		CheckCircle2,
 		Clock,
@@ -27,18 +29,22 @@
 		PART_ORDER,
 		buildSubjectExamBank,
 		computeExamTotals,
+		defaultExamSettings,
 		entryKey,
 		formatClock,
 		isEntryAnswered,
 		loadSavedExamSession,
+		loadSavedExamSettings,
 		maxPointsForEntry,
 		pointsForEntry,
 		sampleItems,
 		saveExamSession,
+		saveExamSettings,
 		shuffledIndices,
 		subTickKey,
 		unmarkedWrittenCount,
 		type ExamItemKind,
+		type ScopePreset,
 		type UnifiedExamEntry,
 		type UnifiedExamSession
 	} from '$lib/unified-exam';
@@ -94,13 +100,14 @@
 		saveExamSession(subject.id, session);
 	});
 
-	// ---- Setup form state ----
-	type ScopePreset = 'all' | 'finals' | 'missed' | 'new';
+	// ---- Setup form state (defaults to ★ FINALS preset) ----
 	let mode = $state<'exam' | 'practice'>('exam');
-	let scopePreset = $state<ScopePreset>('all');
-	let mcqFilter = $state<string>('all'); // 'all' | 'missed' | 'new' | 'finals_all' | <topicId>
-	let essayFilter = $state<string>('all'); // 'all' | 'finals_all' | 'unmastered' | 'review' | src:<source>
-	let numFilter = $state<'all' | 'finals'>('all');
+	let scopePreset = $state<ScopePreset>('finals');
+	let mcqFilter = $state<string>('finals_all'); // 'all' | 'missed' | 'new' | 'finals_all' | <topicId>
+	let essayFilter = $state<string>('finals_all'); // 'all' | 'finals_all' | 'unmastered' | 'review' | src:<source>
+	let enumFilter = $state<'all' | 'finals'>('finals');
+	let termFilter = $state<'all' | 'finals'>('finals');
+	let numFilter = $state<'all' | 'finals'>('finals');
 	let timerChoice = $state<'none' | 'auto' | '15' | '30' | '45' | '60' | '90'>('auto');
 
 	const counts = $state<Record<ExamItemKind, number>>({
@@ -112,44 +119,119 @@
 		num: 0
 	});
 
-	// Re-seed sensible defaults when switching subjects
+	// Re-seed sensible defaults (★ FINALS by default, or user's saved settings) when switching subjects
 	let seededForSubject = $state('');
 	$effect(() => {
 		const id = bank.subjectId;
 		if (seededForSubject === id) return;
 		seededForSubject = id;
-		scopePreset = 'all';
-		mcqFilter = 'all';
-		essayFilter = 'all';
-		numFilter = 'all';
-		counts.mcq = bank.mcqs.length ? Math.min(10, bank.mcqs.length) : 0;
-		counts.essay = bank.essays.length ? Math.min(2, bank.essays.length) : 0;
-		counts.enum = bank.enums.length ? Math.min(2, bank.enums.length) : 0;
-		counts.term = bank.terms.length ? Math.min(2, bank.terms.length) : 0;
-		counts.req = bank.reqs.length ? Math.min(3, bank.reqs.length) : 0;
-		counts.num = 0;
+		const saved = loadSavedExamSettings(id, bank) ?? defaultExamSettings(bank);
+		mode = saved.mode;
+		scopePreset = saved.scopePreset;
+		mcqFilter = saved.mcqFilter;
+		essayFilter = saved.essayFilter;
+		enumFilter = saved.enumFilter;
+		termFilter = saved.termFilter;
+		numFilter = saved.numFilter;
+		timerChoice = saved.timerChoice;
+		counts.mcq = saved.counts.mcq;
+		counts.essay = saved.counts.essay;
+		counts.enum = saved.counts.enum;
+		counts.term = saved.counts.term;
+		counts.req = saved.counts.req;
+		counts.num = saved.counts.num;
 	});
+
+	// Persist setup settings whenever modified on the Mock Exam page
+	$effect(() => {
+		const id = bank.subjectId;
+		if (!id || seededForSubject !== id) return;
+		const current = {
+			mode,
+			scopePreset,
+			mcqFilter,
+			essayFilter,
+			enumFilter,
+			termFilter,
+			numFilter,
+			timerChoice,
+			counts: {
+				mcq: counts.mcq,
+				essay: counts.essay,
+				enum: counts.enum,
+				term: counts.term,
+				req: counts.req,
+				num: counts.num
+			}
+		};
+		const dflt = defaultExamSettings(bank);
+		const isDefault =
+			current.mode === dflt.mode &&
+			current.scopePreset === dflt.scopePreset &&
+			current.mcqFilter === dflt.mcqFilter &&
+			current.essayFilter === dflt.essayFilter &&
+			current.enumFilter === dflt.enumFilter &&
+			current.termFilter === dflt.termFilter &&
+			current.numFilter === dflt.numFilter &&
+			current.timerChoice === dflt.timerChoice &&
+			current.counts.mcq === dflt.counts.mcq &&
+			current.counts.essay === dflt.counts.essay &&
+			current.counts.enum === dflt.counts.enum &&
+			current.counts.term === dflt.counts.term &&
+			current.counts.req === dflt.counts.req &&
+			current.counts.num === dflt.counts.num;
+		saveExamSettings(id, isDefault ? null : current);
+	});
+
+	function resetToFinalsDefault() {
+		const dflt = defaultExamSettings(bank);
+		mode = dflt.mode;
+		scopePreset = dflt.scopePreset;
+		mcqFilter = dflt.mcqFilter;
+		essayFilter = dflt.essayFilter;
+		enumFilter = dflt.enumFilter;
+		termFilter = dflt.termFilter;
+		numFilter = dflt.numFilter;
+		timerChoice = dflt.timerChoice;
+		counts.mcq = dflt.counts.mcq;
+		counts.essay = dflt.counts.essay;
+		counts.enum = dflt.counts.enum;
+		counts.term = dflt.counts.term;
+		counts.req = dflt.counts.req;
+		counts.num = dflt.counts.num;
+		saveExamSettings(subject.id, null);
+	}
 
 	function applyScopePreset(preset: ScopePreset) {
 		scopePreset = preset;
 		if (preset === 'all') {
 			mcqFilter = 'all';
 			essayFilter = 'all';
+			enumFilter = 'all';
+			termFilter = 'all';
 			numFilter = 'all';
 		} else if (preset === 'finals') {
 			mcqFilter = bank.hasFinalsMcqs ? 'finals_all' : 'all';
 			essayFilter = bank.hasFinalsEssays ? 'finals_all' : 'all';
+			enumFilter = bank.hasFinalsEnums ? 'finals' : 'all';
+			termFilter = bank.hasFinalsTerms ? 'finals' : 'all';
 			numFilter = bank.hasFinalsNums ? 'finals' : 'all';
 			if (bank.hasFinalsMcqs && counts.mcq === 0) counts.mcq = Math.min(10, bank.mcqs.filter((q) => q.isFinals).length);
 			if (bank.hasFinalsEssays && counts.essay === 0) counts.essay = Math.min(2, bank.essays.filter((e) => e.isFinals).length);
-			if (bank.reqs.length && counts.req === 0) counts.req = Math.min(5, bank.reqs.length);
+			if (bank.hasFinalsEnums && counts.enum === 0) counts.enum = Math.min(2, bank.enums.filter((e) => e.isFinals).length);
+			if (bank.hasFinalsTerms && counts.term === 0) counts.term = Math.min(2, bank.terms.filter((t) => t.isFinals).length);
+			if (bank.reqs.length && counts.req === 0) counts.req = Math.min(3, bank.reqs.length);
 		} else if (preset === 'missed') {
 			mcqFilter = 'missed';
 			essayFilter = 'review';
+			enumFilter = 'all';
+			termFilter = 'all';
 			numFilter = 'all';
 		} else if (preset === 'new') {
 			mcqFilter = 'new';
 			essayFilter = 'unmastered';
+			enumFilter = 'all';
+			termFilter = 'all';
 			numFilter = 'all';
 		}
 	}
@@ -175,6 +257,16 @@
 		return bank.essays;
 	});
 
+	const filteredEnums = $derived.by(() => {
+		if (enumFilter === 'finals' && bank.hasFinalsEnums) return bank.enums.filter((e) => e.isFinals);
+		return bank.enums;
+	});
+
+	const filteredTerms = $derived.by(() => {
+		if (termFilter === 'finals' && bank.hasFinalsTerms) return bank.terms.filter((t) => t.isFinals);
+		return bank.terms;
+	});
+
 	const filteredNums = $derived.by(() => {
 		if (numFilter === 'finals' && bank.hasFinalsNums) return bank.nums.filter((n) => n.isFinals);
 		return bank.nums;
@@ -183,8 +275,8 @@
 	const availableCounts = $derived<Record<ExamItemKind, number>>({
 		mcq: filteredMcqs.length,
 		essay: filteredEssays.length,
-		enum: bank.enums.length,
-		term: bank.terms.length,
+		enum: filteredEnums.length,
+		term: filteredTerms.length,
 		req: bank.reqs.length,
 		num: filteredNums.length
 	});
@@ -244,12 +336,35 @@
 	const newMcqCount = $derived(bank.mcqs.filter((q) => !userStorage.mcqAttempts[q.id]).length);
 	const finalsMcqCount = $derived(bank.mcqs.filter((q) => q.isFinals).length);
 	const finalsEssayCount = $derived(bank.essays.filter((e) => e.isFinals).length);
+	const finalsEnumCount = $derived(bank.enums.filter((e) => e.isFinals).length);
+	const finalsTermCount = $derived(bank.terms.filter((t) => t.isFinals).length);
+	const finalsNumCount = $derived(bank.nums.filter((n) => n.isFinals).length);
 	const reviewEssayCount = $derived(
 		bank.essays.filter((e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review').length
 	);
 	const unmasteredEssayCount = $derived(
 		bank.essays.filter((e) => !userStorage.essayDrafts[e.id]?.isMastered).length
 	);
+
+	const isModifiedFromFinalsDefault = $derived.by(() => {
+		const dflt = defaultExamSettings(bank);
+		return (
+			mode !== dflt.mode ||
+			scopePreset !== dflt.scopePreset ||
+			mcqFilter !== dflt.mcqFilter ||
+			essayFilter !== dflt.essayFilter ||
+			enumFilter !== dflt.enumFilter ||
+			termFilter !== dflt.termFilter ||
+			numFilter !== dflt.numFilter ||
+			timerChoice !== dflt.timerChoice ||
+			counts.mcq !== dflt.counts.mcq ||
+			counts.essay !== dflt.counts.essay ||
+			counts.enum !== dflt.counts.enum ||
+			counts.term !== dflt.counts.term ||
+			counts.req !== dflt.counts.req ||
+			counts.num !== dflt.counts.num
+		);
+	});
 
 	const subjectHistory = $derived(
 		userStorage.testHistory.filter((h) => h.subjectId === subject.id).slice(0, 8)
@@ -289,12 +404,12 @@
 			}
 		}
 		if (effectiveCounts.enum > 0) {
-			for (const en of sampleItems(bank.enums, effectiveCounts.enum)) {
+			for (const en of sampleItems(filteredEnums, effectiveCounts.enum)) {
 				items.push({ kind: 'enum', id: en.id });
 			}
 		}
 		if (effectiveCounts.term > 0) {
-			for (const tm of sampleItems(bank.terms, effectiveCounts.term)) {
+			for (const tm of sampleItems(filteredTerms, effectiveCounts.term)) {
 				items.push({ kind: 'term', id: tm.id });
 			}
 		}
@@ -443,6 +558,25 @@
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
+	// Handle direct launch (?autostart=1) or explicit setup (?setup=1) from the Subject Entry Modal
+	$effect(() => {
+		const id = bank.subjectId;
+		if (!id || seededForSubject !== id || loadedSubjectId !== id) return;
+		const autostart = page.url.searchParams.get('autostart');
+		const forceSetup = page.url.searchParams.get('setup');
+		if (autostart === '1') {
+			const url = new URL(page.url.href);
+			url.searchParams.delete('autostart');
+			goto(url, { replace: true });
+			startExam();
+		} else if (forceSetup === '1') {
+			const url = new URL(page.url.href);
+			url.searchParams.delete('setup');
+			goto(url, { replace: true });
+			session = null;
+		}
+	});
+
 	// ---- Live clock ----
 	let now = $state(Date.now());
 	const tickTimer = setInterval(() => {
@@ -574,8 +708,34 @@
 				</div>
 
 				<div class="flex flex-col gap-2">
-					<span class="text-xs font-extrabold tracking-wide text-muted-foreground uppercase">Quick Filter / Scope</span>
+					<div class="flex flex-wrap items-center justify-between gap-2">
+						<span class="text-xs font-extrabold tracking-wide text-muted-foreground uppercase">Quick Filter / Scope</span>
+						{#if isModifiedFromFinalsDefault}
+							<button
+								type="button"
+								onclick={resetToFinalsDefault}
+								class="inline-flex items-center gap-1 text-xs font-extrabold text-[#1CB0F6] hover:underline"
+							>
+								<RotateCcw class="size-3" /> Reset to ★ FINALS default
+							</button>
+						{/if}
+					</div>
 					<div role="group" aria-label="Exam scope preset" class="flex flex-wrap gap-2">
+						{#if bank.hasFinalsPreset}
+							<button
+								type="button"
+								aria-pressed={scopePreset === 'finals'}
+								onclick={() => applyScopePreset('finals')}
+								class={cn(
+									'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all',
+									scopePreset === 'finals'
+										? 'border-[#E5B400] bg-[#FFC800] text-slate-900'
+										: 'border-[#E5B400]/50 bg-[#FFF5CC]/70 text-[#946200] hover:bg-[#FFF5CC] dark:border-[#FFC800]/40 dark:bg-[#FFC800]/15 dark:text-[#FFD633]'
+								)}
+							>
+								<Sparkles class="size-3.5" strokeWidth={2.5} /> ★ FINALS Only
+							</button>
+						{/if}
 						<button
 							type="button"
 							aria-pressed={scopePreset === 'all'}
@@ -589,21 +749,6 @@
 						>
 							All Topics
 						</button>
-						{#if bank.hasFinalsPreset}
-							<button
-								type="button"
-								aria-pressed={scopePreset === 'finals'}
-								onclick={() => applyScopePreset('finals')}
-								class={cn(
-									'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all',
-									scopePreset === 'finals'
-										? 'border-[#E5B400] bg-[#FFC800] text-slate-900'
-										: 'border-[#E5B400]/50 bg-[#FFF5CC]/70 text-[#946200] hover:bg-[#FFF5CC] dark:border-[#FFC800]/40 dark:bg-[#FFC800]/15 dark:text-[#FFD633]'
-								)}
-							>
-								<Sparkles class="size-3.5" strokeWidth={2.5} /> FINALS Only
-							</button>
-						{/if}
 						<button
 							type="button"
 							aria-pressed={scopePreset === 'missed'}
@@ -675,10 +820,10 @@
 									onchange={() => (scopePreset = mcqFilter === 'finals_all' ? 'finals' : mcqFilter === 'missed' ? 'missed' : mcqFilter === 'new' ? 'new' : 'all')}
 									class="h-10 w-full rounded-xl border-2 border-slate-200 bg-white px-3 text-xs font-bold text-foreground outline-none focus:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
 								>
-									<option value="all">All MCQ topics ({bank.mcqs.length})</option>
 									{#if bank.hasFinalsMcqs}
 										<option value="finals_all">★ FINALS ({finalsMcqCount})</option>
 									{/if}
+									<option value="all">All MCQ topics ({bank.mcqs.length})</option>
 									<option value="missed" disabled={!missedMcqCount}>Questions I missed ({missedMcqCount})</option>
 									<option value="new" disabled={!newMcqCount}>Not yet answered ({newMcqCount})</option>
 									{#if bank.mcqTopics.length > 1}
@@ -689,17 +834,17 @@
 										</optgroup>
 									{/if}
 								</select>
-							{:else if kind === 'essay' && (bank.essaySources.length > 0 || reviewEssayCount > 0)}
+							{:else if kind === 'essay' && (bank.hasFinalsEssays || bank.essaySources.length > 0 || reviewEssayCount > 0)}
 								<select
 									aria-label="Filter essay source"
 									bind:value={essayFilter}
 									onchange={() => (scopePreset = essayFilter === 'finals_all' ? 'finals' : essayFilter === 'review' ? 'missed' : essayFilter === 'unmastered' ? 'new' : 'all')}
 									class="h-10 w-full rounded-xl border-2 border-slate-200 bg-white px-3 text-xs font-bold text-foreground outline-none focus:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
 								>
-									<option value="all">All essays ({bank.essays.length})</option>
 									{#if bank.hasFinalsEssays}
-										<option value="finals_all">★ Finals Essays ({finalsEssayCount})</option>
+										<option value="finals_all">★ FINALS ({finalsEssayCount})</option>
 									{/if}
+									<option value="all">All essays ({bank.essays.length})</option>
 									<option value="unmastered" disabled={!unmasteredEssayCount}>Not yet mastered ({unmasteredEssayCount})</option>
 									<option value="review" disabled={!reviewEssayCount}>Flagged for review ({reviewEssayCount})</option>
 									{#if bank.essaySources.length > 0}
@@ -710,14 +855,32 @@
 										</optgroup>
 									{/if}
 								</select>
+							{:else if kind === 'enum' && bank.hasFinalsEnums}
+								<select
+									aria-label="Filter enumerations scope"
+									bind:value={enumFilter}
+									class="h-10 w-full rounded-xl border-2 border-slate-200 bg-white px-3 text-xs font-bold text-foreground outline-none focus:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
+								>
+									<option value="finals">★ FINALS ({finalsEnumCount})</option>
+									<option value="all">All enumerations ({bank.enums.length})</option>
+								</select>
+							{:else if kind === 'term' && bank.hasFinalsTerms}
+								<select
+									aria-label="Filter definitions scope"
+									bind:value={termFilter}
+									class="h-10 w-full rounded-xl border-2 border-slate-200 bg-white px-3 text-xs font-bold text-foreground outline-none focus:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
+								>
+									<option value="finals">★ FINALS ({finalsTermCount})</option>
+									<option value="all">All definitions ({bank.terms.length})</option>
+								</select>
 							{:else if kind === 'num' && bank.hasFinalsNums}
 								<select
 									aria-label="Filter numbers scope"
 									bind:value={numFilter}
 									class="h-10 w-full rounded-xl border-2 border-slate-200 bg-white px-3 text-xs font-bold text-foreground outline-none focus:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
 								>
+									<option value="finals">★ FINALS ({finalsNumCount})</option>
 									<option value="all">All numbers ({bank.nums.length})</option>
-									<option value="finals">★ Finals Numbers only ({bank.nums.filter((n) => n.isFinals).length})</option>
 								</select>
 							{/if}
 

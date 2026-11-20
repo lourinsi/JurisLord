@@ -167,10 +167,10 @@ export async function loadSubject(
 		const promise = (async (): Promise<Subject | undefined> => {
 			const { crimproShell, loadCrimproEssays, loadCrimproGuide, loadCrimproMcqs } =
 				await import('./crimpro');
-			const latest = modules[idx];
 
 			if (section === 'essays') {
 				const essays = await loadCrimproEssays();
+				const latest = modules[idx];
 				const updated: Subject = {
 					...crimproShell,
 					...latest,
@@ -184,6 +184,7 @@ export async function loadSubject(
 
 			if (section === 'practice') {
 				const mcqData = await loadCrimproMcqs();
+				const latest = modules[idx];
 				const updated: Subject = {
 					...crimproShell,
 					...latest,
@@ -199,6 +200,7 @@ export async function loadSubject(
 
 			if (section === 'read') {
 				const studyGuideHtml = await loadCrimproGuide();
+				const latest = modules[idx];
 				const src: LawModule = {
 					...crimproShell,
 					...latest,
@@ -218,7 +220,7 @@ export async function loadSubject(
 				return updated;
 			}
 
-			return latest;
+			return modules[idx];
 		})();
 
 		pendingLoads.set(key, promise);

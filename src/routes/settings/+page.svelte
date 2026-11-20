@@ -175,6 +175,10 @@
 				<label for="remember" class={what}><span class="text-[0.9375rem] font-medium">Remember where I stopped</span><span class="text-[0.8125rem] text-muted-foreground">Powers “Continue reading” on Home and on each subject.</span></label>
 				<Switch id="remember" checked={prefs.value.rememberPosition} onCheckedChange={(v) => prefs.set('rememberPosition', v)} />
 			</div>
+			<div class={row}>
+				<label for="subject-entry-modal" class={what}><span class="text-[0.9375rem] font-medium">Show subject welcome modal</span><span class="text-[0.8125rem] text-muted-foreground">Asks whether to take the mock exam or study when opening a subject.</span></label>
+				<Switch id="subject-entry-modal" checked={prefs.value.showSubjectEntryModal} onCheckedChange={(v) => prefs.set('showSubjectEntryModal', v)} />
+			</div>
 		</section>
 
 		<section id="labels" aria-labelledby="h-labels" class="scroll-mt-20 overflow-hidden rounded-3xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">

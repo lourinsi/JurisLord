@@ -19,6 +19,10 @@
 	let { children }: LayoutProps = $props();
 	let showDisclaimer = $state(false);
 
+	$effect(() => {
+		ui.disclaimerOpen = showDisclaimer;
+	});
+
 	// Touch the stores once so persistence, theme and text-size listeners are live app-wide.
 	$effect(() => {
 		void userStorage.isLoaded;

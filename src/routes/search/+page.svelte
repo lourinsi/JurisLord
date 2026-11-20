@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { BookOpen, ChevronDown, FileText, PenLine, Search, SearchX, Target, X } from '@lucide/svelte';
+	import { BookOpen, ChevronDown, FileText, GraduationCap, PenLine, Search, SearchX, Target, X } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import { CATEGORY_ACCENT, getModule, modules } from '$lib/data/modules';
-	import { buildIndex, facets, search, suggest, KIND_LABEL, type DocKind, type SearchHit } from '$lib/search';
+	import { buildIndex, facets, search, searchSubjects, suggest, KIND_LABEL, type DocKind, type SearchHit } from '$lib/search';
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
 
 	const KINDS: DocKind[] = ['guide', 'case', 'mcq', 'essay'];
-	const ICON = { guide: BookOpen, case: FileText, mcq: Target, essay: PenLine } as const;
-	const PLURAL: Record<DocKind, string> = { guide: 'Study guides', case: 'Case digests', mcq: 'MCQs', essay: 'ALAC essays' };
+	const ICON = { subject: GraduationCap, guide: BookOpen, case: FileText, mcq: Target, essay: PenLine } as const;
+	const PLURAL: Record<DocKind, string> = { subject: 'Subjects', guide: 'Study guides', case: 'Case digests', mcq: 'MCQs', essay: 'ALAC essays' };
 
 	// Everything lives in the URL, so Back from a result returns to the same query and filters.
 	const q = $derived(page.url.searchParams.get('q') ?? '');
@@ -38,9 +38,10 @@
 	});
 
 	const opts = $derived({ subjects: subjectsParam.length ? subjectsParam : undefined, kinds: kindsParam.length ? kindsParam : undefined, exact, part: partParam || undefined });
+	const subjectHits = $derived(q.trim().length >= 2 && !kindsParam.length && !partParam ? searchSubjects(q, { subjects: subjectsParam.length ? subjectsParam : undefined }) : []);
 	const hits = $derived(ready && q.trim().length >= 2 ? search(q, opts) : []);
 	const counts = $derived(ready && q.trim().length >= 2 ? facets(q, opts) : { bySubject: new Map<string, number>(), byKind: new Map<DocKind, number>() });
-	const best = $derived(hits.filter((h) => h.headingMatch && h.doc.kind !== 'mcq').slice(0, 3));
+	const best = $derived([...subjectHits, ...hits.filter((h) => h.headingMatch && h.doc.kind !== 'mcq').slice(0, 3)]);
 	const rest = $derived(hits.filter((h) => !best.includes(h)));
 	const bySubject = $derived.by(() => {
 		const out = new Map<string, SearchHit[]>();
@@ -98,7 +99,7 @@
 				{#if h.doc.path.length}<span aria-hidden="true">›</span>{/if}
 			{/if}
 			{#each h.doc.path as p, i (i)}<span>{p}</span>{#if i < h.doc.path.length - 1}<span aria-hidden="true">›</span>{/if}{/each}
-			<span class={cn('ml-1 inline-flex items-center gap-1 rounded-md px-1.5 py-px text-xs font-medium', h.doc.kind === 'case' ? 'bg-red/12 text-red' : h.doc.kind === 'mcq' ? 'bg-blue/12 text-blue' : h.doc.kind === 'essay' ? 'bg-green/12 text-green' : 'bg-muted text-muted-foreground')}>
+			<span class={cn('ml-1 inline-flex items-center gap-1 rounded-md px-1.5 py-px text-xs font-medium', h.doc.kind === 'subject' ? 'bg-[#DDF4FF] font-bold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : h.doc.kind === 'case' ? 'bg-red/12 text-red' : h.doc.kind === 'mcq' ? 'bg-blue/12 text-blue' : h.doc.kind === 'essay' ? 'bg-green/12 text-green' : 'bg-muted text-muted-foreground')}>
 				<Icon class="size-3" />{KIND_LABEL[h.doc.kind]}
 			</span>
 			{#if isLastOpened(h)}<span class="ml-auto text-xs font-medium text-green">Last opened</span>{/if}
@@ -187,7 +188,7 @@
 				<div class="flex flex-col gap-3" aria-busy="true" aria-label="Loading results">
 					{#each [0, 1, 2, 3] as i (i)}<div class="h-24 animate-pulse rounded-xl bg-muted"></div>{/each}
 				</div>
-			{:else if !hits.length}
+			{:else if !hits.length && !subjectHits.length}
 				<div role="status" class="flex flex-col items-center gap-3 rounded-xl border border-dashed px-6 py-12 text-center">
 					<SearchX class="size-8 text-muted-foreground" />
 					<p class="text-lg font-semibold">No results for “{q}”{subjectsParam.length || kindsParam.length || partParam ? ' with these filters' : ''}</p>

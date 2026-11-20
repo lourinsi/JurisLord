@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { BookOpen, CornerDownLeft, FileText, History, PenLine, Search, SearchX, Target, X } from '@lucide/svelte';
+	import { BookOpen, CornerDownLeft, FileText, GraduationCap, History, PenLine, Search, SearchX, Target, X } from '@lucide/svelte';
 	import { Dialog as DialogPrimitive } from 'bits-ui';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { getModule, loadAllSubjects } from '$lib/data/modules';
+	import { CATEGORY_ACCENT, getModule, loadAllSubjects } from '$lib/data/modules';
 	import { getPart, readHref } from '$lib/content';
-	import { buildIndex, search, suggest, KIND_LABEL, type SearchHit } from '$lib/search';
+	import { buildIndex, search, searchSubjects, suggest, KIND_LABEL, type SearchHit } from '$lib/search';
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
@@ -51,11 +51,21 @@
 		subjects: scope !== 'all' && subject ? [subject.id] : undefined,
 		part: scope === 'part' && part ? part.id : undefined
 	});
+	const subjectHits = $derived(
+		debounced.trim().length >= 2
+			? searchSubjects(debounced, scope === 'part' && subject ? { subjects: [subject.id] } : {})
+			: []
+	);
 	const hits = $derived(ready && debounced.trim().length >= 2 ? search(debounced, { ...opts, limit: 60 }) : []);
-	const goTo = $derived(hits.filter((h) => h.headingMatch && h.doc.kind !== 'mcq').slice(0, 4));
-	const inText = $derived(hits.filter((h) => !goTo.includes(h)).slice(0, 6));
+	const headingHits = $derived(
+		hits
+			.filter((h) => h.headingMatch && h.doc.kind !== 'mcq' && h.doc.kind !== 'subject')
+			.slice(0, Math.max(2, 4 - subjectHits.length))
+	);
+	const goTo = $derived([...subjectHits, ...headingHits]);
+	const inText = $derived(hits.filter((h) => !headingHits.includes(h) && h.doc.kind !== 'subject').slice(0, 6));
 	const flat = $derived([...goTo, ...inText]);
-	const suggestion = $derived(ready && debounced.trim().length >= 3 && !hits.length ? suggest(debounced) : null);
+	const suggestion = $derived(ready && debounced.trim().length >= 3 && !flat.length ? suggest(debounced) : null);
 	const recent = $derived(prefs.value.keepRecentSearches ? userStorage.reading.recentSearches.slice(0, 5) : []);
 	const recentRead = $derived(userStorage.reading.recent.slice(0, 4));
 
@@ -94,7 +104,7 @@
 			e.preventDefault();
 			if (e.metaKey || e.ctrlKey || !flat.length) {
 				if (query.trim().length >= 2) open(allResultsHref());
-			} else open(hrefFor(flat[active]));
+			} else open(hrefFor(flat[Math.min(active, flat.length - 1)]));
 		}
 	}
 
@@ -102,8 +112,11 @@
 		requestAnimationFrame(() => listEl?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' }));
 	}
 
-	const ICON = { guide: BookOpen, case: FileText, mcq: Target, essay: PenLine } as const;
-	const where = (h: SearchHit) => [scope === 'all' ? h.doc.subjectTitle : '', ...h.doc.path].filter(Boolean).join(' · ');
+	const ICON = { subject: GraduationCap, guide: BookOpen, case: FileText, mcq: Target, essay: PenLine } as const;
+	const where = (h: SearchHit) =>
+		h.doc.kind === 'subject'
+			? h.doc.path.join(' · ')
+			: [scope === 'all' ? h.doc.subjectTitle : '', ...h.doc.path].filter(Boolean).join(' · ');
 	const scopeBtn = (on: boolean) => cn('h-8 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all', on ? 'border-[#1899D6] bg-[#1CB0F6] text-white' : 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#1A2C34]');
 </script>
 
@@ -128,7 +141,7 @@
 					type="search"
 					autocomplete="off"
 					spellcheck="false"
-					placeholder="Search rules, doctrines, cases, questions"
+					placeholder="Search subjects (crim pro, consti…), rules, cases, questions"
 					aria-label="Search"
 					aria-controls="palette-results"
 					aria-activedescendant={flat.length ? `palette-opt-${active}` : undefined}
@@ -151,7 +164,7 @@
 			{/if}
 
 			<div bind:this={listEl} id="palette-results" role="listbox" aria-label="Results" class="hit-text min-h-0 flex-1 overflow-y-auto p-2">
-				{#if !ready && query.trim().length >= 2}
+				{#if !ready && !subjectHits.length && query.trim().length >= 2}
 					<div class="space-y-2 p-2" aria-busy="true" aria-label="Preparing search">
 						{#each [0, 1, 2] as i (i)}<div class="h-12 animate-pulse rounded-lg bg-muted"></div>{/each}
 					</div>
@@ -180,9 +193,9 @@
 						{/each}
 					{/if}
 					{#if !recent.length && !recentRead.length}
-						<p class="px-3 py-6 text-center text-sm text-muted-foreground">Search every guide, case digest, MCQ and ALAC essay. Try an article number, a doctrine or a case name.</p>
+						<p class="px-3 py-6 text-center text-sm text-muted-foreground">Search subjects (e.g. crim pro, consti, pfr, statcon), guides, case digests, MCQs and ALAC essays.</p>
 					{/if}
-				{:else if !hits.length}
+				{:else if !flat.length}
 					<div role="status" class="flex flex-col items-center gap-2 px-4 py-8 text-center">
 						<SearchX class="size-7 text-muted-foreground" />
 						<p class="font-semibold">Nothing {scope === 'all' ? '' : `in ${scope === 'part' ? (part?.label || part?.title) : subject?.title} `}matches “{debounced.trim()}”</p>
@@ -192,7 +205,7 @@
 						{#if scope !== 'all'}
 							<button type="button" class="mt-1 h-9 rounded-lg border px-3 text-sm font-medium hover:bg-muted" onclick={() => ((scope = 'all'), input?.focus())}>Search all subjects instead</button>
 						{:else if !suggestion}
-							<p class="text-sm text-muted-foreground">Try fewer words, an article or section number, or a case name.</p>
+							<p class="text-sm text-muted-foreground">Try fewer words, a subject acronym (crim pro, consti, pfr), an article number, or a case name.</p>
 						{/if}
 					</div>
 				{:else}
@@ -202,6 +215,8 @@
 							{#each group.items as h (h.doc.id)}
 								{@const i = flat.indexOf(h)}
 								{@const Icon = ICON[h.doc.kind]}
+								{@const isSubject = h.doc.kind === 'subject'}
+								{@const sub = isSubject ? getModule(h.doc.subjectId) : undefined}
 								<a
 									id="palette-opt-{i}"
 									role="option"
@@ -212,16 +227,38 @@
 										open(hrefFor(h));
 									}}
 									onmousemove={() => (active = i)}
-									class={cn('flex min-h-11 items-start gap-3 rounded-lg px-3 py-2 text-foreground no-underline', i === active && 'bg-muted ring-1 ring-input')}
+									class={cn(
+										'flex min-h-11 items-start gap-3 rounded-xl px-3 py-2 text-foreground no-underline transition-colors',
+										isSubject && 'items-center py-2.5',
+										i === active && 'bg-muted ring-1 ring-input'
+									)}
 								>
-									<Icon class="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+									{#if isSubject}
+										<span
+											class="grid size-8 shrink-0 place-items-center rounded-xl text-white shadow-xs"
+											style="background:var(--{sub ? CATEGORY_ACCENT[sub.subjectCategory] : 'blue'})"
+										>
+											<Icon class="size-4" strokeWidth={2.5} />
+										</span>
+									{:else}
+										<Icon class="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+									{/if}
 									<span class="flex min-w-0 flex-1 flex-col gap-0.5">
-										{#if group.label === 'Go to'}
+										{#if isSubject}
+											<span class="flex items-center gap-2">
+												<span class="truncate text-[0.95rem] font-extrabold">{@html h.titleHtml}</span>
+												<span class="shrink-0 rounded-full bg-[#DDF4FF] px-2 py-0.5 text-[0.65rem] font-extrabold tracking-wide text-[#1899D6] uppercase dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]">
+													Subject
+												</span>
+											</span>
+											<span class="truncate text-xs font-semibold text-muted-foreground">{where(h)}</span>
+										{:else if group.label === 'Go to'}
 											<span class="truncate text-[0.9375rem] font-medium">{@html h.titleHtml}</span>
+											<span class="truncate text-xs text-muted-foreground">{KIND_LABEL[h.doc.kind]} · {where(h)}</span>
 										{:else}
 											<span class="line-clamp-2 font-serif text-[0.9375rem] text-muted-foreground">{@html h.excerpt}</span>
+											<span class="truncate text-xs text-muted-foreground">{KIND_LABEL[h.doc.kind]} · {where(h)}</span>
 										{/if}
-										<span class="truncate text-xs text-muted-foreground">{KIND_LABEL[h.doc.kind]} · {where(h)}</span>
 									</span>
 									{#if i === active}<CornerDownLeft class="mt-1 size-3.5 shrink-0 text-muted-foreground" />{/if}
 								</a>
@@ -231,9 +268,13 @@
 				{/if}
 			</div>
 
-			{#if debounced.trim().length >= 2 && hits.length}
+			{#if debounced.trim().length >= 2 && flat.length}
 				<div class="flex shrink-0 items-center gap-4 border-t bg-background/60 px-4 py-2.5 text-xs text-muted-foreground">
-					<a href={allResultsHref()} onclick={(e) => (e.preventDefault(), open(allResultsHref()))} class="flex-1 text-sm font-medium text-blue no-underline hover:underline">See all {hits.length >= 60 ? '60+' : hits.length} results</a>
+					{#if hits.length}
+						<a href={allResultsHref()} onclick={(e) => (e.preventDefault(), open(allResultsHref()))} class="flex-1 text-sm font-medium text-blue no-underline hover:underline">See all {hits.length >= 60 ? '60+' : hits.length} results</a>
+					{:else}
+						<span class="flex-1 text-xs font-semibold text-muted-foreground">Press Enter to open subject</span>
+					{/if}
 					<span class="max-sm:hidden"><kbd class="rounded border px-1">↑</kbd> <kbd class="rounded border px-1">↓</kbd> move</span>
 					<span class="max-sm:hidden"><kbd class="rounded border px-1">↵</kbd> open</span>
 				</div>

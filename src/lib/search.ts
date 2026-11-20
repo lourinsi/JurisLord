@@ -7,9 +7,15 @@ import { caseAnchor, getParts, readHref, textOf, type Part } from '$lib/content'
  * first time someone searches (about a few thousand small documents), and kept in memory. No service, no dependency.
  */
 
-export type DocKind = 'guide' | 'case' | 'mcq' | 'essay';
+export type DocKind = 'subject' | 'guide' | 'case' | 'mcq' | 'essay';
 
-export const KIND_LABEL: Record<DocKind, string> = { guide: 'Study guide', case: 'Case digest', mcq: 'MCQ', essay: 'ALAC essay' };
+export const KIND_LABEL: Record<DocKind, string> = {
+	subject: 'Subject',
+	guide: 'Study guide',
+	case: 'Case digest',
+	mcq: 'MCQ',
+	essay: 'ALAC essay'
+};
 
 export interface SearchDoc {
 	id: string;
@@ -160,6 +166,374 @@ export function terms(q: string) {
 
 const escapeHtml = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// ---------- Fuzzy & Acronym Subject Search ----------
+
+interface SubjectAliasEntry {
+	/** Primary names, acronyms, and common shorthand (highest priority). */
+	primary: string[];
+	/** Secondary names, codes, textbook authors, or categories. */
+	secondary: string[];
+}
+
+const SUBJECT_ALIASES: Record<string, SubjectAliasEntry> = {
+	pfr: {
+		primary: [
+			'pfr',
+			'persons and family relations',
+			'persons & family relations',
+			'persons and family',
+			'persons',
+			'family relations',
+			'family law',
+			'family code',
+			'family',
+			'fc',
+			'civil law',
+			'civlaw',
+			'civ law',
+			'civ',
+			'civil'
+		],
+		secondary: ['civil code', 'ncc', 'new civil code', 'rabuya']
+	},
+	consti1: {
+		primary: [
+			'consti',
+			'consti1',
+			'consti 1',
+			'consti i',
+			'constitutional law 1',
+			'constitutional law i',
+			'constitutional law',
+			'constitutional',
+			'constitution',
+			'conlaw',
+			'con law',
+			'poli',
+			'polilaw',
+			'poli law',
+			'political law',
+			'political'
+		],
+		secondary: ['1987 constitution', 'nachura', 'polsci']
+	},
+	crim1: {
+		primary: [
+			'crim1',
+			'crim 1',
+			'crim i',
+			'crim',
+			'crimlaw',
+			'crim law',
+			'crimlaw 1',
+			'crimlaw1',
+			'crim law 1',
+			'criminal law 1',
+			'criminal law i',
+			'criminal law',
+			'criminal',
+			'rpc',
+			'revised penal code',
+			'penal code'
+		],
+		secondary: ['book 1', 'book one', 'reyes', 'rpc book 1', 'rpc book one']
+	},
+	crim1_lloren: {
+		primary: [
+			'lloren',
+			'justice lloren',
+			'judge lloren',
+			'crim lloren',
+			'crim1 lloren',
+			'crim 1 lloren',
+			'crimlaw lloren',
+			'criminal law lloren',
+			'criminal law 1 justice lloren',
+			'criminal law 1 judge lloren'
+		],
+		secondary: [
+			'criminal law 1',
+			'criminal law i',
+			'criminal law',
+			'crimlaw',
+			'crim law',
+			'crimlaw1',
+			'crimlaw 1',
+			'crim1',
+			'crim 1',
+			'crim',
+			'criminal',
+			'islaw',
+			'indeterminate sentence law',
+			'rpc'
+		]
+	},
+	crimpro: {
+		primary: [
+			'crimpro',
+			'crim pro',
+			'crimproc',
+			'crim proc',
+			'criminal procedure',
+			'criminal proc',
+			'procedure',
+			'rem',
+			'remlaw',
+			'rem law',
+			'remedial law',
+			'remedial'
+		],
+		secondary: ['rules 110 127', 'rules 110-127', 'rules of court', 'roc', 'tiu']
+	},
+	statcon: {
+		primary: [
+			'statcon',
+			'stat con',
+			'statcon 1',
+			'statcon 2',
+			'statcon1',
+			'statcon2',
+			'statutory construction',
+			'statutory',
+			'stat construction',
+			'construction'
+		],
+		secondary: ['agpalo', 'legal method']
+	},
+	philo: {
+		primary: [
+			'philo',
+			'phil',
+			'philosophy',
+			'philosophy of law',
+			'legal philo',
+			'legal philosophy',
+			'law philo',
+			'jurisprudence',
+			'juris'
+		],
+		secondary: ['legal method', 'legal theory']
+	}
+};
+
+const GENERIC_SUBJECT_WORDS = new Set(['law', 'code', 'rule', 'rules', 'book', 'legal', '1', '2', 'i', 'ii', 'of', 'and', 'the', 'in']);
+const STOP_SUBJECT_WORDS = new Set(['of', 'and', 'the', 'in', 'for']);
+
+function normSubjectStr(s: string): string {
+	return s
+		.toLowerCase()
+		.replace(/&/g, ' and ')
+		.replace(/[^a-z0-9]+/g, ' ')
+		.trim();
+}
+
+function compactStr(s: string): string {
+	return s.replace(/\s+/g, '');
+}
+
+/** Collapses repeated letters ("crimmlaw" -> "crimlaw") and normalizes "ph" -> "f" ("philo" <-> "filo"). */
+function looseKey(s: string): string {
+	return s.replace(/ph/g, 'f').replace(/(.)\1+/g, '$1');
+}
+
+/** Optimal string alignment (Damerau-Levenshtein) distance with early exit at max + 1. */
+function damerauDistance(a: string, b: string, max: number): number {
+	const la = a.length;
+	const lb = b.length;
+	if (Math.abs(la - lb) > max) return max + 1;
+	if (a === b) return 0;
+	const d: number[][] = Array.from({ length: la + 1 }, () => new Array<number>(lb + 1).fill(0));
+	for (let i = 0; i <= la; i++) d[i][0] = i;
+	for (let j = 0; j <= lb; j++) d[0][j] = j;
+	for (let i = 1; i <= la; i++) {
+		let rowMin = max + 1;
+		for (let j = 1; j <= lb; j++) {
+			const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+			let val = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+			if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+				val = Math.min(val, d[i - 2][j - 2] + 1);
+			}
+			d[i][j] = val;
+			if (val < rowMin) rowMin = val;
+		}
+		if (rowMin > max) return max + 1;
+	}
+	return d[la][lb];
+}
+
+function maxFuzzyEdits(len: number): number {
+	if (len <= 3) return 0;
+	if (len <= 8) return 1;
+	if (len <= 13) return 2;
+	return 3;
+}
+
+function sameStart(a: string, b: string): boolean {
+	if (!a || !b) return false;
+	if (a[0] === b[0]) return true;
+	if (a.length >= 2 && b.length >= 2 && a[0] === b[1] && a[1] === b[0]) return true;
+	return false;
+}
+
+function scoreAlias(
+	qNorm: string,
+	qCompact: string,
+	qLoose: string,
+	qTokens: string[],
+	alias: string,
+	isPrimary: boolean
+): number {
+	const aNorm = normSubjectStr(alias);
+	if (!aNorm) return 0;
+	const aCompact = compactStr(aNorm);
+	const aLoose = looseKey(aCompact);
+	const aTokens = aNorm.split(' ').filter((t) => t && !STOP_SUBJECT_WORDS.has(t));
+	const base = isPrimary ? 1000 : 820;
+
+	// 1. Exact match (ignoring spaces & punctuation, e.g. "crim pro" == "crimpro")
+	if (qCompact === aCompact || qNorm === aNorm) return base + 100;
+
+	// 2. Exact loose match (double letters / ph<->f, e.g. "crimmlaw", "constti", "filo", "loren")
+	if (qCompact.length >= 3 && qLoose === aLoose) return base + 65;
+
+	const isSingleGeneric = qTokens.length === 1 && GENERIC_SUBJECT_WORDS.has(qTokens[0]);
+
+	// 3. Prefix match on compact or loose form (e.g. "const" -> "consti", "crim" -> "crimlaw")
+	if (!isSingleGeneric && qCompact.length >= 3) {
+		if (aCompact.startsWith(qCompact)) {
+			return base + 10 + Math.round((qCompact.length / aCompact.length) * 45);
+		}
+		if (qLoose.length >= 3 && aLoose.startsWith(qLoose)) {
+			return base + Math.round((qLoose.length / aLoose.length) * 40);
+		}
+	}
+
+	// 4. Whole-string fuzzy Damerau-Levenshtein match for single-word queries (or typos of single-word acronyms)
+	if (!isSingleGeneric && qCompact.length >= 4 && aCompact.length >= 4 && (qTokens.length === 1 || aTokens.length === 1)) {
+		const minLen = Math.min(qLoose.length, aLoose.length);
+		const maxLen = Math.max(qLoose.length, aLoose.length);
+		const limit = qTokens.length === 1 ? maxFuzzyEdits(minLen) : 1;
+		if (limit > 0 && sameStart(qLoose, aLoose)) {
+			const d = Math.min(
+				damerauDistance(qCompact, aCompact, limit),
+				damerauDistance(qLoose, aLoose, limit)
+			);
+			if (d <= limit && d / maxLen <= 0.28) {
+				return base - 80 - d * 55;
+			}
+		}
+		// Prefix-fuzzy only for long single-word partial typos (e.g. "constitun" -> "constitutional")
+		if (qTokens.length === 1 && qLoose.length >= 7 && aLoose.length > qLoose.length && sameStart(qLoose, aLoose)) {
+			const prefix = aLoose.slice(0, qLoose.length);
+			const d = damerauDistance(qLoose, prefix, 1);
+			if (d <= 1) {
+				return base - 200 + Math.round((qLoose.length / aLoose.length) * 30);
+			}
+		}
+	}
+
+	// 5. Multi-word token-by-token fuzzy match (e.g. "crimmal law", "criminl procedur", "consti law")
+	if (qTokens.length >= 2) {
+		const meaningful = qTokens.filter((t) => !STOP_SUBJECT_WORDS.has(t));
+		if (meaningful.length >= 2 && meaningful.some((t) => !GENERIC_SUBJECT_WORDS.has(t))) {
+			if (aTokens.length >= meaningful.length) {
+				let totalEdits = 0;
+				let allMatched = true;
+				for (const qt of meaningful) {
+					const qtLoose = looseKey(qt);
+					let bestTokenCost = Infinity;
+					for (const at of aTokens) {
+						const atLoose = looseKey(at);
+						if (qt === at || qtLoose === atLoose) {
+							bestTokenCost = 0;
+							break;
+						}
+						if (qt.length >= 3 && (at.startsWith(qt) || atLoose.startsWith(qtLoose))) {
+							bestTokenCost = Math.min(bestTokenCost, 0.25);
+							continue;
+						}
+						if (qt.length >= 4 && at.length >= 4 && sameStart(qtLoose, atLoose)) {
+							const lim = maxFuzzyEdits(Math.min(qtLoose.length, atLoose.length));
+							const d = Math.min(damerauDistance(qt, at, lim), damerauDistance(qtLoose, atLoose, lim));
+							if (d <= lim && d / Math.max(qtLoose.length, atLoose.length) <= 0.28) {
+								bestTokenCost = Math.min(bestTokenCost, d);
+							}
+						}
+					}
+					if (!Number.isFinite(bestTokenCost)) {
+						allMatched = false;
+						break;
+					}
+					totalEdits += bestTokenCost;
+				}
+				if (allMatched) {
+					return base - 110 - Math.round(totalEdits * 40);
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
+/**
+ * Matches subjects/courses directly by title, acronyms ("crim pro", "consti", "pfr", "statcon", "philo"),
+ * and typo-tolerant fuzzy spelling ("crimmlaw", "cosnti", "crimpor", "llorne").
+ * Runs immediately against the lightweight `modules` registry without waiting for full-text loading.
+ */
+export function searchSubjects(q: string, opts: { subjects?: string[] } = {}): SearchHit[] {
+	const qNorm = normSubjectStr(q);
+	const qCompact = compactStr(qNorm);
+	if (qCompact.length < 2) return [];
+	const qLoose = looseKey(qCompact);
+	const qTokens = qNorm.split(' ').filter(Boolean);
+
+	const hits: SearchHit[] = [];
+	for (const m of modules) {
+		if (opts.subjects?.length && !opts.subjects.includes(m.id)) continue;
+		const entry = SUBJECT_ALIASES[m.id];
+		const primary = [m.title, m.id, ...(entry?.primary ?? [])];
+		const secondary = [m.subjectCategory.replace(' — Supplement', ''), ...(entry?.secondary ?? [])];
+
+		let best = 0;
+		for (const a of primary) {
+			const s = scoreAlias(qNorm, qCompact, qLoose, qTokens, a, true);
+			if (s > best) best = s;
+		}
+		for (const a of secondary) {
+			const s = scoreAlias(qNorm, qCompact, qLoose, qTokens, a, false);
+			if (s > best) best = s;
+		}
+		if (best <= 0) continue;
+
+		const category = m.subjectCategory.replace(' — Supplement', '');
+		const doc: SearchDoc = {
+			id: `subject:${m.id}`,
+			kind: 'subject',
+			subjectId: m.id,
+			subjectTitle: m.title,
+			partId: '',
+			path: [category, m.eyebrow].filter((x): x is string => Boolean(x)),
+			title: m.title,
+			text: m.legalScope || m.description,
+			href: `/module/${m.id}`,
+			lt: m.title.toLowerCase(),
+			lp: category.toLowerCase(),
+			lx: (m.legalScope || m.description).toLowerCase()
+		};
+		hits.push({
+			doc,
+			score: best,
+			headingMatch: true,
+			excerpt: escapeHtml(doc.text),
+			titleHtml: markText(m.title, q, false)
+		});
+	}
+
+	hits.sort((a, b) => b.score - a.score || a.doc.title.length - b.doc.title.length);
+	return hits;
+}
 
 /**
  * The pattern for one word or phrase. Numbers match whole ("36" is not "360"); short words match at the start of a word

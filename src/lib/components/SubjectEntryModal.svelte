@@ -74,13 +74,13 @@
 	<div class="flex flex-col gap-4 p-6">
 		<div class="flex items-start justify-between gap-3">
 			<div class="flex items-center gap-3.5">
-				<Mascot size={48} />
+				<Mascot size={56} />
 				<div class="flex min-w-0 flex-col gap-0.5">
 					<span class="text-[0.7rem] font-extrabold tracking-wide text-[#1899D6] uppercase dark:text-[#66D1FF]">
 						{subject.title}
 					</span>
 					<h2 id="subj-modal-title" class="font-brand text-xl leading-tight font-extrabold">
-						Hoot hoot! Ready to start?
+						Shall we test your legal might today, my Lord?
 					</h2>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 		</div>
 
 		<p id="subj-modal-body" class="text-sm font-semibold text-muted-foreground">
-			Take the <span class="font-extrabold text-foreground">{presetSummary}</span> mock exam, or jump straight into studying.
+			Ride forth into the <span class="font-extrabold text-foreground">{presetSummary}</span> trial by mock exam, or enter the chambers to study the codals and doctrines of the realm.
 		</p>
 
 		<div class="mt-1 flex items-center justify-between gap-2">

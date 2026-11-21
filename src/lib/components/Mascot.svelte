@@ -1,61 +1,131 @@
 <script lang="ts">
-	/** "Atty. Hoot", a bar-exam owl. Pure SVG, themed with the app's colour tokens. */
+	import knightLogo from '$lib/assets/juris-lord.png';
+
+	/**
+	 * "Juris Lord" — Official Royal Knight mascot & logo with background removed,
+	 * idle head movement, hover salute, and synchronized blinking eyelids over the exact eye coordinates.
+	 */
 	let { size = 64, label = '' }: { size?: number; label?: string } = $props();
 </script>
 
 <svg
-	class="owl"
+	class="knight"
 	width={size}
 	height={size}
-	viewBox="0 0 64 64"
+	viewBox="0 0 774 774"
+	fill="none"
 	role={label ? 'img' : undefined}
 	aria-label={label || undefined}
 	aria-hidden={label ? undefined : true}
 >
-	<!-- feet -->
-	<path d="M24 56h6M34 56h6" stroke="#EA580C" stroke-width="3" stroke-linecap="round" />
-	<!-- body -->
-	<ellipse cx="32" cy="38" rx="19" ry="19" style="fill:var(--text)" />
-	<ellipse cx="32" cy="44" rx="11" ry="11" style="fill:var(--surface-3)" />
-	<!-- wings -->
-	<path d="M13 34c-4 6-3 14 3 18 1-7 1-13-3-18zM51 34c4 6 3 14-3 18-1-7-1-13 3-18z" style="fill:var(--text-2)" />
-	<!-- mortarboard cap -->
-	<path d="M32 6 10 15l22 8 22-8z" fill="#252525" stroke="#EA580C" stroke-width="1.5" stroke-linejoin="round" />
-	<path d="M20 20v6c0 3 5 5 12 5s12-2 12-5v-6l-12 4z" fill="#252525" />
-	<path d="M54 15v10" stroke="#EA580C" stroke-width="2" stroke-linecap="round" />
-	<circle cx="54" cy="27" r="2.2" fill="#EA580C" />
-	<!-- eyes -->
-	<circle cx="25" cy="34" r="7" style="fill:var(--surface)" />
-	<circle cx="39" cy="34" r="7" style="fill:var(--surface)" />
-	<g class="pupils">
-		<circle cx="26" cy="35" r="3.2" fill="#252525" />
-		<circle cx="38" cy="35" r="3.2" fill="#252525" />
-		<circle cx="27" cy="33.8" r="1" fill="#fff" />
-		<circle cx="39" cy="33.8" r="1" fill="#fff" />
+	<defs>
+		<clipPath id="jl-left-eye">
+			<ellipse cx="304" cy="497" rx="51" ry="47" />
+		</clipPath>
+		<clipPath id="jl-right-eye">
+			<ellipse cx="471" cy="497" rx="51" ry="47" />
+		</clipPath>
+	</defs>
+
+	<g class="knight-head">
+		<!-- Official Juris Lord Knight (transparent background) -->
+		<image
+			href={knightLogo}
+			x="0"
+			y="0"
+			width="774"
+			height="774"
+			preserveAspectRatio="xMidYMid meet"
+		/>
+
+		<!-- Blinking left eyelid (exact pixel coordinates: X=259..349, Y=455..539) -->
+		<g clip-path="url(#jl-left-eye)">
+			<g class="lid-left">
+				<ellipse
+					cx="304"
+					cy="497"
+					rx="53"
+					ry="49"
+					fill="#FCC4A1"
+					stroke="#1B2C3B"
+					stroke-width="14"
+				/>
+				<path
+					d="M256 503C275 516 333 516 352 503"
+					stroke="#1B2C3B"
+					stroke-width="14"
+					stroke-linecap="round"
+				/>
+			</g>
+		</g>
+
+		<!-- Blinking right eyelid (exact pixel coordinates: X=426..516, Y=455..539) -->
+		<g clip-path="url(#jl-right-eye)">
+			<g class="lid-right">
+				<ellipse
+					cx="471"
+					cy="497"
+					rx="53"
+					ry="49"
+					fill="#FCC4A1"
+					stroke="#1B2C3B"
+					stroke-width="14"
+				/>
+				<path
+					d="M423 503C442 516 500 516 519 503"
+					stroke="#1B2C3B"
+					stroke-width="14"
+					stroke-linecap="round"
+				/>
+			</g>
+		</g>
 	</g>
-	<g class="lids">
-		<circle cx="25" cy="34" r="7" style="fill:var(--text)" />
-		<circle cx="39" cy="34" r="7" style="fill:var(--text)" />
-	</g>
-	<!-- beak -->
-	<path d="M29.5 40h5L32 45z" fill="#EA580C" />
 </svg>
 
 <style>
-	.owl {
+	.knight {
 		display: block;
 		flex: none;
 		overflow: visible;
 	}
-	.lids {
+	.knight-head {
+		transform-origin: 387px 450px;
+		animation: knight-bob 3.6s ease-in-out infinite;
+	}
+	.knight:hover .knight-head {
+		animation: knight-salute 0.55s ease-in-out;
+	}
+	.lid-left,
+	.lid-right {
 		transform-box: fill-box;
-		transform-origin: center;
+		transform-origin: center top;
 		transform: scaleY(0);
-		animation: blink 5s infinite;
+		animation: blink 4.5s infinite;
+	}
+	@keyframes knight-bob {
+		0%,
+		100% {
+			transform: translateY(0) rotate(0deg);
+		}
+		50% {
+			transform: translateY(-16px) rotate(1.4deg);
+		}
+	}
+	@keyframes knight-salute {
+		0%,
+		100% {
+			transform: rotate(0deg) scale(1);
+		}
+		35% {
+			transform: rotate(-6deg) scale(1.06);
+		}
+		70% {
+			transform: rotate(4deg) scale(1.04);
+		}
 	}
 	@keyframes blink {
 		0%,
-		92%,
+		91%,
 		100% {
 			transform: scaleY(0);
 		}
@@ -64,7 +134,9 @@
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.lids {
+		.knight-head,
+		.lid-left,
+		.lid-right {
 			animation: none;
 		}
 	}

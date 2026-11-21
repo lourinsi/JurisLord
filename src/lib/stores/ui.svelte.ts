@@ -50,7 +50,7 @@ class UiStore {
 	/** Scope the palette opens with: a subject id, `subject:part`, or '' for everything. */
 	searchScope = $state('');
 	navOpen = $state(false);
-	/** Whether the initial "Hoot hoot! Before you start" disclaimer modal is currently open. */
+	/** Whether the initial "Hear ye, my Lord! Before thy quest begins" disclaimer modal is currently open. */
 	disclaimerOpen = $state(false);
 	/** An exam in progress hides the navigator so nothing competes with the questions. */
 	focusMode = $state(false);

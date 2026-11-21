@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/juris-lord.png';
 	import { page } from '$app/state';
 	import { inject, pageview } from '@vercel/analytics';
 	import AppHeader from '$lib/components/shell/AppHeader.svelte';
@@ -54,58 +54,60 @@
 		root.setProperty('--leading', String(LINE_HEIGHT[prefs.value.lineSpacing]));
 	});
 
-	// ---- Atty. Hoot easter egg & answer key ----
+	// ---- Juris Lord easter egg & answer key ----
 	const quips = [
-		'Built by Sero & amended by lourinsi, fueled by coffee and reasonable doubt.',
-		'Made for 1L quests. Objection overruled.',
-		'Res ipsa loquitur: the doctrines speak for themselves.',
-		'Handcrafted for finals prep. No bar exam was harmed.',
-		'Bail was posted, the code was pushed.',
-		'Habeas corpus, but for study features.',
-		'Coded between cases and cramming.',
-		'Your honor, I rest my commit.'
+		'Forged by Sero & amended by lourinsi, tempered in coffee and reasonable doubt.',
+		'Crafted for 1L quests. Thy objection is overruled, my Lord.',
+		'Res ipsa loquitur: the royal doctrines speak for themselves.',
+		'Hand-forged for finals combat. No bar exam was harmed in the joust.',
+		'Bail was posted, the royal decree was pushed.',
+		'Habeas corpus, sworn and sealed for thy study.',
+		'Inscribed between landmark cases and midnight vigils.',
+		'My Lord, I rest my commit.'
 	];
 	const quip = quips[Math.floor(Math.random() * quips.length)];
 	const side = Math.random() < 0.5 ? 'left' : 'right';
 	let eggOpen = $state(false);
 
-	let hootToast = $state('');
+	let lordToast = $state('');
 	let toastTimer: ReturnType<typeof setTimeout> | undefined;
 	function flipAnswerKey() {
 		answerKey.toggle();
-		hootToast = answerKey.on ? 'Hoot! Answer key unlocked. Model answers are now showing.' : 'Answer key off. Back to honest practice.';
+		lordToast = answerKey.on
+			? '⚔️ By royal decree! The sacred scrolls are unsealed — model answers are now revealed, my Lord.'
+			: '🛡️ The royal scrolls are sealed once more. Back to honorable combat, my Lord.';
 		clearTimeout(toastTimer);
-		toastTimer = setTimeout(() => (hootToast = ''), 3500);
+		toastTimer = setTimeout(() => (lordToast = ''), 3500);
 	}
 	let taps: number[] = [];
-	let owlBump = $state(false);
-	const replies = ['Hoot?', 'Hoot hoot?', 'Two more…', 'One more!'];
-	let owlSays = $state('');
+	let knightBump = $state(false);
+	const replies = ['Halt! Who goes there?', 'Stay thy hand, my Lord!', 'Two more strikes…', 'One final tap, Sire!'];
+	let knightSays = $state('');
 	let saysTimer: ReturnType<typeof setTimeout> | undefined;
-	function tapOwl() {
+	function tapKnight() {
 		const t = Date.now();
 		taps = [...taps.filter((x) => t - x < 2500), t];
-		owlBump = false;
-		requestAnimationFrame(() => (owlBump = true));
+		knightBump = false;
+		requestAnimationFrame(() => (knightBump = true));
 		clearTimeout(saysTimer);
 		if (taps.length >= 5) {
 			taps = [];
-			owlSays = '';
+			knightSays = '';
 			flipAnswerKey();
 			return;
 		}
-		owlSays = replies[taps.length - 1];
-		saysTimer = setTimeout(() => (owlSays = ''), 2500);
+		knightSays = replies[taps.length - 1];
+		saysTimer = setTimeout(() => (knightSays = ''), 2500);
 	}
 	const riddle = $derived(
 		answerKey.on
-			? 'Atty. Hoot is showing you the answers. Poke him five times to make him stop.'
-			: 'Atty. Hoot knows every model answer. Poke him five times and he might share.'
+			? 'The Juris Lord hath unsealed the royal scrolls. Tap his helm five times to seal them once more.'
+			: 'The Juris Lord guards every model answer in the realm. Tap his helm five times and he may grant thee passage.'
 	);
 
 	let typed = '';
 
-	/** ⌘K / Ctrl+K anywhere, or "/" when not typing, opens search; typing "hoot" toggles answer key. */
+	/** ⌘K / Ctrl+K anywhere, or "/" when not typing, opens search; typing "lord" (or "hoot") toggles answer key. */
 	function onKey(e: KeyboardEvent) {
 		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
 			e.preventDefault();
@@ -117,7 +119,7 @@
 		const inInput = t && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName) || !!t.closest('input, textarea, select, [contenteditable]'));
 		if (!inInput && !e.metaKey && !e.ctrlKey && !e.altKey && e.key.length === 1) {
 			typed = (typed + e.key.toLowerCase()).slice(-6);
-			if (typed.endsWith('hoot')) {
+			if (typed.endsWith('lord') || typed.endsWith('hoot')) {
 				typed = '';
 				flipAnswerKey();
 				return;
@@ -172,23 +174,23 @@
 		✦
 	</button>
 	<div class="egg-card">
-		<button type="button" class="owl-btn" class:bump={owlBump} onclick={tapOwl} onanimationend={() => (owlBump = false)} aria-label="Atty. Hoot">
-			<Mascot size={56} />
+		<button type="button" class="owl-btn" class:bump={knightBump} onclick={tapKnight} onanimationend={() => (knightBump = false)} aria-label="Juris Lord">
+			<Mascot size={60} />
 		</button>
-		{#if owlSays}<span class="says" role="status">{owlSays}</span>{/if}
+		{#if knightSays}<span class="says" role="status">{knightSays}</span>{/if}
 		<div>
 			<p>{quip}</p>
 			<p class="riddle">{riddle}</p>
 			<button type="button" class="cursor-pointer border-0 bg-transparent p-0 text-xs font-extrabold text-[#1CB0F6] underline" onclick={() => { eggOpen = false; showDisclaimer = true; }}>
-				Hoot hoot! Before you start
+				Hear ye, my Lord! Royal decree
 			</button>
 		</div>
 	</div>
 </aside>
 
-{#if hootToast}
+{#if lordToast}
 	<div class="fixed bottom-5 left-1/2 z-50 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-4 py-2.5 text-sm font-extrabold text-white shadow-xl" role="status">
-		{hootToast}
+		{lordToast}
 	</div>
 {/if}
 

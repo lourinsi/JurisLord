@@ -2,7 +2,7 @@ const browser = typeof window !== 'undefined';
 
 /**
  * Easter egg: "answer key" mode shows the model answer on every Consti problem and Crim Pro question.
- * Unlocked by tapping Atty. Hoot five times (in the side egg card) or typing "hoot" outside a text box.
+ * Unlocked by tapping the Juris Lord knight five times (in the side egg card) or typing "lord" outside a text box.
  * Kept in sessionStorage so it lasts for this tab only and can't be left on by accident across visits.
  */
 const KEY = 'alac-consti:answerkey';

@@ -64,8 +64,8 @@
 	<div class="h-2.5 w-full bg-[#1CB0F6]"></div>
 	<div class="flex flex-col gap-3.5 p-6">
 		<div class="flex items-center gap-3.5">
-			<Mascot size={52} />
-			<h2 id="disc-title" class="font-brand text-xl font-extrabold">Hoot hoot! Before you start</h2>
+			<Mascot size={56} />
+			<h2 id="disc-title" class="font-brand text-xl font-extrabold">Hear ye, my Lord! Before thy quest begins</h2>
 		</div>
 		<div id="disc-body" class="space-y-2.5 text-sm leading-relaxed font-semibold">
 			<p>
@@ -90,7 +90,7 @@
 				onclick={accept}
 				class="inline-flex h-11 cursor-pointer items-center justify-center rounded-2xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-6 text-sm font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:border-b-2 active:translate-y-0.5"
 			>
-				I understand
+				By my oath, I understand
 			</button>
 		</div>
 	</div>

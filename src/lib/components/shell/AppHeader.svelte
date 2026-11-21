@@ -2,6 +2,7 @@
 	import { Bookmark, BookOpen, ChevronDown, Flame, Home, Menu, Moon, Search, SlidersHorizontal, Sun, Volume2, VolumeX, X } from '@lucide/svelte';
 	import { Popover, Dialog as DialogPrimitive } from 'bits-ui';
 	import { page } from '$app/state';
+	import Mascot from '$lib/components/Mascot.svelte';
 	import { modules } from '$lib/data/modules';
 	import { answerKey } from '$lib/answerkey.svelte';
 	import { playMcqSound } from '$lib/sound';
@@ -35,27 +36,9 @@
 
 <header class="no-print sticky top-0 z-40 h-(--header-h) border-b-2 border-slate-200 bg-white/95 backdrop-blur-md dark:border-[#2B434E] dark:bg-[#131F24]/95">
 	<div class="mx-auto flex h-full max-w-[82rem] items-center gap-2.5 px-3 sm:gap-4 sm:px-6">
-		<a href="/" aria-label="Juris Lord, home" class="group flex shrink-0 items-center gap-2.5 rounded-2xl py-1 text-foreground no-underline">
-			<span class="grid size-10 place-items-center rounded-2xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] shadow-xs transition-transform group-hover:animate-duo-wiggle">
-				<!-- Cute winking Judge Owl mascot wearing a tiny Bee Gold crown -->
-				<svg viewBox="0 0 36 36" class="size-7" fill="none" aria-hidden="true">
-					<!-- Tiny Gold Crown -->
-					<path d="M11 9.5L13 4.5L18 7.5L23 4.5L25 9.5H11Z" fill="#FFC800" stroke="#946200" stroke-width="1.5" stroke-linejoin="round" />
-					<!-- Owl Head / Body -->
-					<rect x="7" y="9.5" width="22" height="21" rx="9.5" fill="#1CB0F6" stroke="#FFFFFF" stroke-width="1.8" />
-					<!-- Fluffy Judge Wig Side Curls -->
-					<circle cx="7.5" cy="18" r="3" fill="#FFFFFF" />
-					<circle cx="28.5" cy="18" r="3" fill="#FFFFFF" />
-					<!-- Big Eyes -->
-					<circle cx="13.5" cy="18" r="4.2" fill="#FFFFFF" />
-					<circle cx="22.5" cy="18" r="4.2" fill="#FFFFFF" />
-					<!-- Left eye open, Right eye cheerful wink -->
-					<circle cx="14" cy="18" r="2" fill="#131F24" />
-					<circle cx="14.7" cy="17.2" r="0.7" fill="#FFFFFF" />
-					<path d="M20.2 18.2C20.9 16.8 24.1 16.8 24.8 18.2" stroke="#131F24" stroke-width="2" stroke-linecap="round" />
-					<!-- Cute Gold Beak -->
-					<path d="M16 21.5L18 24.5L20 21.5H16Z" fill="#FFC800" stroke="#946200" stroke-width="1.2" stroke-linejoin="round" />
-				</svg>
+		<a href="/" aria-label="Juris Lord, home" class="group flex shrink-0 items-center gap-2 rounded-2xl py-1 text-foreground no-underline">
+			<span class="grid size-11 place-items-center transition-transform group-hover:scale-105">
+				<Mascot size={42} />
 			</span>
 			<span class="font-brand text-lg font-extrabold tracking-wide text-slate-900 uppercase max-md:hidden dark:text-white">
 				Juris <span class="text-[#58CC02]">Lord</span>

@@ -155,6 +155,8 @@ export interface UnifiedExamSession {
 	pausedTotalMs?: number;
 	/** When true (default), choosing an MCQ option immediately reveals the answer & explanation; when false, hidden until submission. */
 	showAnswers?: boolean;
+	/** When true (default), displays one question per page with Prev/Next navigation (MCQ style); when false, shows all items in full-exam scroll view. */
+	singleQuestion?: boolean;
 	/** Items flagged for review, keyed by `entryKey(entry)`. */
 	flagged?: Record<string, boolean>;
 	finishedAt: number | null;

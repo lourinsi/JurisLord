@@ -6,10 +6,13 @@
 		Bookmark,
 		BookmarkCheck,
 		CheckCircle2,
+		ChevronLeft,
+		ChevronRight,
 		Clock,
 		Eye,
 		EyeOff,
 		Flag,
+		LayoutList,
 		Lightbulb,
 		Pause,
 		Play,
@@ -17,6 +20,7 @@
 		Send,
 		SkipForward,
 		Sparkles,
+		Square,
 		Volume2,
 		VolumeX,
 		XCircle
@@ -114,6 +118,7 @@
 			void session.pausedAt;
 			void session.pausedTotalMs;
 			void session.showAnswers;
+			void session.singleQuestion;
 			void session.finishedAt;
 			void session.graded;
 		}
@@ -464,6 +469,7 @@
 			pausedAt: null,
 			pausedTotalMs: 0,
 			showAnswers: true,
+			singleQuestion: true,
 			flagged: {},
 			finishedAt: null,
 			graded: false,
@@ -505,6 +511,7 @@
 			pausedAt: null,
 			pausedTotalMs: 0,
 			showAnswers: true,
+			singleQuestion: true,
 			flagged: {},
 			finishedAt: null,
 			graded: false,
@@ -645,11 +652,17 @@
 
 	const isPaused = $derived(Boolean(session && !session.finishedAt && session.pausedAt));
 	const showAnswers = $derived(session ? (session.showAnswers ?? true) : true);
+	const singleQuestion = $derived(session ? (session.singleQuestion ?? true) : true);
 	const effectiveNow = $derived(session?.pausedAt ?? now);
 
 	function toggleShowAnswers() {
 		if (!session || session.finishedAt) return;
 		session.showAnswers = !(session.showAnswers ?? true);
+	}
+
+	function toggleSingleQuestion() {
+		if (!session || session.finishedAt) return;
+		session.singleQuestion = !(session.singleQuestion ?? true);
 	}
 
 	function togglePause() {
@@ -717,8 +730,17 @@
 
 	function jumpToItem(k: string) {
 		activeItemKey = k;
-		const el = document.getElementById(itemDomId(k));
-		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		if (!singleQuestion) {
+			const el = document.getElementById(itemDomId(k));
+			if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	}
+
+	function stepSingleQuestion(delta: -1 | 1) {
+		if (!flatFilteredItems.length) return;
+		const nextIdx = currentFlatIndex + delta;
+		if (nextIdx < 0 || nextIdx >= flatFilteredItems.length) return;
+		activeItemKey = entryKey(flatFilteredItems[nextIdx].entry);
 	}
 
 	function jumpToNextUnanswered() {
@@ -942,6 +964,31 @@
 				items: part.items.filter((entry) => matchesActiveFilter(entry))
 			}))
 			.filter((part) => part.items.length > 0);
+	});
+
+	const flatFilteredItems = $derived(
+		filteredActiveParts.flatMap((part) =>
+			part.indexedItems.map(({ entry, idx }) => ({ part, entry, idx }))
+		)
+	);
+
+	const currentFlatIndex = $derived.by(() => {
+		if (!flatFilteredItems.length) return 0;
+		const idx = flatFilteredItems.findIndex(({ entry }) => entryKey(entry) === activeItemKey);
+		return idx >= 0 ? idx : 0;
+	});
+
+	const displayParts = $derived.by(() => {
+		if (!singleQuestion) return filteredActiveParts;
+		const cur = flatFilteredItems[currentFlatIndex];
+		if (!cur) return [];
+		return [
+			{
+				...cur.part,
+				indexedItems: [{ entry: cur.entry, idx: cur.idx }],
+				items: [cur.entry]
+			}
+		];
 	});
 
 	const answeredCount = $derived(
@@ -1352,39 +1399,7 @@
 	</div>
 {:else if !session.finishedAt}
 	<!-- ==================== ACTIVE EXAM PAPER ==================== -->
-	<div class="flex flex-col gap-4">
-		<!-- Top exam action bar (outside the timer/pause header card): Reset wrong (when answers shown), Reset, Submit -->
-		<div class="flex flex-wrap items-center justify-end gap-2">
-			{#if showAnswers && wrongMcqCount > 0}
-				<button
-					type="button"
-					onclick={resetWrongMcqsInExam}
-					title="Clear only wrong MCQ answers and reshuffle their choices"
-					class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B]/40 border-b-3 bg-[#FFDFE0]/70 px-3.5 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all hover:bg-[#FFDFE0] active:translate-y-0.5 active:border-b-2 dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878]"
-				>
-					<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset wrong ({wrongMcqCount})
-				</button>
-			{/if}
-			<button
-				type="button"
-				onclick={() => {
-					confirmSubmit = false;
-					confirmReset = !confirmReset;
-				}}
-				title="Clear all answers, reshuffle choices, and restart timer"
-				class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3.5 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
-			>
-				<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
-			</button>
-			<button
-				type="button"
-				onclick={requestSubmit}
-				class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
-			>
-				<Send class="size-3.5" strokeWidth={2.5} /> Submit
-			</button>
-		</div>
-
+	<div class="flex flex-col gap-5">
 		<!-- Sticky header bar -->
 		<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-20 flex flex-col gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card/95 px-4 py-3 shadow-sm backdrop-blur dark:border-[#2B434E]">
 			<div class="flex flex-wrap items-center justify-between gap-3">
@@ -1408,7 +1423,7 @@
 							</span>
 						{/if}
 					</div>
-					{#if activeParts.length > 1}
+					{#if !singleQuestion && activeParts.length > 1}
 						<div class="mt-0.5 hidden flex-wrap gap-1 md:flex">
 							{#each activeParts as part (part.kind)}
 								<a
@@ -1422,24 +1437,72 @@
 					{/if}
 				</div>
 
-				<!-- Show/Hide answers, Sound, Timer, Pause/Resume -->
+				<!-- Controls: Reset wrong (when shown), Reset, Submit, Single/Scroll view, Show/Hide answers (icon), Sound, Interactive Timer (hover to pause) -->
 				<div class="flex flex-wrap items-center justify-end gap-2">
+					{#if showAnswers && wrongMcqCount > 0}
+						<button
+							type="button"
+							onclick={resetWrongMcqsInExam}
+							title="Clear only wrong MCQ answers and reshuffle their choices"
+							class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B]/40 border-b-3 bg-[#FFDFE0]/70 px-3 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all hover:bg-[#FFDFE0] active:translate-y-0.5 active:border-b-2 dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878]"
+						>
+							<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset wrong ({wrongMcqCount})
+						</button>
+					{/if}
+					<button
+						type="button"
+						onclick={() => {
+							confirmSubmit = false;
+							confirmReset = !confirmReset;
+						}}
+						title="Clear all answers, reshuffle choices, and restart timer"
+						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
+					>
+						<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
+					</button>
+					<button
+						type="button"
+						onclick={requestSubmit}
+						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-3.5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
+					>
+						<Send class="size-3.5" strokeWidth={2.5} /> Submit
+					</button>
+					<button
+						type="button"
+						onclick={toggleSingleQuestion}
+						aria-pressed={singleQuestion}
+						title={singleQuestion ? 'One question per page (MCQ view) — click for full exam scroll' : 'Full exam scroll — click for one question per page (MCQ view)'}
+						aria-label={singleQuestion ? 'Switch to full exam scroll view' : 'Switch to one question per page view'}
+						class={cn(
+							'grid size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2',
+							singleQuestion
+								? 'border-[#1899D6]/60 bg-[#DDF4FF]/80 text-[#1899D6] hover:bg-[#DDF4FF] dark:border-[#1CB0F6]/50 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
+								: 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+						)}
+					>
+						{#if singleQuestion}
+							<Square class="size-4" strokeWidth={2.5} />
+						{:else}
+							<LayoutList class="size-4" strokeWidth={2.5} />
+						{/if}
+					</button>
 					<button
 						type="button"
 						onclick={toggleShowAnswers}
 						aria-pressed={showAnswers}
 						title={showAnswers ? 'Answers reveal after each choice — click to hide until submission' : 'Answers hidden until submission — click to reveal after each choice'}
+						aria-label={showAnswers ? 'Hide answers until submission' : 'Reveal answers after each choice'}
 						class={cn(
-							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+							'grid size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2',
 							showAnswers
 								? 'border-[#46A302]/50 bg-[#D7FFB8]/70 text-[#46A302] hover:bg-[#D7FFB8] dark:border-[#58CC02]/50 dark:bg-[#58CC02]/15 dark:text-[#7BE328]'
 								: 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
 						)}
 					>
 						{#if showAnswers}
-							<Eye class="size-3.5" strokeWidth={2.5} /> Show answers
+							<Eye class="size-4" strokeWidth={2.5} />
 						{:else}
-							<EyeOff class="size-3.5" strokeWidth={2.5} /> Hide answers
+							<EyeOff class="size-4" strokeWidth={2.5} />
 						{/if}
 					</button>
 					<button
@@ -1455,43 +1518,38 @@
 							<VolumeX class="size-4" />
 						{/if}
 					</button>
-					<span
-						class={cn(
-							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 px-3 text-sm font-extrabold tabular-nums transition-colors',
-							isPaused
-								? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/15 dark:text-[#FFAD33]'
-								: secsLeft !== null && secsLeft < 60
-									? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
-									: 'border-slate-200 bg-slate-100 text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
-						)}
-					>
-						<Clock class="size-4" />
-						{#if secsLeft !== null}
-							{formatClock(secsLeft)}
-						{:else}
-							{formatClock(elapsedSecs)}
-						{/if}
-						{#if isPaused}
-							<span class="ml-0.5 text-[0.65rem] tracking-wide uppercase">Paused</span>
-						{/if}
-					</span>
 					<button
 						type="button"
 						onclick={togglePause}
 						aria-pressed={isPaused}
-						title={isPaused ? 'Resume timer' : 'Pause timer'}
+						title={isPaused ? 'Timer paused — click to resume' : 'Click to pause timer'}
 						class={cn(
-							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+							'group relative inline-flex h-9 items-center justify-center gap-1.5 overflow-hidden rounded-xl border-2 border-b-3 px-3 text-sm font-extrabold tabular-nums transition-all active:translate-y-0.5 active:border-b-2',
 							isPaused
-								? 'border-[#46A302] bg-[#58CC02] text-white hover:bg-[#4EB802]'
-								: 'border-slate-200 bg-white text-foreground hover:border-[#FF9600] hover:bg-[#FFF4E5] hover:text-[#C96B00] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:border-[#FF9600]/60 dark:hover:bg-[#FF9600]/15 dark:hover:text-[#FFAD33]'
+								? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] hover:border-[#46A302] hover:bg-[#58CC02] hover:text-white dark:border-[#FF9600]/60 dark:bg-[#FF9600]/15 dark:text-[#FFAD33] dark:hover:border-[#46A302] dark:hover:bg-[#58CC02] dark:hover:text-white'
+								: secsLeft !== null && secsLeft < 60
+									? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] hover:animate-none dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+									: 'border-slate-200 bg-slate-100 text-foreground hover:border-[#FF9600] hover:bg-[#FFF4E5] hover:text-[#C96B00] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:border-[#FF9600]/60 dark:hover:bg-[#FF9600]/15 dark:hover:text-[#FFAD33]'
 						)}
 					>
-						{#if isPaused}
-							<Play class="size-3.5" strokeWidth={2.5} /> Resume
-						{:else}
-							<Pause class="size-3.5" strokeWidth={2.5} /> Pause
-						{/if}
+						<span class="inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-0">
+							<Clock class="size-4" />
+							{#if secsLeft !== null}
+								{formatClock(secsLeft)}
+							{:else}
+								{formatClock(elapsedSecs)}
+							{/if}
+							{#if isPaused}
+								<span class="ml-0.5 text-[0.65rem] tracking-wide uppercase">Paused</span>
+							{/if}
+						</span>
+						<span class="pointer-events-none absolute inset-0 inline-flex items-center justify-center gap-1 text-xs font-extrabold tracking-wide uppercase opacity-0 transition-opacity group-hover:opacity-100">
+							{#if isPaused}
+								<Play class="size-3.5" strokeWidth={2.5} /> Resume
+							{:else}
+								<Pause class="size-3.5" strokeWidth={2.5} /> Pause
+							{/if}
+						</span>
 					</button>
 				</div>
 			</div>
@@ -1619,14 +1677,30 @@
 			</div>
 		{/if}
 		<!-- Exam Sections -->
-		{#each filteredActiveParts as part (part.kind)}
+		{#if singleQuestion && flatFilteredItems.length > 0}
+			{@const curFlat = flatFilteredItems[currentFlatIndex]}
+			<div class="flex flex-wrap items-center justify-between gap-2 text-xs font-extrabold tracking-wide text-muted-foreground uppercase">
+				<span>
+					Question <span class="text-[#1CB0F6] tabular-nums">{currentFlatIndex + 1}</span> of {flatFilteredItems.length}
+					{#if activeParts.length > 1}
+						<span class="ml-1.5 text-muted-foreground/80">· Part {curFlat.part.roman}. {curFlat.part.title}</span>
+					{/if}
+				</span>
+				<span class="rounded-full bg-[#D7FFB8] px-2.5 py-0.5 text-[0.7rem] font-extrabold text-[#46A302] tabular-nums dark:bg-[#58CC02]/20 dark:text-[#7BE328]">
+					{answeredCount} / {session.items.length} · {progressPct}%
+				</span>
+			</div>
+		{/if}
+		{#each displayParts as part (part.kind)}
 			<section id="exam-part-{part.kind}" class="flex scroll-mt-36 flex-col gap-4">
-				<div class="flex flex-col gap-0.5 border-b-2 border-slate-200 pb-2 dark:border-[#2B434E]">
-					<h2 class="font-heading text-xl font-extrabold text-foreground">
-						Part {part.roman}. {part.title}
-					</h2>
-					<p class="text-xs font-semibold text-muted-foreground">{KIND_META[part.kind].intro}</p>
-				</div>
+				{#if !singleQuestion}
+					<div class="flex flex-col gap-0.5 border-b-2 border-slate-200 pb-2 dark:border-[#2B434E]">
+						<h2 class="font-heading text-xl font-extrabold text-foreground">
+							Part {part.roman}. {part.title}
+						</h2>
+						<p class="text-xs font-semibold text-muted-foreground">{KIND_META[part.kind].intro}</p>
+					</div>
+				{/if}
 
 				{#each part.indexedItems as { entry, idx } (entryKey(entry))}
 					{@const k = entryKey(entry)}
@@ -2004,6 +2078,39 @@
 				{/each}
 			</section>
 		{/each}
+
+		{#if singleQuestion && flatFilteredItems.length > 0}
+			<div class="flex items-center justify-between gap-3">
+				<button
+					type="button"
+					disabled={currentFlatIndex <= 0}
+					onclick={() => stepSingleQuestion(-1)}
+					class="inline-flex h-11 items-center gap-1.5 rounded-2xl border-2 border-slate-200 border-b-4 bg-white px-4 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-[#1CB0F6] hover:text-[#1899D6] active:translate-y-0.5 active:border-b-2 disabled:pointer-events-none disabled:opacity-40 dark:border-[#2B434E] dark:bg-[#131F24]"
+				>
+					<ChevronLeft class="size-4" strokeWidth={2.5} /> Previous
+				</button>
+				<span class="text-xs font-extrabold text-muted-foreground tabular-nums">
+					{currentFlatIndex + 1} / {flatFilteredItems.length}
+				</span>
+				{#if currentFlatIndex + 1 < flatFilteredItems.length}
+					<button
+						type="button"
+						onclick={() => stepSingleQuestion(1)}
+						class="inline-flex h-11 items-center gap-1.5 rounded-2xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#18A1E3] active:translate-y-0.5 active:border-b-2"
+					>
+						Next <ChevronRight class="size-4" strokeWidth={2.5} />
+					</button>
+				{:else}
+					<button
+						type="button"
+						onclick={requestSubmit}
+						class="inline-flex h-11 items-center gap-1.5 rounded-2xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
+					>
+						<Send class="size-3.5" strokeWidth={2.5} /> Finish &amp; Submit
+					</button>
+				{/if}
+			</div>
+		{/if}
 
 		<!-- Bottom Submit / Quit bar -->
 		{#if confirmSubmit}

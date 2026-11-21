@@ -36,6 +36,13 @@ export function isCaseDrillMcq(q: Pick<McqTopicCandidate, 'topicId' | 'tag'>): b
 
 const FOCUS_TAG_META: { tag: McqTag; id: string; name: string; eyebrow: string; desc: string }[] = [
 	{
+		tag: 'bodies',
+		id: 'tag:bodies',
+		name: 'Constitutional Bodies',
+		eyebrow: 'BY FOCUS · CONSTITUTIONAL BODIES',
+		desc: 'Independent vs. attached and continuing vs. non-continuing constitutional bodies.'
+	},
+	{
 		tag: 'jurisprudence',
 		id: 'tag:jurisprudence',
 		name: 'Jurisprudence',

@@ -760,6 +760,10 @@
 		cases: {
 			label: 'Cases',
 			cls: 'border-[#FF9600]/60 bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/50 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+		},
+		bodies: {
+			label: 'Bodies',
+			cls: 'border-teal-600/50 bg-teal-100 text-teal-800 dark:border-teal-400/50 dark:bg-teal-500/20 dark:text-teal-300'
 		}
 	};
 

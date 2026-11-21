@@ -78,7 +78,8 @@
 		exceptions: { label: 'Exceptions', cls: 'border-[#1899D6]/50 bg-[#DDF4FF] text-[#1899D6] dark:border-[#1CB0F6]/50 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' },
 		effects: { label: 'Effects', cls: 'border-[#A55EEA]/50 bg-[#F3E8FF] text-[#8930C9] dark:border-[#CE82FF]/50 dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' },
 		jurisprudence: { label: 'Jurisprudence', cls: 'border-[#EA2B2B]/50 bg-[#FFDFE0] text-[#EA2B2B] dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]' },
-		cases: { label: 'Cases', cls: 'border-[#FF9600]/60 bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/50 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]' }
+		cases: { label: 'Cases', cls: 'border-[#FF9600]/60 bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/50 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]' },
+		bodies: { label: 'Bodies', cls: 'border-teal-600/50 bg-teal-100 text-teal-800 dark:border-teal-400/50 dark:bg-teal-500/20 dark:text-teal-300' }
 	};
 
 	const byId = $derived(new Map(lawModule.mcqs.map((q) => [q.id, q])));

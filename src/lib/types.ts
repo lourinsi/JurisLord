@@ -3,7 +3,7 @@ export interface McqOption {
 	text: string;
 }
 
-export type McqTag = 'memorization' | 'requisites' | 'exceptions' | 'effects' | 'jurisprudence' | 'cases';
+export type McqTag = 'memorization' | 'requisites' | 'exceptions' | 'effects' | 'jurisprudence' | 'cases' | 'bodies';
 
 export interface McqQuestion {
 	/** Globally unique and stable: `<moduleId>:<topicId>:<n>`. Used as the localStorage key. */

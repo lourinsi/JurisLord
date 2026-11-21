@@ -80,9 +80,7 @@
 			</ul>
 		</div>
 		<p class="rounded-2xl border-2 border-[#E5B400]/50 bg-[#FFF5CC] px-3.5 py-2.5 text-sm leading-relaxed font-semibold text-slate-900 dark:border-[#FFC800]/40 dark:bg-[#FFC800]/15 dark:text-slate-100">
-			<b>Best way to use this app:</b> start with each subject's <b>★ Exam focus</b>, then keep pressing
-			<b>Random problem</b>. On the exam, you won't know which question is coming, so don't study the problems in order.
-			See <b>Exam day</b> for the go-blank routine.
+			<b>Best way to use this app:</b> start with each subject's <b>★ Mock Exam</b> (20 random Finals questions, 1 minute per question), then hit <b>Retake Missed</b> and <b>New 20-Question Set</b> until your weak spots stick. Use <b>MCQs</b> to drill by question type or focus, and check <b>Exam day</b> for the go-blank routine.
 		</p>
 		<div class="mt-1 flex justify-end">
 			<button

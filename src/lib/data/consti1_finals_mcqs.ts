@@ -3,8 +3,8 @@ import type { McqQuestion, ModuleTopic } from '$lib/types';
 export const constiFinalsTopic: ModuleTopic = {
 	id: 'finals',
 	name: 'FINALS',
-	eyebrow: 'COMPREHENSIVE MASTER DRILL · 265 ITEMS',
-	desc: '265 multiple-choice and true-or-false questions based on Justice Isagani A. Cruz’s Philippine Political Law, the 1987 Philippine Constitution, and Supreme Court jurisprudence.'
+	eyebrow: 'COMPREHENSIVE MASTER DRILL · 267 ITEMS',
+	desc: '267 multiple-choice and true-or-false questions based on Justice Isagani A. Cruz’s Philippine Political Law, the 1987 Philippine Constitution, and Supreme Court jurisprudence.'
 };
 
 export const constiFinalsCasesTopic: ModuleTopic = {
@@ -87,30 +87,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P1,
 		tag: 'memorization',
-		question: 'Under Article VIII, Section 4(1), the Supreme Court is composed of and may sit in:',
+		question:
+			"Under Article VIII, Section 4(1), the Supreme Court is composed of and may sit in:",
 		options: [
-			'A Chief Justice and fourteen Associate Justices',
-			'Divisions of three, five, or seven Members',
-			'Divisions of four or six Members',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A Chief Justice and fifteen Associate Justices",
+			"Divisions of three, five, or nine Members",
+			"Divisions of four or six Members",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the constitutional composition is permanently fixed at fifteen members.',
-			'True because these are the only division sizes authorized by the Constitution.',
-			'False because even-numbered divisions are not recognized by the fundamental law.',
-			'False because option c is unconstitutional.',
-			'True because both a and b accurately reflect Section 4(1).',
-			'False because option c is unconstitutional.',
-			'False because options a and b are true.'
+			"False because the Supreme Court is composed of a Chief Justice and fourteen (not fifteen) Associate Justices, totaling fifteen members.",
+			"False because divisions may only consist of three, five, or seven Members—never nine.",
+			"False because even-numbered divisions are not recognized by the fundamental law.",
+			"False because options a and c are both unconstitutional.",
+			"False because options a and b both misstate Section 4(1).",
+			"False because options a, b, and c are all false.",
+			"True because none of the listed compositions or division sizes match Article VIII, Section 4(1)."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article VIII, Section 4(1) provides: "The Supreme Court shall be composed of a Chief Justice and fourteen Associate Justices. It may sit en banc or in its discretion, in division of three, five, or seven Members. Any vacancy shall be filled within ninety days from the occurrence thereof." The Constitution intentionally excludes even-numbered divisions to prevent persistent ties in judicial deliberations.',
-		legalBasis: 'Art. VIII, Sec. 4(1), 1987 Constitution'
+			"G (none of the above). Article VIII, Section 4(1) provides: \"The Supreme Court shall be composed of a Chief Justice and fourteen Associate Justices. It may sit en banc or in its discretion, in division of three, five, or seven Members. Any vacancy shall be filled within ninety days from the occurrence thereof.\" Option a erroneously states fifteen Associate Justices (which would total sixteen members), option b erroneously includes nine-member divisions, and option c lists prohibited even-numbered divisions.",
+		legalBasis:
+			"Art. VIII, Sec. 4(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:3',
@@ -147,30 +149,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P1,
 		tag: 'requisites',
-		question: 'Under Article VIII, Section 7(1), to be appointed a Member of the Supreme Court, a person must be:',
+		question:
+			"Under Article VIII, Section 7(1), to be appointed a Member of the Supreme Court, a person must be:",
 		options: [
-			'A natural-born citizen of the Philippines',
-			'At least 40 years of age at the time of appointment',
-			'A judge of a lower court or engaged in law practice in the Philippines for at least 15 years',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A citizen of the Philippines, whether natural-born or naturalized",
+			"At least 35 years of age at the time of appointment",
+			"A judge of a lower court or engaged in law practice in the Philippines for at least 10 years",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because naturalized citizens are disqualified from appointment to the Supreme Court.',
-			'True because forty is the minimum constitutional age requirement.',
-			'True because fifteen years of judicial service or law practice is an express constitutional requirement.',
-			'False because option b is also an express constitutional qualification.',
-			'False because option c is equally an indispensable qualification.',
-			'True because all three options accurately articulate the constitutional qualifications under Section 7(1).',
-			'False because options a, b, and c are all true.'
+			"False because naturalized citizens are disqualified; appointees must strictly be natural-born citizens.",
+			"False because the minimum constitutional age for Supreme Court Justices is 40, not 35.",
+			"False because Supreme Court Justices must have at least 15 years (not 10) of judicial service or law practice.",
+			"False because both a and c misstate the constitutional qualifications.",
+			"False because both a and b are constitutionally inaccurate.",
+			"False because all three options misstate Section 7(1).",
+			"True because none of the choices accurately state the mandatory qualifications under Section 7(1)."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article VIII, Section 7(1) states: "No person shall be appointed Member of the Supreme Court or any lower collegiate court unless he is a natural-born citizen of the Philippines. A Member of the Supreme Court must be at least forty years of age, and must have been for fifteen years or more a judge of a lower court or engaged in the practice of law in the Philippines."',
-		legalBasis: 'Art. VIII, Sec. 7(1), 1987 Constitution'
+			"G (none of the above). Article VIII, Section 7(1) states: \"No person shall be appointed Member of the Supreme Court or any lower collegiate court unless he is a natural-born citizen of the Philippines. A Member of the Supreme Court must be at least forty years of age, and must have been for fifteen years or more a judge of a lower court or engaged in the practice of law in the Philippines.\" All three choices fail these requirements by allowing naturalized citizens, lowering the age to 35, and reducing required legal experience to 10 years.",
+		legalBasis:
+			"Art. VIII, Sec. 7(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:5',
@@ -329,30 +333,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P1,
 		tag: 'memorization',
-		question: 'Under Article VIII, Section 9, appointments of Justices of the Supreme Court and judges of lower courts:',
+		question:
+			"Under Article VIII, Section 9, appointments of Justices of the Supreme Court and judges of lower courts:",
 		options: [
-			'Are made by the President from a list of at least three nominees prepared by the JBC',
-			'Require confirmation by the Commission on Appointments',
-			'Must be issued within ninety (90) days from the submission of the list for lower courts',
-			'a and b are true',
-			'a and c are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Are made by the President from a list of at least five nominees prepared by the JBC",
+			"Require confirmation by the Commission on Appointments",
+			"Must be issued within sixty (60) days from the submission of the list for lower courts",
+			"a and b are true",
+			"a and c are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the JBC shortlist must contain at least three names per vacancy.',
-			'False because judicial appointments do not undergo Commission on Appointments confirmation.',
-			'True because Section 9 mandates a ninety-day period for lower court appointments.',
-			'False because option b is incorrect.',
-			'True because both nomination from the JBC list and the ninety-day period are correct.',
-			'False because option b is completely inaccurate.',
-			'False because options a and c are true.'
+			"False because the JBC shortlist must contain at least three (not five) nominees per vacancy.",
+			"False because judicial appointments do not undergo Commission on Appointments confirmation.",
+			"False because Section 9 mandates a ninety-day (not sixty-day) period for lower court appointments.",
+			"False because both a and b are inaccurate.",
+			"False because both a and c misstate the constitutional numbers.",
+			"False because options a, b, and c are all false.",
+			"True because none of the statements accurately state Article VIII, Section 9."
 		],
-		correctIndex: 4,
-		key: 'a and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and c are true). Article VIII, Section 9 provides: "The Members of the Supreme Court and judges of lower courts shall be appointed by the President from a list of at least three nominees prepared by the Judicial and Bar Council for every vacancy. Such appointments need no confirmation. For the lower courts, the President shall issue the appointments within ninety days from the submission of the list."',
-		legalBasis: 'Art. VIII, Sec. 9, 1987 Constitution'
+			"G (none of the above). Article VIII, Section 9 provides: \"The Members of the Supreme Court and judges of lower courts shall be appointed by the President from a list of at least three nominees prepared by the Judicial and Bar Council for every vacancy. Such appointments need no confirmation. For the lower courts, the President shall issue the appointments within ninety days from the submission of the list.\" Every option contains a constitutional error (five instead of three nominees, CA confirmation instead of none, and 60 instead of 90 days).",
+		legalBasis:
+			"Art. VIII, Sec. 9, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:11',
@@ -419,30 +425,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P1,
 		tag: 'memorization',
-		question: 'Under Article VIII, Section 15(1), what are the maximum periods prescribed to decide or resolve cases from the date of submission?',
+		question:
+			"Under Article VIII, Section 15(1), what are the maximum periods prescribed to decide or resolve cases from the date of submission?",
 		options: [
-			'24 months for the Supreme Court',
-			'12 months for all lower collegiate courts',
-			'3 months for all other lower courts',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"18 months for the Supreme Court",
+			"6 months for all lower collegiate courts",
+			"60 days for all other lower courts",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Section 15(1) assigns twenty-four months to the Supreme Court.',
-			'True because the Court of Appeals, CTA, and Sandiganbayan are given twelve months.',
-			'True because trial courts like RTCs and MTCs are bound by a three-month deadline.',
-			'False because option b is also an exact constitutional period.',
-			'False because option c is equally an accurate constitutional timeframe.',
-			'True because all three periods are precisely stated in Section 15(1).',
-			'False because options a, b, and c are all true.'
+			"False because Section 15(1) assigns 24 months (not 18) to the Supreme Court.",
+			"False because lower collegiate courts (CA, CTA, Sandiganbayan) are given 12 months (not 6).",
+			"False because trial courts are given 3 months (not 60 days; 60 days applies to Constitutional Commissions).",
+			"False because both a and c are incorrect.",
+			"False because both a and b are incorrect.",
+			"False because none of the listed timeframes match Section 15(1).",
+			"True because the correct constitutional periods are 24 months, 12 months, and 3 months."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article VIII, Section 15(1) provides: "All cases or matters filed after the effectivity of this Constitution must be decided or resolved within twenty-four months from date of submission for the Supreme Court, and, unless reduced by the Supreme Court, twelve months for all lower collegiate courts, and three months for all other lower courts."',
-		legalBasis: 'Art. VIII, Sec. 15(1), 1987 Constitution'
+			"G (none of the above). Article VIII, Section 15(1) provides: \"All cases or matters filed after the effectivity of this Constitution must be decided or resolved within twenty-four months from date of submission for the Supreme Court, and, unless reduced by the Supreme Court, twelve months for all lower collegiate courts, and three months for all other lower courts.\" None of the choices match the 24–12–3 month periods.",
+		legalBasis:
+			"Art. VIII, Sec. 15(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:14',
@@ -480,30 +488,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P1,
 		tag: 'memorization',
-		question: 'Under Article VIII, Section 3, the fiscal autonomy of the Judiciary guarantees that:',
+		question:
+			"Under Article VIII, Section 3, the fiscal autonomy of the Judiciary guarantees that:",
 		options: [
-			'Appropriations for the Judiciary cannot be reduced below the amount appropriated for the previous year',
-			'Approved judicial appropriations shall be automatically and regularly released',
-			'The Judiciary is exempt from submitting an annual proposed budget to Congress',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Appropriations for the Judiciary may be reduced by Congress below the previous year's amount during fiscal emergencies",
+			"Approved judicial appropriations shall be released upon discretionary clearance by the Department of Budget and Management",
+			"The Judiciary is exempt from submitting an annual proposed budget to Congress",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the non-diminution rule prevents legislative budgetary leverage.',
-			'True because funds cannot be impounded or subjected to conditions by the DBM.',
-			'False because the judiciary must still submit its budget proposal to Congress.',
-			'False because option c is incorrect.',
-			'True because both non-diminution and automatic release are guaranteed.',
-			'False because option c is incorrect.',
-			'False because options a and b are true.'
+			"False because appropriations for the Judiciary may never be reduced by the legislature below the previous year's amount.",
+			"False because approved funds must be automatically and regularly released without DBM impoundment or conditions.",
+			"False because the Judiciary must still submit its proposed annual budget to Congress.",
+			"False because both a and c are inaccurate.",
+			"False because both a and b contradict judicial fiscal autonomy.",
+			"False because options a, b, and c are all false.",
+			"True because none of the statements accurately express fiscal autonomy under Section 3."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article VIII, Section 3 provides: "The Judiciary shall enjoy fiscal autonomy. Appropriations for the Judiciary may not be reduced by the legislature below the amount appropriated for the previous year and, after approval, shall be automatically and regularly released." In Bengzon v. Drilon (208 SCRA 133, 1992), the Court held that the President\'s veto of provisions regarding judicial pensions unconstitutionally undermined fiscal autonomy.',
-		legalBasis: 'Art. VIII, Sec. 3, 1987 Constitution; Bengzon v. Drilon (1992)'
+			"G (none of the above). Article VIII, Section 3 provides: \"The Judiciary shall enjoy fiscal autonomy. Appropriations for the Judiciary may not be reduced by the legislature below the amount appropriated for the previous year and, after approval, shall be automatically and regularly released.\" (Bengzon v. Drilon, 208 SCRA 133, 1992). None of the choices accurately state these guarantees.",
+		legalBasis:
+			"Art. VIII, Sec. 3, 1987 Constitution; Bengzon v. Drilon (1992)"
 	},
 	{
 		id: 'consti1:finals:16',
@@ -754,30 +764,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'memorization',
-		question: 'Under Article IX-A, Section 1, the Independent Constitutional Commissions are:',
+		question:
+			"Under Article IX-A, Section 1, the Independent Constitutional Commissions are:",
 		options: [
-			'The Civil Service Commission',
-			'The Commission on Elections',
-			'The Commission on Audit',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"The Commission on Human Rights",
+			"The Commission on Appointments",
+			"The Office of the Ombudsman",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the CSC is established under Article IX-B.',
-			'True because the COMELEC is established under Article IX-C.',
-			'True because the COA is established under Article IX-D.',
-			'False because option b is also a constitutional commission.',
-			'False because option c is equally an independent commission.',
-			'True because all three bodies are the independent commissions created under Article IX-A.',
-			'False because options a, b, and c are all true.'
+			"False because the CHR is an independent office under Article XIII, not an Article IX Constitutional Commission.",
+			"False because the Commission on Appointments is a constitutional legislative body under Article VI, Section 18.",
+			"False because the Office of the Ombudsman is an independent constitutional office under Article XI.",
+			"False because neither the CHR nor the Ombudsman is an Article IX Commission.",
+			"False because neither a nor b is an Article IX Commission.",
+			"False because none of these three bodies are Article IX Constitutional Commissions.",
+			"True because the three Article IX Constitutional Commissions are strictly the CSC, COMELEC, and COA."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article IX-A, Section 1 provides: "The Constitutional Commissions, which shall be independent, are the Civil Service Commission, the Commission on Elections, and the Commission on Audit." Other bodies like the Commission on Human Rights are constitutional offices, but they are not Article IX commissions.',
-		legalBasis: 'Art. IX-A, Sec. 1, 1987 Constitution'
+			"G (none of the above). Article IX-A, Section 1 provides: \"The Constitutional Commissions, which shall be independent, are the Civil Service Commission, the Commission on Elections, and the Commission on Audit.\" While the CHR (Art. XIII), Commission on Appointments (Art. VI), and Ombudsman (Art. XI) are constitutional bodies, none of them are Article IX Constitutional Commissions.",
+		legalBasis:
+			"Art. IX-A, Sec. 1, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:27',
@@ -815,30 +827,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P2,
 		tag: 'memorization',
 		question:
-			'Under Article IX-A, Section 7, each Commission shall decide by a majority vote of all its Members any case or matter brought before it within:',
+			"Under Article IX-A, Section 7, each Commission shall decide by a majority vote of all its Members any case or matter brought before it within:",
 		options: [
-			'30 days from submission',
-			'60 days from submission',
-			'90 days from submission',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"30 days from submission",
+			"45 days from submission",
+			"90 days from submission",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'False because thirty days is the period to elevate a decision to the Supreme Court on certiorari.',
-			'True because Section 7 mandates deciding cases within sixty days from submission.',
-			'False because ninety days applies to judicial appointments and lower court decisions.',
-			'False because options a and c are incorrect.',
-			'False because option a is incorrect.',
-			'False because only option b (60 days) is correct.',
-			'False because option b is true.'
+			"False because 30 days is the period to elevate a final decision to the Supreme Court on certiorari.",
+			"False because 45 days is not the constitutional period prescribed under Section 7.",
+			"False because 90 days applies to judicial appointments and lower court decisions, not Commission cases.",
+			"False because both a and c are incorrect.",
+			"False because both a and b are incorrect.",
+			"False because options a, b, and c are all incorrect.",
+			"True because Article IX-A, Section 7 mandates deciding cases within sixty (60) days from submission."
 		],
-		correctIndex: 1,
-		key: '60 days from submission',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'B (60 days from submission). Article IX-A, Section 7 provides: "Each Commission shall decide by a majority vote of all its Members, any case or matter brought before it within sixty days from the date of its submission for decision or resolution. A case or matter is deemed submitted for decision or resolution upon the filing of the last pleading, brief, or memorandum required by the rules of the Commission or by the Commission itself."',
-		legalBasis: 'Art. IX-A, Sec. 7, 1987 Constitution'
+			"G (none of the above). Article IX-A, Section 7 provides: \"Each Commission shall decide by a majority vote of all its Members, any case or matter brought before it within sixty days from the date of its submission for decision or resolution.\" Because 60 days is not among options a, b, or c, none of the above is correct.",
+		legalBasis:
+			"Art. IX-A, Sec. 7, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:29',
@@ -936,30 +949,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'requisites',
-		question: 'Under Article IX-B, Section 1(1), the Civil Service Commission is composed of:',
+		question:
+			"Under Article IX-B, Section 1(1), the Civil Service Commission is composed of:",
 		options: [
-			'A Chairman and two Commissioners',
-			'Appointees who must be at least thirty-five (35) years of age at the time of appointment',
-			'Appointees with proven capacity for public administration',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A Chairman and four Commissioners",
+			"Appointees who must be at least forty (40) years of age at the time of appointment",
+			"Appointees who must all be members of the Philippine Bar with ten (10) years of practice",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the CSC is a three-member collegiate body.',
-			'True because thirty-five is the minimum age prescribed by Section 1(1).',
-			'True because proven administrative capacity is an express constitutional requirement.',
-			'False because option b is also an express constitutional qualification.',
-			'False because option c is equally an express constitutional qualification.',
-			'True because all three options accurately articulate Section 1(1).',
-			'False because options a, b, and c are all true.'
+			"False because the CSC is composed of a Chairman and two (not four) Commissioners.",
+			"False because the minimum constitutional age is 35 (not 40) years of age.",
+			"False because CSC appointees need proven capacity for public administration, not Bar membership.",
+			"False because both a and c misstate Section 1(1).",
+			"False because both a and b misstate Section 1(1).",
+			"False because options a, b, and c are all false.",
+			"True because none of the choices accurately reflect the composition or qualifications of the CSC."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article IX-B, Section 1(1) provides: "The Civil Service Commission shall be composed of a Chairman and two Commissioners who shall be natural-born citizens of the Philippines and, at the time of their appointment, at least thirty-five years of age, with proven capacity for public administration, and must not have been candidates for any elective position in the elections immediately preceding their appointment."',
-		legalBasis: 'Art. IX-B, Sec. 1(1), 1987 Constitution'
+			"G (none of the above). Article IX-B, Section 1(1) provides: \"The Civil Service Commission shall be composed of a Chairman and two Commissioners who shall be natural-born citizens of the Philippines and, at the time of their appointment, at least thirty-five years of age, with proven capacity for public administration, and must not have been candidates for any elective position in the elections immediately preceding their appointment.\"",
+		legalBasis:
+			"Art. IX-B, Sec. 1(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:33',
@@ -1119,30 +1134,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'requisites',
-		question: 'Under Article IX-C, Section 1(1), the Commission on Elections is composed of:',
+		question:
+			"Under Article IX-C, Section 1(1), the Commission on Elections is composed of:",
 		options: [
-			'A Chairman and six Commissioners',
-			'Appointees a majority of whom, including the Chairman, must be members of the Philippine Bar practicing law for at least ten (10) years',
-			'Appointees who must be at least thirty-five (35) years of age at the time of appointment',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A Chairman and four Commissioners",
+			"Appointees all of whom must be members of the Philippine Bar practicing law for at least fifteen (15) years",
+			"Appointees who must be at least forty (40) years of age at the time of appointment",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the COMELEC consists of seven members.',
-			'True because a lawyer majority with ten years of practice is required.',
-			'True because thirty-five is the minimum age requirement.',
-			'False because option b is also an express constitutional qualification.',
-			'False because option c is equally an accurate constitutional qualification.',
-			'True because all three options accurately articulate Section 1(1).',
-			'False because options a, b, and c are all true.'
+			"False because the COMELEC is composed of a Chairman and six (not four) Commissioners.",
+			"False because only a majority (including the Chairman)—not all—must be lawyers, and the required practice is at least 10 (not 15) years.",
+			"False because the minimum age for COMELEC members is 35 (not 40) years of age.",
+			"False because both a and c are inaccurate.",
+			"False because both a and b are inaccurate.",
+			"False because options a, b, and c are all false.",
+			"True because none of the choices accurately reflect Article IX-C, Section 1(1)."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article IX-C, Section 1(1) provides: "The Commission on Elections shall be composed of a Chairman and six Commissioners who shall be natural-born citizens of the Philippines and, at the time of their appointment, at least thirty-five years of age, holders of a college degree, and must not have been candidates for any elective position in the election immediately preceding their appointment. However, a majority thereof, including the Chairman, shall be members of the Philippine Bar who have been engaged in the practice of law for at least ten years."',
-		legalBasis: 'Art. IX-C, Sec. 1(1), 1987 Constitution'
+			"G (none of the above). Article IX-C, Section 1(1) provides that the COMELEC is composed of a Chairman and six Commissioners, at least 35 years of age, holders of a college degree, and that a majority thereof, including the Chairman, shall be members of the Philippine Bar engaged in the practice of law for at least ten years.",
+		legalBasis:
+			"Art. IX-C, Sec. 1(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:39',
@@ -1211,60 +1228,64 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'memorization',
-		question: 'Under Article IX-C, Section 2(2), the COMELEC exercises exclusive original jurisdiction over all election contests relating to:',
+		question:
+			"Under Article IX-C, Section 2(2), the COMELEC exercises exclusive original jurisdiction over all election contests relating to:",
 		options: [
-			'Regional elective officials',
-			'Provincial elective officials',
-			'City elective officials',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Municipal elective officials",
+			"Barangay elective officials",
+			"Senators and Members of the House of Representatives after proclamation, oath, and assumption",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because regional elective offices fall under COMELEC original jurisdiction.',
-			'True because provincial contests fall under COMELEC original jurisdiction.',
-			'True because city elective contests fall under COMELEC original jurisdiction.',
-			'False because option b is also within exclusive original jurisdiction.',
-			'False because option c is equally an original jurisdiction contest.',
-			'True because regional, provincial, and city contests are all within COMELEC exclusive original jurisdiction.',
-			'False because options a, b, and c are all true.'
+			"False because municipal election contests originate in the RTC; COMELEC exercises only appellate jurisdiction over them.",
+			"False because barangay election contests originate in the MTC; COMELEC exercises only appellate jurisdiction over them.",
+			"False because once proclaimed, sworn in, and seated, congressional contests fall exclusively under the SET or HRET.",
+			"False because neither a nor c falls under COMELEC original jurisdiction.",
+			"False because both municipal and barangay contests fall under COMELEC appellate, not original, jurisdiction.",
+			"False because none of these categories fall under COMELEC exclusive original jurisdiction.",
+			"True because COMELEC exclusive original jurisdiction covers only elective regional, provincial, and city officials."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article IX-C, Section 2(2) provides that the COMELEC shall "Exercise exclusive original jurisdiction over all contests relating to the elections, returns, and qualifications of all elective regional, provincial, and city officials, and appellate jurisdiction over all contests involving elective municipal officials decided by trial courts of general jurisdiction, or involving elective barangay officials decided by trial courts of limited jurisdiction."',
-		legalBasis: 'Art. IX-C, Sec. 2(2), 1987 Constitution'
+			"G (none of the above). Article IX-C, Section 2(2) grants the COMELEC exclusive original jurisdiction strictly over all contests relating to the elections, returns, and qualifications of elective regional, provincial, and city officials. Municipal contests originate in the RTC, barangay contests originate in the MTC, and seated congressional members fall under the SET/HRET (Art. VI, Sec. 17; Reyes v. COMELEC).",
+		legalBasis:
+			"Art. IX-C, Sec. 2(2) & Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC"
 	},
 	{
 		id: 'consti1:finals:42',
 		topicId: 'finals',
 		topic: P2,
 		tag: 'requisites',
-		question: 'Under Article IX-D, Section 1(1), the Commission on Audit is composed of:',
+		question:
+			"Under Article IX-D, Section 1(1), the Commission on Audit is composed of:",
 		options: [
-			'A Chairman and two Commissioners',
-			'Certified public accountants with at least ten (10) years of auditing experience or members of the Philippine Bar practicing law for at least ten (10) years',
-			'Appointees who must not all belong to the same professional discipline',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A Chairman and six Commissioners",
+			"Certified public accountants with at least five (5) years of auditing experience or members of the Philippine Bar practicing law for at least five (5) years",
+			"Appointees all of whom must belong to the certified public accounting profession",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because COA is a three-member collegiate body.',
-			'True because Section 1(1) prescribes these alternative professional backgrounds.',
-			'True because the Constitution prohibits all three members from belonging to the same profession.',
-			'False because option b is also an express constitutional qualification.',
-			'False because option c is equally an express constitutional limitation.',
-			'True because all three options accurately articulate Section 1(1).',
-			'False because options a, b, and c are all true.'
+			"False because COA is composed of a Chairman and two (not six) Commissioners.",
+			"False because Section 1(1) requires at least ten (not five) years of auditing or law practice experience.",
+			"False because the Constitution expressly mandates that at no time shall all Members of COA belong to the same profession.",
+			"False because both a and c violate Section 1(1).",
+			"False because both a and b misstate Section 1(1).",
+			"False because options a, b, and c are all false.",
+			"True because none of the choices accurately reflect Article IX-D, Section 1(1)."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article IX-D, Section 1(1) provides: "The Commission on Audit shall be composed of a Chairman and two Commissioners... who shall be certified public accountants with not less than ten years of auditing experience, or members of the Philippine Bar who have been engaged in the practice of law for at least ten years, and at no time shall all Members of the Commission belong to the same profession."',
-		legalBasis: 'Art. IX-D, Sec. 1(1), 1987 Constitution'
+			"G (none of the above). Article IX-D, Section 1(1) provides that COA consists of a Chairman and two Commissioners who are CPAs with not less than ten years of auditing experience or members of the Philippine Bar practicing law for at least ten years, and explicitly commands that \"at no time shall all Members of the Commission belong to the same profession.\"",
+		legalBasis:
+			"Art. IX-D, Sec. 1(1), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:43',
@@ -1639,30 +1660,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'exceptions',
-		question: 'Under Article IX-B, Section 7, what are the constitutional restrictions on holding dual public offices?',
+		question:
+			"Under Article IX-B, Section 7, which of the following statements accurately reflect the constitutional rules on holding dual public offices?",
 		options: [
-			'No elective official shall be eligible for appointment or designation to any public office during tenure',
-			'No appointive official shall hold any other office in Government unless allowed by law or the primary functions of his position',
-			'An elective official may accept an executive post provided he waives his legislative salary',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"An elective local official (such as a Governor or Mayor) may be appointed to a Cabinet post during his tenure provided he takes a leave of absence",
+			"An appointive official may hold any other office in Government even without authorization by law or the primary functions of his position",
+			"An elective official may accept an executive post provided he waives his legislative salary",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because elective officials face an absolute ban on appointments during their tenure.',
-			'True because appointive officials cannot hold dual offices without statutory/functional authorization.',
-			'False because elective officials cannot accept executive posts during their tenure.',
-			'False because option c violates Article IX-B, Section 7.',
-			'True because both elective and appointive office-holding rules are correctly stated.',
-			'False because option c violates Article IX-B, Section 7.',
-			'False because options a and b are true.'
+			"False because no elective official is eligible for appointment or designation to any public office during his tenure (save for express constitutional exceptions like the Vice-President as Cabinet Member under Art. VII, Sec. 3); a leave of absence does not terminate tenure.",
+			"False because an appointive official cannot hold any other government office unless expressly allowed by law or by the primary functions of his position.",
+			"False because waiving compensation does not lift the constitutional prohibition against elective officials accepting executive appointments.",
+			"False because both a and c violate Article IX-B, Section 7.",
+			"False because both a and b violate Article IX-B, Section 7.",
+			"False because options a, b, and c are all unconstitutional.",
+			"True because every listed statement contradicts Article IX-B, Section 7."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article IX-B, Section 7 provides: "No elective official shall be eligible for appointment or designation in any capacity to any public office or position during his tenure. Unless otherwise allowed by law or by the primary functions of his position, no appointive official shall hold any other office or employment in the Government or any subdivision, agency or instrumentality thereof, including government-owned or controlled corporations or their subsidiaries."',
-		legalBasis: 'Art. IX-B, Sec. 7, 1987 Constitution'
+			"G (none of the above). Article IX-B, Section 7 provides: \"No elective official shall be eligible for appointment or designation in any capacity to any public office or position during his tenure. Unless otherwise allowed by law or by the primary functions of his position, no appointive official shall hold any other office or employment in the Government or any subdivision, agency or instrumentality thereof, including government-owned or controlled corporations or their subsidiaries.\" Unlike the Vice-President (who is expressly permitted to serve in the Cabinet under Art. VII, Sec. 3), local elective officials and legislators cannot accept appointive executive posts during their tenure without forfeiting or resigning from office (Flores v. Drilon, 223 SCRA 568).",
+		legalBasis:
+			"Art. IX-B, Sec. 7 & Art. VII, Sec. 3, 1987 Constitution; Flores v. Drilon (1993)"
 	},
 	{
 		id: 'consti1:finals:56',
@@ -1730,30 +1753,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'memorization',
-		question: 'Under Article IX-D, Section 4, the Commission on Audit is required to submit an annual report to:',
+		question:
+			"Under Article IX-D, Section 4, the Commission on Audit is constitutionally required to submit its annual report to:",
 		options: [
-			'The President of the Philippines',
-			'The Congress of the Philippines',
-			'The Chief Justice of the Supreme Court',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"The Chief Justice of the Supreme Court",
+			"The Office of the Ombudsman",
+			"The Secretary of Finance",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the President receives the annual financial condition report.',
-			'True because Congress receives the annual financial condition report.',
-			'False because the annual report is submitted to the political branches, not the judiciary.',
-			'False because the Chief Justice is not a designated recipient under Section 4.',
-			'True because the report is submitted to both the President and the Congress.',
-			'False because the Chief Justice is not a designated recipient under Section 4.',
-			'False because options a and b are true.'
+			"False because the annual financial condition report is submitted to the political branches, not the Chief Justice.",
+			"False because the Ombudsman is not a designated recipient under Article IX-D, Section 4.",
+			"False because Section 4 specifies the President and the Congress, not the Secretary of Finance.",
+			"False because neither a nor c is designated by Section 4.",
+			"False because neither a nor b is designated by Section 4.",
+			"False because none of the listed officials are designated recipients under Section 4.",
+			"True because Section 4 mandates submission strictly to the President and the Congress."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article IX-D, Section 4 provides: "The Commission shall submit to the President and the Congress, within the time fixed by law, an annual report covering the financial condition and operation of the Government, its subdivisions, agencies, and instrumentalities, including government-owned or controlled corporations, and other non-governmental entities subject to its audit, and recommend measures necessary to improve their efficiency and effectiveness."',
-		legalBasis: 'Art. IX-D, Sec. 4, 1987 Constitution'
+			"G (none of the above). Article IX-D, Section 4 provides: \"The Commission shall submit to the President and the Congress, within the time fixed by law, an annual report covering the financial condition and operation of the Government...\" Because neither the President nor Congress appears in options a, b, or c, none of the above is correct.",
+		legalBasis:
+			"Art. IX-D, Sec. 4, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:59',
@@ -1851,30 +1876,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P2,
 		tag: 'memorization',
-		question: 'Under Article IX-C, Section 9, unless otherwise fixed by the Commission in special cases, the election period shall commence:',
+		question:
+			"Under Article IX-C, Section 9, unless otherwise fixed by the Commission in special cases, the election period shall commence:",
 		options: [
-			'60 days before the election and end 30 days thereafter',
-			'90 days before the day of election and end 30 days thereafter',
-			'120 days before the election and end 60 days thereafter',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"60 days before the election and end 30 days thereafter",
+			"90 days before the day of election and end 60 days thereafter",
+			"120 days before the election and end 60 days thereafter",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'False because sixty days is not the standard election period baseline.',
-			'True because Section 9 defines the standard election period as 90 days before and 30 days after.',
-			'False because one hundred twenty days is not the constitutional baseline.',
-			'False because options a and c are incorrect.',
-			'False because option a is incorrect.',
-			'False because only option b is the constitutional period.',
-			'False because option b is true.'
+			"False because the standard election period begins 90 days before election day, not 60.",
+			"False because the election period ends 30 days (not 60 days) after election day.",
+			"False because 120 days before and 60 days after is not the constitutional baseline.",
+			"False because both a and c are incorrect.",
+			"False because both a and b are incorrect.",
+			"False because options a, b, and c are all incorrect.",
+			"True because Section 9 fixes the election period at 90 days before and 30 days after election day."
 		],
-		correctIndex: 1,
-		key: '90 days before the day of election and end 30 days thereafter',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'B (90 days before the day of election and end 30 days thereafter). Article IX-C, Section 9 provides: "Unless otherwise fixed by the Commission in special cases, the election period shall commence ninety days before the day of election and shall end thirty days thereafter."',
-		legalBasis: 'Art. IX-C, Sec. 9, 1987 Constitution'
+			"G (none of the above). Article IX-C, Section 9 provides: \"Unless otherwise fixed by the Commission in special cases, the election period shall commence ninety days before the day of election and shall end thirty days thereafter.\" Option b subtly alters the end date to 60 days thereafter, making all listed options false.",
+		legalBasis:
+			"Art. IX-C, Sec. 9, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:63',
@@ -2155,60 +2182,64 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P3,
 		tag: 'memorization',
-		question: 'Under Article XI, Section 2, which of the following public officials are removable from office exclusively by impeachment?',
+		question:
+			"Under Article XI, Section 2, which of the following public officials are removable from office exclusively by impeachment?",
 		options: [
-			'The President and the Vice-President',
-			'Members of the Supreme Court and Members of the Constitutional Commissions',
-			'The Ombudsman',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"The Secretary of Justice and Members of the Cabinet",
+			"The Presiding Justice of the Court of Appeals and the Sandiganbayan",
+			"The Chairperson of the Commission on Human Rights and the Deputy Ombudsman",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the executive leaders are impeachable officials.',
-			'True because Justices and Commissioners are expressly enumerated.',
-			'True because the Ombudsman is an impeachable officer under Section 2.',
-			'False because option b also lists impeachable officials.',
-			'False because option c is equally an impeachable official.',
-			'True because all three groups constitute the exclusive list of impeachable officers.',
-			'False because options a, b, and c are all true.'
+			"False because Cabinet members serve at the pleasure of the President and are not impeachable officers.",
+			"False because only Members of the Supreme Court—not lower collegiate courts—are impeachable.",
+			"False because only the Ombudsman (not the Deputy Ombudsman or CHR Chairperson) is impeachable.",
+			"False because neither a nor c lists impeachable officers.",
+			"False because neither a nor b lists impeachable officers.",
+			"False because none of the listed officers fall under the exclusive enumeration of Section 2.",
+			"True because the exclusive list covers only the President, Vice-President, Supreme Court Justices, Members of the Constitutional Commissions, and the Ombudsman."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article XI, Section 2 explicitly provides: "The President, the Vice-President, the Members of the Supreme Court, the Members of the Constitutional Commissions, and the Ombudsman may be removed from office on impeachment for, and conviction of, culpable violation of the Constitution, treason, bribery, graft and corruption, other high crimes, or betrayal of public trust. All other public officers and employees may be removed from office as provided by law, but not by impeachment."',
-		legalBasis: 'Art. XI, Sec. 2, 1987 Constitution'
+			"G (none of the above). Article XI, Section 2 provides an exclusive list of impeachable officers: the President, the Vice-President, the Members of the Supreme Court, the Members of the Constitutional Commissions, and the Ombudsman. Cabinet secretaries, appellate justices, the CHR Chairperson, and Deputy Ombudsmen are removed as provided by law, not by impeachment.",
+		legalBasis:
+			"Art. XI, Sec. 2, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:77',
 		topicId: 'finals',
 		topic: P3,
 		tag: 'memorization',
-		question: 'Under Article XI, Section 3, what voting thresholds are required in the impeachment process?',
+		question:
+			"Under Article XI, Section 3, what voting thresholds are required in the impeachment process?",
 		options: [
-			'A vote of at least one-third (1/3) of all the Members of the House to affirm a favorable resolution or override an unfavorable committee report',
-			'A vote of at least two-thirds (2/3) of all the Members of the Senate to convict',
-			'A unanimous vote of the Supreme Court to affirm the conviction',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"A vote of at least one-half (1/2) of all the Members of the House to affirm a favorable resolution or override an unfavorable committee report",
+			"A vote of at least three-fourths (3/4) of all the Members of the Senate to convict",
+			"A unanimous vote of the Supreme Court to affirm the conviction",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because one-third of the House affirms the Articles of Impeachment.',
-			'True because conviction in the Senate requires a two-thirds supermajority.',
-			'False because the Supreme Court plays no role in voting to affirm impeachment verdicts.',
-			'False because option c is completely inaccurate.',
-			'True because both the one-third House and two-thirds Senate thresholds are correct.',
-			'False because option c is completely inaccurate.',
-			'False because options a and b are true.'
+			"False because affirming or overriding Articles of Impeachment requires at least one-third (1/3), not one-half, of all House Members.",
+			"False because conviction in the Senate requires two-thirds (2/3), not three-fourths, of all Senators.",
+			"False because the Supreme Court plays no role in voting to affirm impeachment verdicts.",
+			"False because both a and c are inaccurate.",
+			"False because both a and b misstate the constitutional voting fractions.",
+			"False because options a, b, and c are all false.",
+			"True because the exact thresholds are 1/3 of all House Members and 2/3 of all Senators."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Under Article XI, Section 3(3)–(4), a vote of at least one-third of all the Members of the House of Representatives is necessary to affirm a favorable resolution with the Articles of Impeachment of the Committee, or override its contrary resolution. Under Section 3(6), no person shall be convicted in an impeachment trial without the concurrence of two-thirds of all the Members of the Senate.',
-		legalBasis: 'Art. XI, Sec. 3(3), (4) & (6), 1987 Constitution'
+			"G (none of the above). Under Article XI, Section 3(3)–(4), a vote of at least one-third (1/3) of all the Members of the House of Representatives is required to affirm a favorable resolution with the Articles of Impeachment or override a contrary committee report. Under Section 3(6), conviction requires the concurrence of two-thirds (2/3) of all the Members of the Senate. None of the choices state these exact constitutional thresholds.",
+		legalBasis:
+			"Art. XI, Sec. 3(3), (4) & (6), 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:78',
@@ -2459,30 +2490,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P3,
 		tag: 'memorization',
-		question: 'Under Article XVII, Section 1, amendments to, or revision of, the Constitution may be proposed by:',
+		question:
+			"Under Article XVII, Section 1, amendments to, or revision of, the Constitution may be proposed by:",
 		options: [
-			'The Congress, upon a vote of three-fourths (3/4) of all its Members',
-			'A constitutional convention',
-			'The President of the Philippines through an executive proclamation',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"The Congress, upon a vote of two-thirds (2/3) of all its Members",
+			"A People's Initiative for both isolated amendments and full structural revisions",
+			"The President of the Philippines through an executive proclamation",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Congress acting as a Constituent Assembly requires a three-fourths vote.',
-			'True because a Constitutional Convention is an authorized mode of proposal under Section 1.',
-			'False because the President has no constitutional power to propose constitutional amendments.',
-			'False because presidential proclamations cannot propose constitutional amendments.',
-			'True because both Constituent Assembly and Constitutional Convention are authorized under Section 1.',
-			'False because presidential proclamations cannot propose constitutional amendments.',
-			'False because options a and b are true.'
+			"False because Congress acting as a Constituent Assembly requires a vote of three-fourths (3/4)—not two-thirds—of all its Members (2/3 is for calling a Con-Con under Section 3).",
+			"False because a People's Initiative under Section 2 may only propose amendments, never revisions (Lambino v. COMELEC).",
+			"False because the President has no constitutional power to propose constitutional amendments or revisions.",
+			"False because both a and c are unconstitutional.",
+			"False because both a and b misstate Article XVII.",
+			"False because options a, b, and c are all false.",
+			"True because Section 1 authorizes only Congress by a 3/4 vote of all its Members or a Constitutional Convention."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article XVII, Section 1 provides: "Any amendment to, or revision of, this Constitution may be proposed by: (1) The Congress, upon a vote of three-fourths of all its Members; or (2) A constitutional convention."',
-		legalBasis: 'Art. XVII, Sec. 1, 1987 Constitution'
+			"G (none of the above). Article XVII, Section 1 provides: \"Any amendment to, or revision of, this Constitution may be proposed by: (1) The Congress, upon a vote of three-fourths of all its Members; or (2) A constitutional convention.\" Option a traps readers by substituting the 2/3 vote required to call a Constitutional Convention under Section 3, while option b falsely extends People's Initiative to revisions.",
+		legalBasis:
+			"Art. XVII, Secs. 1–3, 1987 Constitution; Lambino v. COMELEC (2006)"
 	},
 	{
 		id: 'consti1:finals:87',
@@ -2551,30 +2584,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P3,
 		tag: 'memorization',
 		question:
-			'Under Article XVII, Section 4, a plebiscite to ratify proposed constitutional amendments or revisions proposed by Congress or a Constitutional Convention must be held:',
+			"Under Article XVII, Section 4, a plebiscite to ratify proposed constitutional amendments or revisions proposed by Congress or a Constitutional Convention must be held:",
 		options: [
-			'Not earlier than 30 days nor later than 60 days after approval',
-			'Not earlier than 60 days nor later than 90 days after approval',
-			'Simultaneously with the next general local elections regardless of timing',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Not earlier than 30 days nor later than 60 days after approval",
+			"Not earlier than 60 days nor later than 120 days after approval",
+			"Simultaneously with the next general local elections regardless of timing",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'False because thirty to sixty days is not the constitutional window.',
-			'True because Section 4 mandates holding the plebiscite between 60 and 90 days after approval.',
-			'False because the 60-to-90-day window controls.',
-			'False because options a and c are incorrect.',
-			'False because option a is incorrect.',
-			'False because only option b is the constitutional timeframe.',
-			'False because option b is true.'
+			"False because 30 to 60 days is not the constitutional ratification window.",
+			"False because Section 4 sets the deadline at not later than 90 days—not 120 days—after approval.",
+			"False because the mandatory 60-to-90-day window controls.",
+			"False because both a and c are incorrect.",
+			"False because both a and b are incorrect.",
+			"False because options a, b, and c are all false.",
+			"True because Article XVII, Section 4 requires the plebiscite to be held not earlier than 60 days nor later than 90 days after approval."
 		],
-		correctIndex: 1,
-		key: 'Not earlier than 60 days nor later than 90 days after approval',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'B (Not earlier than 60 days nor later than 90 days after approval). Article XVII, Section 4 provides: "Any amendment to, or revision of, this Constitution under Section 1 hereof shall be valid when ratified by a majority of the votes cast in a plebiscite which shall be held not earlier than sixty days nor later than ninety days after the approval of such amendment or revision."',
-		legalBasis: 'Art. XVII, Sec. 4, 1987 Constitution'
+			"G (none of the above). Article XVII, Section 4 provides: \"Any amendment to, or revision of, this Constitution under Section 1 hereof shall be valid when ratified by a majority of the votes cast in a plebiscite which shall be held not earlier than sixty days nor later than ninety days after the approval of such amendment or revision.\" Because option b alters the upper limit to 120 days, none of the choices are correct.",
+		legalBasis:
+			"Art. XVII, Sec. 4, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:90',
@@ -2828,30 +2862,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P4,
 		tag: 'requisites',
-		question: 'Under Pelaez v. Auditor General (1965), a statute delegating legislative authority to the Executive must satisfy:',
+		question:
+			"Under Pelaez v. Auditor General (1965), a statute delegating legislative authority to the Executive must satisfy:",
 		options: [
-			'The Completeness Test only',
-			'The Sufficient Standard Test only',
-			'Both the Completeness Test and the Sufficient Standard Test concurrently',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"The Completeness Test only",
+			"The Sufficient Standard Test only",
+			"Either the Completeness Test or the Sufficient Standard Test, whichever is more practical",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'False because the completeness test cannot validate a delegation on its own.',
-			'False because a standard without a completed policy is unconstitutional.',
-			'True because under the Pelaez Rule, both tests must be satisfied simultaneously.',
-			'False because option a is insufficient.',
-			'False because neither test alone is sufficient.',
-			'False because options a and b are false.',
-			'False because option c is true.'
+			"False because the Completeness Test alone cannot validate a delegation.",
+			"False because the Sufficient Standard Test alone cannot validate a delegation.",
+			"False because the two tests are cumulative, not alternative.",
+			"False because both a and c are incorrect.",
+			"False because neither test suffices by itself.",
+			"False because options a, b, and c all misstate the concurrent requirement.",
+			"True because under Pelaez v. Auditor General, BOTH tests must be satisfied concurrently."
 		],
-		correctIndex: 2,
-		key: 'Both the Completeness Test and the Sufficient Standard Test concurrently',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'C (Both the Completeness Test and the Sufficient Standard Test concurrently). In Pelaez v. Auditor General (15 SCRA 569, 1965), the Supreme Court declared Section 68 of the Revised Administrative Code unconstitutional. The Court established that a valid delegation must satisfy both tests concurrently: (1) The law must be complete in itself, setting forth the policy to be executed, and (2) The law must fix a sufficient standard to map the boundaries of administrative discretion.',
-		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (1965)'
+			"G (none of the above). In Pelaez v. Auditor General (15 SCRA 569, 1965), the Supreme Court held that a valid delegation of legislative power must satisfy BOTH the Completeness Test and the Sufficient Standard Test concurrently—never one alone or either in the alternative.",
+		legalBasis:
+			"Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (1965)"
 	},
 	{
 		id: 'consti1:finals:101',
@@ -3011,30 +3047,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P4,
 		tag: 'memorization',
 		question:
-			'Under Article VII, Section 18, what are the constitutional powers of Congress when the President proclaims martial law or suspends the privilege of the writ of habeas corpus?',
+			"Under Article VII, Section 18, what are the constitutional powers of Congress when the President proclaims martial law or suspends the privilege of the writ of habeas corpus?",
 		options: [
-			'Congress, voting jointly by a majority of all its Members, may revoke the proclamation or suspension',
-			'A revocation by Congress cannot be set aside or vetoed by the President',
-			'Congress can only revoke the proclamation if concurred in by the Supreme Court',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Congress, voting separately by a two-thirds (2/3) vote of all its Members, may revoke the proclamation or suspension",
+			"A revocation by Congress may be set aside by the President upon certification of continuing rebellion",
+			"Congress can only revoke the proclamation if concurred in by the Supreme Court",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Congress voting jointly by a majority of all its Members can revoke the proclamation.',
-			'True because congressional revocation is absolute and cannot be set aside by the President.',
-			'False because congressional revocation is completely independent of the judiciary.',
-			'False because option c is inaccurate.',
-			'True because both the majority joint vote and non-vetoable character are correct.',
-			'False because option c is inaccurate.',
-			'False because options a and b are true.'
+			"False because Congress revokes martial law by voting JOINTLY (not separately) by at least a MAJORITY (not 2/3) of all its Members.",
+			"False because Section 18 expressly decrees that congressional revocation shall not be set aside by the President.",
+			"False because congressional revocation is independent of Supreme Court review.",
+			"False because both a and c violate Section 18.",
+			"False because both a and b misstate Section 18.",
+			"False because options a, b, and c are all false.",
+			"True because none of the statements accurately reflect the revocation mechanism under Article VII, Section 18."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article VII, Section 18 provides: "The Congress, voting jointly, by a vote of at least a majority of all its Members in regular or special session, may revoke such proclamation or suspension, which revocation shall not be set aside by the President."',
-		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution'
+			"G (none of the above). Article VII, Section 18 provides: \"The Congress, voting jointly, by a vote of at least a majority of all its Members in regular or special session, may revoke such proclamation or suspension, which revocation shall not be set aside by the President.\" Option a falsely states separate voting and a 2/3 threshold, option b allows presidential override, and option c adds a non-existent judicial concurrence requirement.",
+		legalBasis:
+			"Art. VII, Sec. 18, 1987 Constitution"
 	},
 	{
 		id: 'consti1:finals:107',
@@ -3132,30 +3169,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P4,
 		tag: 'jurisprudence',
 		question:
-			'Under Republic v. Villasor (1973), can public funds deposited in government depository banks be garnished to satisfy a money judgment against the State?',
+			"Under Republic v. Villasor (1973), can public funds deposited in government depository banks be garnished to satisfy a money judgment against the State?",
 		options: [
-			'Yes, because a court judgment immediately waives state immunity from execution',
-			'No, because public funds cannot be garnished without an appropriation made by law passed by Congress',
-			'Yes, provided the bank account is labeled as an operational account',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Yes, because a court judgment immediately waives state immunity from execution",
+			"Yes, without need of legislative appropriation once the judgment becomes final and executory",
+			"Yes, provided the bank account is labeled as an operational account",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'False because suability does not imply liability or authorize garnishment of public funds.',
-			'True because disbursements from the treasury require specific legislative appropriation under Art. VI, Sec. 29(1).',
-			'False because operational public funds remain immune from garnishment.',
-			'False because options a and c are incorrect.',
-			'False because option a is incorrect.',
-			'False because options a and c are false.',
-			'False because option b is true.'
+			"False because suability does not imply liability or authorize garnishment of public funds.",
+			"False because disbursements from the treasury strictly require an appropriation made by law under Art. VI, Sec. 29(1).",
+			"False because operational public funds remain immune from garnishment.",
+			"False because both a and c are incorrect.",
+			"False because both a and b are incorrect.",
+			"False because options a, b, and c are all false.",
+			"True because public funds cannot be garnished without an appropriation made by law passed by Congress."
 		],
-		correctIndex: 1,
-		key: 'No, because public funds cannot be garnished without an appropriation made by law passed by Congress',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'B (No, because public funds cannot be garnished without an appropriation made by law passed by Congress). In Republic v. Villasor (54 SCRA 83, 1973), the Supreme Court held that public funds in the custody of government officials or depository banks cannot be garnished to satisfy a court judgment against the State. Under Article VI, Section 29(1), no money shall be paid out of the Treasury except in pursuance of an appropriation made by law.',
-		legalBasis: 'Art. VI, Sec. 29(1) & Art. XVI, Sec. 3, 1987 Constitution; Republic v. Villasor (1973)'
+			"G (none of the above). In Republic v. Villasor (54 SCRA 83, 1973), the Supreme Court held that public funds in the custody of government officials or depository banks cannot be garnished to satisfy a court judgment against the State. Under Article VI, Section 29(1), no money shall be paid out of the Treasury except in pursuance of an appropriation made by law.",
+		legalBasis:
+			"Art. VI, Sec. 29(1) & Art. XVI, Sec. 3, 1987 Constitution; Republic v. Villasor (1973)"
 	},
 	{
 		id: 'consti1:finals:111',
@@ -3223,30 +3261,32 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topicId: 'finals',
 		topic: P4,
 		tag: 'memorization',
-		question: "Under Article VI, Section 11, what is the scope of a legislator's parliamentary immunity from arrest?",
+		question:
+			"Under Article VI, Section 11, what is the scope of a legislator's parliamentary immunity from arrest?",
 		options: [
-			'Immunity from arrest in all offenses punishable by not more than six (6) years imprisonment while Congress is in session',
-			'Immunity from arrest in all treason, felony, and breach of the peace offenses',
-			'Absolute lifetime immunity from criminal arrest for any offense committed while in office',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Immunity from arrest in all offenses punishable by not more than six (6) years imprisonment even while Congress is in recess",
+			"Immunity from arrest in all offenses punishable by up to twelve (12) years imprisonment while Congress is in session",
+			"Absolute lifetime immunity from criminal arrest for any offense committed while in office",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the six-year penalty ceiling while Congress is in session defines the constitutional privilege.',
-			'False because serious offenses punishable by more than six years imprisonment are excluded from the privilege.',
-			'False because the immunity applies only while Congress is in session and for offenses punishable by not more than six years.',
-			'False because option c is incorrect.',
-			'False because option b is incorrect.',
-			'False because options b and c are false.',
-			'False because option a is true.'
+			"False because parliamentary immunity from arrest applies only while Congress is in session, never during recess.",
+			"False because the constitutional penalty ceiling is not more than six (6) years, not twelve.",
+			"False because the privilege is neither absolute nor lifetime.",
+			"False because both a and c are incorrect.",
+			"False because both a and b misstate Section 11.",
+			"False because options a, b, and c are all false.",
+			"True because immunity applies strictly to offenses punishable by not more than 6 years imprisonment while Congress is in session."
 		],
-		correctIndex: 0,
-		key: 'Immunity from arrest in all offenses punishable by not more than six (6) years imprisonment while Congress is in session',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'A (Immunity from arrest in all offenses punishable by not more than six [6] years imprisonment while Congress is in session). Article VI, Section 11 provides: "A Senator or Member of the House of Representatives shall, in all offenses punishable by not more than six years imprisonment, be privileged from arrest while the Congress is in session. No Member shall be questioned nor be held liable in any other place for any speech or debate in the Congress or in any committee thereof" (People v. Jalosjos, 324 SCRA 689).',
-		legalBasis: 'Art. VI, Sec. 11, 1987 Constitution; People v. Jalosjos (2000)'
+			"G (none of the above). Article VI, Section 11 provides: \"A Senator or Member of the House of Representatives shall, in all offenses punishable by not more than six years imprisonment, be privileged from arrest while the Congress is in session.\" (People v. Jalosjos, 324 SCRA 689). Option a fails by extending the privilege to congressional recess, while option b doubles the 6-year threshold.",
+		legalBasis:
+			"Art. VI, Sec. 11, 1987 Constitution; People v. Jalosjos (2000)"
 	},
 	{
 		id: 'consti1:finals:114',
@@ -3411,30 +3451,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_1,
 		tag: 'requisites',
 		question:
-			'Under the 1987 Constitution and statutory laws governing the Philippine Judiciary, appointees to which of the following collegiate courts are required to have fifteen (15) years or more of service as a lower court judge or in the practice of law in the Philippines?',
+			"Under the 1987 Constitution and statutory laws governing the Philippine Judiciary, appointees to which of the following courts are required to have fifteen (15) years or more of service as a lower court judge or in the practice of law in the Philippines?",
 		options: [
-			'Supreme Court',
-			'Court of Appeals and Court of Tax Appeals',
-			'Sandiganbayan',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Sandiganbayan",
+			"Regional Trial Courts (RTC)",
+			"Metropolitan and Municipal Trial Courts (MeTC/MTC)",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Article VIII, Section 7(1) expressly mandates 15 years or more of judicial service or law practice.',
-			'True because their governing statutes adopt the same 15-year requirement as Supreme Court Justices.',
-			'False because the Sandiganbayan charter requires only at least 10 years of judicial or legal experience.',
-			'False because option c (Sandiganbayan) requires only 10 years.',
-			'True because the SC, CA, and CTA require 15 years, whereas the Sandiganbayan requires 10 years.',
-			'False because option c requires only 10 years.',
-			'False because options a and b are true.'
+			"False because the Sandiganbayan charter requires only at least 10 years of judicial service or law practice.",
+			"False because B.P. Blg. 129, Sec. 15 requires only at least 10 years of law practice or public office requiring Bar admission for RTC judges.",
+			"False because B.P. Blg. 129, Sec. 26 requires only at least 5 years of law practice or qualifying public office for first-level court judges.",
+			"False because neither a nor c requires 15 years.",
+			"False because both Sandiganbayan and RTC require 10 years, not 15.",
+			"False because none of the listed courts require 15 years.",
+			"True because the 15-year requirement applies to the Supreme Court, Court of Appeals, Court of Tax Appeals, and Shari’ah High Court—not to any of the courts listed above."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article VIII, Section 7(1) of the 1987 Constitution explicitly fixes the 15-year judicial or legal practice requirement for Members of the Supreme Court, while leaving statutory qualifications for lower collegiate courts to Congress. By statute, Congress prescribed 15 years for the Court of Appeals (B.P. Blg. 129, Sec. 7), the Court of Tax Appeals (R.A. No. 1125, Sec. 1, as amended by R.A. No. 9282), and the Shari’ah High Court (R.A. No. 11054, Art. X, Sec. 8), but required only at least 10 years for the Sandiganbayan (P.D. No. 1606, Sec. 1, as amended by R.A. No. 10660). In Cayetano v. Monsod (G.R. No. 100113, Sept. 3, 1991), "practice of law" was broadly defined as any activity, in or out of court, requiring the application of law, legal procedure, knowledge, training, and experience.',
-		legalBasis: 'Art. VIII, Sec. 7(1); B.P. Blg. 129; R.A. 9282; P.D. 1606 (as amended by R.A. 10660); Cayetano v. Monsod (1991)'
+			"G (none of the above). The 15-year judicial service or law practice requirement applies to the Supreme Court (Art. VIII, Sec. 7(1)), Court of Appeals (B.P. Blg. 129, Sec. 7), Court of Tax Appeals (R.A. 1125, as amended by R.A. 9282), and Shari’ah High Court (R.A. 11054). In contrast, the Sandiganbayan (P.D. 1606, as amended by R.A. 10660) and Regional Trial Courts (B.P. 129, Sec. 15) require at least 10 years, while MeTCs/MTCs (B.P. 129, Sec. 26) require at least 5 years.",
+		legalBasis:
+			"Art. VIII, Sec. 7(1); B.P. Blg. 129, Secs. 7, 15 & 26; R.A. 9282; P.D. 1606 (as amended by R.A. 10660)"
 	},
 	{
 		id: 'consti1:finals:212',
@@ -3607,30 +3648,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_1,
 		tag: 'requisites',
 		question:
-			"Because the Supreme Court's procedural rule-making power under Article VIII, Section 5(5) is not absolute, every procedural rule it promulgates must comply with which of the following constitutional limitations?",
+			"Under Article VIII, Section 5(5) of the 1987 Constitution, which of the following statements accurately describe the Supreme Court's procedural rule-making power?",
 		options: [
-			'Simplified and inexpensive procedure',
-			'Uniformity for courts of the same grade',
-			'Non-modification of substantive rights',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Congress retains the constitutional power to repeal, alter, or supplement the Rules of Court",
+			"Procedural rules may vary across courts of the same grade depending on regional caseload",
+			"Procedural rules may modify substantive rights when necessary for the speedy disposition of cases",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Section 5(5) requires rules to provide a simplified and inexpensive procedure for the speedy disposition of cases.',
-			'True because procedural rules must apply uniformly across all courts of the same judicial grade.',
-			'True because procedural rules cannot diminish, increase, or modify substantive rights.',
-			'False because option b is also an express limitation under Section 5(5).',
-			'False because option c is likewise mandatory.',
-			'True because all three represent the verbatim constitutional limitations on the Supreme Court’s rule-making power.',
-			'False because options a, b, and c are all true.'
+			"False because the 1987 Constitution stripped Congress of its former power under the 1935 and 1973 charters to repeal, alter, or supplement judicial rules.",
+			"False because Section 5(5) mandates that rules shall be uniform for all courts of the same grade.",
+			"False because Section 5(5) strictly prohibits rules from diminishing, increasing, or modifying substantive rights.",
+			"False because both a and c violate Section 5(5).",
+			"False because both a and b are unconstitutional.",
+			"False because options a, b, and c are all false.",
+			"True because every listed statement contradicts the constitutional limits on judicial rule-making."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article VIII, Section 5(5) mandates that Supreme Court rules concerning constitutional rights, pleading, practice, and procedure "shall provide a simplified and inexpensive procedure for the speedy disposition of cases, shall be uniform for all courts of the same grade, and shall not diminish, increase, or modify substantive rights." Under the 1987 Constitution, Congress was stripped of its former power to repeal, alter, or supplement judicial rules (Baguio Market Vendors v. Judge, G.R. No. 165922, Feb. 26, 2010; Fabian v. Desierto).',
-		legalBasis: 'Art. VIII, Sec. 5(5), 1987 Constitution; Baguio Market Vendors v. Judge (2010); Fabian v. Desierto'
+			"G (none of the above). Article VIII, Section 5(5) vests exclusive rule-making power in the Supreme Court—removing Congress’s former power to alter or repeal the Rules of Court (Echegaray v. Secretary of Justice; Baguio Market Vendors Multi-Purpose Cooperative v. Cabato-Cortes, G.R. No. 165922, Feb. 26, 2010)—and mandates that such rules must be uniform for all courts of the same grade and shall not diminish, increase, or modify substantive rights.",
+		legalBasis:
+			"Art. VIII, Sec. 5(5), 1987 Constitution; Baguio Market Vendors Multi-Purpose Cooperative v. Cabato-Cortes (2010); Echegaray v. Secretary of Justice"
 	},
 	{
 		id: 'consti1:finals:220',
@@ -3911,30 +3953,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_2,
 		tag: 'exceptions',
 		question:
-			'Applying the constitutional ban against reappointment in Constitutional Commissions (Article IX) and the parallel ban against presidential reelection (Article VII), which of the following movements are constitutionally ALLOWED?',
+			"Applying the constitutional ban against reappointment in Constitutional Commissions (Article IX) and the parallel ban against presidential reelection (Article VII), which of the following movements are constitutionally ALLOWED?",
 		options: [
-			'Commissioner promoted to Chairman for the unexpired term',
-			'Vice-President running for President',
-			'Resigned Chairman appointed as Commissioner',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Commissioner promoted to Chairman for a fresh, full seven-year term regardless of prior years served",
+			"Elected President running for immediate reelection to a second consecutive six-year term",
+			"Resigned Chairman appointed as Commissioner",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because promotion to a higher distinct office is a valid new appointment if aggregate service does not exceed 7 years.',
-			'True because moving up to a distinct higher office is a first-time presidential election, not a prohibited reelection.',
-			'False because resignation does not reset eligibility, and moving down to a lower post is a prohibited reappointment.',
-			'False because option c violates the reappointment ban.',
-			'True because upward promotional moves to distinct higher offices are allowed, while downward moves are barred.',
-			'False because option c violates the reappointment ban.',
-			'False because options a and b are true.'
+			"False because under Funa v. Villar, promotion to Chairman is valid only for the unexpired term of a premature vacancy and aggregate service can never exceed 7 years.",
+			"False because Article VII, Section 4 absolutely bars an elected President from any reelection.",
+			"False because resignation does not reset eligibility, and moving down to a lower post is a prohibited reappointment.",
+			"False because both a and c are unconstitutional.",
+			"False because both a and b are unconstitutional.",
+			"False because options a, b, and c are all prohibited.",
+			"True because all three listed movements violate express constitutional bans."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Under Article IX-C, Section 1(2), Matibag v. Benipayo (G.R. No. 149036), and Funa v. COA Chairman (670 SCRA 190, 2012), reappointment means movement to the same or lower rank—making a resigned Chairman ineligible to become a Commissioner—whereas promotion from Commissioner to Chairman is a valid new appointment strictly for the unexpired term and capped at an aggregate 7-year ceiling. By parallel logic under Article VII, Sections 3 and 4, a Vice-President may run for President, whereas a former President cannot run for Vice-President because doing so would create a backdoor to circumvent the absolute ban on presidential reelection.',
-		legalBasis: 'Art. VII, Secs. 3–4; Art. IX-C, Sec. 1(2); Matibag v. Benipayo; Funa v. Villar (2012)'
+			"G (none of the above). Under Article IX, Section 1(2) and Funa v. COA Chairman / Villar (670 SCRA 579, 2012), promoting a sitting Commissioner to Chairman cannot confer a fresh 7-year term and is capped at an aggregate 7-year ceiling, while moving down from Chairman to Commissioner is a prohibited reappointment. Similarly, Article VII, Section 4 expressly declares that \"The President shall not be eligible for any reelection.\"",
+		legalBasis:
+			"Art. VII, Sec. 4; Art. IX-C & IX-D, Sec. 1(2); Matibag v. Benipayo; Funa v. Villar (2012)"
 	},
 	{
 		id: 'consti1:finals:231',
@@ -4004,30 +4047,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_2,
 		tag: 'exceptions',
 		question:
-			'If an aggrieved party seeks judicial review of a final en banc decision rendered by a Constitutional Commission, decisions of which Commissions are elevated directly to the Supreme Court via a Petition for Certiorari under Rule 64 (in relation to Rule 65) within thirty (30) days?',
+			"If an aggrieved party seeks judicial review of a final decision rendered by a Constitutional Commission, which of the following remedies and deadlines accurately reflect Article IX-A, Section 7 and the Rules of Court?",
 		options: [
-			'Commission on Elections (COMELEC)',
-			'Commission on Audit (COA)',
-			'Civil Service Commission (CSC)',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Final CSC decisions are elevated directly to the Supreme Court via Rule 64 within 30 days",
+			"Final COMELEC En Banc rulings are elevated to the Supreme Court via Rule 65 within 60 days from notice",
+			"Final decisions of a COMELEC Division may be elevated directly to the Supreme Court via Rule 64 without first filing a Motion for Reconsideration before the COMELEC En Banc",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because final COMELEC En Banc rulings go directly to the Supreme Court via Rule 64/65 within 30 days.',
-			'True because final COA En Banc decisions likewise go directly to the Supreme Court via Rule 64/65 within 30 days.',
-			'False because final CSC decisions are appealed first to the Court of Appeals via Rule 43 within 15 days.',
-			'False because CSC is excluded from direct Rule 64 review.',
-			'True because COMELEC and COA go straight to the SC, whereas CSC goes to the CA.',
-			'False because CSC is excluded from direct Rule 64 review.',
-			'False because options a and b are true.'
+			"False because final CSC decisions are appealed to the Court of Appeals under Rule 43 within 15 days (R.A. 7902; Fabian v. Desierto).",
+			"False because final COMELEC and COA En Banc rulings are governed by Rule 64, which sets a strict 30-day—not 60-day—period.",
+			"False because a Motion for Reconsideration before the Commission En Banc is a mandatory prerequisite; the SC only reviews final En Banc rulings via Rule 64 (Esteves v. Sarmiento).",
+			"False because both a and c are procedurally erroneous.",
+			"False because both a and b misstate the proper court or reglementary period.",
+			"False because options a, b, and c are all false.",
+			"True because none of the listed remedies or periods accurately state the rules on judicial review of Commission rulings."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article IX-A, Section 7 provides that unless otherwise provided by the Constitution or law, any final decision of a Commission may be brought to the Supreme Court on certiorari within 30 days from receipt (implemented by Rule 64/65 for COMELEC and COA En Banc after a mandatory Motion for Reconsideration, Esteves v. Sarmiento). However, by statute (R.A. No. 7902) and Fabian v. Desierto, final CSC rulings are appealed to the Court of Appeals under Rule 43 within 15 days.',
-		legalBasis: 'Art. IX-A, Sec. 7; Rules 64, 65 & 43; R.A. 7902; Fabian v. Desierto; Esteves v. Sarmiento'
+			"G (none of the above). Under Article IX-A, Section 7 and Rule 64 (in relation to Rule 65), final en banc decisions of COMELEC and COA are brought to the Supreme Court within 30 days (not 60) after a mandatory Motion for Reconsideration before the COMELEC En Banc (Esteves v. Sarmiento, G.R. No. 182374, Nov. 11, 2008; Ambil v. COMELEC), whereas final CSC decisions are appealed to the Court of Appeals under Rule 43 within 15 days (R.A. 7902; Fabian v. Desierto).",
+		legalBasis:
+			"Art. IX-A, Sec. 7; Rules 64, 65 & 43; R.A. 7902; Fabian v. Desierto; Esteves v. Sarmiento (2008)"
 	},
 
 	// ---- Section III: CSC, COA, COMELEC, Certiorari & Solicitor General (15 Items) ----
@@ -4037,30 +4081,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_3,
 		tag: 'exceptions',
 		question:
-			'Under Article IX-B, Section 2(1) of the 1987 Constitution, which of the following government entities are embraced by the Civil Service System?',
+			"Under Article IX-B, Section 2(1) of the 1987 Constitution, which of the following entities are embraced by the Civil Service System?",
 		options: [
-			'All branches, subdivisions, instrumentalities, and agencies',
-			'GOCCs with original charters',
-			'Non-chartered GOCCs under the Corporation Code',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"Non-chartered GOCCs incorporated under the general Corporation Code",
+			"Private corporate subsidiaries of chartered GOCCs organized under the Corporation Code",
+			"Private corporations operating public utilities under a legislative franchise",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because this is the verbatim constitutional scope covering national and local government offices.',
-			'True because corporations created directly by special law, like GSIS and SSS, fall under Civil Service Law.',
-			'False because GOCCs without original charters are excluded from the Civil Service and governed by the Labor Code.',
-			'False because option c is excluded from the Civil Service.',
-			'True because only regular government offices and chartered GOCCs fall under Civil Service jurisdiction.',
-			'False because option c is excluded.',
-			'False because options a and b are true.'
+			"False because GOCCs without original charters are governed by the Labor Code, not the Civil Service.",
+			"False because corporate subsidiaries organized under the Corporation Code are excluded from Civil Service jurisdiction (NASECO v. NLRC).",
+			"False because private utility franchisees remain private employers governed by the Labor Code.",
+			"False because neither a nor c is embraced by the Civil Service.",
+			"False because neither a nor b has an original legislative charter.",
+			"False because all three entities are governed by the Labor Code.",
+			"True because Article IX-B, Section 2(1) embraces only government branches/agencies and GOCCs with original charters."
 		],
-		correctIndex: 4,
-		key: 'a and b are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'E (a and b are true). Article IX-B, Section 2(1) explicitly states that "the civil service embraces all branches, subdivisions, instrumentalities, and agencies of the Government, including government-owned or controlled corporations with original charters." Non-chartered GOCCs incorporated under the general Corporation Code are excluded from Civil Service jurisdiction and governed instead by the Labor Code.',
-		legalBasis: 'Art. IX-B, Sec. 2(1), 1987 Constitution'
+			"G (none of the above). Article IX-B, Section 2(1) states that the civil service embraces all branches, subdivisions, instrumentalities, and agencies of the Government, including GOCCs with original charters. Non-chartered GOCCs, corporate subsidiaries formed under the Corporation Code (NASECO v. NLRC; Lumanta v. NLRC), and private utility franchisees are all governed by the Labor Code.",
+		legalBasis:
+			"Art. IX-B, Sec. 2(1), 1987 Constitution; NASECO v. NLRC; Lumanta v. NLRC"
 	},
 	{
 		id: 'consti1:finals:235',
@@ -4677,30 +4722,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_5,
 		tag: 'memorization',
 		question:
-			'Under Article VI, Section 17 of the 1987 Constitution, the 9-member Senate Electoral Tribunal (SET) and House of Representatives Electoral Tribunal (HRET) are characterized by:',
+			"Under Article VI, Section 17 of the 1987 Constitution, the 9-member Senate Electoral Tribunal (SET) and House of Representatives Electoral Tribunal (HRET) are characterized by:",
 		options: [
-			'3 Supreme Court Justices designated by the Chief Justice',
-			'6 legislators chosen based on proportional representation',
-			'A constitutionally mandated blending of powers',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"3 Supreme Court Justices appointed by the President with Commission on Appointments consent",
+			"6 legislators selected by the Senate President or Speaker based solely on seniority",
+			"A violation of the separation of powers whenever legislators cast votes on election protests",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because the Constitution expressly uses the word "designated" for judicial members, with the senior Justice as Chairman.',
-			'True because the Constitution expressly uses "chosen" (never "selected") to allocate seats by party strength.',
-			'True because legislators sitting in the Tribunal act in an independent, non-partisan judicial capacity without violating separation of powers.',
-			'False because option b is also an accurate constitutional feature.',
-			'False because option c accurately explains why legislative membership is constitutional.',
-			'True because all three accurately reflect Article VI, Section 17 and jurisprudence.',
-			'False because options a, b, and c are all true.'
+			"False because the 3 Justices are designated by the Chief Justice—never appointed by the President or confirmed by the CA.",
+			"False because the 6 legislators are chosen by their respective House based on proportional representation of political parties and party-list organizations.",
+			"False because legislative membership is a constitutionally mandated blending of powers, not a violation of separation of powers.",
+			"False because both a and c misstate Section 17.",
+			"False because both a and b misstate how tribunal members are placed.",
+			"False because options a, b, and c are all false.",
+			"True because none of the statements accurately describe the SET and HRET under Article VI, Section 17."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Article VI, Section 17 constitutes each Electoral Tribunal with 9 members: 3 Supreme Court Justices designated by the Chief Justice and 6 Members of the respective House chosen on the basis of proportional representation of political parties and party-list organizations (Daza v. Singson; Coseteng v. Mitra; Macalintal v. PET, confirming exemption from Art. VIII, Sec. 12). This explicit blending of powers creates an independent quasi-judicial body (Suanes v. Disbursing Officer) whose legislator-members enjoy security of tenure against party removal for "conscience votes" (Bondoc v. Pineda).',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Daza v. Singson; Coseteng v. Mitra; Bondoc v. Pineda'
+			"G (none of the above). Article VI, Section 17 constitutes each Electoral Tribunal with 3 Supreme Court Justices \"designated\" by the Chief Justice and 6 Members of the respective House \"chosen\" on the basis of proportional representation of political parties and party-list organizations (Tañada v. Cuenco; Abbas v. SET). This explicit blending of powers creates an independent quasi-judicial body whose legislator-members enjoy security of tenure against party removal for independent votes (Bondoc v. Pineda, 201 SCRA 792).",
+		legalBasis:
+			"Art. VI, Sec. 17, 1987 Constitution; Tañada v. Cuenco; Abbas v. SET; Bondoc v. Pineda (1991)"
 	},
 	{
 		id: 'consti1:finals:258',
@@ -4739,30 +4785,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_5,
 		tag: 'requisites',
 		question:
-			'Because qualifications for national elective offices are fixed exclusively by the Constitution, which of the following minimum age and residency requirements are constitutionally accurate?',
+			"Because qualifications for national elective offices are fixed exclusively by the Constitution, which of the following minimum age and residency requirements are constitutionally accurate?",
 		options: [
-			'President and Vice-President: 40 years old, 10-year Philippine resident',
-			'Senator: 35 years old, 2-year Philippine resident',
-			'District Representative: 25 years old, 1-year district resident',
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"President and Vice-President: 35 years old, 10-year Philippine resident",
+			"Senator: 35 years old, 5-year Philippine resident",
+			"District Representative: 25 years old, 2-year district resident",
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True under Article VII, Sections 2 and 3.',
-			'True under Article VI, Section 3.',
-			'True under Article VI, Section 6.',
-			'False because option b (Senator) is also a verbatim constitutional qualification.',
-			'False because option c is equally accurate.',
-			'True because all three accurately match the Constitution’s exclusive age and residency requirements.',
-			'False because options a, b, and c are all true.'
+			"False because the President and Vice-President must be at least 40 (not 35) years old on election day.",
+			"False because a Senator only needs 2 years (not 5) of Philippine residency immediately preceding election day.",
+			"False because a District Representative only needs 1 year (not 2) of district residency immediately preceding election day.",
+			"False because both a and c contain wrong numbers.",
+			"False because both a and b contain wrong numbers.",
+			"False because all three options misstate the age or residency figures.",
+			"True because the exact thresholds are 40/10 years (President & VP), 35/2 years (Senator), and 25/1 year (District Representative)."
 		],
-		correctIndex: 5,
-		key: 'a, b, and c are true',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'F (a, b, and c are true). Under Article VII, Sections 2–3 (President/VP: natural-born, registered voter, literate, 40 years old, 10-year PH resident), Article VI, Section 3 (Senator: natural-born, registered voter, literate, 35 years old, 2-year PH resident), and Article VI, Section 6 (District Representative: natural-born, district registered voter, literate, 25 years old, 1-year district resident), qualifications are exclusive and continuing (with dual citizens required under R.A. No. 9225 to execute a sworn renunciation of foreign citizenship upon filing a COC).',
-		legalBasis: 'Art. VI, Secs. 3 & 6; Art. VII, Secs. 2–3, 1987 Constitution; R.A. 9225'
+			"G (none of the above). Under Article VII, Sections 2–3 (President/VP: 40 years old, 10-year PH resident), Article VI, Section 3 (Senator: 35 years old, 2-year PH resident), and Article VI, Section 6 (District Representative: 25 years old, 1-year district resident), every choice alters either the minimum age or the residency period.",
+		legalBasis:
+			"Art. VI, Secs. 3 & 6; Art. VII, Secs. 2–3, 1987 Constitution; R.A. 9225"
 	},
 	{
 		id: 'consti1:finals:260',
@@ -4770,30 +4817,31 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_5,
 		tag: 'effects',
 		question:
-			'Under Article VI, Section 10 of the 1987 Constitution, an increase in the compensation of Senators and Members of the House of Representatives takes effect:',
+			"Under Article VI, Section 10 of the 1987 Constitution, an increase in the compensation of Senators and Members of the House of Representatives takes effect:",
 		options: [
-			'After the full term of ALL approving Senators and Representatives expires',
-			'Immediately after the 3-year House term expires',
+			"Immediately upon signing of the law by the President",
+			"Immediately after the 3-year House term expires",
 			"Retroactively for computing legislators' retirement benefits",
-			'a and c are true',
-			'a and b are true',
-			'a, b, and c are true',
-			'none of the above'
+			"a and c are true",
+			"a and b are true",
+			"a, b, and c are true",
+			"none of the above"
 		],
 		optionExplanations: [
-			'True because Section 10 bars the increase until the full 6-year term of the longest-serving approving Senators ends.',
-			'False because the House cannot receive the increase while approving Senators are still serving their 6-year terms.',
-			'False because retirement gratuities must be computed on the salary actually received during service.',
-			'False because option c violates Ligot v. Mathay.',
-			'False because option b violates Section 10.',
-			'False because options b and c are unconstitutional.',
-			'False because option a is true.'
+			"False because Section 10 bars any salary increase from taking effect during the term of the approving legislators.",
+			"False because the House cannot receive the increase while approving Senators are still serving their 6-year terms.",
+			"False because retirement gratuities must be computed strictly on the salary actually received during service (Ligot v. Mathay).",
+			"False because both a and c violate Section 10.",
+			"False because both a and b violate Section 10.",
+			"False because options a, b, and c are all unconstitutional.",
+			"True because an increase takes effect only after the expiration of the full term of ALL approving Senators and Representatives."
 		],
-		correctIndex: 0,
-		key: 'After the full term of ALL approving Senators and Representatives expires',
+		correctIndex: 6,
+		key: "none of the above",
 		explanation:
-			'A (After the full term of ALL approving Senators and Representatives expires). Article VI, Section 10 decrees that "no increase in said compensation shall take effect until after the expiration of the full term of all the Members of the Senate and the House of Representatives approving such increase" (Philconsa v. Mathay, 18 SCRA 300). Retirement gratuities of retiring legislators must likewise be computed strictly on the salary in effect during their actual term (Ligot v. Mathay, 56 SCRA 823).',
-		legalBasis: 'Art. VI, Sec. 10, 1987 Constitution; Philconsa v. Mathay (18 SCRA 300); Ligot v. Mathay (56 SCRA 823)'
+			"G (none of the above). Article VI, Section 10 decrees that \"no increase in said compensation shall take effect until after the expiration of the full term of all the Members of the Senate and the House of Representatives approving such increase\" (Philconsa v. Mathay, 18 SCRA 300), and retirement gratuities cannot be retroactively pegged to the unimplemented higher rate (Ligot v. Mathay, 56 SCRA 823).",
+		legalBasis:
+			"Art. VI, Sec. 10, 1987 Constitution; Philconsa v. Mathay (18 SCRA 300); Ligot v. Mathay (56 SCRA 823)"
 	},
 	{
 		id: 'consti1:finals:261',
@@ -4923,6 +4971,73 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			'E (a and b are true). Under modern administrative law, hybrid administrative agencies exercise executive administration, delegated quasi-legislative rule-making (subordinate legislation), and quasi-judicial adjudication within technical domains—exemplified by the Constitutional Commissions (Article IX) and statutory regulatory bodies such as the SEC, NLRC, ERC, and NTC. In contrast, executive line departments like the Department of Public Works and Highways (E.O. No. 292, Book IV, Title V) primarily execute infrastructure and administrative programs rather than adjudicating adversarial controversies.',
 		legalBasis: 'Art. IX, 1987 Constitution; E.O. No. 292, Book IV, Title V'
+	},
+
+	// =========================================================================
+	// NEW MIRROR / EXCEPTION QUESTIONS — 2 ITEMS (IDs 266–267)
+	// =========================================================================
+	{
+		id: 'consti1:finals:266',
+		topicId: 'finals',
+		topic: P2,
+		tag: 'exceptions',
+		question:
+			'As express constitutional exceptions to the general rule under Article IX-B, Section 7 barring elective officials from appointment or designation to any other public office during their tenure, which of the following are constitutionally ALLOWED?',
+		options: [
+			'Appointment of the Vice-President as a Member of the Cabinet without need of Commission on Appointments confirmation',
+			'Designation of a Member of Congress as ex officio representative in the Judicial and Bar Council',
+			'Appointment of an incumbent City Mayor as Chairman of a statutory development authority when expressly authorized by an Act of Congress',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article VII, Section 3, par. 2 expressly authorizes the Vice-President to be appointed as a Cabinet Member without CA confirmation.',
+			'True because Article VIII, Section 8(1) expressly designates a representative of Congress as an ex officio member of the JBC.',
+			'False because Congress cannot create statutory exceptions to the constitutional ban on elective officials (Flores v. Drilon).',
+			'False because option c is unconstitutional under Flores v. Drilon.',
+			'True because both the Vice-President in the Cabinet and a congressional representative in the JBC are express constitutional exceptions.',
+			'False because option c is unconstitutional.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). While Article IX-B, Section 7, par. 1 generally bars elective officials from being appointed or designated to any public office during their tenure—and Congress has no power to create statutory exceptions to this ban (Flores v. Drilon, G.R. No. 104732, June 22, 1993)—the 1987 Constitution itself carves out express exceptions: (1) the Vice-President may be appointed as a Member of the Cabinet without Commission on Appointments confirmation (Art. VII, Sec. 3, par. 2), and (2) a Member of Congress sits as ex officio representative in the Judicial and Bar Council (Art. VIII, Sec. 8(1)).',
+		legalBasis: 'Art. IX-B, Sec. 7; Art. VII, Sec. 3, par. 2; Art. VIII, Sec. 8(1), 1987 Constitution; Flores v. Drilon (1993)'
+	},
+	{
+		id: 'consti1:finals:267',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'exceptions',
+		question:
+			'In contrast to the general rule that motions for reconsideration of COMELEC Division decisions go to the COMELEC En Banc and that only final En Banc resolutions are reviewable by the Supreme Court, which of the following statements regarding INTERLOCUTORY ORDERS of a COMELEC Division are legally accurate?',
+		options: [
+			'A motion for reconsideration of an interlocutory order of a COMELEC Division is resolved by the Division itself, unless all members of the Division decide to refer it to the COMELEC En Banc',
+			'An interlocutory order of a COMELEC Division may be brought directly to the Supreme Court on certiorari as a narrow exception when it is a patent nullity issued without jurisdiction',
+			'An ordinary interlocutory order of a COMELEC Division (such as denying special affirmative defenses) may be elevated directly to the Supreme Court via Rule 64 as a matter of right',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because under Rule 3, Sec. 5(c) of the COMELEC Rules of Procedure and Cayetano v. COMELEC (2011), motions to reconsider interlocutory orders are resolved by the issuing Division unless unanimously referred to the En Banc.',
+			'True because under Kho v. COMELEC (1997) and Repol v. COMELEC, direct certiorari to the Supreme Court is permitted when a Division’s interlocutory order is a patent nullity for absence of jurisdiction and the En Banc cannot take cognizance of it.',
+			'False because under Cagas v. COMELEC (2012), ordinary interlocutory orders (like denying special affirmative defenses) cannot be directly assailed before the Supreme Court; the party must await final Division judgment and elevate errors via MR to the En Banc.',
+			'False because option c is barred under Cagas v. COMELEC.',
+			'True because both the Division-level MR rule and the narrow Kho/Repol patent-nullity exception are accurate.',
+			'False because option c contradicts Cagas v. COMELEC.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Under Rule 3, Section 5(c) of the COMELEC Rules of Procedure, Cayetano v. COMELEC (G.R. No. 193846, April 12, 2011), and Cagas v. COMELEC (G.R. No. 194139, Jan. 24, 2012), only final decisions of a COMELEC Division are elevated via Motion for Reconsideration to the COMELEC En Banc; motions to reconsider interlocutory orders are resolved by the issuing Division itself unless all Division members unanimously refer the matter to the En Banc. While ordinary interlocutory orders (such as denying special affirmative defenses in Cagas) cannot be directly elevated to the Supreme Court, Kho v. COMELEC (G.R. No. 124033, Sept. 25, 1997) and Repol v. COMELEC recognize a narrow exception allowing direct Rule 65 certiorari where the Division’s interlocutory order is a patent nullity issued without jurisdiction.',
+		legalBasis:
+			'Art. IX-A, Sec. 7 & Art. IX-C, Sec. 3, 1987 Constitution; Rule 3, Sec. 5(c), COMELEC Rules; Kho v. COMELEC (1997); Cayetano v. COMELEC (2011); Cagas v. COMELEC (2012)'
 	},
 
 	// =========================================================================

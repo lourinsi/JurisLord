@@ -26,17 +26,37 @@
 		} else if (h === '#chains') mode = 'chains';
 	});
 
-	// Choices are shuffled dynamically per visit, and re-jumbled on "Try again" or "Reset answers".
+	// Questions and choices are shuffled dynamically on load, and re-jumbled on "Reset answers".
 	const orders: Record<string, number[]> = {};
 	let shuffleGen = $state(0);
+	let shuffledIds = $state<string[]>([]);
+	function reshuffleQuestions(items: readonly KitMcq[]) {
+		const ids = items.map((m) => m.id);
+		for (let i = ids.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[ids[i], ids[j]] = [ids[j], ids[i]];
+		}
+		shuffledIds = ids;
+	}
+	$effect(() => {
+		const items = mcqs;
+		if (!items.length) {
+			shuffledIds = [];
+			return;
+		}
+		reshuffleQuestions(items);
+	});
 	const orderOf = (m: KitMcq) => {
 		void shuffleGen;
 		return (orders[m.id] ??= dynamicOptionOrder(m.o));
 	};
 
 	const picked = (m: KitMcq) => st.mcq[m.id] ?? null;
+	const orderedMcqs = $derived(
+		shuffledIds.length ? shuffledIds.map((id) => byId[id]).filter(Boolean) : mcqs
+	);
 	const list = $derived(
-		mcqs.filter((m) => {
+		orderedMcqs.filter((m) => {
 			if (group !== 'all' && String(m.group) !== group) return false;
 			const p = st.mcq[m.id];
 			if (only === 'star') return m.star;
@@ -73,6 +93,7 @@
 			return;
 		}
 		st.mcq = {};
+		reshuffleQuestions(mcqs);
 		for (const m of mcqs) {
 			orders[m.id] = dynamicOptionOrder(m.o, Math.random, orders[m.id]);
 		}

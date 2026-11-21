@@ -188,8 +188,18 @@
 		orderById = next;
 	}
 
+	function shuffleIds(ids: string[]): string[] {
+		const out = [...ids];
+		for (let i = out.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[out[i], out[j]] = [out[j], out[i]];
+		}
+		return out;
+	}
+
 	function rebuild() {
-		sessionIds = lawModule.mcqs.filter(matches).map((q) => q.id);
+		if (examRunning) return;
+		sessionIds = shuffleIds(lawModule.mcqs.filter(matches).map((q) => q.id));
 		buildSessionOrders(sessionIds, true);
 		index = 0;
 		hintOpen = false;
@@ -311,6 +321,7 @@
 	// ---- exam ----
 	function startExam() {
 		if (!total) return;
+		sessionIds = shuffleIds(sessionIds);
 		buildSessionOrders(sessionIds, true);
 		examAnswers = {};
 		index = 0;

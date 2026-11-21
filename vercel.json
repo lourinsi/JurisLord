@@ -3,7 +3,7 @@
 	"framework": null,
 	"buildCommand": "npm run build",
 	"outputDirectory": "build",
-	"rewrites": [{ "source": "/(.*)", "destination": "/200.html" }],
+	"rewrites": [{ "source": "/((?!_vercel/).*)", "destination": "/200.html" }],
 	"headers": [
 		{
 			"source": "/_app/immutable/(.*)",

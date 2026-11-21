@@ -2,6 +2,7 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/state';
+	import { inject, pageview } from '@vercel/analytics';
 	import AppHeader from '$lib/components/shell/AppHeader.svelte';
 	import SearchPalette from '$lib/components/shell/SearchPalette.svelte';
 	import Toaster from '$lib/components/shell/Toaster.svelte';
@@ -18,6 +19,22 @@
 
 	let { children }: LayoutProps = $props();
 	let showDisclaimer = $state(false);
+
+	const isBrowser = typeof window !== 'undefined';
+
+	if (isBrowser) {
+		inject({
+			mode: import.meta.env.DEV ? 'development' : 'production',
+			framework: 'sveltekit',
+			disableAutoTrack: true
+		});
+	}
+
+	$effect(() => {
+		if (isBrowser && page.route.id) {
+			pageview({ route: page.route.id, path: page.url.pathname });
+		}
+	});
 
 	$effect(() => {
 		ui.disclaimerOpen = showDisclaimer;

@@ -4197,7 +4197,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P6_3,
 		tag: 'memorization',
 		question:
-			'Under Article IX-C, Section 2(2) of the 1987 Constitution and Javier v. COMELEC, an election "contest" (mnemonic: Q-R-E) encompasses any dispute affecting a candidate’s lawful title to elective office relating to:',
+			'Under Article IX-C, Section 2(2) of the 1987 Constitution and Javier v. COMELEC, an election "contest" encompasses any dispute affecting a candidate’s lawful title to elective office relating to:',
 		options: [
 			'Qualifications',
 			'Returns',
@@ -4220,7 +4220,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-C, Section 2(2), Article VI, Section 17, and Article VII, Section 4 use the comprehensive phrase "elections, returns, and qualifications." In Javier v. COMELEC (G.R. Nos. L-68379-81), the Supreme Court held that "contest" is liberally construed to cover any matter involving the title or claim of title to an elective office, made before or after proclamation, materialized through election protests, quo warranto petitions, pre-proclamation controversies, or COC cancellations.',
-		legalBasis: 'Art. IX-C, Sec. 2(2); Art. VI, Sec. 17; Art. VII, Sec. 4; Javier v. COMELEC'
+		legalBasis:
+			'Art. IX-C, Sec. 2(2); Art. VI, Sec. 17; Art. VII, Sec. 4; Javier v. COMELEC (Mnemonic: Q-R-E — Qualifications, Returns, Elections)'
 	},
 	{
 		id: 'consti1:finals:241',
@@ -6453,7 +6454,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		topic: P5_15,
 		tag: 'cases',
 		question:
-			"In which case did the Supreme Court rule that the Cooperative Development Authority's procurement of office equipment and computers is subject to the COA's auditing rules for the prevention and disallowance of irregular, unnecessary, excessive, extravagant, or unconscionable (IUEEU) expenditures?",
+			"In which case did the Supreme Court rule that the Cooperative Development Authority's procurement of office equipment and computers is subject to the COA's auditing rules for the prevention and disallowance of irregular, unnecessary, excessive, extravagant, or unconscionable expenditures?",
 		options: [
 			'Verzosa v. Carague (G.R. No. 157838, 2011)',
 			'COCOFED v. Republic (G.R. Nos. 177857-58, 2012)',
@@ -6472,7 +6473,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'Verzosa v. Carague (G.R. No. 157838, 2011)',
 		explanation:
 			'In Verzosa v. Carague (G.R. No. 157838, 2011; Resolution Feb. 7, 2012), the Court upheld COA disallowances on government computer purchases at the Cooperative Development Authority, confirming that the Commission on Audit has constitutional authority to set benchmarks preventing excessive and extravagant spending by government agencies.',
-		legalBasis: 'Art. IX-D, Sec. 2(2), 1987 Constitution; Verzosa v. Carague (G.R. No. 157838, 2011)'
+		legalBasis:
+			'Art. IX-D, Sec. 2(2), 1987 Constitution; Verzosa v. Carague (G.R. No. 157838, 2011) (Mnemonic: IUEEU — Irregular, Unnecessary, Excessive, Extravagant, Unconscionable)'
 	},
 	{
 		id: 'consti1:finals:178',

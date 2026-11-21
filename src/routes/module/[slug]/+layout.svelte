@@ -25,7 +25,12 @@
 		if (promptedSubjectId === subject.id) return;
 		promptedSubjectId = subject.id;
 		const params = page.url.searchParams;
-		if (!prefs.value.showSubjectEntryModal || params.get('autostart') === '1' || params.get('setup') === '1') {
+		const path = page.url.pathname.replace(/\/+$/, '');
+		const isExcludedPage =
+			path === `/module/${subject.id}/exam` ||
+			path === `/module/${subject.id}/practice` ||
+			path === `/module/${subject.id}/essays`;
+		if (isExcludedPage || !prefs.value.showSubjectEntryModal || params.get('autostart') === '1' || params.get('setup') === '1') {
 			showEntryModal = false;
 			return;
 		}

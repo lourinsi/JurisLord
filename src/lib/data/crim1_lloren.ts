@@ -633,6 +633,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Under the positivist theory of criminal law, crime is regarded as a natural and social phenomenon.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Under the positivist (or realistic) school of criminal law, crime is viewed as essentially a natural and social phenomenon, and the offender is regarded as a product of social and environmental circumstances.',
 			legalBasis: 'Positivist Theory of Criminal Law (Reyes, p. 24)'
@@ -646,6 +647,7 @@ export const crim1Lloren: LawModule = {
 				'AA, as principal by induction, commanded BB and CC to kill DD. Then BB and CC killed DD by treachery to insure its execution without prior knowledge of AA. Ergo, the aggravating circumstance of treachery should not be applied to all the accused even if "the act of one is the act of all."',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Under Art. 62(4) of the RPC, aggravating circumstances which consist in the material execution of the act, or in the means employed to accomplish it (such as treachery), affect only those persons who had knowledge of them at the time of the execution of the act or their cooperation therein.',
 			legalBasis: 'Art. 62(4), RPC — People v. De Otero; U.S. v. Gamao (Reyes, p. 712)'
@@ -658,6 +660,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Correctional penalties, except arresto mayor, will be prescribed in 15 years.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Correctional penalties prescribe in 10 years, not 15 years; arresto mayor prescribes in 5 years (Art. 90 for crimes; Art. 92 for penalties). The 15-year period applies to afflictive penalties (for crimes under Art. 90, those punishable by death, reclusion perpetua or reclusion temporal prescribe in 20 years; other afflictive penalties in 15 years).',
 			legalBasis: 'Arts. 90 & 92, Revised Penal Code'
@@ -670,6 +673,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is malaria a mitigating circumstance?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Ordinary malaria is not a mitigating circumstance. "Malignant" malaria that affects the nervous system and causes insanity-like delirium is an exempting circumstance under Art. 12(1) (People v. Lacena, 69 Phil. 350; Reyes, pp. 223–224). What is required is MALIGNANT malaria — it is not mitigating, but exempting, because it affects the nervous system and causes complications such as acute melancholia and insanity at times.',
 			legalBasis: 'Art. 12(1), RPC — People v. Lacena, 69 Phil. 350 (Reyes, pp. 223–224)'
@@ -683,6 +687,7 @@ export const crim1Lloren: LawModule = {
 				'Ignorance of the law excuses no one from compliance therewith; however, ignorance or mistake of facts relieves the accused of criminal liability.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Honest mistake of fact (ignorantia facti excusat) negates criminal intent (dolo) and relieves the accused of criminal liability, whereas ignorance of the law (ignorantia legis non excusat) excuses no one.',
 			legalBasis: 'Art. 3, Civil Code (ignorantia legis); Art. 3, RPC — U.S. v. Ah Chong (Reyes, p. 44)'
@@ -696,6 +701,7 @@ export const crim1Lloren: LawModule = {
 				'When a Philippine vessel is within the territory of a foreign country, crimes committed on board are subject to the laws of that foreign country.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. While the RPC generally applies to offenses committed on a Philippine ship or airship (registered with MARINA or the Philippine Bureau of Customs) while on the high seas, when the Philippine vessel or aircraft is inside the territory of a foreign country, crimes committed on board are subject to the laws of that foreign country (Reyes, p. 25).',
 			legalBasis: 'Art. 2(1), Revised Penal Code (Reyes, p. 25)'
@@ -709,6 +715,7 @@ export const crim1Lloren: LawModule = {
 				'In vindication of a grave offense, the offended party must have done a grave offense, while in provocation, the cause that brought about the provocation need not be a grave offense.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. In immediate vindication (Art. 13[5]), the offended party must have committed a grave offense against the offender or his specified relatives; in sufficient provocation (Art. 13[4]), the cause that brought about the provocation need not be a grave offense.',
 			legalBasis: 'Art. 13(4) & (5), Revised Penal Code'
@@ -721,6 +728,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Formal crimes are consummated with one instant act.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Formal crimes are consummated by a single act in one instant and therefore have no attempted or frustrated stage.',
 			legalBasis: 'Art. 6, Revised Penal Code (Reyes, p. 118)'
@@ -733,6 +741,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Penal laws are generally not given retroactive effect, EVEN IF IT IS ADVANTAGEOUS TO THE ACCUSED.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Under Art. 22 of the RPC, penal laws shall have a retroactive effect insofar as they favor the accused (advantageous to the accused), provided he is not a habitual delinquent.',
 			legalBasis: 'Art. 22, Revised Penal Code'
@@ -745,6 +754,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Ex post facto means "retroactivity makes the act a crime."',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. An ex post facto law is one that, among others, makes criminal an act done before the passage of the law which was innocent when done.',
 			legalBasis: 'Art. III, Sec. 22, 1987 Constitution; Arts. 21–22, RPC (Reyes, pp. 2, 591)'
@@ -758,6 +768,7 @@ export const crim1Lloren: LawModule = {
 				'The test in reasonableness of means employed in self-defense is that imperfect equality of weapon used by the accused and the aggressor is allowed.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Perfect equality of weapons is not required; the test is rational equivalence of the means employed.',
 			legalBasis: 'Art. 11(1), Revised Penal Code — rational equivalence (Reyes, p. 180)'
@@ -770,6 +781,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Does an ex post facto law aggravate the penalty?',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. An ex post facto law includes one that aggravates a crime or changes the punishment and inflicts a greater penalty than the law annexed to the crime when committed.',
 			legalBasis: 'Art. III, Sec. 22, 1987 Constitution (Reyes, p. 2)'
@@ -782,6 +794,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Should the penalty for the principal of a frustrated felony be 2 degrees lower than the consummated felony?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Under Art. 50 of the RPC, the principal in a frustrated felony receives the penalty one degree lower than the consummated felony. Two degrees lower is imposed on the principal in an attempted felony (Art. 51) or the accomplice in a frustrated felony (Art. 54).',
 			legalBasis: 'Arts. 50, 51 & 54, Revised Penal Code'
@@ -794,6 +807,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Discernment of children means they misunderstood the wrongfulness of the act.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Discernment is the mental capacity of a child to understand the difference between right and wrong and the consequences of his or her act.',
 			legalBasis: 'Art. 12(3), RPC, as modified by Sec. 6, R.A. No. 9344 (as amended by R.A. No. 10630) — People v. Doquena (Reyes, p. 226)'
@@ -806,6 +820,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Actus Reus means criminal act. Mens Rea means guilty mind.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation: 'TRUE. Actus reus refers to the physical criminal act, while mens rea refers to the guilty mind or criminal intent.',
 			legalBasis: 'Art. 3, Revised Penal Code'
 		},
@@ -817,6 +832,7 @@ export const crim1Lloren: LawModule = {
 			question: 'A first-time recidivist can avail of the Indeterminate Sentence Law (ISLAW), but a habitual delinquent cannot.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Section 2 of the Indeterminate Sentence Law disqualifies habitual delinquents, not recidivists (People v. Yu Lian; People v. Venus).',
 			legalBasis: 'Sec. 2, Act No. 4103 (ISLAW) — People v. Yu Lian; People v. Venus (Reyes, p. 791)'
@@ -829,6 +845,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Dolo is required in special laws.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Offenses under special laws are generally mala prohibita, where criminal intent (dolo) is immaterial; the prohibited act need only be done voluntarily.',
 			legalBasis: 'Arts. 3 & 10, Revised Penal Code'
@@ -842,6 +859,7 @@ export const crim1Lloren: LawModule = {
 				'The penalty next lower than the one prescribed by law for a frustrated felony shall be imposed on the accomplice for the commission of a frustrated felony.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Art. 54 of the RPC expressly provides that the penalty next lower in degree than that prescribed by law for the frustrated felony shall be imposed upon the accomplices in the commission of a frustrated felony (which is two degrees below the consummated felony). (Note: The original key erroneously marked this False.)',
 			legalBasis: 'Art. 54, Revised Penal Code'
@@ -854,6 +872,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Mala in se is a crime of evil and mala prohibita is prohibited by law.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Mala in se are acts inherently evil or wrong by nature, whereas mala prohibita are acts that are wrong only because they are prohibited by statute.',
 			legalBasis: 'Art. 3, Revised Penal Code'
@@ -866,6 +885,7 @@ export const crim1Lloren: LawModule = {
 			question: 'A person is not obligated to satisfy his civil liability resulting from crime if his sentence was commuted.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Under Art. 113 of the RPC, the offender continues to be obliged to satisfy the civil liability resulting from the crime despite service of sentence, commutation, pardon, or amnesty.',
 			legalBasis: 'Art. 113, Revised Penal Code'
@@ -878,6 +898,7 @@ export const crim1Lloren: LawModule = {
 			question: 'There is no attempted nor frustrated stage on light felonies committed against persons.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Under Art. 7 of the RPC, light felonies are punishable only when consummated, EXCEPT those committed against persons or property. Thus, attempted and frustrated light felonies against persons or property are punishable (Reyes, p. 122). (Note: The original key marked True because slight physical injuries — the common light felony against persons — is punished according to the resulting injury.)',
 			legalBasis: 'Art. 7, Revised Penal Code (Reyes, p. 122)'
@@ -890,6 +911,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Reparation is under civil liability.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Under Art. 104 of the RPC, civil liability includes restitution, reparation of the damage caused, and indemnification for consequential damages.',
 			legalBasis: 'Art. 104, Revised Penal Code'
@@ -903,6 +925,7 @@ export const crim1Lloren: LawModule = {
 				'Is an employer of a hotel establishment subsidiarily liable if his security guard commits robbery in a 7-Eleven beside the hotel while in the performance of his duty?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Art. 103 requires that the crime be committed by the employee "in the discharge of his duties" — the law does not say "while in the discharge of his duties," so a crime merely committed during duty hours is not enough. A hotel guard who robs a neighboring establishment does not make his employer subsidiarily liable (Baza Marketing v. Bolinao Security; Reyes, p. 905).',
 			legalBasis: 'Art. 103, RPC — Baza Marketing v. Bolinao Security (Reyes, p. 905)'
@@ -915,6 +938,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Nullum crimen means "without law no punishment."',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. "Nullum crimen" means "no crime" (nullum crimen sine lege = no crime without law), whereas "nulla poena sine lege" means "no penalty/punishment without law."',
 			legalBasis: 'Art. 21, Revised Penal Code'
@@ -927,6 +951,7 @@ export const crim1Lloren: LawModule = {
 			question: 'In dubio pro reo is for the favor of the accused, irrespective of the crimes committed.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE (Note: check with your professor, as the original key marked False). In dubio pro reo applies in favor of the accused across all crimes whenever there is real doubt on the facts or an ambiguity in the law, though it does not apply where the law and evidence are clear.',
 			legalBasis: 'In dubio pro reo principle; Art. III, Sec. 14(2), 1987 Constitution (presumption of innocence); Rule 133, Sec. 2, Rules of Court'
@@ -939,6 +964,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Nulla poena sine lege means "no crime without law."',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation: 'FALSE. "Nulla poena sine lege" means "no penalty/punishment without law."',
 			legalBasis: 'Art. 21, Revised Penal Code'
 		},
@@ -950,6 +976,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Philippine criminal law follows the principle of Nullum Crimen Sine Poena Lege / Nullum Crimen, Nulla Poena Sine Lege.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Reflected in Art. 21 of the RPC and the constitutional prohibition against ex post facto laws.',
 			legalBasis: 'Art. 21, Revised Penal Code'
@@ -962,6 +989,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Mala in se is generally felonies and offenses penalized by special laws.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Mala in se are generally felonies penalized by the Revised Penal Code, while mala prohibita are generally offenses penalized by special laws.',
 			legalBasis: 'Arts. 3 & 10, Revised Penal Code'
@@ -974,6 +1002,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is one degree below arresto mayor destierro?',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Under the graduated scale in Art. 71 of the RPC, the order is arresto mayor, then destierro, then arresto menor. Destierro is the penalty one degree below arresto mayor (Uy Chin Hua v. Dinglasan; Reyes, p. 758). (Note: The original key marked this False.)',
 			legalBasis: 'Art. 71, RPC — Uy Chin Hua v. Dinglasan (Reyes, p. 758)'
@@ -987,6 +1016,7 @@ export const crim1Lloren: LawModule = {
 				'AA wanted to kill his father, but due to the dark of the night, by mistake, killed his brother. Thus, AA is entitled to the mitigating circumstance of praeter intentionem.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. This is error in personae (mistake in identity, Art. 49), not praeter intentionem (Art. 13[3]). Praeter intentionem requires an injurious result graver than intended.',
 			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code'
@@ -999,6 +1029,7 @@ export const crim1Lloren: LawModule = {
 			question: 'A person with somnambulism cannot invoke it as a mitigating circumstance.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Somnambulism (sleepwalking) is not a mitigating circumstance; when clearly proven, it is an exempting circumstance because the actor lacks voluntariness and intelligence (People v. Gimena; U.S. v. Odicta; Reyes, p. 223).',
 			legalBasis: 'Art. 12(1), RPC — People v. Gimena; U.S. v. Odicta (Reyes, p. 223)'
@@ -1012,6 +1043,7 @@ export const crim1Lloren: LawModule = {
 				'The offender knows the combination to the safe and opens it, but the safe is empty ("walay sulod"). Is it attempted or frustrated theft?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. It is neither attempted nor frustrated theft; it is an impossible crime under Art. 4(2) of the RPC because the safe was empty (Intod v. CA).',
 			legalBasis: 'Art. 4(2), RPC — Intod v. Court of Appeals, G.R. No. 103119, Oct. 21, 1992'
@@ -1025,6 +1057,7 @@ export const crim1Lloren: LawModule = {
 				'A 180 kg man who attacks a 70 kg woman automatically incurs the aggravating circumstance of "abuse of superior strength."',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Abuse of superior strength is not automatic from physical or weight disparity; it requires proof of deliberate use of excessive force out of proportion to the means of defense available to the victim.',
 			legalBasis: 'Art. 14(15), RPC — People v. Cabiling (Reyes, p. 409)'
@@ -1037,6 +1070,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Do formal crimes have attempted and frustrated stages?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Formal crimes are consummated in one instant by a single act and have no attempted or frustrated stage.',
 			legalBasis: 'Art. 6, Revised Penal Code (Reyes, p. 118)'
@@ -1050,6 +1084,7 @@ export const crim1Lloren: LawModule = {
 				'Jewelry was stolen, and a third party bought it in good faith. Can the owner claim and recover their jewelry from the buyer in good faith?',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Under Art. 105 of the RPC and Art. 559 of the Civil Code, the owner of stolen property can recover it even from a third person who acquired it in good faith (who may then go after the seller). The only exception is if the buyer acquired it at a public sale, in which case the owner must reimburse the price paid to recover it (Reyes, pp. 913–914). (Note: The original key marked this False.)',
 			legalBasis: 'Art. 105, RPC; Art. 559, Civil Code (Reyes, pp. 913–914)'
@@ -1062,6 +1097,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Ignominy is one of moral suffering.',
 			options: ['True', 'False'],
 			correctIndex: 0,
+			key: 'True',
 			explanation:
 				'TRUE. Ignominy (Art. 14[17]) pertains to the moral order (moral suffering/humiliation), whereas cruelty (Art. 14[21]) pertains to physical suffering.',
 			legalBasis: 'Art. 14(17) & (21), RPC — U.S. v. Abaigar (Reyes, p. 455)'
@@ -1074,6 +1110,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Does indemnity refer to a crime against property?',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Indemnification for consequential damages (Art. 107) generally refers to crimes against persons, whereas reparation of the damage caused (Art. 106) refers to crimes against property (Reyes, p. 920).',
 			legalBasis: 'Arts. 106 & 107, Revised Penal Code (Reyes, p. 920)'
@@ -1086,6 +1123,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Praeter intentionem occurs when one mistakenly commits a crime intended for another person.',
 			options: ['True', 'False'],
 			correctIndex: 1,
+			key: 'False',
 			explanation:
 				'FALSE. Mistakenly committing a crime on a person other than the intended victim is error in personae (mistake in identity). Praeter intentionem is the lack of intent to commit so grave a wrong as that committed.',
 			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code'
@@ -1107,6 +1145,7 @@ export const crim1Lloren: LawModule = {
 				'Art. 160: applies when a person commits a new felony after conviction by final judgment, before beginning to serve or while serving sentence.'
 			],
 			correctIndex: 0,
+			key: 'Recidivism',
 			explanation:
 				'Recidivism (Art. 14[9], RPC). A recidivist is one who, at the time of his trial for one crime, shall have been previously convicted by final judgment of another crime embraced in the same title of the Code.',
 			legalBasis: 'Art. 14(9), Revised Penal Code'
@@ -1125,6 +1164,7 @@ export const crim1Lloren: LawModule = {
 				'Restitution (returning the very thing itself) is a civil liability under Arts. 104–105, not a pecuniary liability under Art. 38.'
 			],
 			correctIndex: 3,
+			key: 'Restitution',
 			explanation:
 				'Restitution. Art. 38 lists reparation of the damage caused, indemnification of consequential damages, fine, and costs of the proceedings as pecuniary liabilities. Restitution (returning the very thing itself) is a civil liability under Arts. 104–105, not a pecuniary liability under Art. 38.',
 			legalBasis: 'Art. 38 & Arts. 104–105, Revised Penal Code'
@@ -1148,6 +1188,7 @@ export const crim1Lloren: LawModule = {
 				'Criminal liability still attaches if the child acted with discernment; civil liability only applies when discernment is absent.'
 			],
 			correctIndex: 0,
+			key: 'Liable if acting with discernment',
 			explanation:
 				'Liable with conditions (if acting with discernment). Under R.A. 9344 as amended by R.A. 10630, a child above 15 and under 18 is exempt from criminal liability unless he or she acted with discernment. If acting with discernment, the child is liable but entitled to the privileged mitigating circumstance of minority (Art. 68[2]), diversion, and suspended sentence.',
 			legalBasis: 'Secs. 6, 23 & 38, R.A. No. 9344, as amended by R.A. No. 10630; Art. 68(2), RPC'
@@ -1173,6 +1214,7 @@ export const crim1Lloren: LawModule = {
 				'Illness that completely deprives the offender of willpower/intelligence is an exempting circumstance (Art. 12[1]), whereas Art. 13(9) only mitigates illness that diminishes willpower.'
 			],
 			correctIndex: 4,
+			key: 'Illness depriving the offender of willpower',
 			explanation:
 				'Art. 13 covers all five if option (e) refers to an illness that only "diminishes" the exercise of willpower without depriving the offender of consciousness of his acts (Art. 13[9]). However, when an illness completely "deprives" the offender of willpower/intelligence, it is an exempting circumstance under Art. 12, making (e) the odd one out.',
 			legalBasis: 'Art. 13(1), (4), (5), (6) & (9); Art. 12(1), RPC (Reyes, p. 255)'
@@ -1192,6 +1234,7 @@ export const crim1Lloren: LawModule = {
 				'Restorative justice focuses on repairing harm and reconciling the offender, victim, and community rather than deterrence.'
 			],
 			correctIndex: 0,
+			key: 'Utilitarian theory',
 			explanation:
 				'Utilitarian theory. Under the utilitarian theory of punishment, the primary purpose of penalties is forward-looking deterrence and prevention of potential and actual wrongdoers.',
 			legalBasis: 'Theories justifying penalty — Prevention & Exemplarity (Reyes, p. 585)'
@@ -1211,6 +1254,7 @@ export const crim1Lloren: LawModule = {
 				'Grave coercion involves compelling another to do something against their will without authority of law, not an intent to gain by taking property.'
 			],
 			correctIndex: 0,
+			key: 'Attempted robbery',
 			explanation:
 				'Attempted robbery (per Reyes, Art. 4, p. 88). In Reyes\' watch example, pointing a gun at B to rob him when B forgot his watch is attempted robbery with intimidation, not an impossible crime, because the object was missing by accident (with her sister), not by inherent impossibility (Art. 6, par. 3), and pointing a gun already constitutes grave threats (Art. 282), whereas Art. 4(2) requires that the act not violate another RPC provision. (Note: Check with your professor — the original quiz key answered "Impossible crime" following Intod v. CA.)',
 			legalBasis: 'Art. 4(2), Art. 6, par. 3 & Art. 282(2), RPC (Reyes, p. 88)',
@@ -1239,6 +1283,7 @@ export const crim1Lloren: LawModule = {
 				'One of the listed choices ("In case of doubt, for the accused") accurately states the principle.'
 			],
 			correctIndex: 4,
+			key: 'In case of doubt, for the accused',
 			explanation:
 				'In case of doubt, for the accused (in dubio pro reo). Penal laws and reasonable doubts in evidence are resolved liberally in favor of the accused and strictly against the State.',
 			legalBasis: 'In dubio pro reo doctrine'
@@ -1258,6 +1303,7 @@ export const crim1Lloren: LawModule = {
 				'A crime was committed (attempted robbery under Reyes).'
 			],
 			correctIndex: 1,
+			key: 'Attempted robbery',
 			explanation:
 				'B. Attempted robbery (per Reyes, Art. 4, p. 88). This is Reyes\' own textbook example: A points his gun at B to rob him of his watch, but B forgot to carry it. The watch was missing by accident, not inherent impossibility (Art. 6, par. 3), and pointing the gun is already grave threats (Art. 282), so Art. 4(2) does not apply. (Note: Check with your professor — the original key wrote "G. Impossible crime.")',
 			legalBasis: 'Art. 4(2), Art. 6, par. 3 & Art. 282(2), RPC (Reyes, p. 88)'
@@ -1282,6 +1328,7 @@ export const crim1Lloren: LawModule = {
 				'The second option accurately states Budoy\'s liability.'
 			],
 			correctIndex: 1,
+			key: 'Budoy is not exempt, but criminally liable',
 			explanation:
 				'B. Under Art. 12(6), exemption for uncontrollable fear requires a threat of an evil equal to or greater than the evil committed. Burning a house is a lesser evil than killing one\'s father (parricide), so Budoy is not exempt and is criminally liable. However, because one requisite of Art. 12(6) is present, it is appreciated as an incomplete exempting (ordinary mitigating) circumstance under Art. 13(1) (Reyes, p. 260). Option C names "Boboy," making B the right choice.',
 			legalBasis: 'Art. 12(6) & Art. 13(1), RPC (Reyes, p. 260)'
@@ -1299,6 +1346,7 @@ export const crim1Lloren: LawModule = {
 				'Attempted robbery is committed under Reyes (though the original key implied impossible crime).'
 			],
 			correctIndex: 0,
+			key: 'Attempted robbery',
 			explanation:
 				'A. Attempted robbery (per Reyes, Art. 4, p. 88). Same facts as Reyes\' watch example: a gun is pointed to rob the victim, but the object is absent by accident (borrowed by his wife). Under Reyes, it is attempted robbery with intimidation (Art. 6, par. 3), not an impossible crime. (Note: Check with your professor — the original key marked "C. None of the above," implying impossible crime.)',
 			legalBasis: 'Art. 4(2), Art. 6, par. 3 & Art. 282(2), RPC (Reyes, p. 88)'
@@ -1317,6 +1365,7 @@ export const crim1Lloren: LawModule = {
 				'Consummated arson applies once any part of the building is burned.'
 			],
 			correctIndex: 1,
+			key: 'Consummated Arson',
 			explanation:
 				'B. Consummated Arson. Arson is consummated the moment any part of the house, however small (even 10% or a slight charring of the wall), is burned (People v. Hernandez, 54 Phil. 122; Reyes, p. 113).',
 			legalBasis: 'Art. 6, RPC; P.D. No. 1613 — People v. Hernandez, 54 Phil. 122 (Reyes, p. 113)'
@@ -1336,6 +1385,7 @@ export const crim1Lloren: LawModule = {
 				'Recognizance is not an Art. 89 ground, so it is the correct exclusion.'
 			],
 			correctIndex: 1,
+			key: 'Recognizance',
 			explanation:
 				'B. Recognizance. Under Art. 89 of the RPC, total extinction of criminal liability occurs by: death of the convict, service of sentence, amnesty, absolute pardon, prescription of the crime, prescription of the penalty, and marriage of the offended woman under Art. 344. Recognizance is a mode of release pending trial, not extinction of criminal liability.',
 			legalBasis: 'Art. 89, Revised Penal Code'
@@ -1355,6 +1405,7 @@ export const crim1Lloren: LawModule = {
 				'Under Art. 63(1), a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances.'
 			],
 			correctIndex: 3,
+			key: 'None of the choices',
 			explanation:
 				'd. None of the choices (Reclusion perpetua). Under Art. 63 of the RPC, a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances. Even though R.A. 7659 set its duration at 20 years and 1 day to 40 years, reclusion perpetua remains an indivisible penalty and has no periods (People v. Lucas, G.R. Nos. 108172-73, Jan. 9, 1995).',
 			legalBasis: 'Art. 63(1) & Art. 266-B, RPC; Art. 27, RPC as amended by R.A. No. 7659 (Reyes, p. 604) — People v. Lucas (1995)'
@@ -1373,6 +1424,7 @@ export const crim1Lloren: LawModule = {
 				'It is an offense under R.A. 4136.'
 			],
 			correctIndex: 1,
+			key: 'Offense',
 			explanation:
 				'B) Offense (per Reyes, Art. 3). Driving without a license violates a national special law (R.A. 4136). A "felony" is a violation of the RPC; an "offense" is a violation of a special law; an "infraction" is a violation of a city or municipal ordinance. (Note: The original key marked "Infraction" — follow your professor if he classifies traffic violations as infractions.)',
 			legalBasis: 'Art. 3, RPC; Sec. 19, R.A. No. 4136 (Land Transportation and Traffic Code)'
@@ -1397,6 +1449,7 @@ export const crim1Lloren: LawModule = {
 				'Death in a tumultuous affray (Art. 251) requires a confused, disorderly fight among several persons where the actual killer cannot be ascertained.'
 			],
 			correctIndex: 0,
+			key: 'None of the above',
 			explanation:
 				'None of the above — AA is liable for HOMICIDE. In People v. Anastacio Apolinar (38 O.G. 2870), the Court of Appeals held that defense of property does not justify killing unless coupled with an attack on the person of one entrusted with said property, as life is more important than property. However, there was no Murder because AA shouted a warning and fired in the air first, negating treachery.',
 			legalBasis: 'Art. 11(1) & Art. 249, RPC — People v. Anastacio Apolinar, C.A., 38 O.G. 2870 (Reyes, pp. 167, 169)'
@@ -1420,6 +1473,7 @@ export const crim1Lloren: LawModule = {
 				'A child 15 years old or under is completely EXEMPT from criminal liability under R.A. 9344 (as amended by R.A. 10630).'
 			],
 			correctIndex: 3,
+			key: 'None of the choices',
 			explanation:
 				'None of the choices — completely EXEMPT from criminal liability. Under R.A. 9344 as amended by R.A. 10630, a child 15 years of age or under at the time of the commission of the offense is completely exempt from criminal liability and undergoes an intervention program. (Under Sec. 20-A, as added by R.A. 10630, a child above 12 up to 15 who commits a serious crime such as rape is deemed a neglected child and placed in a Bahay Pag-asa intensive juvenile intervention program — but still exempt from criminal liability.)',
 			legalBasis: 'Secs. 6 & 20-A, R.A. No. 9344, as amended by R.A. No. 10630'
@@ -1438,6 +1492,7 @@ export const crim1Lloren: LawModule = {
 				'Aberratio ictus is the exact Latin term for mistake in the blow.'
 			],
 			correctIndex: 0,
+			key: 'Aberratio Ictus',
 			explanation:
 				'A. Aberratio Ictus. Mistake in the blow occurs when the offender aims at one person but hits another due to lack of precision.',
 			legalBasis: 'Art. 4(1) & Art. 48, Revised Penal Code'
@@ -1456,6 +1511,7 @@ export const crim1Lloren: LawModule = {
 				'Error in personae is the exact Latin term for mistake in identity.'
 			],
 			correctIndex: 2,
+			key: 'Error in personae',
 			explanation:
 				'C. Error in personae. Mistake in identity occurs when the offender inflicts injury on someone whom he mistook for his intended victim.',
 			legalBasis: 'Art. 4(1) & Art. 49, Revised Penal Code'
@@ -1480,6 +1536,7 @@ export const crim1Lloren: LawModule = {
 				'Generic aggravating can be offset by ordinary mitigating circumstances, whereas this special aggravating treatment fixes the penalty in the maximum.'
 			],
 			correctIndex: 0,
+			key: 'Special aggravating circumstance',
 			explanation:
 				'Special aggravating circumstance — always MAXIMUM (R.A. 10591, Sec. 29; Palaganas v. People). When the use of a loose firearm is inherent in the commission of a crime, it is appreciated as a special aggravating circumstance that cannot be offset by an ordinary mitigating circumstance, fixing the penalty in its maximum period. However, Sec. 29 of R.A. 10591 itself only says "aggravating circumstance"; the "special" aggravating treatment comes from jurisprudence under the old law, R.A. 8294 (Palaganas v. People; People v. Castillo — Reyes, pp. 672–673). Sec. 29 also provides that if the crime committed carries a maximum penalty lower than that for illegal possession of firearms, the penalty for illegal possession is imposed instead — please consult with GOD LLOREN.',
 			legalBasis: 'Sec. 29, R.A. No. 10591; Palaganas v. People, G.R. No. 165483, Sept. 12, 2006 (decided under R.A. 8294)'
@@ -1498,6 +1555,7 @@ export const crim1Lloren: LawModule = {
 				'An absolutory cause exempts an offender for policy reasons; a loose firearm instead aggravates the penalty.'
 			],
 			correctIndex: 0,
+			key: 'Aggravating circumstance',
 			explanation:
 				'Aggravating circumstance. Under Sec. 29 of R.A. 10591, the use of a loose firearm, when inherent in the commission of a crime, shall be considered as an aggravating circumstance.',
 			legalBasis: 'Sec. 29, R.A. No. 10591'
@@ -1524,6 +1582,7 @@ export const crim1Lloren: LawModule = {
 				'8 years and 1 day to 10 years — prision mayor is the range for the minimum term (next lower in degree), not the maximum term.'
 			],
 			correctIndex: 0,
+			key: 'Reclusion Temporal Medium',
 			explanation:
 				'Reclusion Temporal Medium. Under Sec. 1 of the ISLAW and Art. 64(1) of the RPC, when there are neither mitigating nor aggravating circumstances, the maximum term is imposed in the medium period of the prescribed penalty: reclusion temporal medium (14 yrs 8 mos 1 day to 17 yrs 4 mos), while the minimum term is anywhere within prision mayor (6 yrs 1 day to 12 yrs).',
 			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Art. 64(1), RPC'
@@ -1547,6 +1606,7 @@ export const crim1Lloren: LawModule = {
 				'Impossible crime (Art. 4[2]) requires intent to commit an offense against persons or property.'
 			],
 			correctIndex: 0,
+			key: 'No, not liable for parricide',
 			explanation:
 				'No, Mr. Hopeless is not liable for parricide (Reyes, Art. 4, p. 69). Art. 4(1) requires that the offender be "committing a felony" (dolo). Attempting suicide is not a felony under the RPC (Art. 253 only punishes giving assistance to suicide), so Art. 4(1) does not apply.',
 			legalBasis: 'Art. 4(1) & Art. 253, RPC (Reyes, p. 69)'
@@ -1571,6 +1631,7 @@ export const crim1Lloren: LawModule = {
 				'Art. 4(2) specifically punishes impossible crimes to suppress criminal tendencies even when the means fail.'
 			],
 			correctIndex: 0,
+			key: 'Impossible crime',
 			explanation:
 				'Impossible crime (ineffectual means) under Art. 4(2) of the RPC. Reyes (p. 87) gives the exact same example where a person mistakes sugar for arsenic.',
 			legalBasis: 'Art. 4(2), Revised Penal Code (Reyes, p. 87)'
@@ -1595,6 +1656,7 @@ export const crim1Lloren: LawModule = {
 				'Theft is not among the crimes disqualified from probation under Sec. 9 of P.D. 968.'
 			],
 			correctIndex: 0,
+			key: 'No, because he perfected an appeal',
 			explanation:
 				'No. Under Sec. 4 of P.D. 968 as amended by R.A. 10707, no application for probation shall be entertained or granted if the defendant has perfected an appeal from the judgment of conviction. The exception under R.A. 10707 only applies when an appeal modifies a non-probationable penalty into a probationable one. Here, his 6-year sentence was already probationable, and he chose to appeal.',
 			legalBasis: 'Secs. 4 & 9(a), P.D. No. 968, as amended by R.A. No. 10707'
@@ -1619,6 +1681,7 @@ export const crim1Lloren: LawModule = {
 				'Probation is applied for before serving the sentence, within 15 days from notice of the modified judgment.'
 			],
 			correctIndex: 0,
+			key: 'Yes, he may apply for probation',
 			explanation:
 				'Yes. Under R.A. 10707 and Colinares v. People (G.R. No. 182748, Dec. 13, 2011), when a judgment of conviction imposing a non-probationable penalty (8–14 years) is appealed and modified through the imposition of a probationable penalty (4 years of prision correccional), the accused may apply for probation based on the modified decision before it becomes final, in the trial court that convicted him.',
 			legalBasis: 'Sec. 4, P.D. No. 968, as amended by R.A. No. 10707; Colinares v. People'
@@ -1642,6 +1705,7 @@ export const crim1Lloren: LawModule = {
 				'Passenger nationality does not determine the governing law of a ship on the high seas.'
 			],
 			correctIndex: 0,
+			key: 'Law of the country whose flag it flies',
 			explanation:
 				'The flag state rule means that a ship on the high seas is governed by the laws of the country whose flag it flies, because that country has jurisdiction and control over the vessel. The flag of the ship is the nationality it registers under.',
 			legalBasis: 'Art. 2(1), RPC (Reyes, p. 25); Flag State Rule — Art. 92, UNCLOS'
@@ -1666,6 +1730,7 @@ export const crim1Lloren: LawModule = {
 				'This lowers the penalty by 3 degrees instead of 2 degrees.'
 			],
 			correctIndex: 0,
+			key: 'Min: arresto mayor; Max: prision correccional med',
 			explanation:
 				'Homicide is prescribed reclusion temporal. Two privileged mitigating circumstances lower it two degrees: prision mayor, then prision correccional. The 1 aggravating and 1 ordinary mitigating circumstance offset each other (Art. 64[4]), so the maximum term is prision correccional medium (2 yrs 4 mos 1 day to 4 yrs 2 mos). The minimum term comes from the penalty next lower to the lowered penalty, which is arresto mayor (1 mo 1 day to 6 mos).',
 			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Arts. 61, 64(4), 68 & 69, RPC'
@@ -1690,6 +1755,7 @@ export const crim1Lloren: LawModule = {
 				'The absolute maximum limit under Art. 70 applies instead of the three-fold rule.'
 			],
 			correctIndex: 0,
+			key: '33 days',
 			explanation:
 				'33 days under the Three-Fold Rule (Art. 70, RPC). When a convict has to serve two or more penalties, the maximum duration of the sentence shall not be more than three-fold the length of time corresponding to the most severe of the penalties imposed upon him: 3 × 11 days = 33 days.',
 			legalBasis: 'Art. 70, Revised Penal Code (Three-Fold Rule) (Reyes, pp. 748–749)'

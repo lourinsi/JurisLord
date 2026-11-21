@@ -3,7 +3,7 @@
 	import { md } from '$lib/text';
 	import { answerKey } from '$lib/answerkey.svelte';
 	import { playMcqSound } from '$lib/sound';
-	import type { Mcq } from '$lib/mcq';
+	import { resolveCorrectIndex, type Mcq } from '$lib/mcq';
 
 	let {
 		q,
@@ -29,13 +29,14 @@
 
 	/** Answer-key easter egg: show the right choice before (or without) a reveal. */
 	const keyed = $derived(answerKey.on && !reveal);
-	const LETTERS = 'ABCDEFG';
+	const correctIdx = $derived(resolveCorrectIndex(q));
+	const LETTERS = 'ABCDEFGH';
 
 	// Automatically play right/wrong audio feedback whenever an answer transitions from unrevealed to revealed.
 	let prevReveal = untrack(() => reveal);
 	$effect(() => {
 		if (!prevReveal && reveal && picked !== null) {
-			playMcqSound(picked === q.a);
+			playMcqSound(picked === correctIdx);
 		}
 		prevReveal = reveal;
 	});
@@ -45,8 +46,8 @@
 		const t = e.target as HTMLElement;
 		if (t.closest('input, textarea, select, [contenteditable]')) return;
 		const k = e.key.toLowerCase();
-		let pos = 'abcd'.indexOf(k);
-		if (pos < 0) pos = '1234'.indexOf(k);
+		let pos = 'abcdefgh'.indexOf(k);
+		if (pos < 0) pos = '12345678'.indexOf(k);
 		if (pos < 0 || pos >= order.length) return;
 		e.preventDefault();
 		onpick(order[pos]);
@@ -61,8 +62,8 @@
 	{#each order as oi, pos (oi)}
 		<button
 			class:sel={!reveal && oi === picked}
-			class:right={(reveal || keyed) && oi === q.a}
-			class:wrong={reveal && oi === picked && oi !== q.a}
+			class:right={(reveal || keyed) && oi === correctIdx}
+			class:wrong={reveal && oi === picked && oi !== correctIdx}
 			aria-pressed={oi === picked}
 			disabled={locked}
 			onclick={() => onpick?.(oi)}
@@ -70,7 +71,7 @@
 			<span class="letter sm">{LETTERS[pos]}</span>
 			<span>
 				{q.o[oi]}
-				{#if (reveal || keyed) && oi !== q.a && q.why[oi]}<span class="why">Why not: {q.why[oi]}</span>{/if}
+				{#if (reveal || keyed) && oi !== correctIdx && q.why[oi]}<span class="why">Why not: {q.why[oi]}</span>{/if}
 			</span>
 		</button>
 	{/each}
@@ -79,14 +80,14 @@
 {#if keyed}
 	<div class="fb key">
 		<b class="fb-h">🔑 Answer key</b>
-		<p><strong>Answer:</strong> {q.o[q.a]}</p>
+		<p><strong>Answer:</strong> {q.o[correctIdx]}</p>
 		<p>{@html md(q.ex)}</p>
 	</div>
 {:else if reveal}
-	{@const ok = picked === q.a}
+	{@const ok = picked === correctIdx}
 	<div class="fb" class:ok aria-live="polite">
 		<b class="fb-h">{ok ? 'Correct' : picked === null ? 'Not answered' : 'Not this time'}</b>
-		{#if !ok}<p><strong>Answer:</strong> {q.o[q.a]}</p>{/if}
+		{#if !ok}<p><strong>Answer:</strong> {q.o[correctIdx]}</p>{/if}
 		<p>{@html md(q.ex)}</p>
 	</div>
 {/if}

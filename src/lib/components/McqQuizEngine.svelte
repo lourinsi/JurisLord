@@ -25,7 +25,7 @@
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import { getPart, readHref } from '$lib/content';
-	import { canShuffle } from '$lib/mcq';
+	import { dynamicOptionOrder, resolveCorrectIndex } from '$lib/mcq';
 	import { playMcqSound } from '$lib/sound';
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
@@ -38,7 +38,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { topicsForSubject } from '$lib/topics';
-	import { cn, formatClock, pct, seededOrder } from '$lib/utils';
+	import { cn, formatClock, pct } from '$lib/utils';
 	import type { McqQuestion, McqTag, Subject } from '$lib/types';
 
 	type Mode = 'practice' | 'exam';
@@ -90,6 +90,8 @@
 	let phase = $state<Phase>('setup');
 	/** Frozen list of question ids for this session, so answering never reshuffles the list under you. */
 	let sessionIds = $state<string[]>([]);
+	/** Dynamic per-session display order for each question's options (re-jumbled every session, exam, and retry). */
+	let orderById = $state<Record<string, number[]>>({});
 	let index = $state(0);
 	let hintOpen = $state(false);
 
@@ -111,14 +113,10 @@
 	// ---- derived ----
 	const total = $derived(sessionIds.length);
 	const current = $derived<McqQuestion | undefined>(byId.get(sessionIds[index]));
+	const currentCorrectIndex = $derived(current ? resolveCorrectIndex(current) : -1);
 	const order = $derived.by(() => {
 		if (!current) return [];
-		const opts = current.options;
-		if (opts.length <= 2 || !canShuffle({ o: opts })) return opts.map((_, i) => i);
-		if (/^(none\b|illness depriving)/i.test(opts[opts.length - 1])) {
-			return [...seededOrder(opts.length - 1, current.id), opts.length - 1];
-		}
-		return seededOrder(opts.length, current.id);
+		return orderById[current.id] ?? dynamicOptionOrder(current.options);
 	});
 	const attempt = $derived(current ? userStorage.mcqAttempts[current.id] : undefined);
 	const selected = $derived.by(() => {
@@ -152,13 +150,13 @@
 	const result = $derived.by(() => {
 		if (phase !== 'submitted') return null;
 		const qs = sessionIds.map((id) => byId.get(id)!).filter(Boolean);
-		const correct = qs.filter((q) => examAnswers[q.id] === q.correctIndex).length;
+		const correct = qs.filter((q) => examAnswers[q.id] === resolveCorrectIndex(q)).length;
 		const answered = qs.filter((q) => examAnswers[q.id] !== undefined).length;
 		const byTopic = new Map<string, { name: string; correct: number; total: number }>();
 		for (const q of qs) {
 			const row = byTopic.get(q.topic) ?? { name: q.topic, correct: 0, total: 0 };
 			row.total++;
-			if (examAnswers[q.id] === q.correctIndex) row.correct++;
+			if (examAnswers[q.id] === resolveCorrectIndex(q)) row.correct++;
 			byTopic.set(q.topic, row);
 		}
 		return { total: qs.length, correct, answered, skipped: qs.length - answered, byTopic: [...byTopic.values()] };
@@ -180,8 +178,18 @@
 		}
 	}
 
+	function buildSessionOrders(ids: string[], avoidPrev = false) {
+		const next: Record<string, number[]> = {};
+		for (const id of ids) {
+			const q = byId.get(id);
+			if (q) next[id] = dynamicOptionOrder(q.options, Math.random, avoidPrev ? orderById[id] : undefined);
+		}
+		orderById = next;
+	}
+
 	function rebuild() {
 		sessionIds = lawModule.mcqs.filter(matches).map((q) => q.id);
+		buildSessionOrders(sessionIds, true);
 		index = 0;
 		hintOpen = false;
 		examAnswers = {};
@@ -236,7 +244,7 @@
 	function choose(optionIndex: number) {
 		if (!current || revealed) return;
 		if (mode === 'practice') {
-			const isCorrect = optionIndex === current.correctIndex;
+			const isCorrect = optionIndex === currentCorrectIndex;
 			userStorage.recordMcqAttempt(current.id, optionIndex, isCorrect);
 			playMcqSound(isCorrect);
 		} else if (examRunning) {
@@ -245,7 +253,10 @@
 	}
 
 	function retry() {
-		if (current) userStorage.clearMcqAttempt(current.id);
+		if (current) {
+			userStorage.clearMcqAttempt(current.id);
+			orderById[current.id] = dynamicOptionOrder(current.options, Math.random, orderById[current.id]);
+		}
 		hintOpen = false;
 	}
 
@@ -299,6 +310,7 @@
 	// ---- exam ----
 	function startExam() {
 		if (!total) return;
+		buildSessionOrders(sessionIds, true);
 		examAnswers = {};
 		index = 0;
 		startedAt = Date.now();
@@ -314,11 +326,12 @@
 		let firstWrongIndex = -1;
 		sessionIds.forEach((id, i) => {
 			const q = byId.get(id);
-			if (q && examAnswers[id] === q.correctIndex) {
+			if (q && examAnswers[id] === resolveCorrectIndex(q)) {
 				nextAnswers[id] = examAnswers[id];
 				kept++;
-			} else if (firstWrongIndex === -1) {
-				firstWrongIndex = i;
+			} else {
+				if (q) orderById[id] = dynamicOptionOrder(q.options, Math.random, orderById[id]);
+				if (firstWrongIndex === -1) firstWrongIndex = i;
 			}
 		});
 		examAnswers = nextAnswers;
@@ -341,7 +354,7 @@
 			const sel = examAnswers[id];
 			if (q && sel !== undefined) {
 				answered++;
-				const ok = sel === q.correctIndex;
+				const ok = sel === resolveCorrectIndex(q);
 				if (ok) correct++;
 				userStorage.recordMcqAttempt(id, sel, ok);
 			}
@@ -407,7 +420,7 @@
 		}
 		const s = examAnswers[id];
 		if (s === undefined) return 'none';
-		if (phase === 'submitted') return s === q.correctIndex ? 'correct' : 'incorrect';
+		if (phase === 'submitted') return s === resolveCorrectIndex(q) ? 'correct' : 'incorrect';
 		return 'answered';
 	}
 
@@ -637,7 +650,7 @@
 						<div role="group" aria-label="Answer choices" class="space-y-3">
 							{#each order as optIdx, pos (optIdx)}
 								{@const isSel = selected === optIdx}
-								{@const isRight = optIdx === current.correctIndex}
+								{@const isRight = optIdx === currentCorrectIndex}
 								<button
 									type="button"
 									aria-pressed={isSel}
@@ -692,7 +705,7 @@
 						{/if}
 
 						{#if revealed}
-							{@const isCorrectAnswer = selected === current.correctIndex}
+							{@const isCorrectAnswer = selected === currentCorrectIndex}
 							<div
 								class={cn(
 									'animate-duo-bounce-in space-y-3 rounded-2xl border-2 border-b-4 p-4 sm:p-5',
@@ -713,12 +726,12 @@
 												<CircleX class="size-4" strokeWidth={2.75} /> Not quite
 											</span>
 											<span class="text-sm font-extrabold text-[#EA2B2B] dark:text-[#FF7878]">
-												The correct answer is {letter(order.indexOf(current.correctIndex))}.
+												The correct answer is {letter(order.indexOf(currentCorrectIndex))}.
 											</span>
 										{/if}
 									</div>
 								{:else}
-									<p class="flex items-center gap-2 text-sm font-extrabold text-muted-foreground"><Eye class="size-4" /> Not answered — the correct answer is {letter(order.indexOf(current.correctIndex))}.</p>
+									<p class="flex items-center gap-2 text-sm font-extrabold text-muted-foreground"><Eye class="size-4" /> Not answered — the correct answer is {letter(order.indexOf(currentCorrectIndex))}.</p>
 								{/if}
 								<Accordion.Root type="single" value="explain" class="rounded-2xl border-2 border-slate-200/80 bg-white/90 px-4 dark:border-[#2B434E] dark:bg-[#1A2C34]/90">
 									<Accordion.Item value="explain" class="border-b-0">

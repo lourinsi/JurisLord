@@ -9,6 +9,7 @@
  */
 
 import type { AlacEssay, CaseDigest, McqQuestion, ModuleTopic } from '$lib/types';
+import { resolveCorrectIndex } from '$lib/mcq';
 import { DIGESTS as PFR_DIGESTS, DISTINCTIONS as PFR_DISTINCTIONS, GROUP_LABEL, PFR, SPOT as PFR_SPOT, TOPICS as PFR_TOPICS } from '$lib/pfr';
 import type { Kind } from '$lib/kit';
 
@@ -543,7 +544,8 @@ const GROUP_TO_PFR_TOPIC: Record<number, { id: string; name: string }> = {
 
 export const pfrFinalsMcqs: McqQuestion[] = (PFR.mcqs ?? []).map((m) => {
 	const t = GROUP_TO_PFR_TOPIC[m.group] ?? { id: 'proprel', name: 'Property Relations Between Husband & Wife' };
-	const optionExplanations = m.why?.map((w, idx) => (idx === m.a ? m.ex : w));
+	const correctIndex = resolveCorrectIndex(m);
+	const optionExplanations = m.why?.map((w, idx) => (idx === correctIndex ? m.ex : w));
 	return {
 		id: `pfr:kit:${m.id}`,
 		topicId: t.id,
@@ -552,7 +554,8 @@ export const pfrFinalsMcqs: McqQuestion[] = (PFR.mcqs ?? []).map((m) => {
 		question: m.q,
 		options: m.o,
 		optionExplanations,
-		correctIndex: m.a,
+		correctIndex,
+		key: m.key ?? m.o[correctIndex],
 		explanation: m.ex,
 		legalBasis: `PFR Finals · ${GROUP_LABEL[m.group]}`
 	};

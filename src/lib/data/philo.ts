@@ -172,6 +172,7 @@ const philoMcqs: McqQuestion[] = [
 		question: 'Which thinker argued that without justice, a government is no more than “a band of robbers”?',
 		options: ['St. Augustine', 'John Austin', 'Thomas Hobbes', 'Hans Kelsen'],
 		correctIndex: 0,
+		key: 'St. Augustine',
 		explanation: 'St. Augustine held that force is the antithesis of law: without justice, a government is no more than a band of robbers.',
 		legalBasis: 'Lesson 10 · Morals v. Force'
 	},
@@ -188,6 +189,7 @@ const philoMcqs: McqQuestion[] = [
 			'Law is valid only when it conforms to the volksgeist of the nation.'
 		],
 		correctIndex: 3,
+		key: 'Law is valid only when it conforms to the volksgeist of the nation.',
 		explanation: 'Hart’s three objections to Austin are: (1) no single sovereign, (2) power-conferring rules, and (3) the gunman problem (threats oblige but do not create obligation). The volksgeist belongs to Savigny and the Historical School.',
 		legalBasis: 'Lesson 10 · Hart v. Austin'
 	},
@@ -204,6 +206,7 @@ const philoMcqs: McqQuestion[] = [
 			'Functional, legal realist, and policy science'
 		],
 		correctIndex: 0,
+		key: 'Charismatic, traditional, and rational-legal',
 		explanation: 'Weber’s three types of authority are charismatic, traditional, and rational-legal (C-T-R). Theological, metaphysical, and positive are Comte’s three stages.',
 		legalBasis: 'Lessons 10 and 13 · Max Weber'
 	},
@@ -220,6 +223,7 @@ const philoMcqs: McqQuestion[] = [
 			'Mechanical solidarity → Organic solidarity → Rationalization'
 		],
 		correctIndex: 0,
+		key: 'Theological → Metaphysical → Positive (scientific)',
 		explanation: 'Comte’s law of three stages moves in order: (1) Theological (explained by God), (2) Metaphysical (explained by abstract universal rights), and (3) Positive/scientific (explained by observed facts).',
 		legalBasis: 'Lesson 11 · Auguste Comte'
 	},
@@ -236,6 +240,7 @@ const philoMcqs: McqQuestion[] = [
 			'Rational codification designed by enlightened legislators'
 		],
 		correctIndex: 0,
+		key: 'The volksgeist (the spirit or common consciousness of a people), shown in custom',
 		explanation: 'Savigny held that law grows out of the volksgeist (spirit of the people) the way language does: law is found, not made, and codification by abstract reason is distrusted.',
 		legalBasis: 'Lesson 12 · Historical School'
 	},
@@ -247,6 +252,7 @@ const philoMcqs: McqQuestion[] = [
 		question: 'Who formulated the famous thesis that the movement of progressive societies has hitherto been a movement “from Status to Contract”?',
 		options: ['Sir Henry Maine', 'Edmund Burke', 'Eugen Ehrlich', 'Rudolf von Jhering'],
 		correctIndex: 0,
+		key: 'Sir Henry Maine',
 		explanation: 'Sir Henry Maine founded the English Historical School with Ancient Law (1861), arguing that legal relations evolve from status (fixed by family/birth) to contract (chosen by individual agreement).',
 		legalBasis: 'Lesson 12 · Henry Maine'
 	},
@@ -258,6 +264,7 @@ const philoMcqs: McqQuestion[] = [
 		question: 'Which thinker coined the term “living law” and wrote that the center of gravity of legal development lies “not in legislation, nor in juristic science, nor in judicial decision, but in society itself”?',
 		options: ['Eugen Ehrlich', 'Roscoe Pound', 'Émile Durkheim', 'Karl Marx'],
 		correctIndex: 0,
+		key: 'Eugen Ehrlich',
 		explanation: 'Eugen Ehrlich distinguished “living law” (the rules people actually follow in their social associations) from positive law enacted by the State.',
 		legalBasis: 'Lesson 13 · Eugen Ehrlich'
 	},
@@ -274,6 +281,7 @@ const philoMcqs: McqQuestion[] = [
 			'From positive law to withering away of the state'
 		],
 		correctIndex: 0,
+		key: 'From repressive (penal) law to restitutive (civil/cooperative) law',
 		explanation: 'Durkheim showed that simple societies with mechanical solidarity rely on repressive (penal) law, whereas complex interdependent societies with organic solidarity rely on restitutive law that restores relations.',
 		legalBasis: 'Lesson 13 · Émile Durkheim'
 	},
@@ -290,6 +298,7 @@ const philoMcqs: McqQuestion[] = [
 			'Both cases hold that judges may never go beyond the literal text of a statute.'
 		],
 		correctIndex: 0,
+		key: 'Judges may legislate only “interstitially” to fill gaps inside an existing statute (Floresca), but may not import a whole common-law doctrine with no statutory basis (Rodriguez v. Tan).',
 		explanation: 'Quoting Holmes, Floresca holds that judges “do and must legislate, but they can do so only interstitially” (filling gaps from molar to molecular motions), whereas Rodriguez v. Tan bars adopting a whole doctrine with no statutory anchor.',
 		legalBasis: 'Floresca v. Philex Mining; Rodriguez v. Tan'
 	},
@@ -306,6 +315,7 @@ const philoMcqs: McqQuestion[] = [
 			'Both tests apply the dangerous tendency doctrine.'
 		],
 		correctIndex: 0,
+		key: 'Balancing weighs competing interests case by case on a level scale, whereas Philippine Blooming Mills establishes a hierarchy giving human rights primacy over property rights from the start.',
 		explanation: 'In PBMEO v. Philippine Blooming Mills, the Court ranked human rights above property rights in advance (preferred freedoms require clear and present danger, whereas property may be regulated on a rational basis), unlike open-ended balancing.',
 		legalBasis: 'PBMEO v. Philippine Blooming Mills; Lantion; Soriano'
 	}

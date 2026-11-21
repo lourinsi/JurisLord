@@ -1,4 +1,5 @@
 import type { Kit } from '$lib/kit';
+import { resolveCorrectIndex } from '$lib/mcq';
 import type { SubjectNumbersConfig } from '$lib/numbers-registry';
 import type { Essay as PhiloEssay } from '$lib/philo';
 import type { Problem as ConstiProblem } from '$lib/problems';
@@ -16,6 +17,8 @@ export interface UnifiedMcqItem {
 	options: string[];
 	optionExplanations?: string[];
 	correctIndex: number;
+	/** Exact text of the correct option (matches `options[correctIndex]`). */
+	key?: string;
 	explanation: string;
 	legalBasis?: string;
 	isFinals?: boolean;
@@ -279,6 +282,7 @@ export function buildSubjectExamBank(opts: {
 		seenMcqIds.add(q.id);
 		const tid = q.topicId ?? 'general';
 		const tname = topicNameMap.get(tid) ?? q.topic ?? 'General';
+		const correctIndex = resolveCorrectIndex(q);
 		mcqs.push({
 			id: q.id,
 			topicId: tid,
@@ -286,7 +290,8 @@ export function buildSubjectExamBank(opts: {
 			question: q.question,
 			options: q.options,
 			optionExplanations: q.optionExplanations,
-			correctIndex: q.correctIndex,
+			correctIndex,
+			key: q.key ?? q.options[correctIndex],
 			explanation: q.explanation,
 			legalBasis: q.legalBasis,
 			isFinals: isFinalsMcqForSubject(subject.id, {
@@ -305,6 +310,7 @@ export function buildSubjectExamBank(opts: {
 			if (seenMcqIds.has(id) || seenMcqIds.has(`${subject.id}:kit:${km.id}`)) continue;
 			seenMcqIds.add(id);
 			const gName = groupMap.get(km.group) ?? `Group ${km.group}`;
+			const correctIndex = resolveCorrectIndex(km);
 			mcqs.push({
 				id,
 				topicId: 'kit_mcq',
@@ -312,7 +318,8 @@ export function buildSubjectExamBank(opts: {
 				question: km.q,
 				options: km.o,
 				optionExplanations: km.why,
-				correctIndex: km.a,
+				correctIndex,
+				key: km.key ?? km.o[correctIndex],
 				explanation: km.ex,
 				legalBasis: gName,
 				isFinals: true
@@ -679,7 +686,7 @@ export function pointsForEntry(
 			const q = bank.mcqById[entry.id];
 			const raw = session.answers[k];
 			if (!q || raw === undefined || raw === '') return 0;
-			return Number(raw) === q.correctIndex ? 1 : 0;
+			return Number(raw) === resolveCorrectIndex(q) ? 1 : 0;
 		}
 		case 'essay': {
 			const m = session.marks[k];

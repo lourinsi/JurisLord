@@ -1,5 +1,5 @@
 import { cardKey, index, type Kit, type KitMcq } from './kit';
-import { canShuffle } from './mcq';
+import { dynamicOptionOrder, resolveCorrectIndex } from './mcq';
 import { sample } from './crimpro';
 import { logKitExam, type KitExam, type KitItem } from './store.svelte';
 
@@ -38,17 +38,14 @@ export const mcqOf = (kit: Kit, it: KitItem) => lookup(kit).mcqs[it.id];
  */
 export function mcqOrder(kit: Kit, x: KitExam, it: KitItem): number[] {
 	const q = mcqOf(kit, it);
-	const n = q.o.length;
-	if (!canShuffle(q)) return [...Array(n).keys()];
-	let h = x.started % 2147483647;
+	let h = (x.started % 2147483647) || 1;
 	for (const ch of it.id) h = (h * 31 + ch.charCodeAt(0)) % 2147483647;
-	const a = [...Array(n).keys()];
-	for (let i = n - 1; i > 0; i--) {
+	if (h <= 0) h = 1;
+	const rand = () => {
 		h = (h * 48271) % 2147483647;
-		const j = h % (i + 1);
-		[a[i], a[j]] = [a[j], a[i]];
-	}
-	return a;
+		return (h - 1) / 2147483646;
+	};
+	return dynamicOptionOrder(q.o, rand);
 }
 /** The choice picked on an exam MCQ, or null. */
 export function mcqPick(x: KitExam, it: KitItem): number | null {
@@ -68,7 +65,7 @@ export function pointsFor(kit: Kit, x: KitExam, it: KitItem): number | null {
 		for (let i = 0; i < enumOf(kit, it).it.length; i++) n += x.marks[tickKey(it, i)] ?? 0;
 		return n;
 	}
-	if (it.kind === 'mcq') return mcqPick(x, it) === mcqOf(kit, it).a ? 1 : 0;
+	if (it.kind === 'mcq') return mcqPick(x, it) === resolveCorrectIndex(mcqOf(kit, it)) ? 1 : 0;
 	return x.marks[itemKey(it)] ?? null;
 }
 

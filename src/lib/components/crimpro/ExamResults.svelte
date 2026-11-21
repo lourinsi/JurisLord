@@ -2,6 +2,7 @@
 	import QuestionCard from './QuestionCard.svelte';
 	import { Q_BY_ID } from '$lib/crimpro';
 	import { endSession, fmtTime, scoreOf, startSession } from '$lib/crimpro-exam';
+	import { resolveCorrectIndex } from '$lib/mcq';
 	import type { Session } from '$lib/store.svelte';
 
 	let { s }: { s: Session } = $props();
@@ -10,7 +11,7 @@
 		s.qids.map((id, k) => {
 			const ref = Q_BY_ID[id];
 			const p = s.picks[k];
-			return { k, ref, order: s.orders[k], picked: p, ok: p === ref.q.a };
+			return { k, ref, order: s.orders[k], picked: p, ok: p === resolveCorrectIndex(ref.q) };
 		})
 	);
 	const score = $derived(scoreOf(s));

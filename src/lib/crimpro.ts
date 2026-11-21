@@ -1,5 +1,6 @@
 import raw from './data/kit/crimpro.json';
 import rawWhy from './data/kit/crimpro-why.json';
+import { resolveCorrectIndex } from './mcq';
 
 /** A titled list inside a rule card (requisites, exceptions, exceptions to exceptions). */
 export interface Titled {
@@ -36,6 +37,8 @@ export interface Question {
 	o: string[];
 	/** Index into `o` of the correct choice. */
 	a: number;
+	/** Exact text of the correct choice (matches `o[a]`). */
+	key?: string;
 	ex: string;
 	/** Why each choice is wrong, by index into `o` (empty for the correct choice). */
 	why: string[];
@@ -68,8 +71,11 @@ for (const s of data.S) {
 	if (!rows || rows.length !== s.qs.length) throw new Error(`crimpro-why.json: set "${s.id}" needs ${s.qs.length} rows`);
 	s.qs.forEach((q, k) => {
 		if (rows[k].length !== q.o.length - 1) throw new Error(`crimpro-why.json: ${s.id}[${k}] needs ${q.o.length - 1} reasons`);
+		const correctIdx = resolveCorrectIndex(q);
+		q.a = correctIdx;
+		q.key = q.key ?? q.o[correctIdx];
 		const wrong = [...rows[k]];
-		q.why = q.o.map((_, i) => (i === q.a ? '' : wrong.shift()!));
+		q.why = q.o.map((_, i) => (i === correctIdx ? '' : wrong.shift()!));
 	});
 }
 

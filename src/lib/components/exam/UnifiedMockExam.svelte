@@ -14,7 +14,7 @@
 	import ScoreScale from '$lib/components/ScoreScale.svelte';
 	import { essayStatus } from '$lib/alac';
 	import type { Kit } from '$lib/kit';
-	import { canShuffle } from '$lib/mcq';
+	import { dynamicOptionOrder, resolveCorrectIndex } from '$lib/mcq';
 	import type { SubjectNumbersConfig } from '$lib/numbers-registry';
 	import type { Essay as PhiloEssay } from '$lib/philo';
 	import type { Problem as ConstiProblem } from '$lib/problems';
@@ -40,7 +40,6 @@
 		sampleItems,
 		saveExamSession,
 		saveExamSettings,
-		shuffledIndices,
 		subTickKey,
 		unmarkedWrittenCount,
 		type ExamItemKind,
@@ -392,9 +391,7 @@
 
 		if (effectiveCounts.mcq > 0) {
 			for (const q of sampleItems(filteredMcqs, effectiveCounts.mcq)) {
-				const order = canShuffle({ o: q.options })
-					? shuffledIndices(q.options.length)
-					: q.options.map((_, i) => i);
+				const order = dynamicOptionOrder(q.options);
 				items.push({ kind: 'mcq', id: q.id, order });
 			}
 		}
@@ -463,9 +460,7 @@
 			items: missedEntries.map((it) => {
 				const q = bank.mcqById[it.id];
 				const opts = q?.options ?? [];
-				const order = canShuffle({ o: opts })
-					? shuffledIndices(opts.length || 4)
-					: opts.map((_, i) => i);
+				const order = dynamicOptionOrder(opts, Math.random, it.order);
 				return { kind: 'mcq', id: it.id, order };
 			}),
 			answers: {},
@@ -483,7 +478,7 @@
 		if (session.mode === 'practice') {
 			if (session.answers[k] !== undefined && session.answers[k] !== '') return;
 			session.answers[k] = String(originalIndex);
-			const ok = originalIndex === q.correctIndex;
+			const ok = originalIndex === resolveCorrectIndex(q);
 			userStorage.recordMcqAttempt(q.id, originalIndex, ok);
 			playMcqSound(ok);
 		} else {
@@ -508,7 +503,7 @@
 			const raw = session.answers[entryKey(it)];
 			if (raw !== undefined && raw !== '') {
 				const picked = Number(raw);
-				const ok = picked === q.correctIndex;
+				const ok = picked === resolveCorrectIndex(q);
 				if (ok) mcqCorrect++;
 				userStorage.recordMcqAttempt(q.id, picked, ok);
 			}
@@ -1065,6 +1060,7 @@
 							{@const q = bank.mcqById[entry.id]}
 							{#if q}
 								{@const order = entry.order ?? q.options.map((_, i) => i)}
+								{@const correctIdx = resolveCorrectIndex(q)}
 								{@const rawPick = session.answers[k]}
 								{@const picked = rawPick !== undefined && rawPick !== '' ? Number(rawPick) : null}
 								{@const reveal = session.mode === 'practice' && picked !== null}
@@ -1080,7 +1076,7 @@
 								<div class="flex flex-col gap-2">
 									{#each order as origIdx, displayIdx (origIdx)}
 										{@const isPicked = picked === origIdx}
-										{@const isCorrect = origIdx === q.correctIndex}
+										{@const isCorrect = origIdx === correctIdx}
 										<button
 											type="button"
 											disabled={reveal}
@@ -1120,13 +1116,13 @@
 									<div
 										class={cn(
 											'mt-1 rounded-xl border-2 p-3.5 text-xs leading-relaxed font-semibold',
-											picked === q.correctIndex
+											picked === correctIdx
 												? 'border-[#58CC02]/50 bg-[#D7FFB8]/40 text-foreground dark:bg-[#58CC02]/15'
 												: 'border-[#FF4B4B]/50 bg-[#FFDFE0]/40 text-foreground dark:bg-[#FF4B4B]/15'
 										)}
 									>
 										<p class="font-extrabold">
-											{picked === q.correctIndex ? '✓ Correct!' : '✗ Incorrect.'}
+											{picked === correctIdx ? '✓ Correct!' : '✗ Incorrect.'}
 											{#if q.legalBasis}<span class="ml-1 font-bold text-muted-foreground">({q.legalBasis})</span>{/if}
 										</p>
 										<p class="mt-1">{q.explanation}</p>
@@ -1459,9 +1455,10 @@
 						{@const q = bank.mcqById[entry.id]}
 						{#if q && (mcqReviewFilter === 'all' || pts !== 1)}
 							{@const order = entry.order ?? q.options.map((_, i) => i)}
+							{@const correctIdx = resolveCorrectIndex(q)}
 							{@const rawPick = session.answers[k]}
 							{@const picked = rawPick !== undefined && rawPick !== '' ? Number(rawPick) : null}
-							{@const ok = picked === q.correctIndex}
+							{@const ok = picked === correctIdx}
 							<article class="flex flex-col gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-5 dark:border-[#2B434E]">
 								<div class="flex items-start justify-between gap-3">
 									<div class="flex items-start gap-2">
@@ -1483,7 +1480,7 @@
 								<div class="flex flex-col gap-1.5">
 									{#each order as origIdx, displayIdx (origIdx)}
 										{@const isPicked = picked === origIdx}
-										{@const isRight = origIdx === q.correctIndex}
+										{@const isRight = origIdx === correctIdx}
 										<div
 											class={cn(
 												'flex items-start gap-2.5 rounded-xl border-2 px-3 py-2 text-xs font-semibold',

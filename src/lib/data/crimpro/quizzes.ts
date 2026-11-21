@@ -950,6 +950,7 @@ export function quizMcqs(moduleId: string): McqQuestion[] {
 				question: x.q,
 				options,
 				correctIndex,
+				key: x.a,
 				explanation: x.e,
 				legalBasis: x.b,
 				hint: x.hint

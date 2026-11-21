@@ -2,9 +2,8 @@
 	import { page } from '$app/state';
 	import McqChoices from '../McqChoices.svelte';
 	import GroupSeg from './GroupSeg.svelte';
-	import { shuffled } from '$lib/crimpro';
 	import { index, type Kit, type KitMcq } from '$lib/kit';
-	import { canShuffle } from '$lib/mcq';
+	import { dynamicOptionOrder, resolveCorrectIndex } from '$lib/mcq';
 
 	let { kit }: { kit: Kit } = $props();
 	const st = $derived(kit.state());
@@ -27,10 +26,13 @@
 		} else if (h === '#chains') mode = 'chains';
 	});
 
-	// Choices are shuffled once per visit, so the answer is not always in the same slot. A plain cache, not
-	// state: it is filled while rendering, and "Try again" re-renders through the answer it clears.
+	// Choices are shuffled dynamically per visit, and re-jumbled on "Try again" or "Reset answers".
 	const orders: Record<string, number[]> = {};
-	const orderOf = (m: KitMcq) => (orders[m.id] ??= canShuffle(m) ? shuffled(m.o.length) : m.o.map((_, i) => i));
+	let shuffleGen = $state(0);
+	const orderOf = (m: KitMcq) => {
+		void shuffleGen;
+		return (orders[m.id] ??= dynamicOptionOrder(m.o));
+	};
 
 	const picked = (m: KitMcq) => st.mcq[m.id] ?? null;
 	const list = $derived(
@@ -39,12 +41,12 @@
 			const p = st.mcq[m.id];
 			if (only === 'star') return m.star;
 			if (only === 'new') return p === undefined;
-			if (only === 'missed') return p !== undefined && p !== m.a;
+			if (only === 'missed') return p !== undefined && p !== resolveCorrectIndex(m);
 			return true;
 		})
 	);
 	const answered = $derived(mcqs.filter((m) => st.mcq[m.id] !== undefined));
-	const right = $derived(answered.filter((m) => st.mcq[m.id] === m.a).length);
+	const right = $derived(answered.filter((m) => st.mcq[m.id] === resolveCorrectIndex(m)).length);
 
 	// Questions that build on an earlier one show that earlier question as context in the topic list.
 	const prev = $derived.by(() => {
@@ -60,7 +62,8 @@
 
 	function retry(m: KitMcq) {
 		delete st.mcq[m.id];
-		delete orders[m.id];
+		orders[m.id] = dynamicOptionOrder(m.o, Math.random, orders[m.id]);
+		shuffleGen++;
 	}
 	let armed = $state(false);
 	function reset() {
@@ -70,6 +73,10 @@
 			return;
 		}
 		st.mcq = {};
+		for (const m of mcqs) {
+			orders[m.id] = dynamicOptionOrder(m.o, Math.random, orders[m.id]);
+		}
+		shuffleGen++;
 		armed = false;
 	}
 </script>

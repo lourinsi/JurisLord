@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { tick, untrack } from 'svelte';
 	import QuestionCard from './QuestionCard.svelte';
-	import { Q_BY_ID, shuffled, type TwistSet } from '$lib/crimpro';
+	import { Q_BY_ID, type TwistSet } from '$lib/crimpro';
+	import { dynamicOptionOrder, resolveCorrectIndex } from '$lib/mcq';
 	import { recordAnswer, recordSetScore, store } from '$lib/store.svelte';
 
 	let { set }: { set: TwistSet } = $props();
@@ -10,7 +11,7 @@
 	let res: boolean[] = $state([]);
 	let picked: number | null = $state(null);
 	// The page remounts this component per set ({#key}), so seeding from the initial prop is intended.
-	let order = $state(untrack(() => shuffled(set.qs[0].o.length)));
+	let order = $state(untrack(() => dynamicOptionOrder(set.qs[0].o)));
 	let top: HTMLElement | undefined = $state();
 
 	const ref = $derived(Q_BY_ID[`${set.id}-${i}`]);
@@ -20,14 +21,14 @@
 	function pick(oi: number) {
 		if (picked !== null) return;
 		picked = oi;
-		res[i] = oi === ref.q.a;
+		res[i] = oi === resolveCorrectIndex(ref.q);
 		recordAnswer(ref.qid, res[i]);
 	}
 
 	async function next() {
 		i++;
 		picked = null;
-		if (i < set.qs.length) order = shuffled(set.qs[i].o.length);
+		if (i < set.qs.length) order = dynamicOptionOrder(set.qs[i].o);
 		else recordSetScore(set.id, score);
 		window.scrollTo(0, 0);
 		await tick();
@@ -38,7 +39,7 @@
 		i = 0;
 		res = [];
 		picked = null;
-		order = shuffled(set.qs[0].o.length);
+		order = dynamicOptionOrder(set.qs[0].o, Math.random, order);
 		window.scrollTo(0, 0);
 	}
 
@@ -93,7 +94,7 @@
 						<tr>
 							<td class="muted num">{k + 1}</td>
 							<td>{sq.tw ?? set.base}</td>
-							<td>{sq.o[sq.a]}</td>
+							<td>{sq.o[resolveCorrectIndex(sq)]}</td>
 							<td>
 								{#if res[k]}<span class="tag tag-ok" aria-label="Correct">✓</span>{:else}<span class="tag tag-bad" aria-label="Wrong">✗</span>{/if}
 							</td>

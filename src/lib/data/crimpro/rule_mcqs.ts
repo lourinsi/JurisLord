@@ -196,7 +196,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only a complaint must be sworn (Sec. 3); an information is subscribed by the prosecutor, who acts under his oath of office (Sec. 4).",
 		"legalBasis": "Rule 110, Secs. 3–4"
 	},
@@ -210,7 +210,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Sec. 3 lists the offended party, any peace officer, or other public officer charged with enforcing the law violated.",
 		"legalBasis": "Rule 110, Sec. 3"
 	},
@@ -224,7 +224,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The recital of facts in the body controls, not the caption or the law cited. Tiu, pp. 46–47; Malto v. People; Pacoy v. Cajigal. Trap: Students anchor on the caption because it is the first thing they read.",
 		"legalBasis": "recital of ultimate facts controls"
 	},
@@ -238,7 +238,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. An amendment before plea that downgrades the offense or excludes an accused requires a motion by the prosecutor, notice to the offended party and leave of court (Sec. 14).",
 		"legalBasis": "downgrade; exclude; notice to offended party; leave"
 	},
@@ -252,7 +252,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. After plea, a formal amendment needs both leave of court and absence of prejudice.",
 		"legalBasis": "Sec. 14; leave of court"
 	},
@@ -266,7 +266,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Venue is jurisdictional in criminal cases; lack of jurisdiction over the offense is not waived (Rule 117, Sec. 9) and may be raised at any stage.",
 		"legalBasis": "venue jurisdictional; Isip v. People; Rule 117, Sec. 9"
 	},
@@ -280,7 +280,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True — as may any peace officer or the public officer charged with enforcing the law violated, until the prosecutor actually intervenes or the case is elevated to the RTC (Sec. 5; OCA Circular No. 39-2002).",
 		"legalBasis": "MTC/MCTC; prosecutor unavailable; ceases on intervention or elevation"
 	},
@@ -294,7 +294,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only the State, through the OSG, may appeal the criminal aspect; the private complainant may appeal the civil aspect (Villareal v. Aliga).",
 		"legalBasis": "OSG; civil aspect only"
 	},
@@ -308,7 +308,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. RA 8353 (1997) reclassified rape as a crime against persons; it is a public crime. Trap: Old reviewers list rape among the private crimes of Art. 344.",
 		"legalBasis": "RA 8353; crime against persons"
 	},
@@ -322,7 +322,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under Villa Gomez v. People (2020, En Banc), the defect is not jurisdictional and is waived if not raised in a motion to quash before plea.",
 		"legalBasis": "Villa Gomez; Rule 117, Sec. 3(d); waivable"
 	},
@@ -336,7 +336,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under People v. Solar (2019), the bare label is insufficient, but if the accused fails to move to quash or for a bill of particulars before arraignment, the defect is waived and treachery may be appreciated if proven. Trap: Confusing a defectively alleged circumstance (waivable) with an unalleged one (never appreciated).",
 		"legalBasis": "Solar; ultimate facts; waiver"
 	},
@@ -350,7 +350,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Duplicity is a ground to quash (Rule 117, Sec. 3[f]); if not raised before plea it is waived, and the court may convict of as many offenses as are charged and proved (Rule 120, Sec. 3).",
 		"legalBasis": "Sec. 13; waiver; Rule 120, Sec. 3"
 	},
@@ -364,7 +364,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only the civil action for civil liability arising from the offense charged (ex delicto) is deemed instituted; independent civil actions under Arts. 32, 33, 34 and 2176 are not.",
 		"legalBasis": "Sec. 1(a); Sec. 3"
 	},
@@ -378,7 +378,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Sec. 1(b): no reservation is allowed; the criminal action is deemed to include the civil action.",
 		"legalBasis": "Sec. 1(b)"
 	},
@@ -392,7 +392,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must be made before the prosecution starts presenting its evidence (Sec. 1[a]). Trap: Confusing it with the period for a petition to suspend for prejudicial question (before the prosecution rests).",
 		"legalBasis": "before the prosecution starts presenting its evidence"
 	},
@@ -406,7 +406,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. No counterclaim, cross-claim or third-party complaint may be filed by the accused in the criminal case; he may litigate it in a separate civil action (Sec. 1[a]; Casupanan v. Laroya).",
 		"legalBasis": "no counterclaim; separate civil action"
 	},
@@ -420,7 +420,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under the 2000 Rules, independent civil actions are not deemed instituted with the criminal action and need not be reserved (Tiu, p. 60).",
 		"legalBasis": "Sec. 3; no reservation"
 	},
@@ -434,7 +434,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Civil liability survives and may be proved by preponderance of evidence, in the same case or separately (Art. 29; Padilla v. CA). It is extinguished only by a finding that the act did not exist.",
 		"legalBasis": "Art. 29; Sec. 2 last par."
 	},
@@ -448,7 +448,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Sec. 5: it is not a bar.",
 		"legalBasis": "Sec. 5"
 	},
@@ -462,7 +462,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A petition is required; suspension is not motu proprio (Sec. 6; Tiu, citing IBP v. Atienza).",
 		"legalBasis": "petition; no motu proprio"
 	},
@@ -476,7 +476,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Death before final judgment extinguishes criminal liability and civil liability ex delicto (Sec. 4; Art. 89[1]; Bayotas). Claims from other sources must be pursued separately.",
 		"legalBasis": "Sec. 4; Bayotas"
 	},
@@ -490,7 +490,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The civil action must be previously instituted, and its outcome would not determine guilt, since the marriage subsisted when the crime was committed (Pimentel v. Pimentel, 2010).",
 		"legalBasis": "Pimentel; previously instituted"
 	},
@@ -504,7 +504,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Payment and compromise affect only civil liability; estafa is a public offense (Art. 2034; Metrobank v. Reynaldo; Cabico v. Dimaculangan). The court may dismiss only if, without the complainant, the evidence is insufficient — a judgment on the evidence, not on the payment. Trap: In practice desistance often leads to dismissal for lack of evidence; the trap is giving payment as the legal ground.",
 		"legalBasis": "Art. 2034; Metrobank v. Reynaldo"
 	},
@@ -518,7 +518,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is a statutory right — but a substantive one and a component of due process when granted (Tiu, p. 67).",
 		"legalBasis": "statutory; substantive; waivable"
 	},
@@ -532,7 +532,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -546,7 +546,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. That authority was removed by A.M. No. 05-8-26-SC, effective October 3, 2005.",
 		"legalBasis": "A.M. No. 05-8-26-SC"
 	},
@@ -560,7 +560,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Sec. 3(c) expressly disallows it.",
 		"legalBasis": "Sec. 3(c)"
 	},
@@ -574,7 +574,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The parties may be present but without the right to examine or cross-examine; they may submit questions (Sec. 3[e]).",
 		"legalBasis": "Sec. 3(e)"
 	},
@@ -588,7 +588,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is not among the grounds in Rule 117, Sec. 3; the remedy is to ask the court to suspend proceedings and remand for PI, before plea (Larrañaga; Socrates v. Sandiganbayan).",
 		"legalBasis": "not a ground to quash; remand"
 	},
@@ -602,7 +602,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Personal evaluation of the prosecutor's resolution and supporting evidence suffices; personal examination is optional (Soliven v. Makasiar; Ocampo v. Abando).",
 		"legalBasis": "Soliven; Ocampo; personal evaluation"
 	},
@@ -616,7 +616,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 6; RA 7438). He may still apply for bail, and the PI must end within 15 days.",
 		"legalBasis": "Sec. 6; Art. 125 waiver; counsel"
 	},
@@ -630,7 +630,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is a prohibited motion under the 2017 Revised Guidelines for Continuous Trial, denied outright.",
 		"legalBasis": "A.M. No. 15-06-10-SC"
 	},
@@ -644,7 +644,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The court must make its own independent assessment; the Secretary's resolution is persuasive, not binding (Crespo; Lanier v. People, 2014).",
 		"legalBasis": "Crespo; Lanier"
 	},
@@ -658,7 +658,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The petition is filed directly with the Supreme Court (Gatchalian v. Ombudsman, 2018).",
 		"legalBasis": "Gatchalian; Rule 65; SC"
 	},
@@ -672,7 +672,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The filing interrupted prescription; delay may violate the right to speedy disposition (Cagang), which is a different ground for dismissal. Trap: Confusing prescription with speedy disposition.",
 		"legalBasis": "interruption; Cagang"
 	},
@@ -686,7 +686,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It may also be made by the person's submission to the custody of the person making the arrest (Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -700,7 +700,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 6).",
 		"legalBasis": "Sec. 6"
 	},
@@ -714,7 +714,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The 10 days is the period for the officers to execute and report; the warrant remains valid until served or recalled (Tiu, p. 110). Trap: Confusing it with the 10-day life of a search warrant.",
 		"legalBasis": "Sec. 4"
 	},
@@ -728,7 +728,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He need not, but must show it as soon as practicable if the person arrested asks (Sec. 7).",
 		"legalBasis": "Sec. 7"
 	},
@@ -742,7 +742,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Sec. 5 applies to \"a peace officer or a private person.\" A private person informs the arrestee of his intention to arrest and the cause (Sec. 9).",
 		"legalBasis": "Sec. 5; Sec. 9"
 	},
@@ -756,7 +756,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Without an overt act indicative of a crime in the officer's presence, a tip is insufficient (People v. Molina; People v. Laguio).",
 		"legalBasis": "overt act; Molina; Laguio"
 	},
@@ -770,7 +770,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He needs probable cause based on personal knowledge of facts or circumstances; he may rely on information from the victim or witnesses gathered at the scene (Pestilos v. Generoso).",
 		"legalBasis": "Pestilos"
 	},
@@ -784,7 +784,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must be raised before plea; otherwise it is waived (People v. Cunanan; People v. Palma).",
 		"legalBasis": "before plea; waiver"
 	},
@@ -798,7 +798,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Waiver of the illegal arrest is not a waiver of the inadmissibility of evidence seized (De la Cruz v. People; Villanueva v. People, 2014).",
 		"legalBasis": "De la Cruz; Villanueva"
 	},
@@ -812,7 +812,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Illegality of arrest is not a ground for acquittal; conviction may rest on other evidence (People v. Yau; People v. Velasco).",
 		"legalBasis": "Yau; Velasco"
 	},
@@ -826,7 +826,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under Rule 114, Sec. 26, bail does not bar the challenge, provided it is raised before plea.",
 		"legalBasis": "Rule 114, Sec. 26"
 	},
@@ -840,7 +840,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Bail is security for the release of a person \"in custody of the law\"; a fugitive must first surrender (Sec. 1; Tiu, p. 116).",
 		"legalBasis": "custody of the law"
 	},
@@ -854,7 +854,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Homicide (reclusion temporal) is not punishable by death, RP or life (Sec. 4[b]).",
 		"legalBasis": "Sec. 4"
 	},
@@ -868,7 +868,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It remains in force until promulgation of the RTC judgment (Sec. 2[a]); continued liberty on appeal requires bail pending appeal and the bondsman's consent.",
 		"legalBasis": "Sec. 2(a); Maguddatu"
 	},
@@ -882,7 +882,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Bail in a murder case is discretionary; the application may only be filed in the court where the case is pending (Sec. 17[b]).",
 		"legalBasis": "Sec. 17(b)"
 	},
@@ -896,7 +896,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Cash is deposited with the collector of internal revenue or the provincial, city or municipal treasurer (or the clerk of court); a judge who receives it commits gross misconduct (Lachica v. Tormis).",
 		"legalBasis": "Sec. 14; Lachica"
 	},
@@ -910,7 +910,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A hearing is mandatory where bail is discretionary, regardless of the prosecution's stance (Serapio; Domingo v. Pagayatan).",
 		"legalBasis": "mandatory hearing"
 	},
@@ -924,7 +924,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The prosecution has the burden of showing that evidence of guilt is strong (Sec. 8).",
 		"legalBasis": "Sec. 8"
 	},
@@ -938,7 +938,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The penalty prescribed by law controls, not the imposable penalty (People v. Valdez, 2015, in Tiu; Sec. 6).",
 		"legalBasis": "prescribed penalty"
 	},
@@ -952,7 +952,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Bail remains discretionary; the court may still deny it (Leviste v. CA, 2010).",
 		"legalBasis": "Leviste"
 	},
@@ -966,7 +966,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Sec. 26: bail does not bar the challenge, if raised before plea.",
 		"legalBasis": "Sec. 26"
 	},
@@ -980,7 +980,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. When the conviction changed the offense from non-bailable to bailable, the application can only be filed with and resolved by the appellate court (Sec. 5, par. 1; Rule 120, Sec. 6). Trap: The general rule (RTC acts until it transmits the record) has this exception.",
 		"legalBasis": "Sec. 5; non-bailable to bailable"
 	},
@@ -994,7 +994,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]).",
 		"legalBasis": "arraignment"
 	},
@@ -1008,7 +1008,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. \"His silence shall not in any manner prejudice him\" (Sec. 1[d]).",
 		"legalBasis": "Sec. 1(d)"
 	},
@@ -1022,7 +1022,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He waives presence \"on all subsequent trial dates until custody over him is regained\" (Sec. 1[c]).",
 		"legalBasis": "Sec. 1(c)"
 	},
@@ -1036,7 +1036,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Libuit v. People; Rule 116, Sec. 6).",
 		"legalBasis": "arraignment"
 	},
@@ -1050,7 +1050,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Fingerprinting is a mechanical act, not testimonial; the right covers testimony and acts requiring intelligence and attention.",
 		"legalBasis": "mechanical act"
 	},
@@ -1064,7 +1064,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He may be cross-examined on matters covered by his direct and connected matters; he may refuse only questions that would incriminate him for a different offense (Ayson).",
 		"legalBasis": "Ayson"
 	},
@@ -1078,7 +1078,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Opportunity to cross-examine suffices, with unavailability of the witness and identity of parties and subject matter (Sec. 1[f]).",
 		"legalBasis": "opportunity"
 	},
@@ -1092,7 +1092,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is equivalent to an acquittal; double jeopardy attaches (Rule 119, Sec. 9; Condrada, in Tiu).",
 		"legalBasis": "acquittal; double jeopardy"
 	},
@@ -1106,7 +1106,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Art. III, Sec. 16 covers all judicial, quasi-judicial and administrative bodies (Coscolluela; Cagang).",
 		"legalBasis": "Art. III, Sec. 16"
 	},
@@ -1120,7 +1120,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The equipoise rule favors the accused; the presumption of innocence prevails over the presumption of regularity.",
 		"legalBasis": "equipoise; presumption of innocence"
 	},
@@ -1134,7 +1134,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The accused must be present and personally enter his plea (Sec. 1[b]).",
 		"legalBasis": "Sec. 1(b)"
 	},
@@ -1148,7 +1148,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1[c]).",
 		"legalBasis": "Sec. 1(c)"
 	},
@@ -1162,7 +1162,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. His plea is deemed withdrawn and a plea of not guilty entered (Sec. 1[d]).",
 		"legalBasis": "Sec. 1(d)"
 	},
@@ -1176,7 +1176,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. At arraignment, or after arraignment but before trial (Sec. 2).",
 		"legalBasis": "before trial"
 	},
@@ -1190,7 +1190,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. \"No amendment of the complaint or information is necessary\" (Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -1204,7 +1204,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1[f]).",
 		"legalBasis": "Sec. 1(f)"
 	},
@@ -1218,7 +1218,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only a petition for review pending at the DOJ or OP (Sec. 11[c]; Ramiscal v. Sandiganbayan).",
 		"legalBasis": "Sec. 11(c); Ramiscal"
 	},
@@ -1232,7 +1232,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Jalbuena; Solar).",
 		"legalBasis": "before arraignment"
 	},
@@ -1246,7 +1246,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Estipona v. Lobrigo (2017) declared RA 9165, Sec. 23 unconstitutional; plea bargaining in drug cases follows the Supreme Court's framework.",
 		"legalBasis": "Estipona"
 	},
@@ -1260,7 +1260,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only if the plea was the sole basis; if supported by independent evidence, it stands (Documento; Gambao).",
 		"legalBasis": "sole basis"
 	},
@@ -1274,7 +1274,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (People v. Montierro, 2022) — but not if the objection is valid and supported by evidence, e.g., strong evidence of guilt or recidivism.",
 		"legalBasis": "Montierro"
 	},
@@ -1288,7 +1288,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Before plea (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -1302,7 +1302,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must be in writing, signed and specify its grounds (Sec. 2). (A provisional dismissal may be oral.)",
 		"legalBasis": "Sec. 2"
 	},
@@ -1316,7 +1316,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only lack of jurisdiction over the offense may be considered though not raised (Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -1330,7 +1330,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The prosecution must first be given the opportunity to amend (Sec. 4).",
 		"legalBasis": "Sec. 4"
 	},
@@ -1344,7 +1344,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Quashal on extinction of liability (g) or double jeopardy (i) bars another prosecution (Sec. 6).",
 		"legalBasis": "Sec. 6"
 	},
@@ -1358,7 +1358,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Duplicity (f) is waivable; he may be convicted of as many offenses as are charged and proved (Rule 120, Sec. 3).",
 		"legalBasis": "Sec. 9; duplicity"
 	},
@@ -1372,7 +1372,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Extinction of criminal liability (g) is not waived (Sec. 9).",
 		"legalBasis": "Sec. 9; (g)"
 	},
@@ -1386,7 +1386,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It also requires arraignment and a valid plea, and a valid termination of the first case.",
 		"legalBasis": "Sec. 7"
 	},
@@ -1400,7 +1400,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Reckless imprudence is a single quasi-offense; the acquittal bars the second prosecution (Ivler, 2010).",
 		"legalBasis": "Ivler"
 	},
@@ -1414,7 +1414,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Express consent must be positive and unequivocal; silence is not enough (Lacson).",
 		"legalBasis": "Lacson; express consent"
 	},
@@ -1428,7 +1428,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. From issuance of the order (A.M. No. 12-11-2-SC, Sec. 14; 2017 Guidelines).",
 		"legalBasis": "issuance of the order"
 	},
@@ -1442,7 +1442,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is mandatory in the Sandiganbayan, RTCs and all first-level courts (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -1456,7 +1456,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. They must be in writing and signed by the accused and counsel (Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -1470,7 +1470,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The court may impose sanctions on counsel; there is no \"as in default\" in criminal cases (Sec. 3).",
 		"legalBasis": "Sec. 3"
 	},
@@ -1484,7 +1484,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 4).",
 		"legalBasis": "Sec. 4"
 	},
@@ -1498,7 +1498,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A compromise on civil liability does not extinguish the public action (Civil Code Art. 2034; Metrobank v. Reynaldo).",
 		"legalBasis": "Art. 2034"
 	},
@@ -1512,7 +1512,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Rule 119, Sec. 15 requires conditional examination before the court where the case is pending (Manguerra v. Risos, 2008).",
 		"legalBasis": "Manguerra"
 	},
@@ -1526,7 +1526,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only listed cases (e.g., BP 22, certain property and honor crimes, criminal negligence) are referred, and only after arraignment and pre-trial; mediation must end in 30 days.",
 		"legalBasis": "III.9"
 	},
@@ -1540,7 +1540,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Recantations after conviction deserve scant consideration (People v. Lamsen, 2013).",
 		"legalBasis": "Lamsen"
 	},
@@ -1554,7 +1554,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -1568,7 +1568,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 2), subject to excluded delays.",
 		"legalBasis": "Sec. 2"
 	},
@@ -1582,7 +1582,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Prohibited ground (Sec. 4).",
 		"legalBasis": "Sec. 4"
 	},
@@ -1596,7 +1596,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only before the court where the case is pending (Sec. 15; Manguerra). The broader rule is for defense witnesses (Sec. 13).",
 		"legalBasis": "Sec. 15"
 	},
@@ -1610,7 +1610,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He must not appear to be the most guilty (Sec. 17[d]; Jimenez v. People).",
 		"legalBasis": "not the most guilty"
 	},
@@ -1624,7 +1624,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is inadmissible (Sec. 17).",
 		"legalBasis": "Sec. 17"
 	},
@@ -1638,7 +1638,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He waives the right and the case is decided on the prosecution's evidence (Sec. 23).",
 		"legalBasis": "without leave"
 	},
@@ -1652,7 +1652,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is not reviewable by appeal or certiorari before judgment (Sec. 23).",
 		"legalBasis": "Sec. 23"
 	},
@@ -1666,7 +1666,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A grant is an acquittal; the remedy is certiorari only for grave abuse of discretion (Dayap v. Sendiong).",
 		"legalBasis": "acquittal; certiorari"
 	},
@@ -1680,7 +1680,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The accused must be allowed to present evidence on the civil aspect (Salazar v. People, 2003).",
 		"legalBasis": "Salazar"
 	},
@@ -1694,7 +1694,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It may be ordered at any time before finality of the judgment of conviction — even before judgment — after hearing (Sec. 24).",
 		"legalBasis": "Sec. 24"
 	},
@@ -1708,7 +1708,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must be personally and directly prepared by the judge and state clearly and distinctly the facts and the law (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -1722,7 +1722,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 6).",
 		"legalBasis": "Sec. 6"
 	},
@@ -1736,7 +1736,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He may be convicted only of homicide, the offense charged, which is included in murder (Secs. 4–5).",
 		"legalBasis": "Sec. 4"
 	},
@@ -1750,7 +1750,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 3), with separate findings for each.",
 		"legalBasis": "Sec. 3"
 	},
@@ -1764,7 +1764,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He loses his remedies unless, within 15 days, he surrenders and moves for leave, proving justifiable cause (Sec. 6; Jaylo).",
 		"legalBasis": "Sec. 6; Jaylo"
 	},
@@ -1778,7 +1778,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Sec. 7 allows modification only \"upon motion of the accused.\"",
 		"legalBasis": "Sec. 7"
 	},
@@ -1792,7 +1792,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must state whether the evidence absolutely failed or merely failed beyond reasonable doubt, and whether the act from which civil liability might arise did not exist (Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -1806,7 +1806,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under RA 10707, if the appellate court reduces a non-probationable penalty to a probationable one, he may apply based on the modified decision before it becomes final. Otherwise, appeal and probation are mutually exclusive (Almero).",
 		"legalBasis": "RA 10707; Almero"
 	},
@@ -1820,7 +1820,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Not if slight physical injuries (2-month prescriptive period) had already prescribed when the information was filed (Corpus v. People, 2023).",
 		"legalBasis": "Corpus; variance"
 	},
@@ -1834,7 +1834,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Rule 121 covers only judgments of conviction, on motion of the accused; reconsidering an acquittal violates double jeopardy.",
 		"legalBasis": "Sec. 1; double jeopardy"
 	},
@@ -1848,7 +1848,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -1862,7 +1862,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 4).",
 		"legalBasis": "Sec. 4"
 	},
@@ -1876,7 +1876,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The evidence already adduced stands; the new evidence is considered with it (Sec. 6[b]). Setting aside applies to new trial for errors or irregularities (Sec. 6[a]).",
 		"legalBasis": "Sec. 6"
 	},
@@ -1890,7 +1890,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Reconsideration covers errors of law or fact \"which requires no further proceedings\" (Sec. 3); if evidence is needed, the remedy is new trial.",
 		"legalBasis": "Sec. 3"
 	},
@@ -1904,7 +1904,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under the fresh-period rule, he has a fresh 15 days from notice of the denial (Neypes, applied in Yu v. Samson-Tatad, 2011).",
 		"legalBasis": "Rule 122, Sec. 6; Neypes; Yu v. Samson-Tatad"
 	},
@@ -1918,7 +1918,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It could have been discovered and produced at trial with reasonable diligence (Sec. 2[b]).",
 		"legalBasis": "Sec. 2(b); reasonable diligence"
 	},
@@ -1932,7 +1932,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. In the CA, a motion for new trial lies only on newly discovered evidence material to the defense (Rule 124, Sec. 14); trial irregularities are raised as assigned errors in the appeal.",
 		"legalBasis": "Rule 124, Sec. 14"
 	},
@@ -1946,7 +1946,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 6).",
 		"legalBasis": "Sec. 6"
 	},
@@ -1960,7 +1960,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is filed with the court that rendered the judgment — the RTC — and served on the adverse party (Sec. 3[a]).",
 		"legalBasis": "Sec. 3(a)"
 	},
@@ -1974,7 +1974,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Ching v. Nicdao, 2007), within the same period as the accused.",
 		"legalBasis": "Sec. 1; Ching v. Nicdao"
 	},
@@ -1988,7 +1988,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 3[b]).",
 		"legalBasis": "Sec. 3(b)"
 	},
@@ -2002,7 +2002,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Since People v. Mateo (2004) and A.M. No. 00-5-03-SC, it is appealed by notice of appeal to the CA (Sec. 3[c]).",
 		"legalBasis": "Sec. 3(c); Mateo"
 	},
@@ -2016,7 +2016,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The appeal throws the whole case open; the appellate court may increase the penalty (Trono; Bu Lin; Rule 124, Sec. 11).",
 		"legalBasis": "Trono; Rule 124, Sec. 11"
 	},
@@ -2030,7 +2030,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only as to the appealing party (Sec. 11[c]).",
 		"legalBasis": "Sec. 11(c)"
 	},
@@ -2044,7 +2044,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Certiorari corrects errors of jurisdiction, not errors of judgment; misappreciation of evidence is not grave abuse (Ysidoro; Villareal v. Aliga).",
 		"legalBasis": "Rule 65; errors of jurisdiction"
 	},
@@ -2058,7 +2058,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The wrong mode does not toll the period; the judgment becomes final, save exceptionally in the interest of justice (Tiu, p. 214).",
 		"legalBasis": "wrong mode; finality"
 	},
@@ -2072,7 +2072,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. Jeopardy does not attach before a valid plea, so the appeal does not place the accused twice in jeopardy (Sec. 1).",
 		"legalBasis": "Sec. 1; no jeopardy before plea"
 	},
@@ -2086,7 +2086,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The trial court may allow withdrawal before the record is forwarded to the appellate court; the judgment then becomes final (Sec. 12).",
 		"legalBasis": "Sec. 12"
 	},
@@ -2100,7 +2100,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. By notice of appeal filed with the CA (Rule 124, Sec. 13[c]); the SC may then review facts as well as law.",
 		"legalBasis": "Rule 124, Sec. 13(c)"
 	},
@@ -2114,7 +2114,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1), except court-specific provisions and cases under the special procedure for minor offenses.",
 		"legalBasis": "Sec. 1"
 	},
@@ -2128,7 +2128,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The 1991 Rule was replaced by the 2022 Rules on Expedited Procedures in the First Level Courts (A.M. No. 08-8-7-SC).",
 		"legalBasis": "A.M. No. 08-8-7-SC"
 	},
@@ -2142,7 +2142,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Since A.M. No. 05-8-26-SC (2005), MTC judges no longer conduct preliminary investigation.",
 		"legalBasis": "Rule 112, Sec. 2"
 	},
@@ -2156,7 +2156,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Rule 114, Sec. 4): in first-level courts, bail is a matter of right before and after conviction.",
 		"legalBasis": "Rule 114, Sec. 4"
 	},
@@ -2170,7 +2170,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The title remains as in the court of origin; the parties are called appellant and appellee (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -2184,7 +2184,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Within 30 days from receipt of the notice that the evidence is attached to the record (Sec. 3). 45 days is the civil period.",
 		"legalBasis": "Sec. 3"
 	},
@@ -2198,7 +2198,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 8, par. 2), on motion or motu proprio.",
 		"legalBasis": "Sec. 8"
 	},
@@ -2212,7 +2212,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The exception in Sec. 8 bars dismissal on that ground where the appellant is represented by counsel de oficio.",
 		"legalBasis": "Sec. 8"
 	},
@@ -2226,7 +2226,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 9).",
 		"legalBasis": "Sec. 9"
 	},
@@ -2240,7 +2240,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 11). The appeal throws the whole case open for review.",
 		"legalBasis": "Sec. 11; Trono"
 	},
@@ -2254,7 +2254,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only on newly discovered evidence material to his defense (Sec. 14).",
 		"legalBasis": "Sec. 14"
 	},
@@ -2268,7 +2268,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 16). Only one MR is allowed, within 15 days.",
 		"legalBasis": "Sec. 16"
 	},
@@ -2282,7 +2282,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. That is the procedure for death (Sec. 13[a]). For RP or LI, the CA renders and enters judgment, appealable to the SC by notice of appeal filed with the CA (Sec. 13[c]).",
 		"legalBasis": "Sec. 13"
 	},
@@ -2296,7 +2296,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1).",
 		"legalBasis": "Sec. 1"
 	},
@@ -2310,7 +2310,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 2) — generally Rule 45 — except RP/LI cases, which go up by notice of appeal (Rule 124, Sec. 13[c]).",
 		"legalBasis": "Sec. 2"
 	},
@@ -2324,7 +2324,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The conviction is reversed and the accused acquitted (Sec. 3).",
 		"legalBasis": "Sec. 3"
 	},
@@ -2338,7 +2338,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Art. VIII, Sec. 5[2][d]) — but Mateo held this does not bar an intermediate CA review.",
 		"legalBasis": "Art. VIII, Sec. 5(2)(d); Mateo"
 	},
@@ -2352,7 +2352,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 10). Thereafter it is void.",
 		"legalBasis": "Sec. 10"
 	},
@@ -2366,7 +2366,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Daytime, unless the affidavit asserts the property is on the person or in the place, in which case the warrant may direct service at any time (Sec. 9).",
 		"legalBasis": "Sec. 9"
 	},
@@ -2380,7 +2380,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. One specific offense only (Sec. 4); a warrant for several offenses is a scatter-shot warrant (Stonehill; Vallejo).",
 		"legalBasis": "Sec. 4"
 	},
@@ -2394,7 +2394,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. He must personally examine them by searching questions and answers, in writing and under oath (Sec. 5; Bache; Silva). Evaluation of documents suffices only for a warrant of arrest (Soliven).",
 		"legalBasis": "Sec. 5; Bache; Soliven"
 	},
@@ -2408,7 +2408,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Control or possession suffices (Yao v. People, 2007).",
 		"legalBasis": "Yao"
 	},
@@ -2422,7 +2422,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The two witnesses must be of sufficient age and discretion and residing in the same locality (Sec. 8).",
 		"legalBasis": "Sec. 8"
 	},
@@ -2436,7 +2436,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The constitutional guarantee and exclusionary rule apply to the State, not private individuals acting on their own (People v. Marti, 1991).",
 		"legalBasis": "Marti"
 	},
@@ -2450,7 +2450,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 2, last par.).",
 		"legalBasis": "Sec. 2"
 	},
@@ -2464,7 +2464,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. An application for a search warrant is not a criminal action; improper venue is waived if not raised in the first motion to quash (Pilipinas Shell v. Romars, 2015).",
 		"legalBasis": "Pilipinas Shell; omnibus motion"
 	},
@@ -2478,7 +2478,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A warrant is severable; it remains valid as to the items particularly described (Uy v. BIR; Microsoft v. Maxicorp).",
 		"legalBasis": "severability"
 	},
@@ -2492,7 +2492,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. The search is limited to the person and the place of arrest (Nolasco v. Paño).",
 		"legalBasis": "Sec. 13; Nolasco"
 	},
@@ -2506,7 +2506,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It requires less than probable cause but more than a hunch: a genuine reason, from the officer's experience and the surroundings, to believe the person is armed or carries contraband (Malacat; Esquillo).",
 		"legalBasis": "Malacat; genuine reason"
 	},
@@ -2520,7 +2520,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A solitary tip is not probable cause; personally observed, corroborating circumstances are needed (People v. Sapla, 2020, En Banc; Cogaed, 2014).",
 		"legalBasis": "Sapla; Cogaed"
 	},
@@ -2534,7 +2534,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Ample time and opportunity to secure a warrant defeats the exception (Aminnudin, 1988; Racho, 2010).",
 		"legalBasis": "Aminnudin; Racho"
 	},
@@ -2548,7 +2548,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Consent must be unequivocal, specific and freely given; passive submission to a show of authority is not consent, and the State must prove consent by clear and positive evidence (Aruta; Luz).",
 		"legalBasis": "Aruta; Luz; voluntariness"
 	},
@@ -2562,7 +2562,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 1), insofar as they are applicable.",
 		"legalBasis": "Sec. 1"
 	},
@@ -2576,7 +2576,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Provisional remedies attach to the civil action deemed instituted; once reserved, it is not in the criminal case (Sec. 1; Rule 111, Sec. 1).",
 		"legalBasis": "Sec. 1; reservation"
 	},
@@ -2590,7 +2590,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Sec. 2[d]).",
 		"legalBasis": "Sec. 2(d)"
 	},
@@ -2604,7 +2604,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It secures \"any judgment that may be recovered from the accused\" by the offended party — the civil liability (Sec. 2).",
 		"legalBasis": "Sec. 2; civil liability"
 	},
@@ -2618,7 +2618,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True. RPC Art. 90, par. 3: correctional penalties prescribe in ten years, \"with the exception of those punishable by arresto mayor, which shall prescribe in five years.\"",
 		"legalBasis": "Art. 90"
 	},
@@ -2632,7 +2632,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It runs from the day of commission; discovery applies only if the violation was not known at the time (Act 3326, Sec. 2; blameless ignorance).",
 		"legalBasis": "Act 3326, Sec. 2"
 	},
@@ -2646,7 +2646,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Act 3326 has no absence provision, and Art. 91 cannot be applied to special laws (Romualdez v. Marcelo, 2006).",
 		"legalBasis": "Romualdez v. Marcelo"
 	},
@@ -2660,7 +2660,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Under Olarte (1967), followed in Arambulo v. Laqui (2000), filing interrupts prescription even if the court cannot try the case on the merits.",
 		"legalBasis": "Olarte; Arambulo"
 	},
@@ -2674,7 +2674,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A Sunday or holiday does not extend the State's prescriptive period (Yapdiangco v. Buencamino, 1983). The next-working-day rule applies to procedural periods. Trap: Importing Rule 22, Sec. 1 into a substantive period.",
 		"legalBasis": "Yapdiangco"
 	},
@@ -2688,7 +2688,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It is based on the penalty prescribed by law; for a compound penalty, the highest penalty is the basis (Art. 90, last par.).",
 		"legalBasis": "penalty prescribed by law; compound penalty"
 	},
@@ -2702,7 +2702,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Causing v. People (2023; reconsideration denied 2026): one year from discovery, as with libel under Art. 90. The fifteen-year view from an unsigned 2018 resolution is not binding.",
 		"legalBasis": "Causing; Art. 90; one year"
 	},
@@ -2716,7 +2716,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False, on the Court's own terms: the Consebido rule applies \"henceforth,\" prospectively. For complaints filed before it, Desierto and Corpus applied: only filing in court tolled.",
 		"legalBasis": "Consebido; prospective; Desierto; Corpus"
 	},
@@ -2730,7 +2730,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Not jurisdictional; waived if not raised in a motion to quash before plea (Villa Gomez v. People, 2020, En Banc).",
 		"legalBasis": "Villa Gomez"
 	},
@@ -2744,7 +2744,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Only the civil aspect; the criminal aspect may be appealed only by the State through the OSG, and an acquittal is generally unappealable (Villareal v. Aliga).",
 		"legalBasis": "civil aspect only"
 	},
@@ -2758,7 +2758,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False (Rule 111, Sec. 1[b]).",
 		"legalBasis": "Sec. 1(b)"
 	},
@@ -2772,7 +2772,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Removed by A.M. No. 05-8-26-SC (effective October 3, 2005).",
 		"legalBasis": "A.M. No. 05-8-26-SC"
 	},
@@ -2786,7 +2786,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It remains valid until served or recalled; the 10 days govern execution and reporting (Rule 113, Sec. 4).",
 		"legalBasis": "Sec. 4"
 	},
@@ -2800,7 +2800,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False, if he raises it before plea (Rule 114, Sec. 26).",
 		"legalBasis": "Sec. 26"
 	},
@@ -2814,7 +2814,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]).",
 		"legalBasis": "arraignment"
 	},
@@ -2828,7 +2828,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. RA 9165, Sec. 23 was struck down (Estipona, 2017); a Supreme Court framework governs; courts may overrule objections based solely on inconsistent DOJ circulars (Montierro, 2022).",
 		"legalBasis": "Estipona; Montierro"
 	},
@@ -2842,7 +2842,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,
+		"correctIndex": 0,"key":"True",
 		"explanation": "True (Rule 117, Sec. 6 — grounds [g] and [i]).",
 		"legalBasis": "Sec. 6"
 	},
@@ -2856,7 +2856,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. It must be in writing and signed by the accused and counsel (Rule 118, Sec. 2).",
 		"legalBasis": "Sec. 2"
 	},
@@ -2870,7 +2870,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. A granted demurrer is an acquittal; only certiorari for grave abuse lies (Dayap v. Sendiong).",
 		"legalBasis": "acquittal"
 	},
@@ -2884,7 +2884,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False. Convict of homicide; treachery was not alleged (Rule 120, Secs. 4–5; Rule 110, Sec. 8).",
 		"legalBasis": "variance; qualifying circumstance must be alleged"
 	},
@@ -2898,7 +2898,7 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,
+		"correctIndex": 1,"key":"False",
 		"explanation": "False — unsettled. Consebido's words reach offenses covered by the 2022 Expedited Rules (which include ordinances) and it abandoned Desierto and Corpus, but it did not expressly abandon Zaldivia or Jadewell.",
 		"legalBasis": "Consebido; Zaldivia; Jadewell"
 	}

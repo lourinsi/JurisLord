@@ -38,6 +38,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Sandiganbayan original jurisdiction hinges on (1) SG 27+ / designated office, (2) office nexus, and (3) > ₱1,000,000.00 damage/bribe under R.A. 10660 — NOT the 6-year RTC/MTC penalty dividing line.'
 		],
 		correctIndex: 3,
+		key: 'The imposable penalty prescribed by law for the offense charged exceeds six (6) years of prision correccional',
 		explanation:
 			'The three concurring requisites for Sandiganbayan exclusive original jurisdiction in graft, bribery, or malversation are: (1) SG 27+ or designated office; (2) committed in relation to public office (alleged in the Information); and (3) damage to government or bribe exceeding ₱1,000,000.00.',
 		legalBasis: 'P.D. 1606; R.A. 10660',
@@ -63,6 +64,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — CTA handles criminal tax and customs violations (principal taxes/fees ≥ ₱1,000,000.00), not graft cases.'
 		],
 		correctIndex: 0,
+		key: 'Regional Trial Court (RTC), sitting in a judicial region outside where the official holds office',
 		explanation:
 			'Under R.A. 10660, if an SG 27+ official commits graft involving ₱1,000,000.00 or less (or no damage/bribe is alleged), exclusive original jurisdiction is demoted to the Regional Trial Court (RTC).',
 		legalBasis: 'R.A. 10660',
@@ -88,6 +90,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — First-Level Courts only take cases where the imposable penalty does not exceed 6 years; reclusion temporal exceeds 6 years, so it goes to the RTC.'
 		],
 		correctIndex: 2,
+		key: 'Regional Trial Court, because the accused is below Salary Grade 27 and the penalty exceeds six years',
 		explanation:
 			'For officials with Salary Grade 26 or below (outside specifically designated offices), the Sandiganbayan has NO original jurisdiction regardless of how high the amount is. Jurisdiction belongs to the RTC (or First-Level Courts if the penalty is 6 years or less).',
 		legalBasis: 'P.D. 1606; B.P. Blg. 129',
@@ -113,6 +116,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Arraignment is not the tolling event for prescription.'
 		],
 		correctIndex: 1,
+		key: 'Filing the criminal complaint with the Office of the City or Provincial Prosecutor',
 		explanation:
 			'As a general rule, prescription of RPC felonies and special penal laws is interrupted by filing the criminal complaint with the Office of the City or Provincial Prosecutor for preliminary or summary investigation (People v. Consebido, 2025).',
 		legalBasis: 'Rule 110, Sec. 1; People v. Consebido (2025)',
@@ -138,6 +142,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Under Zaldivia v. Reyes and Jadewell v. Lidua, prescription for city or municipal ordinances is tolled ONLY by filing the complaint or Information directly in court.'
 		],
 		correctIndex: 3,
+		key: 'Yes, because prescription of local ordinance violations is interrupted solely by direct court filing',
 		explanation:
 			'Exception to the General Tolling Rule: for violations of municipal or city ordinances, prescription is interrupted ONLY by filing the complaint or Information directly in court (Zaldivia v. Reyes; Jadewell v. Lidua). Filing with the Prosecutor’s Office does not stop the clock.',
 		legalBasis: 'Act No. 3326; Zaldivia v. Reyes; Jadewell v. Lidua',
@@ -163,6 +168,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Reservation is made before the trial court, not approved by the DOJ.'
 		],
 		correctIndex: 0,
+		key: 'Made before the prosecution presents evidence, under circumstances affording reasonable opportunity',
 		explanation:
 			'To validly reserve a separate civil action ex delicto: (1) reservation must be made prior to the prosecution presenting evidence, and (2) under circumstances affording the offended party a reasonable opportunity to make such reservation.',
 		legalBasis: 'Rule 111, Sec. 1(a)',
@@ -188,6 +194,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Defamation cases allow separate civil actions (and Art. 33 independent civil actions).'
 		],
 		correctIndex: 2,
+		key: 'B.P. Blg. 22 bouncing check cases, Sandiganbayan cases, and CTA criminal tax or customs cases',
 		explanation:
 			'A separate civil action cannot be reserved in (1) B.P. Blg. 22 violations, (2) criminal cases under the exclusive jurisdiction of the Sandiganbayan, and (3) criminal tax and customs cases before the Court of Tax Appeals.',
 		legalBasis: 'Rule 111, Sec. 1(b); P.D. 1606; R.A. 9282',
@@ -213,6 +220,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Preliminary investigation is prior to arraignment.'
 		],
 		correctIndex: 1,
+		key: 'After arraignment or while the appeal is pending, before the judgment of conviction becomes final',
 		explanation:
 			'Under Rule 111, Sec. 4 and People v. Bayotas, death of the accused after arraignment or pending appeal (before finality of judgment) extinguishes criminal liability and civil liability ex delicto.',
 		legalBasis: 'Rule 111, Sec. 4; People v. Bayotas',
@@ -238,6 +246,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Under Bayotas, death pending appeal extinguishes criminal liability and civil liability ex delicto, but independent civil actions (Arts. 32, 33, 34, and 2176 of the Civil Code) survive and may be prosecuted against the estate.'
 		],
 		correctIndex: 3,
+		key: 'Criminal and civil liability ex delicto end, while independent civil actions survive against the estate',
 		explanation:
 			'Death of the accused after arraignment or pending appeal extinguishes both criminal liability and civil liability ex delicto. However, independent civil actions predicated on Arts. 32, 33, 34, and 2176 of the Civil Code survive against the estate.',
 		legalBasis: 'Rule 111, Sec. 4; People v. Bayotas',
@@ -267,6 +276,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Particularity of description of the place to be searched and things to be seized is the 4th constitutional requisite.'
 		],
 		correctIndex: 0,
+		key: 'Prior written consent of the lawful occupant or barangay chairman obtained before filing the application',
 		explanation:
 			'The 4 constitutional requisites for a valid search warrant are: (1) probable cause; (2) personally determined by the judge via searching questions and answers in writing and under oath; (3) one specific offense; and (4) particularity of place and things.',
 		legalBasis: 'Const., Art. III, Sec. 2; Rule 126, Secs. 4–5',
@@ -292,6 +302,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A search conducted after the 10-day period is an illegal warrantless search and renders seized evidence inadmissible.'
 		],
 		correctIndex: 2,
+		key: 'It becomes functus officio and void because a search warrant is valid strictly for ten days only',
 		explanation:
 			'Under Rule 126, Sec. 10, a search warrant is valid strictly for 10 days from its date. Thereafter (on the 11th day), it becomes functus officio and void.',
 		legalBasis: 'Rule 126, Sec. 10',
@@ -317,6 +328,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Arrest warrants have no 60-day expiration.'
 		],
 		correctIndex: 1,
+		key: 'No, because an arrest warrant does not expire and remains enforceable until executed or recalled',
 		explanation:
 			'Unlike a search warrant, a Warrant of Arrest does NOT expire. It remains valid indefinitely until executed, lifted, or recalled. The 10-day period in Rule 113, Sec. 4 is solely an administrative execution/status-report deadline.',
 		legalBasis: 'Rule 113, Sec. 4',
@@ -342,6 +354,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! In flagrante delicto requires: (1) an observable overt criminal act showing a crime is being committed, has been committed, or is attempted, and (2) committed in the presence or within the view of the arresting person.'
 		],
 		correctIndex: 3,
+		key: 'The person arrested executes an overt criminal act, committed in the presence or view of the officer',
 		explanation:
 			'For an in flagrante delicto warrantless arrest under Rule 113, Sec. 5(a): (1) the person arrested must execute an overt criminal act, and (2) the overt act must occur in the presence or within the view of the arresting person (People v. Comerciante).',
 		legalBasis: 'Rule 113, Sec. 5(a); People v. Comerciante',
@@ -367,6 +380,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Recidivism and anonymous tips do not satisfy Sec. 5(b).'
 		],
 		correctIndex: 0,
+		key: 'An offense has just been committed, and the officer has personal knowledge of facts pointing to the suspect',
 		explanation:
 			'A hot pursuit warrantless arrest under Rule 113, Sec. 5(b) requires: (1) an offense has just been committed (immediacy), and (2) the arresting officer has personal knowledge of facts or circumstances indicating that the person to be arrested committed it (Pestilos v. Generoso).',
 		legalBasis: 'Rule 113, Sec. 5(b); Pestilos v. Generoso',
@@ -392,6 +406,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Stop-and-frisk is distinct from a search incident to a lawful arrest and does not require a prior arrest.'
 		],
 		correctIndex: 2,
+		key: 'No, because a valid frisk requires personally observed overt suspicious conduct, not a mere tip',
 		explanation:
 			'Stop-and-Frisk (Terry search) requires personally observed overt suspicious conduct + genuine reasonable suspicion that criminal activity is afoot and the suspect is armed. Fatal flaw: it CANNOT rest solely on an anonymous tip or raw text message (People v. Cogaed).',
 		legalBasis: 'People v. Cogaed; Terry v. Ohio',
@@ -417,6 +432,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Contraband like shabu has an immediately apparent illicit character once legitimately exposed.'
 		],
 		correctIndex: 1,
+		key: 'Plain view requires items open to eye and hand without opening closed drawers or small pouches',
 		explanation:
 			'The 4 mandatory requisites of Plain View are: (1) prior valid intrusion; (2) inadvertent discovery; (3) immediately apparent illicit character; and (4) open to eye and hand without opening closed doors, drawers, cabinets, or pouches (United Laboratories v. Isip; Valeroso v. CA).',
 		legalBasis: 'United Laboratories v. Isip; Valeroso v. CA',
@@ -442,6 +458,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! When law enforcement already has lawful custody of a phone or computer, officers CANNOT browse or examine the digital data without first obtaining a Warrant to Examine Computer Data (WECD).'
 		],
 		correctIndex: 3,
+		key: 'Warrant to Examine Computer Data (WECD) authorizing forensic search of the seized device',
 		explanation:
 			'Under A.M. No. 17-11-03-SC, lawful custody of a phone or computer does not authorize browsing its contents; officers must first apply for and obtain a Warrant to Examine Computer Data (WECD).',
 		legalBasis: 'A.M. No. 17-11-03-SC',
@@ -467,6 +484,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Objections to admissibility of evidence are properly raised when the evidence is offered at trial.'
 		],
 		correctIndex: 0,
+		key: 'Entering a plea waives defects in the arrest, but does not waive objection to seized evidence',
 		explanation:
 			'Patotoy v. People (En Banc, 2025): entering a plea waives objections to the illegality of the arrest, but DOES NOT waive objection to the inadmissibility of evidence seized during the unlawful arrest (Fruit of the Poisonous Tree).',
 		legalBasis: 'Patotoy v. People (En Banc, 2025)',
@@ -492,6 +510,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Use of recording devices is mandatory in warrant executions under A.M. No. 21-06-08-SC.'
 		],
 		correctIndex: 2,
+		key: 'At least two recording devices, consisting of one BWC and one ARD, or at least two ARDs',
 		explanation:
 			'Under A.M. No. 21-06-08-SC, executing officers must wear and activate at least two (2) recording devices (1 BWC + 1 ARD, or at least 2 ARDs).',
 		legalBasis: 'A.M. No. 21-06-08-SC (BWC Rules)',
@@ -517,6 +536,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — An invalid search cannot be cured by re-serving the warrant.'
 		],
 		correctIndex: 1,
+		key: 'The seized items are inadmissible under the exclusionary rule, and the officers face contempt',
 		explanation:
 			'Search Warrant failure (no BWC/ARD + no justifiable ground): seized evidence is inadmissible under the Exclusionary Rule, and executing officers face liability for contempt.',
 		legalBasis: 'A.M. No. 21-06-08-SC (BWC Rules)',
@@ -542,6 +562,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! When search warrant non-recording is backed by a justifiable ground and a sworn explanatory affidavit, the evidence remains admissible, but the officers lose the presumption of regularity.'
 		],
 		correctIndex: 3,
+		key: 'The seized items remain admissible, but the officers lose the presumption of regularity',
 		explanation:
 			'Search Warrant failure with a justifiable ground and sworn explanatory affidavit: seized evidence remains admissible, but officers lose the presumption of regularity in the performance of official duties.',
 		legalBasis: 'A.M. No. 21-06-08-SC (BWC Rules)',
@@ -567,6 +588,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — BWC Rules cover BOTH arrest warrants and search warrants, and non-compliant officers still face contempt/administrative liability.'
 		],
 		correctIndex: 0,
+		key: 'The arrest remains valid and evidence is not automatically suppressed, though officers face contempt',
 		explanation:
 			'Arrest Warrant failure under the BWC Rules: the arrest remains valid and evidence is not automatically suppressed, but executing officers face contempt and administrative charges.',
 		legalBasis: 'A.M. No. 21-06-08-SC (BWC Rules)',
@@ -596,6 +618,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Preponderance of evidence is the standard in civil cases.'
 		],
 		correctIndex: 2,
+		key: 'Prima facie evidence with a reasonable certainty of conviction upon trial on the merits',
 		explanation:
 			'Under DOJ Department Circular No. 15 (2024), the quantum of evidence required in executive preliminary investigation is Prima Facie Case with Reasonable Certainty of Conviction (PFC+RCC).',
 		legalBasis: 'Rule 112; DOJ DC 15 (2024)',
@@ -621,6 +644,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — The threshold is > 6 years, not > 12 years.'
 		],
 		correctIndex: 1,
+		key: 'Imprisonment of at least six years and one day, exceeding the six-year threshold',
 		explanation:
 			'Under DOJ DC 15 (2024), mandatory full Preliminary Investigation is required when the offense is punishable by imprisonment of at least 6 years and 1 day (> 6 years), superseding the old 4 years, 2 months, and 1 day rule.',
 		legalBasis: 'Rule 112; DOJ DC 15 (2024)',
@@ -645,6 +669,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Under Rule 114, Sec. 5, bail becomes a matter of discretion upon conviction by the RTC of an offense not punishable by death, reclusion perpetua, or life imprisonment.'
 		],
 		correctIndex: 3,
+		key: 'After conviction by the RTC of an offense not punishable by death or reclusion perpetua',
 		explanation:
 			'Bail is a matter of discretion after conviction by the Regional Trial Court (RTC) of an offense not punishable by death, reclusion perpetua, or life imprisonment (Rule 114, Sec. 5).',
 		legalBasis: 'Rule 114, Sec. 5',
@@ -670,6 +695,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Probability of flight (#4) and undue risk of committing another crime (#5) are both bail-negating circumstances.'
 		],
 		correctIndex: 0,
+		key: 'The accused elected not to testify in his own defense during the course of the trial',
 		explanation:
 			'The 5 bail-negating circumstances under Rule 114, Sec. 5 (requiring mandatory denial when RTC penalty > 6 years) are: (1) recidivism/habitual delinquency; (2) previous escape; (3) offense while on probation/parole/pardon; (4) probability of flight; and (5) undue risk of committing another crime.',
 		legalBasis: 'Rule 114, Sec. 5',
@@ -695,6 +721,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Posting a bond cannot cure a void bail order granted without a hearing.'
 		],
 		correctIndex: 2,
+		key: 'Null and void, because a summary bail hearing is indispensable to assess the strength of evidence',
 		explanation:
 			'A summary bail hearing is indispensable in applications for bail in capital offenses so the prosecution can establish whether evidence of guilt is strong. Granting bail without a hearing is null and void (Narciso v. Santa Romana-Cruz).',
 		legalBasis: 'Rule 114, Secs. 7–8; Narciso v. Santa Romana-Cruz',
@@ -720,6 +747,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — DOJ approval is not required under Rule 110, Sec. 14.'
 		],
 		correctIndex: 1,
+		key: 'Allowed as a matter of right in either form or substance, without needing leave of court',
 		explanation:
 			'General rule under Rule 110, Sec. 14: before the accused enters a plea, the complaint or Information may be amended in form or substance as a matter of right without leave of court.',
 		legalBasis: 'Rule 110, Sec. 14',
@@ -745,6 +773,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Before plea, any amendment that downgrades the nature of the offense or excludes any accused requires: (1) motion by the prosecutor, (2) notice to the offended party, and (3) leave of court.'
 		],
 		correctIndex: 3,
+		key: 'Motion by the prosecutor, notice to the offended party, and prior leave of court',
 		explanation:
 			'Exception before plea (Rule 110, Sec. 14): any amendment that downgrades the offense or excludes an accused requires a motion by the prosecutor, notice to the offended party, and leave of court.',
 		legalBasis: 'Rule 110, Sec. 14',
@@ -770,6 +799,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — The cutoff for substantial amendments is the entry of plea, not the close of prosecution evidence.'
 		],
 		correctIndex: 0,
+		key: 'Formal amendments with leave of court that cause no prejudice; substantial ones are barred',
 		explanation:
 			'After plea, Rule 110, Sec. 14 strictly prohibits substantial amendments and allows only formal amendments with leave of court and when they can be done without causing prejudice to the rights of the accused.',
 		legalBasis: 'Rule 110, Sec. 14',
@@ -795,6 +825,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Extinction of criminal liability (#3) and double jeopardy (#4) are both non-waivable grounds.'
 		],
 		correctIndex: 2,
+		key: 'The officer who subscribed and filed the Information lacked authority to do so',
 		explanation:
 			'The 4 non-waivable grounds in a Motion to Quash under Rule 117, Sec. 9 are: (1) facts do not constitute an offense; (2) lack of subject-matter jurisdiction; (3) extinction of criminal action or liability; and (4) double jeopardy.',
 		legalBasis: 'Rule 117, Sec. 9',
@@ -820,6 +851,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — The defect only bars using the admission against the accused; it does not dismiss the case.'
 		],
 		correctIndex: 1,
+		key: 'The admission is inadmissible against the accused for lacking both required signatures',
 		explanation:
 			'Rule 118, Sec. 2 requires three mandatory requisites for a valid Pre-Trial Agreement: (1) reduced to writing; (2) signed by BOTH the accused and defense counsel; and (3) approved by the court. Otherwise, the admissions cannot be used in evidence against the accused.',
 		legalBasis: 'Rule 118, Sec. 2',
@@ -845,6 +877,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Plea bargaining under Rule 116, Sec. 2 requires: (1) plea to a lesser offense necessarily included in the offense charged, (2) consent of the trial prosecutor, and (3) consent of the offended party.'
 		],
 		correctIndex: 3,
+		key: 'Plea to a lesser included offense, with consent of the prosecutor and offended party',
 		explanation:
 			'Under Rule 116, Sec. 2, the 3 mandatory requisites for plea bargaining are: (1) plea to a lesser offense necessarily included in the offense charged; (2) consent of the trial prosecutor; and (3) consent of the offended party.',
 		legalBasis: 'Rule 116, Sec. 2',
@@ -874,6 +907,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Summary Procedure follows judicial affidavits, not reverse order of trial.'
 		],
 		correctIndex: 0,
+		key: 'The accused admits the act charged in the Information, and interposes a lawful defense',
 		explanation:
 			'Reverse / Modified Order of Trial (Rule 119, Sec. 11[e]) applies when (1) the accused admits the act or omission charged, and (2) interposes a lawful or justifying defense (e.g., self-defense).',
 		legalBasis: 'Rule 119, Sec. 11(e)',
@@ -899,6 +933,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Speedy Trial protects the accused at the trial stage, not the prosecution at preliminary investigation.'
 		],
 		correctIndex: 2,
+		key: 'The accused exclusively, during criminal trials from arraignment to promulgation',
 		explanation:
 			'Speedy Trial (Art. III, Sec. 14[2]) protects the accused exclusively and covers criminal trials (from arraignment to promulgation).',
 		legalBasis: 'Const., Art. III, Sec. 14(2)',
@@ -924,6 +959,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — It covers all parties in all proceedings, not just civil complainants.'
 		],
 		correctIndex: 1,
+		key: 'Protects all parties across judicial, quasi-judicial, administrative, and fiscal probes',
 		explanation:
 			'Unlike Speedy Trial, Speedy Disposition of Cases (Art. III, Sec. 16) protects ALL parties in ALL proceedings — judicial, quasi-judicial, administrative, and preliminary investigations before the prosecutor or Ombudsman (Cagang).',
 		legalBasis: 'Const., Art. III, Sec. 16; Cagang',
@@ -949,6 +985,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! The law requires only that the accused does NOT appear to be the MOST guilty (NOT that he be the least guilty), and posting double bail is not a requisite. Discharge operates as an immediate acquittal and double jeopardy bar.'
 		],
 		correctIndex: 3,
+		key: 'The accused must be the least guilty among all co-accused and post a double surety bond',
 		explanation:
 			'The 5 strict requisites under Rule 119, Sec. 17 are: (1) absolute necessity; (2) no other direct evidence; (3) substantially corroborated; (4) does not appear to be the most guilty (need not be the least guilty); and (5) never convicted of an offense involving moral turpitude. Effect: immediate acquittal and double jeopardy bar.',
 		legalBasis: 'Rule 119, Sec. 17',
@@ -974,6 +1011,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — One offense must necessarily be included in the other; sharing a Title of the RPC is insufficient.'
 		],
 		correctIndex: 0,
+		key: 'An included offense proved or charged, provided it is not graver than what was charged',
 		explanation:
 			'Variance Doctrine (Rule 120, Secs. 4–5): an accused may be convicted of an offense proved which is included in the offense charged, or of an offense charged which is included in the offense proved. Ceiling: never graver than what was charged.',
 		legalBasis: 'Rule 120, Secs. 4–5',
@@ -999,6 +1037,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Double jeopardy attaches when a demurrer is GRANTED (acquittal), not when it is denied.'
 		],
 		correctIndex: 2,
+		key: 'The accused retains the right to adduce evidence in his defense during the trial',
 		explanation:
 			'Under Rule 119, Sec. 23, if a Demurrer to Evidence filed WITH leave of court is denied, the accused retains the right to present defense evidence.',
 		legalBasis: 'Rule 119, Sec. 23',
@@ -1024,6 +1063,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — The prosecution has already rested; the case is submitted for judgment.'
 		],
 		correctIndex: 1,
+		key: 'The accused waives the right to present evidence and submits the case for judgment',
 		explanation:
 			'Under Rule 119, Sec. 23, if a Demurrer to Evidence filed WITHOUT leave of court is denied, the accused waives the right to present evidence and submits the case for judgment on the basis of the prosecution’s evidence.',
 		legalBasis: 'Rule 119, Sec. 23',
@@ -1049,6 +1089,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Granting a Demurrer to Evidence (with or without leave) operates as an acquittal on the merits; double jeopardy attaches immediately and the State cannot appeal.'
 		],
 		correctIndex: 3,
+		key: 'An acquittal on the merits where double jeopardy attaches and bars State appeal',
 		explanation:
 			'When a Demurrer to Evidence is GRANTED (whether with or without leave), it operates as an acquittal on the merits; double jeopardy attaches immediately and it is unappealable by the State (reviewable only via Rule 65 for grave abuse of discretion).',
 		legalBasis: 'Rule 119, Sec. 23',
@@ -1078,6 +1119,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Remaining at large prevents the accused from regaining remedies.'
 		],
 		correctIndex: 0,
+		key: 'Surrender within fifteen days, and file a motion for leave showing justifiable cause',
 		explanation:
 			'To regain remedies after promulgation in absentia (Rule 120, Sec. 6), the accused must: (1) surrender within 15 days from promulgation, and (2) file a Motion for Leave to Avail of Remedies proving justifiable cause for the absence.',
 		legalBasis: 'Rule 120, Sec. 6',
@@ -1103,6 +1145,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — If the absence is excused/justified (e.g., valid medical emergency), the 3rd requisite is missing; plus arraignment is mandatory.'
 		],
 		correctIndex: 2,
+		key: 'Valid arraignment of the accused, due notice of trial, and unjustified failure to appear',
 		explanation:
 			'Under Const., Art. III, Sec. 14(2), a valid Trial in Absentia requires: (1) valid arraignment; (2) due notice of the trial hearings; and (3) unjustified failure to appear.',
 		legalBasis: 'Const., Art. III, Sec. 14(2)',
@@ -1128,6 +1171,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Rule 45 cannot be used to overturn an acquittal for mere errors of judgment or fact.'
 		],
 		correctIndex: 1,
+		key: 'Rule 65 Petition for Certiorari proving grave abuse of discretion or a sham trial',
 		explanation:
 			'Sole exception to finality of an acquittal: Petition for Certiorari under Rule 65, strictly requiring proof of grave abuse of discretion amounting to lack of jurisdiction or a sham trial / denial of due process (Galman v. Sandiganbayan).',
 		legalBasis: 'Rule 65; Galman v. Sandiganbayan',
@@ -1153,6 +1197,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! All 4 requisites of NDE must concur: (1) discovered after trial; (2) not discoverable with reasonable diligence; (3) material, not merely cumulative/corroborative/impeaching; and (4) probably changes the judgment. Evidence known during trial but withheld is "forgotten evidence," not NDE.'
 		],
 		correctIndex: 3,
+		key: 'Evidence known during trial but withheld by strategy is forgotten evidence, not new',
 		explanation:
 			'The 4 mandatory requisites for Newly Discovered Evidence (Rule 121, Sec. 2[b]) are: (1) discovered after trial; (2) could not have been discovered/produced with reasonable diligence; (3) material (not cumulative/corroborative/impeaching); and (4) probably changes the judgment. "Forgotten evidence" known during trial fails.',
 		legalBasis: 'Rule 121, Sec. 2(b)',
@@ -1178,6 +1223,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — The RTC must still review the entire record and decide on the merits.'
 		],
 		correctIndex: 0,
+		key: 'Decide the criminal appeal on the merits based on the elevated trial court records',
 		explanation:
 			'Sanico v. People: the failure of the appellant to file an Appeal Memorandum is NOT a ground for dismissal of a criminal appeal to the RTC; the RTC must decide the appeal on the merits based on the trial court records.',
 		legalBasis: 'Rule 122, Sec. 9; Sanico v. People',
@@ -1203,6 +1249,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — 8 years is still non-probationable (> 6 years), so the 3rd requisite is missing.'
 		],
 		correctIndex: 2,
+		key: 'An accused originally sentenced to eight years who appealed and had it reduced to four years',
 		explanation:
 			'R.A. 10707 Exception requisites: (1) trial court originally imposed a non-probationable penalty (> 6 years); (2) accused appealed; and (3) appellate court reduced the sentence to a probationable penalty (≤ 6 years). If the original sentence was already probationable (≤ 6 years) and the accused appealed anyway, probation is permanently forfeited.',
 		legalBasis: 'P.D. 968; R.A. 10707',
@@ -1231,6 +1278,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD is required to forensically examine data inside a device already in lawful law enforcement custody.'
 		],
 		correctIndex: 0,
+		key: 'Warrant to Disclose Computer Data (WDCD)',
 		explanation:
 			'A Warrant to Disclose Computer Data (WDCD) authorizes law enforcement authorities to issue an order requiring any person or service provider (including financial intermediaries) to disclose or submit subscriber’s information, traffic data, or relevant data in their possession or control within 72 hours from receipt.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 4; R.A. 10175, Sec. 14',
@@ -1256,6 +1304,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD is for examining stored data inside a device already lawfully seized.'
 		],
 		correctIndex: 1,
+		key: 'Warrant to Intercept Computer Data (WICD)',
 		explanation:
 			'A Warrant to Intercept Computer Data (WICD) authorizes law enforcement to listen to, record, monitor, or conduct surveillance of the content of communications, directly or via electronic eavesdropping/tapping devices, at the same time the communication is occurring.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 5; R.A. 10175, Sec. 15',
@@ -1281,6 +1330,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD applies only when the device is already in lawful police custody.'
 		],
 		correctIndex: 2,
+		key: 'Warrant to Search, Seize, and Examine Computer Data (WSSECD)',
 		explanation:
 			'A Warrant to Search, Seize, and Examine Computer Data (WSSECD) authorizes law enforcement authorities to search a particular physical place for computer items to be seized and/or forensically examined (on-site or off-site).',
 		legalBasis: 'A.M. No. 17-11-03-SC, Secs. 6.1–6.4',
@@ -1306,6 +1356,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Under Section 6.9 of A.M. No. 17-11-03-SC, upon acquiring possession of a device via lawful warrantless arrest or voluntary surrender, officers must first secure a WECD before searching and forensically examining its data.'
 		],
 		correctIndex: 3,
+		key: 'Warrant to Examine Computer Data (WECD)',
 		explanation:
 			'Under Section 6.9 of A.M. No. 17-11-03-SC, when law enforcement acquires physical possession of a computer device via a lawful warrantless arrest, valid warrantless seizure, or voluntary surrender, they must first apply for a Warrant to Examine Computer Data (WECD) before searching its digital contents.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 6.9',
@@ -1331,6 +1382,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD follows the WSSECD initial and final return procedure, not the 30-day post-return notice rule.'
 		],
 		correctIndex: 1,
+		key: 'Warrant to Intercept Computer Data (WICD)',
 		explanation:
 			'Under Section 5.6 of A.M. No. 17-11-03-SC, within 30 days from filing the return on a WICD (or lapse of the 48-hour period to file it), the executing officer must notify the person whose communications were intercepted, who has 10 days from notice to contest its legality.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 5.6',
@@ -1356,6 +1408,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD requires simultaneous turnover of all examined data in a sealed package with no retained copy privilege.'
 		],
 		correctIndex: 0,
+		key: 'Warrant to Disclose Computer Data (WDCD)',
 		explanation:
 			'Under Section 4.5 of A.M. No. 17-11-03-SC, law enforcement authorities may retain a copy of the computer data or subscriber’s information disclosed under a WDCD for case build-up or preliminary investigation without court intervention, provided it is labeled and kept strictly confidential.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 4.5',
@@ -1381,6 +1434,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — Under a WECD, the device was already lawfully acquired prior to the warrant application (e.g., via warrantless arrest).'
 		],
 		correctIndex: 2,
+		key: 'Warrant to Search, Seize, and Examine Computer Data (WSSECD)',
 		explanation:
 			'Under Section 6.4 of A.M. No. 17-11-03-SC, a person whose computer devices were searched and seized off-site under a WSSECD may move for the return of the physical items once a forensic image has been made and no lawful ground exists to withhold them.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 6.4',
@@ -1406,6 +1460,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Under Section 6.9 of A.M. No. 17-11-03-SC, a WECD follows the two-tier return system (10-day initial return + 48-hour final return) and uniquely requires the application to disclose how the device was lawfully acquired.'
 		],
 		correctIndex: 3,
+		key: 'Warrant to Examine Computer Data (WECD)',
 		explanation:
 			'A Warrant to Examine Computer Data (WECD) follows the initial and final return rules of Sections 6.6 to 6.8, and its verified application must specifically disclose the circumstances surrounding the lawful acquisition of the computer device or system.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 6.9',
@@ -1431,6 +1486,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Correct! Voluntary surrender of a storage unit is an express example under Section 6.9 of A.M. No. 17-11-03-SC requiring a WECD before forensic examination.'
 		],
 		correctIndex: 3,
+		key: 'Warrant to Examine Computer Data (WECD)',
 		explanation:
 			'Under Section 6.9 (and Footnote 37) of A.M. No. 17-11-03-SC, when possession of a computer device or storage medium is obtained via voluntary surrender, law enforcement must first obtain a Warrant to Examine Computer Data (WECD) before examining the data inside.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 6.9',
@@ -1456,6 +1512,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD authorizes law enforcement to examine a device already in their custody.'
 		],
 		correctIndex: 0,
+		key: 'Warrant to Disclose Computer Data (WDCD)',
 		explanation:
 			'Under Section 4.6 of A.M. No. 17-11-03-SC, non-compliance with the 72-hour order to disclose issued by law enforcement authorities is deemed non-compliance with the WDCD on which it is based and gives rise to an action for contempt.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Secs. 4.1 & 4.6',
@@ -1481,6 +1538,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — While Section 6.9 extends Section 6.5 to a WECD, a WECD applies to a device already in custody rather than searching a target office.'
 		],
 		correctIndex: 2,
+		key: 'Warrant to Search, Seize, and Examine Computer Data (WSSECD)',
 		explanation:
 			'Under Section 6.5 of A.M. No. 17-11-03-SC, during the implementation of a WSSECD, officers may intercept communications and computer data reasonably related to the subject matter of the warrant without a separate WICD, provided it is fully disclosed and explained in the initial return.',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 6.5; R.A. 10175, Sec. 15',
@@ -1506,6 +1564,7 @@ export const crimproFinalsMcqs: McqQuestion[] = [
 			'Incorrect — A WECD authorizes forensic examination of a device already lawfully in police custody.'
 		],
 		correctIndex: 1,
+		key: 'Warrant to Intercept Computer Data (WICD)',
 		explanation:
 			'Under Section 5.2 of A.M. No. 17-11-03-SC, procuring the content of computer data directly through access to a computer system or indirectly via electronic eavesdropping/tapping devices at the same time the communication is occurring requires a Warrant to Intercept Computer Data (WICD).',
 		legalBasis: 'A.M. No. 17-11-03-SC, Sec. 5.2',

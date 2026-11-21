@@ -773,6 +773,7 @@ export function caseDrillMcqs(moduleId: string): McqQuestion[] {
 		question: `Which case? ${plain(clue)}`,
 		options,
 		correctIndex: CASE_ORDER.indexOf(id),
+		key: CASE_NAMES[id],
 		explanation: `${CASE_NAMES[id]}. ${plain(cases.find((c) => c.id === id)!.quick.doctrine)}`,
 		legalBasis: `${cases.find((c) => c.id === id)!.gr}, ${cases.find((c) => c.id === id)!.date}`
 	}));

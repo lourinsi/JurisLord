@@ -1,4 +1,5 @@
-import { QUESTIONS, Q_BY_ID, SETS, sample, shuffled, type QRef } from './crimpro';
+import { QUESTIONS, Q_BY_ID, SETS, sample, type QRef } from './crimpro';
+import { dynamicOptionOrder, resolveCorrectIndex } from './mcq';
 import { logExam, recordAnswer, store, type Session } from './store.svelte';
 
 /** Where a session draws its questions from: everything, last answer wrong, never answered, or one rule. */
@@ -28,7 +29,7 @@ export function startSession(opts: { kind: Session['kind']; qids: string[]; labe
 		kind: opts.kind,
 		label: opts.label,
 		qids: opts.qids,
-		orders: opts.qids.map((id) => shuffled(Q_BY_ID[id].q.o.length)),
+		orders: opts.qids.map((id) => dynamicOptionOrder(Q_BY_ID[id].q.o)),
 		picks: opts.qids.map(() => null),
 		i: 0,
 		started: now,
@@ -53,12 +54,12 @@ export function answer(i: number, oi: number) {
 	if (s.kind === 'practice') {
 		if (s.picks[i] !== null) return;
 		s.picks[i] = oi;
-		recordAnswer(s.qids[i], oi === Q_BY_ID[s.qids[i]].q.a);
+		recordAnswer(s.qids[i], oi === resolveCorrectIndex(Q_BY_ID[s.qids[i]].q));
 	} else s.picks[i] = oi;
 }
 
 export function scoreOf(s: Session): number {
-	return s.qids.reduce((n, id, k) => n + (s.picks[k] === Q_BY_ID[id].q.a ? 1 : 0), 0);
+	return s.qids.reduce((n, id, k) => n + (s.picks[k] === resolveCorrectIndex(Q_BY_ID[id].q) ? 1 : 0), 0);
 }
 
 export function submit() {
@@ -70,7 +71,7 @@ export function submit() {
 	if (s.kind === 'exam') {
 		// Unanswered questions count against the score but are not logged as "missed".
 		s.qids.forEach((id, k) => {
-			if (s.picks[k] !== null) recordAnswer(id, s.picks[k] === Q_BY_ID[id].q.a);
+			if (s.picks[k] !== null) recordAnswer(id, s.picks[k] === resolveCorrectIndex(Q_BY_ID[id].q));
 		});
 		logExam({
 			at: end,

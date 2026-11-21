@@ -2,6 +2,7 @@ import raw from './data/kit/pfr.json';
 import rawTerms from './data/kit/pfr-terms.json';
 import rawWhy from './data/kit/pfr-why.json';
 import { index, navFor, type Focus, type Group, type Kind, type Kit, type KitChain, type KitEnum, type KitMcq, type KitProblem, type KitTerm, type KitTopic, type QType } from './kit';
+import { resolveCorrectIndex } from './mcq';
 import type { AlacProblem } from './problems';
 import { store } from './store.svelte';
 
@@ -19,6 +20,7 @@ interface RawMcq {
 	q: string;
 	o: string[];
 	a: number;
+	key?: string;
 	x: string;
 }
 interface RawTopic {
@@ -138,15 +140,17 @@ if (WHY.length !== data.M.length) throw new Error(`pfr-why.json needs ${data.M.l
 const MCQS: KitMcq[] = data.M.map((m, i) => {
 	const reasons = WHY[i];
 	if (reasons.length !== m.o.length - 1) throw new Error(`pfr-why.json row ${i} needs ${m.o.length - 1} reasons`);
+	const correctIdx = resolveCorrectIndex(m);
 	const wrong = [...reasons];
 	return {
 		id: `m${i + 1}`,
 		group: m.g,
 		q: m.q,
 		o: m.o,
-		a: m.a,
+		a: correctIdx,
+		key: m.key ?? m.o[correctIdx],
 		ex: m.x,
-		why: m.o.map((_, j) => (j === m.a ? '' : wrong.shift()!)),
+		why: m.o.map((_, j) => (j === correctIdx ? '' : wrong.shift()!)),
 		star: !!m.hot
 	};
 });

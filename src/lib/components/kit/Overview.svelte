@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cardKey, type Kit } from '$lib/kit';
+	import { resolveCorrectIndex } from '$lib/mcq';
 	import { bestScore } from '$lib/store.svelte';
 
 	let { kit }: { kit: Kit } = $props();
@@ -8,7 +9,7 @@
 	const maxims = $derived(kit.maxims ?? []);
 	const mcqs = $derived(kit.mcqs ?? []);
 	const mcqDone = $derived(mcqs.filter((m) => st.mcq[m.id] !== undefined).length);
-	const mcqRight = $derived(mcqs.filter((m) => st.mcq[m.id] === m.a).length);
+	const mcqRight = $derived(mcqs.filter((m) => st.mcq[m.id] === resolveCorrectIndex(m)).length);
 	const tally = (keys: string[]) => {
 		const n = { got: 0, shaky: 0, blank: 0 };
 		for (const k of keys) if (r[k]) n[r[k]]++;

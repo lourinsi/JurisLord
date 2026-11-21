@@ -207,6 +207,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'Accessory, because he paid Berto after the crime was consummated'
 		],
 		correctIndex: 1,
+		key: 'Not a principal by induction, because the inducement was not the determining cause of the crime',
 		explanation: 'Under Art. 17(2), to hold one liable as a principal by induction, the inducement must precede the act and must be the determining cause of the commission of the crime — so influential that without it the crime would not have been committed. Since Berto had already resolved to kill Lito for his own personal reason, Don Marcos’s offer was not the determining cause.',
 		legalBasis: 'Art. 17(2), RPC — Requisites of Principal by Induction',
 		hint: 'Ask whether Berto would have killed Lito even without the ₱50,000 offer.'
@@ -224,6 +225,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'Pedro is liable as a principal by indispensable cooperation because he disposed of the stolen watch'
 		],
 		correctIndex: 1,
+		key: 'Pedro is exempt for hiding the watch to prevent discovery, but is criminally liable under Art. 19(1) for profiting and helping his brother profit from the effects of the crime',
 		explanation: 'Art. 20 exempts spouses, ascendants, descendants, legitimate/natural/adopted brothers and sisters, or relatives by affinity in the same degrees from criminal liability as accessories under Art. 19(2) (concealing the body or effects of the crime) and Art. 19(3) (harboring the offender), EXCEPT when they profited themselves or assisted the offender to profit by the effects of the crime under Art. 19(1).',
 		legalBasis: 'Arts. 19–20, RPC — Exempt Relatives and the Art. 19(1) Exception',
 		hint: 'Art. 20 covers brothers and sisters, but carves out one specific paragraph of Art. 19.'
@@ -241,6 +243,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'Not criminally liable at all in the absence of conspiracy'
 		],
 		correctIndex: 1,
+		key: 'Accomplice under Art. 18, because lending the gun was previous or simultaneous cooperation that was not indispensable',
 		explanation: 'Under Arts. 17(3) and 18, a person who cooperates in the execution of the offense by previous or simultaneous acts, with knowledge of the criminal design, is an accomplice if his cooperation is NOT indispensable to the commission of the crime. Since Ramon could have committed the crime by other means, lending the pistol was not indispensable.',
 		legalBasis: 'Arts. 17(3) & 18, RPC — Principal by Indispensable Cooperation vs. Accomplice',
 		hint: 'Could the killing have been committed even without Cesar’s pistol?'
@@ -258,6 +261,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'Afflictive: over ₱500,000; Correctional: ₱20,000 to ₱500,000; Light: under ₱20,000'
 		],
 		correctIndex: 0,
+		key: 'Afflictive: over ₱1,200,000; Correctional: ₱40,000 to ₱1,200,000; Light: under ₱40,000',
 		explanation: 'Under Art. 26 as amended by R.A. 10951, a fine is an afflictive penalty if it exceeds ₱1,200,000; correctional if it is from ₱40,000 to ₱1,200,000; and light if it is less than ₱40,000 (while under Art. 9, a light felony may be punished by a fine not exceeding ₱40,000).',
 		legalBasis: 'Art. 26, RPC, as amended by R.A. 10951',
 		hint: 'Remember the two key RA 10951 thresholds: ₱40,000 and ₱1,200,000.'
@@ -275,6 +279,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'One-half (1/2) of the time (5 months)'
 		],
 		correctIndex: 1,
+		key: 'Four-fifths (4/5) of the time (8 months), because he did not agree in writing to abide by the disciplinary rules for convicted prisoners',
 		explanation: 'Under Art. 29 (as amended by R.A. 10592), offenders who have undergone preventive imprisonment are credited with the FULL time if they agree voluntarily in writing to abide by the disciplinary rules imposed upon convicted prisoners, and with FOUR-FIFTHS (4/5) of the time if they do not agree in writing.',
 		legalBasis: 'Art. 29, RPC, as amended by R.A. 10592',
 		hint: 'Signing in writing = full credit; not signing in writing = 4/5 credit.'
@@ -292,6 +297,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'No, unless the judgment omits an express stipulation of subsidiary imprisonment'
 		],
 		correctIndex: 2,
+		key: 'No, because the principal penalty imposed is higher than prision correccional, and civil indemnity is never subject to subsidiary penalty',
 		explanation: 'Under Art. 39, subsidiary personal liability applies ONLY to the fine (never to reparation or indemnification), AND under Art. 39(3), when the principal penalty imposed is higher than prision correccional (here, reclusion temporal), no subsidiary imprisonment shall be imposed upon the culprit.',
 		legalBasis: 'Art. 39, RPC — Rules on Subsidiary Penalty',
 		hint: 'Check the ceiling on the principal penalty in Art. 39(3).'
@@ -309,6 +315,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'One special complex crime of multiple homicide'
 		],
 		correctIndex: 1,
+		key: 'Three separate crimes of murder (or homicide), because each bullet fired is a distinct act produced by a separate impulse of the mechanism, not a single act under Art. 48',
 		explanation: 'In People v. Tabaco and People v. Desierto, the Supreme Court held that where several victims die from multiple bullets — even from a single burst of an automatic weapon — there are as many crimes as there are victims, because what counts under Art. 48 is one single act, not a series of shots.',
 		legalBasis: 'Art. 48, RPC — Compound Crime vs. Multiple Shots (People v. Tabaco)',
 		hint: 'One bullet killing two people = compound crime; multiple bullets killing multiple people = separate crimes.'
@@ -326,6 +333,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'No, because homicide in any stage is disqualified from probation'
 		],
 		correctIndex: 1,
+		key: 'Yes, under Colinares v. People and Sec. 4 of P.D. 968 (as amended by R.A. 10707), when a trial court imposes a non-probationable penalty and the appellate court modifies the judgment by imposing a probationable penalty, the accused may apply for probation based on the modified decision',
 		explanation: 'Under Colinares v. People, later codified in R.A. 10707 amending Sec. 4 of P.D. 968, while an appeal generally bars probation, when the trial court imposed a non-probationable penalty and the appellate court reduces it to a probationable penalty (not exceeding 6 years), the accused may apply for probation upon remand.',
 		legalBasis: 'P.D. 968, Sec. 4, as amended by R.A. 10707; Colinares v. People',
 		hint: 'Did Arnel have a chance to apply for probation when the RTC sentenced him to a non-probationable term?'
@@ -343,6 +351,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'Because Lito is a minor, the Indeterminate Sentence Law does not apply to him'
 		],
 		correctIndex: 0,
+		key: 'Privileged mitigating (minority) lowers the penalty by one degree to prision mayor; nighttime puts the ISLaw maximum in prision mayor maximum; the ISLaw minimum is within prision correccional (any period)',
 		explanation: 'Minority under Art. 68 is a privileged mitigating circumstance: it lowers the prescribed penalty by one degree (from reclusion temporal to prision mayor) BEFORE Art. 64 is applied, and it can never be offset by a generic aggravating circumstance. Then, under Art. 64(3), the generic aggravating circumstance of nighttime places the ISLaw maximum in prision mayor maximum, while the ISLaw minimum is taken from the penalty next lower in degree (prision correccional, in any period).',
 		legalBasis: 'Arts. 64 & 68, RPC; Act No. 4103 (Indeterminate Sentence Law)',
 		hint: 'Apply privileged mitigating by degree FIRST; never offset it with a generic aggravating circumstance.'
@@ -360,6 +369,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'All civil claims of every kind, regardless of source of obligation, are forever barred'
 		],
 		correctIndex: 1,
+		key: 'Both his criminal liability and his civil liability ex delicto (solely based on the crime) are extinguished, while any civil claim predicated on another source of obligation (law, contract, quasi-contract, or quasi-delict) survives and may be pursued in a separate civil action',
 		explanation: 'Under Art. 89(1) and People v. Bayotas, the death of the accused pending appeal (before final judgment) extinguishes both his criminal liability and his civil liability ex delicto (based solely on the offense committed). However, if the offended party’s civil claim may also be predicated on another source of obligation (Art. 1157: law, contract, quasi-contract, or quasi-delict), it survives and may be enforced by a separate civil action against the executor/administrator or estate.',
 		legalBasis: 'Art. 89(1), RPC — People v. Bayotas',
 		hint: 'Distinguish civil liability ex delicto from independent civil liabilities arising from other sources of obligation.'
@@ -377,6 +387,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'No, because prescription of penalties applies only to light offenses'
 		],
 		correctIndex: 1,
+		key: 'No, because prescription of the penalty under Arts. 92–93 begins to run only when the culprit evades the service of a FINAL sentence, and Bruno had never been convicted by final judgment',
 		explanation: 'Under Arts. 92 and 93 (Pangan v. Gatbalite; Del Castillo v. Torrecampo), prescription of the PENALTY requires that there be a final sentence which the convict has begun to serve or evaded. Since Bruno jumped bail before conviction, there was no final sentence to evade, and prescription of the crime had already been interrupted by the filing of the information.',
 		legalBasis: 'Arts. 90–93, RPC — Prescription of Crime vs. Prescription of Penalty',
 		hint: 'Can a penalty prescribe before a final sentence imposes it?'
@@ -394,6 +405,7 @@ export const crim1ExtMcqs: McqQuestion[] = [
 			'The bus company is solidarily (primarily) liable with the driver from the moment of conviction'
 		],
 		correctIndex: 1,
+		key: 'Automatically and conclusively upon proof of: (1) employer-employee relationship, (2) the employer is engaged in some kind of industry, (3) the employee committed the offense in the discharge of his duties, and (4) the employee is insolvent — due diligence in selection and supervision is NOT a defense under Art. 103',
 		explanation: 'Under Art. 103 of the RPC, an employer’s subsidiary civil liability ex delicto attaches when: (1) the employer-employee relationship exists; (2) the employer is engaged in an industry; (3) the employee committed the felony in the discharge of his duties; and (4) the employee is insolvent (proven by an unsatisfied writ of execution). Unlike quasi-delict under Art. 2180 of the Civil Code, diligence in the selection and supervision of employees is NOT a defense to Art. 103 subsidiary liability.',
 		legalBasis: 'Art. 103, RPC — Subsidiary Civil Liability of Employers',
 		hint: 'Don’t confuse Art. 103 RPC (subsidiary, no diligence defense) with Art. 2180 Civil Code (primary/solidary, diligence is a defense).'

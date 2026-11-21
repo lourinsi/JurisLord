@@ -3,6 +3,7 @@
 	import QuestionCard from './QuestionCard.svelte';
 	import { Q_BY_ID } from '$lib/crimpro';
 	import { answer, endSession, fmtTime, submit } from '$lib/crimpro-exam';
+	import { resolveCorrectIndex } from '$lib/mcq';
 	import type { Session } from '$lib/store.svelte';
 
 	let { s }: { s: Session } = $props();
@@ -76,7 +77,7 @@
 	<div class="dots" role="group" aria-label="Jump to a question">
 		{#each s.qids as id, k (id)}
 			{@const p = s.picks[k]}
-			{@const right = p !== null && p === Q_BY_ID[id].q.a}
+			{@const right = p !== null && p === resolveCorrectIndex(Q_BY_ID[id].q)}
 			<button
 				class:cur={k === s.i}
 				class:done={exam && p !== null}

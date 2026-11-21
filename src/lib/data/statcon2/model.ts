@@ -546,6 +546,7 @@ export function trueFalseMcqs(moduleId: string, topicId: string, topic: string, 
 			question: `True or false? ${plain(x.q)}`,
 			options: ['True', 'False'],
 			correctIndex: x.tf ? 0 : 1,
+			key: x.tf ? 'True' : 'False',
 			explanation: plain([x.short, x.a].filter(Boolean).join(' ')),
 			legalBasis: x.keys ? plain(x.keys) : undefined
 		}));

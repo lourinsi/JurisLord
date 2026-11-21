@@ -1,5 +1,6 @@
 import type { McqQuestion, ModuleTopic } from '$lib/types';
 import { FLIPS, NUMBERS, RULES, SETS } from '$lib/crimpro';
+import { resolveCorrectIndex } from '$lib/mcq';
 
 const mdToHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
@@ -21,7 +22,8 @@ export const crimproTwistMcqs: McqQuestion[] = SETS.flatMap((set) =>
 			k === 0
 				? `[${set.title} — Base Scenario] ${set.base}\n\n${q.q}`
 				: `[${set.title} — Twist ${k}: ${q.tw ?? 'Modified facts'}]\n(Base scenario: ${set.base})\n\n${q.q}`;
-		const optionExplanations = q.why.map((w, idx) => (idx === q.a ? q.ex : w));
+		const correctIndex = resolveCorrectIndex(q);
+		const optionExplanations = q.why.map((w, idx) => (idx === correctIndex ? q.ex : w));
 		return {
 			id: `crimpro:twist:${set.id}:${k + 1}`,
 			topicId: 'twists_kit',
@@ -30,7 +32,8 @@ export const crimproTwistMcqs: McqQuestion[] = SETS.flatMap((set) =>
 			question: prefix,
 			options: q.o,
 			optionExplanations,
-			correctIndex: q.a,
+			correctIndex,
+			key: q.key ?? q.o[correctIndex],
 			explanation: q.ex,
 			legalBasis: `Rule ${set.rules.join(', ')} · Twist Set: ${set.title}`,
 			hint: q.tw ? `Changed fact: ${q.tw}` : `Base scenario for ${set.title}`

@@ -16,6 +16,8 @@ export interface McqQuestion {
 	/** Per-option explanation shown after answering (indexed to match `options`). */
 	optionExplanations?: string[];
 	correctIndex: number;
+	/** Exact text of the correct option (matches `options[correctIndex]`). Drives dynamic option ordering & grading. */
+	key?: string;
 	explanation: string;
 	/** Codal provision / jurisprudence cited for the item. */
 	legalBasis?: string;

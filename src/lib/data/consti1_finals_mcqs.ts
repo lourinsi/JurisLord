@@ -39,7 +39,7 @@ const P6_2 = 'FINALS — Supplemental II: Constitutional Commissions (Structure 
 const P6_3 = 'FINALS — Supplemental III: CSC, COA, COMELEC, Certiorari & OSG';
 const P6_4 = 'FINALS — Supplemental IV: Accountability, Impeachment & Ombudsman';
 const P6_5 = 'FINALS — Supplemental V: Delegation, Congress, Electoral Tribunals, Martial Law & LGUs';
-const P_BODIES = 'FINALS — Independent & Continuing Bodies';
+const P_BODIES = 'FINALS — Independent, Continuing & Staggered Bodies';
 const P5_12 = 'CASES (FINALS) — Ch. 12: Judicial Department';
 const P5_13 = 'CASES (FINALS) — Ch. 13: Constitutional Commissions & CSC';
 const P5_14 = 'CASES (FINALS) — Ch. 14: Commission on Elections';
@@ -47,6 +47,65 @@ const P5_15 = 'CASES (FINALS) — Ch. 15: Commission on Audit';
 const P5_16 = 'CASES (FINALS) — Ch. 16/17: Accountability of Public Officers';
 const P5_17 = 'CASES (FINALS) — Ch. 17/18: Amendment or Revision';
 const P5_18 = 'CASES (FINALS) — Ch. 18/19: National Economy, Citizenship & Elections';
+
+const BODY_OPTIONS = [
+	'Independent only',
+	'Continuing only',
+	'Staggered terms only',
+	'Independent and Continuing',
+	'Independent and Staggered',
+	'Continuing and Staggered',
+	'Independent, Continuing, and Staggered',
+	'None of the above'
+] as const;
+
+const BODY_FLAGS: readonly [boolean, boolean, boolean][] = [
+	[true, false, false], // a: Independent only
+	[false, true, false], // b: Continuing only
+	[false, false, true], // c: Staggered terms only
+	[true, true, false], // d: Independent and Continuing
+	[true, false, true], // e: Independent and Staggered
+	[false, true, true], // f: Continuing and Staggered
+	[true, true, true], // g: Independent, Continuing, and Staggered
+	[false, false, false] // h: None of the above
+];
+
+function makeBodyMcq(spec: {
+	id: string;
+	question: string;
+	independent: boolean;
+	continuing: boolean;
+	staggered: boolean;
+	ind: string;
+	cont: string;
+	stag: string;
+	explanation: string;
+	legalBasis: string;
+}): McqQuestion {
+	const actual: [boolean, boolean, boolean] = [spec.independent, spec.continuing, spec.staggered];
+	const reasons = [spec.ind, spec.cont, spec.stag];
+	const correctIndex = BODY_FLAGS.findIndex(
+		([i, c, s]) => i === spec.independent && c === spec.continuing && s === spec.staggered
+	);
+	const optionExplanations = BODY_FLAGS.map((flags, idx) => {
+		if (idx === correctIndex) return `${reasons.join(' · ')}.`;
+		const diffs = reasons.filter((_, k) => flags[k] !== actual[k]);
+		return `${diffs.join(' · ')}.`;
+	});
+	return {
+		id: spec.id,
+		topicId: 'finals',
+		topic: P_BODIES,
+		tag: 'bodies',
+		question: spec.question,
+		options: [...BODY_OPTIONS],
+		optionExplanations,
+		correctIndex,
+		key: BODY_OPTIONS[correctIndex],
+		explanation: spec.explanation,
+		legalBasis: spec.legalBasis
+	};
+}
 
 export const constiFinalsMcqs: McqQuestion[] = [
 	// =========================================================================
@@ -5042,501 +5101,407 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 
 	// =========================================================================
-	// INDEPENDENT & CONTINUING CONSTITUTIONAL BODIES — 29 T/F ITEMS (IDs 268–296)
+	// INDEPENDENT, CONTINUING & STAGGERED BODIES — 29 8-CHOICE ITEMS (IDs 268–296)
 	// =========================================================================
-	{
+	makeBodyMcq({
 		id: 'consti1:finals:268',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Supreme Court a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — the Supreme Court is a permanent constitutional organ whose existence, jurisdiction, and submitted dockets persist indefinitely.',
-			'Incorrect — death, resignation, or retirement of individual Justices does not interrupt the Court’s legal continuity.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Supreme Court of the Philippines classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent (fiscal autonomy, Art. VIII, Sec. 3)',
+		cont: 'Continuing (permanent constitutional organ)',
+		stag: 'Not staggered (tenure until age 70)',
 		explanation:
-			'TRUE. Under Article VIII, Section 1 and Section 4(1) of the 1987 Constitution, the Supreme Court is a permanent constitutional organ whose existence, jurisdiction, and submitted dockets persist indefinitely. As Justice Cruz explains, courts are permanent judicial institutions whose legal continuity is unaffected by the death, resignation, or retirement of individual members.',
-		legalBasis: 'Art. VIII, Secs. 1 & 4(1), 1987 Constitution'
-	},
-	{
+			'INDEPENDENT AND CONTINUING. Under Article VIII, Sections 1 and 3, the Supreme Court is constitutionally independent with fiscal autonomy—appropriations for the Judiciary may not be reduced below the previous year’s level and must be automatically and regularly released. Under Sections 1 and 4, it is a continuing permanent organ whose identity, jurisdiction, and submitted dockets persist indefinitely across changes in personnel. It is NOT staggered because under Section 11, Justices hold office during good behavior until age 70 or incapacity rather than fixed rotational terms.',
+		legalBasis: 'Art. VIII, Secs. 1, 3, 4 & 11, 1987 Constitution'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:269',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Supreme Court an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article VIII, Sections 1 and 3 guarantee judicial independence and fiscal autonomy with automatic, non-reducible appropriations.',
-			'Incorrect — the Judiciary is a co-equal, constitutionally independent branch enjoying fiscal autonomy.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Judicial and Bar Council (JBC) classified?',
+		independent: false,
+		continuing: true,
+		staggered: true,
+		ind: 'Not independent (under SC supervision)',
+		cont: 'Continuing (permanent vetting body)',
+		stag: 'Staggered (4-3-2-1 initial terms: IBP, prof., retired Justice, private)',
 		explanation:
-			'TRUE. Under Article VIII, Section 1 and Section 3 of the 1987 Constitution, Section 3 explicitly guarantees that "The Judiciary shall enjoy fiscal autonomy. Appropriations for the Judiciary may not be reduced by the legislature below the amount appropriated for the previous year and, after approval, shall be automatically and regularly released."',
-		legalBasis: 'Art. VIII, Secs. 1 & 3, 1987 Constitution'
-	},
-	{
+			'CONTINUING AND STAGGERED. Under Article VIII, Section 8(1), the JBC is NOT independent—it is an attached constitutional body expressly created "under the supervision of the Supreme Court," funded within the Judiciary’s appropriations (Sec. 8(4)), with the Clerk of the Supreme Court as Ex-Officio Secretary. It is continuing as a permanent constitutional organ whose vetting and nominating mandate never expires. Under Article VIII, Section 8(2), its 4 regular members serve staggered 4-year terms with initial appointments of 4 years for the IBP representative, 3 years for the professor of law, 2 years for the retired Supreme Court Justice, and 1 year for the private sector representative so one regular seat rotates every year. (Note: Chavez v. JBC, 676 SCRA 579, deals with Congress having only one representative/vote, not term staggering.)',
+		legalBasis: 'Art. VIII, Sec. 8(1), (2) & (4), 1987 Constitution'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:270',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Judicial and Bar Council (JBC) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the JBC is expressly created under the supervision of the Supreme Court.',
-			'Correct — under Article VIII, Section 8(1), the JBC is an attached constitutional body subordinate to the Court’s administrative supervision, not an autonomous Article IX commission.'
-		],
-		correctIndex: 1,
-		key: 'False',
+		question:
+			'As an institutional organ (where "Independent" means an independent constitutional body), how are lower collegiate courts (Court of Appeals, Sandiganbayan, Court of Tax Appeals) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not an independent constitutional body (under SC supervision)',
+		cont: 'Continuing (permanent collegiate courts)',
+		stag: 'Not staggered (tenure until age 70)',
 		explanation:
-			'FALSE. Article VIII, Section 8(1) of the 1987 Constitution expressly provides: "A Judicial and Bar Council is hereby created under the supervision of the Supreme Court..." It is an attached constitutional body subordinate to the Court’s administrative supervision, not an autonomous Article IX commission.',
-		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution'
-	},
-	{
+			'CONTINUING ONLY. Under B.P. Blg. 129, P.D. No. 1606 (as amended by R.A. No. 10660), and R.A. No. 1125 (as amended by R.A. No. 9282), the Court of Appeals, Sandiganbayan, and Court of Tax Appeals are permanent collegiate courts whose dockets and proceedings survive legislative and executive transitions. While they enjoy judicial decisional independence as part of the Judiciary, they are NOT separate independent constitutional bodies because they sit under the administrative supervision of the Supreme Court (Art. VIII, Sec. 6). They are NOT staggered because Justices serve continuously during good behavior until age 70 (Art. VIII, Sec. 11).',
+		legalBasis:
+			'Art. VIII, Secs. 1, 6 & 11, 1987 Constitution; B.P. Blg. 129; P.D. No. 1606; R.A. No. 1125'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:271',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Judicial and Bar Council (JBC) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — the JBC is a permanent constitutional body whose regular members serve fixed, staggered four-year terms ensuring uninterrupted continuity.',
-			'Incorrect — staggered 4-year terms (initial 1, 2, 3, and 4 years under Chavez v. JBC) preserve the Council’s continuous operation.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Civil Service Commission (CSC) classified?',
+		independent: true,
+		continuing: true,
+		staggered: true,
+		ind: 'Independent (Art. IX commission, fiscal autonomy)',
+		cont: 'Continuing (permanent tripartite organ)',
+		stag: 'Staggered (7-5-3 scheme, 2-yr intervals)',
 		explanation:
-			'TRUE. Under Article VIII, Section 8(1) and (2) of the 1987 Constitution, the Council is a permanent constitutional body whose regular members serve fixed, staggered four-year terms (with initial appointments of 1, 2, 3, and 4 years under Chavez v. JBC, 676 SCRA 579) to ensure uninterrupted operational continuity.',
-		legalBasis: 'Art. VIII, Sec. 8(1)–(2), 1987 Constitution; Chavez v. JBC (676 SCRA 579)'
-	},
-	{
+			'INDEPENDENT, CONTINUING, AND STAGGERED. Article IX-A, Section 1 explicitly creates the CSC as an independent Constitutional Commission endowed with fiscal autonomy (Art. IX-A, Sec. 5) and rule-making power. It is a continuing permanent tripartite constitutional organ uninterrupted by political transitions. Under Article IX-B, Section 1(2) (read with Article XVIII, Section 15 on incumbents and Gaminde v. COA, 347 SCRA 655), the Chairman and two Commissioners serve 7-year terms under a 7-5-3 rotational scheme reckoned from February 2, 1987, ensuring terms expire at fixed two-year intervals so two experienced commissioners always remain in office.',
+		legalBasis:
+			'Art. IX-A, Secs. 1 & 5; Art. IX-B, Sec. 1(2); Art. XVIII, Sec. 15, 1987 Constitution; Gaminde v. COA (347 SCRA 655)'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:272',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Are lower collegiate courts (Court of Appeals, Sandiganbayan, Court of Tax Appeals) continuing bodies?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — all collegiate courts in the integrated judicial system are permanent courts whose case dockets survive presidential and legislative transitions.',
-			'Incorrect — lower collegiate courts do not dissolve upon executive or congressional transitions.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Commission on Appointments (CA) classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not independent (legislative body within Congress)',
+		cont: 'Not continuing (meets only in session; ends with House)',
+		stag: 'Not staggered (tied to legislative terms)',
 		explanation:
-			'TRUE. Under Article VIII, Section 1 of the 1987 Constitution, in relation to Batas Pambansa Blg. 129, P.D. No. 1606, and R.A. No. 1125, all collegiate courts in the integrated judicial system are permanent statutory/constitutional courts whose case dockets survive presidential and legislative transitions.',
-		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; B.P. Blg. 129; P.D. No. 1606; R.A. No. 1125'
-	},
-	{
+			'NONE OF THE ABOVE. Under Article VI, Section 18 and Daza v. Singson (180 SCRA 496), the CA is NOT independent—it is a specialized legislative body within Congress composed of the Senate President, 12 Senators, and 12 Representatives elected by proportional representation. Under Article VI, Section 19 (and Guevara v. Inocentes, 16 SCRA 379; Matibag v. Benipayo, G.R. No. 149036, on bypassed ad interim appointments upon adjournment), it is NOT continuing because it meets only while Congress is in session and must be constituted anew upon the convening of a new Congress every 3 years. Its members hold no staggered tribunal terms.',
+		legalBasis:
+			'Art. VI, Secs. 18 & 19, 1987 Constitution; Daza v. Singson (180 SCRA 496); Guevara v. Inocentes (16 SCRA 379); Matibag v. Benipayo (G.R. No. 149036)'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:273',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Civil Service Commission (CSC) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article IX-A, Section 1 explicitly declares the CSC, COMELEC, and COA to be independent Constitutional Commissions.',
-			'Incorrect — the CSC is expressly guaranteed constitutional independence under Article IX-A, Section 1.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Commission on Elections (COMELEC) classified?',
+		independent: true,
+		continuing: true,
+		staggered: true,
+		ind: 'Independent (Art. IX commission, fiscal autonomy)',
+		cont: 'Continuing (permanent 7-member commission)',
+		stag: 'Staggered (7-5-3 scheme: 3-2-2 seats)',
 		explanation:
-			'TRUE. Article IX-A, Section 1 of the 1987 Constitution explicitly mandates: "The Constitutional Commissions, which shall be independent, are the Civil Service Commission, the Commission on Elections, and the Commission on Audit."',
-		legalBasis: 'Art. IX-A, Sec. 1, 1987 Constitution'
-	},
-	{
+			'INDEPENDENT, CONTINUING, AND STAGGERED. Article IX-A, Section 1 and Article IX-C, Section 1(1) establish the COMELEC as an independent Constitutional Commission with fiscal autonomy (Art. IX-A, Sec. 5). Under Article IX-C, Section 2(2), it exercises exclusive original jurisdiction over election contests involving regional, provincial, and city elective officials, and appellate jurisdiction over municipal (RTC) and barangay (MTC) contests—while Presidential/VP, Senatorial, and House contests belong to the PET, SET, and HRET. It is a continuing permanent collegiate body across election cycles. Under Article IX-C, Section 1(2) (and Art. XVIII, Sec. 15 on incumbents), its 7 members serve staggered 7-year terms without reappointment (initial 1987 appointments: 3 for 7 years, 2 for 5 years, and 2 for 3 years) so seats rotate every two years.',
+		legalBasis:
+			'Art. IX-A, Secs. 1 & 5; Art. IX-C, Secs. 1(1)–(2) & 2(2); Art. XVIII, Sec. 15, 1987 Constitution'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:274',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Civil Service Commission (CSC) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — staggered 7-year terms under Article IX-B, Section 1(2) ensure periodic two-year vacancies without dissolving the Commission.',
-			'Incorrect — the rotational scheme under Gaminde v. COA preserves the CSC as a continuing body.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question:
+			'How are Local Boards of Canvassers (District, Provincial, City, and Municipal BOCs) classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not independent (under COMELEC control)',
+		cont: 'Not continuing (functus officio after canvass)',
+		stag: 'Not staggered (ex-officio election-period members)',
 		explanation:
-			'TRUE. Under Article IX-B, Section 1(2) and Article XVIII, Section 17 of the 1987 Constitution, the CSC is maintained through a rotational system where the Chairman and two Commissioners serve staggered seven-year terms, ensuring that vacancies occur periodically every two years without dissolving the body (Gaminde v. COA, 347 SCRA 655).',
-		legalBasis: 'Art. IX-B, Sec. 1(2) & Art. XVIII, Sec. 17, 1987 Constitution; Gaminde v. COA (347 SCRA 655)'
-	},
-	{
-		id: 'consti1:finals:275',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Appointments (CA) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the CA is a specialized legislative body composed of the Senate President, 12 Senators, and 12 House Members.',
-			'Correct — under Article VI, Section 18 and Daza v. Singson, the CA is a specialized legislative body, not an independent constitutional commission.'
-		],
-		correctIndex: 1,
-		key: 'False',
-		explanation:
-			'FALSE. Under Article VI, Section 18 of the 1987 Constitution, the CA is a specialized legislative body consisting of the Senate President, twelve Senators, and twelve House Members elected by each House on proportional representation (Daza v. Singson, 180 SCRA 496).',
-		legalBasis: 'Art. VI, Sec. 18, 1987 Constitution; Daza v. Singson (180 SCRA 496)'
-	},
-	{
-		id: 'consti1:finals:276',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Appointments (CA) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the CA meets only while Congress is in session and ceases to exist when the House dissolves every three years.',
-			'Correct — the CA is coaetaneous with Congress; when the House dissolves every three years, the CA becomes functus officio and must be constituted anew (Coseteng v. Mitra).'
-		],
-		correctIndex: 1,
-		key: 'False',
-		explanation:
-			'FALSE. Article VI, Section 19 of the 1987 Constitution mandates that "The Commission on Appointments shall meet only while the Congress is in session..." Justice Cruz emphasizes that the CA is coaetaneous with Congress; when the House of Representatives dissolves every three years, the CA ceases to exist (functus officio) and must be constituted anew (Coseteng v. Mitra, 187 SCRA 377).',
-		legalBasis: 'Art. VI, Sec. 19, 1987 Constitution; Coseteng v. Mitra (187 SCRA 377)'
-	},
-	{
-		id: 'consti1:finals:277',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Elections (COMELEC) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article IX-A, Section 1 and Article IX-C, Section 1(1) create the COMELEC as an independent constitutional commission with fiscal autonomy.',
-			'Incorrect — COMELEC is expressly established as an independent Constitutional Commission under Article IX.'
-		],
-		correctIndex: 0,
-		key: 'True',
-		explanation:
-			'TRUE. Article IX-A, Section 1 and Article IX-C, Section 1(1) of the 1987 Constitution explicitly create the COMELEC as an independent constitutional commission endowed with fiscal autonomy under Article IX-A, Section 5.',
-		legalBasis: 'Art. IX-A, Secs. 1 & 5; Art. IX-C, Sec. 1(1), 1987 Constitution'
-	},
-	{
-		id: 'consti1:finals:278',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Elections (COMELEC) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — COMELEC’s 7-member composition rotates via staggered 7-year terms so seats turn over periodically without vacating the entire Commission.',
-			'Incorrect — the staggered rotational scheme under Article IX-C, Section 1(2) preserves COMELEC as a continuing body.'
-		],
-		correctIndex: 0,
-		key: 'True',
-		explanation:
-			'TRUE. Under Article IX-C, Section 1(2) and Article XVIII, Section 17 of the 1987 Constitution, the COMELEC has a continuing 7-member composition where commissioners serve 7-year staggered terms (with the initial 1987 appointments staggered at 7, 5, and 3 years) so that two seats rotate every two years without vacating the entire Commission.',
-		legalBasis: 'Art. IX-C, Sec. 1(2) & Art. XVIII, Sec. 17, 1987 Constitution'
-	},
-	{
-		id: 'consti1:finals:279',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Are Local Boards of Canvassers (BOCs) continuing bodies?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — local boards of canvassers are temporary, ad hoc administrative bodies.',
-			'Correct — under Sections 221–231 of the Omnibus Election Code, BOCs become functus officio once canvassing and proclamation are completed.'
-		],
-		correctIndex: 1,
-		key: 'False',
-		explanation:
-			'FALSE. Under Sections 221–231 of the Omnibus Election Code (B.P. Blg. 881), local boards of canvassers are temporary, ad hoc administrative bodies whose legal life terminates (functus officio) upon the completion of the canvass and proclamation of the winning candidates.',
+			'NONE OF THE ABOVE. Under Sections 221–231 of the Omnibus Election Code (B.P. Blg. 881), Local Boards of Canvassers are subordinate administrative boards under COMELEC’s direct control and supervision (NOT independent), temporary ad hoc bodies that become functus officio the moment they complete the canvass and proclaim the winners (NOT continuing), and composed of ex-officio officials sitting solely for the election period with no staggered terms (NOT staggered).',
 		legalBasis: 'Secs. 221–231, Omnibus Election Code (B.P. Blg. 881)'
-	},
-	{
-		id: 'consti1:finals:280',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Senate Electoral Tribunal (SET) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — under Article VI, Section 17 and Angara v. Electoral Commission, the SET is an independent constitutional body and sole judge of Senate election contests.',
-			'Incorrect — the SET is constitutionally separate from and outside the control of the Senate.'
-		],
-		correctIndex: 0,
-		key: 'True',
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:275',
+		question: 'How is the Senate Electoral Tribunal (SET) classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent ("sole judge", Art. VI, Sec. 17)',
+		cont: 'Continuing (functions during recesses)',
+		stag: 'Not staggered (3 SC Justices + 6 Senators)',
 		explanation:
-			'TRUE. Under Article VI, Section 17 of the 1987 Constitution and Angara v. Electoral Commission (63 Phil. 139), the SET is an independent constitutional body and the "sole judge" of all contests relating to the election, returns, and qualifications of Senators, completely separate from the Senate.',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Angara v. Electoral Commission (63 Phil. 139)'
-	},
-	{
-		id: 'consti1:finals:281',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Senate Electoral Tribunal (SET) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — under Suanes v. Disbursing Officer of the Senate, Electoral Tribunals are independent constitutional creations that continue functioning even during congressional recesses and across legislative terms.',
-			'Incorrect — unlike the Commission on Appointments, the Electoral Tribunals continue functioning across recesses and terms to resolve pending contests.'
-		],
-		correctIndex: 0,
-		key: 'True',
+			'INDEPENDENT AND CONTINUING. Under Article VI, Section 17, Angara v. Electoral Commission (63 Phil. 139), and Suanes v. Disbursing Officer of the Senate (81 Phil. 818), the SET is an independent constitutional body and the "sole judge" of all contests relating to the election, returns, and qualifications of Senators, completely free from Senate control. As Justice Cruz notes (Philippine Political Law, p. 141), unlike the CA, Electoral Tribunals continue functioning even during congressional recesses and across legislative terms. It is NOT staggered because its members (3 SC Justices serving until 70 and 6 designated Senators) have no dedicated rotational term scheme.',
+		legalBasis:
+			'Art. VI, Sec. 17, 1987 Constitution; Angara v. Electoral Commission (63 Phil. 139); Suanes v. Disbursing Officer of the Senate (81 Phil. 818)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:276',
+		question: 'How is the House of Representatives Electoral Tribunal (HRET) classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent (non-partisan judicial organ)',
+		cont: 'Continuing (functions across recesses & terms)',
+		stag: 'Not staggered (no rotational term scheme)',
 		explanation:
-			'TRUE. Under Article VI, Section 17 of the 1987 Constitution and Suanes v. Disbursing Officer of the Senate (81 Phil. 818), as Justice Cruz explicitly states in Philippine Political Law (p. 141), unlike the Commission on Appointments, the Electoral Tribunals are independent constitutional creations that "continue functioning even during the congressional recess" and across legislative terms to resolve pending contests.',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Suanes v. Disbursing Officer of the Senate (81 Phil. 818)'
-	},
-	{
-		id: 'consti1:finals:282',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the House of Representatives Electoral Tribunal (HRET) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — under Article VI, Section 17 and Bondoc v. Pineda, the HRET is an independent constitutional organ whose members act as non-partisan judicial officers protected against party expulsion.',
-			'Incorrect — political parties cannot expel HRET members for casting a conscience vote.'
-		],
-		correctIndex: 0,
-		key: 'True',
+			'INDEPENDENT AND CONTINUING. Under Article VI, Section 17 and Bondoc v. Pineda (201 SCRA 792), the HRET is an independent constitutional organ whose members act as non-partisan judicial officers with security of tenure and cannot be removed by their political parties for casting a conscience vote. As Justice Cruz emphasizes (Philippine Political Law, p. 141; Suanes v. Disbursing Officer, 81 Phil. 818), while the House dissolves every 3 years, the HRET continues to exist and function across recesses and terms to adjudicate pending election contests. It is NOT staggered because its members have no rotational staggered-term scheme.',
+		legalBasis:
+			'Art. VI, Sec. 17, 1987 Constitution; Bondoc v. Pineda (201 SCRA 792); Suanes v. Disbursing Officer (81 Phil. 818)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:277',
+		question: 'How is the Commission on Audit (COA) classified?',
+		independent: true,
+		continuing: true,
+		staggered: true,
+		ind: 'Independent (Art. IX commission, exclusive audit)',
+		cont: 'Continuing (permanent constitutional organ)',
+		stag: 'Staggered (7-5-3 scheme from Feb. 2, 1987)',
 		explanation:
-			'TRUE. Under Article VI, Section 17 of the 1987 Constitution and Bondoc v. Pineda (201 SCRA 792), the HRET is an independent constitutional organ; once designated, its members act as non-partisan judicial officers and cannot be expelled by their political parties for casting a conscience vote.',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Bondoc v. Pineda (201 SCRA 792)'
-	},
-	{
-		id: 'consti1:finals:283',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the House of Representatives Electoral Tribunal (HRET) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — under Suanes v. Disbursing Officer and Justice Cruz (p. 141), the HRET is not an adjunct of the House; it possesses continuous existence across congressional recesses and terms to adjudicate pending election contests.',
-			'Incorrect — unlike the Commission on Appointments, the HRET is an independent constitutional creation with continuous existence across recesses and terms.'
-		],
-		correctIndex: 0,
-		key: 'True',
+			'INDEPENDENT, CONTINUING, AND STAGGERED. Article IX-A, Section 1 and Article IX-D, Section 1(1) create the COA as an independent Constitutional Commission shielded from executive direction and endowed with exclusive authority to disallow irregular or illegal expenditures (Art. IX-D, Sec. 2). It is a continuing permanent institution across administrations. Under Article IX-D, Section 1(2) (read with Article XVIII, Section 15 on incumbents, Gaminde v. COA, 347 SCRA 655, and Funa v. Villar, 670 SCRA 579), initial appointments were staggered at 7, 5, and 3 years reckoned from February 2, 1987 so that one member’s term expires every two years.',
+		legalBasis:
+			'Art. IX-A, Sec. 1; Art. IX-D, Secs. 1(1)–(2) & 2; Art. XVIII, Sec. 15, 1987 Constitution; Gaminde v. COA (347 SCRA 655); Funa v. Villar (670 SCRA 579)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:278',
+		question: 'How is the Office of the Ombudsman classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent (Art. XI, Sec. 5; Gonzales)',
+		cont: 'Continuing (permanent constitutional office)',
+		stag: 'Not staggered (full 7-yr term; Ifurung)',
 		explanation:
-			'TRUE. Under Article VI, Section 17 of the 1987 Constitution and Suanes v. Disbursing Officer (81 Phil. 818), Justice Cruz notes (Philippine Political Law, p. 141) that the HRET is not an adjunct of the House. It possesses continuous existence and continues to function across congressional recesses and terms to adjudicate pending election contests.',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Suanes v. Disbursing Officer (81 Phil. 818)'
-	},
-	{
-		id: 'consti1:finals:284',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Audit (COA) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article IX-A, Section 1 and Article IX-D, Section 1(1) establish the COA as an independent constitutional commission with exclusive audit and disallowance authority.',
-			'Incorrect — COA is one of the three independent Constitutional Commissions under Article IX.'
-		],
-		correctIndex: 0,
-		key: 'True',
+			'INDEPENDENT AND CONTINUING. Article XI, Section 5 creates "the independent Office of the Ombudsman," and Gonzales v. Office of the President (G.R. No. 196231) held that subjecting a Deputy Ombudsman to presidential discipline destroys this constitutional independence. Under Sections 5 and 11, it is a continuing permanent body whose mandate, dockets, and investigations proceed indefinitely. It is NOT staggered: in Ifurung v. Carpio-Morales (G.R. No. 232131, 2018), the Supreme Court confirmed that unlike Article IX Commissions, the Ombudsman and Deputies each serve a full 7-year term from appointment without rotational staggering.',
+		legalBasis:
+			'Art. XI, Secs. 5 & 11, 1987 Constitution; Gonzales v. Office of the President (G.R. No. 196231); Ifurung v. Carpio-Morales (G.R. No. 232131)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:279',
+		question: 'How is the Office of the Special Prosecutor classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not independent (subordinate to Ombudsman)',
+		cont: 'Continuing (Art. XI, Sec. 7: "shall continue")',
+		stag: 'Not staggered (no staggered terms)',
 		explanation:
-			'TRUE. Under Article IX-A, Section 1 and Article IX-D, Section 1(1) of the 1987 Constitution, the COA is an independent constitutional commission granted exclusive authority to define the scope of its audit and disallow IUEEU expenditures under Article IX-D, Section 2(2).',
-		legalBasis: 'Art. IX-A, Sec. 1 & Art. IX-D, Secs. 1(1) & 2(2), 1987 Constitution'
-	},
-	{
-		id: 'consti1:finals:285',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Audit (COA) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — the COA is an institutional continuing body preserved by staggered 7-year terms reckoned from February 2, 1987 (Gaminde v. COA).',
-			'Incorrect — COA’s rotational scheme ensures uninterrupted institutional continuity.'
-		],
-		correctIndex: 0,
-		key: 'True',
-		explanation:
-			'TRUE. Under Article IX-D, Section 1(2) and Article XVIII, Section 17 of the 1987 Constitution, the COA is an institutional continuing body preserved by a rotational system where the Chairman and two Commissioners serve staggered seven-year terms (initial terms of 7, 5, and 3 years) reckoned from February 2, 1987 (Gaminde v. COA, 347 SCRA 655).',
-		legalBasis: 'Art. IX-D, Sec. 1(2) & Art. XVIII, Sec. 17, 1987 Constitution; Gaminde v. COA (347 SCRA 655)'
-	},
-	{
-		id: 'consti1:finals:286',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Office of the Ombudsman an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article XI, Section 5 creates the independent Office of the Ombudsman, and Gonzales v. Office of the President struck down presidential disciplinary removal over Deputy Ombudsmen.',
-			'Incorrect — the Ombudsman’s constitutional independence shields it from Executive discipline or control.'
-		],
-		correctIndex: 0,
-		key: 'True',
-		explanation:
-			'TRUE. Article XI, Section 5 of the 1987 Constitution commands: "There is hereby created the independent Office of the Ombudsman..." In Gonzales v. Office of the President (G.R. No. 196231, 2012 & 2014), the Supreme Court ruled that Section 8(2) of R.A. No. 6770 granting the President power to remove a Deputy Ombudsman is unconstitutional because it violates this constitutional independence.',
-		legalBasis: 'Art. XI, Sec. 5, 1987 Constitution; Gonzales v. Office of the President (G.R. No. 196231, 2012 & 2014)'
-	},
-	{
-		id: 'consti1:finals:287',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Office of the Ombudsman a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — the Office of the Ombudsman is a permanent constitutional institution whose mandate, dockets, and investigations proceed without interruption across presidential terms.',
-			'Incorrect — pending cases and investigations continue uninterrupted across transitions.'
-		],
-		correctIndex: 0,
-		key: 'True',
-		explanation:
-			'TRUE. Under Article XI, Section 5 and Section 11 of the 1987 Constitution, the Office of the Ombudsman is a permanent constitutional institution whose mandate, dockets, and investigations proceed without interruption across presidential terms.',
-		legalBasis: 'Art. XI, Secs. 5 & 11, 1987 Constitution'
-	},
-	{
-		id: 'consti1:finals:288',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Office of the Special Prosecutor an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the Special Prosecutor is an organic subordinate under the Ombudsman’s direct command, supervision, and control.',
-			'Correct — under Article XI, Section 7 and Zaldivar v. Gonzales, the Special Prosecutor cannot even file informations before the Sandiganbayan without the Ombudsman’s authority.'
-		],
-		correctIndex: 1,
-		key: 'False',
-		explanation:
-			'FALSE. Under Article XI, Section 7 of the 1987 Constitution and Zaldivar v. Gonzales (166 SCRA 316), the Special Prosecutor is an organic subordinate under the direct command, supervision, and control of the Ombudsman, and cannot file informations before the Sandiganbayan without the Ombudsman’s authority.',
+			'CONTINUING ONLY. Under Article XI, Section 7 and Zaldivar v. Gonzales (166 SCRA 316), the Office of the Special Prosecutor is NOT independent—it is an organic subordinate under the Ombudsman’s direct command, supervision, and control. However, Article XI, Section 7 expressly commands that the existing Tanodbayan "shall hereafter be known as the Office of the Special Prosecutor" and "shall continue to function and exercise its powers as now or hereafter may be provided by law," making it a continuing office within the Ombudsman. It has NO staggered terms.',
 		legalBasis: 'Art. XI, Sec. 7, 1987 Constitution; Zaldivar v. Gonzales (166 SCRA 316)'
-	},
-	{
-		id: 'consti1:finals:289',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Sandiganbayan an independent constitutional body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the Sandiganbayan is a specialized court within the integrated Judiciary under the Supreme Court’s exclusive administrative supervision.',
-			'Correct — under Article XI, Section 4, Article VIII, Section 6, and Nuñez v. Sandiganbayan, it belongs to the integrated Judiciary.'
-		],
-		correctIndex: 1,
-		key: 'False',
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:280',
+		question:
+			'As an institutional organ (where "Independent" means an independent constitutional body), how is the Sandiganbayan classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not an independent constitutional body (under SC supervision)',
+		cont: 'Continuing (permanent anti-graft court, Art. XI, Sec. 4)',
+		stag: 'Not staggered (tenure until age 70)',
 		explanation:
-			'FALSE. Under Article XI, Section 4 and Article VIII, Section 6 of the 1987 Constitution, the Sandiganbayan is a specialized court within the integrated Judiciary, under the exclusive administrative supervision of the Supreme Court (Nuñez v. Sandiganbayan, 111 SCRA 433).',
-		legalBasis: 'Art. XI, Sec. 4 & Art. VIII, Sec. 6, 1987 Constitution; Nuñez v. Sandiganbayan (111 SCRA 433)'
-	},
-	{
-		id: 'consti1:finals:290',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Senate sitting as an Impeachment Court a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — an impeachment court is a specialized, ad hoc trial body triggered by Articles of Impeachment transmitted from the House.',
-			'Correct — under Article XI, Section 3(6) and Corona v. Senate, it ceases upon final judgment or the expiration of the initiating Congress.'
-		],
-		correctIndex: 1,
-		key: 'False',
+			'CONTINUING ONLY. Under Article XI, Section 4 ("The present anti-graft court known as the Sandiganbayan shall continue to function...") and P.D. No. 1606 (as amended by R.A. No. 10660, adjudicating in 7 Divisions of 3 Justices each), the Sandiganbayan is a continuing permanent collegiate anti-graft court. While it exercises judicial power independently of the political branches, it is NOT a separate independent constitutional body because it sits under the Supreme Court’s administrative supervision (Art. VIII, Sec. 6). It is NOT staggered because Justices hold office during good behavior until age 70 (Art. VIII, Sec. 11).',
+		legalBasis:
+			'Art. XI, Sec. 4; Art. VIII, Secs. 6 & 11, 1987 Constitution; P.D. No. 1606 (as amended by R.A. No. 10660)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:281',
+		question: 'How is the Senate sitting as an Impeachment Court classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not a separate independent body (Senate trying a case)',
+		cont: 'Not continuing (ad hoc tribunal convened per impeachment)',
+		stag: 'Not staggered (no staggered tribunal terms)',
 		explanation:
-			'FALSE. Under Article XI, Section 3(6) of the 1987 Constitution, an impeachment court is a specialized, ad hoc trial body whose authority is triggered by the transmittal of the Articles of Impeachment from the House of Representatives; it ceases upon final judgment or the expiration of the initiating Congress (Corona v. Senate, 676 SCRA 563).',
-		legalBasis: 'Art. XI, Sec. 3(6), 1987 Constitution; Corona v. Senate (676 SCRA 563)'
-	},
-	{
-		id: 'consti1:finals:291',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is a Constitutional Convention (Con-Con) a continuing body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — a Constitutional Convention is a temporary constituent assembly, not a permanent continuing body.',
-			'Correct — under Article XVII, Section 3, a Con-Con becomes functus officio upon finishing and submitting its proposed amendments or revision to the electorate.'
-		],
-		correctIndex: 1,
-		key: 'False',
+			'NONE OF THE ABOVE. Under Article XI, Section 3(6), the Senate sitting as an Impeachment Court is NOT a separate independent standing organ—it is the Senate itself temporarily exercising the sole power to try and decide an impeachment case. It is NOT a permanent continuing tribunal because it convenes ad hoc only upon transmittal of Articles of Impeachment from the House (note: whether an unresolved impeachment trial crosses over into a new Congress is a contested constitutional question; Corona v. Senate, 676 SCRA 563, was dismissed as moot after conviction and did not settle that point). It has NO staggered tribunal terms.',
+		legalBasis: 'Art. XI, Sec. 3(6), 1987 Constitution'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:282',
+		question: 'How is a Constitutional Convention (Con-Con) classified?',
+		independent: true,
+		continuing: false,
+		staggered: false,
+		ind: 'Independent (coordinate constituent assembly)',
+		cont: 'Not continuing (functus officio after submission)',
+		stag: 'Not staggered (delegates elected simultaneously)',
 		explanation:
-			'FALSE. Under Article XVII, Section 3 of the 1987 Constitution, a Constitutional Convention is a temporary constituent assembly that becomes functus officio upon finishing its proposed amendments or revision and submitting them to the electorate in a plebiscite.',
+			'INDEPENDENT ONLY. Under Article XVII, Section 3, a Constitutional Convention is an independent constituent assembly of the people exercising sovereign constituent power coordinate with the three regular branches of government. It is NOT continuing because it is temporary and becomes functus officio the moment it finishes its proposed amendments or revision and submits them to the electorate. It is NOT staggered because all delegates are elected simultaneously and serve until adjournment sine die.',
 		legalBasis: 'Art. XVII, Sec. 3, 1987 Constitution'
-	},
-	{
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:283',
+		question: 'How is a Constituent Assembly (Con-Ass) classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not independent (simply Congress convening)',
+		cont: 'Not continuing (tied to legislative cycle)',
+		stag: 'Not staggered (no separate staggered terms)',
+		explanation:
+			'NONE OF THE ABOVE. Under Article XVII, Section 1(1), Gonzales v. COMELEC (21 SCRA 774), and Imbong v. COMELEC (35 SCRA 28), a Constituent Assembly is not a distinct independent standing body—it is simply the Congress of the Philippines itself convening to exercise constituent power (voting separately). It is neither an independent organ, nor a permanent continuing body outside the legislative cycle, nor staggered.',
+		legalBasis:
+			'Art. XVII, Sec. 1(1), 1987 Constitution; Gonzales v. COMELEC (21 SCRA 774); Imbong v. COMELEC (35 SCRA 28)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:284',
+		question: 'How is the Commission on Human Rights (CHR) classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent office (Art. XIII, Sec. 17; no fiscal autonomy)',
+		cont: 'Continuing (permanent constitutional office)',
+		stag: 'Not staggered (fixed 7-yr terms, no rotation)',
+		explanation:
+			'INDEPENDENT AND CONTINUING. Article XIII, Section 17(1) creates the CHR as an "independent office" (though not an Article IX commission, possessing purely fact-finding/investigatory powers under Cariño v. CHR, 204 SCRA 483). Crucially, under CHREA v. Commission on Human Rights (G.R. No. 155336), the CHR does NOT enjoy fiscal autonomy—Article XIII, Section 17(4) grants it only automatic and regular release of approved annual appropriations. It is a continuing permanent constitutional office across administrations, and it is NOT staggered because under E.O. No. 163 its Chairman and Members serve fixed 7-year terms without an Article IX rotational scheme.',
+		legalBasis:
+			'Art. XIII, Sec. 17(1) & (4), 1987 Constitution; E.O. No. 163; Cariño v. CHR (204 SCRA 483); CHREA v. CHR (G.R. No. 155336)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:285',
+		question: 'How is the Bangko Sentral ng Pilipinas (Monetary Board) classified?',
+		independent: true,
+		continuing: true,
+		staggered: true,
+		ind: 'Independent (Art. XII, Sec. 20 monetary authority)',
+		cont: 'Continuing (permanent regulatory body)',
+		stag: 'Staggered (6 & 3 yr initial terms: 3 for 6 yrs, 2 for 3 yrs)',
+		explanation:
+			'INDEPENDENT, CONTINUING, AND STAGGERED. Article XII, Section 20 mandates an independent central monetary authority with fiscal and administrative autonomy. The BSP is a continuing permanent corporate regulatory body overseeing national monetary policy. Under Section 6 of R.A. No. 7653 (The New Central Bank Act, as amended by R.A. No. 11211), the 5 private-sector Monetary Board members serve 6-year terms initially staggered at 6 years and 3 years (3 members for 6 years, 2 members for 3 years) so seats rotate at regular intervals.',
+		legalBasis:
+			'Art. XII, Sec. 20, 1987 Constitution; Sec. 6, R.A. No. 7653 (as amended by R.A. No. 11211)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:286',
+		question:
+			'As political subdivisions with local legislative councils (Sanggunians), how are Local Government Units (LGUs) classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not sovereign (local autonomy; Basco, Ganzon)',
+		cont: 'Not legislatively continuing (Sanggunians end every 3 yrs)',
+		stag: 'Not staggered (simultaneous 3-yr terms)',
+		explanation:
+			'NONE OF THE ABOVE. Under Article X, Sections 1 and 2, Basco v. PAGCOR (197 SCRA 52), and Ganzon v. CA (200 SCRA 271), LGUs are territorial and political subdivisions enjoying local autonomy, NOT independent sovereign bodies (they have no inherent police, taxation, or eminent domain powers and remain under presidential general supervision). While LGUs as municipal corporations have perpetual corporate succession, their legislative bodies (Sanggunians) dissolve every 3 years (NOT legislatively continuing), and local elective officials serve simultaneous 3-year terms (NOT staggered).',
+		legalBasis:
+			'Art. X, Secs. 1–4 & 8, 1987 Constitution; Basco v. PAGCOR (197 SCRA 52); Ganzon v. CA (200 SCRA 271)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:287',
+		question: 'How is the National Economic and Development Authority (NEDA) classified?',
+		independent: false,
+		continuing: false,
+		staggered: false,
+		ind: 'Not independent (headed by President)',
+		cont: 'Not continuing (Cabinet board; now DEPDev, R.A. 12145)',
+		stag: 'Not staggered (Cabinet serves at President’s pleasure)',
+		explanation:
+			'NONE OF THE ABOVE. Classic textual trick: although Article XII, Section 9 refers to "an independent economic and planning agency" and designates NEDA to function as such until Congress provides otherwise, it expressly mandates that NEDA is "headed by the President," placing it under direct presidential control (NOT truly independent). Its Board consists of Cabinet and ex-officio officials serving at the President’s pleasure (NOT staggered or constitutionally continuing). Note: under R.A. No. 12145 (2025), NEDA was statutorily reorganized into the Department of Economy, Planning, and Development (DEPDev).',
+		legalBasis: 'Art. XII, Sec. 9, 1987 Constitution; R.A. No. 12145 (2025)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:288',
+		question: 'How is the Senate of the Philippines classified?',
+		independent: true,
+		continuing: true,
+		staggered: true,
+		ind: 'Independent (coordinate chamber)',
+		cont: 'Continuing institutionally (Arnault; not inquiries, Neri)',
+		stag: 'Staggered (6-yr terms; 12 every 3 yrs)',
+		explanation:
+			'INDEPENDENT, CONTINUING, AND STAGGERED. Under Article VI, Section 1, the Senate is an independent legislative chamber coordinate with the Executive and Judiciary. Institutionally, it is a continuing body because it is never completely dissolved (Arnault v. Nazareno, 87 Phil. 29)—though note the classic bar caveat that it is NOT continuing as to its day-to-day legislative business, pending bills, and published inquiry rules, which terminate at the end of each Congress (Neri v. Senate, G.R. No. 180643; Garcillano v. House, G.R. No. 170338). Under Sections 2 and 4, Senators serve staggered 6-year terms with 12 Senators (half) elected every 3 years.',
+		legalBasis:
+			'Art. VI, Secs. 1, 2 & 4, 1987 Constitution; Arnault v. Nazareno (87 Phil. 29); Neri v. Senate (G.R. No. 180643); Garcillano v. House (G.R. No. 170338)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:289',
+		question: 'How is the House of Representatives classified?',
+		independent: true,
+		continuing: false,
+		staggered: false,
+		ind: 'Independent (legislative chamber, Art. VI)',
+		cont: 'Not continuing (dissolves every 3 yrs)',
+		stag: 'Not staggered (all elected simultaneously)',
+		explanation:
+			'INDEPENDENT ONLY. Under Article VI, Section 1, the House of Representatives is an independent legislative chamber of Congress. However, under Section 7, it is NOT continuing because its entire membership vacates simultaneously every 3 years and all unpassed bills become functus officio upon adjournment sine die. It is also NOT staggered because all district and party-list Representatives are elected at the exact same time every 3 years.',
+		legalBasis: 'Art. VI, Secs. 1 & 7, 1987 Constitution'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:290',
+		question: 'How is the Presidential Electoral Tribunal (PET) classified?',
+		independent: true,
+		continuing: true,
+		staggered: false,
+		ind: 'Independent ("sole judge" of Pres./VP contests, Art. VII, Sec. 4)',
+		cont: 'Continuing (vested in the permanent SC En Banc)',
+		stag: 'Not staggered (SC Justices serve until age 70)',
+		explanation:
+			'INDEPENDENT AND CONTINUING. Under Article VII, Section 4, paragraph 7 and Macalintal v. Presidential Electoral Tribunal (635 SCRA 783), the Supreme Court sitting en banc is the "sole judge of all contests relating to the election, returns, and qualifications of the President or Vice-President." As an exercise of constitutional judicial power by the Supreme Court, the PET is independent and permanent/continuing, but NOT staggered because Supreme Court Justices hold office during good behavior until age 70 (Art. VIII, Sec. 11).',
+		legalBasis:
+			'Art. VII, Sec. 4, par. 7 & Art. VIII, Sec. 11, 1987 Constitution; Macalintal v. PET (635 SCRA 783)'
+	}),
+	makeBodyMcq({
+		id: 'consti1:finals:291',
+		question:
+			'As an institutional organ (where "Independent" means an independent constitutional body), how is the Court of Appeals (CA) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not an independent constitutional body (under SC supervision)',
+		cont: 'Continuing (permanent appellate court, B.P. 129)',
+		stag: 'Not staggered (tenure until age 70)',
+		explanation:
+			'CONTINUING ONLY. Under B.P. Blg. 129, the Court of Appeals is a continuing permanent appellate court. While it exercises judicial power independently of the political branches, it is NOT a separate independent constitutional body because it falls under the administrative supervision of the Supreme Court (Art. VIII, Sec. 6). It is NOT staggered because its Justices serve continuously until age 70 (Art. VIII, Sec. 11).',
+		legalBasis: 'Art. VIII, Secs. 6 & 11, 1987 Constitution; B.P. Blg. 129'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:292',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is a Constituent Assembly (Con-Ass) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — a Constituent Assembly is not a separate standing body.',
-			'Correct — under Article XVII, Section 1(1), Gonzales v. COMELEC, and Imbong v. COMELEC, it is Congress itself convening to exercise constituent power.'
-		],
-		correctIndex: 1,
-		key: 'False',
+		question:
+			'As an institutional organ (where "Independent" means an independent constitutional body), how is the Court of Tax Appeals (CTA) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not an independent constitutional body (under SC supervision)',
+		cont: 'Continuing (permanent tax court, R.A. 1125)',
+		stag: 'Not staggered (tenure until age 70)',
 		explanation:
-			'FALSE. Under Article XVII, Section 1(1) of the 1987 Constitution and Gonzales v. COMELEC (21 SCRA 774), a Constituent Assembly is not a separate standing body; it is the Congress of the Philippines itself convening to exercise constituent power, voting separately under Imbong v. COMELEC (35 SCRA 28).',
-		legalBasis: 'Art. XVII, Sec. 1(1), 1987 Constitution; Gonzales v. COMELEC (21 SCRA 774); Imbong v. COMELEC (35 SCRA 28)'
-	},
-	{
+			'CONTINUING ONLY. Under R.A. No. 1125 (as amended by R.A. No. 9282), the Court of Tax Appeals is a continuing permanent specialized tax court. While it enjoys judicial decisional independence within the Judiciary, it is NOT a separate independent constitutional body because it falls under the Supreme Court’s administrative supervision (Art. VIII, Sec. 6). It is NOT staggered because its Justices hold office until age 70 (Art. VIII, Sec. 11).',
+		legalBasis: 'Art. VIII, Secs. 6 & 11, 1987 Constitution; R.A. No. 1125 (as amended by R.A. No. 9282)'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:293',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Commission on Human Rights (CHR) an independent Article IX Constitutional Commission?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — the CHR is created under Article XIII, Section 17(1) as an independent office with purely fact-finding and investigatory powers.',
-			'Correct — under Article XIII, Section 17(1) and Cariño v. CHR, the CHR is an independent office with no quasi-judicial adjudicatory authority, not an Article IX commission.'
-		],
-		correctIndex: 1,
-		key: 'False',
+		question:
+			'As institutional organs (where "Independent" means an independent constitutional body), how are Regional Trial Courts (RTCs) and Municipal Trial Courts (MTCs) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not independent constitutional bodies (under SC supervision)',
+		cont: 'Continuing (permanent trial courts, B.P. 129)',
+		stag: 'Not staggered (tenure until age 70)',
 		explanation:
-			'FALSE. Article XIII, Section 17(1) of the 1987 Constitution creates the CHR as an "independent office," not an Article IX commission. Under Cariño v. CHR (204 SCRA 483), it possesses purely fact-finding and investigatory powers, with no quasi-judicial adjudicatory authority.',
-		legalBasis: 'Art. XIII, Sec. 17(1), 1987 Constitution; Cariño v. CHR (204 SCRA 483)'
-	},
-	{
+			'CONTINUING ONLY. Established under B.P. Blg. 129, RTCs and MTCs are continuing permanent trial courts whose proceedings and dockets survive the death, retirement, or transfer of individual judges. While they enjoy judicial decisional independence within the Judiciary, they are NOT separate independent constitutional bodies because they sit under the Supreme Court’s administrative supervision (Art. VIII, Sec. 6). They are NOT staggered because judges serve continuously until age 70 (Art. VIII, Sec. 11).',
+		legalBasis: 'Art. VIII, Secs. 6 & 11, 1987 Constitution; B.P. Blg. 129'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:294',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the Bangko Sentral ng Pilipinas (BSP) an independent central monetary authority?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Correct — Article XII, Section 20 explicitly commands Congress to establish an independent central monetary authority with fiscal and administrative autonomy.',
-			'Incorrect — the BSP (implemented under R.A. No. 7653 / R.A. No. 11211) is constitutionally mandated to be independent.'
-		],
-		correctIndex: 0,
-		key: 'True',
+		question: 'How is the Governance Commission for GOCCs (GCG) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not independent (attached to Office of the President)',
+		cont: 'Continuing (permanent statutory agency, R.A. 10149)',
+		stag: 'Not staggered (no staggered terms)',
 		explanation:
-			'TRUE. Article XII, Section 20 of the 1987 Constitution commands: "The Congress shall establish an independent central monetary authority..." (implemented under R.A. No. 7653 / R.A. No. 11211) with fiscal and administrative autonomy.',
-		legalBasis: 'Art. XII, Sec. 20, 1987 Constitution; R.A. No. 7653; R.A. No. 11211'
-	},
-	{
+			'CONTINUING ONLY. Under R.A. No. 10149, the Governance Commission for GOCCs (GCG) is NOT an independent constitutional body—it is a statutory central advisory and oversight agency attached to the Office of the President. Under the permanent-body standard, it is continuing as a permanent statutory oversight agency, with NO staggered terms.',
+		legalBasis: 'R.A. No. 10149 (GOCC Governance Act of 2011)'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:295',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Are Local Government Units (LGUs) independent sovereign bodies?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — LGUs are territorial and political subdivisions of the State and possess no inherent police, taxation, or eminent domain powers.',
-			'Correct — under Article X, Sections 1 and 2 and Pelaez v. Auditor General, LGUs enjoy local autonomy, not independent sovereign power.'
-		],
-		correctIndex: 1,
-		key: 'False',
+		question: 'How is the Philippine Competition Commission (PCC) classified?',
+		independent: false,
+		continuing: true,
+		staggered: true,
+		ind: 'Not Art. IX independent (statutory body)',
+		cont: 'Continuing (permanent regulatory commission)',
+		stag: 'Staggered (7 & 5 yr terms: Chair+2 for 7, 2 for 5)',
 		explanation:
-			'FALSE. Under Article X, Section 1 and Section 2 of the 1987 Constitution, LGUs are territorial and political subdivisions of the State enjoying local autonomy, not independent sovereign bodies; they possess no inherent police, taxation, or eminent domain powers (Pelaez v. Auditor General, 15 SCRA 569).',
-		legalBasis: 'Art. X, Secs. 1 & 2, 1987 Constitution; Pelaez v. Auditor General (15 SCRA 569)'
-	},
-	{
+			'CONTINUING AND STAGGERED. Under R.A. No. 10667, the PCC is NOT an Article IX independent constitutional body (it is an independent statutory quasi-judicial agency attached to the Office of the President). It is a continuing permanent regulatory commission over competition matters, and under Section 7 of R.A. No. 10667 its 5 members serve staggered 7-year terms with initial appointments of 7 years for the Chairperson and 2 Commissioners, and 5 years for the other 2 Commissioners (no 3-year initial term).',
+		legalBasis: 'Sec. 7, R.A. No. 10667 (Philippine Competition Act)'
+	}),
+	makeBodyMcq({
 		id: 'consti1:finals:296',
-		topicId: 'finals',
-		topic: P_BODIES,
-		tag: 'bodies',
-		question: 'Is the National Economic and Development Authority (NEDA) an independent body?',
-		options: ['True', 'False'],
-		optionExplanations: [
-			'Incorrect — Article XII, Section 9 explicitly mandates that NEDA is headed by the President, placing it under direct executive control.',
-			'Correct — although Section 9 designates NEDA to function as the national planning agency, being headed by the President makes it an executive agency rather than an independent body.'
-		],
-		correctIndex: 1,
-		key: 'False',
+		question: 'How is the Insurance Commission (IC) classified?',
+		independent: false,
+		continuing: true,
+		staggered: false,
+		ind: 'Not independent (executive agency under DOF)',
+		cont: 'Continuing (permanent statutory agency, P.D. 612)',
+		stag: 'Not staggered (single Commissioner, no staggered terms)',
 		explanation:
-			'FALSE. Under Article XII, Section 9 of the 1987 Constitution, while Section 9 provides for an independent economic and planning agency, it explicitly commands that "the National Economic and Development Authority shall function as such agency" and that it is "headed by the President", making it an executive agency under direct presidential control.',
-		legalBasis: 'Art. XII, Sec. 9, 1987 Constitution'
-	},
+			'CONTINUING ONLY. Under the Insurance Code (P.D. No. 612, as amended by R.A. No. 10607), the Insurance Commission is NOT independent—it is an executive regulatory agency attached to the Department of Finance under the control of the Secretary of Finance and the President. Under the permanent-body standard, it is continuing as a permanent statutory regulatory agency, and it is NOT staggered (headed by a single Insurance Commissioner).',
+		legalBasis: 'Insurance Code (P.D. No. 612, as amended by R.A. No. 10607)'
+	}),
 
 	// =========================================================================
 	// PART 5: JURISPRUDENCE MASTER DRILL — CHAPTERS 12–19 (Q121–Q210)

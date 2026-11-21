@@ -153,8 +153,7 @@
 			<button type="button" onclick={() => (showDisclaimer = true)} class="cursor-pointer font-bold text-[#1CB0F6] underline underline-offset-2 hover:text-foreground">
 				Read the disclaimer
 			</button>
-			·
-			<a href="/legacy/index.html" class="underline underline-offset-2 hover:text-foreground">Previous version</a>
+			<!-- · <a href="/legacy/index.html" class="underline underline-offset-2 hover:text-foreground">Previous version</a> -->
 		</p>
 		<p class="text-[0.6875rem] font-medium tracking-wide text-muted-foreground/60 select-none">amended by lourinsi · original code from serocode</p>
 	</footer>

@@ -40,7 +40,7 @@ const FOCUS_TAG_META: { tag: McqTag; id: string; name: string; eyebrow: string; 
 		id: 'tag:bodies',
 		name: 'Constitutional Bodies',
 		eyebrow: 'BY FOCUS · CONSTITUTIONAL BODIES',
-		desc: 'Independent vs. attached and continuing vs. non-continuing constitutional bodies.'
+		desc: 'Independent, continuing, and staggered-term classifications of constitutional and statutory bodies.'
 	},
 	{
 		tag: 'jurisprudence',

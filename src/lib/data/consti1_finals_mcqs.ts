@@ -3,15 +3,15 @@ import type { McqQuestion, ModuleTopic } from '$lib/types';
 export const constiFinalsTopic: ModuleTopic = {
 	id: 'finals',
 	name: 'FINALS',
-	eyebrow: 'COMPREHENSIVE MASTER DRILL · 210 ITEMS',
-	desc: '210 multiple-choice and true-or-false questions based on Justice Isagani A. Cruz’s Philippine Political Law, the 1987 Philippine Constitution, and Supreme Court jurisprudence.'
+	eyebrow: 'COMPREHENSIVE MASTER DRILL · 265 ITEMS',
+	desc: '265 multiple-choice and true-or-false questions based on Justice Isagani A. Cruz’s Philippine Political Law, the 1987 Philippine Constitution, and Supreme Court jurisprudence.'
 };
 
 export const constiFinalsCasesTopic: ModuleTopic = {
 	id: 'finals_cases',
 	name: 'CASES',
-	eyebrow: 'FINALS · JURISPRUDENCE · 90 ITEMS',
-	desc: '90 landmark Supreme Court jurisprudence questions (Chapters 12–19, Q121–Q210) — also included in the FINALS filter.'
+	eyebrow: 'FINALS · CASES · 90 ITEMS',
+	desc: '90 landmark Supreme Court case questions (Chapters 12–19) — also included in the FINALS filter.'
 };
 
 export const constiFinalsCasesWatchFor = `<strong>Watch for: paired cases that flip or qualify each other (Q121–Q210).</strong>
@@ -34,6 +34,11 @@ const P1 = 'FINALS — Part 1: The Judicial Department (Ch. 12)';
 const P2 = 'FINALS — Part 2: The Constitutional Commissions (Ch. 13–16)';
 const P3 = 'FINALS — Part 3: Accountability, Amendments & Elections (Ch. 17–19)';
 const P4 = 'FINALS — Part 4: General Principles to Powers of the President (Ch. 1–11)';
+const P6_1 = 'FINALS — Supplemental I: Judicial Department & Supreme Court';
+const P6_2 = 'FINALS — Supplemental II: Constitutional Commissions (Structure & Procedure)';
+const P6_3 = 'FINALS — Supplemental III: CSC, COA, COMELEC, Certiorari & OSG';
+const P6_4 = 'FINALS — Supplemental IV: Accountability, Impeachment & Ombudsman';
+const P6_5 = 'FINALS — Supplemental V: Delegation, Congress, Electoral Tribunals, Martial Law & LGUs';
 const P5_12 = 'CASES (FINALS) — Ch. 12: Judicial Department';
 const P5_13 = 'CASES (FINALS) — Ch. 13: Constitutional Commissions & CSC';
 const P5_14 = 'CASES (FINALS) — Ch. 14: Commission on Elections';
@@ -3396,6 +3401,1530 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 
 	// =========================================================================
+	// SUPPLEMENTAL FINALS DRILL — SECTIONS I–V (55 ITEMS, IDs 211–265)
+	// =========================================================================
+
+	// ---- Section I: Judicial Department & Supreme Court (14 Items) ----
+	{
+		id: 'consti1:finals:211',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'requisites',
+		question:
+			'Under the 1987 Constitution and statutory laws governing the Philippine Judiciary, appointees to which of the following collegiate courts are required to have fifteen (15) years or more of service as a lower court judge or in the practice of law in the Philippines?',
+		options: [
+			'Supreme Court',
+			'Court of Appeals and Court of Tax Appeals',
+			'Sandiganbayan',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article VIII, Section 7(1) expressly mandates 15 years or more of judicial service or law practice.',
+			'True because their governing statutes adopt the same 15-year requirement as Supreme Court Justices.',
+			'False because the Sandiganbayan charter requires only at least 10 years of judicial or legal experience.',
+			'False because option c (Sandiganbayan) requires only 10 years.',
+			'True because the SC, CA, and CTA require 15 years, whereas the Sandiganbayan requires 10 years.',
+			'False because option c requires only 10 years.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article VIII, Section 7(1) of the 1987 Constitution explicitly fixes the 15-year judicial or legal practice requirement for Members of the Supreme Court, while leaving statutory qualifications for lower collegiate courts to Congress. By statute, Congress prescribed 15 years for the Court of Appeals (B.P. Blg. 129, Sec. 7), the Court of Tax Appeals (R.A. No. 1125, Sec. 1, as amended by R.A. No. 9282), and the Shari’ah High Court (R.A. No. 11054, Art. X, Sec. 8), but required only at least 10 years for the Sandiganbayan (P.D. No. 1606, Sec. 1, as amended by R.A. No. 10660). In Cayetano v. Monsod (G.R. No. 100113, Sept. 3, 1991), "practice of law" was broadly defined as any activity, in or out of court, requiring the application of law, legal procedure, knowledge, training, and experience.',
+		legalBasis: 'Art. VIII, Sec. 7(1); B.P. Blg. 129; R.A. 9282; P.D. 1606 (as amended by R.A. 10660); Cayetano v. Monsod (1991)'
+	},
+	{
+		id: 'consti1:finals:212',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'exceptions',
+		question:
+			'Under the 1987 Constitution, judicial and adjudicatory power is vested exclusively in the Supreme Court and statutory lower courts, to the total exclusion of special constitutional bodies.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because the Constitution directly vests specific adjudicatory authority over election contests in bodies outside the regular courts.',
+			'Correct because while plenary judicial power rests in regular courts, the Constitution delegates election adjudication to COMELEC, SET, HRET, and PET.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article VIII, Section 1 vests plenary judicial power in one Supreme Court and lower statutory courts, but the Constitution expressly confers adjudicatory jurisdiction over election contests upon the COMELEC (Article IX-C, Section 2(2)), the Senate and House Electoral Tribunals (Article VI, Section 17), and the Supreme Court sitting en banc as the Presidential Electoral Tribunal (Article VII, Section 4). In Macalintal v. PET (G.R. No. 191618, Nov. 23, 2010), the Supreme Court affirmed that these bodies exercise essentially judicial functions by express constitutional mandate, subject to Supreme Court review via certiorari for grave abuse of discretion.',
+		legalBasis: 'Art. VIII, Sec. 1; Art. VI, Sec. 17; Art. VII, Sec. 4; Art. IX-C, Sec. 2(2); Macalintal v. PET (2010)'
+	},
+	{
+		id: 'consti1:finals:213',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			'The Supreme Court derives its existence and judicial power directly from the sovereign Filipino people through the 1987 Constitution rather than from an ordinary statutory act of Congress.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Correct because the sovereign people directly ordained the Supreme Court and vested it with judicial power through the Constitution.',
+			'Incorrect because only lower courts are created by Congress; the Supreme Court is the sole constitutional court.'
+		],
+		correctIndex: 0,
+		key: 'True',
+		explanation:
+			'TRUE. Under the Preamble and Article II, Section 1 of the 1987 Constitution, sovereignty resides in the people and all government authority emanates from them. Through Article VIII, Section 1, the people directly established one Supreme Court and vested judicial power in it, making it a co-equal constitutional creation that Congress cannot abolish or dismantle by ordinary statute (Angara v. Electoral Commission, 63 Phil. 139).',
+		legalBasis: 'Preamble; Art. II, Sec. 1; Art. VIII, Sec. 1, 1987 Constitution; Angara v. Electoral Commission'
+	},
+	{
+		id: 'consti1:finals:214',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			"Under Article VIII, Section 5(1) of the 1987 Constitution, the Supreme Court's original jurisdiction—exercised concurrently with lower courts subject to the Doctrine of Hierarchy of Courts—covers:",
+		options: [
+			'Cases affecting ambassadors, other public ministers, and consuls',
+			'Petitions for certiorari, prohibition, and mandamus',
+			'Petitions for quo warranto and habeas corpus',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because foreign diplomats are expressly enumerated to prevent diplomatic embarrassment and protect foreign relations.',
+			'True because these extraordinary writs are expressly listed under Section 5(1).',
+			'True because both special remedies are likewise expressly enumerated in Section 5(1).',
+			'False because option b is also expressly covered by Section 5(1).',
+			'False because option c is equally enumerated.',
+			'True because all three options accurately enumerate the Supreme Court’s constitutional original jurisdiction.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VIII, Section 5(1) grants the Supreme Court original jurisdiction over cases affecting ambassadors, other public ministers, and consuls (to ensure high-level handling of delicate international law and diplomatic immunity matters, as noted in The Holy See v. Rosario), and over petitions for certiorari, prohibition, mandamus, quo warranto, and habeas corpus. Under B.P. Blg. 129, this original jurisdiction is concurrent with the Court of Appeals and Regional Trial Courts, making direct filing with the Supreme Court subject to the Doctrine of Hierarchy of Courts (Gios-Samar v. DOTC, G.R. No. 217158, Mar. 12, 2019; Bañez v. Concepcion, G.R. No. 159508, Aug. 29, 2012).',
+		legalBasis: 'Art. VIII, Sec. 5(1), 1987 Constitution; B.P. Blg. 129; Gios-Samar v. DOTC (2019)'
+	},
+	{
+		id: 'consti1:finals:215',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			'Under Article VIII, Section 5(2) of the 1987 Constitution, Congress cannot deprive the Supreme Court of its irreducible appellate jurisdiction to review final judgments and orders of lower courts in cases involving:',
+		options: [
+			'Constitutionality of laws or treaties',
+			'Tax legality or lower court jurisdiction',
+			'Reclusion perpetua or higher penalties, and pure questions of law',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 5(2)(a) covers the validity of any treaty, law, proclamation, ordinance, or regulation.',
+			'True because Section 5(2)(b) and (c) explicitly cover tax legality and lower court jurisdictional disputes.',
+			'True because Section 5(2)(d) and (e) explicitly enumerate both categories.',
+			'False because option b is also part of Section 5(2).',
+			'False because option c is equally part of Section 5(2).',
+			'True because all three options complete the five irreducible appellate categories under Section 5(2).',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VIII, Section 5(2) explicitly vests the Supreme Court with irreducible appellate jurisdiction to review, revise, reverse, modify, or affirm final judgments of lower courts involving: (a) constitutionality or validity of any treaty, international or executive agreement, law, presidential decree, proclamation, order, instruction, ordinance, or regulation; (b) legality of any tax, impost, assessment, or toll; (c) jurisdiction of any lower court; (d) criminal cases imposing reclusion perpetua or higher; and (e) pure errors or questions of law. While conceptually referred to as judicial review, "appellate jurisdiction" is the formal constitutional vehicle for reviewing lower court judgments.',
+		legalBasis: 'Art. VIII, Sec. 5(2), 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:216',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'exceptions',
+		question:
+			'Under Article VIII, Section 2 and Article VI, Section 30 of the 1987 Constitution, which of the following legislative actions regarding court jurisdiction is Congress constitutionally permitted to perform?',
+		options: [
+			'Define, prescribe, and apportion court jurisdiction',
+			'Deprive the Supreme Court of Section 5 jurisdiction',
+			'Increase Supreme Court appellate jurisdiction without its concurrence',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Congress has general statutory authority to allocate jurisdiction among courts within constitutional guardrails.',
+			'False because Section 2 expressly forbids depriving the Supreme Court of its irreducible Section 5 jurisdiction.',
+			'False because Article VI, Section 30 prohibits increasing SC appellate jurisdiction without its advice and concurrence.',
+			'False because option c violates Article VI, Section 30.',
+			'False because option b is expressly unconstitutional.',
+			'False because options b and c violate express constitutional limits.',
+			'False because option a is true.'
+		],
+		correctIndex: 0,
+		key: 'Define, prescribe, and apportion court jurisdiction',
+		explanation:
+			'A (Define, prescribe, and apportion court jurisdiction). Article VIII, Section 2 vests Congress with plenary power to define, prescribe, and apportion the jurisdiction of the various courts (such as through B.P. Blg. 129), but explicitly establishes an irreducible minimum guardrail barring Congress from stripping the Supreme Court of its Section 5 jurisdiction or undermining judicial security of tenure. Furthermore, Article VI, Section 30 prohibits Congress from passing any law increasing the Supreme Court’s appellate jurisdiction without its advice and concurrence.',
+		legalBasis: 'Art. VIII, Sec. 2 & Art. VI, Sec. 30, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:217',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'effects',
+		question:
+			"The Supreme Court's exclusive rule-making power under Article VIII, Section 5(5) is classified as a quasi-legislative (subordinate legislative) power delegated by Congress.",
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because quasi-legislative power is delegated to executive administrative agencies, not the Judiciary.',
+			'Correct because the Supreme Court’s rule-making power is strictly an auxiliary administrative and procedural power, not quasi-legislative.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Under the separation of powers, plenary legislative power belongs exclusively to Congress under Article VI, Section 1, while quasi-legislative power (subordinate legislation) is delegated to administrative agencies to issue implementing rules. In contrast, the Supreme Court’s authority under Article VIII, Section 5(5) is purely procedural and auxiliary administrative in nature, expressly barred from creating, modifying, or diminishing substantive rights (Manila Electric Co. v. Pasay Transportation Co., 57 Phil. 600; Endencia v. David, 93 Phil. 696).',
+		legalBasis: 'Art. VI, Sec. 1; Art. VIII, Sec. 5(5); Manila Electric Co. v. Pasay Transportation Co.; Endencia v. David'
+	},
+	{
+		id: 'consti1:finals:218',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'effects',
+		question:
+			'When the Supreme Court adjudicates actual controversies and checks grave abuse of discretion, it is exercising quasi-judicial power.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because quasi-judicial power belongs only to administrative agencies performing adjudicatory tasks.',
+			'Correct because the Supreme Court exercises true judicial power, and its members are constitutionally barred from designation to quasi-judicial agencies.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article VIII, Section 1 vests pure judicial power in the Supreme Court and lower courts, whereas quasi-judicial power refers to adjudicatory authority granted to executive or administrative bodies (such as the NLRC, SEC, or COA). Moreover, Article VIII, Section 12 explicitly prohibits Members of the Supreme Court and other courts from being designated to any agency performing quasi-judicial or administrative functions (In re Judge Manzano, 166 SCRA 246, 1988; Noblejas v. Teehankee, 23 SCRA 405, 1968).',
+		legalBasis: 'Art. VIII, Secs. 1 & 12, 1987 Constitution; In re Judge Manzano (1988); Noblejas v. Teehankee (1968)'
+	},
+	{
+		id: 'consti1:finals:219',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'requisites',
+		question:
+			"Because the Supreme Court's procedural rule-making power under Article VIII, Section 5(5) is not absolute, every procedural rule it promulgates must comply with which of the following constitutional limitations?",
+		options: [
+			'Simplified and inexpensive procedure',
+			'Uniformity for courts of the same grade',
+			'Non-modification of substantive rights',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 5(5) requires rules to provide a simplified and inexpensive procedure for the speedy disposition of cases.',
+			'True because procedural rules must apply uniformly across all courts of the same judicial grade.',
+			'True because procedural rules cannot diminish, increase, or modify substantive rights.',
+			'False because option b is also an express limitation under Section 5(5).',
+			'False because option c is likewise mandatory.',
+			'True because all three represent the verbatim constitutional limitations on the Supreme Court’s rule-making power.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VIII, Section 5(5) mandates that Supreme Court rules concerning constitutional rights, pleading, practice, and procedure "shall provide a simplified and inexpensive procedure for the speedy disposition of cases, shall be uniform for all courts of the same grade, and shall not diminish, increase, or modify substantive rights." Under the 1987 Constitution, Congress was stripped of its former power to repeal, alter, or supplement judicial rules (Baguio Market Vendors v. Judge, G.R. No. 165922, Feb. 26, 2010; Fabian v. Desierto).',
+		legalBasis: 'Art. VIII, Sec. 5(5), 1987 Constitution; Baguio Market Vendors v. Judge (2010); Fabian v. Desierto'
+	},
+	{
+		id: 'consti1:finals:220',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			'Beyond interpreting laws and adjudicating disputes, which of the following are auxiliary administrative powers vested directly in the Supreme Court under Article VIII, Sections 5 and 6?',
+		options: [
+			'Administrative supervision over all courts and personnel',
+			'Temporary detail of judges and change of venue',
+			'Appointment of judicial officials and employees',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 6 grants the Supreme Court exclusive administrative supervision over the entire Judiciary.',
+			'True because Section 5(3) and (4) empower the Court to temporarily assign judges up to 6 months and order changes of venue.',
+			'True because Section 5(6) empowers the Court to appoint all Judiciary personnel under Civil Service Law.',
+			'False because option b is also an auxiliary administrative power under Section 5(3)–(4).',
+			'False because option c is equally granted under Section 5(6).',
+			'True because all three are explicit non-adjudicatory administrative powers of the Supreme Court.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VIII, Sections 5(3)–(6) and 6 vest the Supreme Court with auxiliary administrative powers, including temporary assignment of lower court judges (not exceeding 6 months without consent), ordering a change of venue to avoid a miscarriage of justice, promulgating procedural rules, appointing all officials and employees of the Judiciary, and exercising exclusive administrative supervision over all courts and judicial personnel (requiring referral of complaints against judges to the SC first under Caoibes v. Ombudsman and Maceda v. Vasquez).',
+		legalBasis: 'Art. VIII, Secs. 5(3)–(6) & 6, 1987 Constitution; Caoibes v. Ombudsman; Maceda v. Vasquez'
+	},
+	{
+		id: 'consti1:finals:221',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'effects',
+		question:
+			'Under Article VIII, Section 3 of the 1987 Constitution, the guarantee of "fiscal autonomy" granted to the Judiciary ensures:',
+		options: [
+			"Non-reduction below the previous year's appropriation",
+			'Automatic and regular release of approved funds',
+			'Exemption from Commission on Audit post-audit',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Congress may not reduce the Judiciary’s budget below the prior year’s appropriation.',
+			'True because approved appropriations must be released automatically without executive interference or DBM delays.',
+			'False because fiscally autonomous constitutional bodies remain subject to COA post-audit under Article IX-D.',
+			'False because option c violates Article IX-D, Sections 2 and 3.',
+			'True because both accurately reflect judicial fiscal autonomy, while COA post-audit still applies.',
+			'False because option c violates Article IX-D, Sections 2 and 3.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article VIII, Section 3 expressly decrees that the Judiciary shall enjoy fiscal autonomy, that its appropriations may not be reduced by the legislature below the amount appropriated for the previous year, and that after approval, such funds shall be automatically and regularly released (Bengzon v. Drilon, 208 SCRA 133; CSC v. DBM). However, under Article IX-D, Sections 2(1) and 3, constitutional bodies granted fiscal autonomy remain strictly subject to COA post-audit.',
+		legalBasis: 'Art. VIII, Sec. 3 & Art. IX-D, Secs. 2–3, 1987 Constitution; Bengzon v. Drilon; CSC v. DBM'
+	},
+	{
+		id: 'consti1:finals:222',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			'Which of the following constitutional characteristics are shared by BOTH the Supreme Court and the three Independent Constitutional Commissions (CSC, COMELEC, and COA)?',
+		options: [
+			'Direct constitutional creation and fiscal autonomy',
+			'Independent rule-making, staff appointment, salary protection, and impeachability',
+			'Mandatory confirmation by the Commission on Appointments',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because both are directly created by the Constitution and enjoy automatic release of appropriations.',
+			'True because both share procedural rule-making, internal staffing, non-diminution of pay, and impeachment removal.',
+			'False because Constitutional Commissioners require CA confirmation, whereas Supreme Court Justices do not.',
+			'False because option c does not apply to the Supreme Court.',
+			'True because options a and b represent shared safeguards, while option c is a major distinction.',
+			'False because option c does not apply to the Supreme Court.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Articles VIII (Secs. 1, 3, 5(5)–(6), 10) and IX-A (Secs. 1, 3–6), together with Article VI, Section 25(5) (budgetary augmentation) and Article XI, Section 2 (impeachment), bestow parallel structural independence upon both the Supreme Court and the Constitutional Commissions. However, under Article VIII, Section 9, Supreme Court Justices are appointed from a JBC shortlist without CA confirmation, unlike Article IX Commissioners who require CA consent.',
+		legalBasis: 'Art. VIII, Secs. 1, 3, 5, 9–10; Art. IX-A, Secs. 1, 3–6; Art. VI, Sec. 25(5); Art. XI, Sec. 2'
+	},
+	{
+		id: 'consti1:finals:223',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'exceptions',
+		question:
+			'After initial administrative investigation by the Office of the Court Administrator (OCA), which body holds the exclusive constitutional authority to order the dismissal of a lower court judge?',
+		options: [
+			'The Supreme Court sitting en banc',
+			'A Division of the Supreme Court',
+			'The Office of the Ombudsman',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article VIII, Section 11 reserves dismissal of lower court judges strictly to the Supreme Court en banc.',
+			'False because a Division may only impose lesser administrative sanctions, never dismissal.',
+			'False because the Ombudsman lacks disciplinary authority over judges and must refer complaints to the Supreme Court.',
+			'False because option c is false.',
+			'False because option b cannot order dismissal.',
+			'False because options b and c are false.',
+			'False because option a is true.'
+		],
+		correctIndex: 0,
+		key: 'The Supreme Court sitting en banc',
+		explanation:
+			'A (The Supreme Court sitting en banc). Article VIII, Section 11 mandates that the Supreme Court en banc has the power to discipline judges of lower courts or order their dismissal by a vote of a majority of the Members who actually took part in the deliberations and voted thereon. In People v. Gacott (246 SCRA 14), the Court clarified that while Divisions may impose minor disciplinary penalties, dismissal of a judge or severe suspension exceeding one year requires en banc action; complaints against judges filed with the Ombudsman must likewise be referred to the Supreme Court first (Caoibes v. Ombudsman; Maceda v. Vasquez).',
+		legalBasis: 'Art. VIII, Sec. 11, 1987 Constitution; People v. Gacott; Caoibes v. Ombudsman; Maceda v. Vasquez'
+	},
+	{
+		id: 'consti1:finals:224',
+		topicId: 'finals',
+		topic: P6_1,
+		tag: 'memorization',
+		question:
+			'Presidential appointments of the Chief Justice and Associate Justices of the Supreme Court require the consent and confirmation of the Commission on Appointments (CA).',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because the 1987 Constitution removed CA confirmation for judicial appointments to insulate the courts from politics.',
+			'Correct because Justices and judges are appointed by the President solely from a JBC shortlist without needing CA confirmation.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article VIII, Section 9 explicitly mandates that Members of the Supreme Court and judges of lower courts shall be appointed by the President from a list of at least three nominees prepared by the Judicial and Bar Council (JBC) for every vacancy, and that "such appointments need no confirmation."',
+		legalBasis: 'Art. VIII, Sec. 9, 1987 Constitution'
+	},
+
+	// ---- Section II: Constitutional Commissions — Structure, Staggering, Reappointment & Procedure (9 Items) ----
+	{
+		id: 'consti1:finals:225',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'memorization',
+		question:
+			'Under Article IX of the 1987 Constitution, which of the Independent Constitutional Commissions are constitutionally composed of a Chairman and two (2) Commissioners (three members in total)?',
+		options: [
+			'Civil Service Commission',
+			'Commission on Audit',
+			'Commission on Elections',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article IX-B, Section 1(1) provides for 1 Chairman and 2 Commissioners.',
+			'True because Article IX-D, Section 1(1) provides for 1 Chairman and 2 Commissioners.',
+			'False because Article IX-C, Section 1(1) composes COMELEC of 1 Chairman and 6 Commissioners, totaling 7 members.',
+			'False because COMELEC has 7 members, not 3.',
+			'True because both CSC and COA have 3 members, whereas COMELEC has 7.',
+			'False because COMELEC has 7 members, not 3.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article IX-B, Section 1(1) establishes the Civil Service Commission with 1 Chairman and 2 Commissioners; Article IX-D, Section 1(1) establishes the Commission on Audit with 1 Chairman and 2 Commissioners; and Article IX-C, Section 1(1) establishes the Commission on Elections with 1 Chairman and 6 Commissioners so it may sit in two Divisions of three members each.',
+		legalBasis: 'Art. IX-B, Sec. 1(1); Art. IX-C, Sec. 1(1); Art. IX-D, Sec. 1(1), 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:226',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'effects',
+		question:
+			'Although the CSC, COMELEC, and COA do not belong to the Legislative Department, they operate as independent constitutional agencies under Article IX exercising which combination of functions?',
+		options: [
+			'Administrative or executive functions',
+			'Quasi-legislative functions',
+			'Quasi-judicial functions',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because each Commission administers specialized mandates in personnel, elections, or auditing.',
+			'True because each exercises subordinate rule-making power to issue implementing rules and circulars having the force of law.',
+			'True because each resolves contested cases, appeals, or disputes within its specialized sphere.',
+			'False because option b is also exercised by all three Commissions.',
+			'False because option c is also exercised by all three Commissions.',
+			'True because all three Commissions exercise administrative, quasi-legislative, and quasi-judicial powers.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under Article IX, the CSC, COMELEC, and COA are independent constitutional bodies separate from the three traditional branches. While plenary lawmaking belongs exclusively to Congress under Article VI, Section 1, each Commission performs executive/administrative tasks, quasi-legislative subordinate rule-making ("filling in the details" with regulations having the force of law, City Government of Makati v. CSC), and quasi-judicial adjudication (disciplinary appeals for CSC, election contests for COMELEC, and audit disallowance appeals for COA).',
+		legalBasis: 'Art. IX, 1987 Constitution; City Government of Makati v. CSC'
+	},
+	{
+		id: 'consti1:finals:227',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'requisites',
+		question:
+			'Under the 3–5–7 rotational scheme (staggering of terms) governing Constitutional Commissions under Article IX, which of the following structural rules maintain the staggered intervals?',
+		options: [
+			'Fixed reckoning date on February 2, 1987',
+			'Unexpired balance only for mid-term vacancies',
+			'Regular vacancies every two years',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because all 7-year term cycles are counted uniformly from February 2, 1987 regardless of late assumption.',
+			'True because an appointee filling a premature vacancy serves only the predecessor’s remaining term.',
+			'True because initial 3-, 5-, and 7-year terms followed by full 7-year regular terms produce 2-year vacancy intervals.',
+			'False because option b is also a mandatory component of the rotational scheme.',
+			'False because option c is likewise an essential design feature.',
+			'True because all three rules operate together to preserve institutional continuity and prevent day-one commission packing.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article IX-B, C, and D, Section 1(2) prescribe initial uneven terms of 7, 5, and 3 years, full 7-year regular terms thereafter, and unexpired-portion-only appointments for mid-term vacancies. In Gaminde v. Commission on Audit (347 SCRA 655, 2000), the Supreme Court held that all 7-year term cycles are reckoned strictly from February 2, 1987, ensuring staggered 2-year intervals remain unbroken even when an appointee assumes office late.',
+		legalBasis: 'Art. IX-B, C & D, Sec. 1(2), 1987 Constitution; Gaminde v. COA (2000)'
+	},
+	{
+		id: 'consti1:finals:228',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'effects',
+		question:
+			'Under the 3–5–7 rotational scheme for a 3-member Constitutional Commission, if the Chairman is already in Year 6 going into Year 7 when a new President assumes office, it is mathematically impossible for that President to appoint all three members during a single 6-year term.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because vacancies occurring in Years 1, 3, and 5 all fall within a single 6-year presidency.',
+			'Correct because if Seat 1 expires in Year 1, Seat 2 expires in Year 3, and Seat 3 expires in Year 5, one President appoints all three members.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Because regular vacancies under the 3–5–7 scheme recur every two (2) years, when a Chairman’s 7th year ends during the President’s Year 1 (Month 12), the second seat naturally expires in Year 3 (Month 36), and the third seat expires in Year 5 (Month 60)—all within the President’s 72-month term. The rotational system is thus designed not to make appointing all three mathematically impossible, but to prevent day-one "commission packing" by spacing appointments across the presidency.',
+		legalBasis: 'Art. IX-B & IX-D, Sec. 1(2), 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:229',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'exceptions',
+		question:
+			'The constitutional staggering of 7-year terms under Article IX applies equally to the Senate Electoral Tribunal (SET) and House of Representatives Electoral Tribunal (HRET).',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because staggered 7-year terms apply exclusively to the three Constitutional Commissions under Article IX.',
+			'Correct because SET and HRET members serve co-terminus with their congressional terms or judicial designations.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. The 3–5–7 staggered 7-year rotational scheme is prescribed strictly for the CSC, COMELEC, and COA under Article IX. In contrast, Electoral Tribunals are constituted under Article VI, Section 17 after each Congress organizes, and their members serve co-terminus with their legislative tenure or judicial designation.',
+		legalBasis: 'Art. VI, Sec. 17 & Art. IX, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:230',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'exceptions',
+		question:
+			'Applying the constitutional ban against reappointment in Constitutional Commissions (Article IX) and the parallel ban against presidential reelection (Article VII), which of the following movements are constitutionally ALLOWED?',
+		options: [
+			'Commissioner promoted to Chairman for the unexpired term',
+			'Vice-President running for President',
+			'Resigned Chairman appointed as Commissioner',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because promotion to a higher distinct office is a valid new appointment if aggregate service does not exceed 7 years.',
+			'True because moving up to a distinct higher office is a first-time presidential election, not a prohibited reelection.',
+			'False because resignation does not reset eligibility, and moving down to a lower post is a prohibited reappointment.',
+			'False because option c violates the reappointment ban.',
+			'True because upward promotional moves to distinct higher offices are allowed, while downward moves are barred.',
+			'False because option c violates the reappointment ban.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Under Article IX-C, Section 1(2), Matibag v. Benipayo (G.R. No. 149036), and Funa v. COA Chairman (670 SCRA 190, 2012), reappointment means movement to the same or lower rank—making a resigned Chairman ineligible to become a Commissioner—whereas promotion from Commissioner to Chairman is a valid new appointment strictly for the unexpired term and capped at an aggregate 7-year ceiling. By parallel logic under Article VII, Sections 3 and 4, a Vice-President may run for President, whereas a former President cannot run for Vice-President because doing so would create a backdoor to circumvent the absolute ban on presidential reelection.',
+		legalBasis: 'Art. VII, Secs. 3–4; Art. IX-C, Sec. 1(2); Matibag v. Benipayo; Funa v. Villar (2012)'
+	},
+	{
+		id: 'consti1:finals:231',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'requisites',
+		question:
+			'Under Article IX-A, Section 6 of the 1987 Constitution, which of the following rules govern the promulgation and scope of rules on pleadings and practice issued by the CSC, COMELEC, and COA?',
+		options: [
+			'Promulgation strictly en banc',
+			'Non-modification of substantive rights',
+			'Binding effect over regular trial courts',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because individual divisions or members cannot issue procedural rules; only the Commission en banc may do so.',
+			'True because Section 6 expressly forbids Commission rules from diminishing, increasing, or modifying substantive rights.',
+			'False because Commission rules apply strictly before the Commission itself; the Rules of Court prevail in regular courts.',
+			'False because option c violates Aruelo v. CA.',
+			'True because options a and b accurately state Section 6, whereas option c violates Aruelo v. CA.',
+			'False because option c is false.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article IX-A, Section 6 empowers each Commission en banc to promulgate its own rules concerning pleadings and practice before it or any of its offices, provided they do not diminish, increase, or modify substantive rights. In Aruelo v. Court of Appeals, the Supreme Court ruled that Commission procedural rules apply strictly to proceedings before the Commission and cannot restrict pleadings in regular courts, where the Supreme Court’s Rules of Court prevail. Under Article IX-A, Section 7, all Commission decisions require a collegial majority vote of ALL its Members (Orocio v. COA).',
+		legalBasis: 'Art. IX-A, Secs. 6–7, 1987 Constitution; Aruelo v. CA; Orocio v. COA'
+	},
+	{
+		id: 'consti1:finals:232',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'memorization',
+		question:
+			'The constitutional rule that a case or matter is "deemed submitted for decision or resolution upon the filing of the last pleading, brief, or memorandum" applies to which of the following bodies?',
+		options: [
+			'The Judiciary',
+			'The Constitutional Commissions',
+			'Congress in enacting general statutes',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article VIII, Section 15(2) applies this rule to trigger the 24-, 12-, and 3-month judicial decision deadlines.',
+			'True because Article IX-A, Section 7 uses the exact same rule to trigger their mandatory 60-day period to decide.',
+			'False because Congress follows legislative readings and committee rules rather than adjudicatory pleadings.',
+			'False because option c does not apply.',
+			'True because the rule applies to judicial and quasi-judicial constitutional adjudicators, not general lawmaking.',
+			'False because option c does not apply.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article VIII, Section 15(1)–(2) establishes that a case is deemed submitted upon filing of the last pleading, brief, or memorandum, requiring decisions within 24 months (Supreme Court), 12 months (lower collegiate courts), and 3 months (all other lower courts). Article IX-A, Section 7 mirrors this exact trigger for the CSC, COMELEC, and COA, mandating resolution within 60 days from submission. This adjudicatory rule does not govern general legislative enactments or routine executive acts.',
+		legalBasis: 'Art. VIII, Sec. 15(1)–(2) & Art. IX-A, Sec. 7, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:233',
+		topicId: 'finals',
+		topic: P6_2,
+		tag: 'exceptions',
+		question:
+			'If an aggrieved party seeks judicial review of a final en banc decision rendered by a Constitutional Commission, decisions of which Commissions are elevated directly to the Supreme Court via a Petition for Certiorari under Rule 64 (in relation to Rule 65) within thirty (30) days?',
+		options: [
+			'Commission on Elections (COMELEC)',
+			'Commission on Audit (COA)',
+			'Civil Service Commission (CSC)',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because final COMELEC En Banc rulings go directly to the Supreme Court via Rule 64/65 within 30 days.',
+			'True because final COA En Banc decisions likewise go directly to the Supreme Court via Rule 64/65 within 30 days.',
+			'False because final CSC decisions are appealed first to the Court of Appeals via Rule 43 within 15 days.',
+			'False because CSC is excluded from direct Rule 64 review.',
+			'True because COMELEC and COA go straight to the SC, whereas CSC goes to the CA.',
+			'False because CSC is excluded from direct Rule 64 review.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article IX-A, Section 7 provides that unless otherwise provided by the Constitution or law, any final decision of a Commission may be brought to the Supreme Court on certiorari within 30 days from receipt (implemented by Rule 64/65 for COMELEC and COA En Banc after a mandatory Motion for Reconsideration, Esteves v. Sarmiento). However, by statute (R.A. No. 7902) and Fabian v. Desierto, final CSC rulings are appealed to the Court of Appeals under Rule 43 within 15 days.',
+		legalBasis: 'Art. IX-A, Sec. 7; Rules 64, 65 & 43; R.A. 7902; Fabian v. Desierto; Esteves v. Sarmiento'
+	},
+
+	// ---- Section III: CSC, COA, COMELEC, Certiorari & Solicitor General (15 Items) ----
+	{
+		id: 'consti1:finals:234',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			'Under Article IX-B, Section 2(1) of the 1987 Constitution, which of the following government entities are embraced by the Civil Service System?',
+		options: [
+			'All branches, subdivisions, instrumentalities, and agencies',
+			'GOCCs with original charters',
+			'Non-chartered GOCCs under the Corporation Code',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because this is the verbatim constitutional scope covering national and local government offices.',
+			'True because corporations created directly by special law, like GSIS and SSS, fall under Civil Service Law.',
+			'False because GOCCs without original charters are excluded from the Civil Service and governed by the Labor Code.',
+			'False because option c is excluded from the Civil Service.',
+			'True because only regular government offices and chartered GOCCs fall under Civil Service jurisdiction.',
+			'False because option c is excluded.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article IX-B, Section 2(1) explicitly states that "the civil service embraces all branches, subdivisions, instrumentalities, and agencies of the Government, including government-owned or controlled corporations with original charters." Non-chartered GOCCs incorporated under the general Corporation Code are excluded from Civil Service jurisdiction and governed instead by the Labor Code.',
+		legalBasis: 'Art. IX-B, Sec. 2(1), 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:235',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Under Article IX-D, Section 2(1) of the 1987 Constitution, the Commission on Audit’s constitutional duty to "examine, audit, and settle" all public accounts extends to:',
+		options: [
+			'All government branches, LGUs, and fiscally autonomous bodies',
+			'Chartered and non-chartered GOCCs and their subsidiaries',
+			'Subsidized NGOs and special public funds',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because all departments, local governments, and independent commissions are subject to COA audit.',
+			'True because COA’s jurisdiction covers both chartered and non-chartered GOCCs, including local water districts.',
+			'True because non-governmental entities receiving public subsidy/equity and special statutory levies are subject to audit.',
+			'False because option b is also covered by COA’s audit jurisdiction.',
+			'False because option c is likewise subject to post-audit.',
+			'True because all three categories fall squarely under COA’s comprehensive audit jurisdiction.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article IX-D, Section 2(1) vests COA with power to examine, audit, and settle all accounts pertaining to government revenues, receipts, expenditures, and uses of funds/property across all branches, LGUs, fiscally autonomous bodies, state universities, GOCCs and their subsidiaries (Davao City Water District v. COA), subsidized NGOs, and special statutory funds (COCOFED v. Republic; Caltex v. COA). Under Section 2(2), COA has exclusive power to disallow Irregular, Unnecessary, Excessive, Extravagant, or Unconscionable (IUEEU) expenditures.',
+		legalBasis: 'Art. IX-D, Sec. 2(1)–(2), 1987 Constitution; Davao City Water District v. COA; COCOFED v. Republic'
+	},
+	{
+		id: 'consti1:finals:236',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			'To promote commercial flexibility, Congress may validly pass a statute exempting a government subsidiary or a special public levy fund invested in private corporate shares from the audit jurisdiction of the Commission on Audit.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because Article IX-D, Section 3 imposes an absolute ban on any statutory exemption from COA audit.',
+			'Correct because no law may exempt any government entity, subsidiary, or investment of public funds "in any guise whatever" from COA.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article IX-D, Section 3 expressly commands that "no law shall be passed exempting any entity of the Government or its subsidiary in any guise whatever, or any investment of public funds, from the jurisdiction of the Commission on Audit." In COCOFED v. Republic, the Supreme Court invalidated statutory attempts to reclassify public coconut levy funds invested in UCPB shares as private property to evade COA audit.',
+		legalBasis: 'Art. IX-D, Sec. 3, 1987 Constitution; COCOFED v. Republic'
+	},
+	{
+		id: 'consti1:finals:237',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Under Article IX-C of the 1987 Constitution and election statutes, which of the following bodies participate in enforcing election laws or prosecuting election offenses?',
+		options: [
+			'Commission on Elections',
+			'Deputized AFP and PNP',
+			'Department of Justice',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because COMELEC is the primary executive and administrative enforcer of all election laws.',
+			'True because COMELEC may deputize law enforcement agencies and the AFP with the President’s concurrence.',
+			'True because the DOJ shares concurrent jurisdiction with COMELEC to investigate and prosecute election offenses.',
+			'False because option b also exercises deputized enforcement roles.',
+			'False because option c shares concurrent prosecutorial authority.',
+			'True because all three participate in election law enforcement and prosecution.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article IX-C, Section 2(1), (4), and (6) designate COMELEC as primary enforcer of election laws, authorize it to deputize the AFP and PNP with Presidential concurrence, and empower it to investigate and prosecute election offenses (concurrently with the DOJ under R.A. No. 9369 and Arroyo v. DOJ). However, Congress—not COMELEC—remains the exclusive canvassing body for President and Vice-President (Art. VII, Sec. 4; Macalintal v. COMELEC).',
+		legalBasis: 'Art. IX-C, Sec. 2(1), (4) & (6); R.A. 9369; Arroyo v. DOJ'
+	},
+	{
+		id: 'consti1:finals:238',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'requisites',
+		question:
+			'When exercising its quasi-judicial authority over an election protest or pre-proclamation controversy, the COMELEC En Banc may validly hear and decide the case directly at first instance without prior adjudication by a COMELEC Division.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because only purely administrative election matters may be handled directly en banc at first instance.',
+			'Correct because Article IX-C, Section 3 mandates that all adjudicatory election cases be heard and decided first in Division.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article IX-C, Section 3 mandates that COMELEC may sit en banc or in two divisions, provided that all election cases shall be heard and decided in Division, and Motions for Reconsideration shall be decided by the Commission en banc. Adjudicating an election contest directly en banc at first instance is void for lack of jurisdiction (Soller v. COMELEC; Canicosa v. COMELEC).',
+		legalBasis: 'Art. IX-C, Sec. 3, 1987 Constitution; Soller v. COMELEC; Canicosa v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:239',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			"A journalist published a newspaper article criticizing the COMELEC's bidding and purchase of ballot boxes, prompting the COMELEC to cite him in contempt. Under Philippine jurisprudence, in which of the following proceedings may the COMELEC validly exercise contempt powers?",
+		options: [
+			'Election contests',
+			'Pre-proclamation or disqualification adjudications',
+			'Administrative procurement of ballot boxes',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because trying election protests is a quasi-judicial function where contempt power applies.',
+			'True because adjudicatory and quasi-judicial fact-finding proceedings validly support contempt powers.',
+			'False because purchasing supplies is purely administrative, where COMELEC has no contempt power.',
+			'False because option c is purely administrative.',
+			'True because contempt power is valid only in quasi-judicial functions and void in purely administrative tasks.',
+			'False because option c is purely administrative.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). In Guevara v. COMELEC (104 Phil. 268, 1958)—the exact ballot-box procurement criticism case—and Masangcay v. COMELEC (6 SCRA 27, 1962), the Supreme Court held that contempt power is inherently judicial and cannot be exercised by COMELEC in purely administrative or ministerial tasks such as purchasing election supplies; a contempt order issued therein is null and void and challengeable via certiorari. Conversely, COMELEC may validly cite persons for contempt during quasi-judicial proceedings or adjudicatory fact-finding (Bedol v. COMELEC).',
+		legalBasis: 'Guevara v. COMELEC (1958); Masangcay v. COMELEC (1962); Bedol v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:240',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Under Article IX-C, Section 2(2) of the 1987 Constitution and Javier v. COMELEC, an election "contest" (mnemonic: Q-R-E) encompasses any dispute affecting a candidate’s lawful title to elective office relating to:',
+		options: [
+			'Qualifications',
+			'Returns',
+			'Elections',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because challenges to eligibility, citizenship, age, or domicile via quo warranto fall under qualifications.',
+			'True because disputes over canvassing, Board of Canvassers proceedings, or tampered returns fall under returns.',
+			'True because protests over poll conduct, ballot counting, appreciation, fraud, or terrorism fall under elections.',
+			'False because option b (Returns) is also a core element of a contest.',
+			'False because option c is equally part of the constitutional phrase.',
+			'True because "elections, returns, and qualifications" form the three integrated elements of an election contest.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article IX-C, Section 2(2), Article VI, Section 17, and Article VII, Section 4 use the comprehensive phrase "elections, returns, and qualifications." In Javier v. COMELEC (G.R. Nos. L-68379-81), the Supreme Court held that "contest" is liberally construed to cover any matter involving the title or claim of title to an elective office, made before or after proclamation, materialized through election protests, quo warranto petitions, pre-proclamation controversies, or COC cancellations.',
+		legalBasis: 'Art. IX-C, Sec. 2(2); Art. VI, Sec. 17; Art. VII, Sec. 4; Javier v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:241',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Under Article IX-C, Section 2(2) of the 1987 Constitution, election contests involving which of the following elective local officials fall within the exclusive ORIGINAL jurisdiction of the COMELEC?',
+		options: [
+			'Regional, provincial, and city officials',
+			'Municipal officials',
+			'Barangay and SK officials',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 2(2) expressly vests exclusive original jurisdiction over these three levels in the COMELEC.',
+			'False because municipal election contests fall under the exclusive original jurisdiction of the RTC, with COMELEC exercising appellate jurisdiction.',
+			'False because barangay and SK contests fall under the exclusive original jurisdiction of the MTC, with COMELEC exercising appellate jurisdiction.',
+			'False because barangay and SK contests originate in the MTC, not the COMELEC.',
+			'False because municipal contests originate in the RTC.',
+			'False because municipal and barangay contests fall under COMELEC’s appellate, not original, jurisdiction.',
+			'False because option a is true.'
+		],
+		correctIndex: 0,
+		key: 'Regional, provincial, and city officials',
+		explanation:
+			'A (Regional, provincial, and city officials). Article IX-C, Section 2(2) vests COMELEC with exclusive original jurisdiction over all contests relating to elective regional, provincial, and city officials, and exclusive appellate jurisdiction over all contests involving elective municipal officials decided by trial courts of general jurisdiction (RTC) and elective barangay officials decided by trial courts of limited jurisdiction (MTC/MeTC, governed by A.M. No. 07-4-15-SC).',
+		legalBasis: 'Art. IX-C, Sec. 2(2), 1987 Constitution; A.M. No. 07-4-15-SC'
+	},
+	{
+		id: 'consti1:finals:242',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			'In election matters, the Regional Trial Court (RTC) exercises appellate jurisdiction over barangay election contests originally decided by the Municipal Trial Court (MTC).',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because barangay election contests are appealable exclusively to the COMELEC, never to the RTC.',
+			'Correct because the RTC’s sole appellate jurisdiction in election matters is limited to voter inclusion and exclusion cases from the MTC.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Under Article IX-C, Section 2(2) and Flores v. COMELEC (184 SCRA 484), any statute routing barangay election contest appeals from the MTC to the RTC is unconstitutional because COMELEC holds exclusive appellate jurisdiction over them. The RTC’s narrow election-related appellate jurisdiction applies solely to voter inclusion and exclusion petitions originally tried by the MTC (B.P. Blg. 881, Secs. 138–139; R.A. No. 8189, Sec. 33), where the RTC’s ruling is final and executory.',
+		legalBasis: 'Art. IX-C, Sec. 2(2); Flores v. COMELEC (184 SCRA 484); B.P. 881, Secs. 138–139; R.A. 8189, Sec. 33'
+	},
+	{
+		id: 'consti1:finals:243',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			"Under Article IX-C, Section 2(3), the COMELEC has direct administrative jurisdiction to adjudicate individual petitions for voter inclusion or exclusion involving a citizen's right to vote.",
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because the Constitution explicitly excludes questions involving the right to vote from COMELEC’s administrative powers.',
+			'Correct because determining an individual citizen’s right to vote is a purely judicial question reserved exclusively for regular courts.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Article IX-C, Section 2(3) empowers the COMELEC to decide all administrative questions affecting elections "except those involving the right to vote." In Pungutan v. Abubakar, the Supreme Court held that voter eligibility is a purely judicial question cognizable exclusively by regular trial courts (MTC originally, RTC on appeal) via inclusion/exclusion proceedings, preventing administrative disenfranchisement by the COMELEC.',
+		legalBasis: 'Art. IX-C, Sec. 2(3), 1987 Constitution; Pungutan v. Abubakar'
+	},
+	{
+		id: 'consti1:finals:244',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'requisites',
+		question:
+			'After precinct tabulation and canvassing by the Board of Canvassers (or COMELEC En Banc as NBOC for Senators/Party-Lists), which requisites must concur before sole jurisdiction over election contests involving a winning Member of Congress transfers from the COMELEC to the SET or HRET?',
+		options: [
+			'Valid proclamation',
+			'Proper oath of office',
+			'Assumption of office',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because a candidate must first be validly proclaimed elected by the proper canvassing board.',
+			'True because taking a valid oath of office is the second mandatory step to become a Member.',
+			'True because actual assumption of office completes the transfer of jurisdiction to the Electoral Tribunal.',
+			'False because taking a proper oath of office (option b) must also concur.',
+			'False because assumption of office must also occur.',
+			'True because all three requisites must concur under Reyes v. COMELEC.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under Article VI, Section 17 and Reyes v. COMELEC, the HRET and SET acquire exclusive jurisdiction as sole judge of contests relating to their respective members only after the winning candidate becomes a full "Member" through the concurrence of three requisites: (1) valid proclamation, (2) proper oath of office, and (3) assumption of office. Prior to all three, COMELEC retains jurisdiction over pre-proclamation controversies and COC cancellations.',
+		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:245',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Distinguishing the "election period" from the "campaign period" under Philippine election law, which of the following statements are accurate?',
+		options: [
+			'Fixed 120-day election period',
+			'Varying 90-, 45-, or 15-day campaign periods',
+			'Premature campaigning liability upon COC filing',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because unless otherwise fixed by COMELEC, it starts 90 days before and ends 30 days after election day.',
+			'True because campaign windows vary by office and end two days before election day.',
+			'False because under Penera v. COMELEC, a COC filer is legally a candidate only at the start of the campaign period.',
+			'False because option c contradicts Penera v. COMELEC.',
+			'True because options a and b match constitutional and statutory periods, whereas option c contradicts Penera.',
+			'False because option c is false.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article IX-C, Section 9 and B.P. Blg. 881, Section 3 fix the election period at 90 days before to 30 days after election day (120 days total, governing gun bans and personnel transfers). R.A. No. 7166, Section 5 sets campaign periods at 90 days (President, VP, Senators, Party-List), 45 days (House and local officials), and 15 days (barangay), ending 2 days before election day. Under R.A. No. 9369 and Penera v. COMELEC (G.R. No. 181613), candidate liability for unlawful acts begins only upon the start of the official campaign period.',
+		legalBasis: 'Art. IX-C, Sec. 9; B.P. 881, Sec. 3; R.A. 7166, Sec. 5; R.A. 9369; Penera v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:246',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'exceptions',
+		question:
+			'Which of the following features are expressly established by Article IX-C, Sections 6 and 7 of the 1987 Constitution regarding political parties and voting systems?',
+		options: [
+			'Free and open multi-party system',
+			'General prohibition on block voting',
+			'Exception for registered party-list groups',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 6 promotes a free and open party system evolving according to the people’s free choice.',
+			'True because Section 7 invalidates block votes cast for political parties in regular candidate elections.',
+			'True because Section 7 expressly exempts political parties registered under the party-list system from the block-voting ban.',
+			'False because option b (general prohibition on block voting) is also mandated by Section 7.',
+			'False because option c is an express textual exception.',
+			'True because all three accurately state the constitutional rules on parties and block voting.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article IX-C, Section 6 mandates a free and open party system allowed to evolve according to the free choice of the people (broadening democratization and representation, though carrying practical risks of candidate proliferation and coalition instability). Article IX-C, Section 7 decrees that no votes cast in favor of a political party, organization, or coalition shall be valid, except for those registered under the party-list system.',
+		legalBasis: 'Art. IX-C, Secs. 6 & 7, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:247',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'requisites',
+		question:
+			'Whereas an ordinary appeal reviews errors of judgment involving both facts and law, a Special Civil Action for Certiorari under Rule 65 (and Rule 64 for COMELEC/COA En Banc rulings) is strictly limited to which jurisdictional grounds?',
+		options: [
+			'Lack of jurisdiction',
+			'Excess of jurisdiction',
+			'Grave abuse of discretion',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because acting without legal authority from the outset is a ground for certiorari.',
+			'True because exceeding statutory or constitutional bounds during proceedings is a ground for certiorari.',
+			'True because whimsical, capricious, or despotic abuse amounting to lack or excess of jurisdiction warrants certiorari.',
+			'False because option b (excess of jurisdiction) is also an explicit Rule 65 ground.',
+			'False because option c is the primary constitutional ground for reviewing COMELEC rulings.',
+			'True because all three constitute the exclusive jurisdictional grounds under Rule 65.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under Rule 65, Section 1 (in relation to Rule 64 and Article IX-A, Section 7), certiorari corrects only errors of jurisdiction—without jurisdiction, in excess of jurisdiction, or grave abuse of discretion amounting to lack or excess of jurisdiction—and cannot be used to re-evaluate facts or ordinary errors of law (Aratuc v. COMELEC; Mendoza v. COMELEC, G.R. No. 188308, Oct. 15, 2009). Even where COMELEC decisions in municipal and barangay contests are declared "final, executory, and non-appealable" under Article IX-C, Section 2(2), the aggrieved party (the losing litigant suffering legal injury) may still elevate the En Banc decision to the Supreme Court via Rule 64/65 certiorari (Galido v. COMELEC).',
+		legalBasis: 'Art. IX-A, Sec. 7; Rules 64 & 65, Sec. 1; Aratuc v. COMELEC; Mendoza v. COMELEC; Galido v. COMELEC'
+	},
+	{
+		id: 'consti1:finals:248',
+		topicId: 'finals',
+		topic: P6_3,
+		tag: 'memorization',
+		question:
+			'Under the Administrative Code of 1987 (E.O. No. 292), which of the following are official statutory duties of the Office of the Solicitor General (OSG)?',
+		options: [
+			'Representing the Government in civil and international suits',
+			'Handling criminal appeals before the CA and SC',
+			'Filing quo warranto suits and defending marriage validity',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because the OSG is the principal legal counsel of the Republic in civil, land, money, and international cases.',
+			'True because the OSG represents the People of the Philippines in all appellate criminal proceedings.',
+			'True because the OSG institutes quo warranto actions and appears in marriage nullity cases to prevent collusion.',
+			'False because option b is also a primary OSG function.',
+			'False because option c is equally part of the OSG’s mandate.',
+			'True because all three accurately summarize the Solicitor General’s duties.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Section 35, Chapter 12, Title III, Book IV of Executive Order No. 292 (Administrative Code of 1987) designates the Solicitor General as the principal law officer of the Government, tasked with representing the State in civil, land registration, expropriation, money claims, and international litigation; representing the People in all criminal appeals before the Court of Appeals and Supreme Court; filing quo warranto proceedings (Rule 66); appearing in annulment/nullity cases to protect marriage; and rendering legal opinions to government agencies.',
+		legalBasis: 'E.O. No. 292 (Administrative Code of 1987), Book IV, Title III, Ch. 12, Sec. 35; Rule 66'
+	},
+
+	// ---- Section IV: Accountability of Public Officers — Impeachment & Ombudsman (5 Items) ----
+	{
+		id: 'consti1:finals:249',
+		topicId: 'finals',
+		topic: P6_4,
+		tag: 'memorization',
+		question:
+			'Under Article XI, Section 1 of the 1987 Constitution, because "public office is a public trust," public officers and employees must at all times remain accountable to the people and serve them with:',
+		options: [
+			'Utmost responsibility and integrity',
+			'Loyalty and efficiency',
+			'Patriotism, justice, and modest lives',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because both are verbatim ethical duties mandated by Section 1.',
+			'True because loyalty and efficiency are explicitly required alongside responsibility and integrity.',
+			'True because acting with patriotism and justice and leading modest lives complete the constitutional mandate.',
+			'False because option b (loyalty and efficiency) is also a verbatim requirement.',
+			'False because option c is equally mandated by Section 1.',
+			'True because all three options accurately reproduce the constitutional standard of public accountability.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article XI, Section 1 explicitly states: "Public office is a public trust. Public officers and employees must, at all times, be accountable to the people, serve them with utmost responsibility, integrity, loyalty, and efficiency; act with patriotism and justice, and lead modest lives." As held in Cornejo v. Gabriel, public officers are mere agents and trustees of the people who hold no proprietary right to their offices, enforced through SALNs (Sec. 17), anti-graft laws, impeachment, and the Ombudsman.',
+		legalBasis: 'Art. XI, Secs. 1 & 17, 1987 Constitution; Cornejo v. Gabriel'
+	},
+	{
+		id: 'consti1:finals:250',
+		topicId: 'finals',
+		topic: P6_4,
+		tag: 'memorization',
+		question:
+			'Under Article XI, Section 2 of the 1987 Constitution, Members of the Constitutional Commissions and other impeachable officers may be removed from office on impeachment for, and conviction of, which exclusive constitutional grounds?',
+		options: [
+			'Culpable violation of the Constitution and treason',
+			'Bribery and graft and corruption',
+			'Other high crimes and betrayal of public trust',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because both are expressly listed among the six impeachment grounds.',
+			'True because both are expressly enumerated under Section 2.',
+			'True because both complete the exclusive constitutional list of six impeachable offenses.',
+			'False because option b is also enumerated under Section 2.',
+			'False because option c is equally listed in Section 2.',
+			'True because all three options encompass all six exclusive constitutional grounds for impeachment.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article XI, Section 2 enumerates six exclusive grounds for impeachment: culpable violation of the Constitution, treason, bribery, graft and corruption, other high crimes, and betrayal of public trust (covering gross faithlessness or abuse of power short of crime, Gonzales v. Office of the President). Separately, an official’s lack of constitutional qualification at the inception of appointment may be challenged via a Petition for Quo Warranto filed by the Solicitor General (Republic v. Sereno, G.R. No. 237428, May 11, 2018).',
+		legalBasis: 'Art. XI, Sec. 2, 1987 Constitution; Gonzales v. Office of the President; Republic v. Sereno (2018)'
+	},
+	{
+		id: 'consti1:finals:251',
+		topicId: 'finals',
+		topic: P6_4,
+		tag: 'effects',
+		question:
+			'Under Article XI, Section 3 of the 1987 Constitution, which of the following accurately state the roles and legal effects in an impeachment proceeding?',
+		options: [
+			'House of Representatives as initiator and prosecutor',
+			'Senate as sole judge requiring a 2/3 vote to convict',
+			'Verdict limited to removal and perpetual disqualification',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because the House initiates impeachment by a 1/3 vote of all members and prosecutes before the Senate.',
+			'True because Senators sit as Senator-Judges, presided over by the Chief Justice for the President and the Senate President for all others.',
+			'True because judgment cannot impose prison or fines, cannot be pardoned, and does not bar subsequent criminal prosecution.',
+			'False because option b is also a verbatim rule under Section 3.',
+			'False because option c accurately states Section 3(7).',
+			'True because all three accurately summarize impeachment procedure and judgment.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article XI, Section 3 grants the House exclusive power to initiate and prosecute impeachment (1/3 vote of all members; subject to the one-year bar rule in Francisco v. House of Representatives, 415 SCRA 44, 2003) and grants the Senate sole power to try and decide (2/3 vote of all members; Chief Justice presides without voting when the President is on trial). Under Section 3(7) and Article VII, Section 19, conviction extends only to removal and perpetual disqualification, is beyond presidential pardon, and leaves the official liable to ordinary criminal, civil, or administrative prosecution.',
+		legalBasis: 'Art. XI, Sec. 3 & Art. VII, Sec. 19, 1987 Constitution; Francisco v. House of Representatives (2003)'
+	},
+	{
+		id: 'consti1:finals:252',
+		topicId: 'finals',
+		topic: P6_4,
+		tag: 'memorization',
+		question:
+			'Under the 1987 Philippine Constitution, impeachable officers such as Supreme Court Justices, Constitutional Commissioners, and the Ombudsman are "jury appointed" by randomly selected citizens.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because the Philippine constitutional system has no jury system and vests appointive power in the Executive.',
+			'Correct because appointive impeachable officers are appointed by the President via JBC shortlists or CA confirmation, while the President and VP are elected by suffrage.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. The Philippines does not utilize citizen juries for either trials or public appointments. Under Article VII, Section 16; Article VIII, Section 9; Article IX; and Article XI, Section 9, appointment is an executive power vested in the President (from JBC shortlists without CA confirmation for Justices and the Ombudsman, and with CA confirmation for Constitutional Commissioners).',
+		legalBasis: 'Art. VII, Sec. 16; Art. VIII, Sec. 9; Art. IX; Art. XI, Sec. 9, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:253',
+		topicId: 'finals',
+		topic: P6_4,
+		tag: 'effects',
+		question:
+			'Regarding the institutional independence, core mandate, and judicial forum of the Office of the Ombudsman under Article XI of the 1987 Constitution, which of the following statements are true?',
+		options: [
+			'Constitutional creation, fiscal autonomy, and JBC appointment without CA confirmation',
+			'Investigative, prosecutorial, and corrective mandate as "protector of the people"',
+			'Operation of its own exclusive criminal trial court',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because these structural safeguards—plus fixed 7-year tenure and impeachability—guarantee political independence.',
+			'True because Section 13 empowers the Ombudsman to investigate, prosecute, and discipline public malfeasance.',
+			'False because the Ombudsman has no trial court of its own and prosecutes cases before the Sandiganbayan or regular courts.',
+			'False because option c is false.',
+			'True because options a and b reflect the Ombudsman’s independence and mandate, while option c is false.',
+			'False because option c is false.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article XI, Sections 5 and 8–14 create the independent Office of the Ombudsman with fiscal autonomy, JBC nomination without CA confirmation, fixed 7-year non-renewable term, salary protection, and impeachment security (Gonzales v. Office of the President). As "protector of the people," it investigates and prosecutes public malfeasance (R.A. No. 6770), filing criminal cases before the Sandiganbayan (for Salary Grade 27+ officials under Art. XI, Sec. 4; R.A. 8249/10660) or regular courts, while its administrative disciplinary rulings are appealable to the Court of Appeals under Rule 43.',
+		legalBasis: 'Art. XI, Secs. 4–5 & 8–14; R.A. 6770; R.A. 8249/10660; Gonzales v. Office of the President'
+	},
+
+	// ---- Section V: Delegation of Powers, Congress, Electoral Tribunals, Martial Law & LGUs (12 Items) ----
+	{
+		id: 'consti1:finals:254',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'requisites',
+		question:
+			'Under Pelaez v. Auditor General, a statute delegating subordinate rule-making power to an administrative agency is constitutionally valid as long as it satisfies the Sufficient Standard Test, even if it fails the Completeness Test.',
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because a sufficient standard cannot stand alone without a complete legislative policy to limit.',
+			'Correct because both the Completeness Test and the Sufficient Standard Test must concur for a valid delegation.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. In Pelaez v. Auditor General (15 SCRA 569), the Supreme Court laid down the concurrent rule that every valid delegation of legislative power must satisfy BOTH the Completeness Test (the law must be complete in all its essential terms and conditions when it leaves Congress) and the Sufficient Standard Test (sufficiently determinate guidelines must map out the delegate’s boundaries so administrative discretion does not overflow). Failing either test renders the delegation unconstitutional and void.',
+		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (15 SCRA 569)'
+	},
+	{
+		id: 'consti1:finals:255',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			'Once Congress enacts a valid delegating statute satisfying both constitutional tests, why does the Executive branch have no discretion to ignore or refuse to enforce it?',
+		options: [
+			'The Faithful Execution Clause',
+			'The Rule of Law',
+			'Purely subordinate, ministerial nature of execution',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Article VII, Section 17 imposes a mandatory constitutional duty on the President to ensure laws are faithfully executed.',
+			'True because as held in Gonzalez v. Hechanova, the Executive cannot disregard valid statutes due to policy disagreement.',
+			'True because Congress has already fixed the legislative policy, leaving the Executive only to execute details or verify factual triggers.',
+			'False because option b (Rule of Law) is equally a foundational reason.',
+			'False because option c also explains why no legislative discretion remains.',
+			'True because all three constitutional imperatives compel faithful executive implementation.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VII, Section 17 commands that the President "shall ensure that the laws be faithfully executed." Because Congress already exercised legislative discretion in establishing a complete policy with sufficient standards (Abakada Guro v. Executive Secretary), the Executive’s delegated authority is purely subordinate execution, bound by the rule of law (Gonzalez v. Hechanova).',
+		legalBasis: 'Art. VII, Sec. 17, 1987 Constitution; Abakada Guro v. Executive Secretary; Gonzalez v. Hechanova'
+	},
+	{
+		id: 'consti1:finals:256',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			'Under Article VI, Section 13 of the 1987 Constitution, which of the following legal rules distinguish an "Incompatible Office" from a "Forbidden Office" for Members of Congress?',
+		options: [
+			'Automatic forfeiture of congressional seat for an incompatible office',
+			'Absolute voidness of appointment to a forbidden office for the entire elected term',
+			'Lifting of the forbidden office ban upon early resignation',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because accepting another government or GOCC office automatically vacates the legislative seat upon taking the oath.',
+			'True because no legislator may be appointed to an office created or given higher pay during their term, preventing office trafficking.',
+			'False because resignation does not cure the disqualification until the full 3- or 6-year elected term expires.',
+			'False because option c is false.',
+			'True because options a and b accurately distinguish both bars, whereas early resignation cannot evade a forbidden office.',
+			'False because option c is false.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article VI, Section 13 bars legislators from holding any other government or GOCC post during their term without forfeiting their seat (incompatible office, preserving legislative independence and taking effect automatically upon oath under Adaza v. Pacana, 135 SCRA 431; see also common-law incompatibility in Public Interest Center v. Elma), and strictly prohibits appointment to any office created or whose emoluments were increased during the term for which they were elected (forbidden office, remaining void for the entire elected term even after early resignation).',
+		legalBasis: 'Art. VI, Sec. 13, 1987 Constitution; Adaza v. Pacana (135 SCRA 431); Public Interest Center v. Elma'
+	},
+	{
+		id: 'consti1:finals:257',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'memorization',
+		question:
+			'Under Article VI, Section 17 of the 1987 Constitution, the 9-member Senate Electoral Tribunal (SET) and House of Representatives Electoral Tribunal (HRET) are characterized by:',
+		options: [
+			'3 Supreme Court Justices designated by the Chief Justice',
+			'6 legislators chosen based on proportional representation',
+			'A constitutionally mandated blending of powers',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because the Constitution expressly uses the word "designated" for judicial members, with the senior Justice as Chairman.',
+			'True because the Constitution expressly uses "chosen" (never "selected") to allocate seats by party strength.',
+			'True because legislators sitting in the Tribunal act in an independent, non-partisan judicial capacity without violating separation of powers.',
+			'False because option b is also an accurate constitutional feature.',
+			'False because option c accurately explains why legislative membership is constitutional.',
+			'True because all three accurately reflect Article VI, Section 17 and jurisprudence.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Article VI, Section 17 constitutes each Electoral Tribunal with 9 members: 3 Supreme Court Justices designated by the Chief Justice and 6 Members of the respective House chosen on the basis of proportional representation of political parties and party-list organizations (Daza v. Singson; Coseteng v. Mitra; Macalintal v. PET, confirming exemption from Art. VIII, Sec. 12). This explicit blending of powers creates an independent quasi-judicial body (Suanes v. Disbursing Officer) whose legislator-members enjoy security of tenure against party removal for "conscience votes" (Bondoc v. Pineda).',
+		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Daza v. Singson; Coseteng v. Mitra; Bondoc v. Pineda'
+	},
+	{
+		id: 'consti1:finals:258',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			'Why did the framers of the 1987 Constitution retain Article IV, Section 1(3)—"Those born before January 17, 1973, of Filipino mothers, who elect Philippine citizenship upon reaching the age of majority"?',
+		options: [
+			"Non-retroactivity of the 1973 Constitution's maternal citizenship rule",
+			'Protection of inchoate rights of minors born under the 1935 Constitution',
+			'Equalization as natural-born citizens under Article IV, Section 2',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because automatic citizenship through Filipino mothers effective January 17, 1973 applied only prospectively.',
+			'True because minors born before January 17, 1973 still needed to reach majority age into the 1990s to elect citizenship.',
+			'True because Section 2 explicitly deems those who elect under Section 1(3) to be natural-born citizens.',
+			'False because option b is also an essential reason for retaining Section 1(3).',
+			'False because option c accurately states Section 2’s equalizing clause.',
+			'True because all three explain the historical origin, transitory function, and equalized status of Section 1(3).',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under the 1935 Constitution, children of Filipino mothers and alien fathers were not automatically Filipino at birth and had to elect citizenship upon majority. Because the 1973 Constitution’s equalizing rule (effective January 17, 1973) was non-retroactive, Article IV, Section 1(3) was carried over into the 1987 Constitution as a transitory safeguard for minors born before that date, and Article IV, Section 2 (second sentence) expressly declared them "natural-born citizens" to equalize their legal status.',
+		legalBasis: 'Art. IV, Secs. 1(3) & 2, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:259',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'requisites',
+		question:
+			'Because qualifications for national elective offices are fixed exclusively by the Constitution, which of the following minimum age and residency requirements are constitutionally accurate?',
+		options: [
+			'President and Vice-President: 40 years old, 10-year Philippine resident',
+			'Senator: 35 years old, 2-year Philippine resident',
+			'District Representative: 25 years old, 1-year district resident',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True under Article VII, Sections 2 and 3.',
+			'True under Article VI, Section 3.',
+			'True under Article VI, Section 6.',
+			'False because option b (Senator) is also a verbatim constitutional qualification.',
+			'False because option c is equally accurate.',
+			'True because all three accurately match the Constitution’s exclusive age and residency requirements.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under Article VII, Sections 2–3 (President/VP: natural-born, registered voter, literate, 40 years old, 10-year PH resident), Article VI, Section 3 (Senator: natural-born, registered voter, literate, 35 years old, 2-year PH resident), and Article VI, Section 6 (District Representative: natural-born, district registered voter, literate, 25 years old, 1-year district resident), qualifications are exclusive and continuing (with dual citizens required under R.A. No. 9225 to execute a sworn renunciation of foreign citizenship upon filing a COC).',
+		legalBasis: 'Art. VI, Secs. 3 & 6; Art. VII, Secs. 2–3, 1987 Constitution; R.A. 9225'
+	},
+	{
+		id: 'consti1:finals:260',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			'Under Article VI, Section 10 of the 1987 Constitution, an increase in the compensation of Senators and Members of the House of Representatives takes effect:',
+		options: [
+			'After the full term of ALL approving Senators and Representatives expires',
+			'Immediately after the 3-year House term expires',
+			"Retroactively for computing legislators' retirement benefits",
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because Section 10 bars the increase until the full 6-year term of the longest-serving approving Senators ends.',
+			'False because the House cannot receive the increase while approving Senators are still serving their 6-year terms.',
+			'False because retirement gratuities must be computed on the salary actually received during service.',
+			'False because option c violates Ligot v. Mathay.',
+			'False because option b violates Section 10.',
+			'False because options b and c are unconstitutional.',
+			'False because option a is true.'
+		],
+		correctIndex: 0,
+		key: 'After the full term of ALL approving Senators and Representatives expires',
+		explanation:
+			'A (After the full term of ALL approving Senators and Representatives expires). Article VI, Section 10 decrees that "no increase in said compensation shall take effect until after the expiration of the full term of all the Members of the Senate and the House of Representatives approving such increase" (Philconsa v. Mathay, 18 SCRA 300). Retirement gratuities of retiring legislators must likewise be computed strictly on the salary in effect during their actual term (Ligot v. Mathay, 56 SCRA 823).',
+		legalBasis: 'Art. VI, Sec. 10, 1987 Constitution; Philconsa v. Mathay (18 SCRA 300); Ligot v. Mathay (56 SCRA 823)'
+	},
+	{
+		id: 'consti1:finals:261',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'exceptions',
+		question:
+			'Regarding legislative "consolidated bills" and the Enrolled Bill Doctrine, which of the following principles are legally correct?',
+		options: [
+			'Bicameral Conference Committees reconcile differing House and Senate versions into one identical consolidated bill',
+			'Signature withdrawal by the Senate President and President destroys enrolled bill status',
+			'Upon withdrawal of signatures, courts consult the Legislative Journal as conclusive proof',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because both chambers must approve one identical text under Article VI, Section 27(1), valid even for House-originated revenue bills under Tolentino.',
+			'True because once repudiated by certifying officers for omitted amendments, no enrolled bill legally exists.',
+			'True because the constitutionally mandated Journal is the next best conclusive record to avoid sacrificing truth to fiction.',
+			'False because option b is also a settled doctrine under Astorga v. Villegas.',
+			'False because option c accurately states the Astorga consequence.',
+			'True because all three accurately capture bicameral consolidation and the Astorga v. Villegas exception.',
+			'False because options a, b, and c are all true.'
+		],
+		correctIndex: 5,
+		key: 'a, b, and c are true',
+		explanation:
+			'F (a, b, and c are true). Under Article VI, Sections 24 and 27(1) and Tolentino v. Secretary of Finance (235 SCRA 630), consolidating parallel committee measures or differing House and Senate bills into one identical consolidated text is constitutionally valid. While an enrolled bill is generally conclusive upon courts (Mabanag v. Lopez Vito), Astorga v. Villegas (56 SCRA 714) held that when the Senate President and President withdraw their signatures due to omitted floor amendments, the enrolled bill ceases to exist and courts must follow the Legislative Journal mandated by Article VI, Section 16(4) (U.S. v. Pons, 34 Phil. 729).',
+		legalBasis: 'Art. VI, Secs. 16(4), 24 & 27(1); Tolentino v. Sec. of Finance; Astorga v. Villegas; U.S. v. Pons'
+	},
+	{
+		id: 'consti1:finals:262',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			"Under Article VII, Section 18 of the 1987 Constitution, Congress—voting jointly by at least a majority of all its Members—may revoke the President's proclamation of martial law, and such revocation cannot be set aside by the President.",
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Correct because Article VII, Section 18 expressly makes congressional revocation by majority joint vote final and binding on the President.',
+			'Incorrect because the President has no constitutional power to override Congress’s revocation of martial law.'
+		],
+		correctIndex: 0,
+		key: 'True',
+		explanation:
+			'TRUE. Article VII, Section 18, Paragraph 1 of the 1987 Constitution expressly provides that Congress, voting jointly by a vote of at least a majority of all its Members in regular or special session, may revoke a proclamation of martial law or suspension of the privilege of the writ of habeas corpus, which revocation shall not be set aside by the President. Separately, Paragraph 3 empowers the Supreme Court to review the sufficiency of its factual basis upon petition by any citizen (Lagman v. Medialdea).',
+		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Lagman v. Medialdea'
+	},
+	{
+		id: 'consti1:finals:263',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'memorization',
+		question:
+			"Under the 1973 Philippine Constitution's modified parliamentary framework, the Commission on Appointments (CA) existed as a legislative confirmation body over presidential appointments.",
+		options: ['True', 'False'],
+		optionExplanations: [
+			'Incorrect because the 1973 Constitution abolished the Commission on Appointments, vesting unhampered appointing authority in the President.',
+			'Correct because no Commission on Appointments existed under the 1973 Constitution; it was restored only under the 1987 Constitution.'
+		],
+		correctIndex: 1,
+		key: 'False',
+		explanation:
+			'FALSE. Unlike the 1935 Constitution and the 1987 Constitution (Article VI, Section 18 and Article VII, Section 16), the 1973 Constitution abolished the Commission on Appointments, leaving the President with unhampered appointing power without confirmation by the Batasang Pambansa.',
+		legalBasis: '1973 Constitution; Art. VI, Sec. 18 & Art. VII, Sec. 16, 1987 Constitution'
+	},
+	{
+		id: 'consti1:finals:264',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'requisites',
+		question:
+			'Under Article X, Sections 1 and 10 of the 1987 Constitution, local governments consist of provinces, cities, municipalities, barangays, and autonomous regions (Muslim Mindanao and the Cordilleras). Creating a municipality constitutionally requires:',
+		options: [
+			'An Act of Congress (statutory charter) meeting Local Government Code criteria',
+			'Majority approval in a plebiscite of directly affected political units',
+			'A Presidential Executive Order',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because creating a municipality is a purely legislative act requiring a statutory charter.',
+			'True because Section 10 mandates ratification by a majority of votes cast in a plebiscite.',
+			'False because under Pelaez v. Auditor General, the President cannot create municipalities by executive order.',
+			'False because option c is unconstitutional.',
+			'True because both a congressional charter and plebiscite ratification are mandatory, whereas executive creation is void.',
+			'False because option c is unconstitutional.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Article X, Section 10 mandates that no province, city, municipality, or barangay may be created, divided, merged, abolished, or its boundary substantially altered except in accordance with the criteria established in the Local Government Code (R.A. No. 7160) and subject to approval by a majority of votes cast in a plebiscite in the political units directly affected; under Pelaez v. Auditor General (15 SCRA 569), creating municipalities is exclusively legislative. Autonomous regions are separately created through an Organic Act passed by Congress with a Regional Consultative Commission and ratified by plebiscite, including only favorably voting units (Art. X, Secs. 15 & 18).',
+		legalBasis: 'Art. X, Secs. 1, 10, 15 & 18, 1987 Constitution; R.A. 7160; Pelaez v. Auditor General'
+	},
+	{
+		id: 'consti1:finals:265',
+		topicId: 'finals',
+		topic: P6_5,
+		tag: 'effects',
+		question:
+			'In Philippine administrative and constitutional law, which of the following are classic examples of "hybrid" administrative agencies exercising a combination of executive/administrative, quasi-legislative, and quasi-judicial powers?',
+		options: [
+			'Constitutional Commissions (CSC, COMELEC, COA)',
+			'Specialized regulatory commissions like the SEC, NLRC, and ERC',
+			'Executive line departments like the DPWH',
+			'a and c are true',
+			'a and b are true',
+			'a, b, and c are true',
+			'none of the above'
+		],
+		optionExplanations: [
+			'True because all three administer specialized mandates, issue subordinate rules, and adjudicate disputes.',
+			'True because these administrative agencies combine regulatory enforcement, rule-making, and dispute adjudication.',
+			'False because the DPWH is primarily a pure executive line department focused on infrastructure execution rather than a hybrid adjudicatory commission.',
+			'False because option c is primarily an executive line department.',
+			'True because both Constitutional Commissions and specialized regulatory boards blend all three powers, unlike line departments such as DPWH.',
+			'False because option c is primarily an executive line department.',
+			'False because options a and b are true.'
+		],
+		correctIndex: 4,
+		key: 'a and b are true',
+		explanation:
+			'E (a and b are true). Under modern administrative law, hybrid administrative agencies exercise executive administration, delegated quasi-legislative rule-making (subordinate legislation), and quasi-judicial adjudication within technical domains—exemplified by the Constitutional Commissions (Article IX) and statutory regulatory bodies such as the SEC, NLRC, ERC, and NTC. In contrast, executive line departments like the Department of Public Works and Highways (E.O. No. 292, Book IV, Title V) primarily execute infrastructure and administrative programs rather than adjudicating adversarial controversies.',
+		legalBasis: 'Art. IX, 1987 Constitution; E.O. No. 292, Book IV, Title V'
+	},
+
+	// =========================================================================
 	// PART 5: JURISPRUDENCE MASTER DRILL — CHAPTERS 12–19 (Q121–Q210)
 	// =========================================================================
 
@@ -3404,7 +4933,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:121',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark case did the Supreme Court define the classic nature of judicial review, ruling that the Judiciary does not assert superiority over coordinate branches, but merely acts as a constitutional mediator to enforce the supremacy of the fundamental law?',
 		options: [
@@ -3431,7 +4960,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:122',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark post-1986 decision firmly established that the "expanded certiorari jurisdiction" under Article VIII, Section 1(2) imposes an active constitutional duty on courts to strike down arbitrary acts of political departments tainted with grave abuse of discretion, thereby restricting the traditional "political question" defense?',
 		options: [
@@ -3458,7 +4987,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:123',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court rule that the power to promulgate rules of pleading, practice, and procedure in all courts is an exclusive constitutional prerogative of the Supreme Court that cannot be altered, amended, or repealed by Congress?',
 		options: [
@@ -3485,7 +5014,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:124',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court establish that procedural rules promulgated by courts cannot diminish, increase, or modify substantive rights created by statutory law?',
 		options: [
@@ -3512,7 +5041,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:125',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the administrative supervision and discipline of lower court judges and judicial personnel belongs exclusively to the Supreme Court, barring the Ombudsman from investigating judicial acts without prior Supreme Court clearance?',
 		options: [
@@ -3539,7 +5068,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:126',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case reiterated the Maceda doctrine by holding that when an intra-court physical altercation occurs between judicial employees on court premises, the Ombudsman must defer to the primary administrative authority of the Supreme Court?',
 		options: [
@@ -3566,7 +5095,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:127',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark case did the Supreme Court strike down the practice of seating two representatives from Congress in the Judicial and Bar Council (JBC), ruling that Congress is constitutionally entitled to only one representative with one single vote?',
 		options: [
@@ -3593,7 +5122,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:128',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which ruling did the Supreme Court hold that the President's constitutional obligation to fill vacancies in the Supreme Court within ninety (90) days under Article VIII, Section 4(1) operates as an exception to the midnight appointments ban under Article VII, Section 15?",
 		options: [
@@ -3620,7 +5149,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:129',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court invalidate the JBC\'s practice of "clustering" nominees into separate shortlists for simultaneous collegiate court vacancies, affirming the President\'s discretion to choose from any qualified candidate across all shortlists submitted?',
 		options: [
@@ -3647,7 +5176,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:130',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the constitutional periods prescribed under Article VIII, Section 15 for courts to decide cases are directory rather than mandatory in the jurisdictional sense, meaning a late judgment is not void?',
 		options: [
@@ -3674,7 +5203,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:131',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court strike down a presidential veto of legislative appropriations for judicial pensions, holding that the veto violated the constitutional guarantee of fiscal autonomy under Article VIII, Section 3?',
 		options: [
@@ -3701,7 +5230,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:132',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which ruling did the Supreme Court clarify that under the 1987 Constitution, the salaries of Justices and judges are subject to general income taxation, thereby explicitly abandoning the old doctrine of Perfecto v. Meer and Endencia v. David?',
 		options: [
@@ -3728,7 +5257,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:133',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case held that minors, represented by their parents, have legal standing to sue on behalf of future generations to preserve ecological balance under the doctrine of "Intergenerational Responsibility"?',
 		options: [
@@ -3755,7 +5284,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:134',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court hold that an association of concerned citizens and taxpayers had locus standi to challenge the PCSO on-line lottery contract due to the "transcendental importance" of the constitutional issues raised?',
 		options: [
@@ -3782,7 +5311,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:135',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which subsequent case did the Supreme Court reverse its earlier liberal stance, ruling that locus standi is a procedural requirement that cannot be invoked when the petitioner does not suffer direct, material injury from an amended lease contract?',
 		options: [
@@ -3809,7 +5338,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:136',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the Integrated Bar of the Philippines (IBP) lacked direct legal standing to question the deployment of the Philippine Marines in anti-crime visibility patrols, although the Court chose to resolve the issue on the merits?',
 		options: [
@@ -3836,7 +5365,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:137',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which ruling did the Supreme Court hold that under Batas Pambansa Blg. 129, statutory inferior courts may be abolished by Congress pursuant to a bona fide judicial reorganization, a ruling later constitutionally qualified by Article VIII, Section 2?',
 		options: [
@@ -3863,7 +5392,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:138',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court affirm that a Supreme Court Division has no authority to dismiss or remove a lower court judge from service, as dismissal requires an affirmative vote of the Court sitting En Banc?',
 		options: [
@@ -3890,7 +5419,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:139',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the dismissal of an appeal via an unreasoned minute resolution stating that "the petition lacks merit" does not violate Article VIII, Section 14, because the full statement of facts and law is required only for full decisions?',
 		options: [
@@ -3917,7 +5446,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:140',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case held that a judicial decision that fails to set forth the factual findings and legal conclusions upon which it is based is completely void for violating constitutional due process and Article VIII, Section 14?',
 		options: [
@@ -3944,7 +5473,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:141',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court sustain the validity of a "memorandum decision" by an appellate court adopting by reference the findings of fact and law of the lower court, provided the adopted decision is attached or fully quoted?',
 		options: [
@@ -3971,7 +5500,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:142',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the constitutional question must be raised at the earliest opportunity, by a party with locus standi, in an actual case or controversy where its resolution is the very lis mota of the litigation?',
 		options: [
@@ -3998,7 +5527,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:143',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court reiterate that the Roppongi property in Japan belongs to the public domain and cannot be sold or disposed of by executive officials without express statutory authority enacted by Congress?',
 		options: [
@@ -4025,7 +5554,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:144',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court establish that a resolution of the Court of Appeals denying a motion for reconsideration on the ground that "no cogent reason was presented to depart from earlier findings" satisfies Article VIII, Section 14?',
 		options: [
@@ -4052,7 +5581,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:145',
 		topicId: 'finals_cases',
 		topic: P5_12,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case held that an administrative resolution of the COMELEC recommending the disqualification of a candidate substantially complies with Article VIII, Section 14 if it sufficiently apprises the party so that specific errors can be assigned on appeal?',
 		options: [
@@ -4081,7 +5610,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:146',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark case did the Supreme Court establish the definitive calculation of the 3-5-7 rotational scheme for Constitutional Commissions, holding that terms have a common fixed starting baseline (February 2, 1987) and that late appointments run only for the unexpired portion?',
 		options: [
@@ -4108,7 +5637,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:147',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark case did the Supreme Court invalidate President Corazon Aquino\'s designation of Associate Commissioner Haydee Yorac as Acting Chairman of the COMELEC, holding that the President cannot designate an acting head of an independent constitutional commission?',
 		options: [
@@ -4135,7 +5664,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:148',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"Which early case under the 1935 Constitution established the foundational rule that the rotational scheme for constitutional commissioners is disrupted if an appointment is made for a full term instead of the unexpired balance of a predecessor's term?",
 		options: [
@@ -4162,7 +5691,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:149',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which case did the Supreme Court rule that an incumbent COA Commissioner cannot be promoted to Chairman to serve a fresh seven-year term upon the expiration of the previous Chairman's term, and that total aggregate service as Commissioner and Chairman can never exceed seven years?",
 		options: [
@@ -4189,7 +5718,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:150',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark civil service case did the Supreme Court rule that the CSC is not an appointing authority and cannot substitute its own choice for that of the appointing officer once the appointee possesses the minimum legal qualifications?',
 		options: [
@@ -4216,7 +5745,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:151',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case held that government reorganizations pursuant to post-1986 executive orders must be executed in good faith, and that summary separations of career personnel in bad faith violate constitutional security of tenure?',
 		options: [
@@ -4243,7 +5772,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:152',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which ruling established that government-owned or controlled corporations created under the general Corporation Code (without original legislative charters) are governed by the Labor Code, not Civil Service Law?',
 		options: [
@@ -4270,7 +5799,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:153',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which subsequent case confirmed the NASECO doctrine, holding that employees of the Food Terminal, Inc. (FTI), a non-chartered corporation, fall under the jurisdiction of the Labor Code?',
 		options: [
@@ -4297,7 +5826,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:154',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court hold that government employees in the public sector do not have the right to strike or stage concerted work stoppages to compel collective bargaining?',
 		options: [
@@ -4324,7 +5853,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:155',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the Civil Service Commission has concurrent jurisdiction with state university governing boards to investigate administrative charges against university personnel?',
 		options: [
@@ -4351,7 +5880,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:156',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which ruling did the Supreme Court hold that Special Education Laws (such as R.A. 4670) establishing specific grievance committees cannot divest the CSC of its constitutionally anchored supervisory and disciplinary jurisdiction over public school employees?',
 		options: [
@@ -4378,7 +5907,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:157',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which ruling did the Supreme Court hold that Regional Trial Courts have no jurisdiction over the dismissal of employees of local water districts (GOCCs with original charters under P.D. 198), because disciplinary matters fall within the exclusive jurisdiction of the Civil Service Commission?',
 		options: [
@@ -4405,7 +5934,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:158',
 		topicId: 'finals_cases',
 		topic: P5_13,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark labor law case established the general procedural principle that petitions for certiorari under Rule 65 assailing NLRC decisions should be brought initially to the Court of Appeals to maintain the hierarchy of courts?',
 		options: [
@@ -4434,7 +5963,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:159',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court rule that the constitutional requirement under Article IX-C, Section 3 that election cases be heard first in Division applies strictly to adjudicatory/quasi-judicial functions, while purely administrative matters are decided directly En Banc?',
 		options: [
@@ -4461,7 +5990,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:160',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case held that any decision or resolution rendered directly by the COMELEC En Banc in an election contest without it being heard and decided first by a Division is null and void for lack of jurisdiction?',
 		options: [
@@ -4488,7 +6017,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:161',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court strike down a COMELEC resolution requiring print media publishers to donate free advertising space ("COMELEC Space") for political candidates, declaring it an unconstitutional taking of private property without just compensation?',
 		options: [
@@ -4515,7 +6044,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:162',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court uphold the validity of Section 11(b) of Republic Act No. 6646 prohibiting the sale or donation of print space and broadcast time for political campaigns except through the COMELEC, classifying it as a valid regulatory exercise under Article IX-C, Section 4?',
 		options: [
@@ -4542,7 +6071,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:163',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court invalidate a COMELEC resolution prohibiting the conduct of exit polls, holding that exit polling forms part of the constitutionally protected freedom of speech and the press?',
 		options: [
@@ -4569,7 +6098,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:164',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which ruling did the Supreme Court invalidate Section 5.4 of Republic Act No. 9006, which banned the publication of election surveys within 15 days before national elections and 7 days before local elections, holding that it constituted an invalid prior restraint on expression?',
 		options: [
@@ -4596,7 +6125,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:165',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case reversed Lanot v. COMELEC and established that under Section 15 of Republic Act No. 9369, premature campaigning is no longer an election offense because an aspirant is deemed a candidate only upon the commencement of the official campaign period?',
 		options: [
@@ -4623,7 +6152,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:166',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which ruling did the Supreme Court invalidate statutory provisions in the Overseas Absentee Voting Act (R.A. 9189) that subjected COMELEC's implementing rules to prior congressional approval, holding that such a legislative veto violated COMELEC's constitutional independence?",
 		options: [
@@ -4650,7 +6179,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:167',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which case did the Supreme Court rule that the COMELEC's contempt power is limited to proceedings where it exercises quasi-judicial authority, and cannot be invoked in purely administrative or ministerial inquiries?",
 		options: [
@@ -4677,7 +6206,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:168',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the power to conduct preliminary investigation of election offenses is vested in the COMELEC, but the exclusive original jurisdiction to try and decide criminal prosecutions for election offenses belongs to the Regional Trial Courts?',
 		options: [
@@ -4704,7 +6233,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:169',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which early post-1973 case did the Supreme Court hold that under the Constitution, judgments and final orders of the Commission on Elections can only be reviewed by the Supreme Court on certiorari upon a showing of grave abuse of discretion?',
 		options: [
@@ -4731,7 +6260,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:170',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court strike down Section 9 of Republic Act No. 6679, which provided that decisions of municipal trial courts in barangay election contests shall be appealable to the Regional Trial Courts, holding that it unconstitutionally bypassed the appellate jurisdiction of the COMELEC under Article IX-C, Section 2(2)?',
 		options: [
@@ -4758,7 +6287,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:171',
 		topicId: 'finals_cases',
 		topic: P5_14,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court reiterate that an election protest involving an elective municipal official must be heard and decided by a COMELEC Division on appeal before any motion for reconsideration can be brought to the COMELEC En Banc?',
 		options: [
@@ -4787,7 +6316,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:172',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which case did the Supreme Court affirm that under Presidential Decree No. 1445, the Commission on Audit has primary jurisdiction over all moneyed claims against the Government, and that an auditor's delay gives rise to mandamus to compel decision, not an order of automatic execution?",
 		options: [
@@ -4814,7 +6343,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:173',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case held that trial courts cannot issue writs of execution or garnishment against the funds and bank accounts of state universities without the judgment creditor first submitting the claim to the Commission on Audit for audit approval?',
 		options: [
@@ -4841,7 +6370,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:174',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark decision did the Supreme Court declare that coconut levy funds are special public funds, thereby placing shares of stock and corporations acquired using those funds under the audit jurisdiction of the Commission on Audit?',
 		options: [
@@ -4868,7 +6397,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:175',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case held that taxes collected for the Oil Price Stabilization Fund (OPSF) constitute special public funds, and that oil companies holding these collections are accountable public agents subject to COA audit and disallowance?',
 		options: [
@@ -4895,7 +6424,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:176',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which early landmark case did the Supreme Court hold that the Insular Auditor is not a mere ministerial officer, and that mandamus will not issue to compel the approval of a public expenditure when the auditor has exercised discretion in determining that the expenditure was unauthorized by law?',
 		options: [
@@ -4922,7 +6451,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:177',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which case did the Supreme Court rule that the Cooperative Development Authority's procurement of office equipment and computers is subject to the COA's auditing rules for the prevention and disallowance of irregular, unnecessary, excessive, extravagant, or unconscionable (IUEEU) expenditures?",
 		options: [
@@ -4949,7 +6478,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:178',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court strike down an administrative resolution passed by the GSIS Board granting additional early retirement incentives to its employees without express statutory authorization, holding that it constituted unauthorized expenditure of public funds subject to COA disallowance?',
 		options: [
@@ -4976,7 +6505,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:179',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which early case did the Supreme Court rule that while the Auditor General has the constitutional power to examine and audit accounts, he cannot refuse to pass in audit an expenditure authorized by a valid, existing contract unless it is shown to be illegal or contrary to statutory appropriations?',
 		options: [
@@ -5003,7 +6532,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:180',
 		topicId: 'finals_cases',
 		topic: P5_15,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"Which case established that the Auditor General's authority to disallow irregular or illegal accounts does not authorize him to review the correctness of judicial determinations on matters within the exclusive jurisdiction of the courts?",
 		options: [
@@ -5032,7 +6561,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:181',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark decision did the Supreme Court define the word "initiate" in Article XI, Section 3(5) of the Constitution, holding that an impeachment proceeding is initiated upon the filing of the complaint and its referral to the House Committee on Justice, thereby triggering the one-year ban?',
 		options: [
@@ -5059,7 +6588,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:182',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the simultaneous filing and consolidation of multiple impeachment complaints that are referred to the Committee on Justice on the exact same day does not violate the one-year bar rule?',
 		options: [
@@ -5086,7 +6615,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:183',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark ruling did the Supreme Court hold that quo warranto and impeachment are distinct legal remedies, and that an impeachable officer may be ousted via a petition for quo warranto for lack of constitutional qualifications at the time of appointment?',
 		options: [
@@ -5113,7 +6642,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:184',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court strike down Section 8(2) of Republic Act No. 6770, which granted the President disciplinary authority over the Deputy Ombudsman, declaring it an unconstitutional encroachment on the independence of the Ombudsman?',
 		options: [
@@ -5140,7 +6669,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:185',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"Which case established that under the 1987 Constitution, the Ombudsman is the primary constitutional officer vested with investigative and prosecutorial authority, and that the Special Prosecutor is an organic subordinate who cannot file criminal informations without the Ombudsman's authorization?",
 		options: [
@@ -5167,7 +6696,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:186',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court uphold the constitutionality of Presidential Decree No. 1486 creating the Sandiganbayan as a specialized anti-graft court, holding that it does not violate equal protection guarantees?',
 		options: [
@@ -5194,7 +6723,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:187',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which ruling established that actions filed by the State through the Presidential Commission on Good Government (PCGG) for the recovery of ill-gotten wealth unlawfully acquired by public officials are imprescriptible under Article XI, Section 15?',
 		options: [
@@ -5221,7 +6750,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:188',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court hold that the mandatory 90-day preventive suspension under Section 13 of Republic Act No. 3019 (Anti-Graft and Corrupt Practices Act) applies to all public officers indicted under a valid information, including incumbent Members of Congress?',
 		options: [
@@ -5248,7 +6777,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:189',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark ruling did the Supreme Court hold that a non-sitting President loses executive immunity from suit and can be criminally prosecuted before the Sandiganbayan for non-official criminal acts like plunder and bribery?',
 		options: [
@@ -5275,7 +6804,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:190',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the right to receive the salary and emoluments of a public office is strictly an incident to legal title to the office, which can only be litigated through a direct action for quo warranto?',
 		options: [
@@ -5302,7 +6831,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:191',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court hold that private individuals who act in conspiracy with public officials in violating Section 3(e) of Republic Act No. 3019 may be validly tried by the Sandiganbayan?',
 		options: [
@@ -5329,7 +6858,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:192',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which early ruling did the Supreme Court define the jurisdiction of the Tanodbayan under Presidential Decree No. 1630 before the ratification of the 1987 Constitution?',
 		options: [
@@ -5356,7 +6885,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:193',
 		topicId: 'finals_cases',
 		topic: P5_16,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that the preliminary investigation conducted by the Tanodbayan/Ombudsman is an executive function that will not be enjoined by courts absent a showing of arbitrary grave abuse of discretion?',
 		options: [
@@ -5385,7 +6914,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:194',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark case did the Supreme Court rule that Congress, when sitting as a Constituent Assembly, exercises constituent power derived directly from the Constitution, and that its proposals are justiciable questions subject to judicial review?',
 		options: [
@@ -5412,7 +6941,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:195',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case established the "Doctrine of Single Submission," holding that all proposed constitutional amendments must be submitted to the electorate in a single, unified plebiscite and invalidating piecemeal plebiscites?',
 		options: [
@@ -5439,7 +6968,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:196',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court rule that the amending process is justiciable, and that in an extraordinary period of crisis government where the legislature does not exist, the President may propose constitutional amendments in a plebiscite?',
 		options: [
@@ -5466,7 +6995,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:197',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"Which landmark case held that Republic Act No. 6735 was incomplete, inadequate, and insufficient to implement the system of People's Initiative on amendments to the Constitution under Article XVII, Section 2?",
 		options: [
@@ -5493,7 +7022,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:198',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which landmark decision did the Supreme Court establish the \"Quantitative\" and \"Qualitative\" tests to distinguish an Amendment from a Revision, ruling that a People's Initiative can only propose amendments, never revisions?",
 		options: [
@@ -5520,7 +7049,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:199',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that when Congress acts as a Constituent Assembly to call a Constitutional Convention or propose amendments, the Senate and the House of Representatives assemble jointly but must vote separately?',
 		options: [
@@ -5547,7 +7076,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:200',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"In which historic ruling did the Supreme Court dismiss petitions challenging the ratification of the 1973 Constitution via Citizens' Assemblies (viva voce voting), concluding that there was no further judicial obstacle to the new charter being in force?",
 		options: [
@@ -5574,7 +7103,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:201',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case upheld the authority of the interim Batasang Pambansa sitting as a Constituent Assembly under the 1973 Constitution to propose amendments modifying the parliamentary framework to create an executive presidency?',
 		options: [
@@ -5601,7 +7130,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:202',
 		topicId: 'finals_cases',
 		topic: P5_17,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court uphold the submission of multiple constitutional amendments regarding presidential succession and agrarian reform to the electorate in a plebiscite, rejecting claims of piecemeal ratification?',
 		options: [
@@ -5630,7 +7159,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:203',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark decision did the Supreme Court declare that Article XII, Section 10 (the "Filipino First Policy") is a self-executing constitutional provision that gives qualified Filipinos a preference in the acquisition of assets forming part of the national patrimony?',
 		options: [
@@ -5657,7 +7186,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:204',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which landmark case held that under the Regalian Doctrine (Article XII, Section 2), all natural resources belong to the State, and that the 1987 Constitution completely abandoned the old system of commercial leases and concessions in favor of production-sharing agreements?',
 		options: [
@@ -5684,7 +7213,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:205',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which landmark ruling on reconsideration did the Supreme Court uphold the constitutionality of the Philippine Mining Act of 1995 (R.A. 7942), holding that Article XII, Section 2 permits foreign corporations to enter into Financial or Technical Assistance Agreements (FTAAs) provided real management control remains with the State?',
 		options: [
@@ -5711,7 +7240,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:206',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which historic series of rulings (culminating in its final 2011 resolution) did the Supreme Court ultimately reverse its earlier 2008 invalidation and uphold the constitutionality of sixteen cityhood laws that exempted specific municipalities from the increased ₱100 million income threshold under R.A. 9009?',
 		options: [
@@ -5738,7 +7267,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:207',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			"Which historic case saw the Supreme Court split equally (7-7), resulting in the dismissal of the petition and the upholding of Republic Act No. 8371 (Indigenous Peoples' Rights Act) recognizing ancestral domain rights?",
 		options: [
@@ -5765,7 +7294,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:208',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case held that a natural-born Filipino citizen who lost his citizenship by serving in the U.S. Armed Forces and subsequently reacquired it via statutory repatriation under R.A. 2630 is deemed to have recovered his original status as a natural-born citizen?',
 		options: [
@@ -5792,7 +7321,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:209',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'In which case did the Supreme Court rule that statutory requirements for repatriation must be strictly complied with, and that taking an oath of allegiance without officially registering it in the proper local civil registry fails to restore citizenship for elective office?',
 		options: [
@@ -5819,7 +7348,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		id: 'consti1:finals:210',
 		topicId: 'finals_cases',
 		topic: P5_18,
-		tag: 'jurisprudence',
+		tag: 'cases',
 		question:
 			'Which case established that penal statutes relating to election offenses (under the Omnibus Election Code) cannot be challenged through a facial challenge on grounds of vagueness or overbreadth, as facial challenges apply strictly to free speech cases?',
 		options: [

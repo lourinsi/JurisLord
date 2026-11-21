@@ -427,7 +427,7 @@
 
 		if (effectiveCounts.mcq > 0) {
 			const sampled = sampleWeightedItems(filteredMcqs, effectiveCounts.mcq, (q) =>
-				q.tag === 'jurisprudence' || q.topicId === 'finals_cases' ? 0.25 : 1
+				q.tag === 'cases' || q.topicId === 'finals_cases' ? 0.25 : 1
 			);
 			for (const q of sampled) {
 				const order = dynamicOptionOrder(q.options);
@@ -756,6 +756,10 @@
 		jurisprudence: {
 			label: 'Jurisprudence',
 			cls: 'border-[#EA2B2B]/50 bg-[#FFDFE0] text-[#EA2B2B] dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+		},
+		cases: {
+			label: 'Cases',
+			cls: 'border-[#FF9600]/60 bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/50 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
 		}
 	};
 

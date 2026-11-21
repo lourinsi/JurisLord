@@ -3,9 +3,19 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import {
+		Bookmark,
+		BookmarkCheck,
 		CheckCircle2,
 		Clock,
+		Eye,
+		EyeOff,
+		Flag,
+		Lightbulb,
+		Pause,
+		Play,
 		RotateCcw,
+		Send,
+		SkipForward,
 		Sparkles,
 		Volume2,
 		VolumeX,
@@ -22,8 +32,10 @@
 	import { playMcqSound } from '$lib/sound';
 	import { prefs } from '$lib/stores/prefs.svelte';
 	import { userStorage } from '$lib/stores/storage.svelte';
+	import { ui } from '$lib/stores/ui.svelte';
 	import { md } from '$lib/text';
-	import type { Subject } from '$lib/types';
+	import { mcqMatchesTopic } from '$lib/topics';
+	import type { McqTag, Subject } from '$lib/types';
 	import {
 		KIND_META,
 		PART_ORDER,
@@ -85,6 +97,7 @@
 		if (loadedSubjectId === id) return;
 		loadedSubjectId = id;
 		session = loadSavedExamSession(id);
+		activeItemKey = session?.items.length ? entryKey(session.items[0]) : '';
 	});
 
 	$effect(() => {
@@ -93,6 +106,14 @@
 		if (session) {
 			void JSON.stringify(session.answers);
 			void JSON.stringify(session.marks);
+			void JSON.stringify(session.flagged ?? {});
+			void JSON.stringify(session.items);
+			void session.startedAt;
+			void session.deadlineAt;
+			void session.durationMs;
+			void session.pausedAt;
+			void session.pausedTotalMs;
+			void session.showAnswers;
 			void session.finishedAt;
 			void session.graded;
 		}
@@ -216,10 +237,18 @@
 			termFilter = bank.hasFinalsTerms ? 'finals' : 'all';
 			numFilter = bank.hasFinalsNums ? 'finals' : 'all';
 			if (bank.hasFinalsMcqs && counts.mcq === 0) counts.mcq = Math.min(10, bank.mcqs.filter((q) => q.isFinals).length);
-			if (bank.hasFinalsEssays && counts.essay === 0) counts.essay = Math.min(2, bank.essays.filter((e) => e.isFinals).length);
-			if (bank.hasFinalsEnums && counts.enum === 0) counts.enum = Math.min(2, bank.enums.filter((e) => e.isFinals).length);
-			if (bank.hasFinalsTerms && counts.term === 0) counts.term = Math.min(2, bank.terms.filter((t) => t.isFinals).length);
-			if (bank.reqs.length && counts.req === 0) counts.req = Math.min(3, bank.reqs.length);
+			if (subject.id === 'consti1') {
+				counts.essay = 0;
+				counts.enum = 0;
+				counts.term = 0;
+				counts.req = 0;
+				counts.num = 0;
+			} else {
+				if (bank.hasFinalsEssays && counts.essay === 0) counts.essay = Math.min(2, bank.essays.filter((e) => e.isFinals).length);
+				if (bank.hasFinalsEnums && counts.enum === 0) counts.enum = Math.min(2, bank.enums.filter((e) => e.isFinals).length);
+				if (bank.hasFinalsTerms && counts.term === 0) counts.term = Math.min(2, bank.terms.filter((t) => t.isFinals).length);
+				if (bank.reqs.length && counts.req === 0) counts.req = Math.min(3, bank.reqs.length);
+			}
 		} else if (preset === 'missed') {
 			mcqFilter = 'missed';
 			essayFilter = 'review';
@@ -241,7 +270,7 @@
 		if (mcqFilter === 'new') return bank.mcqs.filter((q) => !userStorage.mcqAttempts[q.id]);
 		if (mcqFilter === 'finals_all') return bank.mcqs.filter((q) => q.isFinals);
 		if (mcqFilter === 'all') return bank.mcqs;
-		return bank.mcqs.filter((q) => q.topicId === mcqFilter);
+		return bank.mcqs.filter((q) => mcqMatchesTopic(q, mcqFilter));
 	});
 
 	const filteredEssays = $derived.by(() => {
@@ -291,6 +320,7 @@
 
 	const availableKinds = $derived(
 		PART_ORDER.filter((k) => {
+			if (subject.id === 'consti1' && scopePreset === 'finals') return k === 'mcq' && bank.mcqs.length > 0;
 			if (k === 'mcq') return bank.mcqs.length > 0;
 			if (k === 'essay') return bank.essays.length > 0;
 			if (k === 'enum') return bank.enums.length > 0;
@@ -423,19 +453,29 @@
 
 		if (!items.length) return;
 		const now = Date.now();
+		const durationMs = computedTimerSecs ? computedTimerSecs * 1000 : null;
 		session = {
 			subjectId: subject.id,
 			mode,
 			label: buildLabel(),
 			startedAt: now,
-			deadlineAt: computedTimerSecs ? now + computedTimerSecs * 1000 : null,
+			deadlineAt: durationMs ? now + durationMs : null,
+			durationMs,
+			pausedAt: null,
+			pausedTotalMs: 0,
+			showAnswers: true,
+			flagged: {},
 			finishedAt: null,
 			graded: false,
 			items,
 			answers: {},
 			marks: {}
 		};
+		activeItemKey = items.length ? entryKey(items[0]) : '';
+		activeFilter = 'all';
+		openHints = {};
 		confirmSubmit = false;
+		confirmReset = false;
 		confirmQuit = false;
 		mcqReviewFilter = 'all';
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -449,23 +489,34 @@
 		});
 		if (!missedEntries.length) return;
 		const now = Date.now();
+		const retryItems = missedEntries.map((it) => {
+			const q = bank.mcqById[it.id];
+			const opts = q?.options ?? [];
+			const order = dynamicOptionOrder(opts, Math.random, it.order);
+			return { kind: 'mcq' as const, id: it.id, order };
+		});
 		session = {
 			subjectId: subject.id,
 			mode: 'practice',
 			label: `Retry Missed · ${missedEntries.length} MCQs`,
 			startedAt: now,
 			deadlineAt: null,
+			durationMs: null,
+			pausedAt: null,
+			pausedTotalMs: 0,
+			showAnswers: true,
+			flagged: {},
 			finishedAt: null,
 			graded: false,
-			items: missedEntries.map((it) => {
-				const q = bank.mcqById[it.id];
-				const opts = q?.options ?? [];
-				const order = dynamicOptionOrder(opts, Math.random, it.order);
-				return { kind: 'mcq', id: it.id, order };
-			}),
+			items: retryItems,
 			answers: {},
 			marks: {}
 		};
+		activeItemKey = retryItems.length ? entryKey(retryItems[0]) : '';
+		activeFilter = 'all';
+		openHints = {};
+		confirmSubmit = false;
+		confirmReset = false;
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
@@ -475,11 +526,14 @@
 		const q = bank.mcqById[entry.id];
 		if (!q) return;
 
-		if (session.mode === 'practice') {
+		const revealNow = session.showAnswers ?? true;
+		if (revealNow) {
 			if (session.answers[k] !== undefined && session.answers[k] !== '') return;
 			session.answers[k] = String(originalIndex);
 			const ok = originalIndex === resolveCorrectIndex(q);
-			userStorage.recordMcqAttempt(q.id, originalIndex, ok);
+			if (session.mode === 'practice') {
+				userStorage.recordMcqAttempt(q.id, originalIndex, ok);
+			}
 			playMcqSound(ok);
 		} else {
 			session.answers[k] = String(originalIndex);
@@ -488,6 +542,12 @@
 
 	function submitExam() {
 		if (!session || session.finishedAt) return;
+		if (session.pausedAt) {
+			const pausedDelta = Date.now() - session.pausedAt;
+			session.pausedTotalMs = (session.pausedTotalMs ?? 0) + pausedDelta;
+			if (session.deadlineAt !== null) session.deadlineAt += pausedDelta;
+			session.pausedAt = null;
+		}
 		const end = session.deadlineAt ? Math.min(Date.now(), session.deadlineAt) : Date.now();
 		session.finishedAt = end;
 		confirmSubmit = false;
@@ -523,7 +583,7 @@
 				correct: totals.score,
 				answered: answeredCount,
 				total: totals.total,
-				secondsUsed: Math.round((end - session.startedAt) / 1000)
+				secondsUsed: Math.max(0, Math.round((end - session.startedAt - (session.pausedTotalMs ?? 0)) / 1000))
 			});
 			if (mcqCount > 0) playMcqSound(mcqCorrect >= Math.ceil(mcqCount / 2));
 		}
@@ -576,23 +636,281 @@
 		}
 	});
 
-	// ---- Live clock ----
+	// ---- Live clock + pause ----
 	let now = $state(Date.now());
 	const tickTimer = setInterval(() => {
 		now = Date.now();
 	}, 500);
 	onDestroy(() => clearInterval(tickTimer));
 
+	const isPaused = $derived(Boolean(session && !session.finishedAt && session.pausedAt));
+	const showAnswers = $derived(session ? (session.showAnswers ?? true) : true);
+	const effectiveNow = $derived(session?.pausedAt ?? now);
+
+	function toggleShowAnswers() {
+		if (!session || session.finishedAt) return;
+		session.showAnswers = !(session.showAnswers ?? true);
+	}
+
+	function togglePause() {
+		if (!session || session.finishedAt) return;
+		if (session.pausedAt) {
+			const delta = Date.now() - session.pausedAt;
+			session.pausedTotalMs = (session.pausedTotalMs ?? 0) + delta;
+			if (session.deadlineAt !== null) session.deadlineAt += delta;
+			session.pausedAt = null;
+			now = Date.now();
+		} else {
+			session.pausedAt = Date.now();
+		}
+	}
+
 	const secsLeft = $derived(
 		session && !session.finishedAt && session.deadlineAt
-			? (session.deadlineAt - now) / 1000
+			? (session.deadlineAt - effectiveNow) / 1000
 			: null
 	);
+	const elapsedSecs = $derived(
+		session
+			? Math.max(0, ((session.finishedAt ?? effectiveNow) - session.startedAt - (session.pausedTotalMs ?? 0)) / 1000)
+			: 0
+	);
 	$effect(() => {
-		if (secsLeft !== null && secsLeft <= 0 && session && !session.finishedAt) {
+		if (secsLeft !== null && secsLeft <= 0 && session && !session.finishedAt && !session.pausedAt) {
 			submitExam();
 		}
 	});
+
+	// ---- Jump to question, filters & MCQ-parity actions ----
+	type ActiveExamFilter = 'all' | 'unanswered' | 'incorrect' | 'flagged' | 'bookmarked';
+	let activeItemKey = $state('');
+	let activeFilter = $state<ActiveExamFilter>('all');
+	let openHints = $state<Record<string, boolean>>({});
+	let confirmReset = $state(false);
+
+	const TAGS: Record<McqTag, { label: string; cls: string }> = {
+		memorization: {
+			label: 'Memorization',
+			cls: 'border-[#E5B400] bg-[#FFF5CC] text-[#946200] dark:border-[#FFC800]/50 dark:bg-[#FFC800]/20 dark:text-[#FFD633]'
+		},
+		requisites: {
+			label: 'Requisites',
+			cls: 'border-[#46A302]/50 bg-[#D7FFB8] text-[#46A302] dark:border-[#58CC02]/50 dark:bg-[#58CC02]/20 dark:text-[#7BE328]'
+		},
+		exceptions: {
+			label: 'Exceptions',
+			cls: 'border-[#1899D6]/50 bg-[#DDF4FF] text-[#1899D6] dark:border-[#1CB0F6]/50 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
+		},
+		effects: {
+			label: 'Effects',
+			cls: 'border-[#A55EEA]/50 bg-[#F3E8FF] text-[#8930C9] dark:border-[#CE82FF]/50 dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]'
+		},
+		jurisprudence: {
+			label: 'Jurisprudence',
+			cls: 'border-[#EA2B2B]/50 bg-[#FFDFE0] text-[#EA2B2B] dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+		}
+	};
+
+	function itemDomId(k: string): string {
+		return `exam-item-${k.replace(/[^a-zA-Z0-9_-]/g, '_')}`;
+	}
+
+	function jumpToItem(k: string) {
+		activeItemKey = k;
+		const el = document.getElementById(itemDomId(k));
+		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
+	function jumpToNextUnanswered() {
+		if (!session) return;
+		const ordered = activeParts.flatMap((p) => p.items);
+		if (!ordered.length) return;
+		const curIdx = ordered.findIndex((it) => entryKey(it) === activeItemKey);
+		for (let offset = 1; offset <= ordered.length; offset++) {
+			const candidate = ordered[(curIdx + offset) % ordered.length];
+			if (!isEntryAnswered(session, candidate, bank)) {
+				if (activeFilter !== 'all' && activeFilter !== 'unanswered') activeFilter = 'all';
+				const targetKey = entryKey(candidate);
+				activeItemKey = targetKey;
+				requestAnimationFrame(() => jumpToItem(targetKey));
+				return;
+			}
+		}
+	}
+
+	function mapItemState(entry: UnifiedExamEntry): 'correct' | 'incorrect' | 'answered' | 'none' {
+		if (!session) return 'none';
+		if (!isEntryAnswered(session, entry, bank)) return 'none';
+		if (showAnswers && entry.kind === 'mcq') {
+			return pointsForEntry(session, entry, bank) === 1 ? 'correct' : 'incorrect';
+		}
+		return 'answered';
+	}
+
+	function toggleFlag(k: string) {
+		if (!session || session.finishedAt) return;
+		if (!session.flagged) session.flagged = {};
+		if (session.flagged[k]) delete session.flagged[k];
+		else session.flagged[k] = true;
+	}
+
+	function toggleHint(k: string) {
+		openHints = { ...openHints, [k]: !openHints[k] };
+	}
+
+	function retrySingleMcq(entry: UnifiedExamEntry) {
+		if (!session || session.finishedAt || entry.kind !== 'mcq') return;
+		const k = entryKey(entry);
+		delete session.answers[k];
+		const q = bank.mcqById[entry.id];
+		if (q) entry.order = dynamicOptionOrder(q.options, Math.random, entry.order);
+	}
+
+	function resetCurrentExam() {
+		if (!session || session.finishedAt) return;
+		const nowMs = Date.now();
+		const origDuration =
+			session.durationMs !== undefined
+				? session.durationMs
+				: session.deadlineAt !== null
+					? Math.max(0, session.deadlineAt - session.startedAt - (session.pausedTotalMs ?? 0))
+					: null;
+		session.answers = {};
+		session.marks = {};
+		session.flagged = {};
+		session.startedAt = nowMs;
+		session.deadlineAt = origDuration ? nowMs + origDuration : null;
+		session.durationMs = origDuration;
+		session.pausedAt = null;
+		session.pausedTotalMs = 0;
+		for (const it of session.items) {
+			if (it.kind === 'mcq') {
+				const q = bank.mcqById[it.id];
+				if (q) it.order = dynamicOptionOrder(q.options, Math.random, it.order);
+			}
+		}
+		openHints = {};
+		activeFilter = 'all';
+		confirmReset = false;
+		confirmSubmit = false;
+		activeItemKey = session.items.length ? entryKey(session.items[0]) : '';
+		now = nowMs;
+		ui.toast('Exam reset — answers cleared and choices reshuffled');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	function resetWrongMcqsInExam() {
+		if (!session || session.finishedAt) return;
+		let cleared = 0;
+		let firstClearedKey = '';
+		for (const it of session.items) {
+			if (it.kind !== 'mcq') continue;
+			const k = entryKey(it);
+			const raw = session.answers[k];
+			if (raw === undefined || raw === '') continue;
+			if (pointsForEntry(session, it, bank) !== 1) {
+				delete session.answers[k];
+				const q = bank.mcqById[it.id];
+				if (q) it.order = dynamicOptionOrder(q.options, Math.random, it.order);
+				if (!firstClearedKey) firstClearedKey = k;
+				cleared++;
+			}
+		}
+		if (!cleared) return;
+		confirmReset = false;
+		confirmSubmit = false;
+		if (activeFilter === 'incorrect') activeFilter = 'all';
+		ui.toast(`Cleared ${cleared} wrong ${cleared === 1 ? 'answer' : 'answers'} — try again`);
+		if (firstClearedKey) {
+			activeItemKey = firstClearedKey;
+			requestAnimationFrame(() => jumpToItem(firstClearedKey));
+		}
+	}
+
+	function requestSubmit() {
+		if (!session || session.finishedAt) return;
+		confirmReset = false;
+		if (answeredCount < session.items.length && !confirmSubmit) {
+			confirmSubmit = true;
+		} else {
+			submitExam();
+		}
+	}
+
+	function matchesActiveFilter(entry: UnifiedExamEntry): boolean {
+		if (!session || activeFilter === 'all') return true;
+		const k = entryKey(entry);
+		if (activeFilter === 'unanswered') return !isEntryAnswered(session, entry, bank);
+		if (activeFilter === 'incorrect') {
+			return (
+				entry.kind === 'mcq' &&
+				isEntryAnswered(session, entry, bank) &&
+				pointsForEntry(session, entry, bank) !== 1
+			);
+		}
+		if (activeFilter === 'flagged') return Boolean(session.flagged?.[k]);
+		if (activeFilter === 'bookmarked') return entry.kind === 'mcq' && userStorage.isBookmarked(entry.id);
+		return true;
+	}
+
+	function onKey(e: KeyboardEvent) {
+		if (!session || session.finishedAt) return;
+		if (e.metaKey || e.ctrlKey || e.altKey) return;
+		const tag = (e.target as HTMLElement | null)?.tagName;
+		if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target as HTMLElement | null)?.isContentEditable) {
+			return;
+		}
+		const ordered = filteredActiveParts.flatMap((p) => p.items);
+		if (!ordered.length) return;
+		const curIdx = Math.max(
+			0,
+			ordered.findIndex((it) => entryKey(it) === activeItemKey)
+		);
+		const cur = ordered[curIdx];
+
+		if (e.key === 'ArrowRight') {
+			if (curIdx + 1 < ordered.length) {
+				e.preventDefault();
+				jumpToItem(entryKey(ordered[curIdx + 1]));
+			}
+			return;
+		}
+		if (e.key === 'ArrowLeft') {
+			if (curIdx > 0) {
+				e.preventDefault();
+				jumpToItem(entryKey(ordered[curIdx - 1]));
+			}
+			return;
+		}
+		if (e.key.toLowerCase() === 'f' && cur) {
+			e.preventDefault();
+			toggleFlag(entryKey(cur));
+			return;
+		}
+		if (e.key.toLowerCase() === 'b' && cur && cur.kind === 'mcq') {
+			e.preventDefault();
+			userStorage.toggleBookmark(cur.id);
+			return;
+		}
+		if (cur && cur.kind === 'mcq') {
+			const q = bank.mcqById[cur.id];
+			if (!q) return;
+			const order = cur.order ?? q.options.map((_, i) => i);
+			const n = Number(e.key);
+			const letterIdx = LETTERS.indexOf(e.key.toUpperCase());
+			const displayIdx = n >= 1 && n <= order.length ? n - 1 : letterIdx >= 0 && letterIdx < order.length ? letterIdx : -1;
+			if (displayIdx >= 0) {
+				e.preventDefault();
+				pickMcqOption(cur, order[displayIdx]);
+			}
+		}
+	}
+
+	function onBeforeUnload(e: BeforeUnloadEvent) {
+		if (session && !session.finishedAt && answeredCount > 0) {
+			e.preventDefault();
+		}
+	}
 
 	// ---- Active exam derived values ----
 	const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'];
@@ -613,8 +931,50 @@
 		return out;
 	});
 
+	const filteredActiveParts = $derived.by(() => {
+		if (!session) return [];
+		return activeParts
+			.map((part) => ({
+				...part,
+				indexedItems: part.items
+					.map((entry, idx) => ({ entry, idx }))
+					.filter(({ entry }) => matchesActiveFilter(entry)),
+				items: part.items.filter((entry) => matchesActiveFilter(entry))
+			}))
+			.filter((part) => part.items.length > 0);
+	});
+
 	const answeredCount = $derived(
 		session ? session.items.filter((it) => isEntryAnswered(session!, it, bank)).length : 0
+	);
+	const progressPct = $derived(
+		session && session.items.length ? Math.round((answeredCount / session.items.length) * 100) : 0
+	);
+	const correctMcqCount = $derived(
+		session
+			? session.items.filter(
+					(it) =>
+						it.kind === 'mcq' &&
+						isEntryAnswered(session!, it, bank) &&
+						pointsForEntry(session!, it, bank) === 1
+				).length
+			: 0
+	);
+	const wrongMcqCount = $derived(
+		session
+			? session.items.filter(
+					(it) =>
+						it.kind === 'mcq' &&
+						isEntryAnswered(session!, it, bank) &&
+						pointsForEntry(session!, it, bank) !== 1
+				).length
+			: 0
+	);
+	const flaggedCount = $derived(
+		session ? session.items.filter((it) => Boolean(session!.flagged?.[entryKey(it)])).length : 0
+	);
+	const bookmarkedInExamCount = $derived(
+		session ? session.items.filter((it) => it.kind === 'mcq' && userStorage.isBookmarked(it.id)).length : 0
 	);
 	const totals = $derived(session ? computeExamTotals(session, bank) : null);
 	const unmarkedLeft = $derived(session ? unmarkedWrittenCount(session, bank) : 0);
@@ -661,6 +1021,8 @@
 		return base;
 	}
 </script>
+
+<svelte:window onkeydown={onKey} onbeforeunload={onBeforeUnload} />
 
 {#if !session}
 	<!-- ==================== SETUP SCREEN ==================== -->
@@ -990,62 +1352,275 @@
 	</div>
 {:else if !session.finishedAt}
 	<!-- ==================== ACTIVE EXAM PAPER ==================== -->
-	<div class="flex flex-col gap-6">
-		<!-- Sticky header bar -->
-		<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-20 flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card/95 px-4 py-3 shadow-sm backdrop-blur dark:border-[#2B434E]">
-			<div class="flex min-w-0 flex-col gap-0.5">
-				<span class="truncate text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase">{session.label}</span>
-				<span class="text-sm font-extrabold text-foreground tabular-nums">
-					{answeredCount} of {session.items.length} answered
-				</span>
-			</div>
-			<div class="flex flex-wrap items-center gap-2">
-				{#if activeParts.length > 1}
-					<div class="hidden flex-wrap gap-1 md:flex">
-						{#each activeParts as part (part.kind)}
-							<a
-								href="#exam-part-{part.kind}"
-								class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1 text-[0.7rem] font-extrabold text-foreground no-underline hover:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
-							>
-								{part.roman}. {KIND_META[part.kind].short}
-							</a>
-						{/each}
-					</div>
-				{/if}
+	<div class="flex flex-col gap-4">
+		<!-- Top exam action bar (outside the timer/pause header card): Reset wrong (when answers shown), Reset, Submit -->
+		<div class="flex flex-wrap items-center justify-end gap-2">
+			{#if showAnswers && wrongMcqCount > 0}
 				<button
 					type="button"
-					onclick={() => prefs.set('soundEnabled', !prefs.value.soundEnabled)}
-					title={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
-					aria-label={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
-					class="grid size-9 place-items-center rounded-xl border-2 border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]"
+					onclick={resetWrongMcqsInExam}
+					title="Clear only wrong MCQ answers and reshuffle their choices"
+					class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B]/40 border-b-3 bg-[#FFDFE0]/70 px-3.5 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all hover:bg-[#FFDFE0] active:translate-y-0.5 active:border-b-2 dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878]"
 				>
-					{#if prefs.value.soundEnabled}
-						<Volume2 class="size-4 text-[#1CB0F6]" />
-					{:else}
-						<VolumeX class="size-4" />
-					{/if}
+					<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset wrong ({wrongMcqCount})
 				</button>
-				<span
-					class={cn(
-						'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 px-3 text-sm font-extrabold tabular-nums',
-						secsLeft !== null && secsLeft < 60
-							? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
-							: 'border-slate-200 bg-slate-100 text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
-					)}
-				>
-					<Clock class="size-4" />
-					{#if secsLeft !== null}
-						{formatClock(secsLeft)}
-					{:else}
-						{formatClock((now - session.startedAt) / 1000)}
-					{/if}
-				</span>
-			</div>
+			{/if}
+			<button
+				type="button"
+				onclick={() => {
+					confirmSubmit = false;
+					confirmReset = !confirmReset;
+				}}
+				title="Clear all answers, reshuffle choices, and restart timer"
+				class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3.5 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
+			>
+				<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
+			</button>
+			<button
+				type="button"
+				onclick={requestSubmit}
+				class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
+			>
+				<Send class="size-3.5" strokeWidth={2.5} /> Submit
+			</button>
 		</div>
 
+		<!-- Sticky header bar -->
+		<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-20 flex flex-col gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card/95 px-4 py-3 shadow-sm backdrop-blur dark:border-[#2B434E]">
+			<div class="flex flex-wrap items-center justify-between gap-3">
+				<div class="flex min-w-0 flex-col gap-1">
+					<span class="truncate text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase">{session.label}</span>
+					<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-extrabold text-foreground tabular-nums">
+						<span>{answeredCount} of {session.items.length} answered ({progressPct}%)</span>
+						{#if showAnswers && correctMcqCount + wrongMcqCount > 0}
+							<span class="inline-flex items-center gap-1.5 text-xs">
+								<span class="rounded-full bg-[#D7FFB8] px-2 py-0.5 text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]">
+									✓ {correctMcqCount}
+								</span>
+								<span class="rounded-full bg-[#FFDFE0] px-2 py-0.5 text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]">
+									✗ {wrongMcqCount}
+								</span>
+							</span>
+						{/if}
+						{#if flaggedCount > 0}
+							<span class="inline-flex items-center gap-1 rounded-full bg-[#FFF4E5] px-2 py-0.5 text-xs text-[#C96B00] dark:bg-[#FF9600]/20 dark:text-[#FFAD33]">
+								<Flag class="size-3" /> {flaggedCount}
+							</span>
+						{/if}
+					</div>
+					{#if activeParts.length > 1}
+						<div class="mt-0.5 hidden flex-wrap gap-1 md:flex">
+							{#each activeParts as part (part.kind)}
+								<a
+									href="#exam-part-{part.kind}"
+									class="rounded-lg border border-slate-200 bg-slate-100 px-2 py-0.5 text-[0.68rem] font-extrabold text-foreground no-underline hover:border-[#1CB0F6] dark:border-[#2B434E] dark:bg-[#131F24]"
+								>
+									{part.roman}. {KIND_META[part.kind].short}
+								</a>
+							{/each}
+						</div>
+					{/if}
+				</div>
+
+				<!-- Show/Hide answers, Sound, Timer, Pause/Resume -->
+				<div class="flex flex-wrap items-center justify-end gap-2">
+					<button
+						type="button"
+						onclick={toggleShowAnswers}
+						aria-pressed={showAnswers}
+						title={showAnswers ? 'Answers reveal after each choice — click to hide until submission' : 'Answers hidden until submission — click to reveal after each choice'}
+						class={cn(
+							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+							showAnswers
+								? 'border-[#46A302]/50 bg-[#D7FFB8]/70 text-[#46A302] hover:bg-[#D7FFB8] dark:border-[#58CC02]/50 dark:bg-[#58CC02]/15 dark:text-[#7BE328]'
+								: 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+						)}
+					>
+						{#if showAnswers}
+							<Eye class="size-3.5" strokeWidth={2.5} /> Show answers
+						{:else}
+							<EyeOff class="size-3.5" strokeWidth={2.5} /> Hide answers
+						{/if}
+					</button>
+					<button
+						type="button"
+						onclick={() => prefs.set('soundEnabled', !prefs.value.soundEnabled)}
+						title={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+						aria-label={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+						class="grid size-9 place-items-center rounded-xl border-2 border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]"
+					>
+						{#if prefs.value.soundEnabled}
+							<Volume2 class="size-4 text-[#1CB0F6]" />
+						{:else}
+							<VolumeX class="size-4" />
+						{/if}
+					</button>
+					<span
+						class={cn(
+							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 px-3 text-sm font-extrabold tabular-nums transition-colors',
+							isPaused
+								? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/15 dark:text-[#FFAD33]'
+								: secsLeft !== null && secsLeft < 60
+									? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+									: 'border-slate-200 bg-slate-100 text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+						)}
+					>
+						<Clock class="size-4" />
+						{#if secsLeft !== null}
+							{formatClock(secsLeft)}
+						{:else}
+							{formatClock(elapsedSecs)}
+						{/if}
+						{#if isPaused}
+							<span class="ml-0.5 text-[0.65rem] tracking-wide uppercase">Paused</span>
+						{/if}
+					</span>
+					<button
+						type="button"
+						onclick={togglePause}
+						aria-pressed={isPaused}
+						title={isPaused ? 'Resume timer' : 'Pause timer'}
+						class={cn(
+							'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+							isPaused
+								? 'border-[#46A302] bg-[#58CC02] text-white hover:bg-[#4EB802]'
+								: 'border-slate-200 bg-white text-foreground hover:border-[#FF9600] hover:bg-[#FFF4E5] hover:text-[#C96B00] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:border-[#FF9600]/60 dark:hover:bg-[#FF9600]/15 dark:hover:text-[#FFAD33]'
+						)}
+					>
+						{#if isPaused}
+							<Play class="size-3.5" strokeWidth={2.5} /> Resume
+						{:else}
+							<Pause class="size-3.5" strokeWidth={2.5} /> Pause
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<!-- Progress bar -->
+			<div class="h-2 w-full overflow-hidden rounded-full bg-slate-200/80 dark:bg-[#223842]">
+				<div
+					class={cn(
+						'h-full rounded-full transition-all duration-300',
+						progressPct >= 100 ? 'bg-[#58CC02]' : 'bg-[#1CB0F6]'
+					)}
+					style="width: {progressPct}%"
+				></div>
+			</div>
+
+			{#if confirmReset}
+				<div role="alert" class="flex flex-wrap items-center justify-between gap-2 rounded-xl border-2 border-[#EA2B2B]/50 bg-[#FFDFE0]/70 px-3.5 py-2.5 text-xs dark:bg-[#FF4B4B]/15">
+					<span class="font-extrabold text-foreground">
+						Reset all {session.items.length} items? This clears all answers, reshuffles choices, and restarts the timer.
+					</span>
+					<div class="flex items-center gap-2">
+						<button
+							type="button"
+							onclick={resetCurrentExam}
+							class="rounded-xl border-2 border-[#EA2B2B] border-b-3 bg-[#FF4B4B] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white uppercase"
+						>
+							Reset Exam
+						</button>
+						<button
+							type="button"
+							onclick={() => (confirmReset = false)}
+							class="rounded-xl border-2 border-slate-200 bg-white px-3 py-1.5 text-xs font-extrabold text-foreground dark:border-[#2B434E] dark:bg-[#131F24]"
+						>
+							Cancel
+						</button>
+					</div>
+				</div>
+			{/if}
+
+			{#if confirmSubmit}
+				<div role="alert" class="flex flex-wrap items-center justify-between gap-2 rounded-xl border-2 border-[#E5B400] bg-[#FFF5CC]/85 px-3.5 py-2.5 text-xs dark:bg-[#FFC800]/15">
+					<span class="font-extrabold text-foreground">
+						{session.items.length - answeredCount} {session.items.length - answeredCount === 1 ? 'item is' : 'items are'} unanswered and will score 0.
+					</span>
+					<div class="flex items-center gap-2">
+						<button
+							type="button"
+							onclick={submitExam}
+							class="rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-3 py-1.5 text-xs font-extrabold tracking-wide text-white uppercase"
+						>
+							Submit Anyway
+						</button>
+						<button
+							type="button"
+							onclick={() => (confirmSubmit = false)}
+							class="rounded-xl border-2 border-slate-200 bg-white px-3 py-1.5 text-xs font-extrabold text-foreground dark:border-[#2B434E] dark:bg-[#131F24]"
+						>
+							Keep Answering
+						</button>
+					</div>
+				</div>
+			{/if}
+		</div>
+
+		{#if isPaused}
+			<div role="status" class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-[#FF9600]/60 bg-[#FFF4E5] px-4 py-3 text-sm dark:bg-[#FF9600]/15">
+				<span class="font-extrabold text-[#C96B00] dark:text-[#FFAD33]">Timer is paused. Resume whenever you’re ready to continue.</span>
+				<button
+					type="button"
+					onclick={togglePause}
+					class="inline-flex h-8 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-3 text-xs font-extrabold tracking-wide text-white uppercase"
+				>
+					<Play class="size-3.5" strokeWidth={2.5} /> Resume timer
+				</button>
+			</div>
+		{/if}
+
+		<!-- Quick Filter Bar (MCQ parity: All / Unanswered / Incorrect / Flagged / Bookmarked) -->
+		<div class="flex flex-wrap items-center justify-between gap-2">
+			<div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter exam items">
+				{#each [
+					{ id: 'all' as ActiveExamFilter, label: 'All', count: session.items.length, show: true },
+					{ id: 'unanswered' as ActiveExamFilter, label: 'Unanswered', count: session.items.length - answeredCount, show: true },
+					{ id: 'incorrect' as ActiveExamFilter, label: 'Incorrect', count: wrongMcqCount, show: showAnswers },
+					{ id: 'flagged' as ActiveExamFilter, label: 'Flagged', count: flaggedCount, show: true },
+					{ id: 'bookmarked' as ActiveExamFilter, label: 'Bookmarked', count: bookmarkedInExamCount, show: session.items.some((it) => it.kind === 'mcq') }
+				] as f (f.id)}
+					{#if f.show}
+						<button
+							type="button"
+							onclick={() => (activeFilter = f.id)}
+							class={cn(
+								'inline-flex h-8 items-center gap-1.5 rounded-xl border-2 px-3 text-xs font-extrabold transition-all',
+								activeFilter === f.id
+									? 'border-[#1899D6] bg-[#1CB0F6] text-white'
+									: 'border-slate-200 bg-card text-muted-foreground hover:border-[#1CB0F6]/50 hover:text-foreground dark:border-[#2B434E]'
+							)}
+						>
+							{f.label}
+							<span class={cn('rounded-full px-1.5 py-0.2 text-[0.65rem] tabular-nums', activeFilter === f.id ? 'bg-white/25 text-white' : 'bg-slate-100 text-muted-foreground dark:bg-[#223842]')}>
+								{f.count}
+							</span>
+						</button>
+					{/if}
+				{/each}
+			</div>
+			<span class="hidden text-[0.7rem] font-bold text-muted-foreground sm:inline">
+				Keys: A–H / 1–8 pick · ←/→ jump · F flag · B bookmark
+			</span>
+		</div>
+
+		<!-- Active Exam Content + Jump to Question Sidebar -->
+		<div class="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_17.5rem]">
+		<div class="flex min-w-0 flex-col gap-6">
+		{#if filteredActiveParts.length === 0}
+			<div class="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-slate-200 bg-card p-8 text-center dark:border-[#2B434E]">
+				<p class="text-sm font-extrabold text-foreground">No items match the “{activeFilter}” filter.</p>
+				<button
+					type="button"
+					onclick={() => (activeFilter = 'all')}
+					class="rounded-xl border-2 border-[#1899D6] border-b-3 bg-[#1CB0F6] px-4 py-1.5 text-xs font-extrabold tracking-wide text-white uppercase"
+				>
+					Show All Items
+				</button>
+			</div>
+		{/if}
 		<!-- Exam Sections -->
-		{#each activeParts as part (part.kind)}
-			<section id="exam-part-{part.kind}" class="flex scroll-mt-32 flex-col gap-4">
+		{#each filteredActiveParts as part (part.kind)}
+			<section id="exam-part-{part.kind}" class="flex scroll-mt-36 flex-col gap-4">
 				<div class="flex flex-col gap-0.5 border-b-2 border-slate-200 pb-2 dark:border-[#2B434E]">
 					<h2 class="font-heading text-xl font-extrabold text-foreground">
 						Part {part.roman}. {part.title}
@@ -1053,9 +1628,20 @@
 					<p class="text-xs font-semibold text-muted-foreground">{KIND_META[part.kind].intro}</p>
 				</div>
 
-				{#each part.items as entry, idx (entryKey(entry))}
+				{#each part.indexedItems as { entry, idx } (entryKey(entry))}
 					{@const k = entryKey(entry)}
-					<article class="flex flex-col gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card p-5 dark:border-[#2B434E]">
+					{@const isFlagged = Boolean(session.flagged?.[k])}
+					<article
+						id={itemDomId(k)}
+						onfocusin={() => (activeItemKey = k)}
+						onpointerdown={() => (activeItemKey = k)}
+						class={cn(
+							'flex scroll-mt-36 flex-col gap-3 rounded-2xl border-2 border-b-4 bg-card p-5 transition-colors',
+							activeItemKey === k
+								? 'border-[#1CB0F6]/70 dark:border-[#1CB0F6]/60'
+								: 'border-slate-200 dark:border-[#2B434E]'
+						)}
+					>
 						{#if entry.kind === 'mcq'}
 							{@const q = bank.mcqById[entry.id]}
 							{#if q}
@@ -1063,16 +1649,76 @@
 								{@const correctIdx = resolveCorrectIndex(q)}
 								{@const rawPick = session.answers[k]}
 								{@const picked = rawPick !== undefined && rawPick !== '' ? Number(rawPick) : null}
-								{@const reveal = session.mode === 'practice' && picked !== null}
-								<div class="flex items-start justify-between gap-3">
-									<p class="text-[0.95rem] leading-relaxed font-bold text-foreground">
-										<span class="mr-1.5 font-extrabold text-[#1CB0F6] tabular-nums">{idx + 1}.</span>
-										{q.question}
-									</p>
-									<span class="shrink-0 rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
-										{q.topicName}
-									</span>
+								{@const reveal = showAnswers && picked !== null}
+								{@const bookmarked = userStorage.isBookmarked(q.id)}
+								{@const tagInfo = q.tag ? TAGS[q.tag] : null}
+								<div class="flex flex-wrap items-center justify-between gap-2">
+									<div class="flex flex-wrap items-center gap-1.5">
+										<span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
+											{q.topicName}
+										</span>
+										{#if tagInfo}
+											<span class={cn('rounded-full border px-2 py-0.5 text-[0.65rem] font-extrabold tracking-wide uppercase', tagInfo.cls)}>
+												{tagInfo.label}
+											</span>
+										{/if}
+									</div>
+									<div class="flex items-center gap-1.5">
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+										<button
+											type="button"
+											onclick={() => userStorage.toggleBookmark(q.id)}
+											aria-pressed={bookmarked}
+											title={bookmarked ? 'Remove bookmark' : 'Bookmark question (B)'}
+											aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark question'}
+											class={cn(
+												'grid size-7 place-items-center rounded-lg border transition-colors',
+												bookmarked
+													? 'border-[#E5B400] bg-[#FFF5CC] text-[#946200] dark:border-[#FFC800]/60 dark:bg-[#FFC800]/20 dark:text-[#FFD633]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#E5B400] hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											{#if bookmarked}
+												<BookmarkCheck class="size-3.5" />
+											{:else}
+												<Bookmark class="size-3.5" />
+											{/if}
+										</button>
+									</div>
 								</div>
+								<p class="text-[0.95rem] leading-relaxed font-bold text-foreground">
+									<span class="mr-1.5 font-extrabold text-[#1CB0F6] tabular-nums">{idx + 1}.</span>
+									{q.question}
+								</p>
+								{#if !reveal && q.hint}
+									<div class="flex flex-col items-start gap-1.5">
+										<button
+											type="button"
+											onclick={() => toggleHint(k)}
+											class="inline-flex items-center gap-1.5 rounded-lg border border-[#E5B400]/50 bg-[#FFF5CC]/60 px-2.5 py-1 text-xs font-extrabold text-[#946200] hover:bg-[#FFF5CC] dark:bg-[#FFC800]/15 dark:text-[#FFD633]"
+										>
+											<Lightbulb class="size-3.5" /> {openHints[k] ? 'Hide hint' : 'Show hint'}
+										</button>
+										{#if openHints[k]}
+											<p class="rounded-xl border border-[#E5B400]/50 bg-[#FFF5CC]/50 px-3 py-2 text-xs font-semibold text-foreground dark:bg-[#FFC800]/10">
+												{q.hint}
+											</p>
+										{/if}
+									</div>
+								{/if}
 								<div class="flex flex-col gap-2">
 									{#each order as origIdx, displayIdx (origIdx)}
 										{@const isPicked = picked === origIdx}
@@ -1108,7 +1754,14 @@
 											>
 												{LETTERS[displayIdx]}
 											</span>
-											<span class="min-w-0 flex-1 leading-snug">{q.options[origIdx]}</span>
+											<span class="min-w-0 flex-1 leading-snug">
+												<span class="block">{q.options[origIdx]}</span>
+												{#if reveal && q.optionExplanations?.[origIdx]}
+													<span class={cn('mt-1 block text-xs leading-relaxed font-semibold', isCorrect ? 'text-[#46A302] dark:text-[#7BE328]' : isPicked ? 'text-[#EA2B2B] dark:text-[#FF7878]' : 'text-muted-foreground')}>
+														{q.optionExplanations[origIdx]}
+													</span>
+												{/if}
+											</span>
 										</button>
 									{/each}
 								</div>
@@ -1121,10 +1774,19 @@
 												: 'border-[#FF4B4B]/50 bg-[#FFDFE0]/40 text-foreground dark:bg-[#FF4B4B]/15'
 										)}
 									>
-										<p class="font-extrabold">
-											{picked === correctIdx ? '✓ Correct!' : '✗ Incorrect.'}
-											{#if q.legalBasis}<span class="ml-1 font-bold text-muted-foreground">({q.legalBasis})</span>{/if}
-										</p>
+										<div class="flex flex-wrap items-center justify-between gap-2">
+											<p class="font-extrabold">
+												{picked === correctIdx ? '✓ Correct!' : '✗ Incorrect.'}
+												{#if q.legalBasis}<span class="ml-1 font-bold text-muted-foreground">({q.legalBasis})</span>{/if}
+											</p>
+											<button
+												type="button"
+												onclick={() => retrySingleMcq(entry)}
+												class="inline-flex h-7 items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 text-[0.7rem] font-extrabold text-foreground hover:border-[#1CB0F6] hover:text-[#1899D6] dark:border-[#2B434E] dark:bg-[#131F24]"
+											>
+												<RotateCcw class="size-3" /> Try again
+											</button>
+										</div>
 										<p class="mt-1">{q.explanation}</p>
 									</div>
 								{/if}
@@ -1137,9 +1799,25 @@
 										<span class="mr-1 text-[#CE82FF] tabular-nums">{idx + 1}.</span>
 										{e.title}
 									</h3>
-									<span class="rounded-full bg-[#F3E8FF] px-2.5 py-0.5 text-[0.68rem] font-extrabold text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]">
-										{e.source ?? e.topic}
-									</span>
+									<div class="flex items-center gap-1.5">
+										<span class="rounded-full bg-[#F3E8FF] px-2.5 py-0.5 text-[0.68rem] font-extrabold text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]">
+											{e.source ?? e.topic}
+										</span>
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+									</div>
 								</div>
 								<p class="legal rounded-xl bg-slate-50 p-3.5 text-[0.94rem] leading-relaxed whitespace-pre-line text-foreground dark:bg-[#131F24]">
 									{e.factPattern}
@@ -1185,9 +1863,25 @@
 										<span class="mr-1.5 text-[#58CC02] tabular-nums">{idx + 1}.</span>
 										{en.title}
 									</p>
-									<span class="shrink-0 rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
-										{en.items.length} items · {en.src}
-									</span>
+									<div class="flex shrink-0 items-center gap-1.5">
+										<span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
+											{en.items.length} items · {en.src}
+										</span>
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+									</div>
 								</div>
 								<textarea
 									rows="5"
@@ -1205,9 +1899,25 @@
 										<span class="mr-1.5 text-[#1CB0F6] tabular-nums">{idx + 1}.</span>
 										Define: {tm.term}
 									</p>
-									<span class="shrink-0 rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
-										{tm.src}
-									</span>
+									<div class="flex shrink-0 items-center gap-1.5">
+										<span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
+											{tm.src}
+										</span>
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+									</div>
 								</div>
 								<textarea
 									rows="3"
@@ -1225,9 +1935,25 @@
 										<span class="mr-1.5 text-[#FF9600] tabular-nums">{idx + 1}.</span>
 										{rq.question}
 									</p>
-									<span class="shrink-0 rounded-full bg-[#FFF5CC] px-2.5 py-0.5 text-[0.68rem] font-extrabold text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]">
-										{rq.answers.length > 1 ? `${rq.answers.length} requisites` : 'Short rule'} · {rq.topicTitle}
-									</span>
+									<div class="flex shrink-0 items-center gap-1.5">
+										<span class="rounded-full bg-[#FFF5CC] px-2.5 py-0.5 text-[0.68rem] font-extrabold text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]">
+											{rq.answers.length > 1 ? `${rq.answers.length} requisites` : 'Short rule'} · {rq.topicTitle}
+										</span>
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+									</div>
 								</div>
 								<textarea
 									rows={rq.answers.length > 1 ? 4 : 2}
@@ -1245,9 +1971,25 @@
 										<span class="mr-1.5 text-[#1CB0F6] tabular-nums">{idx + 1}.</span>
 										{nm.prompt}
 									</p>
-									<span class="shrink-0 rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
-										{nm.source}
-									</span>
+									<div class="flex shrink-0 items-center gap-1.5">
+										<span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-[0.68rem] font-extrabold text-muted-foreground dark:bg-[#223842]">
+											{nm.source}
+										</span>
+										<button
+											type="button"
+											onclick={() => toggleFlag(k)}
+											aria-pressed={isFlagged}
+											title={isFlagged ? 'Remove review flag' : 'Flag for review (F)'}
+											class={cn(
+												'inline-flex h-7 items-center gap-1 rounded-lg border px-2 text-[0.7rem] font-extrabold transition-colors',
+												isFlagged
+													? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] dark:border-[#FF9600]/60 dark:bg-[#FF9600]/20 dark:text-[#FFAD33]'
+													: 'border-slate-200 bg-white text-muted-foreground hover:border-[#FF9600]/60 hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
+											)}
+										>
+											<Flag class="size-3" /> {isFlagged ? 'Flagged' : 'Flag'}
+										</button>
+									</div>
 								</div>
 								<input
 									type="text"
@@ -1289,13 +2031,10 @@
 		<div class="flex flex-wrap items-center justify-between gap-3 border-t-2 border-slate-200 pt-4 dark:border-[#2B434E]">
 			<button
 				type="button"
-				onclick={() => {
-					if (answeredCount < session!.items.length && !confirmSubmit) confirmSubmit = true;
-					else submitExam();
-				}}
+				onclick={requestSubmit}
 				class="inline-flex h-12 items-center gap-2 rounded-2xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-6 text-sm font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
 			>
-				Submit &amp; Check Answers
+				<Send class="size-4" strokeWidth={2.5} /> Submit &amp; Check Answers
 			</button>
 
 			{#if confirmQuit}
@@ -1326,11 +2065,97 @@
 				</button>
 			{/if}
 		</div>
+		</div>
+
+		<!-- Jump to question sidebar -->
+		<aside
+			aria-label="Jump to question"
+			class="rounded-3xl border-2 border-b-4 border-slate-200 bg-card p-4 sm:p-5 xl:sticky xl:top-[calc(var(--header-h)+6.25rem)] dark:border-[#2B434E]"
+		>
+			<div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+				<h3 class="text-sm font-extrabold tracking-wide uppercase">Jump to question</h3>
+				<ul class="flex flex-wrap gap-x-3 gap-y-1.5 text-xs font-bold text-muted-foreground">
+					{#if showAnswers}
+						<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#46A302] bg-[#58CC02]"></span> Correct</li>
+						<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#EA2B2B] bg-[#FF4B4B]"></span> Incorrect</li>
+					{:else}
+						<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-[#1899D6] bg-[#DDF4FF]"></span> Answered</li>
+					{/if}
+					<li class="flex items-center gap-1.5"><span class="size-3 rounded-md border border-dashed border-slate-300 dark:border-[#2B434E]"></span> Unanswered</li>
+					<li class="flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-[#FF9600]"></span> Flagged</li>
+					{#if session.items.some((it) => it.kind === 'mcq')}
+						<li class="flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-[#FFC800]"></span> Bookmarked</li>
+					{/if}
+				</ul>
+			</div>
+
+			{#if answeredCount < session.items.length}
+				<button
+					type="button"
+					onclick={jumpToNextUnanswered}
+					class="mb-3 inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-xl border-2 border-slate-200 bg-slate-50 px-3 text-xs font-extrabold text-foreground transition-colors hover:border-[#1CB0F6] hover:bg-[#DDF4FF]/40 hover:text-[#1899D6] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:text-[#66D1FF]"
+				>
+					<SkipForward class="size-3.5" /> Next unanswered ({session.items.length - answeredCount} left)
+				</button>
+			{/if}
+
+			<div class="flex max-h-[calc(100vh-20rem)] flex-col gap-3.5 overflow-y-auto pr-1">
+				{#each activeParts as part (part.kind)}
+					<div class="flex flex-col gap-2">
+						{#if activeParts.length > 1}
+							<span class="text-[0.68rem] font-extrabold tracking-wide text-muted-foreground uppercase">
+								Part {part.roman} · {KIND_META[part.kind].short}
+							</span>
+						{/if}
+						<div class="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-2 xl:grid-cols-5">
+							{#each part.items as entry, idx (entryKey(entry))}
+								{@const k = entryKey(entry)}
+								{@const st = mapItemState(entry)}
+								{@const isCurrent = activeItemKey === k}
+								{@const isFlagged = Boolean(session.flagged?.[k])}
+								{@const isBookmarked = entry.kind === 'mcq' && userStorage.isBookmarked(entry.id)}
+								<button
+									type="button"
+									onclick={() => {
+										if (activeFilter !== 'all' && !matchesActiveFilter(entry)) activeFilter = 'all';
+										activeItemKey = k;
+										requestAnimationFrame(() => jumpToItem(k));
+									}}
+									aria-label="{KIND_META[part.kind].short} {idx + 1}{st === 'correct' ? ', correct' : st === 'incorrect' ? ', incorrect' : st === 'answered' ? ', answered' : ', unanswered'}{isFlagged ? ', flagged' : ''}{isBookmarked ? ', bookmarked' : ''}"
+									aria-current={isCurrent ? 'true' : undefined}
+									class={cn(
+										'relative h-10 rounded-xl border-2 border-b-4 text-xs font-extrabold tabular-nums transition-all duration-150 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#1CB0F6] focus-visible:outline-none active:translate-y-0.5 active:border-b-2',
+										isCurrent
+											? 'z-10 scale-105 border-[#1899D6] bg-[#1CB0F6] text-white shadow-sm'
+											: st === 'correct'
+												? 'border-[#46A302] bg-[#58CC02] text-white'
+												: st === 'incorrect'
+													? 'border-[#EA2B2B] bg-[#FF4B4B] text-white'
+													: st === 'answered'
+														? 'border-[#1CB0F6] bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
+														: 'border-dashed border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-[#2B434E] dark:bg-[#131F24] dark:text-slate-300 dark:hover:bg-[#223842]'
+									)}
+								>
+									{idx + 1}
+									{#if isFlagged}
+										<span class="absolute top-0.5 left-0.5 size-2 rounded-full bg-[#FF9600] ring-1 ring-white dark:ring-[#131F24]"></span>
+									{/if}
+									{#if isBookmarked}
+										<span class="absolute top-0.5 right-0.5 size-2 rounded-full bg-[#FFC800] ring-1 ring-white dark:ring-[#131F24]"></span>
+									{/if}
+								</button>
+							{/each}
+						</div>
+					</div>
+				{/each}
+			</div>
+		</aside>
+		</div>
 	</div>
 {:else if totals}
 	<!-- ==================== GRADING & RESULTS SCREEN ==================== -->
 	{@const pct = totals.total ? Math.round((totals.score / totals.total) * 100) : 0}
-	{@const elapsed = ((session.finishedAt ?? session.startedAt) - session.startedAt) / 1000}
+	{@const elapsed = elapsedSecs}
 
 	<div class="flex flex-col gap-6">
 		{#if session.graded}

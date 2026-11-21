@@ -37,7 +37,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
 	import { userStorage } from '$lib/stores/storage.svelte';
-	import { topicsForSubject } from '$lib/topics';
+	import { mcqMatchesTopic, topicsForSubject } from '$lib/topics';
 	import { cn, formatClock, pct } from '$lib/utils';
 	import type { McqQuestion, McqTag, Subject } from '$lib/types';
 
@@ -132,7 +132,7 @@
 	const progressValue = $derived(pct(answeredInSet, total));
 
 	const filterCounts = $derived.by(() => {
-		const scope = lawModule.mcqs.filter((q) => topicId === 'all' || q.topicId === topicId);
+		const scope = lawModule.mcqs.filter((q) => mcqMatchesTopic(q, topicId));
 		return {
 			all: scope.length,
 			unanswered: scope.filter((q) => !userStorage.mcqAttempts[q.id]).length,
@@ -164,7 +164,7 @@
 
 	// ---- session building ----
 	function matches(q: McqQuestion) {
-		if (topicId !== 'all' && q.topicId !== topicId) return false;
+		if (!mcqMatchesTopic(q, topicId)) return false;
 		const a = userStorage.mcqAttempts[q.id];
 		switch (filter) {
 			case 'unanswered':
@@ -266,7 +266,7 @@
 	);
 
 	function resetTest() {
-		const scope = lawModule.mcqs.filter((q) => topicId === 'all' || q.topicId === topicId);
+		const scope = lawModule.mcqs.filter((q) => mcqMatchesTopic(q, topicId));
 		const attempted = scope.filter((q) => !!userStorage.mcqAttempts[q.id]);
 		if (attempted.length > 0) {
 			const correct = attempted.filter((q) => userStorage.mcqAttempts[q.id]?.isCorrect).length;
@@ -292,7 +292,7 @@
 	}
 
 	function resetWrongInPractice() {
-		const scope = lawModule.mcqs.filter((q) => topicId === 'all' || q.topicId === topicId);
+		const scope = lawModule.mcqs.filter((q) => mcqMatchesTopic(q, topicId));
 		let cleared = 0;
 		for (const q of scope) {
 			const att = userStorage.mcqAttempts[q.id];

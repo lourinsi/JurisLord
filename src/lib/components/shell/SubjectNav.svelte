@@ -62,12 +62,17 @@
 	}
 	const topicCounts = $derived.by(() => {
 		const out = new Map<string, { total: number; answered: number }>();
-		for (const q of subject.mcqs) {
-			const k = q.topicId ?? 'other';
+		const bump = (k: string, answered: boolean) => {
 			const row = out.get(k) ?? { total: 0, answered: 0 };
 			row.total++;
-			if (userStorage.mcqAttempts[q.id]) row.answered++;
+			if (answered) row.answered++;
 			out.set(k, row);
+		};
+		for (const q of subject.mcqs) {
+			const k = q.topicId ?? 'other';
+			const ans = !!userStorage.mcqAttempts[q.id];
+			bump(k, ans);
+			if (k === 'finals_cases') bump('finals', ans);
 		}
 		return out;
 	});

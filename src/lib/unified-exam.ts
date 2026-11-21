@@ -5,7 +5,7 @@ import type { Essay as PhiloEssay } from '$lib/philo';
 import type { Problem as ConstiProblem } from '$lib/problems';
 import type { SubjectRequisitesConfig } from '$lib/requisites';
 import { topicsForSubject } from '$lib/topics';
-import type { Subject } from '$lib/types';
+import type { McqTag, Subject } from '$lib/types';
 
 export type ExamItemKind = 'mcq' | 'essay' | 'enum' | 'term' | 'req' | 'num';
 
@@ -21,6 +21,8 @@ export interface UnifiedMcqItem {
 	key?: string;
 	explanation: string;
 	legalBasis?: string;
+	tag?: McqTag;
+	hint?: string;
 	isFinals?: boolean;
 }
 
@@ -145,6 +147,16 @@ export interface UnifiedExamSession {
 	label: string;
 	startedAt: number;
 	deadlineAt: number | null;
+	/** Original timer duration in ms (used when resetting the current exam). */
+	durationMs?: number | null;
+	/** Timestamp when the timer was paused, or null/undefined while running. */
+	pausedAt?: number | null;
+	/** Accumulated paused duration in ms (excluded from elapsed time). */
+	pausedTotalMs?: number;
+	/** When true (default), choosing an MCQ option immediately reveals the answer & explanation; when false, hidden until submission. */
+	showAnswers?: boolean;
+	/** Items flagged for review, keyed by `entryKey(entry)`. */
+	flagged?: Record<string, boolean>;
 	finishedAt: number | null;
 	graded: boolean;
 	items: UnifiedExamEntry[];
@@ -229,7 +241,7 @@ const isFinalsText = (s?: string) => !!s && /\bfinals?\b/i.test(s);
  */
 const FINALS_MCQ_TOPICS_BY_SUBJECT: Record<string, ReadonlySet<string>> = {
 	pfr: new Set(['cpg_sep', 'family_filiation', 'adoption_support', 'parental_other']),
-	consti1: new Set(['finals']),
+	consti1: new Set(['finals', 'finals_cases']),
 	crim1: new Set(['persons_liable', 'penalties_general', 'penalties_application', 'extinction_civil']),
 	crim1_lloren: new Set(['tf', 'mcq', 'problems']),
 	crimpro: new Set(['finals', 'quiz_finals']),
@@ -294,6 +306,8 @@ export function buildSubjectExamBank(opts: {
 			key: q.key ?? q.options[correctIndex],
 			explanation: q.explanation,
 			legalBasis: q.legalBasis,
+			tag: q.tag,
+			hint: q.hint,
 			isFinals: isFinalsMcqForSubject(subject.id, {
 				id: q.id,
 				topicId: tid,
@@ -765,6 +779,7 @@ export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings 
 	const finalsEssays = bank.essays.filter((e) => e.isFinals).length;
 	const finalsEnums = bank.enums.filter((e) => e.isFinals).length;
 	const finalsTerms = bank.terms.filter((t) => t.isFinals).length;
+	const pureFinalsMcqOnly = bank.subjectId === 'consti1';
 
 	return {
 		mode: 'exam',
@@ -777,10 +792,10 @@ export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings 
 		timerChoice: 'auto',
 		counts: {
 			mcq: bank.mcqs.length ? Math.min(10, finalsMcqs || bank.mcqs.length) : 0,
-			essay: bank.essays.length ? Math.min(2, finalsEssays || bank.essays.length) : 0,
-			enum: bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
-			term: bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
-			req: bank.reqs.length ? Math.min(3, bank.reqs.length) : 0,
+			essay: pureFinalsMcqOnly ? 0 : bank.essays.length ? Math.min(2, finalsEssays || bank.essays.length) : 0,
+			enum: pureFinalsMcqOnly ? 0 : bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
+			term: pureFinalsMcqOnly ? 0 : bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
+			req: pureFinalsMcqOnly ? 0 : bank.reqs.length ? Math.min(3, bank.reqs.length) : 0,
 			num: 0
 		}
 	};
@@ -811,9 +826,11 @@ export function loadSavedExamSettings(
 					timerChoice: 'auto' as const,
 					counts: { mcq: 10, essay: 2, enum: 2, term: 2, req: 3, num: 0 }
 				};
+		const scopePreset = parsed.scopePreset ?? fallback.scopePreset;
+		const pureFinalsMcqOnly = subjectId === 'consti1' && scopePreset === 'finals';
 		return {
 			mode: parsed.mode === 'practice' ? 'practice' : 'exam',
-			scopePreset: parsed.scopePreset ?? fallback.scopePreset,
+			scopePreset,
 			mcqFilter: parsed.mcqFilter ?? fallback.mcqFilter,
 			essayFilter: parsed.essayFilter ?? fallback.essayFilter,
 			enumFilter: parsed.enumFilter ?? fallback.enumFilter,
@@ -822,11 +839,11 @@ export function loadSavedExamSettings(
 			timerChoice: parsed.timerChoice ?? fallback.timerChoice,
 			counts: {
 				mcq: parsed.counts.mcq ?? fallback.counts.mcq,
-				essay: parsed.counts.essay ?? fallback.counts.essay,
-				enum: parsed.counts.enum ?? fallback.counts.enum,
-				term: parsed.counts.term ?? fallback.counts.term,
-				req: parsed.counts.req ?? fallback.counts.req,
-				num: parsed.counts.num ?? fallback.counts.num
+				essay: pureFinalsMcqOnly ? 0 : (parsed.counts.essay ?? fallback.counts.essay),
+				enum: pureFinalsMcqOnly ? 0 : (parsed.counts.enum ?? fallback.counts.enum),
+				term: pureFinalsMcqOnly ? 0 : (parsed.counts.term ?? fallback.counts.term),
+				req: pureFinalsMcqOnly ? 0 : (parsed.counts.req ?? fallback.counts.req),
+				num: pureFinalsMcqOnly ? 0 : (parsed.counts.num ?? fallback.counts.num)
 			}
 		};
 	} catch {

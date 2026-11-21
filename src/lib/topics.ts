@@ -1,4 +1,15 @@
-import type { ModuleTopic, Subject } from '$lib/types';
+import type { McqQuestion, ModuleTopic, Subject } from '$lib/types';
+
+/**
+ * Whether an MCQ belongs to a given topic filter.
+ * `finals` also includes `finals_cases` so Cases questions appear under both `CASES` and `FINALS`.
+ */
+export function mcqMatchesTopic(q: Pick<McqQuestion, 'topicId'>, topicId: string): boolean {
+	if (topicId === 'all') return true;
+	if (q.topicId === topicId) return true;
+	if (topicId === 'finals' && q.topicId === 'finals_cases') return true;
+	return false;
+}
 
 /**
  * Returns all MCQ topic filters for any subject:

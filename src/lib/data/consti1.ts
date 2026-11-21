@@ -1,6 +1,6 @@
 import type { LawModule } from '$lib/types';
 import { artIXHtml, artVIIIAddendum, artXHtml, constiKitCases, constiKitEssays, constiKitGuideHtml, extEssays, extTopics, extWatchFor } from './consti1_ext';
-import { constiFinalsMcqs, constiFinalsTopic, constiFinalsWatchFor } from './consti1_finals_mcqs';
+import { constiFinalsCasesTopic, constiFinalsCasesWatchFor, constiFinalsMcqs, constiFinalsTopic, constiFinalsWatchFor } from './consti1_finals_mcqs';
 
 export const consti1: LawModule = {
 	id: "consti1",
@@ -11,6 +11,7 @@ export const consti1: LawModule = {
 	legalScope: "1987 Constitution Arts. I, II, IV, V, VI, VII, VIII, IX, X",
 	topics: [
 		constiFinalsTopic,
+		constiFinalsCasesTopic,
 		{"id":"territory_policies","name":"National Territory & State Policies","eyebrow":"ARTS. I & II","desc":"Archipelagic doctrine, elements of a State, self-executing exceptions, protection of the unborn, republicanism."},
 		{"id":"citizenship_suffrage","name":"Citizenship & Suffrage","eyebrow":"ARTS. IV & V","desc":"Modes of acquiring/losing citizenship, natural-born deeming clause, R.A. 9225, foundlings, voter qualifications."},
 		{"id":"legislative","name":"The Legislative Department","eyebrow":"ART. VI","desc":"Senate/House qualifications, party-list, CA confirmation, legislative inquiry, bill passage, veto power."},
@@ -148,6 +149,7 @@ export const consti1: LawModule = {
     </ul>`,
 		...extWatchFor,
 		"finals": constiFinalsWatchFor,
+		"finals_cases": constiFinalsCasesWatchFor,
 		"all": `<strong>Watch for: exceptions to the exceptions, across every topic.</strong> Several rules that look like blanket exemptions (the Sec. 15 appointments ban, the R.A. 9225 reacquisition oath, the political question doctrine, Art. II's non-self-executing default) carry their own built-in exceptions or additional requirements that defeat or narrow the exemption itself — these are classic examiner traps.`,
 	},
 	mcqs: [

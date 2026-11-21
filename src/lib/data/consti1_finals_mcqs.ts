@@ -7,6 +7,20 @@ export const constiFinalsTopic: ModuleTopic = {
 	desc: '210 multiple-choice and true-or-false questions based on Justice Isagani A. Cruz’s Philippine Political Law, the 1987 Philippine Constitution, and Supreme Court jurisprudence.'
 };
 
+export const constiFinalsCasesTopic: ModuleTopic = {
+	id: 'finals_cases',
+	name: 'CASES',
+	eyebrow: 'FINALS · JURISPRUDENCE · 90 ITEMS',
+	desc: '90 landmark Supreme Court jurisprudence questions (Chapters 12–19, Q121–Q210) — also included in the FINALS filter.'
+};
+
+export const constiFinalsCasesWatchFor = `<strong>Watch for: paired cases that flip or qualify each other (Q121–Q210).</strong>
+<ul>
+  <li><strong>Standing &amp; Judicial Review:</strong> <em>Kilosbayan v. Guingona</em> (relaxed standing) vs. <em>Kilosbayan v. Morato</em> (strict standing); <em>David v. Arroyo</em> (mootness exceptions); <em>Romualdez v. COMELEC</em> (no facial challenge to penal election laws).</li>
+  <li><strong>Judicial Independence &amp; Fiscal Autonomy:</strong> <em>Perfecto v. Meer / Endencia</em> vs. <em>Nitafan v. CIR</em> (judicial income tax); <em>Borromeo / Mahawan</em> (minute resolutions) vs. <em>Yao</em> (void decisions); <em>De Castro v. JBC</em> (90-day SC vacancy rule prevails over Sec. 15 midnight ban).</li>
+  <li><strong>Constitutional Commissions &amp; Elections:</strong> <em>Gaminde v. COA</em> (Feb. 2 reckoning date); <em>Funa v. Villar</em> (7-year aggregate cap); <em>Lanot</em> vs. <em>Penera</em> (campaign period start); <em>League of Cities v. COMELEC</em> (2011 final resolution upholding the 16 cityhood laws).</li>
+</ul>`;
+
 export const constiFinalsWatchFor = `<strong>Watch for: combination choices (A–G), numbers &amp; voting thresholds, and landmark jurisprudence traps.</strong>
 <ul>
   <li><strong>Part 1 (Judicial Department — Art. VIII, Q1–Q25):</strong> SC has 15 Members (CJ + 14 Associate Justices) sitting En Banc or in divisions of 3, 5, or 7 (never even numbers). Vacancies filled within 90 days (exception to Art. VII, Sec. 15 midnight ban under <em>De Castro v. JBC</em>). Congress gets only 1 representative with 1 vote in the JBC (<em>Chavez v. JBC</em>). Decision periods (24m SC / 12m collegiate / 3m lower) are directory on adjudicative authority (<em>Sesbreño v. CA</em>).</li>
@@ -20,13 +34,13 @@ const P1 = 'FINALS — Part 1: The Judicial Department (Ch. 12)';
 const P2 = 'FINALS — Part 2: The Constitutional Commissions (Ch. 13–16)';
 const P3 = 'FINALS — Part 3: Accountability, Amendments & Elections (Ch. 17–19)';
 const P4 = 'FINALS — Part 4: General Principles to Powers of the President (Ch. 1–11)';
-const P5_12 = 'FINALS — Part 5: Jurisprudence · Ch. 12 Judicial Department';
-const P5_13 = 'FINALS — Part 5: Jurisprudence · Ch. 13 Constitutional Commissions & CSC';
-const P5_14 = 'FINALS — Part 5: Jurisprudence · Ch. 14 Commission on Elections';
-const P5_15 = 'FINALS — Part 5: Jurisprudence · Ch. 15 Commission on Audit';
-const P5_16 = 'FINALS — Part 5: Jurisprudence · Ch. 16/17 Accountability of Public Officers';
-const P5_17 = 'FINALS — Part 5: Jurisprudence · Ch. 17/18 Amendment or Revision';
-const P5_18 = 'FINALS — Part 5: Jurisprudence · Ch. 18/19 National Economy, Citizenship & Elections';
+const P5_12 = 'CASES (FINALS) — Ch. 12: Judicial Department';
+const P5_13 = 'CASES (FINALS) — Ch. 13: Constitutional Commissions & CSC';
+const P5_14 = 'CASES (FINALS) — Ch. 14: Commission on Elections';
+const P5_15 = 'CASES (FINALS) — Ch. 15: Commission on Audit';
+const P5_16 = 'CASES (FINALS) — Ch. 16/17: Accountability of Public Officers';
+const P5_17 = 'CASES (FINALS) — Ch. 17/18: Amendment or Revision';
+const P5_18 = 'CASES (FINALS) — Ch. 18/19: National Economy, Citizenship & Elections';
 
 export const constiFinalsMcqs: McqQuestion[] = [
 	// =========================================================================
@@ -3388,7 +3402,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 12: The Judicial Department (Q121–Q145) ----
 	{
 		id: 'consti1:finals:121',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3415,7 +3429,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:122',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3442,7 +3456,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:123',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3469,7 +3483,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:124',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3496,7 +3510,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:125',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3523,7 +3537,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:126',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3550,7 +3564,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:127',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3577,7 +3591,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:128',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3604,7 +3618,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:129',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3631,7 +3645,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:130',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3658,7 +3672,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:131',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3685,7 +3699,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:132',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3712,7 +3726,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:133',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3739,7 +3753,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:134',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3766,7 +3780,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:135',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3793,7 +3807,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:136',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3820,7 +3834,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:137',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3847,7 +3861,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:138',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3874,7 +3888,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:139',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3901,7 +3915,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:140',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3928,7 +3942,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:141',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3955,7 +3969,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:142',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -3982,7 +3996,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:143',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -4009,7 +4023,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:144',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -4036,7 +4050,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:145',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_12,
 		tag: 'jurisprudence',
 		question:
@@ -4065,7 +4079,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 13: Constitutional Commissions & CSC (Q146–Q158) ----
 	{
 		id: 'consti1:finals:146',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4092,7 +4106,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:147',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4119,7 +4133,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:148',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4146,7 +4160,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:149',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4173,7 +4187,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:150',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4200,7 +4214,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:151',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4227,7 +4241,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:152',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4254,7 +4268,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:153',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4281,7 +4295,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:154',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4308,7 +4322,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:155',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4335,7 +4349,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:156',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4362,7 +4376,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:157',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4389,7 +4403,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:158',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_13,
 		tag: 'jurisprudence',
 		question:
@@ -4418,7 +4432,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 14: The Commission on Elections (Q159–Q171) ----
 	{
 		id: 'consti1:finals:159',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4445,7 +4459,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:160',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4472,7 +4486,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:161',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4499,7 +4513,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:162',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4526,7 +4540,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:163',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4553,7 +4567,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:164',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4580,7 +4594,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:165',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4607,7 +4621,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:166',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4634,7 +4648,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:167',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4661,7 +4675,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:168',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4688,7 +4702,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:169',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4715,7 +4729,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:170',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4742,7 +4756,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:171',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_14,
 		tag: 'jurisprudence',
 		question:
@@ -4771,7 +4785,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 15: The Commission on Audit (Q172–Q180) ----
 	{
 		id: 'consti1:finals:172',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4798,7 +4812,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:173',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4825,7 +4839,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:174',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4852,7 +4866,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:175',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4879,7 +4893,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:176',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4906,7 +4920,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:177',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4933,7 +4947,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:178',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4960,7 +4974,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:179',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -4987,7 +5001,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:180',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_15,
 		tag: 'jurisprudence',
 		question:
@@ -5016,7 +5030,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 16/17: Accountability of Public Officers (Q181–Q193) ----
 	{
 		id: 'consti1:finals:181',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5043,7 +5057,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:182',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5070,7 +5084,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:183',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5097,7 +5111,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:184',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5124,7 +5138,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:185',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5151,7 +5165,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:186',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5178,7 +5192,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:187',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5205,7 +5219,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:188',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5232,7 +5246,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:189',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5259,7 +5273,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:190',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5286,7 +5300,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:191',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5313,7 +5327,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:192',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5340,7 +5354,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:193',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_16,
 		tag: 'jurisprudence',
 		question:
@@ -5369,7 +5383,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapter 17/18: Amendment or Revision of the Constitution (Q194–Q202) ----
 	{
 		id: 'consti1:finals:194',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5396,7 +5410,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:195',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5423,7 +5437,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:196',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5450,7 +5464,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:197',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5477,7 +5491,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:198',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5504,7 +5518,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:199',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5531,7 +5545,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:200',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5558,7 +5572,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:201',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5585,7 +5599,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:202',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_17,
 		tag: 'jurisprudence',
 		question:
@@ -5614,7 +5628,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	// ---- Chapters 18/19: National Economy, Patrimony, Citizenship & Elections (Q203–Q210) ----
 	{
 		id: 'consti1:finals:203',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5641,7 +5655,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:204',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5668,7 +5682,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:205',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5695,7 +5709,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:206',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5722,7 +5736,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:207',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5749,7 +5763,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:208',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5776,7 +5790,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:209',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:
@@ -5803,7 +5817,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 	},
 	{
 		id: 'consti1:finals:210',
-		topicId: 'finals',
+		topicId: 'finals_cases',
 		topic: P5_18,
 		tag: 'jurisprudence',
 		question:

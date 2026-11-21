@@ -188,8 +188,8 @@ export const KIND_META: Record<
 		short: 'MCQs',
 		intro: 'Select the best answer for each question. Choices are shuffled.',
 		setupHint: 'Auto-graded immediately upon submission (1 pt each).',
-		opts: [0, 5, 10, 20, 30, 50],
-		defaultCount: 10
+		opts: [0, 5, 10, 20, 30, 50, 100],
+		defaultCount: 20
 	},
 	essay: {
 		title: 'ALAC & Written Essays',
@@ -656,7 +656,7 @@ export function sampleItems<T>(pool: readonly T[], count: number): T[] {
 	return copy.slice(0, Math.min(count, copy.length));
 }
 
-/** Weighted sampling without replacement (items with weight 0.25 are 75% less likely to be drawn than weight 1). */
+/** Weighted sampling without replacement (e.g. weight 0.3 is 70% less likely to be drawn than weight 1). */
 export function sampleWeightedItems<T>(
 	pool: readonly T[],
 	count: number,

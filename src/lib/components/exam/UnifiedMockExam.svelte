@@ -427,7 +427,7 @@
 
 		if (effectiveCounts.mcq > 0) {
 			const sampled = sampleWeightedItems(filteredMcqs, effectiveCounts.mcq, (q) =>
-				q.tag === 'cases' || q.topicId === 'finals_cases' ? 0.25 : 1
+				q.tag === 'cases' || q.topicId === 'finals_cases' ? 0.3 : 1
 			);
 			for (const q of sampled) {
 				const order = dynamicOptionOrder(q.options);

@@ -5,7 +5,7 @@
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import McqQuizEngine from '$lib/components/McqQuizEngine.svelte';
 	import { getModule } from '$lib/data/modules';
-	import { topicsForSubject } from '$lib/topics';
+	import { allTopicsForSubject } from '$lib/topics';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { Target } from '@lucide/svelte';
 
@@ -14,7 +14,7 @@
 
 	const subject = $derived(getModule(page.params.slug ?? '')!);
 	const topicId = $derived(page.url.searchParams.get('topic') ?? 'all');
-	const topic = $derived(topicsForSubject(subject).find((t) => t.id === topicId));
+	const topic = $derived(allTopicsForSubject(subject).find((t) => t.id === topicId));
 	const mode = $derived((page.url.searchParams.get('mode') === 'exam' ? 'exam' : 'practice') as Mode);
 	const filter = $derived.by(() => {
 		const f = page.url.searchParams.get('filter') ?? '';

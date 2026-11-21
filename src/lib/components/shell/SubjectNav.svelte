@@ -9,7 +9,7 @@
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn } from '$lib/utils';
 	import { activeSubtabId, subtabsForSubject } from '$lib/subtabs';
-	import { topicsForSubject } from '$lib/topics';
+	import { mcqMatchesTopic, subTopicsForSubject } from '$lib/topics';
 	import type { AlacEssay, Subject } from '$lib/types';
 
 	let {
@@ -60,23 +60,26 @@
 		const s = u.toString();
 		return `/module/${subject.id}/practice${s ? `?${s}` : ''}`;
 	}
+	const practiceGroups = $derived(subTopicsForSubject(subject));
 	const topicCounts = $derived.by(() => {
+		const all = [
+			...practiceGroups.formatTopics,
+			...practiceGroups.focusTopics,
+			...practiceGroups.syllabusTopics
+		];
 		const out = new Map<string, { total: number; answered: number }>();
-		const bump = (k: string, answered: boolean) => {
-			const row = out.get(k) ?? { total: 0, answered: 0 };
-			row.total++;
-			if (answered) row.answered++;
-			out.set(k, row);
-		};
-		for (const q of subject.mcqs) {
-			const k = q.topicId ?? 'other';
-			const ans = !!userStorage.mcqAttempts[q.id];
-			bump(k, ans);
-			if (k === 'finals_cases') bump('finals', ans);
+		for (const t of all) {
+			let total = 0;
+			let answered = 0;
+			for (const q of subject.mcqs) {
+				if (!mcqMatchesTopic(q, t.id)) continue;
+				total++;
+				if (userStorage.mcqAttempts[q.id]) answered++;
+			}
+			out.set(t.id, { total, answered });
 		}
 		return out;
 	});
-	const practiceTopics = $derived(topicsForSubject(subject));
 
 	// ---- Essays: status + source + list ----
 	const STATUSES: ('all' | EssayStatus)[] = ['all', 'new', 'drafted', 'review', 'mastered'];
@@ -272,20 +275,54 @@
 			<a href={practiceHref('all')} onclick={() => onnavigate?.()} aria-current={topicParam === 'all' ? 'page' : undefined} class={cn(row, topicParam === 'all' ? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : 'text-muted-foreground hover:bg-muted hover:text-foreground')}>
 				<span class="flex-1 truncate">All questions</span><span class="text-xs font-extrabold tabular-nums">{subject.mcqs.length}</span>
 			</a>
-			<p class="label-caps px-2.5 pt-3 pb-1 text-[0.6875rem]">Topics</p>
-			{#each practiceTopics as t (t.id)}
-				{@const c = topicCounts.get(t.id)}
-				<a
-					href={practiceHref(t.id)}
-					onclick={() => onnavigate?.()}
-					aria-current={topicParam === t.id ? 'page' : undefined}
-					title={t.desc}
-					class={cn(row, topicParam === t.id ? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : 'text-muted-foreground hover:bg-muted hover:text-foreground')}
-				>
-					<span class="flex-1 truncate">{t.name}</span>
-					<span class="shrink-0 text-xs font-extrabold tabular-nums">{c?.answered ?? 0}/{c?.total ?? 0}</span>
-				</a>
-			{/each}
+			{#if practiceGroups.formatTopics.length}
+				<p class="label-caps px-2.5 pt-3 pb-1 text-[0.6875rem]">Question Types</p>
+				{#each practiceGroups.formatTopics as t (t.id)}
+					{@const c = topicCounts.get(t.id)}
+					<a
+						href={practiceHref(t.id)}
+						onclick={() => onnavigate?.()}
+						aria-current={topicParam === t.id ? 'page' : undefined}
+						title={t.desc}
+						class={cn(row, topicParam === t.id ? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : 'text-muted-foreground hover:bg-muted hover:text-foreground')}
+					>
+						<span class="flex-1 truncate">{t.name}</span>
+						<span class="shrink-0 text-xs font-extrabold tabular-nums">{c?.answered ?? 0}/{c?.total ?? 0}</span>
+					</a>
+				{/each}
+			{/if}
+			{#if practiceGroups.syllabusTopics.length}
+				<p class="label-caps px-2.5 pt-3 pb-1 text-[0.6875rem]">Topics</p>
+				{#each practiceGroups.syllabusTopics as t (t.id)}
+					{@const c = topicCounts.get(t.id)}
+					<a
+						href={practiceHref(t.id)}
+						onclick={() => onnavigate?.()}
+						aria-current={topicParam === t.id ? 'page' : undefined}
+						title={t.desc}
+						class={cn(row, topicParam === t.id ? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : 'text-muted-foreground hover:bg-muted hover:text-foreground')}
+					>
+						<span class="flex-1 truncate">{t.name}</span>
+						<span class="shrink-0 text-xs font-extrabold tabular-nums">{c?.answered ?? 0}/{c?.total ?? 0}</span>
+					</a>
+				{/each}
+			{/if}
+			{#if practiceGroups.focusTopics.length}
+				<p class="label-caps px-2.5 pt-3 pb-1 text-[0.6875rem]">By Focus</p>
+				{#each practiceGroups.focusTopics as t (t.id)}
+					{@const c = topicCounts.get(t.id)}
+					<a
+						href={practiceHref(t.id)}
+						onclick={() => onnavigate?.()}
+						aria-current={topicParam === t.id ? 'page' : undefined}
+						title={t.desc}
+						class={cn(row, topicParam === t.id ? 'border-[#1CB0F6] bg-[#DDF4FF] font-extrabold text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]' : 'text-muted-foreground hover:bg-muted hover:text-foreground')}
+					>
+						<span class="flex-1 truncate">{t.name}</span>
+						<span class="shrink-0 text-xs font-extrabold tabular-nums">{c?.answered ?? 0}/{c?.total ?? 0}</span>
+					</a>
+				{/each}
+			{/if}
 		</nav>
 	{:else if mode === 'essays'}
 		{#if sources.length > 0}

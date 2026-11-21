@@ -37,7 +37,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
 	import { userStorage } from '$lib/stores/storage.svelte';
-	import { mcqMatchesTopic, topicsForSubject } from '$lib/topics';
+	import { allTopicsForSubject, mcqMatchesTopic } from '$lib/topics';
 	import { cn, formatClock, pct } from '$lib/utils';
 	import type { McqQuestion, McqTag, Subject } from '$lib/types';
 
@@ -82,7 +82,7 @@
 	};
 
 	const byId = $derived(new Map(lawModule.mcqs.map((q) => [q.id, q])));
-	const topics = $derived(topicsForSubject(lawModule));
+	const topics = $derived(allTopicsForSubject(lawModule));
 
 	// svelte-ignore state_referenced_locally — the page re-mounts the engine per topic
 	let mode = $state<Mode>(initialMode);

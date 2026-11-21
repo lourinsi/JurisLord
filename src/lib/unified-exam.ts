@@ -4,7 +4,7 @@ import type { SubjectNumbersConfig } from '$lib/numbers-registry';
 import type { Essay as PhiloEssay } from '$lib/philo';
 import type { Problem as ConstiProblem } from '$lib/problems';
 import type { SubjectRequisitesConfig } from '$lib/requisites';
-import { topicsForSubject } from '$lib/topics';
+import { mcqMatchesTopic, subTopicsForSubject, topicsForSubject } from '$lib/topics';
 import type { McqTag, Subject } from '$lib/types';
 
 export type ExamItemKind = 'mcq' | 'essay' | 'enum' | 'term' | 'req' | 'num';
@@ -365,6 +365,18 @@ export function buildSubjectExamBank(opts: {
 	const mcqTopics: FilterOption[] = [...mcqTopicCounts.entries()]
 		.filter(([, v]) => v.count > 0)
 		.map(([id, v]) => ({ id, label: v.name, count: v.count, isFinals: v.isFinals }));
+
+	// Also expose Question Type (True or False, Multiple Choice, Combination A–G) and Focus sub-topics in Mock Exam setup
+	const { formatTopics, focusTopics } = subTopicsForSubject({ topics: subject.topics, mcqs });
+	const seenTopicIds = new Set(mcqTopics.map((t) => t.id));
+	for (const vt of [...formatTopics, ...focusTopics]) {
+		if (seenTopicIds.has(vt.id)) continue;
+		const count = mcqs.filter((q) => mcqMatchesTopic(q, vt.id)).length;
+		if (count > 0 && count < mcqs.length) {
+			seenTopicIds.add(vt.id);
+			mcqTopics.push({ id: vt.id, label: vt.name, count, isFinals: false });
+		}
+	}
 
 	// ---- 2. Essays (subject.essays + kit.problems + constiProblems + philoEssays) ----
 	const essays: UnifiedEssayItem[] = [];

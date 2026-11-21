@@ -54,6 +54,7 @@
 		maxPointsForEntry,
 		pointsForEntry,
 		sampleItems,
+		sampleWeightedItems,
 		saveExamSession,
 		saveExamSettings,
 		subTickKey,
@@ -425,7 +426,10 @@
 		const items: UnifiedExamEntry[] = [];
 
 		if (effectiveCounts.mcq > 0) {
-			for (const q of sampleItems(filteredMcqs, effectiveCounts.mcq)) {
+			const sampled = sampleWeightedItems(filteredMcqs, effectiveCounts.mcq, (q) =>
+				q.tag === 'jurisprudence' || q.topicId === 'finals_cases' ? 0.25 : 1
+			);
+			for (const q of sampled) {
 				const order = dynamicOptionOrder(q.options);
 				items.push({ kind: 'mcq', id: q.id, order });
 			}
@@ -525,6 +529,37 @@
 		confirmSubmit = false;
 		confirmReset = false;
 		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	function retakeFresh20() {
+		mode = 'exam';
+		timerChoice = 'auto';
+		applyScopePreset(bank.hasFinalsPreset ? 'finals' : 'all');
+		counts.mcq = Math.min(20, availableCounts.mcq);
+		if (subject.id !== 'consti1') {
+			const dflt = defaultExamSettings(bank);
+			counts.essay = dflt.counts.essay;
+			counts.enum = dflt.counts.enum;
+			counts.term = dflt.counts.term;
+			counts.req = dflt.counts.req;
+			counts.num = dflt.counts.num;
+		}
+		startExam();
+	}
+
+	function takeAllFinalsExam() {
+		mode = 'exam';
+		timerChoice = 'auto';
+		applyScopePreset(bank.hasFinalsPreset ? 'finals' : 'all');
+		counts.mcq = availableCounts.mcq;
+		if (subject.id === 'consti1') {
+			counts.essay = 0;
+			counts.enum = 0;
+			counts.term = 0;
+			counts.req = 0;
+			counts.num = 0;
+		}
+		startExam();
 	}
 
 	function pickMcqOption(entry: UnifiedExamEntry, originalIndex: number) {
@@ -2301,13 +2336,29 @@
 				</div>
 
 				<div class="flex flex-wrap gap-2.5 pt-1">
+					<button
+						type="button"
+						onclick={retakeFresh20}
+						class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
+					>
+						<Sparkles class="size-3.5" /> New 20-Question Set
+					</button>
 					{#if missedMcqsInSession > 0}
 						<button
 							type="button"
 							onclick={retryMissedMcqs}
-							class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-4 text-xs font-extrabold tracking-wide text-white uppercase"
+							class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#18A1E3] active:translate-y-0.5 active:border-b-2"
 						>
-							<RotateCcw class="size-3.5" /> Practice {missedMcqsInSession} Missed MCQs
+							<RotateCcw class="size-3.5" /> Retake {missedMcqsInSession} Missed
+						</button>
+					{/if}
+					{#if (finalsMcqCount || bank.mcqs.length) > 20}
+						<button
+							type="button"
+							onclick={takeAllFinalsExam}
+							class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#E5B400] border-b-4 bg-[#FFF5CC] px-4 text-xs font-extrabold tracking-wide text-[#946200] uppercase transition-all hover:bg-[#FFE899] active:translate-y-0.5 active:border-b-2 dark:border-[#FFC800]/50 dark:bg-[#FFC800]/20 dark:text-[#FFD633]"
+						>
+							Full {bank.hasFinalsPreset ? '★ Finals' : 'Pool'} ({finalsMcqCount || bank.mcqs.length})
 						</button>
 					{/if}
 					<button
@@ -2315,7 +2366,7 @@
 						onclick={resetExam}
 						class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-slate-200 border-b-4 bg-white px-4 text-xs font-extrabold tracking-wide text-foreground uppercase hover:bg-muted dark:border-[#2B434E] dark:bg-[#1A2C34]"
 					>
-						New Mock Exam
+						Customize Exam
 					</button>
 				</div>
 			</section>

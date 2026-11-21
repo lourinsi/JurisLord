@@ -656,6 +656,24 @@ export function sampleItems<T>(pool: readonly T[], count: number): T[] {
 	return copy.slice(0, Math.min(count, copy.length));
 }
 
+/** Weighted sampling without replacement (items with weight 0.25 are 75% less likely to be drawn than weight 1). */
+export function sampleWeightedItems<T>(
+	pool: readonly T[],
+	count: number,
+	getWeight: (item: T) => number
+): T[] {
+	if (count >= pool.length) return sampleItems(pool, count);
+	return [...pool]
+		.map((item) => {
+			const w = Math.max(0.01, getWeight(item));
+			const r = Math.max(1e-12, Math.random());
+			return { item, key: Math.pow(r, 1 / w) };
+		})
+		.sort((a, b) => b.key - a.key)
+		.slice(0, count)
+		.map((x) => x.item);
+}
+
 export function entryKey(entry: Pick<UnifiedExamEntry, 'kind' | 'id'>): string {
 	return `${entry.kind}:${entry.id}`;
 }
@@ -793,7 +811,7 @@ export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings 
 		numFilter: bank.hasFinalsNums ? 'finals' : 'all',
 		timerChoice: 'auto',
 		counts: {
-			mcq: bank.mcqs.length ? Math.min(10, finalsMcqs || bank.mcqs.length) : 0,
+			mcq: bank.mcqs.length ? Math.min(20, finalsMcqs || bank.mcqs.length) : 0,
 			essay: pureFinalsMcqOnly ? 0 : bank.essays.length ? Math.min(2, finalsEssays || bank.essays.length) : 0,
 			enum: pureFinalsMcqOnly ? 0 : bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
 			term: pureFinalsMcqOnly ? 0 : bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
@@ -826,7 +844,7 @@ export function loadSavedExamSettings(
 					termFilter: 'finals' as const,
 					numFilter: 'finals' as const,
 					timerChoice: 'auto' as const,
-					counts: { mcq: 10, essay: 2, enum: 2, term: 2, req: 3, num: 0 }
+					counts: { mcq: 20, essay: 2, enum: 2, term: 2, req: 3, num: 0 }
 				};
 		const scopePreset = parsed.scopePreset ?? fallback.scopePreset;
 		const pureFinalsMcqOnly = subjectId === 'consti1' && scopePreset === 'finals';

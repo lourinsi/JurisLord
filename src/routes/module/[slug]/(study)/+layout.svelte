@@ -38,7 +38,7 @@
 		</aside>
 	{/if}
 
-	<div class="min-w-0 flex-1">
+	<div class="flex min-w-0 flex-1 flex-col">
 		<!-- Phones and tablets: the navigator lives in a sheet behind this bar. -->
 		<div class="no-print sticky top-(--header-h) z-30 flex h-13 items-center gap-2.5 border-b-2 border-slate-200 bg-background/95 px-3 backdrop-blur lg:hidden dark:border-[#2B434E]" class:hidden={ui.focusMode}>
 			<button type="button" onclick={() => (ui.navOpen = true)} class="inline-flex h-9 items-center gap-2 rounded-xl border-2 border-b-3 border-slate-200 bg-white px-3 text-xs font-extrabold tracking-wide uppercase dark:border-[#2B434E] dark:bg-[#1A2C34]">
@@ -56,7 +56,12 @@
 				<PanelLeft class="size-4" /> Contents
 			</button>
 		{/if}
-		{@render children()}
+		<div class="flex-1">
+			{@render children()}
+		</div>
+		<footer class="no-print px-4 pt-2 pb-6 text-center text-[0.6875rem] font-medium tracking-wide text-muted-foreground/55 select-none">
+			amended by lourinsi · original code from serocode
+		</footer>
 	</div>
 </div>
 

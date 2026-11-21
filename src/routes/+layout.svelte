@@ -156,7 +156,7 @@
 			·
 			<a href="/legacy/index.html" class="underline underline-offset-2 hover:text-foreground">Previous version</a>
 		</p>
-		<p>amended by lourinsi · original code from serocode</p>
+		<p class="text-[0.6875rem] font-medium tracking-wide text-muted-foreground/60 select-none">amended by lourinsi · original code from serocode</p>
 	</footer>
 {/if}
 <Disclaimer bind:open={showDisclaimer} />

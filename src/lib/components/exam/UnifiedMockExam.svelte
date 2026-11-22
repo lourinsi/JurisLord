@@ -34,8 +34,9 @@
 	import type { Problem as ConstiProblem } from '$lib/problems';
 	import type { SubjectRequisitesConfig } from '$lib/requisites';
 	import { playMcqSound } from '$lib/sound';
+	import { canonicalModuleId } from '$lib/data/aliases';
 	import { prefs } from '$lib/stores/prefs.svelte';
-	import { userStorage } from '$lib/stores/storage.svelte';
+	import { userStorage, type ExamWeightUpdate } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
 	import { md } from '$lib/text';
 	import { mcqMatchesTopic } from '$lib/topics';
@@ -48,6 +49,8 @@
 		defaultExamSettings,
 		entryKey,
 		formatClock,
+		formatWeightDelta,
+		formatWeightMultiplier,
 		isEntryAnswered,
 		loadSavedExamSession,
 		loadSavedExamSettings,
@@ -405,6 +408,72 @@
 		userStorage.testHistory.filter((h) => h.subjectId === subject.id).slice(0, 8)
 	);
 
+	let weightHistoryFilter = $state<'all' | 'boosted' | 'lowered'>('all');
+
+	function resolveItemMeta(id: string): { kindLabel: string; prompt: string; topic: string; isMcq: boolean } {
+		const mcq = bank.mcqById[id];
+		if (mcq) return { kindLabel: 'MCQ', prompt: mcq.question, topic: mcq.topicName, isMcq: true };
+		const essay = bank.essayById[id];
+		if (essay) return { kindLabel: 'Essay', prompt: essay.title, topic: essay.topic, isMcq: false };
+		const en = bank.enumById[id];
+		if (en) return { kindLabel: 'Enum', prompt: en.title, topic: en.src, isMcq: false };
+		const tm = bank.termById[id];
+		if (tm) return { kindLabel: 'Term', prompt: tm.term, topic: tm.src, isMcq: false };
+		const rq = bank.reqById[id];
+		if (rq) return { kindLabel: 'Requisite', prompt: rq.question, topic: rq.topicTitle, isMcq: false };
+		const nm = bank.numById[id];
+		if (nm) return { kindLabel: 'Number', prompt: nm.prompt, topic: nm.group, isMcq: false };
+		return { kindLabel: 'Item', prompt: id, topic: '', isMcq: false };
+	}
+
+	const subjectModifiedWeights = $derived.by(() => {
+		const targetSubject = canonicalModuleId(subject.id);
+		const rows: {
+			id: string;
+			weight: number;
+			streak: number;
+			kindLabel: string;
+			prompt: string;
+			topic: string;
+			isMcq: boolean;
+			updatedAt: number;
+		}[] = [];
+		for (const [id, rec] of Object.entries(userStorage.examWeights)) {
+			if (!rec || rec.weight === 1) continue;
+			const owner = canonicalModuleId(rec.subjectId ?? id.split(':')[0]);
+			const inBank =
+				Boolean(bank.mcqById[id]) ||
+				Boolean(bank.essayById[id]) ||
+				Boolean(bank.enumById[id]) ||
+				Boolean(bank.termById[id]) ||
+				Boolean(bank.reqById[id]) ||
+				Boolean(bank.numById[id]);
+			if (owner !== targetSubject && !inBank) continue;
+			const meta = resolveItemMeta(id);
+			rows.push({
+				id,
+				weight: rec.weight,
+				streak: rec.streak,
+				kindLabel: meta.prompt !== id ? meta.kindLabel : (rec.kind?.toUpperCase() ?? 'Item'),
+				prompt: meta.prompt !== id ? meta.prompt : (rec.prompt ?? id),
+				topic: meta.topic || rec.topic || '',
+				isMcq: meta.isMcq || rec.kind === 'mcq',
+				updatedAt: rec.updatedAt
+			});
+		}
+		return rows.sort((a, b) => b.weight - a.weight || b.updatedAt - a.updatedAt);
+	});
+
+	const boostedWeightCount = $derived(subjectModifiedWeights.filter((r) => r.weight > 1).length);
+	const loweredWeightCount = $derived(subjectModifiedWeights.filter((r) => r.weight < 1).length);
+	const visibleModifiedWeights = $derived(
+		weightHistoryFilter === 'boosted'
+			? subjectModifiedWeights.filter((r) => r.weight > 1)
+			: weightHistoryFilter === 'lowered'
+				? subjectModifiedWeights.filter((r) => r.weight < 1)
+				: subjectModifiedWeights
+	);
+
 	// ---- Start / Submit / Grade handlers ----
 
 	function buildLabel(): string {
@@ -426,36 +495,37 @@
 		const items: UnifiedExamEntry[] = [];
 
 		if (effectiveCounts.mcq > 0) {
-			const sampled = sampleWeightedItems(filteredMcqs, effectiveCounts.mcq, (q) =>
-				q.tag === 'cases' || q.topicId === 'finals_cases' ? 0.3 : 1
-			);
+			const sampled = sampleWeightedItems(filteredMcqs, effectiveCounts.mcq, (q) => {
+				const baseWeight = q.tag === 'cases' || q.topicId === 'finals_cases' ? 0.3 : 1;
+				return baseWeight * userStorage.getExamWeight(q.id);
+			});
 			for (const q of sampled) {
 				const order = dynamicOptionOrder(q.options);
 				items.push({ kind: 'mcq', id: q.id, order });
 			}
 		}
 		if (effectiveCounts.essay > 0) {
-			for (const e of sampleItems(filteredEssays, effectiveCounts.essay)) {
+			for (const e of sampleWeightedItems(filteredEssays, effectiveCounts.essay, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'essay', id: e.id });
 			}
 		}
 		if (effectiveCounts.enum > 0) {
-			for (const en of sampleItems(filteredEnums, effectiveCounts.enum)) {
+			for (const en of sampleWeightedItems(filteredEnums, effectiveCounts.enum, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'enum', id: en.id });
 			}
 		}
 		if (effectiveCounts.term > 0) {
-			for (const tm of sampleItems(filteredTerms, effectiveCounts.term)) {
+			for (const tm of sampleWeightedItems(filteredTerms, effectiveCounts.term, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'term', id: tm.id });
 			}
 		}
 		if (effectiveCounts.req > 0) {
-			for (const rq of sampleItems(bank.reqs, effectiveCounts.req)) {
+			for (const rq of sampleWeightedItems(bank.reqs, effectiveCounts.req, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'req', id: rq.id });
 			}
 		}
 		if (effectiveCounts.num > 0) {
-			for (const nm of sampleItems(filteredNums, effectiveCounts.num)) {
+			for (const nm of sampleWeightedItems(filteredNums, effectiveCounts.num, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'num', id: nm.id });
 			}
 		}
@@ -594,9 +664,10 @@
 		session.finishedAt = end;
 		confirmSubmit = false;
 
-		// Record all answered MCQs into userStorage
+		// Record all answered MCQs into userStorage and update adaptive mock-exam weights after submission
 		let mcqCount = 0;
 		let mcqCorrect = 0;
+		const weightUpdates: ExamWeightUpdate[] = [];
 		for (const it of session.items) {
 			if (it.kind !== 'mcq') continue;
 			const q = bank.mcqById[it.id];
@@ -608,7 +679,18 @@
 				const ok = picked === resolveCorrectIndex(q);
 				if (ok) mcqCorrect++;
 				userStorage.recordMcqAttempt(q.id, picked, ok);
+				weightUpdates.push({
+					id: q.id,
+					isCorrect: ok,
+					subjectId: subject.id,
+					kind: 'mcq',
+					prompt: q.question,
+					topic: q.topicName
+				});
 			}
+		}
+		if (weightUpdates.length > 0) {
+			userStorage.recordExamSubmissionWeights(weightUpdates);
 		}
 
 		// If the exam contains ONLY MCQs, auto-finalize grading immediately
@@ -635,6 +717,27 @@
 	function finalizeWrittenGrading() {
 		if (!session || session.graded) return;
 		session.graded = true;
+		const writtenWeightUpdates: ExamWeightUpdate[] = [];
+		for (const it of session.items) {
+			if (it.kind === 'mcq') continue;
+			if (!isEntryAnswered(session, it, bank)) continue;
+			const got = pointsForEntry(session, it, bank);
+			const max = maxPointsForEntry(it, bank);
+			if (got !== null && max > 0) {
+				const meta = resolveItemMeta(it.id);
+				writtenWeightUpdates.push({
+					id: it.id,
+					isCorrect: got >= max,
+					subjectId: subject.id,
+					kind: it.kind,
+					prompt: meta.prompt,
+					topic: meta.topic
+				});
+			}
+		}
+		if (writtenWeightUpdates.length > 0) {
+			userStorage.recordExamSubmissionWeights(writtenWeightUpdates);
+		}
 		const totals = computeExamTotals(session, bank);
 		const end = session.finishedAt ?? Date.now();
 		userStorage.recordTestHistory({
@@ -1436,6 +1539,110 @@
 							{/each}
 						</tbody>
 					</table>
+				</div>
+			</section>
+		{/if}
+
+		<!-- Adaptive Mock Exam Question Weights (only modified items shown; base 1× hidden) -->
+		{#if subjectModifiedWeights.length}
+			<section class="flex flex-col gap-3 rounded-3xl border-2 border-b-4 border-slate-200 bg-card p-5 dark:border-[#2B434E]">
+				<div class="flex flex-wrap items-center justify-between gap-2">
+					<div class="flex flex-wrap items-center gap-2">
+						<h2 class="label-caps text-xs">Modified Question Weights · {subject.title}</h2>
+						{#if boostedWeightCount > 0}
+							<span class="rounded-full bg-[#FFDFE0] px-2.5 py-0.5 text-[0.7rem] font-extrabold text-[#EA2B2B] tabular-nums dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]">
+								↑ {boostedWeightCount} boosted
+							</span>
+						{/if}
+						{#if loweredWeightCount > 0}
+							<span class="rounded-full bg-[#D7FFB8] px-2.5 py-0.5 text-[0.7rem] font-extrabold text-[#46A302] tabular-nums dark:bg-[#58CC02]/20 dark:text-[#7BE328]">
+								↓ {loweredWeightCount} lowered
+							</span>
+						{/if}
+					</div>
+					<button
+						type="button"
+						onclick={() => {
+							userStorage.clearExamWeights(subject.id);
+							weightHistoryFilter = 'all';
+							ui.toast(`Reset mock-exam weights for ${subject.title}`);
+						}}
+						class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-background px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase transition-colors hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
+					>
+						<RotateCcw class="size-3" /> Reset all to 1×
+					</button>
+				</div>
+				<p class="text-xs font-semibold text-muted-foreground">
+					Applies to subset mock exams (e.g. 20, 40 items). Consecutive right answers halve weight (never 0); flipping right ↔ wrong resets to base 1× first, then applies ±50%. Unchanged (1×) items are hidden.
+				</p>
+				{#if boostedWeightCount > 0 && loweredWeightCount > 0}
+					<div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter modified weights">
+						{#each [
+							{ id: 'all', label: `All (${subjectModifiedWeights.length})` },
+							{ id: 'boosted', label: `More likely (${boostedWeightCount})` },
+							{ id: 'lowered', label: `Less likely (${loweredWeightCount})` }
+						] as tab (tab.id)}
+							<button
+								type="button"
+								aria-pressed={weightHistoryFilter === tab.id}
+								onclick={() => (weightHistoryFilter = tab.id as 'all' | 'boosted' | 'lowered')}
+								class={cn(
+									'rounded-xl border-2 px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide uppercase transition-colors',
+									weightHistoryFilter === tab.id
+										? 'border-[#1899D6] bg-[#1CB0F6] text-white'
+										: 'border-slate-200 bg-background text-muted-foreground hover:text-foreground dark:border-[#2B434E]'
+								)}
+							>
+								{tab.label}
+							</button>
+						{/each}
+					</div>
+				{/if}
+				<div class="max-h-96 divide-y divide-slate-200 overflow-y-auto rounded-2xl border border-slate-200 dark:divide-[#2B434E] dark:border-[#2B434E]">
+					{#each visibleModifiedWeights as row (row.id)}
+						{@const boosted = row.weight > 1}
+						<div class="flex items-start justify-between gap-3 px-3.5 py-2.5">
+							<div class="flex min-w-0 flex-1 flex-col gap-0.5">
+								<div class="flex flex-wrap items-center gap-1.5">
+									<span class="rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.65rem] font-extrabold tracking-wide text-slate-600 uppercase dark:bg-[#223842] dark:text-slate-300">
+										{row.kindLabel}
+									</span>
+									{#if row.topic}
+										<span class="truncate text-[0.7rem] font-bold text-muted-foreground">{row.topic}</span>
+									{/if}
+									{#if row.streak !== 0}
+										<span class="text-[0.68rem] font-bold text-muted-foreground/80">
+											· {Math.abs(row.streak)}× {row.streak > 0 ? 'right' : 'wrong'}
+										</span>
+									{/if}
+								</div>
+								<p class="line-clamp-2 text-xs leading-snug font-semibold text-foreground">{row.prompt}</p>
+							</div>
+							<div class="flex shrink-0 items-center gap-1.5">
+								<span
+									class={cn(
+										'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-extrabold tabular-nums',
+										boosted
+											? 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+											: 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]'
+									)}
+									title={boosted ? 'More likely to reappear on subset mock exams' : 'Less likely to reappear on subset mock exams (still eligible)'}
+								>
+									{formatWeightMultiplier(row.weight)}
+									<span class="text-[0.68rem] opacity-80">({formatWeightDelta(row.weight)})</span>
+								</span>
+								<button
+									type="button"
+									onclick={() => userStorage.resetExamWeight(row.id)}
+									title="Reset this item back to base weight (1×)"
+									aria-label="Reset item weight to 1x"
+									class="grid size-7 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-slate-100 hover:text-foreground dark:hover:bg-[#223842]"
+								>
+									<RotateCcw class="size-3.5" />
+								</button>
+							</div>
+						</div>
+					{/each}
 				</div>
 			</section>
 		{/if}

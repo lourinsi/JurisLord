@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Bookmark, Highlighter, History, Link2, NotebookPen, Pencil, Plus, Search, Target, Trash2, TriangleAlert } from '@lucide/svelte';
+	import { Bookmark, Highlighter, History, Link2, NotebookPen, Pencil, Plus, RotateCcw, Search, Target, Trash2, TriangleAlert } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
@@ -7,10 +7,12 @@
 	import HighlightEditor from '$lib/components/HighlightEditor.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import { canonicalModuleId } from '$lib/data/aliases';
 	import { CATEGORY_ACCENT, getModule, modules, subjectForItem } from '$lib/data/modules';
 	import { partForScope, readHref, type Part } from '$lib/content';
-	import { userStorage, type UserNote } from '$lib/stores/storage.svelte';
+	import { userStorage, type ExamWeightRecord, type UserNote } from '$lib/stores/storage.svelte';
 	import { ui } from '$lib/stores/ui.svelte';
+	import { formatWeightDelta, formatWeightMultiplier } from '$lib/unified-exam';
 	import { cn, formatClock, pct } from '$lib/utils';
 	import type { Subject, UserHighlight } from '$lib/types';
 
@@ -19,6 +21,78 @@
 	const historyItems = $derived(
 		userStorage.testHistory.filter((h) => !f || `${h.subjectTitle} ${h.topicName} ${h.mode}`.toLowerCase().includes(f))
 	);
+	const totalModifiedWeights = $derived(
+		Object.values(userStorage.examWeights).filter((r) => r && r.weight !== 1).length
+	);
+
+	function resolveWeightPrompt(subject: Subject | undefined, id: string, rec: ExamWeightRecord) {
+		const mcq = subject?.mcqs.find((x) => x.id === id);
+		if (mcq) return { prompt: mcq.question, topic: mcq.topic, kindLabel: 'MCQ', isMcq: true, topicId: mcq.topicId ?? 'all' };
+		const essay = subject?.essays.find((x) => x.id === id);
+		if (essay) return { prompt: essay.title, topic: essay.topic, kindLabel: 'Essay', isMcq: false, topicId: '' };
+		return {
+			prompt: rec.prompt || id,
+			topic: rec.topic || '',
+			kindLabel: rec.kind ? rec.kind.toUpperCase() : 'Item',
+			isMcq: rec.kind === 'mcq',
+			topicId: 'all'
+		};
+	}
+
+	const weightGroupsBySubject = $derived.by(() => {
+		const map = new Map<
+			string,
+			{
+				subject: Subject;
+				boosted: number;
+				lowered: number;
+				items: {
+					id: string;
+					weight: number;
+					streak: number;
+					prompt: string;
+					topic: string;
+					kindLabel: string;
+					isMcq: boolean;
+					topicId: string;
+					updatedAt: number;
+				}[];
+			}
+		>();
+		for (const [id, rec] of Object.entries(userStorage.examWeights)) {
+			if (!rec || rec.weight === 1) continue;
+			const subjectId = canonicalModuleId(rec.subjectId ?? id.split(':')[0]);
+			const subject = getModule(subjectId) ?? subjectForItem(id);
+			if (!subject) continue;
+			const resolved = resolveWeightPrompt(subject, id, rec);
+			if (
+				f &&
+				!`${subject.title} ${resolved.prompt} ${resolved.topic} ${resolved.kindLabel}`.toLowerCase().includes(f)
+			) {
+				continue;
+			}
+			let group = map.get(subject.id);
+			if (!group) {
+				group = { subject, boosted: 0, lowered: 0, items: [] };
+				map.set(subject.id, group);
+			}
+			if (rec.weight > 1) group.boosted++;
+			else group.lowered++;
+			group.items.push({
+				id,
+				weight: rec.weight,
+				streak: rec.streak,
+				...resolved,
+				updatedAt: rec.updatedAt
+			});
+		}
+		const order = (s: Subject) => modules.indexOf(s);
+		const groups = [...map.values()].sort((a, b) => order(a.subject) - order(b.subject));
+		for (const g of groups) {
+			g.items.sort((a, b) => b.weight - a.weight || b.updatedAt - a.updatedAt);
+		}
+		return groups;
+	});
 	const noteParam = $derived(page.url.searchParams.get('note') ?? '');
 	let filter = $state('');
 	const f = $derived(filter.trim().toLowerCase());
@@ -232,36 +306,139 @@
 			</section>
 		</div>
 	{:else if tab === 'history'}
-		{#if !userStorage.testHistory.length}
-			<EmptyState icon={History} title="No test history yet">Submit a timed exam or reset a practice set to record your past scores here.</EmptyState>
-		{:else if !historyItems.length}
+		{#if !userStorage.testHistory.length && !totalModifiedWeights}
+			<EmptyState icon={History} title="No test history yet">Submit a timed exam or mock exam to record your past scores and adaptive question weights here.</EmptyState>
+		{:else if !historyItems.length && !weightGroupsBySubject.length}
 			<EmptyState icon={Search} title="No history matches “{filter}”" />
 		{:else}
-			<div class="flex flex-col gap-3">
-				{#each historyItems as h (h.id)}
-					{@const scorePct = pct(h.correct, h.total)}
-					<a href="/module/{h.subjectId}/practice{h.topicId !== 'all' ? `?topic=${h.topicId}` : ''}" class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-5 py-4 text-foreground no-underline transition-all hover:-translate-y-0.5 hover:border-[#1CB0F6]/60 dark:border-[#2B434E]">
-						<div class="flex min-w-0 flex-col gap-1">
-							<div class="flex flex-wrap items-center gap-2">
-								<span class={cn('rounded-full px-2.5 py-0.5 text-[0.7rem] font-extrabold tracking-wide uppercase', h.mode === 'exam' ? 'bg-[#F3E8FF] text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' : 'bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]')}>
-									{h.mode === 'exam' ? 'Timed exam' : 'Practice'}
-								</span>
-								<span class="text-sm font-extrabold">{h.subjectTitle}</span>
-								<span class="text-xs font-bold text-muted-foreground">· {h.topicName}</span>
+			<div class="flex flex-col gap-6">
+				{#if historyItems.length}
+					<div class="flex flex-col gap-3">
+						{#each historyItems as h (h.id)}
+							{@const scorePct = pct(h.correct, h.total)}
+							<a href="/module/{h.subjectId}/exam" class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-b-4 border-slate-200 bg-card px-5 py-4 text-foreground no-underline transition-all hover:-translate-y-0.5 hover:border-[#1CB0F6]/60 dark:border-[#2B434E]">
+								<div class="flex min-w-0 flex-col gap-1">
+									<div class="flex flex-wrap items-center gap-2">
+										<span class={cn('rounded-full px-2.5 py-0.5 text-[0.7rem] font-extrabold tracking-wide uppercase', h.mode === 'exam' ? 'bg-[#F3E8FF] text-[#8930C9] dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]' : 'bg-[#DDF4FF] text-[#1899D6] dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]')}>
+											{h.mode === 'exam' ? 'Timed exam' : 'Practice'}
+										</span>
+										<span class="text-sm font-extrabold">{h.subjectTitle}</span>
+										<span class="text-xs font-bold text-muted-foreground">· {h.topicName}</span>
+									</div>
+									<span class="text-xs font-bold text-muted-foreground">
+										{new Date(h.at).toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}
+										{#if h.secondsUsed !== undefined}· {formatClock(h.secondsUsed)} used{/if}
+									</span>
+								</div>
+								<div class="flex items-center gap-3">
+									<span class="text-sm font-extrabold text-muted-foreground tabular-nums">{h.correct}/{h.total} ({h.answered} answered)</span>
+									<span class={cn('rounded-full px-3 py-1 text-sm font-extrabold tabular-nums', scorePct >= 75 ? 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]' : scorePct >= 50 ? 'bg-[#FFF5CC] text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]' : 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]')}>
+										{scorePct}%
+									</span>
+								</div>
+							</a>
+						{/each}
+					</div>
+				{/if}
+
+				{#if weightGroupsBySubject.length}
+					<div class="flex flex-col gap-4">
+						<div class="flex flex-wrap items-center justify-between gap-2">
+							<div>
+								<h2 class="font-heading text-lg font-extrabold">Adaptive Mock Exam Weights</h2>
+								<p class="text-xs font-semibold text-muted-foreground">
+									Only questions with modified weights are shown (base 1× unchanged questions are hidden). Applies to subset mock exams (e.g. 20, 40 items).
+								</p>
 							</div>
-							<span class="text-xs font-bold text-muted-foreground">
-								{new Date(h.at).toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}
-								{#if h.secondsUsed !== undefined}· {formatClock(h.secondsUsed)} used{/if}
-							</span>
+							<Button variant="outline" size="sm" onclick={() => (userStorage.clearExamWeights(), ui.toast('All mock-exam weights reset to 1×'))}>
+								<RotateCcw class="size-3.5" /> Reset all weights
+							</Button>
 						</div>
-						<div class="flex items-center gap-3">
-							<span class="text-sm font-extrabold text-muted-foreground tabular-nums">{h.correct}/{h.total} ({h.answered} answered)</span>
-							<span class={cn('rounded-full px-3 py-1 text-sm font-extrabold tabular-nums', scorePct >= 75 ? 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]' : scorePct >= 50 ? 'bg-[#FFF5CC] text-[#946200] dark:bg-[#FFC800]/20 dark:text-[#FFD633]' : 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]')}>
-								{scorePct}%
-							</span>
-						</div>
-					</a>
-				{/each}
+
+						{#each weightGroupsBySubject as g (g.subject.id)}
+							<section class="overflow-hidden rounded-2xl border-2 border-b-4 border-slate-200 bg-card dark:border-[#2B434E]">
+								<div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-5 py-3.5">
+									<span class="h-4 w-1 rounded-full" style="background:var(--{accentOf(g.subject)})"></span>
+									<h3 class="min-w-0 flex-1 text-sm font-extrabold">
+										{g.subject.title}
+										<span class="font-bold text-muted-foreground">· {g.items.length} modified</span>
+									</h3>
+									<div class="flex flex-wrap items-center gap-2">
+										{#if g.boosted > 0}
+											<span class="rounded-full bg-[#FFDFE0] px-2.5 py-0.5 text-[0.7rem] font-extrabold text-[#EA2B2B] tabular-nums dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]">
+												↑ {g.boosted} boosted
+											</span>
+										{/if}
+										{#if g.lowered > 0}
+											<span class="rounded-full bg-[#D7FFB8] px-2.5 py-0.5 text-[0.7rem] font-extrabold text-[#46A302] tabular-nums dark:bg-[#58CC02]/20 dark:text-[#7BE328]">
+												↓ {g.lowered} lowered
+											</span>
+										{/if}
+										<a href="/module/{g.subject.id}/exam" class="text-xs font-extrabold text-[#1899D6] no-underline hover:underline dark:text-[#66D1FF]">Mock Exam</a>
+										<button
+											type="button"
+											onclick={() => (userStorage.clearExamWeights(g.subject.id), ui.toast(`Reset weights for ${g.subject.title}`))}
+											class="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2 py-0.5 text-[0.7rem] font-extrabold text-muted-foreground hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
+										>
+											<RotateCcw class="size-3" /> Reset
+										</button>
+									</div>
+								</div>
+								<ul class="max-h-96 divide-y divide-slate-200 overflow-y-auto border-t border-slate-200 dark:divide-[#2B434E] dark:border-[#2B434E]">
+									{#each g.items as row (row.id)}
+										{@const boosted = row.weight > 1}
+										<li class="flex items-start justify-between gap-3 px-5 py-3">
+											<div class="flex min-w-0 flex-1 flex-col gap-0.5">
+												<div class="flex flex-wrap items-center gap-1.5">
+													<span class="rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.65rem] font-extrabold tracking-wide text-slate-600 uppercase dark:bg-[#223842] dark:text-slate-300">
+														{row.kindLabel}
+													</span>
+													{#if row.topic}
+														<span class="truncate text-[0.7rem] font-bold text-muted-foreground">{row.topic}</span>
+													{/if}
+													{#if row.streak !== 0}
+														<span class="text-[0.68rem] font-bold text-muted-foreground/80">
+															· {Math.abs(row.streak)}× {row.streak > 0 ? 'right' : 'wrong'}
+														</span>
+													{/if}
+												</div>
+												{#if row.isMcq}
+													<a href="/module/{g.subject.id}/practice?topic={row.topicId}&question={encodeURIComponent(row.id)}" class="line-clamp-2 text-xs leading-snug font-semibold text-foreground no-underline hover:underline">
+														{row.prompt}
+													</a>
+												{:else}
+													<p class="line-clamp-2 text-xs leading-snug font-semibold text-foreground">{row.prompt}</p>
+												{/if}
+											</div>
+											<div class="flex shrink-0 items-center gap-1.5">
+												<span
+													class={cn(
+														'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-extrabold tabular-nums',
+														boosted
+															? 'bg-[#FFDFE0] text-[#EA2B2B] dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+															: 'bg-[#D7FFB8] text-[#46A302] dark:bg-[#58CC02]/20 dark:text-[#7BE328]'
+													)}
+												>
+													{formatWeightMultiplier(row.weight)}
+													<span class="text-[0.68rem] opacity-80">({formatWeightDelta(row.weight)})</span>
+												</span>
+												<button
+													type="button"
+													onclick={() => userStorage.resetExamWeight(row.id)}
+													title="Reset this item back to base weight (1×)"
+													aria-label="Reset item weight to 1x"
+													class="grid size-7 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-slate-100 hover:text-foreground dark:hover:bg-[#223842]"
+												>
+													<RotateCcw class="size-3.5" />
+												</button>
+											</div>
+										</li>
+									{/each}
+								</ul>
+							</section>
+						{/each}
+					</div>
+				{/if}
 			</div>
 		{/if}
 	{:else}

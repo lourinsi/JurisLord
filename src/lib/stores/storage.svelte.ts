@@ -10,7 +10,9 @@ const KEYS = {
 	highlightLabels: 'law_highlight_labels',
 	/** Added with the reader: last location, visited/studied topics, guide bookmarks, notes, recent searches. */
 	reading: 'sc_reading',
-	history: 'law_test_history'
+	history: 'law_test_history',
+	/** Adaptive mock-exam sampling weights: after each submission, correct items *= 0.5, wrong items *= 1.5. */
+	examWeights: 'law_exam_weights'
 } as const;
 
 export interface TestHistoryEntry {
@@ -25,6 +27,59 @@ export interface TestHistoryEntry {
 	total: number;
 	secondsUsed?: number;
 	at: number;
+}
+
+export interface ExamWeightRecord {
+	/** Sampling multiplier (base = 1; never 0 — floored at 0.005, capped at 16). */
+	weight: number;
+	/** Consecutive right (+) or wrong (-) streak across submitted mock exams. */
+	streak: number;
+	/** Canonical subject ID (e.g. 'consti1', 'pfr'). */
+	subjectId?: string;
+	/** Item kind ('mcq' | 'essay' | 'enum' | 'term' | 'req' | 'num'). */
+	kind?: string;
+	/** Short question/prompt preview shown in History. */
+	prompt?: string;
+	/** Topic/section name for context. */
+	topic?: string;
+	/** Timestamp of last submission update. */
+	updatedAt: number;
+}
+
+export interface ExamWeightUpdate {
+	id: string;
+	isCorrect: boolean;
+	subjectId?: string;
+	kind?: string;
+	prompt?: string;
+	topic?: string;
+}
+
+function cleanExamWeights(v: unknown): Record<string, ExamWeightRecord> {
+	if (!isRecord(v)) return {};
+	const out: Record<string, ExamWeightRecord> = {};
+	for (const [id, raw] of Object.entries(v)) {
+		if (typeof raw === 'number' && Number.isFinite(raw) && raw > 0) {
+			if (raw === 1) continue;
+			out[id] = {
+				weight: Math.max(0.005, Math.min(16, raw)),
+				streak: raw < 1 ? 1 : -1,
+				updatedAt: Date.now()
+			};
+		} else if (isRecord(raw) && typeof raw.weight === 'number' && Number.isFinite(raw.weight) && raw.weight > 0) {
+			if (raw.weight === 1) continue;
+			out[id] = {
+				weight: Math.max(0.005, Math.min(16, raw.weight)),
+				streak: typeof raw.streak === 'number' ? raw.streak : raw.weight < 1 ? 1 : -1,
+				subjectId: typeof raw.subjectId === 'string' ? canonicalModuleId(raw.subjectId) : undefined,
+				kind: typeof raw.kind === 'string' ? raw.kind : undefined,
+				prompt: typeof raw.prompt === 'string' ? raw.prompt : undefined,
+				topic: typeof raw.topic === 'string' ? raw.topic : undefined,
+				updatedAt: typeof raw.updatedAt === 'number' ? raw.updatedAt : Date.now()
+			};
+		}
+	}
+	return out;
 }
 
 /** Where the reader was, or what a guide bookmark points at. */
@@ -182,6 +237,7 @@ class StorageStore {
 	highlightLabels = $state<Record<HighlightColor, string>>({ ...DEFAULT_HIGHLIGHT_LABELS });
 	reading = $state<ReadingData>(emptyReading());
 	testHistory = $state<TestHistoryEntry[]>([]);
+	examWeights = $state<Record<string, ExamWeightRecord>>({});
 	isLoaded = $state(false);
 	/** Set when the browser refuses a write (private mode, quota). Progress then lives only in memory. */
 	persistError = $state(false);
@@ -206,6 +262,7 @@ class StorageStore {
 				this.pending[KEYS.highlightLabels] = JSON.stringify(this.highlightLabels);
 				this.pending[KEYS.reading] = JSON.stringify(this.reading);
 				this.pending[KEYS.history] = JSON.stringify(this.testHistory);
+				this.pending[KEYS.examWeights] = JSON.stringify(this.examWeights);
 				if (this.skipPersist) {
 					this.skipPersist = false;
 					this.pending = {};
@@ -254,6 +311,7 @@ class StorageStore {
 				),
 			[]
 		);
+		this.examWeights = cleanExamWeights(readJson(KEYS.examWeights, isRecord, {}));
 		this.isLoaded = true;
 	}
 
@@ -290,6 +348,69 @@ class StorageStore {
 
 	clearTestHistory(subjectId?: string) {
 		this.testHistory = subjectId ? this.testHistory.filter((h) => h.subjectId !== subjectId) : [];
+	}
+
+	/**
+	 * Returns the adaptive sampling weight for a mock-exam item (base `1`).
+	 * Never reaches 0 — even repeated correct items stay eligible to reappear.
+	 */
+	getExamWeight(itemId: string): number {
+		const w = this.examWeights[itemId]?.weight;
+		return typeof w === 'number' && Number.isFinite(w) && w > 0 ? w : 1;
+	}
+
+	/**
+	 * Updates adaptive sampling weights after a mock-exam submission:
+	 * - Correct: if previously boosted (> 1), resets to base (1.0) first, then lowers by 50% (→ 0.5).
+	 *   If already <= 1, lowers by another 50% (0.5 → 0.25 → 0.125..., floored at 0.005 so it can still reappear).
+	 * - Wrong: if previously lowered (< 1), resets to base (1.0) first, then increases by 50% (→ 1.5).
+	 *   If already >= 1, increases by another 50% (1.5 → 2.25 → 3.375..., capped at 16).
+	 */
+	recordExamSubmissionWeights(results: ExamWeightUpdate[]) {
+		const now = Date.now();
+		for (const r of results) {
+			const existing = this.examWeights[r.id];
+			const cur = existing?.weight ?? 1;
+			let next: number;
+			let streak: number;
+			if (r.isCorrect) {
+				const base = cur > 1 ? 1 : cur;
+				next = Math.max(0.005, Number((base * 0.5).toFixed(5)));
+				streak = cur > 1 ? 1 : Math.max(0, existing?.streak ?? 0) + 1;
+			} else {
+				const base = cur < 1 ? 1 : cur;
+				next = Math.min(16, Number((base * 1.5).toFixed(5)));
+				streak = cur < 1 ? -1 : Math.min(0, existing?.streak ?? 0) - 1;
+			}
+			this.examWeights[r.id] = {
+				weight: next,
+				streak,
+				subjectId: r.subjectId ? canonicalModuleId(r.subjectId) : existing?.subjectId,
+				kind: r.kind ?? existing?.kind,
+				prompt: r.prompt ? r.prompt.trim().slice(0, 180) : existing?.prompt,
+				topic: r.topic ?? existing?.topic,
+				updatedAt: now
+			};
+		}
+	}
+
+	/** Restores a single item back to base weight (1.0). */
+	resetExamWeight(itemId: string) {
+		delete this.examWeights[itemId];
+	}
+
+	clearExamWeights(subjectId?: string) {
+		if (!subjectId) {
+			this.examWeights = {};
+			return;
+		}
+		const canonical = canonicalModuleId(subjectId);
+		this.examWeights = Object.fromEntries(
+			Object.entries(this.examWeights).filter(([id, rec]) => {
+				const owner = canonicalModuleId(rec.subjectId ?? id.split(':')[0]);
+				return owner !== canonical;
+			})
+		);
 	}
 
 	saveEssayDraft(essayId: string, draft: Partial<UserEssayDraft>) {
@@ -471,7 +592,8 @@ class StorageStore {
 				highlights: this.highlights,
 				highlightLabels: this.highlightLabels,
 				reading: this.reading,
-				testHistory: this.testHistory
+				testHistory: this.testHistory,
+				examWeights: this.examWeights
 			},
 			null,
 			2
@@ -517,6 +639,9 @@ class StorageStore {
 		if (isRecord(data.highlightLabels)) this.highlightLabels = cleanLabels(data.highlightLabels);
 		if (isRecord(data.reading)) this.reading = cleanReading(data.reading);
 		if (Array.isArray(data.testHistory)) this.testHistory = data.testHistory as TestHistoryEntry[];
+		if (isRecord(data.examWeights)) {
+			this.examWeights = cleanExamWeights(data.examWeights);
+		}
 	}
 
 	resetAllProgress() {
@@ -526,6 +651,7 @@ class StorageStore {
 		this.highlights = {};
 		this.reading = emptyReading();
 		this.testHistory = [];
+		this.examWeights = {};
 		if (typeof window !== 'undefined') {
 			// Only our own keys — localStorage.clear() would also wipe the theme and any other app on this origin.
 			// Highlight labels are a preference, like the theme, so they stay.

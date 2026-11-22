@@ -188,7 +188,7 @@ export const KIND_META: Record<
 		short: 'MCQs',
 		intro: 'Select the best answer for each question. Choices are shuffled.',
 		setupHint: 'Auto-graded immediately upon submission (1 pt each).',
-		opts: [0, 5, 10, 20, 30, 50, 100],
+		opts: [0, 5, 10, 20, 30, 40, 50, 100],
 		defaultCount: 20
 	},
 	essay: {
@@ -677,13 +677,27 @@ export function sampleWeightedItems<T>(
 	if (count >= pool.length) return sampleItems(pool, count);
 	return [...pool]
 		.map((item) => {
-			const w = Math.max(0.01, getWeight(item));
+			const w = Math.max(0.0005, getWeight(item));
 			const r = Math.max(1e-12, Math.random());
 			return { item, key: Math.pow(r, 1 / w) };
 		})
 		.sort((a, b) => b.key - a.key)
 		.slice(0, count)
 		.map((x) => x.item);
+}
+
+/** Compact display multiplier (e.g. `1.5×`, `0.5×`, `0.25×`, `0.125×`) — never shows `0×`. */
+export function formatWeightMultiplier(w: number): string {
+	if (w >= 1) return `${Number(w.toFixed(2))}×`;
+	if (w >= 0.1) return `${Number(w.toFixed(3))}×`;
+	return `${Number(w.toFixed(4))}×`;
+}
+
+/** Percentage delta vs. base weight 1.0 (e.g. `+50%`, `-50%`, `-75%`; never claims `-100%`). */
+export function formatWeightDelta(w: number): string {
+	const pctDiff = Math.round((w - 1) * 100);
+	if (w < 1) return `${Math.max(-99, pctDiff)}%`;
+	return `+${pctDiff}%`;
 }
 
 export function entryKey(entry: Pick<UnifiedExamEntry, 'kind' | 'id'>): string {

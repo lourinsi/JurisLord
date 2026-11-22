@@ -29,7 +29,8 @@
 		const isExcludedPage =
 			path === `/module/${subject.id}/exam` ||
 			path === `/module/${subject.id}/practice` ||
-			path === `/module/${subject.id}/essays`;
+			path === `/module/${subject.id}/essays` ||
+			path === `/module/${subject.id}/history`;
 		if (isExcludedPage || !prefs.value.showSubjectEntryModal || params.get('autostart') === '1' || params.get('setup') === '1') {
 			showEntryModal = false;
 			return;

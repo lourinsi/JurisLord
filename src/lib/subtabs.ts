@@ -60,7 +60,8 @@ export const ALL_STUDY_SUBTAB_PATHS = new Set<string>([
 	'past',
 	'thinkers',
 	'compare',
-	'critiques'
+	'critiques',
+	'history'
 ]);
 
 /** Subtab paths that require the subject's `Kit` data to be loaded. */
@@ -106,6 +107,15 @@ export function subtabsForSubject(slug: string): SubtabItem[] {
 		const item: SubtabItem = { id: 'requisites', path: 'requisites', label: 'Requisites', desc: reqDesc };
 		if (numIdx >= 0) base.splice(numIdx + 1, 0, item);
 		else base.push(item);
+	}
+
+	if (!base.some((t) => t.id === 'history')) {
+		base.push({
+			id: 'history',
+			path: 'history',
+			label: 'History',
+			desc: 'Past scores & adaptive mock-exam weights'
+		});
 	}
 
 	for (const t of base) ALL_STUDY_SUBTAB_PATHS.add(t.path);

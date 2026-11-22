@@ -264,6 +264,22 @@
 			enumFilter = 'all';
 			termFilter = 'all';
 			numFilter = 'all';
+			const missedMcqs = bank.mcqs.filter(
+				(q) => userStorage.mcqAttempts[q.id]?.isCorrect === false || userStorage.getExamWeight(q.id) > 1
+			).length;
+			const missedEssays = bank.essays.filter(
+				(e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review' || userStorage.getExamWeight(e.id) > 1
+			).length;
+			const missedEnums = bank.enums.filter((e) => userStorage.getExamWeight(e.id) > 1).length;
+			const missedTerms = bank.terms.filter((t) => userStorage.getExamWeight(t.id) > 1).length;
+			const missedReqs = bank.reqs.filter((r) => userStorage.getExamWeight(r.id) > 1).length;
+			const missedNums = bank.nums.filter((n) => userStorage.getExamWeight(n.id) > 1).length;
+			counts.mcq = missedMcqs;
+			counts.essay = missedEssays;
+			counts.enum = missedEnums;
+			counts.term = missedTerms;
+			counts.req = missedReqs;
+			counts.num = missedNums;
 		} else if (preset === 'new') {
 			mcqFilter = 'new';
 			essayFilter = 'unmastered';
@@ -275,7 +291,11 @@
 
 	// ---- Filtered pools ----
 	const filteredMcqs = $derived.by(() => {
-		if (mcqFilter === 'missed') return bank.mcqs.filter((q) => userStorage.mcqAttempts[q.id]?.isCorrect === false);
+		if (mcqFilter === 'missed') {
+			return bank.mcqs.filter(
+				(q) => userStorage.mcqAttempts[q.id]?.isCorrect === false || userStorage.getExamWeight(q.id) > 1
+			);
+		}
 		if (mcqFilter === 'new') return bank.mcqs.filter((q) => !userStorage.mcqAttempts[q.id]);
 		if (mcqFilter === 'finals_all') return bank.mcqs.filter((q) => q.isFinals);
 		if (mcqFilter === 'all') return bank.mcqs;
@@ -284,7 +304,11 @@
 
 	const filteredEssays = $derived.by(() => {
 		if (essayFilter === 'finals_all') return bank.essays.filter((e) => e.isFinals);
-		if (essayFilter === 'review') return bank.essays.filter((e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review');
+		if (essayFilter === 'review') {
+			return bank.essays.filter(
+				(e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review' || userStorage.getExamWeight(e.id) > 1
+			);
+		}
 		if (essayFilter === 'unmastered') return bank.essays.filter((e) => !userStorage.essayDrafts[e.id]?.isMastered);
 		if (essayFilter === 'src:__core__') return bank.essays.filter((e) => !e.source);
 		if (essayFilter.startsWith('src:')) {
@@ -295,16 +319,24 @@
 	});
 
 	const filteredEnums = $derived.by(() => {
+		if (scopePreset === 'missed') return bank.enums.filter((e) => userStorage.getExamWeight(e.id) > 1);
 		if (enumFilter === 'finals' && bank.hasFinalsEnums) return bank.enums.filter((e) => e.isFinals);
 		return bank.enums;
 	});
 
 	const filteredTerms = $derived.by(() => {
+		if (scopePreset === 'missed') return bank.terms.filter((t) => userStorage.getExamWeight(t.id) > 1);
 		if (termFilter === 'finals' && bank.hasFinalsTerms) return bank.terms.filter((t) => t.isFinals);
 		return bank.terms;
 	});
 
+	const filteredReqs = $derived.by(() => {
+		if (scopePreset === 'missed') return bank.reqs.filter((r) => userStorage.getExamWeight(r.id) > 1);
+		return bank.reqs;
+	});
+
 	const filteredNums = $derived.by(() => {
+		if (scopePreset === 'missed') return bank.nums.filter((n) => userStorage.getExamWeight(n.id) > 1);
 		if (numFilter === 'finals' && bank.hasFinalsNums) return bank.nums.filter((n) => n.isFinals);
 		return bank.nums;
 	});
@@ -314,7 +346,7 @@
 		essay: filteredEssays.length,
 		enum: filteredEnums.length,
 		term: filteredTerms.length,
-		req: bank.reqs.length,
+		req: filteredReqs.length,
 		num: filteredNums.length
 	});
 
@@ -369,7 +401,9 @@
 	});
 
 	const missedMcqCount = $derived(
-		bank.mcqs.filter((q) => userStorage.mcqAttempts[q.id]?.isCorrect === false).length
+		bank.mcqs.filter(
+			(q) => userStorage.mcqAttempts[q.id]?.isCorrect === false || userStorage.getExamWeight(q.id) > 1
+		).length
 	);
 	const newMcqCount = $derived(bank.mcqs.filter((q) => !userStorage.mcqAttempts[q.id]).length);
 	const finalsMcqCount = $derived(bank.mcqs.filter((q) => q.isFinals).length);
@@ -378,7 +412,18 @@
 	const finalsTermCount = $derived(bank.terms.filter((t) => t.isFinals).length);
 	const finalsNumCount = $derived(bank.nums.filter((n) => n.isFinals).length);
 	const reviewEssayCount = $derived(
-		bank.essays.filter((e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review').length
+		bank.essays.filter(
+			(e) => essayStatus(userStorage.essayDrafts[e.id]) === 'review' || userStorage.getExamWeight(e.id) > 1
+		).length
+	);
+	const boostedOtherWrittenCount = $derived(
+		bank.enums.filter((e) => userStorage.getExamWeight(e.id) > 1).length +
+			bank.terms.filter((t) => userStorage.getExamWeight(t.id) > 1).length +
+			bank.reqs.filter((r) => userStorage.getExamWeight(r.id) > 1).length +
+			bank.nums.filter((n) => userStorage.getExamWeight(n.id) > 1).length
+	);
+	const totalMissedAndMoreLikelyCount = $derived(
+		missedMcqCount + reviewEssayCount + boostedOtherWrittenCount
 	);
 	const unmasteredEssayCount = $derived(
 		bank.essays.filter((e) => !userStorage.essayDrafts[e.id]?.isMastered).length
@@ -520,7 +565,7 @@
 			}
 		}
 		if (effectiveCounts.req > 0) {
-			for (const rq of sampleWeightedItems(bank.reqs, effectiveCounts.req, (it) => userStorage.getExamWeight(it.id))) {
+			for (const rq of sampleWeightedItems(filteredReqs, effectiveCounts.req, (it) => userStorage.getExamWeight(it.id))) {
 				items.push({ kind: 'req', id: rq.id });
 			}
 		}
@@ -575,13 +620,14 @@
 			const order = dynamicOptionOrder(opts, Math.random, it.order);
 			return { kind: 'mcq' as const, id: it.id, order };
 		});
+		const durationMs = Math.max(1, retryItems.length) * 60 * 1000;
 		session = {
 			subjectId: subject.id,
-			mode: 'practice',
-			label: `Retry Missed · ${missedEntries.length} MCQs`,
+			mode: 'exam',
+			label: `Retake Missed (This Exam) · ${missedEntries.length} MCQs`,
 			startedAt: now,
-			deadlineAt: null,
-			durationMs: null,
+			deadlineAt: now + durationMs,
+			durationMs,
 			pausedAt: null,
 			pausedTotalMs: 0,
 			showAnswers: true,
@@ -598,6 +644,111 @@
 		openHints = {};
 		confirmSubmit = false;
 		confirmReset = false;
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	/**
+	 * Launches a Redemption Mock Exam consisting of ALL "More likely" (weight > 1×) and missed
+	 * questions from this exam and past history for this subject, sorted by highest weight first.
+	 * On submission, every question answered right resets to base 1× and drops by 50% (to 0.5×).
+	 */
+	function takeAllMissedFromHistory() {
+		const prevOrders = new Map<string, number[]>();
+		if (session) {
+			for (const it of session.items) {
+				if (it.kind === 'mcq' && it.order) prevOrders.set(it.id, it.order);
+			}
+		}
+
+		const items: UnifiedExamEntry[] = [];
+		const seenIds = new Set<string>();
+
+		// 1. All MCQs that are "More likely" (weight > 1×) or missed in attempt history, highest weight first
+		const candidateMcqs = bank.mcqs
+			.filter(
+				(q) => userStorage.getExamWeight(q.id) > 1 || userStorage.mcqAttempts[q.id]?.isCorrect === false
+			)
+			.sort((a, b) => userStorage.getExamWeight(b.id) - userStorage.getExamWeight(a.id));
+
+		for (const q of candidateMcqs) {
+			seenIds.add(q.id);
+			items.push({
+				kind: 'mcq',
+				id: q.id,
+				order: dynamicOptionOrder(q.options, Math.random, prevOrders.get(q.id))
+			});
+		}
+
+		// 2. Any non-MCQ items in this subject whose weight is > 1× ("More likely" from past submissions)
+		for (const row of subjectModifiedWeights) {
+			if (row.weight <= 1 || seenIds.has(row.id)) continue;
+			if (bank.mcqById[row.id]) {
+				const q = bank.mcqById[row.id];
+				seenIds.add(q.id);
+				items.push({
+					kind: 'mcq',
+					id: q.id,
+					order: dynamicOptionOrder(q.options, Math.random, prevOrders.get(q.id))
+				});
+			} else if (bank.essayById[row.id]) {
+				seenIds.add(row.id);
+				items.push({ kind: 'essay', id: row.id });
+			} else if (bank.enumById[row.id]) {
+				seenIds.add(row.id);
+				items.push({ kind: 'enum', id: row.id });
+			} else if (bank.termById[row.id]) {
+				seenIds.add(row.id);
+				items.push({ kind: 'term', id: row.id });
+			} else if (bank.reqById[row.id]) {
+				seenIds.add(row.id);
+				items.push({ kind: 'req', id: row.id });
+			} else if (bank.numById[row.id]) {
+				seenIds.add(row.id);
+				items.push({ kind: 'num', id: row.id });
+			}
+		}
+
+		if (!items.length) return;
+
+		const now = Date.now();
+		const autoMins = Math.max(
+			5,
+			Math.ceil(
+				items.reduce((sum, it) => {
+					if (it.kind === 'mcq' || it.kind === 'term') return sum + 1;
+					if (it.kind === 'essay') return sum + 8;
+					if (it.kind === 'enum' || it.kind === 'req') return sum + 2;
+					return sum + 0.75;
+				}, 0)
+			)
+		);
+		const durationMs = autoMins * 60 * 1000;
+
+		session = {
+			subjectId: subject.id,
+			mode: 'exam',
+			label: `Redeem Past Mistakes · ${items.length} ${items.length === 1 ? 'Item' : 'Items'}`,
+			startedAt: now,
+			deadlineAt: now + durationMs,
+			durationMs,
+			pausedAt: null,
+			pausedTotalMs: 0,
+			showAnswers: true,
+			singleQuestion: true,
+			flagged: {},
+			finishedAt: null,
+			graded: false,
+			items,
+			answers: {},
+			marks: {}
+		};
+		activeItemKey = items.length ? entryKey(items[0]) : '';
+		activeFilter = 'all';
+		openHints = {};
+		confirmSubmit = false;
+		confirmReset = false;
+		confirmQuit = false;
+		mcqReviewFilter = 'all';
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
@@ -664,7 +815,8 @@
 		session.finishedAt = end;
 		confirmSubmit = false;
 
-		// Record all answered MCQs into userStorage and update adaptive mock-exam weights after submission
+		// Record all MCQs in the exam into userStorage and update adaptive mock-exam weights after submission
+		// (unanswered MCQs score 0 and count as missed so they become "More likely" at 1.5×)
 		let mcqCount = 0;
 		let mcqCorrect = 0;
 		const weightUpdates: ExamWeightUpdate[] = [];
@@ -674,20 +826,21 @@
 			if (!q) continue;
 			mcqCount++;
 			const raw = session.answers[entryKey(it)];
-			if (raw !== undefined && raw !== '') {
-				const picked = Number(raw);
-				const ok = picked === resolveCorrectIndex(q);
-				if (ok) mcqCorrect++;
+			const hasAnswer = raw !== undefined && raw !== '';
+			const picked = hasAnswer ? Number(raw) : -1;
+			const ok = hasAnswer && picked === resolveCorrectIndex(q);
+			if (ok) mcqCorrect++;
+			if (hasAnswer) {
 				userStorage.recordMcqAttempt(q.id, picked, ok);
-				weightUpdates.push({
-					id: q.id,
-					isCorrect: ok,
-					subjectId: subject.id,
-					kind: 'mcq',
-					prompt: q.question,
-					topic: q.topicName
-				});
 			}
+			weightUpdates.push({
+				id: q.id,
+				isCorrect: ok,
+				subjectId: subject.id,
+				kind: 'mcq',
+				prompt: q.question,
+				topic: q.topicName
+			});
 		}
 		if (weightUpdates.length > 0) {
 			userStorage.recordExamSubmissionWeights(weightUpdates);
@@ -768,7 +921,13 @@
 		if (!id || seededForSubject !== id || loadedSubjectId !== id) return;
 		const autostart = page.url.searchParams.get('autostart');
 		const forceSetup = page.url.searchParams.get('setup');
-		if (autostart === '1') {
+		const redeem = page.url.searchParams.get('redeem');
+		if (redeem === '1') {
+			const url = new URL(page.url.href);
+			url.searchParams.delete('redeem');
+			goto(url, { replace: true });
+			takeAllMissedFromHistory();
+		} else if (autostart === '1') {
 			const url = new URL(page.url.href);
 			url.searchParams.delete('autostart');
 			goto(url, { replace: true });
@@ -1306,7 +1465,7 @@
 						<button
 							type="button"
 							aria-pressed={scopePreset === 'missed'}
-							disabled={!missedMcqCount && !reviewEssayCount}
+							disabled={!totalMissedAndMoreLikelyCount}
 							onclick={() => applyScopePreset('missed')}
 							class={cn(
 								'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all disabled:opacity-40',
@@ -1315,7 +1474,7 @@
 									: 'border-slate-200 bg-white text-foreground hover:bg-muted dark:border-[#2B434E] dark:bg-[#131F24]'
 							)}
 						>
-							Missed / Review ({missedMcqCount + reviewEssayCount})
+							Missed / More Likely ({totalMissedAndMoreLikelyCount})
 						</button>
 						<button
 							type="button"
@@ -1560,17 +1719,28 @@
 							</span>
 						{/if}
 					</div>
-					<button
-						type="button"
-						onclick={() => {
-							userStorage.clearExamWeights(subject.id);
-							weightHistoryFilter = 'all';
-							ui.toast(`Reset mock-exam weights for ${subject.title}`);
-						}}
-						class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-background px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase transition-colors hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
-					>
-						<RotateCcw class="size-3" /> Reset all to 1×
-					</button>
+					<div class="flex flex-wrap items-center gap-2">
+						{#if boostedWeightCount > 0 || missedMcqCount > 0}
+							<button
+								type="button"
+								onclick={takeAllMissedFromHistory}
+								class="inline-flex items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B] border-b-3 bg-[#FF4B4B] px-3 py-1 text-[0.7rem] font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#E03E3E] active:translate-y-0.5 active:border-b-2"
+							>
+								<RotateCcw class="size-3" strokeWidth={2.5} /> Take All Missed / More Likely ({Math.max(boostedWeightCount, missedMcqCount)})
+							</button>
+						{/if}
+						<button
+							type="button"
+							onclick={() => {
+								userStorage.clearExamWeights(subject.id);
+								weightHistoryFilter = 'all';
+								ui.toast(`Reset mock-exam weights for ${subject.title}`);
+							}}
+							class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-background px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase transition-colors hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
+						>
+							<RotateCcw class="size-3" /> Reset all to 1×
+						</button>
+					</div>
 				</div>
 				<p class="text-xs font-semibold text-muted-foreground">
 					Applies to subset mock exams (e.g. 20, 40 items). Consecutive right answers halve weight (never 0); flipping right ↔ wrong resets to base 1× first, then applies ±50%. Unchanged (1×) items are hidden.
@@ -2558,13 +2728,23 @@
 					>
 						<Sparkles class="size-3.5" /> New 20-Question Set
 					</button>
-					{#if missedMcqsInSession > 0}
+					{#if boostedWeightCount > 0 || missedMcqCount > 0}
+						<button
+							type="button"
+							onclick={takeAllMissedFromHistory}
+							title="Redeem all 'More likely' (>1×) and missed questions from this exam and past history"
+							class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#EA2B2B] border-b-4 bg-[#FF4B4B] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#E03E3E] active:translate-y-0.5 active:border-b-2"
+						>
+							<RotateCcw class="size-3.5" /> Take All Missed ({Math.max(boostedWeightCount, missedMcqCount)})
+						</button>
+					{/if}
+					{#if missedMcqsInSession > 0 && Math.max(boostedWeightCount, missedMcqCount) > missedMcqsInSession}
 						<button
 							type="button"
 							onclick={retryMissedMcqs}
 							class="inline-flex h-10 items-center gap-2 rounded-xl border-2 border-[#1899D6] border-b-4 bg-[#1CB0F6] px-4 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#18A1E3] active:translate-y-0.5 active:border-b-2"
 						>
-							<RotateCcw class="size-3.5" /> Retake {missedMcqsInSession} Missed
+							<RotateCcw class="size-3.5" /> Retake {missedMcqsInSession} Missed (This Exam)
 						</button>
 					{/if}
 					{#if (finalsMcqCount || bank.mcqs.length) > 20}
@@ -2584,6 +2764,44 @@
 						Customize Exam
 					</button>
 				</div>
+
+				{#if boostedWeightCount > 0}
+					{@const moreLikelyRows = subjectModifiedWeights.filter((r) => r.weight > 1)}
+					<div class="mt-2 flex flex-col gap-2.5 rounded-2xl border-2 border-[#EA2B2B]/35 bg-[#FFDFE0]/35 p-4 dark:border-[#FF4B4B]/35 dark:bg-[#FF4B4B]/10">
+						<div class="flex flex-wrap items-center justify-between gap-2">
+							<div class="flex flex-col gap-0.5">
+								<span class="text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase dark:text-[#FF7878]">
+									↑ {moreLikelyRows.length} “More Likely” {moreLikelyRows.length === 1 ? 'Question' : 'Questions'} Ready to Redeem
+								</span>
+								<p class="text-xs font-semibold text-muted-foreground">
+									Includes mistakes from this exam and past history. Answer them right in a redemption run to reset their weight to base 1× and drop it by 50% (0.5×).
+								</p>
+							</div>
+							<button
+								type="button"
+								onclick={takeAllMissedFromHistory}
+								class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B] border-b-3 bg-[#FF4B4B] px-3.5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#E03E3E] active:translate-y-0.5 active:border-b-2"
+							>
+								<RotateCcw class="size-3.5" /> Redeem All {moreLikelyRows.length} Now
+							</button>
+						</div>
+						<div class="max-h-56 divide-y divide-[#EA2B2B]/15 overflow-y-auto rounded-xl border border-[#EA2B2B]/25 bg-card/90 dark:divide-[#FF4B4B]/20 dark:border-[#FF4B4B]/25">
+							{#each moreLikelyRows as row (row.id)}
+								<div class="flex items-center justify-between gap-3 px-3 py-2 text-xs">
+									<div class="flex min-w-0 flex-1 items-center gap-2">
+										<span class="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[0.62rem] font-extrabold text-slate-600 uppercase dark:bg-[#223842] dark:text-slate-300">
+											{row.kindLabel}
+										</span>
+										<span class="truncate font-semibold text-foreground">{row.prompt}</span>
+									</div>
+									<span class="shrink-0 rounded-full bg-[#FFDFE0] px-2 py-0.5 text-[0.7rem] font-extrabold text-[#EA2B2B] tabular-nums dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]">
+										{formatWeightMultiplier(row.weight)} ({formatWeightDelta(row.weight)})
+									</span>
+								</div>
+							{/each}
+						</div>
+					</div>
+				{/if}
 			</section>
 
 			<!-- MCQ Topic Breakdown (weakest first) -->

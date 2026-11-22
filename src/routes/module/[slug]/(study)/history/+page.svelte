@@ -231,17 +231,27 @@
 					{/if}
 				</div>
 				{#if allModifiedWeights.length > 0}
-					<button
-						type="button"
-						onclick={() => {
-							userStorage.clearExamWeights(subject.id);
-							weightFilter = 'all';
-							ui.toast(`Reset mock-exam weights for ${subject.title}`);
-						}}
-						class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-background px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase transition-colors hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
-					>
-						<RotateCcw class="size-3" /> Reset all to 1×
-					</button>
+					<div class="flex flex-wrap items-center gap-2">
+						{#if boostedCount > 0}
+							<a
+								href="/module/{subject.id}/exam?redeem=1"
+								class="inline-flex items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B] border-b-3 bg-[#FF4B4B] px-3 py-1 text-[0.7rem] font-extrabold tracking-wide text-white uppercase no-underline transition-all hover:bg-[#E03E3E] active:translate-y-0.5 active:border-b-2"
+							>
+								<RotateCcw class="size-3" strokeWidth={2.5} /> Take All Missed ({boostedCount})
+							</a>
+						{/if}
+						<button
+							type="button"
+							onclick={() => {
+								userStorage.clearExamWeights(subject.id);
+								weightFilter = 'all';
+								ui.toast(`Reset mock-exam weights for ${subject.title}`);
+							}}
+							class="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-background px-2.5 py-1 text-[0.7rem] font-extrabold tracking-wide text-muted-foreground uppercase transition-colors hover:border-[#EA2B2B]/50 hover:text-[#EA2B2B] dark:border-[#2B434E]"
+						>
+							<RotateCcw class="size-3" /> Reset all to 1×
+						</button>
+					</div>
 				{/if}
 			</div>
 			<p class="text-xs font-semibold text-muted-foreground">

@@ -1896,10 +1896,12 @@
 								confirmSubmit = false;
 								confirmReset = !confirmReset;
 							}}
+							aria-label="Reset exam"
 							title="Clear all answers, reshuffle choices, and restart timer"
-							class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
+							class="inline-flex size-9 items-center justify-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 sm:w-auto sm:px-3 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
 						>
-							<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
+							<RotateCcw class="size-3.5" strokeWidth={2.5} />
+							<span class="hidden sm:inline">Reset</span>
 						</button>
 					</div>
 					<button

@@ -60,10 +60,12 @@ export const ALAC_FIELDS: AlacField[] = [
 
 export function draftWordCount(d: UserEssayDraft | undefined) {
 	if (!d) return 0;
-	return [d.answer, d.legalBasis, d.application, d.conclusion]
+	const alac = [d.answer, d.legalBasis, d.application, d.conclusion]
 		.join(' ')
 		.split(/\s+/)
 		.filter(Boolean).length;
+	const free = (d.freeform ?? '').split(/\s+/).filter(Boolean).length;
+	return Math.max(alac, free);
 }
 
 export function draftHasContent(d: UserEssayDraft | undefined) {

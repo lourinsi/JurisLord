@@ -42,6 +42,8 @@ export interface UnifiedEssayItem {
 	};
 	/** For non-ALAC written essays (e.g. Legal Philosophy paragraphs). */
 	modelParagraphs?: string[];
+	/** Source attribution (chapter, pages, philosophers, jurisprudence) shown only when the model answer is revealed. */
+	references?: string;
 	keyPoint?: string;
 	isFinals?: boolean;
 }
@@ -157,6 +159,8 @@ export interface UnifiedExamSession {
 	showAnswers?: boolean;
 	/** When true (default), displays one question per page with Prev/Next navigation (MCQ style); when false, shows all items in full-exam scroll view. */
 	singleQuestion?: boolean;
+	/** When true, ALAC essays render as a single wide freeform essay textbox instead of 4 A/L/A/C boxes. Defaults to true for `philo`, false (ALAC) for all other subjects. */
+	essayFreeform?: boolean;
 	/** Items flagged for review, keyed by `entryKey(entry)`. */
 	flagged?: Record<string, boolean>;
 	finishedAt: number | null;
@@ -398,6 +402,7 @@ export function buildSubjectExamBank(opts: {
 			factPattern: e.factPattern,
 			question: e.question,
 			modelAnswer: e.modelAnswer,
+			references: e.references,
 			isFinals
 		});
 	}
@@ -706,11 +711,15 @@ export function subTickKey(entry: Pick<UnifiedExamEntry, 'kind' | 'id'>, idx: nu
 	return `${entry.kind}:${entry.id}:${idx}`;
 }
 
+/** Default essay input mode per subject: wide essay textbox for Philosophy of Law, 4-box ALAC for other subjects. */
+export function defaultEssayFreeform(subjectId: string): boolean {
+	return subjectId === 'philo';
+}
+
 export function isEntryAnswered(session: UnifiedExamSession, entry: UnifiedExamEntry, bank: SubjectExamBank): boolean {
 	const k = entryKey(entry);
 	if (entry.kind === 'essay') {
-		const e = bank.essayById[entry.id];
-		if (e?.format === 'written') return (session.answers[k]?.trim().length ?? 0) > 0;
+		if ((session.answers[k]?.trim().length ?? 0) > 0) return true;
 		return ['a', 'l', 'p', 'c'].some((part) => (session.answers[`${k}:${part}`]?.trim().length ?? 0) > 0);
 	}
 	return (session.answers[k]?.trim().length ?? 0) > 0;

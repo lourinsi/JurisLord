@@ -150,9 +150,9 @@ function renderCompareAndCritique(): string {
 			.join('')}</tbody></table></div>`,
 		...philoAlacExams.map(
 			(e, idx) =>
-				`<h3 id="finals-alac-q${idx + 1}" class="sg-h3">${esc(e.title)}</h3><div class="rv-card"><p class="rv-source">${e.factPattern}</p><p class="rv-card-title">${esc(
-					e.question ?? ''
-				)}</p><div class="rv-box rv-green"><span class="rv-label">A — Answer</span><p>${esc(
+				`<h3 id="finals-alac-q${idx + 1}" class="sg-h3">${esc(e.title)}</h3><div class="rv-card"><p class="rv-card-title">${esc(
+					e.factPattern
+				)}</p>${e.references ? `<p class="rv-source">${e.references}</p>` : ''}<div class="rv-box rv-green"><span class="rv-label">A — Answer</span><p>${esc(
 					e.modelAnswer.answer
 				)}</p></div><div class="rv-box rv-blue"><span class="rv-label">L — Legal Basis &amp; Jurisprudential Theory</span><p>${esc(
 					e.modelAnswer.legalBasis
@@ -182,7 +182,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'What is the core tenet of legal positivism regarding the separation of law and morals, and does the Philippine legal system adopt it? Answer using the ALAC method (citing the chapter, pages, philosophers, codal provisions, and jurisprudence).',
+			'What is the core tenet of legal positivism regarding the separation of law and morals, and does the Philippine legal system adopt it?',
+		references:
+			'Chapter 10 (<em>Morals v. Force</em>) &amp; Chapter 9 (<em>Legal Positivism in Philippine Law and Jurisprudence</em>) · Pascual, pp. 139–148, 151–156; Borja Handouts 8, 9 &amp; 10 · <strong>Key Philosophers:</strong> John Austin, H.L.A. Hart, Jeremy Bentham, Justice Reynato S. Puno, Dean Romulo V. Borja · <strong>Citations:</strong> 1987 Constitution, Art. II, Sec. 6; Civil Code, Arts. 10, 19, 20 &amp; 21; <em>Estrada v. Escritor</em>; <em>Caltex v. Customs Arrastre</em>; <em>Macalintal v. Senate</em> (2025).',
 		modelAnswer: {
 			answer:
 				'The Philippine legal system does not adopt a pure, uncompromising version of the separation of law and morals; instead, it practices a qualified legal positivism where the authority of enacted rules is structurally recognized under legislative supremacy and verba legis, but substantively circumscribed by moral, equitable, and secular constitutional principles. (Note: An alternative argument that the Philippines strictly adheres to positivism under the plain-meaning rule and state immunity doctrine is also fully defensible.)',
@@ -200,7 +202,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Is the use of coercive force the core tenet that defines the nature of law, or is institutional legitimacy required? Answer using the ALAC method (citing the chapter, pages, philosophers, and constitutional/jurisprudential principles).',
+			'Is the use of coercive force the core tenet that defines the nature of law, or is institutional legitimacy required?',
+		references:
+			'Chapter 10 (<em>Morals v. Force</em>) &amp; Chapter 13 (<em>Sociological School of Thought</em>) · Pascual, pp. 143–152; Borja Handouts 10 &amp; 13 · <strong>Key Philosophers:</strong> John Austin, H.L.A. Hart, Max Weber, St. Augustine, Jean-Jacques Rousseau, Hans Kelsen · <strong>Citations:</strong> 1987 Constitution, Art. II, Sec. 1; <em>Co Kim Cham v. Valdez Tan Keh</em> (75 Phil. 113, 1945).',
 		modelAnswer: {
 			answer:
 				'Coercive physical force is an indispensable instrument for the practical enforcement of municipal law against the recalcitrant, but it is not the defining core tenet of legal validity; authentic law requires institutional legitimacy and recognized normative authority. (Note: An alternative answer contending that coercive force is the ultimate defining reality of law under Austinian command theory and the de facto occupation doctrine is equally arguable.)',
@@ -218,7 +222,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Can an intensely unjust statute violate the core tenet of natural law and thereby lose its character as valid law? Answer using the ALAC method (citing the chapter, pages, philosophers, and Philippine jurisprudence).',
+			'Can an intensely unjust statute violate the core tenet of natural law and thereby lose its character as valid law?',
+		references:
+			'Chapter 10 (<em>Morals v. Force</em>), Chapter 6 (<em>History of Natural Law</em>) &amp; Chapter 7 (<em>Natural Law in Philippine Jurisprudence</em>) · Pascual, pp. 101–114, 148–156; Borja Handouts 6, 7 &amp; 10 · <strong>Key Philosophers:</strong> St. Thomas Aquinas, St. Augustine, Cicero, Gustav Radbruch, Lon L. Fuller, Socrates (<em>Crito</em>), Justice Reynato S. Puno · <strong>Citations:</strong> 1987 Constitution, Art. II, Sec. 11 &amp; Art. III, Sec. 1; Civil Code, Arts. 9–10; UDHR (1948); Nuremberg Trials; <em>Republic v. Sandiganbayan</em> (2003); <em>Imbong v. Ochoa</em> (2014).',
 		modelAnswer: {
 			answer:
 				'Yes, under classical natural law theory and modern post-Nuremberg jurisprudence, an intensely or intolerably unjust enactment violates the foundational moral touchstone of legal validity and forfeits its character as authentic law, creating no moral duty of judicial enforcement or citizen obedience. (Note: A strict positivist counter-argument—citing Socrates in the Crito, John Austin, and Imbong v. Ochoa—that formal statutory validity endures until legislative repeal or explicit constitutional invalidation remains legally defensible.)',
@@ -236,7 +242,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'How does the organic view of society challenge the core tenet of classical legal individualism? Answer using the ALAC method (citing the chapter, pages, philosophers, and Philippine constitutional jurisprudence).',
+			'How does the organic view of society challenge the core tenet of classical legal individualism?',
+		references:
+			'Chapter 11 (<em>The Shift to the Social Sciences</em>) &amp; Chapter 4 (<em>The Many-Splendored Thing</em>) · Pascual, pp. 157–168; Borja Handouts 4 &amp; 11 · <strong>Key Philosophers:</strong> Montesquieu, Auguste Comte, Jean-Jacques Rousseau, Edmund Burke, G.W.F. Hegel, Sir Dennis Lloyd, C.J. Hilario G. Davide Jr. · <strong>Citations:</strong> 1987 Constitution, Art. II, Secs. 10, 15 &amp; 16; <em>Oposa v. Factoran</em> (1993); <em>Calalang v. Williams</em> (1940).',
 		modelAnswer: {
 			answer:
 				'The organic view of society challenges the core tenet of classical legal individualism by demonstrating that society is not an artificial, mechanical aggregate of self-interested contracting individuals, but a living, interdependent historical organism whose collective welfare and intergenerational continuity legitimately supersede atomistic private rights.',
@@ -254,7 +262,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Does premature statutory codification undermine the core tenet of the Historical School regarding the Volksgeist? Answer using the ALAC method (citing the chapter, pages, philosophers, Civil Code provisions, and Philippine jurisprudence).',
+			'Does premature statutory codification undermine the core tenet of the Historical School regarding the Volksgeist?',
+		references:
+			'Chapter 12 (<em>The Historical School of Thought</em>) &amp; Historical/Common Law Handouts · Pascual, pp. 173–184; Borja Handout 12 · <strong>Key Philosophers:</strong> Friedrich Carl von Savigny, Gustav Hugo, Anton Thibaut, Jeremy Bentham, Roscoe Pound, Oliver Wendell Holmes Jr., Dean Cesar L. Villanueva · <strong>Citations:</strong> Civil Code, Arts. 11 &amp; 12; <em>Alzua v. Johnson</em> (21 Phil. 308, 1912); <em>In re Shoop</em> (43 Phil. 213, 1920).',
 		modelAnswer: {
 			answer:
 				'Yes, from the standpoint of the Historical School of Jurisprudence, premature top-down statutory codification fundamentally undermines the core tenet of the Volksgeist by freezing living customary traditions into rigid legislative abstractions and alienating the formal legal system from the organic consciousness of the people. (Note: The counter-argument—championed by Anton Thibaut, Jeremy Bentham, Roscoe Pound, and Articles 11–12 of the Philippine Civil Code—that systematic codification is essential for legal certainty, national unity, and forward-looking reform in a multi-ethnic society is equally defensible.)',
@@ -272,7 +282,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'How has modern social legislation modified the core tenet of Sir Henry Maine’s thesis on the movement from Status to Contract? Answer using the ALAC method (citing the chapter, pages, philosophers, Civil Code provisions, and Philippine jurisprudence).',
+			'How has modern social legislation modified the core tenet of Sir Henry Maine’s thesis on the movement from Status to Contract?',
+		references:
+			'Chapter 12 (<em>The Historical School of Thought</em>) &amp; Chapter 13 (<em>Sociological School</em>) · Pascual, pp. 185–194; Borja Handout 12 &amp; Holmes Handout · <strong>Key Philosophers:</strong> Sir Henry Maine (<em>Ancient Law</em>), Roscoe Pound, Oliver Wendell Holmes Jr., Justice Jose P. Laurel · <strong>Citations:</strong> 1987 Constitution, Art. II, Sec. 10 &amp; Art. XIII, Sec. 3; Civil Code, Art. 1700; <em>Calalang v. Williams</em> (1940); <em>Floresca v. Philex Mining Corp.</em> (1985).',
 		modelAnswer: {
 			answer:
 				'Modern social and labor legislation has modified the core tenet of Sir Henry Maine’s thesis by reversing unbridled laissez-faire contractualism and effecting a partial, protective return to status, wherein the State attaches mandatory rights and floors of protection to individuals by virtue of their socio-economic position (such as workers, tenants, and consumers) that cannot be bargained away by private contract.',
@@ -290,7 +302,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Is the core tenet of social engineering an accurate framework for understanding the balancing of competing interests in judicial review? Answer using the ALAC method (citing the chapter, pages, philosophers, and Philippine Supreme Court cases).',
+			'Is the core tenet of social engineering an accurate framework for understanding the balancing of competing interests in judicial review?',
+		references:
+			'Chapter 13 (<em>The Sociological School of Thought</em>) &amp; Balancing of Interests Handout · Pascual, pp. 205–218; Borja Handout 13 · <strong>Key Philosophers:</strong> Rudolf von Jhering, Roscoe Pound, Oliver Wendell Holmes Jr., Justice Jose P. Laurel, Justice Felix V. Makasiar · <strong>Citations:</strong> <em>Secretary of Justice v. Lantion</em> (2000); <em>Soriano v. Laguardia</em> (2009); <em>Akbayan v. Aquino</em> (2008); <em>Calalang v. Williams</em> (1940); <em>PBMEO v. Philippine Blooming Mills</em> (1973).',
 		modelAnswer: {
 			answer:
 				'Yes, Dean Roscoe Pound’s core tenet of social engineering provides an accurate and candid framework for understanding how Philippine courts weigh and harmonize competing individual, public, and social interests in constitutional adjudication, though it requires a baseline presumption in favor of fundamental human rights so that open-ended balancing does not erode constitutional guarantees. (Note: A formalist or hierarchy-of-rights counter-argument based on PBMEO v. Philippine Blooming Mills and Holmes’s Clear and Present Danger test is equally defensible.)',
@@ -308,7 +322,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'When formal positive law clashes with the core tenet of Eugen Ehrlich’s “living law,” which should prevail in judicial adjudication? Answer using the ALAC method (citing the chapter, pages, philosophers, and Civil Code provisions).',
+			'When formal positive law clashes with the core tenet of Eugen Ehrlich’s “living law,” which should prevail in judicial adjudication?',
+		references:
+			'Chapter 13 (<em>The Sociological School of Thought</em>) &amp; Historical School / Custom Handout · Pascual, pp. 199–208; Borja Handout 13 · <strong>Key Philosophers:</strong> Eugen Ehrlich, Lawrence M. Friedman, Roscoe Pound, Friedrich Carl von Savigny · <strong>Citations:</strong> 1987 Constitution, Art. XII, Sec. 5 &amp; Art. XIV, Sec. 17; Civil Code, Arts. 10, 11 &amp; 12; RA 8371 (IPRA); <em>Alzua v. Johnson</em> (1912).',
 		modelAnswer: {
 			answer:
 				'In formal Philippine judicial adjudication, enacted positive law technically prevails over contrary custom under Civil Code Article 11 (banning custom contra legem); however, effective and legitimate adjudication requires lawmakers and judges to harmonize state norms with Eugen Ehrlich’s “living law” wherever the statute leaves room (secundum legem and praeter legem under Articles 10 and 12), because positive law that ignores society’s living inner order becomes a dead letter.',
@@ -326,10 +342,12 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Does the core tenet of Marxist legal theory accurately explain law as an instrument of dominant class interests? Answer using the ALAC method (citing the chapter, pages, philosophers, and Philippine constitutional jurisprudence).',
+			'Does the core tenet of Marxist legal theory accurately explain law as an instrument of dominant class interests?',
+		references:
+			'Chapter 13 (<em>The Sociological School of Thought</em>) &amp; Chapter 5 (<em>Law versus No-Law</em>) · Pascual, pp. 195–202; Borja Handouts 5, 11 &amp; 13 · <strong>Key Philosophers:</strong> Karl Marx, Friedrich Engels, G.W.F. Hegel, Rudolf von Jhering, Roscoe Pound · <strong>Citations:</strong> 1987 Constitution, Art. II, Secs. 9–10 &amp; Art. XIII; Civil Code, Art. 1700; <em>Calalang v. Williams</em> (1940); <em>PBMEO v. Philippine Blooming Mills</em> (1973); <em>Floresca v. Philex Mining Corp.</em> (1985).',
 		modelAnswer: {
 			answer:
-				'Karl Marx’s legal theory provides a powerful critical lens that unmasks how economic elites can capture formal legal rules to protect capital, but it is incomplete as a universal theory of law because modern constitutional democracies use law autonomously to restrain dominant economic classes, redistribute power, and nunca wither away.',
+				'Karl Marx’s legal theory provides a powerful critical lens that unmasks how economic elites can capture formal legal rules to protect capital, but it is incomplete as a universal theory of law because modern constitutional democracies use law autonomously to restrain dominant economic classes, redistribute power, and never wither away.',
 			legalBasis:
 				'Under Chapter 13 (The Sociological School of Thought, pp. 195–202) and Chapter 5 (Law versus No-Law), Karl Marx and Friedrich Engels (The Communist Manifesto, 1848; Das Kapital) inverted G.W.F. Hegel’s dialectical idealism into dialectical materialism: material economic production, not abstract ideas, drives history. As summarized in Enum 13.1, Marx advanced three core ideas of law: (1) law is a product of economic forces—an ideological superstructure (Überbau) built upon and determined by the society’s economic base (mode of production); (2) law is a tool or weapon of the ruling class to maintain its dominance and mask exploitation behind formal legal equality; and (3) law and the State are destined to “wither away” once capitalism is replaced—after an intermediate socialist stage where government controls all production with more law—by a classless communist utopia without private property.',
 			application:
@@ -344,7 +362,9 @@ const philoAlacExams: AlacEssay[] = [
 		topic: 'FINALS · Open-Ended ALAC (Chapters 10–13)',
 		source: 'FINALS · ALAC',
 		factPattern:
-			'Can Justice Holmes’s “Bad Man” prophecy model of Legal Realism serve as the core tenet of a complete theory of judicial interpretation? Answer using the ALAC method (citing the chapter, pages, philosophers, and Philippine Supreme Court cases).',
+			'Can Justice Holmes’s “Bad Man” prophecy model of Legal Realism serve as the core tenet of a complete theory of judicial interpretation?',
+		references:
+			'Chapter 13 (<em>The Sociological School of Thought</em>), Chapter 10 (<em>Morals v. Force</em>) &amp; Oliver Wendell Holmes Handout · Pascual, pp. 144–146, 219–224; Borja Handout 13 · <strong>Key Philosophers:</strong> Oliver Wendell Holmes Jr., Benjamin N. Cardozo, H.L.A. Hart, Ronald Dworkin, Roscoe Pound · <strong>Citations:</strong> Civil Code, Arts. 8, 9 &amp; 10; <em>Floresca v. Philex Mining Corp.</em> (1985); <em>Rodriguez v. Tan</em> (1952); <em>Villaflor v. Summers</em> (1920); <em>Alzua v. Johnson</em> (1912).',
 		modelAnswer: {
 			answer:
 				'No. While Justice Oliver Wendell Holmes Jr.’s Legal Realism and “Bad Man” prediction model provide an indispensable descriptive account of how practicing lawyers advise clients and how experience shapes judicial gap-filling, it cannot serve as a complete normative theory of judicial interpretation because a judge sitting on the bench cannot decide a hard case by predicting what the judge himself will do.',

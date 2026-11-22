@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { BookCheck, ChevronLeft, ChevronRight, CircleCheck, Eraser, EyeOff, Eye, Flag, Save, ScrollText } from '@lucide/svelte';
+	import { AlignLeft, BookCheck, ChevronLeft, ChevronRight, CircleCheck, Eraser, EyeOff, Eye, Flag, LayoutList, Save, ScrollText } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -26,6 +26,13 @@
 
 	let showModel = $state(false);
 	let confirmClear = $state(false);
+	let freeformMode = $state(false);
+	let seededModuleId = $state('');
+	$effect(() => {
+		if (seededModuleId === lawModule.id) return;
+		seededModuleId = lawModule.id;
+		freeformMode = lawModule.id === 'philo';
+	});
 	const modelShown = $derived(showModel || answerKey.on);
 
 	/** Previous/next follow the filtered list, keeping the open essay in it even if its status changed. */
@@ -50,9 +57,21 @@
 		}
 	}
 
-	function onInput(key: AlacKey, e: Event) {
+	function onInput(key: AlacKey | 'freeform', e: Event) {
 		if (!essay) return;
 		userStorage.saveEssayDraft(essay.id, { [key]: (e.currentTarget as HTMLTextAreaElement).value });
+	}
+
+	function toggleFreeformMode() {
+		const next = !freeformMode;
+		if (next && essay && !draft?.freeform?.trim()) {
+			const parts = ALAC_FIELDS.map((f) => {
+				const txt = draft?.[f.key]?.trim();
+				return txt ? `${f.name}: ${txt}` : '';
+			}).filter(Boolean);
+			if (parts.length) userStorage.saveEssayDraft(essay.id, { freeform: parts.join('\n\n') });
+		}
+		freeformMode = next;
 	}
 
 	function setMastery(kind: 'mastered' | 'review') {
@@ -105,6 +124,19 @@
 					<p class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-extrabold text-muted-foreground tabular-nums dark:bg-[#223842]">{words} word{words === 1 ? '' : 's'}</p>
 
 					<div class="ml-auto flex flex-wrap items-center gap-2">
+						<Button
+							variant={freeformMode ? 'outline' : 'secondary'}
+							size="sm"
+							aria-pressed={!freeformMode}
+							title={freeformMode ? 'Wide essay textbox — click to switch to 4-box ALAC' : '4-box ALAC — click to switch to wide essay textbox'}
+							onclick={toggleFreeformMode}
+						>
+							{#if freeformMode}
+								<AlignLeft class="size-3.5" /> Essay box
+							{:else}
+								<LayoutList class="size-3.5" /> ALAC boxes
+							{/if}
+						</Button>
 						<Button variant={statusOf(essay.id) === 'review' ? 'secondary' : 'outline'} size="sm" aria-pressed={statusOf(essay.id) === 'review'} onclick={() => setMastery('review')}>
 							<Flag /> Needs review
 						</Button>
@@ -133,32 +165,78 @@
 							<p class="label-caps border-l-2 border-slate-100 px-4 py-2.5 text-[0.7rem] dark:border-[#2B434E]">Model ALAC answer</p>
 						</div>
 					{/if}
-					{#each ALAC_FIELDS as f, fi (f.key)}
-						<div class={cn('grid', fi > 0 && 'border-t-2 border-slate-100 dark:border-[#2B434E]', modelShown && 'md:grid-cols-2')}>
+					{#if freeformMode}
+						<div class={cn('grid', modelShown && 'md:grid-cols-2')}>
 							<div class="flex min-w-0 flex-col gap-2 p-4 sm:p-5">
-								<label for="{essay.id}-{f.key}" class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-									<span class={cn('grid size-8 place-items-center rounded-xl border-2 border-b-3 font-sans text-sm font-extrabold', f.badge)} aria-hidden="true">{f.letter}</span>
-									<span class="text-sm font-extrabold">{f.name}</span>
-									<span class="text-xs font-semibold text-muted-foreground">{f.prompt}</span>
+								<label for="{essay.id}-freeform" class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+									<span class="grid size-8 place-items-center rounded-xl border-2 border-b-3 border-[#A55EEA]/40 bg-[#CE82FF]/15 font-sans text-xs font-extrabold text-[#8930C9] dark:text-[#DDA6FF]" aria-hidden="true">
+										<AlignLeft class="size-4" />
+									</span>
+									<span class="text-sm font-extrabold">Essay Answer</span>
+									<span class="text-xs font-semibold text-muted-foreground">Write your full answer in essay format (or toggle ALAC boxes above).</span>
 								</label>
 								<Textarea
-									id="{essay.id}-{f.key}"
-									value={draft?.[f.key] ?? ''}
-									oninput={(e) => onInput(f.key, e)}
-									placeholder={f.placeholder}
-									rows={f.key === 'answer' || f.key === 'conclusion' ? 2 : 4}
+									id="{essay.id}-freeform"
+									value={draft?.freeform ?? ''}
+									oninput={(e) => onInput('freeform', e)}
+									placeholder="Write your essay answer clearly with your Answer, Legal Basis / Theory, Application, and Conclusion…"
+									rows={12}
 									spellcheck="true"
-									class={cn('min-h-20 rounded-2xl border-2 bg-slate-50 font-sans text-base leading-relaxed font-semibold md:text-base dark:bg-[#131F24]', f.ring)}
+									class="min-h-64 rounded-2xl border-2 bg-slate-50 font-sans text-base leading-relaxed font-semibold md:text-base dark:bg-[#131F24]"
 								/>
 							</div>
 							{#if modelShown}
-								<div class="animate-duo-bounce-in flex min-w-0 flex-col gap-2 border-dashed bg-slate-50/70 p-4 max-md:border-t-2 sm:p-5 md:border-l-2 md:border-solid md:border-slate-100 dark:bg-[#15242B] dark:md:border-[#2B434E]">
-									<p class="flex items-center gap-2 text-sm font-extrabold"><span class="md:hidden">Model · </span>{f.name}</p>
-									<div class="rich font-sans text-[0.9875rem] leading-relaxed font-semibold">{@html essay.modelAnswer[f.key]}</div>
+								<div class="animate-duo-bounce-in flex min-w-0 flex-col gap-4 border-dashed bg-slate-50/70 p-4 max-md:border-t-2 sm:p-5 md:border-l-2 md:border-solid md:border-slate-100 dark:bg-[#15242B] dark:md:border-[#2B434E]">
+									{#each ALAC_FIELDS as f (f.key)}
+										<div class="flex flex-col gap-1">
+											<p class="flex items-center gap-2 text-sm font-extrabold">
+												<span class={cn('grid size-6 place-items-center rounded-lg border font-sans text-xs font-extrabold', f.badge)} aria-hidden="true">{f.letter}</span>
+												{f.name}
+											</p>
+											<div class="rich font-sans text-[0.9875rem] leading-relaxed font-semibold">{@html essay.modelAnswer[f.key]}</div>
+										</div>
+									{/each}
+									{#if essay.references}
+										<div class="rounded-xl border border-slate-200/80 bg-white/80 p-3 text-xs leading-relaxed font-semibold text-muted-foreground dark:border-[#2B434E] dark:bg-[#131F24]">
+											<strong class="text-foreground">Sources &amp; Attribution:</strong> {@html essay.references}
+										</div>
+									{/if}
 								</div>
 							{/if}
 						</div>
-					{/each}
+					{:else}
+						{#each ALAC_FIELDS as f, fi (f.key)}
+							<div class={cn('grid', fi > 0 && 'border-t-2 border-slate-100 dark:border-[#2B434E]', modelShown && 'md:grid-cols-2')}>
+								<div class="flex min-w-0 flex-col gap-2 p-4 sm:p-5">
+									<label for="{essay.id}-{f.key}" class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+										<span class={cn('grid size-8 place-items-center rounded-xl border-2 border-b-3 font-sans text-sm font-extrabold', f.badge)} aria-hidden="true">{f.letter}</span>
+										<span class="text-sm font-extrabold">{f.name}</span>
+										<span class="text-xs font-semibold text-muted-foreground">{f.prompt}</span>
+									</label>
+									<Textarea
+										id="{essay.id}-{f.key}"
+										value={draft?.[f.key] ?? ''}
+										oninput={(e) => onInput(f.key, e)}
+										placeholder={f.placeholder}
+										rows={f.key === 'answer' || f.key === 'conclusion' ? 2 : 4}
+										spellcheck="true"
+										class={cn('min-h-20 rounded-2xl border-2 bg-slate-50 font-sans text-base leading-relaxed font-semibold md:text-base dark:bg-[#131F24]', f.ring)}
+									/>
+								</div>
+								{#if modelShown}
+									<div class="animate-duo-bounce-in flex min-w-0 flex-col gap-2 border-dashed bg-slate-50/70 p-4 max-md:border-t-2 sm:p-5 md:border-l-2 md:border-solid md:border-slate-100 dark:bg-[#15242B] dark:md:border-[#2B434E]">
+										<p class="flex items-center gap-2 text-sm font-extrabold"><span class="md:hidden">Model · </span>{f.name}</p>
+										<div class="rich font-sans text-[0.9875rem] leading-relaxed font-semibold">{@html essay.modelAnswer[f.key]}</div>
+									</div>
+								{/if}
+							</div>
+						{/each}
+						{#if modelShown && essay.references}
+							<div class="border-t-2 border-slate-100 bg-slate-50/70 p-4 text-xs leading-relaxed font-semibold text-muted-foreground sm:px-5 dark:border-[#2B434E] dark:bg-[#15242B]">
+								<strong class="text-foreground">Sources &amp; Attribution:</strong> {@html essay.references}
+							</div>
+						{/if}
+					{/if}
 				</section>
 				{#if modelShown}
 					<p class="flex items-center gap-1.5 text-xs font-bold text-[#46A302] dark:text-[#7BE328]"><CircleCheck class="size-4" /> Compare your Legal Basis and Application line by line, then mark how it went.</p>

@@ -33,6 +33,8 @@ export interface AlacEssay {
 	factPattern: string;
 	/** The question the examiner asks, e.g. "Is Juan liable? Discuss, using the ALAC method." */
 	question?: string;
+	/** Source attribution (chapter, pages, philosophers, codal/case citations) shown only when the model answer is revealed. */
+	references?: string;
 	modelAnswer: {
 		answer: string; // Categorical affirmative/negative
 		legalBasis: string; // Codal provision, statute, or doctrine
@@ -123,6 +125,7 @@ export interface UserEssayDraft {
 	legalBasis: string;
 	application: string;
 	conclusion: string;
+	freeform?: string;
 	isMastered: boolean;
 	needsReview?: boolean;
 	updatedAt: number;

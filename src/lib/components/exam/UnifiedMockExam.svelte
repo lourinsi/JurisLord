@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import {
+		AlignLeft,
 		Bookmark,
 		BookmarkCheck,
 		CheckCircle2,
@@ -46,6 +47,7 @@
 		PART_ORDER,
 		buildSubjectExamBank,
 		computeExamTotals,
+		defaultEssayFreeform,
 		defaultExamSettings,
 		entryKey,
 		formatClock,
@@ -122,6 +124,7 @@
 			void session.pausedTotalMs;
 			void session.showAnswers;
 			void session.singleQuestion;
+			void session.essayFreeform;
 			void session.finishedAt;
 			void session.graded;
 		}
@@ -594,6 +597,7 @@
 			pausedTotalMs: 0,
 			showAnswers: true,
 			singleQuestion: true,
+			essayFreeform: defaultEssayFreeform(subject.id),
 			flagged: {},
 			finishedAt: null,
 			graded: false,
@@ -637,6 +641,7 @@
 			pausedTotalMs: 0,
 			showAnswers: true,
 			singleQuestion: true,
+			essayFreeform: defaultEssayFreeform(subject.id),
 			flagged: {},
 			finishedAt: null,
 			graded: false,
@@ -740,6 +745,7 @@
 			pausedTotalMs: 0,
 			showAnswers: true,
 			singleQuestion: true,
+			essayFreeform: defaultEssayFreeform(subject.id),
 			flagged: {},
 			finishedAt: null,
 			graded: false,
@@ -914,6 +920,12 @@
 	const isPaused = $derived(Boolean(session && !session.finishedAt && session.pausedAt));
 	const showAnswers = $derived(session ? (session.showAnswers ?? true) : true);
 	const singleQuestion = $derived(session ? (session.singleQuestion ?? true) : true);
+	const essayFreeform = $derived(
+		session ? (session.essayFreeform ?? defaultEssayFreeform(subject.id)) : defaultEssayFreeform(subject.id)
+	);
+	const hasAlacEssaysInSession = $derived(
+		Boolean(session?.items.some((it) => it.kind === 'essay' && bank.essayById[it.id]?.format === 'alac'))
+	);
 	const effectiveNow = $derived(session?.pausedAt ?? now);
 
 	function toggleShowAnswers() {
@@ -924,6 +936,24 @@
 	function toggleSingleQuestion() {
 		if (!session || session.finishedAt) return;
 		session.singleQuestion = !(session.singleQuestion ?? true);
+	}
+
+	function toggleEssayFreeform() {
+		if (!session || session.finishedAt) return;
+		const next = !(session.essayFreeform ?? defaultEssayFreeform(subject.id));
+		if (next) {
+			for (const it of session.items) {
+				if (it.kind !== 'essay') continue;
+				const k = entryKey(it);
+				if (session.answers[k]?.trim()) continue;
+				const parts = ALAC_FIELDS.map((f) => {
+					const txt = session!.answers[`${k}:${f.key}`]?.trim();
+					return txt ? `${f.label}: ${txt}` : '';
+				}).filter(Boolean);
+				if (parts.length) session.answers[k] = parts.join('\n\n');
+			}
+		}
+		session.essayFreeform = next;
 	}
 
 	function togglePause() {
@@ -1901,6 +1931,28 @@
 							<VolumeX class="size-4" />
 						{/if}
 					</button>
+					{#if hasAlacEssaysInSession}
+						<button
+							type="button"
+							onclick={toggleEssayFreeform}
+							aria-pressed={!essayFreeform}
+							title={essayFreeform
+								? 'Wide essay textbox mode — click to switch to 4-box ALAC format'
+								: 'ALAC 4-box mode — click to switch to wide essay textbox'}
+							class={cn(
+								'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+								!essayFreeform
+									? 'border-[#A55EEA]/60 bg-[#F3E8FF] text-[#8930C9] hover:bg-[#EBD5FF] dark:border-[#CE82FF]/50 dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]'
+									: 'border-slate-200 bg-white text-foreground hover:border-[#A55EEA]/50 hover:text-[#8930C9] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:text-[#DDA6FF]'
+							)}
+						>
+							{#if essayFreeform}
+								<AlignLeft class="size-3.5" strokeWidth={2.5} /> Essay
+							{:else}
+								<LayoutList class="size-3.5" strokeWidth={2.5} /> ALAC
+							{/if}
+						</button>
+					{/if}
 					<button
 						type="button"
 						onclick={togglePause}
@@ -2282,7 +2334,7 @@
 								{#if e.question}
 									<p class="text-sm font-extrabold text-foreground">{e.question}</p>
 								{/if}
-								{#if e.format === 'alac'}
+								{#if e.format === 'alac' && !essayFreeform}
 									<div class="flex flex-col gap-2.5">
 										{#each ALAC_FIELDS as f (f.key)}
 											<label class="grid grid-cols-[2rem_1fr] items-start gap-2.5">
@@ -2304,11 +2356,11 @@
 									</div>
 								{:else}
 									<textarea
-										rows="6"
+										rows="10"
 										bind:value={session.answers[k]}
-										placeholder="Write your answer clearly in one or two paragraphs…"
+										placeholder="Write your essay answer here…"
 										aria-label="Answer for essay {idx + 1}"
-										class="w-full rounded-xl border-2 border-slate-200 bg-white p-3 text-sm font-medium text-foreground outline-none focus:border-[#CE82FF] dark:border-[#2B434E] dark:bg-[#131F24]"
+										class="min-h-48 w-full rounded-xl border-2 border-slate-200 bg-white p-3.5 text-sm leading-relaxed font-medium text-foreground outline-none focus:border-[#CE82FF] dark:border-[#2B434E] dark:bg-[#131F24]"
 									></textarea>
 								{/if}
 							{/if}
@@ -2934,12 +2986,20 @@
 								<div class="flex flex-col gap-2 rounded-xl bg-slate-50 p-3.5 text-sm dark:bg-[#131F24]">
 									<span class="text-[0.68rem] font-extrabold tracking-wide text-muted-foreground uppercase">Your Answer</span>
 									{#if entry.kind === 'essay' && bank.essayById[entry.id]?.format === 'alac'}
-										{#each ALAC_FIELDS as f (f.key)}
-											<p class="leading-relaxed">
-												<strong class="text-[#8930C9] dark:text-[#DDA6FF]">{f.letter}.</strong>
-												{session.answers[`${k}:${f.key}`]?.trim() || '(blank)'}
-											</p>
-										{/each}
+										{@const freeformText = session.answers[k]?.trim() ?? ''}
+										{@const hasAlacText = ALAC_FIELDS.some((f) => Boolean(session?.answers[`${k}:${f.key}`]?.trim()))}
+										{#if (essayFreeform && freeformText) || (!hasAlacText && freeformText)}
+											<p class="leading-relaxed whitespace-pre-wrap">{freeformText}</p>
+										{:else if hasAlacText}
+											{#each ALAC_FIELDS as f (f.key)}
+												<p class="leading-relaxed">
+													<strong class="text-[#8930C9] dark:text-[#DDA6FF]">{f.letter}.</strong>
+													{session.answers[`${k}:${f.key}`]?.trim() || '(blank)'}
+												</p>
+											{/each}
+										{:else}
+											<p class="leading-relaxed text-muted-foreground">(blank)</p>
+										{/if}
 									{:else}
 										<p class="leading-relaxed whitespace-pre-wrap">{session.answers[k]?.trim() || '(blank)'}</p>
 									{/if}
@@ -2960,6 +3020,11 @@
 											{#each e.modelParagraphs as para, pi (pi)}
 												<p class="leading-relaxed">{@html md(para)}</p>
 											{/each}
+										{/if}
+										{#if e?.references}
+											<p class="rounded-lg bg-slate-100/90 p-2.5 text-xs leading-relaxed font-semibold text-muted-foreground dark:bg-[#131F24]">
+												<strong class="text-foreground">Sources &amp; Attribution:</strong> {@html e.references}
+											</p>
 										{/if}
 										{#if e?.keyPoint}
 											<p class="rounded-lg bg-[#FFF5CC]/60 p-2 text-xs font-bold text-[#946200] dark:bg-[#FFC800]/15 dark:text-[#FFD633]">

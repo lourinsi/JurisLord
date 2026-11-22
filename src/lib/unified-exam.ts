@@ -892,7 +892,7 @@ export function loadSavedExamSettings(
 					counts: { mcq: 20, essay: 2, enum: 2, term: 2, req: 3, num: 0 }
 				};
 		const scopePreset = parsed.scopePreset ?? fallback.scopePreset;
-		const pureFinalsMcqOnly = subjectId === 'consti1' && scopePreset === 'finals';
+		const pureFinalsMcqOnly = subjectId === 'consti1';
 		return {
 			mode: parsed.mode === 'practice' ? 'practice' : 'exam',
 			scopePreset,

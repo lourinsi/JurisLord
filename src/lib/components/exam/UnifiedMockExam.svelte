@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
+	import { Popover } from 'bits-ui';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import {
@@ -15,6 +16,7 @@
 		Flag,
 		LayoutList,
 		Lightbulb,
+		MoreVertical,
 		Pause,
 		Play,
 		RotateCcw,
@@ -105,7 +107,18 @@
 		const id = subject.id;
 		if (loadedSubjectId === id) return;
 		loadedSubjectId = id;
-		session = loadSavedExamSession(id);
+		let loaded = loadSavedExamSession(id);
+		// Temporarily disable non-MCQ items in consti1 Mock Exam
+		if (
+			loaded &&
+			id === 'consti1' &&
+			!loaded.finishedAt &&
+			loaded.items.some((it) => it.kind !== 'mcq')
+		) {
+			saveExamSession(id, null);
+			loaded = null;
+		}
+		session = loaded;
 		activeItemKey = session?.items.length ? entryKey(session.items[0]) : '';
 	});
 
@@ -142,8 +155,8 @@
 	let timerChoice = $state<'none' | 'auto' | '15' | '30' | '45' | '60' | '90'>('auto');
 
 	const counts = $state<Record<ExamItemKind, number>>({
-		mcq: 10,
-		essay: 2,
+		mcq: 20,
+		essay: 0,
 		enum: 0,
 		term: 0,
 		req: 0,
@@ -295,6 +308,13 @@
 			termFilter = 'all';
 			numFilter = 'all';
 		}
+		if (subject.id === 'consti1') {
+			counts.essay = 0;
+			counts.enum = 0;
+			counts.term = 0;
+			counts.req = 0;
+			counts.num = 0;
+		}
 	}
 
 	// ---- Filtered pools ----
@@ -369,7 +389,7 @@
 
 	const availableKinds = $derived(
 		PART_ORDER.filter((k) => {
-			if (subject.id === 'consti1' && scopePreset === 'finals') return k === 'mcq' && bank.mcqs.length > 0;
+			if (subject.id === 'consti1') return k === 'mcq' && bank.mcqs.length > 0;
 			if (k === 'mcq') return bank.mcqs.length > 0;
 			if (k === 'essay') return bank.essays.length > 0;
 			if (k === 'enum') return bank.enums.length > 0;
@@ -690,7 +710,7 @@
 		}
 
 		// 2. Any non-MCQ items in this subject whose weight is > 1× ("More likely" from past submissions)
-		for (const row of subjectModifiedWeights) {
+		if (subject.id !== 'consti1') for (const row of subjectModifiedWeights) {
 			if (row.weight <= 1 || seenIds.has(row.id)) continue;
 			if (bank.mcqById[row.id]) {
 				const q = bank.mcqById[row.id];
@@ -768,14 +788,12 @@
 		timerChoice = 'auto';
 		applyScopePreset(bank.hasFinalsPreset ? 'finals' : 'all');
 		counts.mcq = Math.min(20, availableCounts.mcq);
-		if (subject.id !== 'consti1') {
-			const dflt = defaultExamSettings(bank);
-			counts.essay = dflt.counts.essay;
-			counts.enum = dflt.counts.enum;
-			counts.term = dflt.counts.term;
-			counts.req = dflt.counts.req;
-			counts.num = dflt.counts.num;
-		}
+		const dflt = defaultExamSettings(bank);
+		counts.essay = dflt.counts.essay;
+		counts.enum = dflt.counts.enum;
+		counts.term = dflt.counts.term;
+		counts.req = dflt.counts.req;
+		counts.num = dflt.counts.num;
 		startExam();
 	}
 
@@ -1347,6 +1365,7 @@
 
 	let confirmSubmit = $state(false);
 	let confirmQuit = $state(false);
+	let mobileMenuOpen = $state(false);
 	let mcqReviewFilter = $state<'all' | 'missed'>('all');
 
 	const ALAC_FIELDS: { key: 'a' | 'l' | 'p' | 'c'; letter: string; label: string; placeholder: string; rows: number }[] = [
@@ -1850,36 +1869,38 @@
 					{/if}
 				</div>
 
-				<!-- Controls: Reset wrong (when shown), Reset, Submit, Single/Scroll view, Show/Hide answers (icon), Sound, Interactive Timer (hover to pause) -->
-				<div class="flex flex-wrap items-center justify-end gap-2">
+				<!-- Controls: Mobile prioritizes Submit, Reset, Timer & 3-dot overflow; Desktop shows all controls inline -->
+				<div class="flex w-full flex-wrap items-center justify-between gap-1.5 sm:w-auto sm:justify-end sm:gap-2">
 					{#if showAnswers && wrongMcqCount > 0}
 						<button
 							type="button"
 							onclick={resetWrongMcqsInExam}
 							title="Clear only wrong MCQ answers and reshuffle their choices"
-							class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B]/40 border-b-3 bg-[#FFDFE0]/70 px-3 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all hover:bg-[#FFDFE0] active:translate-y-0.5 active:border-b-2 dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878]"
+							class="hidden h-9 items-center gap-1.5 rounded-xl border-2 border-[#EA2B2B]/40 border-b-3 bg-[#FFDFE0]/70 px-3 text-xs font-extrabold tracking-wide text-[#EA2B2B] uppercase transition-all hover:bg-[#FFDFE0] active:translate-y-0.5 active:border-b-2 sm:inline-flex dark:border-[#FF4B4B]/50 dark:bg-[#FF4B4B]/15 dark:text-[#FF7878]"
 						>
 							<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset wrong ({wrongMcqCount})
 						</button>
 					{/if}
-					<button
-						type="button"
-						onclick={() => {
-							confirmSubmit = false;
-							confirmReset = !confirmReset;
-						}}
-						title="Clear all answers, reshuffle choices, and restart timer"
-						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
-					>
-						<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
-					</button>
-					<button
-						type="button"
-						onclick={requestSubmit}
-						class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-3.5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
-					>
-						<Send class="size-3.5" strokeWidth={2.5} /> Submit
-					</button>
+					<div class="flex items-center gap-1.5 sm:gap-2">
+						<button
+							type="button"
+							onclick={requestSubmit}
+							class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-[#46A302] border-b-3 bg-[#58CC02] px-3.5 text-xs font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] active:translate-y-0.5 active:border-b-2"
+						>
+							<Send class="size-3.5" strokeWidth={2.5} /> Submit
+						</button>
+						<button
+							type="button"
+							onclick={() => {
+								confirmSubmit = false;
+								confirmReset = !confirmReset;
+							}}
+							title="Clear all answers, reshuffle choices, and restart timer"
+							class="inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-slate-200 border-b-3 bg-white px-3 text-xs font-extrabold tracking-wide text-foreground uppercase transition-all hover:border-slate-300 hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:bg-[#223842]"
+						>
+							<RotateCcw class="size-3.5" strokeWidth={2.5} /> Reset
+						</button>
+					</div>
 					<button
 						type="button"
 						onclick={toggleSingleQuestion}
@@ -1887,7 +1908,7 @@
 						title={singleQuestion ? 'One question per page (MCQ view) — click for full exam scroll' : 'Full exam scroll — click for one question per page (MCQ view)'}
 						aria-label={singleQuestion ? 'Switch to full exam scroll view' : 'Switch to one question per page view'}
 						class={cn(
-							'grid size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2',
+							'hidden size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2 sm:grid',
 							singleQuestion
 								? 'border-[#1899D6]/60 bg-[#DDF4FF]/80 text-[#1899D6] hover:bg-[#DDF4FF] dark:border-[#1CB0F6]/50 dark:bg-[#1CB0F6]/20 dark:text-[#66D1FF]'
 								: 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
@@ -1906,7 +1927,7 @@
 						title={showAnswers ? 'Answers reveal after each choice — click to hide until submission' : 'Answers hidden until submission — click to reveal after each choice'}
 						aria-label={showAnswers ? 'Hide answers until submission' : 'Reveal answers after each choice'}
 						class={cn(
-							'grid size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2',
+							'hidden size-9 place-items-center rounded-xl border-2 border-b-3 transition-all active:translate-y-0.5 active:border-b-2 sm:grid',
 							showAnswers
 								? 'border-[#46A302]/50 bg-[#D7FFB8]/70 text-[#46A302] hover:bg-[#D7FFB8] dark:border-[#58CC02]/50 dark:bg-[#58CC02]/15 dark:text-[#7BE328]'
 								: 'border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]'
@@ -1923,7 +1944,7 @@
 						onclick={() => prefs.set('soundEnabled', !prefs.value.soundEnabled)}
 						title={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
 						aria-label={prefs.value.soundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
-						class="grid size-9 place-items-center rounded-xl border-2 border-slate-200 bg-white text-muted-foreground hover:text-foreground dark:border-[#2B434E] dark:bg-[#131F24]"
+						class="hidden size-9 place-items-center rounded-xl border-2 border-slate-200 bg-white text-muted-foreground hover:text-foreground sm:grid dark:border-[#2B434E] dark:bg-[#131F24]"
 					>
 						{#if prefs.value.soundEnabled}
 							<Volume2 class="size-4 text-[#1CB0F6]" />
@@ -1940,7 +1961,7 @@
 								? 'Wide essay textbox mode — click to switch to 4-box ALAC format'
 								: 'ALAC 4-box mode — click to switch to wide essay textbox'}
 							class={cn(
-								'inline-flex h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2',
+								'hidden h-9 items-center gap-1.5 rounded-xl border-2 border-b-3 px-3 text-xs font-extrabold tracking-wide uppercase transition-all active:translate-y-0.5 active:border-b-2 sm:inline-flex',
 								!essayFreeform
 									? 'border-[#A55EEA]/60 bg-[#F3E8FF] text-[#8930C9] hover:bg-[#EBD5FF] dark:border-[#CE82FF]/50 dark:bg-[#CE82FF]/20 dark:text-[#DDA6FF]'
 									: 'border-slate-200 bg-white text-foreground hover:border-[#A55EEA]/50 hover:text-[#8930C9] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:text-[#DDA6FF]'
@@ -1953,39 +1974,144 @@
 							{/if}
 						</button>
 					{/if}
-					<button
-						type="button"
-						onclick={togglePause}
-						aria-pressed={isPaused}
-						title={isPaused ? 'Timer paused — click to resume' : 'Click to pause timer'}
-						class={cn(
-							'group relative inline-flex h-9 items-center justify-center gap-1.5 overflow-hidden rounded-xl border-2 border-b-3 px-3 text-sm font-extrabold tabular-nums transition-all active:translate-y-0.5 active:border-b-2',
-							isPaused
-								? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] hover:border-[#46A302] hover:bg-[#58CC02] hover:text-white dark:border-[#FF9600]/60 dark:bg-[#FF9600]/15 dark:text-[#FFAD33] dark:hover:border-[#46A302] dark:hover:bg-[#58CC02] dark:hover:text-white'
-								: secsLeft !== null && secsLeft < 60
-									? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] hover:animate-none dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
-									: 'border-slate-200 bg-slate-100 text-foreground hover:border-[#FF9600] hover:bg-[#FFF4E5] hover:text-[#C96B00] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:border-[#FF9600]/60 dark:hover:bg-[#FF9600]/15 dark:hover:text-[#FFAD33]'
-						)}
-					>
-						<span class="inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-0">
-							<Clock class="size-4" />
-							{#if secsLeft !== null}
-								{formatClock(secsLeft)}
-							{:else}
-								{formatClock(elapsedSecs)}
-							{/if}
-							{#if isPaused}
-								<span class="ml-0.5 text-[0.65rem] tracking-wide uppercase">Paused</span>
-							{/if}
-						</span>
-						<span class="pointer-events-none absolute inset-0 inline-flex items-center justify-center gap-1 text-xs font-extrabold tracking-wide uppercase opacity-0 transition-opacity group-hover:opacity-100">
-							{#if isPaused}
-								<Play class="size-3.5" strokeWidth={2.5} /> Resume
-							{:else}
-								<Pause class="size-3.5" strokeWidth={2.5} /> Pause
-							{/if}
-						</span>
-					</button>
+					<div class="flex items-center gap-1.5 sm:gap-2">
+						<button
+							type="button"
+							onclick={togglePause}
+							aria-pressed={isPaused}
+							title={isPaused ? 'Timer paused — click to resume' : 'Click to pause timer'}
+							class={cn(
+								'group relative inline-flex h-9 items-center justify-center gap-1.5 overflow-hidden rounded-xl border-2 border-b-3 px-2.5 text-sm font-extrabold tabular-nums transition-all active:translate-y-0.5 active:border-b-2 sm:px-3',
+								isPaused
+									? 'border-[#FF9600] bg-[#FFF4E5] text-[#C96B00] hover:border-[#46A302] hover:bg-[#58CC02] hover:text-white dark:border-[#FF9600]/60 dark:bg-[#FF9600]/15 dark:text-[#FFAD33] dark:hover:border-[#46A302] dark:hover:bg-[#58CC02] dark:hover:text-white'
+									: secsLeft !== null && secsLeft < 60
+										? 'animate-pulse border-[#EA2B2B] bg-[#FFDFE0] text-[#EA2B2B] hover:animate-none dark:bg-[#FF4B4B]/20 dark:text-[#FF7878]'
+										: 'border-slate-200 bg-slate-100 text-foreground hover:border-[#FF9600] hover:bg-[#FFF4E5] hover:text-[#C96B00] dark:border-[#2B434E] dark:bg-[#131F24] dark:hover:border-[#FF9600]/60 dark:hover:bg-[#FF9600]/15 dark:hover:text-[#FFAD33]'
+							)}
+						>
+							<span class="inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-0">
+								<Clock class="size-4" />
+								{#if secsLeft !== null}
+									{formatClock(secsLeft)}
+								{:else}
+									{formatClock(elapsedSecs)}
+								{/if}
+								{#if isPaused}
+									<span class="ml-0.5 text-[0.65rem] tracking-wide uppercase">Paused</span>
+								{/if}
+							</span>
+							<span class="pointer-events-none absolute inset-0 inline-flex items-center justify-center gap-1 text-xs font-extrabold tracking-wide uppercase opacity-0 transition-opacity group-hover:opacity-100">
+								{#if isPaused}
+									<Play class="size-3.5" strokeWidth={2.5} /> Resume
+								{:else}
+									<Pause class="size-3.5" strokeWidth={2.5} /> Pause
+								{/if}
+							</span>
+						</button>
+
+						<!-- Mobile 3-dot menu for secondary controls -->
+						<div class="sm:hidden">
+							<Popover.Root bind:open={mobileMenuOpen}>
+								<Popover.Trigger
+									aria-label="More exam options"
+									title="More exam options"
+									class="relative grid size-9 place-items-center rounded-xl border-2 border-b-3 border-slate-200 bg-white text-foreground transition-all hover:bg-slate-50 active:translate-y-0.5 active:border-b-2 dark:border-[#2B434E] dark:bg-[#131F24]"
+								>
+									<MoreVertical class="size-4" strokeWidth={2.5} />
+									{#if showAnswers && wrongMcqCount > 0}
+										<span class="absolute top-1 right-1 size-2 rounded-full bg-[#FF4B4B]" aria-hidden="true"></span>
+									{/if}
+								</Popover.Trigger>
+								<Popover.Portal>
+									<Popover.Content
+										sideOffset={6}
+										align="end"
+										class="z-50 flex w-60 flex-col gap-1 rounded-2xl border-2 border-b-4 border-slate-200 bg-popover p-1.5 shadow-xl outline-none dark:border-[#2B434E]"
+									>
+										{#if showAnswers && wrongMcqCount > 0}
+											<button
+												type="button"
+												onclick={() => {
+													mobileMenuOpen = false;
+													resetWrongMcqsInExam();
+												}}
+												class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-extrabold text-[#EA2B2B] hover:bg-[#FFDFE0]/60 dark:text-[#FF7878] dark:hover:bg-[#FF4B4B]/15"
+											>
+												<RotateCcw class="size-4 shrink-0" />
+												<span>Reset wrong ({wrongMcqCount})</span>
+											</button>
+										{/if}
+										<button
+											type="button"
+											onclick={() => {
+												toggleSingleQuestion();
+												mobileMenuOpen = false;
+											}}
+											class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-extrabold text-foreground hover:bg-muted"
+										>
+											{#if singleQuestion}
+												<LayoutList class="size-4 shrink-0 text-[#1CB0F6]" />
+												<span>Full exam scroll</span>
+											{:else}
+												<Square class="size-4 shrink-0 text-[#1CB0F6]" />
+												<span>One question per page</span>
+											{/if}
+										</button>
+										<button
+											type="button"
+											onclick={() => {
+												toggleShowAnswers();
+												mobileMenuOpen = false;
+											}}
+											class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-extrabold text-foreground hover:bg-muted"
+										>
+											{#if showAnswers}
+												<EyeOff class="size-4 shrink-0 text-[#58CC02]" />
+												<span>Hide answers until submit</span>
+											{:else}
+												<Eye class="size-4 shrink-0 text-[#58CC02]" />
+												<span>Reveal answers on pick</span>
+											{/if}
+										</button>
+										{#if hasAlacEssaysInSession}
+											<button
+												type="button"
+												onclick={() => {
+													toggleEssayFreeform();
+													mobileMenuOpen = false;
+												}}
+												class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-extrabold text-foreground hover:bg-muted"
+											>
+												{#if essayFreeform}
+													<LayoutList class="size-4 shrink-0 text-[#CE82FF]" />
+													<span>Switch to 4-box ALAC</span>
+												{:else}
+													<AlignLeft class="size-4 shrink-0 text-[#CE82FF]" />
+													<span>Switch to wide essay box</span>
+												{/if}
+											</button>
+										{/if}
+										<button
+											type="button"
+											onclick={() => {
+												prefs.set('soundEnabled', !prefs.value.soundEnabled);
+												mobileMenuOpen = false;
+											}}
+											class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-extrabold text-foreground hover:bg-muted"
+										>
+											{#if prefs.value.soundEnabled}
+												<Volume2 class="size-4 shrink-0 text-[#1CB0F6]" />
+												<span>Sound effects: On</span>
+											{:else}
+												<VolumeX class="size-4 shrink-0 text-muted-foreground" />
+												<span>Sound effects: Off</span>
+											{/if}
+										</button>
+									</Popover.Content>
+								</Popover.Portal>
+							</Popover.Root>
+						</div>
+					</div>
 				</div>
 			</div>
 

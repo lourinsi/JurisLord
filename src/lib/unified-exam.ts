@@ -750,7 +750,9 @@ export function pointsForEntry(
 		}
 		case 'essay': {
 			const m = session.marks[k];
-			return m === undefined ? null : m;
+			// Blank written answers are an automatic 0 (nothing for the user to self-mark)
+			if (m === undefined) return isEntryAnswered(session, entry, bank) ? null : 0;
+			return m;
 		}
 		case 'enum': {
 			const e = bank.enumById[entry.id];
@@ -759,7 +761,8 @@ export function pointsForEntry(
 		}
 		case 'term': {
 			const m = session.marks[k];
-			return m === undefined ? null : m;
+			if (m === undefined) return isEntryAnswered(session, entry, bank) ? null : 0;
+			return m;
 		}
 		case 'req': {
 			const r = bank.reqById[entry.id];
@@ -768,7 +771,8 @@ export function pointsForEntry(
 		}
 		case 'num': {
 			const m = session.marks[k];
-			return m === undefined ? null : m;
+			if (m === undefined) return isEntryAnswered(session, entry, bank) ? null : 0;
+			return m;
 		}
 	}
 }
@@ -794,16 +798,22 @@ export function computeExamTotals(session: UnifiedExamSession, bank: SubjectExam
 	};
 	let score = 0;
 	let total = 0;
+	// Only objective (MCQ) items count toward the headline score. Essays, enumerations,
+	// definitions, requisites and numbers are open to human interpretation, so they are
+	// self-graded and shown per part but excluded from the total / history %.
+	// (Written-only exams have no MCQs, so they fall back to counting everything.)
+	const hasMcq = session.items.some((e) => e.kind === 'mcq');
 	for (const entry of session.items) {
 		const max = maxPointsForEntry(entry, bank);
 		const got = pointsForEntry(session, entry, bank) ?? 0;
 		byPart[entry.kind].count++;
 		byPart[entry.kind].max += max;
 		byPart[entry.kind].got += got;
+		if (hasMcq && entry.kind !== 'mcq') continue;
 		total += max;
 		score += got;
 	}
-	return { score, total, byPart };
+	return { score, total, byPart, mcqOnlyTotal: hasMcq };
 }
 
 export function formatClock(secs: number): string {

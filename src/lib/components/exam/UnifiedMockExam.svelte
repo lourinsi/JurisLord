@@ -61,8 +61,7 @@
 		saveExamSession,
 		saveExamSettings,
 		subTickKey,
-		unmarkedWrittenCount,
-		type ExamItemKind,
+			type ExamItemKind,
 		type ScopePreset,
 		type UnifiedExamEntry,
 		type UnifiedExamSession
@@ -830,9 +829,10 @@
 			const picked = hasAnswer ? Number(raw) : -1;
 			const ok = hasAnswer && picked === resolveCorrectIndex(q);
 			if (ok) mcqCorrect++;
-			if (hasAnswer) {
-				userStorage.recordMcqAttempt(q.id, picked, ok);
-			}
+			// Blank MCQs score 0 but are deliberate skips: no attempt record and the
+			// item's current weight stays exactly as is (no "More likely" boost).
+			if (!hasAnswer) continue;
+			userStorage.recordMcqAttempt(q.id, picked, ok);
 			weightUpdates.push({
 				id: q.id,
 				isCorrect: ok,
@@ -846,15 +846,14 @@
 			userStorage.recordExamSubmissionWeights(weightUpdates);
 		}
 
-		// If the exam contains ONLY MCQs, auto-finalize grading immediately
-		const hasWritten = session.items.some((it) => it.kind !== 'mcq');
-		if (!hasWritten) {
+		{
 			session.graded = true;
 			const totals = computeExamTotals(session, bank);
+			const hasWritten = session.items.some((it) => it.kind !== 'mcq');
 			userStorage.recordTestHistory({
 				subjectId: subject.id,
 				subjectTitle: subject.title,
-				topicId: scopePreset === 'finals' ? 'finals' : mcqFilter,
+				topicId: scopePreset === 'finals' ? 'finals' : hasWritten ? 'mock_exam' : mcqFilter,
 				topicName: session.label,
 				mode: session.mode,
 				correct: totals.score,
@@ -864,47 +863,6 @@
 			});
 			if (mcqCount > 0) playMcqSound(mcqCorrect >= Math.ceil(mcqCount / 2));
 		}
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
-
-	function finalizeWrittenGrading() {
-		if (!session || session.graded) return;
-		session.graded = true;
-		const writtenWeightUpdates: ExamWeightUpdate[] = [];
-		for (const it of session.items) {
-			if (it.kind === 'mcq') continue;
-			if (!isEntryAnswered(session, it, bank)) continue;
-			const got = pointsForEntry(session, it, bank);
-			const max = maxPointsForEntry(it, bank);
-			if (got !== null && max > 0) {
-				const meta = resolveItemMeta(it.id);
-				writtenWeightUpdates.push({
-					id: it.id,
-					isCorrect: got >= max,
-					subjectId: subject.id,
-					kind: it.kind,
-					prompt: meta.prompt,
-					topic: meta.topic
-				});
-			}
-		}
-		if (writtenWeightUpdates.length > 0) {
-			userStorage.recordExamSubmissionWeights(writtenWeightUpdates);
-		}
-		const totals = computeExamTotals(session, bank);
-		const end = session.finishedAt ?? Date.now();
-		userStorage.recordTestHistory({
-			subjectId: subject.id,
-			subjectTitle: subject.title,
-			topicId: scopePreset === 'finals' ? 'finals' : 'mock_exam',
-			topicName: session.label,
-			mode: session.mode,
-			correct: totals.score,
-			answered: answeredCount,
-			total: totals.total,
-			secondsUsed: Math.round((end - session.startedAt) / 1000)
-		});
-		if (totals.total > 0) playMcqSound(totals.score / totals.total >= 0.6);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
@@ -1329,7 +1287,6 @@
 		session ? session.items.filter((it) => it.kind === 'mcq' && userStorage.isBookmarked(it.id)).length : 0
 	);
 	const totals = $derived(session ? computeExamTotals(session, bank) : null);
-	const unmarkedLeft = $derived(session ? unmarkedWrittenCount(session, bank) : 0);
 	const missedMcqsInSession = $derived(
 		session
 			? session.items.filter((it) => it.kind === 'mcq' && pointsForEntry(session!, it, bank) !== 1).length
@@ -2707,6 +2664,11 @@
 					<span class="text-xs font-bold text-muted-foreground tabular-nums">
 						· {formatClock(elapsed)} used
 					</span>
+					{#if totals.mcqOnlyTotal && activeParts.some((p) => p.kind !== 'mcq')}
+						<span class="text-[0.7rem] font-bold text-muted-foreground">
+							Total counts MCQs only — written parts are self-graded below.
+						</span>
+					{/if}
 				</div>
 
 				<!-- Per-part score breakdown -->
@@ -3007,8 +2969,7 @@
 														<label class="flex cursor-pointer items-start gap-2">
 															<input
 																type="checkbox"
-																disabled={session.graded}
-																checked={session.marks[subTickKey(entry, si)] === 1}
+																																checked={session.marks[subTickKey(entry, si)] === 1}
 																onchange={(ev) => (session!.marks[subTickKey(entry, si)] = (ev.currentTarget as HTMLInputElement).checked ? 1 : 0)}
 																class="mt-1 size-4 accent-[#58CC02]"
 															/>
@@ -3035,8 +2996,7 @@
 														<label class="flex cursor-pointer items-start gap-2">
 															<input
 																type="checkbox"
-																disabled={session.graded}
-																checked={session.marks[subTickKey(entry, si)] === 1}
+																																checked={session.marks[subTickKey(entry, si)] === 1}
 																onchange={(ev) => (session!.marks[subTickKey(entry, si)] = (ev.currentTarget as HTMLInputElement).checked ? 1 : 0)}
 																class="mt-1 size-4 accent-[#58CC02]"
 															/>
@@ -3063,7 +3023,7 @@
 							</div>
 
 							<!-- Self-grading controls -->
-							{#if !session.graded}
+							{#if session.finishedAt}
 								{#if entry.kind === 'essay'}
 									<ScoreScale
 										score={session.marks[k] ?? -1}
@@ -3117,22 +3077,5 @@
 			</section>
 		{/each}
 
-		{#if !session.graded}
-			<div class="flex flex-wrap items-center gap-3 border-t-2 border-slate-200 pt-4 dark:border-[#2B434E]">
-				<button
-					type="button"
-					disabled={unmarkedLeft > 0}
-					onclick={finalizeWrittenGrading}
-					class="inline-flex h-12 items-center gap-2 rounded-2xl border-2 border-[#46A302] border-b-4 bg-[#58CC02] px-6 text-sm font-extrabold tracking-wide text-white uppercase transition-all hover:bg-[#4EB802] disabled:opacity-40"
-				>
-					Finish &amp; Save Score
-				</button>
-				{#if unmarkedLeft > 0}
-					<span class="text-xs font-bold text-muted-foreground">
-						Mark {unmarkedLeft} more {unmarkedLeft === 1 ? 'answer' : 'answers'} first.
-					</span>
-				{/if}
-			</div>
-		{/if}
 	</div>
 {/if}

@@ -193,17 +193,17 @@ function baseSubtabsForSubject(slug: string): SubtabItem[] {
 			];
 		case 'philo':
 			return [
-				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Lessons 10–13 & jurisprudence guide' },
-				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: '40-minute 4-essay mock exam', star: true },
-				{ id: 'practice', path: 'practice', label: 'MCQs', desc: 'Multiple choice check' },
+				{ id: 'read', path: 'read', label: 'Study guide', desc: 'Lessons 1–13 & jurisprudence guide' },
+				{ id: 'exam', path: 'exam', label: '★ Mock exam', desc: '20 MCQs + 2 essays (incl. ALAC) by default', star: true },
+				{ id: 'practice', path: 'practice', label: 'MCQs', desc: '107 MCQs & True/False' },
 				{ id: 'focus', path: 'focus', label: 'Exam focus', desc: '14 likely questions & #1 model essay' },
-				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '16 lists in Recall & Study mode' },
-				{ id: 'essays', path: 'essays', label: 'Essay practice', desc: 'Define, differentiate, critique & opinion' },
-				{ id: 'terms', path: 'terms', label: 'Definitions', desc: '31 philosophical & doctrinal terms' },
-				{ id: 'thinkers', path: 'thinkers', label: 'Thinkers', desc: '24 thinkers by lesson with self-test' },
-				{ id: 'cases', path: 'cases', label: 'Case digests', desc: '10 Philippine cases & tensions' },
-				{ id: 'compare', path: 'compare', label: 'Differentiate', desc: '4 schools, 15 pairings & 5 stage theories' },
-				{ id: 'critiques', path: 'critiques', label: 'Critiques', desc: 'Reusable paragraph & 14 critiques' },
+				{ id: 'essays', path: 'essays', label: 'Essays & ALAC', desc: '10 ALAC exams (Ch. 10–13) & 23 4-type essays' },
+				{ id: 'enumerations', path: 'enumerations', label: 'Enumerations', desc: '32 lists in Recall & Study mode' },
+				{ id: 'terms', path: 'terms', label: 'Definitions', desc: '55 philosophical & doctrinal terms' },
+				{ id: 'thinkers', path: 'thinkers', label: 'Thinkers', desc: '52 thinkers by lesson with self-test' },
+				{ id: 'cases', path: 'cases', label: 'Case digests', desc: '15 Philippine cases & tensions' },
+				{ id: 'compare', path: 'compare', label: 'Differentiate', desc: '4 schools, 20 pairings & 5 stage theories' },
+				{ id: 'critiques', path: 'critiques', label: 'Critiques', desc: 'Reusable paragraph & 16 critiques' },
 				{ id: 'drill', path: 'drill', label: 'Flashcards', desc: 'Flashcards: lists, terms & cases' },
 				{ id: 'guide', path: 'guide', label: 'Answer guide', desc: '5 thinking moves & 4 question formulas' }
 			];

@@ -107,10 +107,10 @@ const INITIAL_SHELLS: Subject[] = [
 		'philo',
 		'Philosophy of Law',
 		'Legal Method',
-		'Lessons 10–13 · Schools of Jurisprudence & Philippine Cases',
-		'Historical, positivist, realist, natural-law, and critical schools of jurisprudence, stage theories, and 10 Philippine Supreme Court cases.',
-		'Lessons 10–13 Jurisprudence Syllabus & 10 Philippine Supreme Court Decisions',
-		{ mcqCount: 10, essayCount: 23, unitCount: 32 }
+		'Lessons 1–13 · Schools of Jurisprudence & Philippine Cases',
+		'Historical, positivist, realist, natural-law, and sociological schools of jurisprudence, stage theories, and 15 Philippine Supreme Court cases.',
+		'Lessons 1–13 Jurisprudence Syllabus & 15 Philippine Supreme Court Decisions',
+		{ mcqCount: 107, essayCount: 33, unitCount: 50 }
 	)
 ];
 
@@ -120,9 +120,9 @@ export const modules = $state<Subject[]>([...INITIAL_SHELLS]);
 /** Reactive aggregate counts across all modules (accurate immediately before any full subject chunks load). */
 export const totals = $state({
 	modules: INITIAL_SHELLS.length,
-	mcqs: 1432,
-	essays: 632,
-	cases: 192
+	mcqs: 1529,
+	essays: 642,
+	cases: 197
 });
 
 const fullyLoadedSet = new Set<string>();

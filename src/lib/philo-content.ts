@@ -1,12 +1,21 @@
 /**
- * Legal Philo content, taken from the finals reviewer (Lessons 10 to 13 and the four Philippine
- * jurisprudence handouts). Groups: 10–13 are the lessons, 14 is Philippine jurisprudence.
+ * Legal Philo content, taken from the complete course handouts (Lessons 1 to 13 and the four Philippine
+ * jurisprudence handouts). Groups: 1–13 are the lessons, 14 is Philippine jurisprudence.
  * Strings may use **bold**; essay and thinker strings may also use *italics* (see `fmt`).
  */
 import type { Digest } from './digest';
 import type { Group, KitEnum, KitTerm, TopQuestion } from './kit';
 
 export const GROUPS: Group[] = [
+	{ id: 1, short: 'L1', title: 'Lesson 1 · Why We Study Legal Philosophy' },
+	{ id: 2, short: 'L2', title: 'Lesson 2 · Legal Philosophy: An Attempt at a Definition' },
+	{ id: 3, short: 'L3', title: 'Lesson 3 · This Thing Called Law' },
+	{ id: 4, short: 'L4', title: 'Lesson 4 · The Many-Splendored Thing' },
+	{ id: 5, short: 'L5', title: 'Lesson 5 · Law versus No-Law' },
+	{ id: 6, short: 'L6', title: 'Lesson 6 · A History of Natural Law' },
+	{ id: 7, short: 'L7', title: 'Lesson 7 · Natural Law in Philippine Law & Jurisprudence' },
+	{ id: 8, short: 'L8', title: 'Lesson 8 · Legal Positivism' },
+	{ id: 9, short: 'L9', title: 'Lesson 9 · Legal Positivism in Philippine Law & Jurisprudence' },
 	{ id: 10, short: 'L10', title: 'Lesson 10 · Morals v. Force' },
 	{ id: 11, short: 'L11', title: 'Lesson 11 · The Shift to the Social Sciences' },
 	{ id: 12, short: 'L12', title: 'Lesson 12 · Historical School' },
@@ -17,6 +26,279 @@ export const GROUPS: Group[] = [
 // ---------- enumerations ----------
 
 export const ENUMS: KitEnum[] = [
+	{
+		id: '1.1',
+		group: 1,
+		kind: 'list',
+		t: 'Four reasons Legal Philosophy is essential to legal education',
+		src: 'Lesson 1',
+		mem: 'Novel · Construct · Consciousness · Premises',
+		it: [
+			['Novel questions & lacunae', '**Romulo Borja**: statutory law is never exhaustively interpreted; when precedent runs out, you must theorize and participate in legal development.'],
+			['Rules reflect a working theory', '**Crisolito Pascual**: all legal rules are applications of a jurisprudential construct, acting as stabilizing factors or principles of change; without philosophy, law is a mere vocation, not a profession.'],
+			['Brings assumptions to consciousness', '**Fr. Ranhilio Aquino**: mechanical judging is less fair; philosophy brings unarticulated assumptions about justice to consciousness for critical appraisal.'],
+			['Makes implicit premises clear', '**Stuart Northrop**: the only difference between a lawyer “without a philosophy” and one with a philosophy is that the latter knows what his philosophy is and can justify his premises.']
+		],
+		trap: 'Borja disagrees with Fr. Aquino on one point: Legal Philosophy is essential to **legal education** (for all students and lawyers), not merely judicial education.'
+	},
+	{
+		id: '2.1',
+		group: 2,
+		kind: 'req',
+		t: 'Nietzsche’s three reasons Thales is the first philosopher',
+		src: 'Lesson 2',
+		mem: 'Origin · No Fable · Everything Is One',
+		it: [
+			['It enunciates something about the origin of things', 'Inquires into the ultimate nature or essence of things (still in the company of religion and superstition).'],
+			['It does so without figure and fable', 'Matter-of-factual inquiry without poetry, myth, or fantasy narratives (makes him a natural scientist).'],
+			['It contains the metaphysical thought: “Everything is one”', 'Reduces everything into one single unifying principle (makes him the **first Greek philosopher**).']
+		],
+		trap: 'Only the **third** reason (“Everything is one”) makes Thales the first philosopher rather than merely a natural scientist.'
+	},
+	{
+		id: '2.2',
+		group: 2,
+		kind: 'cls',
+		t: 'Seven traditional branches of Philosophy',
+		src: 'Lesson 2',
+		mem: 'M-A-L-A-E-E-P: Metaphysics, Axiology, Logic, Aesthetics, Epistemology, Ethics, Political',
+		it: [
+			['Metaphysics', 'First principles of things: being, knowing, substance, cause, identity, time and space.'],
+			['Axiology', 'The nature of value and valuation, and of the kinds of things that are valuable.'],
+			['Logic', 'The nature of correct thinking.'],
+			['Aesthetics', 'The ultimate nature of beauty, especially in art.'],
+			['Epistemology', 'Knowledge: its methods, validity and scope; what distinguishes justified belief from opinion.'],
+			['Ethics', 'What constitutes correct or moral conduct.'],
+			['Political philosophy', 'Fundamental questions about the state, government, politics, liberty, justice, property, rights, and **law**.']
+		],
+		trap: 'Law is **not** a separate traditional branch; it sits under Political Philosophy and is “**parasitic**” (Dworkin) on ethics, political philosophy, language, and metaphysics.'
+	},
+	{
+		id: '3.1',
+		group: 3,
+		kind: 'cls',
+		t: 'Types of prescriptive law',
+		src: 'Lesson 3',
+		mem: 'Natural · Moral · Justice · Reason · Custom · Positive',
+		it: [
+			['Natural law (jus naturalis / lex naturalis)', 'Universal and immutable rules inherent in human nature and discoverable through reason.'],
+			['Moral law', 'Personal and societal notions of good and bad; indistinguishable from natural law only when universal.'],
+			['Justice', 'Fairness, equality, impartiality, or giving to each person what is his due.'],
+			['Law of reason', 'The human capacity for applying logical processes to discover truth.'],
+			['Customary law', 'Rules growing out of habitual community practice.'],
+			['Positive law (jus positum)', 'Man-made law formally enacted by a proper authority, habitually obeyed, backed by state coercion, and characterized by certainty.']
+		],
+		trap: 'Descriptive laws describe how things **do** behave (gravity, supply and demand); prescriptive laws set standards for how humans **should** behave.'
+	},
+	{
+		id: '3.2',
+		group: 3,
+		kind: 'req',
+		t: 'Four characteristics of positive law',
+		src: 'Lesson 3',
+		mem: 'Prescribes · Obligatory · Habitually Obeyed · Formally Enacted',
+		it: [
+			['Prescribes human conduct', 'Belongs to prescriptive law, not descriptive law.'],
+			['Obligatory rule', 'Treated as having mandatory force and backed by an enforcement mechanism, not mere suggestion.'],
+			['Habitually obeyed', 'Citizens and persons subject to it render habitual obedience.'],
+			['Product of formal enactment', 'Promulgated by an institution constitutionally authorized to make law, giving it **certainty**.']
+		],
+		trap: '“Positive” comes from **to posit** (to establish or put forward), **not** positive acts as opposed to negative omissions.'
+	},
+	{
+		id: '3.3',
+		group: 3,
+		kind: 'cls',
+		t: 'Five classifications of statutory law',
+		src: 'Lesson 3',
+		mem: 'Relation · Subjects · Nature · Extent · Substantive/Procedural',
+		it: [
+			['As to relation governed: Public v. Private law', 'State-citizen relations v. relations between individuals.'],
+			['As to subjects governed: National (domestic/ordinance) v. International law (jus gentium)', 'Within a state v. between states.'],
+			['As to nature of statute: Constitutions v. Ordinary statutes', 'Fundamental law (government, liberty, sovereignty) v. laws enacted by Congress (Civil Code, Art. 7 hierarchy).'],
+			['As to extent of subject matter: Codes v. Special laws', 'Scientifically and logically arranged system on a broad subject v. stand-alone statute on a limited subject (contrast a mere **compilation**).'],
+			['As to function: Substantive v. Procedural (remedial) law', 'Creates rights and obligations v. establishes the process to enforce them.']
+		]
+	},
+	{
+		id: '3.4',
+		group: 3,
+		kind: 'cls',
+		t: 'Parts and opinions in a Supreme Court decision',
+		src: 'Lesson 3; Civil Code, Art. 8',
+		mem: 'Fallo · Ratio · Judicial Dictum · Obiter Dictum',
+		it: [
+			['Fallo (dispositive portion)', 'The decision proper; binding on the **parties** to the case.'],
+			['Ratio decidendi', 'The reason behind the decision; binding on the parties **and** controlling on future analogous cases under *stare decisis*. Ratio is law.'],
+			['Judicial dictum', 'An aside not essential to the disposition of the main issue, but addressing an issue **raised by the parties**.'],
+			['Obiter dictum', 'An aside disposing of a collateral issue **not raised by the parties**. Dicta are mere opinions.']
+		],
+		trap: 'Lower court decisions that become final are “the law between the parties” only; only **Supreme Court** decisions form part of positive case law under Art. 8.'
+	},
+	{
+		id: '4.1',
+		group: 4,
+		kind: 'cls',
+		t: 'Four basic perspectives on jural v. non-jural law (and their graph positions)',
+		src: 'Lesson 4',
+		mem: 'Top (Teleological) · Bottom (Historical) · Same Level (Sociological) · Insulated (Positivist)',
+		it: [
+			['Teleological (Natural Law / Philosophical) — Top of the graph', 'Non-jural norms (morals, justice, reason, divine law) stand **above** positive law as the touchstone of its validity.'],
+			['Historical — Bottom of the graph', 'Positive law grows upward out of the soil of the **volksgeist** (shared culture, traditions, history); rejects a higher law.'],
+			['Sociological — Same level as positive law', 'Law is the handmaiden of society; social sciences are **partners** with positive law in ordering society (includes Functional, Legal Realist, Policy Science).'],
+			['Legal Positivist — Insulated (“neither here nor there”)', 'Positive law is completely **autonomous** and insulated from all non-jural norms; separation of law and morals.']
+		]
+	},
+	{
+		id: '4.2',
+		group: 4,
+		kind: 'cls',
+		t: 'Sir Dennis Lloyd’s three contrasts between the schools',
+		src: 'Lesson 4; Dennis Lloyd, The Idea of Law',
+		mem: 'R-I-F v. N-C-N: Rationalist, Individualist, Formal',
+		it: [
+			['Rationalist v. Non-rationalist', 'Natural Law and Positivism rest on rational appreciation of the social contract; Historical and Sociological recognize irrational elements in human social behavior.'],
+			['Individualist v. Collectivist', 'Natural Law and Positivism treat society as a collection of individuals; Historical and Sociological treat society as a living organism greater than the sum of its parts.'],
+			['Formal v. Non-formal', 'Natural Law and Positivism formulate logical suppositions rather than actual history; Historical and Sociological root their ideas in historical and empirical facts.']
+		],
+		trap: 'Both Natural Law and Legal Positivism share the **same** R-I-F traits because both draw on the social contract; they diverge only on whether rights are wholly surrendered (**Hobbes**) or retained (**Locke**).'
+	},
+	{
+		id: '5.1',
+		group: 5,
+		kind: 'cls',
+		t: 'Thinkers on human nature and the necessity of law',
+		src: 'Lesson 5',
+		mem: 'Evil (Curb) · Fallen (Restore) · Social Animal (Beneficent) · Good (Abolish)',
+		it: [
+			['Man is intrinsically evil → law is a necessary restraint', '**Chinese Legists** (3rd c. BC), **Indian Shastra writers**, **Machiavelli** (*The Prince*), **Jean Bodin**, **Thomas Hobbes** (*Leviathan*), **David Hume**.'],
+			['Man is fallen from a Golden Age → law curbs sin to restore him', '**Ovid** (*Metamorphoses*), **Seneca** (primitive innocence ruined by avarice), **St. Augustine** (law curbs man’s sinful nature).'],
+			['Man is a social animal → law is a beneficent force for welfare', '**Aristotle** and **St. Thomas Aquinas** (mellowed Augustine’s view: law is not a necessary evil but a natural foundation for human flourishing).'],
+			['Man is intrinsically good → law and state are evils or unnecessary', '**Plato** (*The Republic*’s philosopher-kings, though *The Laws* turns totalitarian), **William Godwin**, **Bakunin**, **Kropotkin**, **Tolstoy**, **Karl Marx** (in the final communist utopia).']
+		],
+		trap: '**Adam Smith** (*laissez-faire*), **Grafton Elliot Smith** (man is both good and bad), and **Sir Herbert Read** (decentralization to local courts) are **not** true anarchists: they retain a minimum set of laws.'
+	},
+	{
+		id: '5.2',
+		group: 5,
+		kind: 'list',
+		t: 'Philippine legal provisions and rulings rejecting anarchism',
+		src: 'Lesson 5',
+		mem: 'Art. II Sec. 1 · RA 2927 · Djumantan · RPC / PD 970',
+		it: [
+			['1987 Constitution, Art. II, Sec. 1', 'The Philippines is a **democratic and republican** state: ultimate power is in the people, but affairs are governed by the rule of law through government.'],
+			['Republic Act No. 2927 (Naturalization Law)', 'Disqualifies from Filipino citizenship any person “**opposed to organized government**” or teaching doctrines opposing all organized government.'],
+			['Djumantan v. Domingo (1995)', 'Immigration laws allow exclusion or deportation of aliens who advocate the overthrow of government or oppose organized government.'],
+			['Revised Penal Code as amended by PD 970', 'Mere belief is not a crime, but acts of **inciting to rebellion** or publishing materials that incite rebellion are penalized.']
+		]
+	},
+	{
+		id: '6.1',
+		group: 6,
+		kind: 'cls',
+		order: true,
+		t: 'Historical evolution of Natural Law: from Divine Law to Human Rights',
+		src: 'Lesson 6',
+		mem: 'Sinai → Antigone → Aristotle → Stoics/Cicero → Paul/Augustine/Aquinas → Coke → Locke/Jefferson → UDHR',
+		it: [
+			['Hebrew divine law', 'Ten Commandments on Mt. Sinai and the **Torah**; prophets challenged royal edicts against God’s higher law.'],
+			['Greek tragedy', '**Sophocles’ *Antigone*** defied King Creon’s burial ban by appealing to the eternal, unwritten laws of the gods.'],
+			['Classical Greek philosophy', '**Aristotle** (“father of natural law”) secularized *Antigone* in *Rhetoric*, contrasting local conventional law with universal, immutable natural law.'],
+			['Stoicism and Roman law', 'Cosmopolitan equality and the pantheistic “**divine spark**” of reason; **Cicero** (*De Legibus*, *De Re Publica*, *salus populi est suprema lex*).'],
+			['Christian and Scholastic synthesis', '**St. Paul** (“law written in men’s hearts”); **St. Augustine** (prelapsarian natural law; *lex injusta non est lex*); **St. Thomas Aquinas** (rational creature’s participation in eternal law; do good and avoid evil).'],
+			['English common law', '**Sir Edward Coke** in *Calvin’s Case* (1608): law is “perfect reason”; natural law is part of English law, immutable, and prior to municipal law.'],
+			['Social contract and natural rights', '**John Locke** (*Two Treatises*: partial surrender; life, liberty, property; *Imago Dei*; consent of the governed) → **Thomas Jefferson** (Declaration of Independence) & US Bill of Rights.'],
+			['Modern international human rights', '**Universal Declaration of Human Rights (UDHR)** adopted Dec. 10, 1948.']
+		]
+	},
+	{
+		id: '6.2',
+		group: 6,
+		kind: 'cls',
+		t: 'Aquinas’s hierarchy of laws and precepts of natural law',
+		src: 'Lesson 6',
+		mem: 'Eternal · Natural · Divine · Human (General v. Secondary precepts)',
+		it: [
+			['Eternal law', 'God’s rational governance of the whole universe, which human reason cannot fully comprehend on its own.'],
+			['Natural law', 'The rational creature’s participation in the eternal law; supreme principle: **good is to be done and evil avoided**.'],
+			['Divine law', 'Revealed law in Scripture that supplements human reason where it cannot grasp the eternal law.'],
+			['Human (positive) law', 'Must conform to natural law; an unjust law is a “**perversion of law**” retaining only the appearance of law.'],
+			['General v. Secondary precepts', 'Most general precepts cannot be blotted out from men’s hearts in the abstract (only hindered in a particular act by passion); **secondary precepts** can be blotted out by evil persuasions or vicious customs.']
+		]
+	},
+	{
+		id: '7.1',
+		group: 7,
+		kind: 'doc',
+		t: 'Natural law provisions in the Civil Code and the 1987 Constitution',
+		src: 'Lesson 7',
+		mem: 'Arts. 6, 9, 10, 19–21 · Preamble · Art. II Secs. 2, 5, 9–11 · Art. III Sec. 1',
+		it: [
+			['Civil Code, Art. 6', 'Waiver of rights is void if contrary to law, public order, public policy, **morals**, or good customs.'],
+			['Civil Code, Arts. 9 and 10', 'Judges cannot decline to render judgment due to **lacunae** (silence, obscurity, insufficiency — Art. 9) and must presume the legislature intended **right and justice** to prevail (Art. 10).'],
+			['Civil Code, Arts. 19, 20 and 21 (Human Relations)', 'Act with justice, give everyone his due, and observe honesty and good faith (Art. 19); indemnify damage caused contrary to law (Art. 20) or **morals, good customs, or public policy** (Art. 21).'],
+			['1987 Constitution, Preamble and Art. II', 'Imploring Almighty God to build a **just and humane society** under a regime of truth, justice, freedom, love, equality, and peace; social justice (Sec. 10) and human dignity/rights (Sec. 11).'],
+			['1987 Constitution, Art. III, Sec. 1 (Due Process)', '**Procedural due process** means fairness in proceedings; **substantive due process** means justice and reason.']
+		],
+		trap: 'Under *Imbong v. Ochoa*, natural law **cannot** invalidate a statute on its own unless transformed into written/constitutional law; it applies directly only sparingly in **lacunae** (*Republic v. Sandiganbayan*).'
+	},
+	{
+		id: '8.1',
+		group: 8,
+		kind: 'doc',
+		t: 'Austin’s three core tenets of Legal Positivism',
+		src: 'Lesson 8',
+		mem: 'Separation · Command of Sovereign · Analytical Jurisprudence',
+		it: [
+			['Separation of law and morals', '“The existence of law is one thing; its merit or demerit is another.” Positive law is autonomous from non-jural norms.'],
+			['Imperative or command theory of law', 'Law is a general command issued by a **sovereign** (habitually obeyed by the bulk of the population and obeying no one else) backed by a **sanction** (threat of pain).'],
+			['Analytical jurisprudence', 'Legal study is limited to logical analysis of the distinctive vocabulary and structure of existing positive law (*what law is*, not *what it ought to be*).']
+		],
+		trap: 'Later positivists (Kelsen, Hart) keep the **separation thesis** but reject the command theory.'
+	},
+	{
+		id: '8.2',
+		group: 8,
+		kind: 'list',
+		t: 'Five roads leading to Legal Positivism',
+		src: 'Lesson 8',
+		mem: 'Socrates · Epicureans/Bentham · Comte · Hume · Hobbes',
+		it: [
+			['Socrates in Plato’s Crito', 'Refused to escape an unjust death sentence; an unjust law still carries a moral duty of obedience under an early social contract.'],
+			['Epicureanism and Bentham’s Utilitarianism', 'Pain-avoidance and pleasure-seeking measured in **utils** (“calculus of pleasure and pain”); Bentham mocked natural rights as “**nonsense on stilts**.”'],
+			['Auguste Comte’s scientific positivism', 'Law of three stages moving from theological and metaphysical speculation to positive empirical science.'],
+			['David Hume’s empiricism and is/ought injunction', 'One cannot logically derive a prescriptive “**ought**” conclusion from purely descriptive “**is**” premises.'],
+			['Thomas Hobbes’s Leviathan', 'Total surrender of rights to the sovereign makes the sovereign’s commands just by definition, planting the seed of the command theory.']
+		]
+	},
+	{
+		id: '8.3',
+		group: 8,
+		kind: 'doc',
+		t: 'Kelsen’s three theoretical functions of the Grundnorm and two system postulates',
+		src: 'Lesson 8',
+		mem: 'Validity · Normativity · Unity (+ Efficacy)',
+		it: [
+			['Non-reductive explanation of legal validity', 'Explains why a rule is valid law without reducing law to brute force or morality.'],
+			['Non-reductive explanation of the normativity of law', 'Respects **Hume’s is/ought rule**: only a presupposed “ought” (the *Grundnorm*) can confer normative meaning on the “is” of legislative acts.'],
+			['Explanation of the systematic unity of legal norms', 'Two postulates: (1) every two norms deriving validity from one *Grundnorm* belong to the same system, and (2) all norms of a system derive from one *Grundnorm* (criticized by **Joseph Raz** via orderly secession).']
+		],
+		trap: '**Efficacy** (actual practice by the population) is **not** required for a newly enacted individual norm to be valid, **but** the legal order as a whole—and the *Grundnorm* itself—must be efficacious.'
+	},
+	{
+		id: '9.1',
+		group: 9,
+		kind: 'doc',
+		t: 'Four manifestations of Legal Positivism in Philippine law and jurisprudence',
+		src: 'Lesson 9',
+		mem: 'Qualified Code · Secular Morality · State Immunity · Verba Legis',
+		it: [
+			['Qualified legal positivism in the Civil Code', 'Obligations require a recognized legal source, though the exercise of rights is bounded by morals, good customs, public order, and public policy.'],
+			['Secular morality under Art. II, Sec. 6 (Separation of Church and State)', 'When Philippine law refers to “morality,” the standard is **secular public interest**, never the religious doctrine of a particular church.'],
+			['Doctrine of non-suability of the State', '*Caltex v. Customs Arrastre* and *Santiago v. Republic* explicitly adopt the **Austinian/Holmesian positivist** view: there can be no legal right against the authority that makes the law on which the right depends.'],
+			['Dura lex sed lex and verba legis (Plain Meaning Rule)', '*Macalintal v. Senate* (2025): when a statute is clear and unambiguous, courts must apply its literal text without construction, out of deference to Congress and separation of powers.']
+		]
+	},
 	{
 		id: '10.1',
 		group: 10,
@@ -268,7 +550,31 @@ export const ENUMS: KitEnum[] = [
 // ---------- definitions ----------
 
 export const TERMS: KitTerm[] = [
-	{ id: 'natural-law', group: 10, t: 'Natural law', d: 'The theory that a law is valid because it conforms to a higher rule, such as morals or a natural order.', src: 'Lesson 10', x: 'Legal positivism asks where a rule came from, not whether it is just.' },
+	{ id: 'ratio-decidendi', group: 1, t: 'Ratio decidendi', d: 'The court’s reasoning in coming to its decision interpreting or applying the law. Once a Supreme Court decision becomes final and executory, the ratio forms part of the legal system as precedent under stare decisis.', src: 'Lessons 1, 3 and 7; Civil Code, Art. 8', x: 'The fallo (dispositive portion) binds only the parties; dicta (obiter and judicial) are mere side opinions.' },
+	{ id: 'stare-decisis', group: 1, t: 'Stare decisis', d: 'Latin for “to stand by things decided” (the rule of precedence): the ratio decidendi of a final Supreme Court decision is controlling on all future cases of an analogous character.', src: 'Lessons 1, 3 and 7; Civil Code, Art. 8', x: 'Where a novel question of law arises with no precedent, stare decisis is no guide and the lawyer or judge must philosophize.' },
+	{ id: 'philosophy', group: 2, t: 'Philosophy (Nietzsche on Thales)', d: 'An inquiry into the origin and ultimate nature (essence) of things, conducted without figure or fable (matter-of-factually), that reduces everything into one unifying principle (“Everything is one!”).', src: 'Lesson 2; Nietzsche on Thales of Miletus', x: 'A scientific hypothesis explains how one thing evolves from another empirically; philosophy leaps to a metaphysical concept of unity.' },
+	{ id: 'legal-philosophy', group: 2, t: 'Legal Philosophy', d: 'The study or inquiry into the ultimate nature or essence of law without resort to figure or fable, reducing everything into a single concept or principle. Dworkin notes it has no distinct core of its own and is “parasitic” on ethics, political philosophy, metaphysics, and social sciences.', src: 'Lesson 2; Romulo Borja; R.M. Dworkin' },
+	{ id: 'descriptive-prescriptive', group: 3, t: 'Descriptive v. prescriptive law', d: 'Descriptive laws describe how inanimate, animate, or human things actually do behave (e.g., gravity, law of supply and demand). Prescriptive laws lay down standards on how human beings should behave (natural law, moral law, customary law, positive law).', src: 'Lesson 3', x: 'Hume’s injunction: you cannot logically derive a prescriptive “ought” from purely descriptive “is” premises.' },
+	{ id: 'positive-law', group: 3, t: 'Positive law (jus positum)', d: 'Man-made law actually and specifically enacted or adopted by a constitutionally recognized authority for the governance of an organized society, backed by state coercion, habitually obeyed, and characterized by certainty. Also called “lawyer’s law.”', src: 'Lesson 3', x: '“Positive” comes from the verb “to posit” (to establish or put forward), not positive acts as opposed to omissions.' },
+	{ id: 'dictum', group: 3, t: 'Obiter dictum v. judicial dictum', d: 'Dicta are side comments in a decision not essential to the disposition of the main issue. An obiter dictum disposes of a collateral issue not raised by the parties; a judicial dictum addresses an issue raised by the parties that is still not essential to the disposition.', src: 'Lesson 3', x: 'Both are mere opinions; only the ratio decidendi is binding case law.' },
+	{ id: 'jural-non-jural', group: 4, t: 'Jural v. non-jural law', d: 'Jural law corresponds to positive law created and enforced with legal sanctions by a politically organized state. Non-jural law refers to all other prescriptive norms—unenforced social norms, personal or group ethics, religious doctrines, or natural law and justice.', src: 'Lesson 4', x: 'Both jural and non-jural law are prescriptive laws; legal philosophy studies the relationship between them.' },
+	{ id: 'teleological-perspective', group: 4, t: 'Teleological Perspective', d: 'The school of thought (“teleological” = relating to design or purpose, also called the Natural Law or Philosophical Perspective) that places non-jural norms at the top of the graph above positive law as the purpose and touchstone of positive law’s validity.', src: 'Lessons 4 and 6', x: 'The Historical School sits at the bottom (volksgeist), the Sociological School at the same level (partner), and Legal Positivism insulated from non-jural norms.' },
+	{ id: 'anarchism', group: 5, t: 'Anarchism (“no-law”)', d: 'The view—arising from the premise that man is intrinsically good and corrupted only by social institutions—that the state, law, coercion, and private property are evils that should be abolished in favor of free cooperation and moral censure.', src: 'Lesson 5; Godwin, Bakunin, Kropotkin, Tolstoy', x: 'Adam Smith’s laissez-faire is not anarchism because markets require a minimum set of laws, especially on private property.' },
+	{ id: 'republicanism', group: 5, t: 'Democratic and republican state', d: 'Under Art. II, Sec. 1 of the 1987 Constitution, democracy means ultimate sovereignty resides in the people, while republicanism means the nation’s affairs are governed by the rule of law enforced through an organized government—the antithesis of anarchy.', src: 'Lesson 5; 1987 Constitution, Art. II, Sec. 1' },
+	{ id: 'salus-populi', group: 6, t: 'Salus populi est suprema lex', d: 'Cicero’s maxim: “The welfare of the people is the highest law.” It signifies a supreme natural law above positive statutes mandating governments to care for the general welfare—known today as police power or the general welfare clause.', src: 'Lessons 6 and 7; Cicero; Calalang v. Williams' },
+	{ id: 'lex-injusta', group: 6, t: 'Lex injusta non est lex', d: 'St. Augustine’s maxim: “An unjust law is no law at all.” Aquinas refined this to mean that an unjust human law is a “perversion of law” that retains only the outward appearance of law.', src: 'Lesson 6; St. Augustine; St. Thomas Aquinas', x: 'Austin’s positivist reply: “A law, which actually exists, is a law, though we happen to dislike it.”' },
+	{ id: 'prelapsarian', group: 6, t: 'Prelapsarian natural law', d: 'St. Augustine’s term for humanity’s state of innocence before the Fall of Man, when humans could live purely by natural law; after the Fall, law became a natural necessity to curb man’s sinful nature, supplemented by divine law and grace.', src: 'Lessons 5 and 6; St. Augustine' },
+	{ id: 'imago-dei', group: 6, t: 'Imago Dei & unalienable rights', d: 'The theological doctrine (Genesis 1:26–28) from which John Locke derived fundamental human equality, including equality of the sexes: because all humans are created equally free, governments require the consent of the governed and citizens retain natural rights to life, liberty, and property.', src: 'Lesson 6; John Locke; Thomas Jefferson', x: 'Hobbes held that citizens surrender all rights to the sovereign; Locke held that the surrender is only partial.' },
+	{ id: 'lacunae', group: 7, t: 'Lacunae (gaps in the law)', d: 'Instances of silence, obscurity, or insufficiency in statutory law. Under Civil Code Arts. 9 and 10, a judge may not decline to render judgment and must fill the gap presuming the legislature intended right and justice (natural law) to prevail.', src: 'Lessons 7 and 10; Civil Code, Arts. 9–10; Imbong v. Ochoa; Republic v. Sandiganbayan' },
+	{ id: 'social-justice', group: 7, t: 'Social justice (Calalang v. Williams)', d: '“Neither communism, nor despotism, nor atomism, nor anarchy, but the humanization of laws and the equalization of social and economic forces by the State so that justice in its rational and objectively secular conception may at least be approximated.”', src: 'Lesson 7; Calalang v. Williams (Justice Laurel)' },
+	{ id: 'utilitarianism', group: 8, t: 'Utilitarianism', d: 'Jeremy Bentham’s philosophy—reviving Roman Epicureanism on a scientific basis—that pain-avoidance and pleasure-seeking are universal, measurable in “utils,” and that law should maximize pleasure and minimize pain through a calculus of pleasure and pain.', src: 'Lesson 8; Jeremy Bentham', x: 'Bentham rejected natural law and natural rights as “nonsense on stilts” and inspired Austin’s sanction-backed command theory.' },
+	{ id: 'analytical-jurisprudence', group: 8, t: 'Analytical jurisprudence', d: 'Austin’s third tenet of legal positivism: the task of the jurist is limited to logical analysis of the distinctive vocabulary (rights, duties, sovereignty) and structure of existing positive law, excluding questions of its wisdom, morality, or justness.', src: 'Lesson 8; John Austin' },
+	{ id: 'is-ought', group: 8, t: 'Hume’s is/ought injunction', d: 'David Hume’s logical principle that no prescriptive conclusion (“ought”) can be derived from purely descriptive premises (“is”). Kelsen used this to show that because legislative acts are facts (“is”), a presupposed “ought” (the Grundnorm) is needed to confer legal validity.', src: 'Lesson 8; David Hume; Hans Kelsen' },
+	{ id: 'efficacy', group: 8, t: 'Efficacy v. legal validity (Kelsen)', d: 'In Kelsen’s Pure Theory, a norm is efficacious if it is actually followed by the population. An individual norm can be valid even before anyone follows it, provided it belongs to a legal order—and rests on a Grundnorm—that is on the whole efficacious.', src: 'Lesson 8; Hans Kelsen', x: 'Kelsen’s admission that the Grundnorm depends on efficacy (a social fact) calls his strict anti-reductionism into question.' },
+	{ id: 'secular-morality', group: 9, t: 'Secular morality', d: 'Because Art. II, Sec. 6 of the 1987 Constitution declares the separation of Church and State inviolable, whenever Philippine statutes or courts refer to “morality,” the standard must be secular public interest, not religious doctrine.', src: 'Lesson 9; 1987 Constitution, Art. II, Sec. 6' },
+	{ id: 'state-immunity', group: 9, t: 'Non-suability of the State (positivist basis)', d: 'The doctrine that the State cannot be sued without its consent, grounded in the Austinian and Holmesian positivist premise that law is created only by the State, so there can be no legal right against the authority that makes the law on which the right depends.', src: 'Lesson 9; Caltex v. Customs Arrastre; Santiago v. Republic' },
+	{ id: 'verba-legis', group: 9, t: 'Dura lex sed lex & verba legis', d: '“The law may be harsh, but it is the law” and the plain-meaning rule: when a statute is clear and unambiguous, courts must apply its literal text without interpretation, in deference to Congress’s plenary legislative power and separation of powers.', src: 'Lesson 9; Macalintal v. Senate (2025)', x: 'Has limited application: once a statute is ambiguous or silent (lacuna), courts must interpret it for right and justice (Art. 10).' },
+	{ id: 'natural-law', group: 10, t: 'Natural law', d: 'The theory that a law is valid because it conforms to a higher rule, such as morals or a natural order.', src: 'Lessons 3, 6 and 10', x: 'Legal positivism asks where a rule came from, not whether it is just.' },
 	{ id: 'legal-positivism', group: 10, t: 'Legal positivism', d: 'The theory that a rule is law because a recognized authority laid it down, not because it is morally right. Law and morals are autonomous.', src: 'Lesson 10; Austin, Kelsen, Hart', x: 'Comte’s positivism is a scientific method in sociology, not a theory of legal validity.' },
 	{ id: 'command-theory', group: 10, t: 'Command theory', d: 'Austin’s view that law is the command of a sovereign, habitually obeyed and backed by a sanction.', src: 'Lesson 10; Austin', x: 'Hart: a command backed by a threat is what a gunman gives; it obliges, but it creates no obligation.' },
 	{ id: 'legitimacy', group: 10, t: 'Legitimacy', d: 'The belief that whoever commands has the right to command. It is why we obey Congress and not a bank robber, though both take our money.', src: 'Lesson 10; Weber', x: 'Force gets compliance; legitimacy gets obedience.' },
@@ -411,12 +717,66 @@ export const CASES: Digest[] = [
 		ruling: 'No. The negotiation documents were privileged, and petitioners failed to show a sufficient need to override it.',
 		doctrine: 'The right to information yields to executive privilege over treaty negotiations unless a “**sufficient showing of need**” tips the balance.',
 		link: 'Balancing, even where the word is not used.'
+	},
+	{
+		id: 'imbong',
+		name: 'Imbong v. Ochoa',
+		cite: 'G.R. No. 204819, April 8, 2014',
+		facts: 'Petitioners challenged provisions of the Reproductive Health (RH) Law, arguing among others that the statute violated natural law.',
+		issue: 'May the Supreme Court invalidate a statute on the ground that it violates natural law?',
+		ruling: 'No. The Court’s only guidepost in judicial review is the Constitution. Natural law is not enacted by a legitimate legislative body and consists of theoretical abstractions.',
+		doctrine: '“**Unless a natural right has been transformed into a written law, it cannot serve as a basis to strike down a law.**” Natural law is used sparingly only in the most peculiar circumstances (lacunae) where no positive law applies.',
+		link: 'Lesson 7 · Natural Law in Philippine Jurisprudence; positivist limit on natural law.',
+		star: 'The definitive Philippine rule on when natural law can and cannot be invoked in court.',
+		trap: 'Contrast Republic v. Sandiganbayan (where there was no Constitution in force during the post-EDSA hiatus).'
+	},
+	{
+		id: 'sandiganbayan',
+		name: 'Republic v. Sandiganbayan (Ramas & Dimaano)',
+		cite: 'G.R. No. 104768, July 21, 2003',
+		facts: 'During the revolutionary hiatus in March 1986—after the 1973 Constitution was abrogated by the EDSA Revolution and before the Freedom Constitution was promulgated—constabulary raiders searched Elizabeth Dimaano’s house and seized items without a valid warrant.',
+		issue: 'Could Dimaano invoke the right against unreasonable searches and seizures during an interregnum when no Constitution or Bill of Rights was in force?',
+		ruling: 'Yes. The majority (J. Carpio) held the revolutionary government bound by the UDHR and ICCPR. Justice Puno’s separate concurring opinion went further: the right against unreasonable searches and seizures is a **natural right** inherent in man that precedes constitutions and does not depend on positive law.',
+		doctrine: 'In a constitutional vacuum or lacuna, fundamental rights endure under **international human rights law** (majority) and **natural law written in the hearts of men** (J. Puno).',
+		link: 'Lesson 7 · The “most peculiar circumstance” where natural law directly supplies a right.',
+		star: 'Pair with Imbong v. Ochoa to show the rule and the extraordinary exception.'
+	},
+	{
+		id: 'calalang',
+		name: 'Calalang v. Williams',
+		cite: 'G.R. No. 47800, December 2, 1940',
+		facts: 'Maximo Calalang challenged a regulatory ban on animal-drawn vehicles (*calesas*) along Rosario Street and Rizal Avenue in Manila during certain hours, claiming it violated social justice.',
+		issue: 'Does the traffic restriction violate the constitutional mandate to promote social justice?',
+		ruling: 'No. Justice Laurel explained that social justice is not mistaken sympathy for one group, but the promotion of the welfare of all the people under the time-honored natural-law maxim *salus populi est suprema lex*.',
+		doctrine: 'Social justice is “**neither communism, nor despotism, nor atomism, nor anarchy, but the humanization of laws and the equalization of social and economic forces by the State** so that justice in its rational and objectively secular conception may at least be approximated.”',
+		link: 'Lessons 6 & 7 · Cicero’s salus populi est suprema lex and natural law in Philippine constitutional doctrine.'
+	},
+	{
+		id: 'caltex',
+		name: 'Caltex (Phils.), Inc. v. Customs Arrastre Service',
+		cite: 'G.R. No. L-26632, May 29, 1970 (with Santiago v. Republic, 1978)',
+		facts: 'Caltex sued the Customs Arrastre Service, the Bureau of Customs, and the Republic for lost or undelivered cargo without the State’s consent to be sued.',
+		issue: 'May the State be sued without its consent?',
+		ruling: 'No. Following *Mobil Philippines*, the complaint was dismissed under the doctrine of state immunity from suit.',
+		doctrine: 'State immunity represents “**our commitment, in this respect at least, to the Austinian or positivist concept of law**,” under which law is created only by the State, and there can be no legal right against the authority that makes the law on which the right depends (Holmes).',
+		link: 'Lesson 9 · Explicit Philippine Supreme Court adoption of Austinian legal positivism.'
+	},
+	{
+		id: 'macalintal',
+		name: 'Macalintal v. Senate of the Philippines',
+		cite: 'G.R. Nos. E-02002 et al., November 11, 2025',
+		facts: 'Petitioners challenged Republic Act No. 12232, which set the term of office of Barangay and Sangguniang Kabataan (BSK) officials.',
+		issue: 'How must the Court apply a statute whose text, structure, and language are clear and unambiguous?',
+		ruling: 'The Court must apply the statute according to its plain meaning (*verba legis*) without construction or interpretation.',
+		doctrine: 'When a statute is clear and free from ambiguity, courts must apply its literal meaning (**verba legis** / **dura lex sed lex**) in deference to the plenary legislative power of Congress and separation of powers.',
+		link: 'Lesson 9 · Positivist textualism in Philippine statutory construction.'
 	}
 ];
 
 /** Tensions between the cases, for differentiate and critique answers. */
 export const TENSIONS: [string, string][] = [
-	['Floresca v. Rodriguez v. Tan', 'One says judges must legislate in the gaps; the other says judicial legislation is beyond the Court. Reconcile them through Holmes’s word *interstitially*: filling a gap inside a statute differs from importing a doctrine with no statute.'],
+	['Imbong v. Ochoa v. Republic v. Sandiganbayan', 'Imbong holds natural law cannot strike down a statute because the Constitution is the sole guidepost; Justice Puno in Sandiganbayan invokes natural law directly. Reconcile them through *lacunae*: natural law yields when a written Constitution speaks, but steps in during an extraordinary constitutional hiatus.'],
+	['Floresca v. Rodriguez v. Tan (and Macalintal)', 'Floresca says judges must legislate in the gaps; Rodriguez and Macalintal insist courts cannot legislate or deviate from clear statutory text. Reconcile them through Holmes’s word *interstitially*: verba legis rules when the statute is clear, and judicial lawmaking is confined to filling statutory gaps.'],
 	['Two speech tests', 'Gonzales and ABS-CBN apply clear and present danger; Soriano prefers balancing. Both reject absolutes and look to consequences. They differ in how much weight speech starts with.'],
 	['Balance or hierarchy', 'Lantion and Soriano weigh interests case by case; Philippine Blooming Mills ranks human rights above property rights before the weighing begins.'],
 	['Custom in theory and in the Code', 'Savigny treats custom as the most authentic law; the Civil Code treats it as a fact to be proved. Does a country of many peoples with a colonial legal inheritance have a single volksgeist?']
@@ -439,6 +799,74 @@ export interface Thinker {
 
 /** What each lesson says, in one line, and the points to carry into the exam. */
 export const LESSONS: Record<number, { thesis: string; points: string[] }> = {
+	1: {
+		thesis: 'Legal Philosophy is indispensable to legal education because statutory law is never exhaustively interpreted; when precedent runs out, lawyers and judges must theorize to participate in legal development.',
+		points: [
+			'Pascual: all legal rules are manifestations of some working jurisprudential theory; without philosophy, law shrinks from a profession to a mere vocation.',
+			'Fr. Aquino: philosophy brings unarticulated assumptions about justice to consciousness so judging is not mechanical. Borja goes further: it is essential to **legal education**, not just judicial education.',
+			'Northrop: everyone has a philosophy of law; the only difference is whether you know what yours is and can justify your implicit premises.'
+		]
+	},
+	2: {
+		thesis: 'Legal Philosophy is the inquiry into the ultimate nature or essence of law, without figure or fable, reducing everything into a single unifying principle.',
+		points: [
+			'Nietzsche on Thales (“everything is water”): (1) origin of things, (2) without figure or fable, and (3) “Everything is one!”',
+			'Law is not one of the seven traditional branches of Philosophy; it sits under **Political Philosophy**.',
+			'Dworkin: Legal Philosophy has no isolated core of its own—it is “**parasitic**” upon ethics, political philosophy, metaphysics, and the social sciences.'
+		]
+	},
+	3: {
+		thesis: 'All uses of the word “law” divide into descriptive laws (how things do behave) and prescriptive laws (how humans should behave); positive law is the man-made prescriptive law formally posited and enforced by the State.',
+		points: [
+			'Non-positive prescriptive laws—natural law, moral law, justice, and reason—overlap whenever a moral code claims universal and immutable applicability.',
+			'Positive law (*jus positum*, from *to posit*) is distinguished by formal enactment, obligatory force, habitual obedience, state coercion, and **certainty**.',
+			'Under Civil Code Art. 8, only the **ratio decidendi** of final Supreme Court decisions creates binding precedent under *stare decisis*; *obiter* and *judicial dicta* are mere opinions.'
+		]
+	},
+	4: {
+		thesis: 'Legal Philosophy asks how jural law (positive law) relates to non-jural law, and Western thought answers with four perspectives: Teleological (above), Historical (below), Sociological (beside), and Legal Positivist (insulated).',
+		points: [
+			'Chronologically, Natural Law came first (from divine law at Mt. Sinai and *Antigone* to Aristotle’s philosophical natural law); the other three schools arose as scientific reactions against it.',
+			'Sir Dennis Lloyd: both Natural Law and Legal Positivism are **rationalist, individualist, and formal** (social contract), whereas the Historical and Sociological Schools are **non-rationalist, collectivist, and non-formal**.'
+		]
+	},
+	5: {
+		thesis: 'Whether a thinker views law as a necessary restraint, a beneficent guide, or an evil to be abolished depends on whether they view human nature as intrinsically evil, fallen, social, or intrinsically good.',
+		points: [
+			'Intrinsically evil (Legists, Shastra, Machiavelli, Bodin, Hobbes, Hume) or fallen (Ovid, Seneca, Augustine) → law is needed to curb dark impulses. Social animal (Aristotle, Aquinas) → law is a beneficent force for human welfare.',
+			'Intrinsically good (Godwin, Bakunin, Kropotkin, Tolstoy, Marx’s final communist stage) → law and state are evils to abolish or let wither away.',
+			'Philippine law rejects anarchism through republicanism (Art. II, Sec. 1), the Naturalization Law (RA 2927), immigration exclusion (*Djumantan*), and penal laws against inciting rebellion.'
+		]
+	},
+	6: {
+		thesis: 'Natural law evolved from divine commands (Mt. Sinai, Antigone) into secular universal reason (Aristotle, Stoics, Cicero), Scholastic theology (Augustine, Aquinas), and finally modern natural and human rights (Locke, Jefferson, UDHR).',
+		points: [
+			'From the beginning, natural law carried two attributes: **universality** and **immutability** (timelessness), standing as a higher touchstone over positive law.',
+			'Hobbes and Locke both started from natural law and the social contract, but Hobbes’s total surrender birthed Legal Positivism, whereas Locke’s partial surrender birthed constitutional natural rights (*life, liberty, property* and consent of the governed).'
+		]
+	},
+	7: {
+		thesis: 'Philippine codes and the 1987 Constitution are infused with natural-law standards, yet courts cannot strike down a statute on natural law alone—natural law operates directly only in statutory or constitutional lacunae.',
+		points: [
+			'Civil Code Arts. 6, 9, 10, and 19–21 and the 1987 Constitution (Preamble, Art. II social justice and human dignity, Art. III substantive due process) embed morals, right, and justice into positive law.',
+			'*Imbong v. Ochoa* vs. *Republic v. Sandiganbayan*: the Constitution is the sole guidepost for invalidating statutes (*Imbong*), save in an extraordinary constitutional vacuum where natural rights inherent in man apply directly (J. Puno in *Sandiganbayan*).'
+		]
+	},
+	8: {
+		thesis: 'Legal Positivism separates law from morals, treating law either as the sanction-backed command of a sovereign (Austin) or as a hierarchical system of norms resting on a presupposed Grundnorm (Kelsen).',
+		points: [
+			'Five roads prepared positivism: Socrates in *Crito*, Epicureanism/Bentham’s Utilitarianism (“nonsense on stilts”), Comte’s scientific stages, Hume’s *is/ought* barrier, and Hobbes’s *Leviathan*.',
+			'Kelsen’s Pure Theory avoids reducing law to morals or force by tracing validity up a chain of norms to the *Grundnorm*, yet concedes that the system as a whole must be **efficacious**.'
+		]
+	},
+	9: {
+		thesis: 'Philippine law practices a qualified legal positivism: obligations require a legal source, statutory morality is strictly secular, State immunity rests on Austinian positivism, and clear statutes demand verba legis.',
+		points: [
+			'Art. II, Sec. 6 (Separation of Church and State) requires that any legal reference to “morality” mean **secular morality**, never religious doctrine.',
+			'*Caltex* and *Santiago* ground the non-suability of the State in Austin and Holmes: no legal right can exist against the State that creates the law.',
+			'*Macalintal v. Senate* (2025) enforces *dura lex sed lex* and *verba legis*: clear statutes must be applied literally without judicial construction.'
+		]
+	},
 	10: {
 		thesis: 'Natural law says a law is valid because it conforms to a higher rule such as morals; legal positivism says force is the basic element behind law.',
 		points: [
@@ -467,15 +895,43 @@ export const LESSONS: Record<number, { thesis: string; points: string[] }> = {
 };
 
 export const THINKERS: Thinker[] = [
-	{ id: 'socrates', name: 'Socrates', group: 10, terms: ['*Crito*'], idea: 'Refused to escape an unjust death sentence, citing an early social contract: having accepted the benefits of the laws, he owed them obedience.', remember: 'Duty to obey even an unjust law' },
-	{ id: 'augustine', name: 'St. Augustine', group: 10, terms: ['band of robbers'], idea: 'Force is the antithesis of law. Without justice, a government is no more than a band of robbers.', remember: 'Without justice, government is a band of robbers', also: 'Quoted twice in Lesson 10' },
-	{ id: 'hobbes', name: 'Thomas Hobbes', group: 10, terms: ['social contract', 'sovereign'], idea: 'Life in the state of nature was “solitary, poor, nasty, brutish, and short,” so people surrendered their power to a sovereign. Morality is obeying the sovereign’s law.', remember: 'Social contract; morality is obeying the sovereign', also: 'Lesson 11' },
-	{ id: 'austin', name: 'John Austin', group: 10, terms: ['command', 'sovereign', 'sanction'], idea: 'Law is the command of a sovereign, habitually obeyed, backed by a sanction. Force is the basis of law.', remember: 'Law is a command backed by sanction' },
+	{ id: 'borja', name: 'Romulo V. Borja', group: 1, terms: ['novel questions of law', 'legal development'], idea: 'Because human language is imperfect and statutory law is never exhaustively interpreted, lawyers and judges facing novel questions where precedent runs out cannot avoid philosophizing. Legal Philosophy is essential to **legal education**, not just judicial education.', remember: 'When precedent runs out, you must philosophize', also: 'Author of Lessons 1–13' },
+	{ id: 'pascual', name: 'Crisolito Pascual', group: 1, terms: ['working jurisprudential theory', 'profession v. vocation'], idea: 'All legal rules are applications of some working jurisprudential construct that serves as a stabilizing factor or principle of change. Without legal philosophy, law is hollow and shrinks from a profession to a mere vocation.', remember: 'Every rule reflects a theory; profession, not vocation', also: 'Lesson 13 (three sociological perspectives)' },
+	{ id: 'aquino-ranhilio', name: 'Fr. Ranhilio Callangan Aquino', group: 1, terms: ['judicial education', 'telos of justice'], idea: 'The more mechanical judging is, the less fair it is. Legal philosophy brings to consciousness our unarticulated assumptions about what is fair and just so they can be critically appraised toward the *telos* of justice.', remember: 'Brings judicial assumptions about justice to consciousness' },
+	{ id: 'northrop', name: 'F.S.C. (Stuart) Northrop', group: 1, terms: ['implicit premises'], idea: 'The only difference between a lawyer or judge “without a philosophy” and one with a philosophy is that the latter knows what his philosophy is, and can make clear and justify his implicit premises.', remember: 'Everyone has a philosophy; know yours so you can justify your premises' },
+	{ id: 'thales', name: 'Thales of Miletus', group: 2, terms: ['everything is water', 'first philosopher'], idea: 'Mathematician, astronomer, and engineer who declared that everything in the universe is made of water (moisture), leaping beyond empirical observation to a unifying metaphysical principle.', remember: 'First philosopher: “Everything is water”' },
+	{ id: 'nietzsche', name: 'Friedrich Nietzsche', group: 2, terms: ['without figure and fable', '*Everything is one!*'], idea: 'Explained why Thales is the first philosopher for three reasons: his proposition speaks of the origin of things, does so without figure or fable, and contains the metaphysical thought “Everything is one!”', remember: 'Three reasons Thales is the first philosopher' },
+	{ id: 'lloyd', name: 'Sir Dennis Lloyd', group: 4, terms: ['*The Idea of Law*', 'rationalist, individualist, formal'], idea: 'Characterized both Natural Law and Legal Positivism as **rationalist, individualist, and formal** because both rest on the social contract, whereas the Historical and Sociological Schools are **non-rationalist, collectivist, and non-formal**.', remember: 'R-I-F (Natural Law & Positivism) v. N-C-N (Historical & Sociological)' },
+	{ id: 'legists-shastra', name: 'Chinese Legists & Indian Shastra Writers', group: 5, terms: ['man is intrinsically evil', 'penal laws'], idea: '3rd-century BC thinkers who viewed man as intrinsically evil and covetous (“a devil’s workshop” if left alone), arguing that human good comes only from the restraint of social environment and penal laws.', remember: 'Earliest Eastern thinkers: man is evil, so penal law must restrain him' },
+	{ id: 'machiavelli-bodin', name: 'Niccolò Machiavelli & Jean Bodin', group: 5, terms: ['*The Prince*', 'original disorder and violence'], idea: 'Machiavelli argued in *The Prince* that “men are naturally bad”; Bodin held that man’s original state was disorder, force, and violence, requiring sovereign law to keep order.', remember: 'Men are naturally bad; original state is violence' },
+	{ id: 'ovid-seneca', name: 'Ovid & Seneca', group: 5, terms: ['Golden Age', 'Fall from primitive innocence'], idea: 'Ovid (*Metamorphoses*) and the Stoic Seneca described a primitive Golden Age of innocence where men lived in peace without laws until avarice ruined it, making law necessary to curb human vice.', remember: 'Golden Age of innocence lost to avarice' },
+	{ id: 'plato', name: 'Plato', group: 5, terms: ['*The Republic*', 'philosopher-kings', '*The Laws*'], idea: 'In *The Republic*, leaned toward a society without laws ruled by the living reason of philosopher-kings; in his later work *The Laws*, swung to an inflexible, rigorously enforced legal system.', remember: 'Philosopher-kings without laws (*Republic*) v. strict code (*The Laws*)' },
+	{ id: 'adam-smith', name: 'Adam Smith', group: 5, terms: ['*Wealth of Nations*', '*laissez-faire*'], idea: 'Advocated *laissez-faire* (“let them alone”) so free market forces can create wealth without government interference, but was **no anarchist**: markets require a minimum set of laws, especially protecting private property.', remember: 'Laissez-faire needs a minimum set of property laws (not an anarchist)' },
+	{ id: 'godwin', name: 'William Godwin', group: 5, terms: ['*Political Justice*', 'first modern anarchist'], idea: 'First modern exponent of anarchism: man is endowed with reason and capable of progress, and coercive political institutions and laws only block him. Replace penal laws with free cooperation and moral censure.', remember: 'First modern anarchist; replace law with reason and moral censure' },
+	{ id: 'bakunin-kropotkin', name: 'Mikhail Bakunin & Pyotr Kropotkin', group: 5, terms: ['revolutionary anarchism', 'mutual aid'], idea: 'Russian anarchists who viewed the state, law, coercion, and private property as enemies of human happiness, believing history trends inevitably toward mutual aid and common sharing of property.', remember: 'Russian anarchists: abolish state, law, and private property for mutual aid' },
+	{ id: 'tolstoy', name: 'Leo Tolstoy', group: 5, terms: ['Christian anarchism', 'Tolstoy colonies'], idea: 'Advocated pacifist Christian anarchism modeled on the early Church without codes or courts. Most “Tolstoy colonies” failed because, as Aylmer Maude noted, they disdained the inherited legal system that lets people cooperate with minimum friction.', remember: 'Christian anarchism; Tolstoy colonies failed for lack of rules' },
+	{ id: 'smith-read', name: 'Sir Grafton Elliot Smith & Sir Herbert Read', group: 5, terms: ['balanced human nature', 'decentralization'], idea: 'Elliot Smith argued man is both good and bad (cooperative and dark impulses on equal footing). Read proposed decentralizing authority from huge cities/states into local associations and local courts governed by common sense—scaling down, not pure anarchy.', remember: 'Man is both good and bad; scale law down to local associations' },
+	{ id: 'sophocles', name: 'Sophocles', group: 6, terms: ['*Antigone*', 'laws of the gods'], idea: 'In the tragedy *Antigone*, Antigone defies King Creon’s edict forbidding the burial of her brother Polynices, appealing to the unwritten, eternal laws of the gods above any mortal ruler’s decree.', remember: 'Antigone: eternal divine law over King Creon’s edict', also: 'Lesson 4' },
+	{ id: 'aristotle', name: 'Aristotle', group: 6, terms: ['father of natural law', '*Rhetoric*', 'man as social animal'], idea: 'Transmuted higher law from divine command to philosophical **natural law**: in *Rhetoric*, distinguished local conventional law from universal, immutable natural justice, citing *Antigone* and Empedocles.', remember: 'Father of natural law; universal and immutable justice by nature', also: 'Lessons 4 and 5' },
+	{ id: 'stoics', name: 'The Stoics', group: 6, terms: ['cosmopolitan equality', 'pantheism', 'divine spark'], idea: 'Replaced city-state parochialism with cosmopolitan equality: the universe has a rational design, and every human carries a pantheistic “divine spark” of reason that accesses natural law to live in virtue.', remember: 'Cosmopolitan equality; “divine spark” of reason in every person', also: 'Lesson 8 (contrasted with Epicureans)' },
+	{ id: 'cicero', name: 'Marcus Tullius Cicero', group: 6, terms: ['*De Legibus*', '*De Re Publica*', '*salus populi est suprema lex*'], idea: 'True law is “right reason in accordance with nature,” eternal and immutable at Rome or Athens. Wicked statutes are no laws at all, and the highest law is the welfare of the people (*salus populi est suprema lex*).', remember: 'Right reason in accordance with nature; salus populi est suprema lex', also: 'Lesson 7 (*Calalang v. Williams*)' },
+	{ id: 'st-paul', name: 'St. Paul', group: 6, terms: ['*Epistle to the Romans*', 'law written in men’s hearts'], idea: 'Even Gentiles who do not have the revealed Mosaic law “do by nature the things contained in the law,” showing the work of natural law **written in their hearts** and witnessed by conscience.', remember: 'Natural law written in men’s hearts (Romans)', also: 'Lesson 7 (J. Puno in *Republic v. Sandiganbayan*)' },
+	{ id: 'aquinas', name: 'St. Thomas Aquinas', group: 6, terms: ['Scholasticism', 'participation in eternal law', 'perversion of law'], idea: 'Restored natural law as distinct from divine law: it is the rational creature’s participation in Eternal Law, founded on the supreme principle that **good is to be done and evil avoided**. An unjust human law is a “**perversion of law**.”', remember: 'Rational participation in eternal law; do good and avoid evil; unjust law is a perversion of law', also: 'Lesson 5 (law as a beneficent force)' },
+	{ id: 'coke', name: 'Sir Edward Coke', group: 6, terms: ['*Calvin’s Case* (1608)', 'perfect reason'], idea: 'Preeminent English jurist who defined law as “perfect reason” and reported in *Calvin’s Case* that the law of nature was infused by God into man’s heart, is part of the law of England, precedes all municipal law, and is immutable.', remember: 'Calvin’s Case: natural law is perfect reason, immutable, and prior to municipal law' },
+	{ id: 'locke', name: 'John Locke', group: 6, terms: ['*Two Treatises of Government*', 'life, liberty, and property', '*Imago Dei*'], idea: 'Turned Hobbes around: in the social contract, people make only a **partial surrender** of rights, retaining natural rights to **life, liberty, and property** rooted in *Imago Dei*. Government requires the **consent of the governed**, and citizens may overthrow a tyrannical state.', remember: 'Partial surrender of rights; life, liberty, property; consent of the governed', also: 'Lesson 4; inspired Jefferson & the UDHR' },
+	{ id: 'jefferson', name: 'Thomas Jefferson', group: 6, terms: ['*Declaration of Independence*', 'unalienable rights'], idea: 'Translated Locke’s natural rights into the American Declaration of Independence (1776): all men are created equal and endowed by their Creator with unalienable rights to **life, liberty and the pursuit of happiness**, and governments derive their just powers from the consent of the governed.', remember: 'Unalienable rights: life, liberty, and the pursuit of happiness' },
+	{ id: 'bentham', name: 'Jeremy Bentham', group: 8, terms: ['Utilitarianism', 'calculus of pleasure and pain', 'nonsense on stilts'], idea: 'Rejected natural law and natural rights as “**nonsense on stilts**.” Built Utilitarianism on the scientific measurability of pleasure and pain (**utils**), advocating progressive legal reforms and rational codification.', remember: 'Utilitarianism; natural rights are “nonsense on stilts”', also: 'Lesson 12 (contrasted with Savigny)' },
+	{ id: 'hume', name: 'David Hume', group: 8, terms: ['empiricism', 'is/ought injunction'], idea: 'Proponent of empiricism and skepticism who demonstrated that a prescriptive conclusion (“**ought**”) can never be logically deduced from purely descriptive premises (“**is**”)—the foundation of Kelsen’s *Grundnorm*.', remember: 'Cannot derive an “ought” from an “is”', also: 'Lessons 5 and 10' },
+	{ id: 'raz', name: 'Joseph Raz', group: 8, terms: ['critique of Kelsen’s unity postulates', 'orderly secession'], idea: 'Criticized Kelsen’s two postulates of systematic unity: two norms can trace back to the same *Grundnorm* yet belong to different legal systems (as when a colony gains independence through **orderly secession** authorized by the mother country).', remember: 'Orderly secession disproves Kelsen’s single-Grundnorm unity postulate' },
+	{ id: 'socrates', name: 'Socrates', group: 10, terms: ['*Crito*'], idea: 'Refused to escape an unjust death sentence, citing an early social contract: having accepted the benefits of the laws, he owed them obedience.', remember: 'Duty to obey even an unjust law', also: 'Lesson 8' },
+	{ id: 'augustine', name: 'St. Augustine', group: 10, terms: ['band of robbers', '*lex injusta non est lex*'], idea: 'Force is the antithesis of law. Without justice, a government is no more than a band of robbers, and an unjust law is no law at all (*lex injusta non est lex*). After the Fall, law is needed to curb man’s sinful nature.', remember: 'Without justice, government is a band of robbers; lex injusta non est lex', also: 'Lessons 5 and 6; quoted twice in Lesson 10' },
+	{ id: 'hobbes', name: 'Thomas Hobbes', group: 10, terms: ['*Leviathan*', 'social contract', 'sovereign'], idea: 'Life in the state of nature was “solitary, poor, nasty, brutish, and short,” so people surrendered their individual sovereignty to a single sovereign. Morality is obeying the sovereign’s law, birthing Legal Positivism.', remember: 'Social contract; morality is obeying the sovereign', also: 'Lessons 4, 5, 6, 8 and 11' },
+	{ id: 'austin', name: 'John Austin', group: 10, terms: ['command', 'sovereign', 'sanction', 'analytical jurisprudence'], idea: 'Law is the command of a sovereign, habitually obeyed by the bulk of the population, backed by a sanction. “The existence of law is one thing; its merit or demerit is another.” Legal study is analytical jurisprudence.', remember: 'Law is a command backed by sanction; existence v. merit of law', also: 'Lessons 8 and 9 (*Caltex*)' },
 	{ id: 'hart', name: 'H.L.A. Hart', group: 10, terms: ['rules', 'power-conferring rules', 'gunman'], idea: 'Positivist critic of Austin: no single sovereign, many rules confer powers, and a threat obliges without creating an obligation.', remember: 'Three objections to Austin; the gunman' },
-	{ id: 'kelsen', name: 'Hans Kelsen', group: 10, terms: ['pure theory', '*Grundnorm*'], idea: 'Force is a sociological fact outside law. Each norm is valid under a higher norm, ending in a presupposed basic norm behind the first constitution.', remember: 'Pure theory; Grundnorm' },
-	{ id: 'dworkin', name: 'Ronald Dworkin', group: 10, terms: ['law as integrity'], idea: 'Against Hart: judges interpret past practice in its best moral light, so moral judgment is part of finding the law.', remember: 'Law as integrity; constructive interpretation' },
+	{ id: 'kelsen', name: 'Hans Kelsen', group: 10, terms: ['pure theory', '*Grundnorm*', 'efficacy'], idea: 'Force is a sociological fact outside law. Respecting Hume’s is/ought rule, each norm is valid under a higher norm, ending in a presupposed basic norm (*Grundnorm*) behind the first constitution, provided the legal order as a whole is efficacious.', remember: 'Pure theory; Grundnorm; validity v. efficacy', also: 'Lesson 8' },
+	{ id: 'dworkin', name: 'Ronald Dworkin', group: 10, terms: ['law as integrity', 'parasitic discipline'], idea: 'In Lesson 2, showed that Legal Philosophy is “parasitic” on ethics, political philosophy, and metaphysics. Against Hart in Lesson 10: judges interpret past practice in its best moral light (*law as integrity*), so moral judgment is part of finding the law.', remember: 'Law as integrity; constructive interpretation; legal philosophy as parasitic', also: 'Lesson 2' },
 	{ id: 'montesquieu', name: 'Montesquieu', group: 11, terms: ['*The Spirit of Law*', 'separation of powers'], idea: 'Political institutions must reflect the social and geographic character of the community; social phenomena are interrelated.', remember: 'Institutions fit their society; separation of powers' },
-	{ id: 'comte', name: 'Auguste Comte', group: 11, terms: ['sociology', 'positivism', 'three stages'], idea: 'Coined “sociology.” Human thought passes through theological, metaphysical and positive (scientific) stages: the first theory of social evolution.', remember: 'Theological, metaphysical, positive' },
+	{ id: 'comte', name: 'Auguste Comte', group: 11, terms: ['sociology', 'positivism', 'three stages'], idea: 'Coined “sociology.” Human thought passes through theological, metaphysical and positive (scientific) stages: the first theory of social evolution.', remember: 'Theological, metaphysical, positive', also: 'Lessons 4 and 8' },
 	{ id: 'rousseau', name: 'Jean-Jacques Rousseau', group: 11, terms: ['*The Social Contract*', 'general will'], idea: 'By submitting to the general will, people obey themselves, because they are collectively the authors of the law.', remember: 'General will' },
 	{ id: 'burke', name: 'Edmund Burke', group: 11, terms: ['conservatism', 'tradition'], idea: 'Father of British conservatism. Constitutions should grow from tradition, not rational design: society is not a Lego set. Supported the American Revolution, opposed the French.', remember: 'Organic society; for the American, against the French Revolution' },
 	{ id: 'hegel', name: 'G.W.F. Hegel', group: 11, terms: ['dialectical idealism', 'the state'], idea: 'The state is a real entity higher than its citizens and the embodiment of reason. The dialectic is progressive; the state doctrine is conservative. Freedom becomes freedom to obey.', remember: 'State as reason embodied', also: 'Lessons 10, 12; Marx inverts him in 13' },
@@ -483,13 +939,13 @@ export const THINKERS: Thinker[] = [
 	{ id: 'savigny', name: 'Friedrich Carl von Savigny', group: 12, terms: ['volksgeist', '1814 pamphlet'], idea: 'In *Of the Vocation of Our Age for Legislation and Legal Science* (1814) he argued against a unified German code and natural law’s “infinite arrogance.” Law cannot be imposed on a people regardless of its history.', remember: 'Volksgeist; against codification; law is found, not made' },
 	{ id: 'maine', name: 'Henry Maine', group: 12, terms: ['*Ancient Law*', 'status to contract'], idea: 'Founded the English school with *Ancient Law* (1861), influenced by Darwin. Law and society move “from status to contract.” Broke with analysing law without history.', remember: 'From status to contract' },
 	{ id: 'friedman', name: 'Lawrence Friedman', group: 13, terms: ['Law and Society'], idea: 'Looks outside the legal system and treats law’s autonomy as an empirical question. “Law is too important to be left to lawyers.”', remember: 'Law and Society; law is not autonomous' },
-	{ id: 'marx', name: 'Karl Marx', group: 13, terms: ['dialectical materialism', 'base and superstructure'], idea: 'Turns Hegel upside down. Law is a product of economic forces, a tool of the ruling class, and destined to wither away under pure communism.', remember: 'Base and superstructure; withering away' },
+	{ id: 'marx', name: 'Karl Marx', group: 13, terms: ['dialectical materialism', 'base and superstructure', 'withering away'], idea: 'Turns Hegel upside down. Law is a product of economic forces, a tool of the ruling class, and destined to wither away under pure communism (after an intermediate socialist state with more law).', remember: 'Base and superstructure; withering away', also: 'Lessons 5 and 8' },
 	{ id: 'weber', name: 'Max Weber', group: 13, terms: ['rationalization', 'bureaucracy', 'iron cage'], idea: 'Modern authority is rational-legal. Rationalization frees people from illogical tradition but makes them cogs in a machine.', remember: 'Charismatic, traditional, rational-legal; iron cage', also: 'Lesson 10' },
 	{ id: 'durkheim', name: 'Émile Durkheim', group: 13, terms: ['social facts', 'solidarity'], idea: 'Society is an entity of its own. As it grows complex, law shifts from repressive (penal) to restitutive (civil). Law shows how a society is integrated.', remember: 'Social facts; repressive to restitutive' },
 	{ id: 'ehrlich', name: 'Eugen Ehrlich', group: 13, terms: ['living law'], idea: 'The rules people actually follow matter more than State norms. The center of gravity of legal development lies in society itself.', remember: 'Living law; center of gravity in society' },
 	{ id: 'jhering', name: 'Rudolf von Jhering', group: 13, terms: ['*The Struggle for Law*', 'interests'], idea: 'Law is an impartial mediator among competing interests that cannot all be satisfied. Lawyers must understand the social effects of rules.', remember: 'Law mediates competing interests' },
 	{ id: 'pound', name: 'Roscoe Pound', group: 13, terms: ['social engineering', 'jural postulates'], idea: 'The lawmaker is a social engineer. Courts scrutinize and weigh competing interests, guided by jural postulates that change as society changes.', remember: 'Social engineering; jural postulates; “juristic pessimism”', also: 'Lesson 12; cited in Floresca' },
-	{ id: 'holmes', name: 'Oliver Wendell Holmes Jr.', group: 13, terms: ['*The Common Law*', 'legal realism'], idea: '“The life of the law has not been logic: it has been experience.” Law is “the prophecies of what the courts will do in fact.” The common law is not “a brooding omnipresence in the sky.” “General propositions do not decide concrete cases.”', remember: 'Experience, not logic; interstitial legislation; clear and present danger', also: 'Lessons 10, 12 and the Holmes handout' },
+	{ id: 'holmes', name: 'Oliver Wendell Holmes Jr.', group: 13, terms: ['*The Common Law*', 'legal realism'], idea: '“The life of the law has not been logic: it has been experience.” Law is “the prophecies of what the courts will do in fact.” The common law is not “a brooding omnipresence in the sky.” “General propositions do not decide concrete cases.”', remember: 'Experience, not logic; interstitial legislation; clear and present danger', also: 'Lessons 1, 9, 10, 12 and the Holmes handout' },
 	{ id: 'cardozo', name: 'Benjamin Cardozo', group: 13, terms: ['sovereign talisman'], idea: 'History built up the legal system, and law has outgrown formalism: the written word is no longer the “sovereign talisman.”', remember: '“Sovereign talisman”; history built the system', also: 'Lesson 12, Floresca, Gonzales' }
 ];
 
@@ -538,6 +994,11 @@ export const PAIRS: Pair[] = [
 	{ id: 'burke-savigny', pair: 'Burke v. Savigny', common: 'Organic growth; distrust of abstract reason and sudden codes.', diff: 'Burke writes of politics and constitutions; Savigny builds a legal method carried out by jurists.' },
 	{ id: 'hegel-marx', pair: 'Hegel v. Marx', common: 'History moves dialectically.', diff: 'Hegel: ideas drive history and the state is reason embodied. Marx: material production drives history and the state serves the ruling class.' },
 	{ id: 'hobbes-rousseau', pair: 'Hobbes v. Rousseau', common: 'The social contract ends the state of nature.', diff: 'Hobbes: surrender to a sovereign whose command is moral. Rousseau: submit to the general will and so obey yourself.' },
+	{ id: 'hobbes-locke', pair: 'Hobbes v. Locke on the social contract', common: 'Both start from natural law and rational individuals leaving the state of nature by agreement (Lloyd’s rationalist, individualist, formal traits).', diff: 'Hobbes: total surrender of sovereignty to the ruler, birthing Legal Positivism. Locke: partial surrender retaining natural rights to life, liberty, and property, with a right of revolution.', star: true },
+	{ id: 'desc-presc', pair: 'Descriptive v. prescriptive law', common: 'Both are called “laws” and express a regularity or rule.', diff: 'Descriptive laws state how things in fact behave (*is*: gravity, supply and demand); prescriptive laws set standards for how humans ought to behave (*ought*: natural law, morals, positive law).' },
+	{ id: 'jural-nonjural', pair: 'Jural (positive) v. non-jural law', common: 'Both are prescriptive laws that tell human beings how they ought to act.', diff: 'Jural law is formally posited and coercively enforced by a politically organized state with certainty; non-jural law (morals, natural law, custom) lacks formal legislation and state sanctions.' },
+	{ id: 'ratio-dictum', pair: 'Ratio decidendi v. obiter and judicial dicta', common: 'All are statements or opinions expressed by the Supreme Court inside a decision.', diff: 'The *ratio decidendi* is the reasoning essential to the ruling and binds future analogous cases under *stare decisis*; *judicial dictum* (raised by parties) and *obiter dictum* (not raised) are non-essential side opinions.' },
+	{ id: 'imbong-sandiganbayan', pair: 'Imbong v. Ochoa v. Republic v. Sandiganbayan', common: 'Both address whether natural law may be invoked before the Philippine Supreme Court.', diff: '*Imbong* holds natural law cannot invalidate a statute when the Constitution speaks; *Sandiganbayan* (J. Puno) applies natural law directly during an extraordinary constitutional vacuum (*lacuna*).', star: true },
 	{ id: 'jhering-pound', pair: 'Jhering v. Pound', common: 'Law mediates competing interests.', diff: 'Jhering supplies the theory; Pound turns it into a programme for courts with classified interests and jural postulates.' },
 	{ id: 'weber-austin', pair: 'Weber’s authority v. Austin’s sovereign', common: 'Both explain obedience.', diff: 'Austin: habit and fear of sanction. Weber: belief in legitimacy, which is why force alone is unstable.' }
 ];
@@ -556,9 +1017,11 @@ export interface Critique {
 }
 
 export const CRITIQUES: Critique[] = [
+	{ id: 'natural-law-critique', idea: 'Natural law as higher law', right: 'Provides an external moral standard (*lex injusta non est lex*) to judge tyranny, ground human rights (Locke, UDHR), and guide courts when statutes leave *lacunae* (Art. 10; *Sandiganbayan*).', weak: 'Non-jural rules are often hazy, vague, and lack consensus; Bentham mocked natural rights as “**nonsense on stilts**,” and *Imbong v. Ochoa* calls them theoretical abstractions not enacted by any legitimate body.', push: 'Whose reason defines “nature”? Without positive enactment, letting judges strike down statutes on unwritten natural law risks replacing the Constitution with each judge’s personal or religious conscience.', star: true },
+	{ id: 'anarchism-critique', idea: 'Anarchism (“no-law”)', right: 'Exposes how coercive institutions can oppress and reminds us that human cooperation and local association matter (Elliot Smith, Herbert Read).', weak: 'Assumes man is purely good; **Tolstoy’s colonies failed** because, as Aylmer Maude observed, abolishing codes and courts discards the inherited system that lets people cooperate with minimum friction.', push: 'Even Marx conceded that before the state withers away, socialism requires *more* law, and Adam Smith’s *laissez-faire* still needs property and contract rules. Complex society without law collapses into Hobbes’s state of nature.' },
 	{ id: 'separation', idea: 'Separation of law and morals (positivism)', right: 'Clarity: you can identify the law without first settling moral debates. The Venn diagram shows the two really do diverge.', weak: 'Does not account for how judges fill gaps (Holmes); Nuremberg rejected “I obeyed the sovereign”; Dworkin says moral judgment is part of finding the law.', push: 'Separation may be what *allows* moral criticism of law: you can only call a law unjust if “law” and “just” are different questions.', star: true },
 	{ id: 'austin', idea: 'Austin’s command theory', right: 'Captures criminal law and the reality of sanctions.', weak: 'Hart’s three points: no single sovereign, power-conferring rules, the gunman problem. International law binds without a sovereign.', push: 'The 1987 Constitution disperses power and declares the people sovereign. Who then is Austin’s commander?', star: true },
-	{ id: 'kelsen', idea: 'Kelsen’s Grundnorm', right: 'Explains validity without appeal to force or morals.', weak: 'The handout concedes the basic norm stands “even if supported by a sociological fact like force.”', push: 'A norm that is merely *presupposed* is neither enacted nor proved. Is the system really “pure”, or has force been renamed?' },
+	{ id: 'kelsen', idea: 'Kelsen’s Grundnorm', right: 'Explains validity without appeal to force or morals, respecting Hume’s *is/ought* barrier.', weak: 'Joseph Raz shows two systems can share one historical *Grundnorm* (orderly secession), and Kelsen himself concedes the *Grundnorm* is valid only if the legal order is **efficacious** (supported by social fact/force).', push: 'A norm that is merely *presupposed* is neither enacted nor proved. If efficacy is required for the *Grundnorm*, is the Pure Theory really “pure,” or has force been let back in through the basement?' },
 	{ id: 'force', idea: 'Force as the essence of law', right: 'Without sanctions the recalcitrant ignore the law; “force and effect of law.”', weak: 'Augustine’s band of robbers; bank robber v. Congress; the occupations as exceptional events.', push: 'Weber shows force is unstable without belief in legitimacy. Yet the permanent-occupation hypothetical suggests legitimacy can grow out of force.', star: true },
 	{ id: 'contract', idea: 'Social contract', right: 'Softens coercion through consent.', weak: 'Versions can justify totalitarianism as easily as democracy.', push: 'No one alive signed it. Burke’s objection: societies are not designed by agreement; they grow.' },
 	{ id: 'hegel', idea: 'Hegel’s state', right: 'Sees society as more than a sum of individuals.', weak: 'Freedom shrinks to the freedom to obey; no point in rebelling; fed nationalist totalitarianism.', push: 'If the state is reason embodied, there is no standpoint from which to call a state unjust. Compare Nuremberg.' },
@@ -592,6 +1055,12 @@ export const TOP: TopQuestion[] = [
 ];
 
 export const LIKELY_ENUMS: Record<string, string> = {
+	'2.1': 'Nietzsche’s three criteria define both philosophy and legal philosophy.',
+	'3.2': 'The four defining traits of positive law.',
+	'4.1': 'The master map of all four schools and their graph positions.',
+	'4.2': 'Sir Dennis Lloyd’s R-I-F vs. N-C-N contrast across the four schools.',
+	'5.1': 'Connects every thinker’s view of law to their view of human nature.',
+	'8.1': 'Austin’s three core tenets of Legal Positivism.',
 	'10.1': 'The backbone of any law-and-morals answer.',
 	'10.4': 'Appears in two lessons; explains why we obey.',
 	'10.5': 'The standard critique of Austin.',
@@ -601,6 +1070,11 @@ export const LIKELY_ENUMS: Record<string, string> = {
 };
 
 export const LIKELY_TERMS: Record<string, string> = {
+	'positive-law': 'Foundation of Lessons 3, 4, 8 and 9.',
+	'jural-non-jural': 'Frames the entire four-school graph in Lesson 4.',
+	'lex-injusta': 'Natural law’s classic formula (Augustine & Aquinas).',
+	'salus-populi': 'Cicero’s maxim applied in Calalang v. Williams.',
+	'is-ought': 'Hume’s barrier that explains why Kelsen needs the Grundnorm.',
 	'legal-positivism': 'Every critique question starts here.',
 	legitimacy: 'The answer to “force or morals?”.',
 	volksgeist: 'The Historical School in one word.',

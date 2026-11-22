@@ -248,7 +248,7 @@ const FINALS_MCQ_TOPICS_BY_SUBJECT: Record<string, ReadonlySet<string>> = {
 	crim1_lloren: new Set(['tf', 'mcq', 'problems']),
 	crimpro: new Set(['finals', 'quiz_finals']),
 	statcon: new Set(['ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'cases', 'integrated']),
-	philo: new Set(['l10', 'l11', 'l12', 'l13', 'l14'])
+	philo: new Set(['finals', 'l1', 'l2', 'l3', 'l4', 'l5', 'l6', 'l7', 'l8', 'l9', 'l10', 'l11', 'l12', 'l13', 'l14'])
 };
 
 function isFinalsMcqForSubject(
@@ -382,26 +382,24 @@ export function buildSubjectExamBank(opts: {
 	const essays: UnifiedEssayItem[] = [];
 	const seenEssayIds = new Set<string>();
 
-	// For Philosophy of Law, `philoEssays` provides the native 4-type written essays with star flags,
-	// so skip the ALAC-adapted mirror in `subject.essays` when `philoEssays` is provided.
-	if (!philoEssays?.length) {
-		for (const e of subject.essays) {
-			if (seenEssayIds.has(e.id)) continue;
-			seenEssayIds.add(e.id);
-			const isFinals = isFinalsEssayForSubject(subject.id, e);
-			const source = e.source ?? (isFinals ? 'Finals' : undefined);
-			essays.push({
-				id: e.id,
-				title: e.title,
-				topic: e.topic,
-				source,
-				format: 'alac',
-				factPattern: e.factPattern,
-				question: e.question,
-				modelAnswer: e.modelAnswer,
-				isFinals
-			});
-		}
+	for (const e of subject.essays) {
+		if (seenEssayIds.has(e.id)) continue;
+		// Philo: the 4-type questions come in natively below (written format); only take the ALAC exams here.
+		if (subject.id === 'philo' && philoEssays?.length && e.source !== 'FINALS · ALAC') continue;
+		seenEssayIds.add(e.id);
+		const isFinals = subject.id === 'philo' ? true : isFinalsEssayForSubject(subject.id, e);
+		const source = e.source ?? (isFinals ? 'Finals' : undefined);
+		essays.push({
+			id: e.id,
+			title: e.title,
+			topic: e.topic,
+			source,
+			format: 'alac',
+			factPattern: e.factPattern,
+			question: e.question,
+			modelAnswer: e.modelAnswer,
+			isFinals
+		});
 	}
 
 	if (kit?.problems?.length) {
@@ -460,7 +458,7 @@ export function buildSubjectExamBank(opts: {
 		}
 	}
 
-	if (philoEssays?.length) {
+	if (philoEssays?.length && subject.id !== 'philo') {
 		const typeLabels: Record<string, string> = {
 			define: 'Define',
 			differentiate: 'Differentiate',
@@ -475,11 +473,11 @@ export function buildSubjectExamBank(opts: {
 				id,
 				title: `${typeLabels[pe.type] ?? pe.type}: ${pe.q.slice(0, 68)}${pe.q.length > 68 ? '…' : ''}`,
 				topic: typeLabels[pe.type] ?? pe.type,
-				source: pe.star ? 'Finals Focus' : 'Essay Bank',
+				source: pe.star ? 'Finals · 4-Type Focus' : 'Finals · 4-Type Essays',
 				format: 'written',
 				factPattern: pe.q,
 				modelParagraphs: pe.a,
-				isFinals: !!pe.star
+				isFinals: true
 			});
 		}
 	}
@@ -517,7 +515,7 @@ export function buildSubjectExamBank(opts: {
 		order: e.order,
 		mem: e.mem,
 		items: e.it,
-		isFinals: hasLikelyEnums ? Boolean(likelyEnums[e.id]) : true
+		isFinals: subject.id === 'philo' ? true : hasLikelyEnums ? Boolean(likelyEnums[e.id]) : true
 	}));
 
 	// ---- 4. Definitions ----
@@ -529,7 +527,7 @@ export function buildSubjectExamBank(opts: {
 		definition: t.d,
 		src: t.src,
 		dontConfuse: t.x,
-		isFinals: hasLikelyTerms ? Boolean(likelyTerms[t.id]) : true
+		isFinals: subject.id === 'philo' ? true : hasLikelyTerms ? Boolean(likelyTerms[t.id]) : true
 	}));
 
 	// ---- 5. Requisites ----
@@ -836,6 +834,8 @@ export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings 
 	const finalsEnums = bank.enums.filter((e) => e.isFinals).length;
 	const finalsTerms = bank.terms.filter((t) => t.isFinals).length;
 	const pureFinalsMcqOnly = bank.subjectId === 'consti1';
+	// Philo: default mock is 20 MCQs + 2 essays (ALAC included), no enumerations or definitions.
+	const mcqEssayOnly = bank.subjectId === 'philo';
 
 	return {
 		mode: 'exam',
@@ -849,9 +849,9 @@ export function defaultExamSettings(bank: SubjectExamBank): UnifiedExamSettings 
 		counts: {
 			mcq: bank.mcqs.length ? Math.min(20, finalsMcqs || bank.mcqs.length) : 0,
 			essay: pureFinalsMcqOnly ? 0 : bank.essays.length ? Math.min(2, finalsEssays || bank.essays.length) : 0,
-			enum: pureFinalsMcqOnly ? 0 : bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
-			term: pureFinalsMcqOnly ? 0 : bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
-			req: pureFinalsMcqOnly ? 0 : bank.reqs.length ? Math.min(3, bank.reqs.length) : 0,
+			enum: pureFinalsMcqOnly || mcqEssayOnly ? 0 : bank.enums.length ? Math.min(2, finalsEnums || bank.enums.length) : 0,
+			term: pureFinalsMcqOnly || mcqEssayOnly ? 0 : bank.terms.length ? Math.min(2, finalsTerms || bank.terms.length) : 0,
+			req: pureFinalsMcqOnly || mcqEssayOnly ? 0 : bank.reqs.length ? Math.min(3, bank.reqs.length) : 0,
 			num: 0
 		}
 	};

@@ -251,6 +251,12 @@
 				counts.term = 0;
 				counts.req = 0;
 				counts.num = 0;
+			} else if (subject.id === 'philo') {
+				if (bank.hasFinalsEssays && counts.essay === 0) counts.essay = Math.min(2, bank.essays.filter((e) => e.isFinals).length);
+				counts.enum = 0;
+				counts.term = 0;
+				counts.req = 0;
+				counts.num = 0;
 			} else {
 				if (bank.hasFinalsEssays && counts.essay === 0) counts.essay = Math.min(2, bank.essays.filter((e) => e.isFinals).length);
 				if (bank.hasFinalsEnums && counts.enum === 0) counts.enum = Math.min(2, bank.enums.filter((e) => e.isFinals).length);
@@ -2271,7 +2277,7 @@
 									</div>
 								</div>
 								<p class="legal rounded-xl bg-slate-50 p-3.5 text-[0.94rem] leading-relaxed whitespace-pre-line text-foreground dark:bg-[#131F24]">
-									{e.factPattern}
+									{@html e.factPattern}
 								</p>
 								{#if e.question}
 									<p class="text-sm font-extrabold text-foreground">{e.question}</p>

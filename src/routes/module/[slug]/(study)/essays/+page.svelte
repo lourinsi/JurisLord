@@ -58,8 +58,9 @@
 		goto(url);
 	}
 
-	// Legal Philo 4-type Essay practice
+	// Legal Philo 4-type Essay practice + Open-Ended ALAC toggle
 	const st = $derived(store.philo);
+	let philoFormat: 'alac' | '4type' = $state('alac');
 	let type: 'all' | PhiloType = $state('all');
 	let write = $state(true);
 	let star = $state(false);
@@ -83,28 +84,42 @@
 		if (slug !== 'philo') return;
 		const m = /^#q-(.+)$/.exec(page.url.hash);
 		if (!m) return;
+		philoFormat = '4type';
 		type = 'all';
 		star = false;
 		tick().then(() => document.getElementById('q-' + m[1])?.scrollIntoView({ block: 'start' }));
 	});
 </script>
 
-<svelte:head><title>{slug === 'philo' ? 'Essay Practice' : essay ? `${essay.title} — ALAC Essays` : 'ALAC Essays'} — {subject.title} — Juris Lord</title></svelte:head>
+<svelte:head><title>{slug === 'philo' ? 'Essays & ALAC' : essay ? `${essay.title} — ALAC Essays` : 'ALAC Essays'} — {subject.title} — Juris Lord</title></svelte:head>
 
 <div class="mx-auto flex max-w-[68rem] flex-col gap-5 px-4 pt-6 pb-20 sm:px-8 lg:pt-8">
 	<Breadcrumbs
 		items={[
 			{ label: subject.title, href: `/module/${subject.id}` },
-			{ label: slug === 'philo' ? 'Essay practice' : 'ALAC essays', href: `/module/${subject.id}/essays` },
+			{ label: slug === 'philo' ? 'Essays & ALAC' : 'ALAC essays', href: `/module/${subject.id}/essays` },
 			...(slug !== 'philo' && essay ? [{ label: essay.topic }] : [])
 		]}
 	/>
 
 	{#if slug === 'philo'}
-		<header class="flex flex-col gap-1.5">
-			<p class="label-caps">Define · Differentiate · Critique · Opinion</p>
-			<h1 class="font-heading text-3xl leading-tight font-extrabold">Essay Practice</h1>
+		<header class="flex flex-wrap items-end justify-between gap-3">
+			<div class="flex flex-col gap-1.5">
+				<p class="label-caps">Open-Ended ALAC (Chapters 10–13) &amp; 4-Type Essay Practice</p>
+				<h1 class="font-heading text-3xl leading-tight font-extrabold">Essays &amp; ALAC</h1>
+			</div>
+			<div class="seg" role="group" aria-label="Essay format">
+				<button aria-pressed={philoFormat === 'alac'} onclick={() => ((philoFormat = 'alac'), setSource('FINALS · ALAC'))}>
+					ALAC Essays ({subject.essays.filter((e) => e.source === 'FINALS · ALAC').length})
+				</button>
+				<button aria-pressed={philoFormat === '4type'} onclick={() => (philoFormat = '4type')}>
+					4-Type Essay Practice ({ESSAYS.length})
+				</button>
+			</div>
 		</header>
+	{/if}
+
+	{#if slug === 'philo' && philoFormat === '4type'}
 		<div class="stack" style="gap:12px">
 			<p class="muted" style="max-width:68ch">
 				The professor’s last exam asked four kinds of question: <b>define, differentiate, critique, and give your opinion</b>.

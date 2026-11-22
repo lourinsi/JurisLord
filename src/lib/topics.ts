@@ -93,7 +93,7 @@ export function mcqMatchesTopic(q: McqTopicCandidate, topicId: string): boolean 
 		return q.tag === targetTag;
 	}
 	if (q.topicId === topicId) return true;
-	if (topicId === 'finals' && q.topicId === 'finals_cases') return true;
+	if (topicId === 'finals' && (q.topicId === 'finals_cases' || Boolean(q.topic && /\bfinals\b/i.test(q.topic)))) return true;
 	return false;
 }
 
@@ -109,7 +109,7 @@ export function topicsForSubject(subject: SubjectLikeForTopics): ModuleTopic[] {
 		counts.set(k, row);
 	}
 
-	const configured = (subject.topics ?? []).filter((t) => (counts.get(t.id)?.total ?? 0) > 0);
+	const configured = (subject.topics ?? []).filter((t) => (counts.get(t.id)?.total ?? 0) > 0 || (t.id === 'finals' && subject.mcqs.some((q) => mcqMatchesTopic(q, 'finals'))));
 	const seen = new Set(configured.map((t) => t.id));
 
 	const discovered: ModuleTopic[] = [];

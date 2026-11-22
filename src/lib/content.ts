@@ -132,7 +132,8 @@ const GROUPS: Record<string, Rule[]> = {
 		{ title: 'Review', test: () => true }
 	],
 	philo: [
-		{ title: 'Lessons 10–13', test: (p) => p.id.startsWith('lesson-') },
+		{ title: 'Lessons 1–9 · Foundations, Natural Law & Positivism', test: (p) => /^lesson-[1-9]$/.test(p.id) },
+		{ title: 'Lessons 10–13 · Finals Coverage', test: (p) => /^lesson-1[0-3]$/.test(p.id) },
 		{ title: 'Cases & Synthesis', test: () => true }
 	]
 };

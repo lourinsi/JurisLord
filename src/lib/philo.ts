@@ -283,9 +283,9 @@ export const words = (s: string) => (s.trim() ? s.trim().split(/\s+/).length : 0
 export const PHILO: Kit = {
 	id: 'philo',
 	name: 'Legal Philo',
-	title: 'Legal Philo Finals Kit',
-	eyebrow: 'Legal Philosophy · Lessons 10 to 13 and Philippine jurisprudence',
-	scope: 'Lessons 10 to 13',
+	title: 'Legal Philo Study & Finals Kit',
+	eyebrow: 'Legal Philosophy · Lessons 1 to 13 and Philippine jurisprudence',
+	scope: 'Lessons 1 to 13',
 	base: '/module/philo',
 	groupNoun: 'lesson',
 	groups: GROUPS,

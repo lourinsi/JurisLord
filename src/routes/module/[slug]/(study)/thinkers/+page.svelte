@@ -21,7 +21,7 @@
 	const lessons = $derived(
 		GROUPS.filter((g) => g.id !== 14 && (ch === 'all' || String(g.id) === ch))
 			.map((g) => ({ g, people: THINKERS.filter((t) => t.group === g.id && (!q || JSON.stringify(t).toLowerCase().includes(q))) }))
-			.filter((x) => x.people.length || !q)
+			.filter((x) => x.people.length || (!q && String(x.g.id) === ch))
 	);
 </script>
 
@@ -49,8 +49,8 @@
 			</div>
 		</div>
 
-		{#if ch === '14'}
-			<div class="card empty">Philippine jurisprudence has cases, not thinkers. See <a href="/module/philo/cases">Case digests</a>.</div>
+		{#if ch === '14' || ch === '7' || ch === '9'}
+			<div class="card empty">This lesson focuses on statutory and case applications rather than a separate roster of thinkers. See <a href="/module/philo/cases">Case digests</a> and <a href="/module/philo/enumerations">Enumerations</a>.</div>
 		{:else if !lessons.length}
 			<div class="card empty">No thinker matches “{query}”.</div>
 		{/if}

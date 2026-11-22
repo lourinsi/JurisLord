@@ -14,7 +14,7 @@
 	const mode = $derived<'read' | 'practice' | 'essays' | 'subtab'>(
 		page.url.pathname.includes('/practice')
 			? 'practice'
-			: page.url.pathname.includes('/essays') && subject.id !== 'philo'
+			: page.url.pathname.includes('/essays')
 				? 'essays'
 				: page.url.pathname.includes('/read')
 					? 'read'

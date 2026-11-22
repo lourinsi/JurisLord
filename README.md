@@ -1,118 +1,125 @@
-# Juris Lord
+<p align="center">
+  <img src="src/lib/assets/juris-lord.png" width="110" alt="Juris Lord Knight Mascot" />
+</p>
 
-A study app for Philippine law subjects: color-coded study guides and case digests, situational MCQ practice, and ALAC essay exercises with model answers. There is no account and no server. Everything runs in the browser, and your progress stays in that browser's `localStorage`.
+<h1 align="center">Juris Lord</h1>
 
-SvelteKit 3 (Svelte 5 runes) · Tailwind v4 · shadcn-svelte.
+<p align="center">
+  <em>"Shall we test your legal might today, my Lord?"</em><br />
+  An offline-first Philippine law reviewer, adaptive mock-exam engine, situational MCQ trainer, and ALAC essay workspace.
+</p>
 
-![Dashboard: overall progress, the ALAC method, and subject cards with completion bars](docs/screenshots/dashboard.png)
+---
 
-## Features
+## Acknowledgements
 
-### Finding your way
+- **lourinsi** — Amended, expanded, and rebranded the platform into **Juris Lord**, authoring the comprehensive Finals master drills (including the 296-item Constitutional Law I Finals & Jurisprudence drill and the 8-choice Constitutional Bodies taxonomy), the Judge Lloren Criminal Law I reviewer & ISLaw module, the Unified Mock Exam engine, and the adaptive post-submission question weighting system.
+- **Anthony (`serocode`)** — Original code, reader architecture, CSS Custom Highlight engine, and foundational study-guide design.
 
-- **One app shell** on every page: subjects menu, search, theme and settings in the header; on phones they fold into a menu sheet.
-- **Subject → Part → Topic.** Each guide is split into parts (a chapter, a Rule, an Article), and each part into topics you can collapse, mark as studied or bookmark. The navigator beside the reader shows the whole subject as a tree with progress dots and a filter; on phones it opens as a sheet.
-- **Breadcrumbs, previous/next part, and deep links** to every part and topic (`/module/<subject>/read/<part>#<topic>`). Old `/module/statcon2` and `/module/pfr_cases` links redirect to the merged subjects.
-- **Subject overviews** with progress, where you left off, and the parts in order.
+---
 
-### Search
+## Overview
 
-- **Global search** (`⌘K` / `Ctrl+K`, or `/`) across every guide, case digest, MCQ and ALAC problem. Results are ranked with heading matches first, grouped into *Go to* and *In the text*, and open at the match, highlighted.
-- Scope a search to **all subjects, this subject or this part**; the full results page (`/search`) adds filters by subject and type and an exact-phrase option, all kept in the URL so a search can be shared.
-- Recent searches, recently read places, and a spelling suggestion when nothing matches.
+**Juris Lord** is a zero-backend, local-first web application for mastering Philippine law subjects. It combines color-coded codal & doctrinal study guides, case digests, an adaptive **★ Mock Exam** simulator, situational MCQ practice with dynamic option shuffling, and **ALAC** (**A**nswer, **L**egal Basis, **A**pplication, **C**onclusion) essay drills with side-by-side model answers.
 
-### Study guides and case digests
+There is no account and no server required—all study progress, highlights, notes, essay drafts, test history, and adaptive question weights persist locally in your browser's `localStorage` with full JSON backup export/import.
 
-![A Criminal Procedure study guide with highlights in five colors, the highlights panel, and a note open on a case citation](docs/screenshots/study-guide-highlights.png)
+Built with **SvelteKit 3 (Svelte 5 runes)** · **Tailwind CSS v4** · **shadcn-svelte** · **Vercel Web Analytics**.
 
-- **Color-coded guides**, with a legend for what each color marks (rules to memorize, requisites, exceptions, jurisprudence and so on).
-- **Textbook-style reading**: a comfortable measure, serif or sans body text, and **reading settings** for text size, line height, width and font (kept per browser).
-- **On this page** rail with scroll tracking; topics you scroll through are marked visited, and you mark them studied yourself.
-- **Case digests** grouped by syllabus part and topic. Digests the source flags as unverified carry an *Unverified* badge.
-- **Highlights and notes.** Select any text in a guide or digest and pick one of five colors, each with a label you can rename (defaults: Memorize, Requisites, Exceptions, Jurisprudence, Compare & contrast). Tap a highlight, or use the pencil in the Highlights panel, to:
-  - change its color or add a note,
-  - **Adjust** it to cover different text, keeping the color and note,
-  - remove it, or remove every highlight in a subject at once.
+![Juris Lord Dashboard: overall progress, the ALAC method, and subject cards with completion bars](docs/screenshots/dashboard.png)
 
-  Highlights are anchored to the text they quote, so they survive re-renders and searches. If the guide's wording changes, the highlight moves to *No longer in the guide* with its note intact, and **Re-attach** lets you point it at the new wording.
-- **Print-friendly**: printing opens every flashcard and drops the app's controls.
+---
 
-### MCQ practice engine
+## Key Features
 
-![A situational MCQ answered correctly, with the legal basis and explanation shown](docs/screenshots/mcq-practice.png)
+### 1. ★ Unified Mock Exam & Adaptive Question Weights
 
-- **Practice mode** gives instant feedback: the legal basis and an explanation for every item, optional hints, and a *Watch for* box listing the common traps for the subject or topic.
-- **Exam mode** is timed and gives no feedback until you submit. Results are scored overall and by topic, then added to your progress.
-- **Filters** for unanswered, incorrect and bookmarked questions, plus a filter per topic.
-- **Question map** showing which items are correct, incorrect or bookmarked, so you can jump straight to them.
-- **Keyboard**: `←` `→` to move, `A`–`D` or `1`–`4` to answer, `N` for the next question once you've answered.
+![Unified Mock Exam setup, recent exam history, and adaptive question weights](docs/screenshots/mock-exam.png)
 
-### ALAC essay exercises
+- **Multi-Part Exam Simulator (`/module/<slug>/exam`):** Combine MCQs, ALAC Essays, Enumerations, Definitions, Requisites, and Numbers & Periods into a single timed mock exam or untimed practice run.
+- **One-Click ★ Finals Presets:** Defaults to a **20-Question ★ Finals Mock Exam** with an automatic 1-minute-per-question countdown timer, plus one-click post-submission actions (*New 20-Question Set*, *Retake Missed*, *Take Full ★ Finals*, or *Customize Exam*).
+- **Interactive Exam Controls:**
+  - **1-per-page vs. Full-scroll toggle** (`Single` / `All`)
+  - **Hover-to-pause countdown timer** (or click to pause/resume)
+  - **Instant answer reveal toggle** (eye icon to show/hide answers during a run)
+  - **Reset wrong** (clears only incorrect MCQ selections and reshuffles their choices) & **Reset exam**
+- **Adaptive Post-Submission Sampling Weights:**
+  - Applies automatically to subset mock exams (e.g., `5`, `10`, `20`, `30`, `40`, `50`, `100` items—any selection other than *All*).
+  - **Updates after submission:** Every question starts at base weight **`1×`**.
+    - **Answered right:** Weight is lowered by **50%** (`1× → 0.5× → 0.25× → 0.125× …`), floored above zero (`0.005×`) so mastered questions become progressively less likely to reappear but are **never permanently exterminated**.
+    - **Answered wrong:** Weight is increased by **50%** (`1× → 1.5× → 2.25× → 3.375× …`) so weak spots reappear more frequently.
+    - **Direction flip resets to base (`1×`) first:** Getting a previously lowered question (`< 1×`) wrong immediately resets it to base `1×` and boosts it by `+50%` to **`1.5×`**. Conversely, getting a previously boosted question (`> 1×`) right immediately resets it to base `1×` and lowers it by `-50%` to **`0.5×`**.
+  - **Per-Subject History Tab (`/module/<slug>/history`) & Saved → History (`/saved?tab=history`):** Displays all past exam scores alongside every question whose weight has been modified from base `1×` (unchanged `1×` questions are hidden), with `More likely` / `Less likely` filters and one-click per-item or per-subject reset to `1×`.
 
-![An ALAC essay with the student's draft beside the revealed model answer](docs/screenshots/alac-essay.png)
+### 2. Situational MCQ Practice Engine
 
-- A fact pattern and question for each problem, answered in the four ALAC parts: **A**nswer, **L**egal basis, **A**pplication, **C**onclusion.
-- Drafts save as you type, with a word count.
-- **Reveal the model ALAC answer** beside your draft once you've tried it yourself.
-- Mark problems **Mastered** or **Needs review**, and filter the list by status (not started, in progress, needs review, mastered).
+![Situational MCQ answered in practice mode with tailored option feedback and codal basis](docs/screenshots/mcq-practice.png)
 
-### Progress, settings and devices
+- **Dynamic Question & Choice Jumbling:** Questions jumble automatically on load (unless a timed exam is currently running), and choices shuffle dynamically while respecting letter references (*"Both A and B"*) and pinning positional choices (*"None of the above"*, *"All of the above"*) to the last slot.
+- **Automatic Sub-Topic & Focus Filters Across All Subjects:**
+  - **Question Types:** *True or False*, *Multiple Choice*, *Combination (A–G)*, and *CASES*.
+  - **By Focus:** *Constitutional Bodies* (8-choice `Independent / Continuing / Staggered` taxonomy), *Jurisprudence*, *Requisites & Elements*, *Exceptions & Traps*, *Effects & Remedies*, and *Codal & Memorization*.
+- **Practice & Timed Exam Modes:** Instant per-option feedback and expandable **Codal basis & explanation** drawer in Practice mode; strict no-peek countdown in Timed Exam mode.
+- **Keyboard Shortcuts:** `←` / `→` to navigate, `A`–`H` or `1`–`8` to pick an option, and `N` to advance.
 
-<p align="center"><img src="docs/screenshots/mobile-dark.png" width="300" alt="The study guide on a phone in dark mode, with highlights"></p>
+### 3. Color-Coded Study Guides, Case Digests & Highlights
 
-- **Home** picks up where you left off: continue reading, continue practice, an essay draft in progress, recent places and bookmarks.
-- **Saved** (`/saved`) gathers highlights by part (with any that no longer match the guide), notes you can write and link to a place, and guide and MCQ bookmarks.
-- **Dashboard** with totals, accuracy, essays mastered or flagged for review, and completion per subject. Filter subjects by category: Civil, Political, Criminal, Remedial Law, or Legal Method.
-- **Light, dark or system theme**, and a **text size** control that the layout adapts to.
-- **Phone and tablet layouts**: the navigator, the on-this-page rail and the highlights panel open as sheets, and practice and essay tools stack.
-- **Backups**: Settings exports your answers, drafts, bookmarks, highlights, notes and reading progress as a JSON file, and imports it on another browser or device. Before an import replaces anything, it shows what the file contains. Backups from earlier versions still import. *Reset all progress* asks first and clears it all (your theme and reading settings stay).
-- Several open tabs stay in sync.
+![Study guide with color-coded doctrinal blocks and section navigator](docs/screenshots/study-guide-highlights.png)
 
-## Subjects
+- **Subject → Part → Topic Hierarchy:** Collapsible doctrinal topics, progress tracking (*Visited* vs. *Studied*), breadcrumbs, and deep links (`/module/<subject>/read/<part>#<topic>`).
+- **5-Color Text Highlighter & Linked Notes:** Select any passage in a study guide or case digest to highlight in five customizable categories (*Memorize*, *Requisites*, *Exceptions*, *Jurisprudence*, *Compare & contrast*) and attach notes—painted non-destructively via the CSS Custom Highlight API.
+- **Customizable Typography:** Adjust font family (Serif / Sans), text size, line height, and reading measure per browser.
 
-| Subject | Category | Coverage | MCQs | Essays | Case digests |
+### 4. ALAC Essay Exercises & Special Drills
+
+![ALAC essay workspace with student draft beside the revealed model answer](docs/screenshots/alac-essay.png)
+
+- **4-Part ALAC Workspace:** Draft structured responses under **A**nswer, **L**egal Basis, **A**pplication, and **C**onclusion with live word counts and auto-save, then reveal the model ALAC answer side-by-side.
+- **Subject Finals Kits:** Dedicated tabs for **Exam Focus** (most likely bar/finals questions), **Numbers & Periods** (interactive self-test tables), **Requisites & Rules**, **Enumerations**, **Definitions & Latin Maxims**, **Twist Drills**, **One Fact Flips It**, and **Spaced-Repetition Flashcards**.
+
+### 5. Responsive Dark Mode & Local Backups
+
+<p align="center">
+  <img src="docs/screenshots/mobile-dark.png" width="320" alt="Juris Lord Mock Exam on mobile in dark mode" />
+</p>
+
+- **Mobile & Tablet Ready:** Slide-over navigator sheets, sticky exam timers, and dark/light/system themes.
+- **Full JSON Export & Import (`/settings`):** Back up and restore all MCQ attempts, adaptive exam weights, test history, essay drafts, bookmarks, highlights, and notes across devices.
+
+---
+
+## Subjects Covered
+
+| Subject | Category | Coverage | MCQs | Essays / Problems | Case Digests |
 | --- | --- | --- | ---: | ---: | ---: |
-| Persons & Family Relations | Civil Law | Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–182 (through the family home, and paternity and filiation) · court pronouncements, Part One through Midterms | 134 | 52 | 105 |
-| Constitutional Law I | Political Law | 1987 Constitution Arts. I, II, IV–X | 40 | 54 | — |
-| Criminal Law 1 | Criminal Law | Revised Penal Code, Book One, Arts. 1–15 | 92 | 23 | — |
-| Criminal Law 1 - Justice lloren | Criminal Law | Whole book — Revised Penal Code, Book One (Arts. 1–113), Indeterminate Sentence Law & Probation Law | 66 | 8 | — |
-| Criminal Procedure | Remedial Law | Rules 110–127, from Tiu's 2017 notes, with later rulings flagged · four practice quizzes (Rules 110–114, 115–119, 120–124, 125–127) | 296 | 124 | — |
-| Statutory Construction | Legal Method | Agpalo, Chapters I–XI, and five cases | 177 | 50 | 5 |
+| **Persons and Family Relations** | Civil Law | New Civil Code (Preliminary Title & Book I) · Family Code (E.O. 209) · R.A. 8552 / 11642, 9255, 9858, 9048 / 10172 · Case pronouncements | 236 | 127 | 130 |
+| **Constitutional Law I** | Political Law | 1987 Constitution (Arts. I–II, IV–XVIII) · Structure of Government · Cruz *Philippine Political Law* Finals Master Drill, 90 Landmark Cases Drill & 29 Constitutional Bodies (8-choice taxonomy) | 336 | 166 | 28 |
+| **Criminal Law I** | Criminal Law | Revised Penal Code, Book One (Arts. 1–113) · R.A. 10951 · Act No. 4103 (ISLaw) · P.D. 968 / R.A. 10707 · R.A. 9344 | 104 | 86 | — |
+| **Criminal Law I (Judge Lloren)** | Criminal Law | Judge Lloren Finals Reviewer (T/F, Multiple Choice & Case Problems), penalty graduation, and Indeterminate Sentence Law (ISLaw) mastery guide | 66 | 16 | — |
+| **Criminal Procedure (Rules 110–127)** | Remedial Law | Revised Rules of Criminal Procedure (Rules 110–127) · Tiu Notes · BWC Rules · Cybercrime Warrants · 47 Requisites Q&A & Situational Drills | 503 | 145 | — |
+| **Statutory Construction** | Legal Method | Agpalo *Statutory Construction* (Chapters I–XI) · Latin Maxims · Five Landmark Cases (*Catiis*, *Aquino*, *Manila Lodge*, *Corona*, *Magtajas*) | 177 | 69 | 5 |
+| **Philosophy of Law** | Legal Method | Lessons 10–13 Jurisprudence Syllabus · Schools of Jurisprudence, 24 Thinkers, Stage Theories, Critiques & 10 Philippine Supreme Court Decisions | 10 | 23 | 10 |
+| **Total** | | | **1,432** | **632** | **173** |
 
-Persons & Family Relations and its case pronouncements, and Statutory Construction I and II, are each one subject. The source files stay separate and every question, essay, case and highlight keeps its id, so progress saved before the merge carries over.
+---
 
-## Develop
+## Development
 
 ```sh
 npm install
-npm run dev      # http://localhost:5173
-npm run check    # svelte-check
-npm run build    # static SPA -> build/ (fallback: 200.html)
+npm run dev      # Start local dev server at http://localhost:5173
+npm run check    # Run svelte-kit sync + svelte-check
+npm run build    # Build static SPA into build/ (fallback: 200.html)
 ```
 
-## Layout
+---
 
-- `src/lib/data/` — one file per data module (`pfr`, `pfr_cases`, `consti1`, `crim1`, `statcon`) plus `modules.ts`, the master index, which combines modules into the subjects the app shows (`pfr` + `pfr_cases`, `statcon` + `statcon2`). `aliases.ts` maps the old ids to the merged ones. These files are the source of truth for questions, essays and guides.
-- `src/lib/data/pfr_ext.ts` — Persons & Family Relations, Family Code Arts. 149–182 (the family, the family home, paternity and filiation, legitimation): article-by-article codal text with color-tagged notes, inserted after Part VII, and its quick-recall review tools at the end of the guide.
-- `src/lib/data/consti1_ext.ts` — Constitutional Law I, Arts. VIII (addendum), IX and X: the guide sections, topics, *Watch for* notes and bar-style ALAC problems, appended to `consti1`.
-- `src/lib/data/statcon2/` — Statutory Construction II (Agpalo Chs. VI–XI and five cases), kept as structured data instead of a hand-written HTML string: one file per chapter (`ch6`–`ch11`), `cases`, `integrated` (comprehensive exam) and `review` (front matter and master sheets), rendered by `model.ts`. True/false items and the case recall drill become MCQs and every ALAC problem becomes an essay, with IDs taken from each item's position in its bank, so add new items at the end of a bank.
-- `src/lib/data/crimpro/` — Criminal Procedure, Rules 110–127 (from Tiu's 2017 notes, with later rulings flagged), built on the `statcon2` helpers: one file per Rule (`r110`–`r127`), each rendered by `model.ts` into the same twelve parts; `prescription` (special module after Rule 110); `deadlines`, `cases` and `comparisons` (back matter that indexes the Rule files rather than repeating them); `integrated` (mock exam and its separate key); `quizzes` (four practice quizzes of four-option MCQs by Rule range, shown as "Quiz 1"–"Quiz 4" in the MCQ topic filter and printed in the guide with their own key); and `review` (start page, topic map and inventory, last-minute sheet and quality checklist). The same ID rule applies: append new items at the end of a bank.
-- `src/lib/content.ts` — splits each subject's guide into parts (an `h2`) and topics (a top-level `h3`), groups them for the navigator, and builds reader links.
-- `src/lib/search.ts` — the local search index (built on first use) and ranking.
-- `src/lib/stores/storage.svelte.ts` — reactive `localStorage` store (debounced writes, cross-tab sync, export/import with preview). Reading progress, guide bookmarks, notes and recent searches live under `sc_reading`; the older keys are unchanged.
-- `src/lib/stores/prefs.svelte.ts` — reading settings (`sc_prefs`), kept per browser and not part of backups.
-- `src/lib/highlights.svelte.ts` — anchors reader highlights to quoted text and paints them with the CSS Custom Highlight API, without touching the guide's DOM.
-- `src/lib/components/shell/` — `AppHeader`, `SearchPalette`, `SubjectNav` (the navigator), `Toaster`.
-- `src/lib/components/common/` — `Breadcrumbs`, `EmptyState`, `Segmented`, `StudyBar`, `ReadingSettings`.
-- `src/lib/components/` — `McqQuizEngine`, `AlacEssayEditor`, `HighlightMenu` (the menu over selected or highlighted text), `HighlightsPanel`, `HighlightEditor`, `AlacBanner`.
-- `src/routes/` — `/` home, `/search`, `/saved`, `/settings`, and per subject `/module/<slug>` (overview) with `read/<part>`, `practice` and `essays` under a shared study layout.
-- `static/legacy/` — the previous single-file HTML version, still served under `/legacy/`.
-- `docs/screenshots/` — the images in this README, taken with demo progress before the redesign; they need retaking.
+## Project Structure
 
-Question and essay IDs are `<module>:<topic>:<n>` / `<module>:alac:<n>`. Saved progress is keyed by those IDs, so reordering a bank is safe but renaming or renumbering an item detaches its saved answer.
-
-Highlights are anchored inside a guide section's `h2` id or a case digest's id, which is why a part is always a whole `h2` section. Renaming those ids, or rewording highlighted text, moves a highlight to *No longer in the guide*, where the reader can re-attach it.
-
-## Deploy
-
-`vercel.json` builds with `npm run build`, serves `build/`, and rewrites unknown paths to `200.html` so `/module/<slug>/read/<part>` and other deep links work.
+- `src/lib/data/` — Subject modules (`pfr.ts`, `pfr_ext.ts`, `pfr_cases.ts`, `consti1.ts`, `consti1_ext.ts`, `consti1_finals_mcqs.ts`, `crim1.ts`, `crim1_lloren.ts`, `statcon.ts`, `statcon2/`, `crimpro/`, `philo.ts`) and lazy-loaded subject registry (`modules.svelte.ts`).
+- `src/lib/unified-exam.ts` — Unified Mock Exam bank builder, weighted random sampling without replacement (`sampleWeightedItems`), scoring helpers, and per-subject session persistence.
+- `src/lib/topics.ts` — Automatic discovery of syllabus topics, Question Type sub-topics (*True or False*, *Multiple Choice*, *Combination A–G*, *CASES*), and Focus sub-topics (*Constitutional Bodies*, *Jurisprudence*, *Requisites*, *Exceptions*, *Effects*, *Codal & Memorization*).
+- `src/lib/subtabs.ts` — Per-subject navigation tabs (`Overview`, `Study guide`, `★ Mock exam`, `MCQs`, `Exam focus`, `Numbers`, `Requisites`, `Enumerations`, `Definitions`, `ALAC problems`, `Case digests`, `Essays`, `History`).
+- `src/lib/stores/storage.svelte.ts` — Reactive `localStorage` persistence (`mcqAttempts`, `examWeights`, `testHistory`, `essayDrafts`, `bookmarks`, `highlights`, `reading`), cross-tab sync, and JSON export/import.
+- `src/lib/components/` — `Mascot.svelte` (animated Juris Lord knight logo), `McqQuizEngine.svelte`, `AlacEssayEditor.svelte`, `SubjectEntryModal.svelte`, `exam/UnifiedMockExam.svelte`, and shell/reader components.
+- `src/routes/` — Dashboard (`/`), Saved & History (`/saved`), Global Search (`/search`), Exam Day (`/exam-day`), Settings (`/settings`), and per-subject routes (`/module/[slug]/*`).

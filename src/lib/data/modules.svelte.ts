@@ -53,7 +53,7 @@ const INITIAL_SHELLS: Subject[] = [
 		'Civil Law',
 		'Civil Code · Family Code · Case pronouncements',
 		'Civil personality, marriage, legal separation, property relations, family home, paternity and filiation, adoption, support, parental authority, emancipation, and absence.',
-		'New Civil Code (Preliminary Title & Book I); Family Code of the Philippines (E.O. 209); R.A. 8552 / 11642, 9255, 9858, 9048 / 10172',
+		'New Civil Code (Preliminary Title & Book I); Family Code of the Philippines (E.O. 209); R.A. 11642 (Domestic Administrative Adoption, repealing R.A. 8552), R.A. 11596, R.A. 9255, R.A. 9858, R.A. 9048 / 10172',
 		{ mcqCount: 236, essayCount: 127, unitCount: 137 },
 		['pfr', 'pfr_cases']
 	),
@@ -72,7 +72,7 @@ const INITIAL_SHELLS: Subject[] = [
 		'Criminal Law',
 		'Revised Penal Code · Book One (Arts. 1–113)',
 		'Fundamental principles, felonies, circumstances affecting criminal liability, persons criminally liable, penalties, execution and service, extinction of criminal liability, and civil liability.',
-		'Act No. 3815 (Revised Penal Code, Book One, Arts. 1–113); R.A. 10951; Act No. 4103 (ISLaw); P.D. 968 / R.A. 10707; R.A. 9344',
+		'Act No. 3815 (Revised Penal Code, Book One, Arts. 1–113); R.A. 10951; R.A. 11648; Act No. 4103 (ISLaw); P.D. 968 / R.A. 10707; R.A. 9344 / 10630',
 		{ mcqCount: 104, essayCount: 86, unitCount: 41 }
 	),
 	makeShell(
@@ -90,7 +90,7 @@ const INITIAL_SHELLS: Subject[] = [
 		'Remedial Law',
 		'Rules 110–127 · Tiu Notes · Situational Reviewer',
 		'Prosecution of offenses through appeal and search and seizure: institution and prescription, the civil action, preliminary investigation, arrest, bail, rights of the accused, arraignment, motion to quash, pre-trial, trial, judgment, new trial, appeal, appellate procedure, search warrants and provisional remedies.',
-		'Revised Rules of Criminal Procedure, Rules 110–127; BWC Rules (A.M. No. 21-06-08-SC); Cybercrime Warrants (A.M. No. 17-11-03-SC)',
+		'Revised Rules of Criminal Procedure, Rules 110–127; DOJ DC Nos. 015 & 028 (2024); 2022 Expedited Rules (A.M. No. 08-8-7-SC); BWC Rules (A.M. No. 21-06-08-SC); Cybercrime Warrants (A.M. No. 17-11-03-SC)',
 		{ mcqCount: 503, essayCount: 145, unitCount: 276 }
 	),
 	makeShell(

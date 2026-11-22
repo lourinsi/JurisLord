@@ -174,7 +174,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'St. Augustine',
 		explanation: 'St. Augustine held that force is the antithesis of law: without justice, a government is no more than a band of robbers.',
-		legalBasis: 'Lesson 10 · Morals v. Force'
+		legalBasis: 'Lesson 10 · Morals v. Force — St. Augustine, The City of God (De Civitate Dei, Book IV, Ch. 4); Natural Law Tradition'
 	},
 	{
 		id: 'philo:l10:2',
@@ -191,7 +191,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 3,
 		key: 'Law is valid only when it conforms to the volksgeist of the nation.',
 		explanation: 'Hart’s three objections to Austin are: (1) no single sovereign, (2) power-conferring rules, and (3) the gunman problem (threats oblige but do not create obligation). The volksgeist belongs to Savigny and the Historical School.',
-		legalBasis: 'Lesson 10 · Hart v. Austin'
+		legalBasis: 'Lesson 10 · Morals v. Force — H.L.A. Hart, The Concept of Law (1961) vs. John Austin, The Province of Jurisprudence Determined (1832)'
 	},
 	{
 		id: 'philo:l10:3',
@@ -208,7 +208,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'Charismatic, traditional, and rational-legal',
 		explanation: 'Weber’s three types of authority are charismatic, traditional, and rational-legal (C-T-R). Theological, metaphysical, and positive are Comte’s three stages.',
-		legalBasis: 'Lessons 10 and 13 · Max Weber'
+		legalBasis: 'Lessons 10 & 13 · Sociology of Law — Max Weber, Economy and Society (Three Pure Types of Legitimate Authority: Charismatic, Traditional, Rational-Legal)'
 	},
 	{
 		id: 'philo:l11:1',
@@ -225,7 +225,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'Theological → Metaphysical → Positive (scientific)',
 		explanation: 'Comte’s law of three stages moves in order: (1) Theological (explained by God), (2) Metaphysical (explained by abstract universal rights), and (3) Positive/scientific (explained by observed facts).',
-		legalBasis: 'Lesson 11 · Auguste Comte'
+		legalBasis: 'Lesson 11 · Shift to the Social Sciences — Auguste Comte, Course of Positive Philosophy (Law of Three Stages: Theological, Metaphysical, Positive)'
 	},
 	{
 		id: 'philo:l12:1',
@@ -234,15 +234,15 @@ const philoMcqs: McqQuestion[] = [
 		tag: 'memorization',
 		question: 'For Friedrich Carl von Savigny and the Historical School, what is the true source of law?',
 		options: [
-			'The volksgeist (the spirit or common consciousness of a people), shown in custom',
-			'The sovereign’s command backed by sanction',
+			'The volksgeist expressed through a people’s custom',
+			'The sovereign’s command backed by the threat of sanction',
 			'Social engineering by courts weighing competing interests',
 			'Rational codification designed by enlightened legislators'
 		],
 		correctIndex: 0,
-		key: 'The volksgeist (the spirit or common consciousness of a people), shown in custom',
+		key: 'The volksgeist expressed through a people’s custom',
 		explanation: 'Savigny held that law grows out of the volksgeist (spirit of the people) the way language does: law is found, not made, and codification by abstract reason is distrusted.',
-		legalBasis: 'Lesson 12 · Historical School'
+		legalBasis: 'Lesson 12 · Historical School of Jurisprudence — Friedrich Carl von Savigny, Of the Vocation of Our Age for Legislation and Jurisprudence (1814) (Volksgeist)'
 	},
 	{
 		id: 'philo:l12:2',
@@ -254,7 +254,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'Sir Henry Maine',
 		explanation: 'Sir Henry Maine founded the English Historical School with Ancient Law (1861), arguing that legal relations evolve from status (fixed by family/birth) to contract (chosen by individual agreement).',
-		legalBasis: 'Lesson 12 · Henry Maine'
+		legalBasis: 'Lesson 12 · English Historical School — Sir Henry James Sumner Maine, Ancient Law (1861), Ch. V ("From Status to Contract")'
 	},
 	{
 		id: 'philo:l13:1',
@@ -266,7 +266,7 @@ const philoMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'Eugen Ehrlich',
 		explanation: 'Eugen Ehrlich distinguished “living law” (the rules people actually follow in their social associations) from positive law enacted by the State.',
-		legalBasis: 'Lesson 13 · Eugen Ehrlich'
+		legalBasis: 'Lesson 13 · Sociological School of Jurisprudence — Eugen Ehrlich, Fundamental Principles of the Sociology of Law (1913) ("Living Law")'
 	},
 	{
 		id: 'philo:l13:2',
@@ -275,15 +275,15 @@ const philoMcqs: McqQuestion[] = [
 		tag: 'memorization',
 		question: 'In Émile Durkheim’s sociology of law, how does law change as society moves from mechanical solidarity to organic solidarity?',
 		options: [
-			'From repressive (penal) law to restitutive (civil/cooperative) law',
+			'From repressive law to restitutive law',
 			'From restitutive law to repressive law',
 			'From contract back to status',
 			'From positive law to withering away of the state'
 		],
 		correctIndex: 0,
-		key: 'From repressive (penal) law to restitutive (civil/cooperative) law',
+		key: 'From repressive law to restitutive law',
 		explanation: 'Durkheim showed that simple societies with mechanical solidarity rely on repressive (penal) law, whereas complex interdependent societies with organic solidarity rely on restitutive law that restores relations.',
-		legalBasis: 'Lesson 13 · Émile Durkheim'
+		legalBasis: 'Lesson 13 · Sociological School of Jurisprudence — Émile Durkheim, The Division of Labor in Society (1893) (Mechanical vs. Organic Solidarity; Repressive vs. Restitutive Law)'
 	},
 	{
 		id: 'philo:l14:1',
@@ -292,15 +292,15 @@ const philoMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'How do Floresca v. Philex Mining and Rodriguez v. Tan reconcile on whether judges may legislate?',
 		options: [
-			'Judges may legislate only “interstitially” to fill gaps inside an existing statute (Floresca), but may not import a whole common-law doctrine with no statutory basis (Rodriguez v. Tan).',
+			'Judges may fill statutory gaps interstitially, not adopt doctrines lacking statutory basis.',
 			'Floresca completely overruled Rodriguez v. Tan and allows courts to enact new statutes.',
 			'Rodriguez v. Tan applies only to criminal cases, while Floresca applies to all civil cases.',
 			'Both cases hold that judges may never go beyond the literal text of a statute.'
 		],
 		correctIndex: 0,
-		key: 'Judges may legislate only “interstitially” to fill gaps inside an existing statute (Floresca), but may not import a whole common-law doctrine with no statutory basis (Rodriguez v. Tan).',
+		key: 'Judges may fill statutory gaps interstitially, not adopt doctrines lacking statutory basis.',
 		explanation: 'Quoting Holmes, Floresca holds that judges “do and must legislate, but they can do so only interstitially” (filling gaps from molar to molecular motions), whereas Rodriguez v. Tan bars adopting a whole doctrine with no statutory anchor.',
-		legalBasis: 'Floresca v. Philex Mining; Rodriguez v. Tan'
+		legalBasis: 'Lesson 14 · Philippine Jurisprudence — Floresca v. Philex Mining Corp. (G.R. No. L-30642, Apr. 30, 1985, citing Justice Holmes in Southern Pacific Co. v. Jensen); Rodriguez v. Tan (91 Phil. 724, 1952)'
 	},
 	{
 		id: 'philo:l14:2',
@@ -309,15 +309,15 @@ const philoMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'How does the approach in PBMEO v. Philippine Blooming Mills differ from the balancing-of-interests test in Secretary of Justice v. Lantion and Soriano v. Laguardia?',
 		options: [
-			'Balancing weighs competing interests case by case on a level scale, whereas Philippine Blooming Mills establishes a hierarchy giving human rights primacy over property rights from the start.',
-			'Philippine Blooming Mills holds that property rights always prevail over freedom of assembly under a CBA.',
-			'Soriano v. Laguardia rejected balancing of interests in favor of absolute free speech.',
-			'Both tests apply the dangerous tendency doctrine.'
+			'PBMEO ranks human rights above property rights from the start; balancing weighs interests case by case.',
+			'PBMEO holds that corporate property rights always prevail over freedom of assembly under a CBA.',
+			'Lantion and Soriano rejected balancing of interests in favor of absolute protection for free speech.',
+			'Both approaches apply the dangerous tendency test to all conflicts involving property and speech.'
 		],
 		correctIndex: 0,
-		key: 'Balancing weighs competing interests case by case on a level scale, whereas Philippine Blooming Mills establishes a hierarchy giving human rights primacy over property rights from the start.',
+		key: 'PBMEO ranks human rights above property rights from the start; balancing weighs interests case by case.',
 		explanation: 'In PBMEO v. Philippine Blooming Mills, the Court ranked human rights above property rights in advance (preferred freedoms require clear and present danger, whereas property may be regulated on a rational basis), unlike open-ended balancing.',
-		legalBasis: 'PBMEO v. Philippine Blooming Mills; Lantion; Soriano'
+		legalBasis: 'Lesson 14 · Philippine Jurisprudence — Philippine Blooming Mills Employees Organization v. PBM Co., Inc. (G.R. No. L-31195, June 5, 1973); Secretary of Justice v. Lantion (G.R. No. 139465, 2000); Soriano v. Laguardia (G.R. No. 164785, 2009)'
 	}
 ];
 

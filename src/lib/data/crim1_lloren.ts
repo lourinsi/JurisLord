@@ -336,7 +336,7 @@ export const crim1Lloren: LawModule = {
     <tr>
       <td class="art">51</td>
       <td>BB committed rape against CC (under 12 years old), with a penalty of <em>reclusion perpetua</em> (20–40 years), attended by voluntary surrender. What is the correct penalty?<br>a. Reclusion p max · b. Reclusion p med · c. Reclusion p min · d. None of the choices</td>
-      <td><span class="sg-dot" style="background:var(--yellow)"></span><strong>d. NONE OF THE CHOICES.</strong> <em>Reclusion perpetua</em> is a single indivisible penalty (Art. 63) and has no periods, so modifying circumstances do not alter it (<em>People v. Gamboa</em>; <em>People v. Lucas</em>).</td>
+      <td><span class="sg-dot" style="background:var(--yellow)"></span><strong>d. NONE OF THE CHOICES.</strong> <em>Reclusion perpetua</em> is a single indivisible penalty (Art. 63) and has no periods, so modifying circumstances do not alter it (<em>People v. Gamboa</em>; <em>People v. Lucas</em>).<br><em>Statutory update (R.A. No. 11648, March 4, 2022):</em> Amended Art. 266-A(1)(d), RPC to raise the statutory rape age from <strong>under 12</strong> to <strong>under 16 years of age</strong> (with a close-in-age exemption of ≤ 3 years for consensual, non-abusive, non-exploitative acts only when the victim is at least 13).</td>
     </tr>
     <tr>
       <td class="art">52</td>
@@ -663,7 +663,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Correctional penalties prescribe in 10 years, not 15 years; arresto mayor prescribes in 5 years (Art. 90 for crimes; Art. 92 for penalties). The 15-year period applies to afflictive penalties (for crimes under Art. 90, those punishable by death, reclusion perpetua or reclusion temporal prescribe in 20 years; other afflictive penalties in 15 years).',
-			legalBasis: 'Arts. 90 & 92, Revised Penal Code'
+			legalBasis: 'Arts. 90 & 92, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:4',
@@ -718,7 +718,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE. In immediate vindication (Art. 13[5]), the offended party must have committed a grave offense against the offender or his specified relatives; in sufficient provocation (Art. 13[4]), the cause that brought about the provocation need not be a grave offense.',
-			legalBasis: 'Art. 13(4) & (5), Revised Penal Code'
+			legalBasis: 'Art. 13(4) & (5), Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:8',
@@ -744,7 +744,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Under Art. 22 of the RPC, penal laws shall have a retroactive effect insofar as they favor the accused (advantageous to the accused), provided he is not a habitual delinquent.',
-			legalBasis: 'Art. 22, Revised Penal Code'
+			legalBasis: 'Art. 22, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:10',
@@ -797,7 +797,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Under Art. 50 of the RPC, the principal in a frustrated felony receives the penalty one degree lower than the consummated felony. Two degrees lower is imposed on the principal in an attempted felony (Art. 51) or the accomplice in a frustrated felony (Art. 54).',
-			legalBasis: 'Arts. 50, 51 & 54, Revised Penal Code'
+			legalBasis: 'Arts. 50, 51 & 54, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:14',
@@ -822,7 +822,7 @@ export const crim1Lloren: LawModule = {
 			correctIndex: 0,
 			key: 'True',
 			explanation: 'TRUE. Actus reus refers to the physical criminal act, while mens rea refers to the guilty mind or criminal intent.',
-			legalBasis: 'Art. 3, Revised Penal Code'
+			legalBasis: 'Art. 3, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:16',
@@ -848,7 +848,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Offenses under special laws are generally mala prohibita, where criminal intent (dolo) is immaterial; the prohibited act need only be done voluntarily.',
-			legalBasis: 'Arts. 3 & 10, Revised Penal Code'
+			legalBasis: 'Arts. 3 & 10, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:18',
@@ -862,7 +862,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE. Art. 54 of the RPC expressly provides that the penalty next lower in degree than that prescribed by law for the frustrated felony shall be imposed upon the accomplices in the commission of a frustrated felony (which is two degrees below the consummated felony). (Note: The original key erroneously marked this False.)',
-			legalBasis: 'Art. 54, Revised Penal Code'
+			legalBasis: 'Art. 54, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:19',
@@ -875,7 +875,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE. Mala in se are acts inherently evil or wrong by nature, whereas mala prohibita are acts that are wrong only because they are prohibited by statute.',
-			legalBasis: 'Art. 3, Revised Penal Code'
+			legalBasis: 'Art. 3, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:20',
@@ -888,7 +888,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Under Art. 113 of the RPC, the offender continues to be obliged to satisfy the civil liability resulting from the crime despite service of sentence, commutation, pardon, or amnesty.',
-			legalBasis: 'Art. 113, Revised Penal Code'
+			legalBasis: 'Art. 113, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:21',
@@ -914,7 +914,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE. Under Art. 104 of the RPC, civil liability includes restitution, reparation of the damage caused, and indemnification for consequential damages.',
-			legalBasis: 'Art. 104, Revised Penal Code'
+			legalBasis: 'Art. 104, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:23',
@@ -941,7 +941,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. "Nullum crimen" means "no crime" (nullum crimen sine lege = no crime without law), whereas "nulla poena sine lege" means "no penalty/punishment without law."',
-			legalBasis: 'Art. 21, Revised Penal Code'
+			legalBasis: 'Art. 21, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:25',
@@ -954,7 +954,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE (Note: check with your professor, as the original key marked False). In dubio pro reo applies in favor of the accused across all crimes whenever there is real doubt on the facts or an ambiguity in the law, though it does not apply where the law and evidence are clear.',
-			legalBasis: 'In dubio pro reo principle; Art. III, Sec. 14(2), 1987 Constitution (presumption of innocence); Rule 133, Sec. 2, Rules of Court'
+			legalBasis: 'In dubio pro reo principle; Art. III, Sec. 14(2), 1987 Constitution (presumption of innocence); Rule 133, Sec. 2, Rules of Court; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:26',
@@ -965,8 +965,8 @@ export const crim1Lloren: LawModule = {
 			options: ['True', 'False'],
 			correctIndex: 1,
 			key: 'False',
-			explanation: 'FALSE. "Nulla poena sine lege" means "no penalty/punishment without law."',
-			legalBasis: 'Art. 21, Revised Penal Code'
+			explanation: 'FALSE. Under Art. 21 of the Revised Penal Code, "nulla poena sine lege" means "no penalty or punishment without law," whereas "nullum crimen sine lege" means "no crime without law."',
+			legalBasis: 'Art. 21, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:27',
@@ -979,7 +979,7 @@ export const crim1Lloren: LawModule = {
 			key: 'True',
 			explanation:
 				'TRUE. Reflected in Art. 21 of the RPC and the constitutional prohibition against ex post facto laws.',
-			legalBasis: 'Art. 21, Revised Penal Code'
+			legalBasis: 'Art. 21, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:28',
@@ -992,7 +992,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Mala in se are generally felonies penalized by the Revised Penal Code, while mala prohibita are generally offenses penalized by special laws.',
-			legalBasis: 'Arts. 3 & 10, Revised Penal Code'
+			legalBasis: 'Arts. 3 & 10, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:29',
@@ -1019,7 +1019,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. This is error in personae (mistake in identity, Art. 49), not praeter intentionem (Art. 13[3]). Praeter intentionem requires an injurious result graver than intended.',
-			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code'
+			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:31',
@@ -1046,7 +1046,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. It is neither attempted nor frustrated theft; it is an impossible crime under Art. 4(2) of the RPC because the safe was empty (Intod v. CA).',
-			legalBasis: 'Art. 4(2), RPC — Intod v. Court of Appeals, G.R. No. 103119, Oct. 21, 1992'
+			legalBasis: 'Art. 4(2), RPC — Intod v. Court of Appeals, G.R. No. 103119, Oct. 21, 1992; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:tf:33',
@@ -1126,7 +1126,7 @@ export const crim1Lloren: LawModule = {
 			key: 'False',
 			explanation:
 				'FALSE. Mistakenly committing a crime on a person other than the intended victim is error in personae (mistake in identity). Praeter intentionem is the lack of intent to commit so grave a wrong as that committed.',
-			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code'
+			legalBasis: 'Arts. 4(1), 13(3) & 49, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 
 		// ---- PART II: MULTIPLE CHOICE (Q39–Q56 + Loose Firearm items) ----
@@ -1148,7 +1148,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Recidivism',
 			explanation:
 				'Recidivism (Art. 14[9], RPC). A recidivist is one who, at the time of his trial for one crime, shall have been previously convicted by final judgment of another crime embraced in the same title of the Code.',
-			legalBasis: 'Art. 14(9), Revised Penal Code'
+			legalBasis: 'Art. 14(9), Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:40',
@@ -1167,7 +1167,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Restitution',
 			explanation:
 				'Restitution. Art. 38 lists reparation of the damage caused, indemnification of consequential damages, fine, and costs of the proceedings as pecuniary liabilities. Restitution (returning the very thing itself) is a civil liability under Arts. 104–105, not a pecuniary liability under Art. 38.',
-			legalBasis: 'Art. 38 & Arts. 104–105, Revised Penal Code'
+			legalBasis: 'Art. 38 & Arts. 104–105, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:41',
@@ -1191,7 +1191,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Liable if acting with discernment',
 			explanation:
 				'Liable with conditions (if acting with discernment). Under R.A. 9344 as amended by R.A. 10630, a child above 15 and under 18 is exempt from criminal liability unless he or she acted with discernment. If acting with discernment, the child is liable but entitled to the privileged mitigating circumstance of minority (Art. 68[2]), diversion, and suspended sentence.',
-			legalBasis: 'Secs. 6, 23 & 38, R.A. No. 9344, as amended by R.A. No. 10630; Art. 68(2), RPC'
+			legalBasis: 'Secs. 6, 23 & 38, R.A. No. 9344, as amended by R.A. No. 10630; Art. 68(2), RPC; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:42',
@@ -1286,7 +1286,7 @@ export const crim1Lloren: LawModule = {
 			key: 'In case of doubt, for the accused',
 			explanation:
 				'In case of doubt, for the accused (in dubio pro reo). Penal laws and reasonable doubts in evidence are resolved liberally in favor of the accused and strictly against the State.',
-			legalBasis: 'In dubio pro reo doctrine'
+			legalBasis: 'In dubio pro reo doctrine; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:46',
@@ -1388,7 +1388,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Recognizance',
 			explanation:
 				'B. Recognizance. Under Art. 89 of the RPC, total extinction of criminal liability occurs by: death of the convict, service of sentence, amnesty, absolute pardon, prescription of the crime, prescription of the penalty, and marriage of the offended woman under Art. 344. Recognizance is a mode of release pending trial, not extinction of criminal liability.',
-			legalBasis: 'Art. 89, Revised Penal Code'
+			legalBasis: 'Art. 89, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:51',
@@ -1407,8 +1407,8 @@ export const crim1Lloren: LawModule = {
 			correctIndex: 3,
 			key: 'None of the choices',
 			explanation:
-				'd. None of the choices (Reclusion perpetua). Under Art. 63 of the RPC, a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances. Even though R.A. 7659 set its duration at 20 years and 1 day to 40 years, reclusion perpetua remains an indivisible penalty and has no periods (People v. Lucas, G.R. Nos. 108172-73, Jan. 9, 1995).',
-			legalBasis: 'Art. 63(1) & Art. 266-B, RPC; Art. 27, RPC as amended by R.A. No. 7659 (Reyes, p. 604) — People v. Lucas (1995)'
+				'd. None of the choices (Reclusion perpetua). Under Art. 63 of the RPC, a single indivisible penalty like reclusion perpetua is applied regardless of any mitigating or aggravating circumstances. Even though R.A. 7659 set its duration at 20 years and 1 day to 40 years, reclusion perpetua remains an indivisible penalty and has no periods (People v. Lucas, G.R. Nos. 108172-73, Jan. 9, 1995). Statutory update: R.A. No. 11648 (March 4, 2022) amended Art. 266-A(1)(d) of the RPC to raise the statutory rape age from under 12 to under 16 years of age (with a close-in-age exemption of ≤ 3 years for consensual, non-abusive, non-exploitative acts only when the victim is at least 13).',
+			legalBasis: 'Art. 63(1), Art. 266-A(1)(d) (as amended by R.A. No. 11648) & Art. 266-B, RPC; Art. 27, RPC as amended by R.A. No. 7659 (Reyes, p. 604) — People v. Lucas (1995)'
 		},
 		{
 			id: 'crim1_lloren:mcq:52',
@@ -1427,7 +1427,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Offense',
 			explanation:
 				'B) Offense (per Reyes, Art. 3). Driving without a license violates a national special law (R.A. 4136). A "felony" is a violation of the RPC; an "offense" is a violation of a special law; an "infraction" is a violation of a city or municipal ordinance. (Note: The original key marked "Infraction" — follow your professor if he classifies traffic violations as infractions.)',
-			legalBasis: 'Art. 3, RPC; Sec. 19, R.A. No. 4136 (Land Transportation and Traffic Code)'
+			legalBasis: 'Art. 3, RPC; Sec. 19, R.A. No. 4136 (Land Transportation and Traffic Code); Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:53',
@@ -1476,7 +1476,7 @@ export const crim1Lloren: LawModule = {
 			key: 'None of the choices',
 			explanation:
 				'None of the choices — completely EXEMPT from criminal liability. Under R.A. 9344 as amended by R.A. 10630, a child 15 years of age or under at the time of the commission of the offense is completely exempt from criminal liability and undergoes an intervention program. (Under Sec. 20-A, as added by R.A. 10630, a child above 12 up to 15 who commits a serious crime such as rape is deemed a neglected child and placed in a Bahay Pag-asa intensive juvenile intervention program — but still exempt from criminal liability.)',
-			legalBasis: 'Secs. 6 & 20-A, R.A. No. 9344, as amended by R.A. No. 10630'
+			legalBasis: 'Secs. 6 & 20-A, R.A. No. 9344, as amended by R.A. No. 10630; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:55',
@@ -1495,7 +1495,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Aberratio Ictus',
 			explanation:
 				'A. Aberratio Ictus. Mistake in the blow occurs when the offender aims at one person but hits another due to lack of precision.',
-			legalBasis: 'Art. 4(1) & Art. 48, Revised Penal Code'
+			legalBasis: 'Art. 4(1) & Art. 48, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:56',
@@ -1514,7 +1514,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Error in personae',
 			explanation:
 				'C. Error in personae. Mistake in identity occurs when the offender inflicts injury on someone whom he mistook for his intended victim.',
-			legalBasis: 'Art. 4(1) & Art. 49, Revised Penal Code'
+			legalBasis: 'Art. 4(1) & Art. 49, Revised Penal Code; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:57',
@@ -1539,7 +1539,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Special aggravating circumstance',
 			explanation:
 				'Special aggravating circumstance — always MAXIMUM (R.A. 10591, Sec. 29; Palaganas v. People). When the use of a loose firearm is inherent in the commission of a crime, it is appreciated as a special aggravating circumstance that cannot be offset by an ordinary mitigating circumstance, fixing the penalty in its maximum period. However, Sec. 29 of R.A. 10591 itself only says "aggravating circumstance"; the "special" aggravating treatment comes from jurisprudence under the old law, R.A. 8294 (Palaganas v. People; People v. Castillo — Reyes, pp. 672–673). Sec. 29 also provides that if the crime committed carries a maximum penalty lower than that for illegal possession of firearms, the penalty for illegal possession is imposed instead — please consult with GOD LLOREN.',
-			legalBasis: 'Sec. 29, R.A. No. 10591; Palaganas v. People, G.R. No. 165483, Sept. 12, 2006 (decided under R.A. 8294)'
+			legalBasis: 'Sec. 29, R.A. No. 10591; Palaganas v. People, G.R. No. 165483, Sept. 12, 2006 (decided under R.A. 8294); Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:mcq:58',
@@ -1558,7 +1558,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Aggravating circumstance',
 			explanation:
 				'Aggravating circumstance. Under Sec. 29 of R.A. 10591, the use of a loose firearm, when inherent in the commission of a crime, shall be considered as an aggravating circumstance.',
-			legalBasis: 'Sec. 29, R.A. No. 10591'
+			legalBasis: 'Sec. 29, R.A. No. 10591; Reyes, The Revised Penal Code, Book One'
 		},
 
 		// ---- PART III: PENALTIES, ISLAW & CASE PROBLEMS (Q57–Q63) ----
@@ -1585,7 +1585,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Reclusion Temporal Medium',
 			explanation:
 				'Reclusion Temporal Medium. Under Sec. 1 of the ISLAW and Art. 64(1) of the RPC, when there are neither mitigating nor aggravating circumstances, the maximum term is imposed in the medium period of the prescribed penalty: reclusion temporal medium (14 yrs 8 mos 1 day to 17 yrs 4 mos), while the minimum term is anywhere within prision mayor (6 yrs 1 day to 12 yrs).',
-			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Art. 64(1), RPC'
+			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Art. 64(1), RPC; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:problems:60',
@@ -1659,7 +1659,7 @@ export const crim1Lloren: LawModule = {
 			key: 'No, because he perfected an appeal',
 			explanation:
 				'No. Under Sec. 4 of P.D. 968 as amended by R.A. 10707, no application for probation shall be entertained or granted if the defendant has perfected an appeal from the judgment of conviction. The exception under R.A. 10707 only applies when an appeal modifies a non-probationable penalty into a probationable one. Here, his 6-year sentence was already probationable, and he chose to appeal.',
-			legalBasis: 'Secs. 4 & 9(a), P.D. No. 968, as amended by R.A. No. 10707'
+			legalBasis: 'Secs. 4 & 9(a), P.D. No. 968, as amended by R.A. No. 10707; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:problems:63',
@@ -1684,7 +1684,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Yes, he may apply for probation',
 			explanation:
 				'Yes. Under R.A. 10707 and Colinares v. People (G.R. No. 182748, Dec. 13, 2011), when a judgment of conviction imposing a non-probationable penalty (8–14 years) is appealed and modified through the imposition of a probationable penalty (4 years of prision correccional), the accused may apply for probation based on the modified decision before it becomes final, in the trial court that convicted him.',
-			legalBasis: 'Sec. 4, P.D. No. 968, as amended by R.A. No. 10707; Colinares v. People'
+			legalBasis: 'Sec. 4, P.D. No. 968, as amended by R.A. No. 10707; Colinares v. People; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:problems:64',
@@ -1733,7 +1733,7 @@ export const crim1Lloren: LawModule = {
 			key: 'Min: arresto mayor; Max: prision correccional med',
 			explanation:
 				'Homicide is prescribed reclusion temporal. Two privileged mitigating circumstances lower it two degrees: prision mayor, then prision correccional. The 1 aggravating and 1 ordinary mitigating circumstance offset each other (Art. 64[4]), so the maximum term is prision correccional medium (2 yrs 4 mos 1 day to 4 yrs 2 mos). The minimum term comes from the penalty next lower to the lowered penalty, which is arresto mayor (1 mo 1 day to 6 mos).',
-			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Arts. 61, 64(4), 68 & 69, RPC'
+			legalBasis: 'Sec. 1, Act No. 4103 (ISLAW); Arts. 61, 64(4), 68 & 69, RPC; Reyes, The Revised Penal Code, Book One'
 		},
 		{
 			id: 'crim1_lloren:problems:66',
@@ -1772,8 +1772,7 @@ export const crim1Lloren: LawModule = {
 			modelAnswer: {
 				answer:
 					'The maximum term is reclusion temporal in its medium period (14 years, 8 months and 1 day to 17 years and 4 months), and the minimum term is anywhere within the range of prision mayor (6 years and 1 day to 12 years).',
-				legalBasis:
-					'Under Section 1 of the Indeterminate Sentence Law (Act No. 4103, as amended), for an offense punishable under the Revised Penal Code, the court shall sentence the accused to an indeterminate sentence the maximum term of which shall be that which, in view of the attending circumstances, could be properly imposed under the rules of the Code, and the minimum which shall be within the range of the penalty next lower to that prescribed by the Code for the offense. Under Article 64(1) of the RPC, when there are neither aggravating nor mitigating circumstances, the penalty prescribed by law shall be imposed in its medium period.',
+				legalBasis: 'Under Section 1 of the Indeterminate Sentence Law (Act No. 4103, as amended), for an offense punishable under the Revised Penal Code, the court shall sentence the accused to an indeterminate sentence the maximum term of which shall be that which, in view of the attending circumstances, could be properly imposed under the rules of the Code, and the minimum which shall be within the range of the penalty next lower to that prescribed by the Code for the offense. Under Article 64(1) of the RPC, when there are neither aggravating nor mitigating circumstances, the penalty prescribed by law shall be imposed in its medium period.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Homicide under Article 249 of the RPC is punishable by reclusion temporal. Since no modifying circumstances attended the crime, Article 64(1) places the maximum term in the medium period of reclusion temporal (14 years, 8 months and 1 day to 17 years and 4 months). The penalty next lower in degree to reclusion temporal is prision mayor, so the minimum term may be fixed anywhere within the full range of prision mayor (6 years and 1 day to 12 years).',
 				conclusion:
@@ -1788,8 +1787,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is Mr. Hopeless liable for parricide? Explain.',
 			modelAnswer: {
 				answer: 'No, Mr. Hopeless is not liable for parricide.',
-				legalBasis:
-					'Under Article 4(1) of the Revised Penal Code, criminal liability shall be incurred by any person committing a felony (delito) although the wrongful act done be different from that which he intended. For Article 4(1) to apply, the offender must be performing an intentional felony (dolo) that is the proximate cause of the resulting injury. Under Article 253 of the RPC, only giving assistance to suicide is punishable; attempting suicide itself is not a felony.',
+				legalBasis: 'Under Article 4(1) of the Revised Penal Code, criminal liability shall be incurred by any person committing a felony (delito) although the wrongful act done be different from that which he intended. For Article 4(1) to apply, the offender must be performing an intentional felony (dolo) that is the proximate cause of the resulting injury. Under Article 253 of the RPC, only giving assistance to suicide is punishable; attempting suicide itself is not a felony.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'When Mr. Hopeless jumped to take his own life, he was not committing a felony because attempting suicide is not penalized by the Revised Penal Code. Since the first requisite of Article 4(1) — that an intentional felony was being committed — is absent, he cannot be held liable for the unintended death of his wife as an intentional felony of parricide.',
 				conclusion: 'Mr. Hopeless is not criminally liable for parricide.'
@@ -1804,8 +1802,7 @@ export const crim1Lloren: LawModule = {
 			question: 'What crime is the wife liable for? Explain.',
 			modelAnswer: {
 				answer: 'The wife is liable for an impossible crime.',
-				legalBasis:
-					'Under Article 4(2) of the Revised Penal Code, criminal liability is incurred by any person performing an act which would be an offense against persons or property, were it not for the inherent impossibility of its accomplishment or on account of the employment of inadequate or ineffectual means, provided the act does not constitute a violation of another provision of the Code.',
+				legalBasis: 'Under Article 4(2) of the Revised Penal Code, criminal liability is incurred by any person performing an act which would be an offense against persons or property, were it not for the inherent impossibility of its accomplishment or on account of the employment of inadequate or ineffectual means, provided the act does not constitute a violation of another provision of the Code.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'The wife acted with intent to kill her husband, which would have been parricide (a crime against persons). However, because she mistakenly used harmless Ajinomoto seasoning instead of rat poison, the means she employed was completely ineffectual to cause death. Her act also does not violate any other provision of the RPC.',
 				conclusion: 'The wife is criminally liable for an impossible crime due to the employment of ineffectual means.'
@@ -1820,8 +1817,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Can Mr. CC apply for probation? Explain.',
 			modelAnswer: {
 				answer: 'No, Mr. CC can no longer apply for probation.',
-				legalBasis:
-					'Under Section 4 of the Probation Law (P.D. No. 968, as amended by R.A. No. 10707), no application for probation shall be entertained or granted if the defendant has perfected an appeal from the judgment of conviction. The sole exception under R.A. No. 10707 applies when a judgment imposing a non-probationable penalty is appealed and is modified into a probationable penalty.',
+				legalBasis: 'Under Section 4 of the Probation Law (P.D. No. 968, as amended by R.A. No. 10707), no application for probation shall be entertained or granted if the defendant has perfected an appeal from the judgment of conviction. The sole exception under R.A. No. 10707 applies when a judgment imposing a non-probationable penalty is appealed and is modified into a probationable penalty.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, Mr. CC was initially sentenced to 6 years of prision correccional, which does not exceed 6 years and was therefore already a probationable penalty at the time of his conviction by the first-level court. Instead of applying for probation, he chose to perfect an appeal. Because his original sentence was already probationable, the exception under R.A. No. 10707 does not apply.',
 				conclusion: 'Mr. CC is disqualified from applying for probation because he perfected an appeal from an already probationable sentence.'
@@ -1836,8 +1832,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Can A apply for probation? Explain.',
 			modelAnswer: {
 				answer: 'Yes, A can apply for probation.',
-				legalBasis:
-					'Under Section 4 of P.D. No. 968, as amended by R.A. No. 10707 (adopting the doctrine in Colinares v. People, G.R. No. 182748, December 13, 2011), when a judgment of conviction imposing a non-probationable penalty is appealed or reviewed, and such judgment is modified through the imposition of a probationable penalty (not exceeding 6 years) or conviction for a lesser offense, the defendant shall be allowed to apply for probation based on the modified decision before such decision becomes final, in the trial court where the judgment of conviction was rendered.',
+				legalBasis: 'Under Section 4 of P.D. No. 968, as amended by R.A. No. 10707 (adopting the doctrine in Colinares v. People, G.R. No. 182748, December 13, 2011), when a judgment of conviction imposing a non-probationable penalty is appealed or reviewed, and such judgment is modified through the imposition of a probationable penalty (not exceeding 6 years) or conviction for a lesser offense, the defendant shall be allowed to apply for probation based on the modified decision before such decision becomes final, in the trial court where the judgment of conviction was rendered.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'A was originally sentenced by the trial court to 8 to 14 years of imprisonment, a non-probationable penalty that gave him no right to apply for probation at the time. On appeal, the Court of Appeals lowered his sentence to 4 years of prision correccional, which is within the 6-year probationable threshold.',
 				conclusion:
@@ -1853,8 +1848,7 @@ export const crim1Lloren: LawModule = {
 			modelAnswer: {
 				answer:
 					'Under the Flag State Rule, a vessel on the high seas is governed by the laws of the country whose flag it flies — that is, the country where it is officially registered.',
-				legalBasis:
-					'Under Article 2(1) of the Revised Penal Code and principles of public international law, Philippine penal laws are enforceable outside Philippine territory against those who commit an offense while on a Philippine ship or airship. The Flag State Rule provides that the country of registration (whose flag the vessel flies) exercises jurisdiction and control over the ship while on the high seas.',
+				legalBasis: 'Under Article 2(1) of the Revised Penal Code and principles of public international law, Philippine penal laws are enforceable outside Philippine territory against those who commit an offense while on a Philippine ship or airship. The Flag State Rule provides that the country of registration (whose flag the vessel flies) exercises jurisdiction and control over the ship while on the high seas.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Because the high seas are outside the territorial jurisdiction of any sovereign state, the nationality of the vessel — determined by its registration (in the Philippines, with MARINA) — supplies the governing law for the ship, its crew, and acts committed on board while at sea.',
 				conclusion:
@@ -1871,8 +1865,7 @@ export const crim1Lloren: LawModule = {
 			modelAnswer: {
 				answer:
 					'The maximum term is prision correccional in its medium period (2 years, 4 months and 1 day to 4 years and 2 months), and the minimum term is anywhere within the range of arresto mayor (1 month and 1 day to 6 months).',
-				legalBasis:
-					'Under Articles 68, 69, and 64 of the Revised Penal Code, privileged mitigating circumstances are applied first to lower the prescribed penalty by degrees and can never be offset by aggravating circumstances. Ordinary mitigating and generic aggravating circumstances are then offset against each other under Article 64(4) to determine the period of the lowered penalty for the maximum term. Under Section 1 of the Indeterminate Sentence Law, when the penalty is lowered by a privileged mitigating circumstance, the lowered penalty is the starting point and the minimum term is taken from the penalty next lower in degree.',
+				legalBasis: 'Under Articles 68, 69, and 64 of the Revised Penal Code, privileged mitigating circumstances are applied first to lower the prescribed penalty by degrees and can never be offset by aggravating circumstances. Ordinary mitigating and generic aggravating circumstances are then offset against each other under Article 64(4) to determine the period of the lowered penalty for the maximum term. Under Section 1 of the Indeterminate Sentence Law, when the penalty is lowered by a privileged mitigating circumstance, the lowered penalty is the starting point and the minimum term is taken from the penalty next lower in degree.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Homicide is punishable by reclusion temporal. Lowering reclusion temporal by two degrees on account of the two privileged mitigating circumstances yields prision mayor (one degree lower) and then prision correccional (two degrees lower). Next, the one generic aggravating circumstance and the one ordinary mitigating circumstance offset each other under Article 64(4), placing the maximum term in the medium period of prision correccional (2 years, 4 months and 1 day to 4 years and 2 months). Starting from the lowered penalty of prision correccional, the penalty next lower in degree is arresto mayor (1 month and 1 day to 6 months), from which the minimum term is taken.',
 				conclusion:
@@ -1888,8 +1881,7 @@ export const crim1Lloren: LawModule = {
 			question: 'How many days of imprisonment shall be imposed upon RRR, and why?',
 			modelAnswer: {
 				answer: '33 days of arresto menor shall be imposed upon RRR under the Three-Fold Rule.',
-				legalBasis:
-					'Under Article 70 of the Revised Penal Code (the Three-Fold Rule), when the culprit has to serve two or more penalties, the maximum duration of the convict\'s sentence shall not be more than three-fold the length of time corresponding to the most severe of the penalties imposed upon him, and in no case to exceed 40 years.',
+				legalBasis: 'Under Article 70 of the Revised Penal Code (the Three-Fold Rule), when the culprit has to serve two or more penalties, the maximum duration of the convict\'s sentence shall not be more than three-fold the length of time corresponding to the most severe of the penalties imposed upon him, and in no case to exceed 40 years.',
 				application:
 					'RRR was sentenced to 11 days of arresto menor for each of the 11 counts, which would total 121 days if served in full. Because 121 days exceeds three times the most severe penalty (11 days), the Three-Fold Rule caps his service of sentence at 3 × 11 days = 33 days.',
 				conclusion: 'RRR shall serve a maximum of 33 days of imprisonment pursuant to the Three-Fold Rule under Article 70 of the RPC.'
@@ -1905,8 +1897,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is the RTC correct?',
 			modelAnswer: {
 				answer: 'No, the RTC is not correct.',
-				legalBasis:
-					'Article 160 of the Revised Penal Code defines quasi-recidivism as the commission of a felony by one who has not yet begun serving, or is still serving, a sentence imposed by final judgment for a prior offense; nothing in Article 160 requires that the two offenses belong to the same Title of the Code. That same-Title requirement belongs to ordinary recidivism under Article 14, paragraph 9, an entirely separate aggravating circumstance. Article 160 further provides that a quasi-recidivist shall be punished in the maximum period of the penalty prescribed for the new felony, and jurisprudence has consistently held that this special aggravating circumstance cannot be offset by an ordinary mitigating circumstance (People v. Layson, G.R. No. L-25177, October 31, 1969; People v. Retania, G.R. No. L-34841, January 22, 1980).',
+				legalBasis: 'Article 160 of the Revised Penal Code defines quasi-recidivism as the commission of a felony by one who has not yet begun serving, or is still serving, a sentence imposed by final judgment for a prior offense; nothing in Article 160 requires that the two offenses belong to the same Title of the Code. That same-Title requirement belongs to ordinary recidivism under Article 14, paragraph 9, an entirely separate aggravating circumstance. Article 160 further provides that a quasi-recidivist shall be punished in the maximum period of the penalty prescribed for the new felony, and jurisprudence has consistently held that this special aggravating circumstance cannot be offset by an ordinary mitigating circumstance (People v. Layson, G.R. No. L-25177, October 31, 1969; People v. Retania, G.R. No. L-34841, January 22, 1980).; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, Alfie had already completed service of his sentence for homicide before he committed the killing that led to his murder conviction, which places him outside Article 160 altogether, since quasi-recidivism applies only to one who commits a new felony before beginning or while still serving a prior sentence, not to one who had already finished serving it. At most, Alfie is an ordinary recidivist considering that homicide and murder are embraced in the same Title of the RPC, which has the effect of offsetting only one of the ordinary mitigating circumstances invoked by him.',
 				conclusion:
@@ -1923,8 +1914,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is the RTC correct?',
 			modelAnswer: {
 				answer: 'No, the RTC is incorrect.',
-				legalBasis:
-					'Under RA 9262, psychological violence is the means employed by the offender, while mental or emotional anguish is the essential element of the offense of violation of Section 5(i); where the offender\'s acts abroad, such as marital infidelity, caused the psychological or emotional harm actually suffered by the wife within Philippine territory, the crime is considered committed, in whole or in part, within the Philippines, since the essential element of mental and emotional anguish—without which there is no completed offense—occurred where the wife resided and suffered that harm (AAA v. BBB, G.R. No. 212448, January 11, 2018).',
+				legalBasis: 'Under RA 9262, psychological violence is the means employed by the offender, while mental or emotional anguish is the essential element of the offense of violation of Section 5(i); where the offender\'s acts abroad, such as marital infidelity, caused the psychological or emotional harm actually suffered by the wife within Philippine territory, the crime is considered committed, in whole or in part, within the Philippines, since the essential element of mental and emotional anguish—without which there is no completed offense—occurred where the wife resided and suffered that harm (AAA v. BBB, G.R. No. 212448, January 11, 2018).',
 				application:
 					'Here, Maggie resided in Quezon City throughout the period in question and it was there that she experienced the mental and emotional anguish resulting from Seth\'s marital infidelity committed abroad. Since this suffering—the very element that completes the offense under Section 5(i)—took place within Quezon City, the RTC of Quezon City has territorial jurisdiction to try the case, notwithstanding that the underlying infidelity itself physically occurred in the Netherlands. Territorial jurisdiction in a continuing or transitory offense attaches wherever any essential element of the crime took place.',
 				conclusion:
@@ -1941,8 +1931,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is the prosecution correct?',
 			modelAnswer: {
 				answer: 'No, the prosecution is incorrect.',
-				legalBasis:
-					'Reckless imprudence under Article 365 is not a mere means of committing separate intentional felonies but a single, distinct quasi-offense in itself, the gravamen of which is the mental attitude of the offender—his lack of precaution—rather than the various resulting harms. Article 48 on complex crimes, designed for the complexing of intentional felonies arising from a single act, is conceptually incompatible with and does not apply to quasi-offenses under Article 365, since the multiple consequences of a single reckless act are not separate felonies to be complexed but merely factors that determine the appropriate penalty for the single quasi-crime under Article 365\'s own graduated scheme (Ivler v. Modesto-San Pedro, G.R. No. 172716, November 17, 2010; Morales v. People, G.R. No. 240337-38, January 4, 2022).',
+				legalBasis: 'Reckless imprudence under Article 365 is not a mere means of committing separate intentional felonies but a single, distinct quasi-offense in itself, the gravamen of which is the mental attitude of the offender—his lack of precaution—rather than the various resulting harms. Article 48 on complex crimes, designed for the complexing of intentional felonies arising from a single act, is conceptually incompatible with and does not apply to quasi-offenses under Article 365, since the multiple consequences of a single reckless act are not separate felonies to be complexed but merely factors that determine the appropriate penalty for the single quasi-crime under Article 365\'s own graduated scheme (Ivler v. Modesto-San Pedro, G.R. No. 172716, November 17, 2010; Morales v. People, G.R. No. 240337-38, January 4, 2022).',
 				application:
 					'Here, Michael\'s single reckless act in driving gave rise to multiple consequences—injuries to three individuals and damage to the company vehicle—but these consequences do not transform the offense into two or more complexed felonies; they remain relevant only to computing the appropriate single penalty under Article 365. The Information charging Michael in a single count for reckless imprudence resulting in multiple injuries and damage to property is not defective for duplicity, since all consequences of a single quasi-offense must be alleged together in one Information, but the prosecution is wrong in invoking Article 48\'s complex-crime framework and its "most serious crime in its maximum period" formula to compute the penalty.',
 				conclusion:
@@ -1959,8 +1948,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is Rico correct?',
 			modelAnswer: {
 				answer: 'No, Rico is incorrect.',
-				legalBasis:
-					'The three-fold rule under Article 70 of the Revised Penal Code governs only the service of multiple penalties already validly imposed for separate convictions; it does not limit or alter the penalty that a court must impose for each individual crime of which an accused is found guilty. The trial court has no discretion to disregard the proper indeterminate penalty prescribed by law for each count simply because the accused faces multiple counts; each count must be penalized on its own terms, and it is only when the convict actually serves these several sentences that Article 70 operates to cap the total period of imprisonment actually served at three times the most severe penalty imposed, and in no case more than 40 years.',
+				legalBasis: 'The three-fold rule under Article 70 of the Revised Penal Code governs only the service of multiple penalties already validly imposed for separate convictions; it does not limit or alter the penalty that a court must impose for each individual crime of which an accused is found guilty. The trial court has no discretion to disregard the proper indeterminate penalty prescribed by law for each count simply because the accused faces multiple counts; each count must be penalized on its own terms, and it is only when the convict actually serves these several sentences that Article 70 operates to cap the total period of imprisonment actually served at three times the most severe penalty imposed, and in no case more than 40 years.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, the trial court correctly imposed the indeterminate penalty of 11 years of prision mayor, as minimum, to 18 years of reclusion temporal, as maximum, for each of Rico\'s four separate counts of sexual abuse, since Article 70 has no bearing on how the court fixes the penalty at the point of conviction and sentencing. It is only at the point when Rico begins serving these four separate sentences successively that the three-fold rule will operate to ensure that he does not actually serve more than three times 18 years, or 40 years, whichever is lower.',
 				conclusion:
@@ -1977,8 +1965,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is Kardo entitled to credit for his three years of preventive imprisonment?',
 			modelAnswer: {
 				answer: 'No, Kardo is not entitled to any credit for his three years of preventive imprisonment.',
-				legalBasis:
-					'Article 29 of the Revised Penal Code, as amended by Republic Act No. 10592, grants an accused who has undergone preventive imprisonment full credit for that period in the service of his sentence, provided he agrees in writing, after being informed of the effects and with the assistance of counsel, to abide by the same disciplinary rules imposed on convicted prisoners; if he declines to so agree, he is credited only four-fifths of the preventive imprisonment period. Both of these crediting options, however, apply only to detainees who are not recidivists; the amended provision expressly excepts from the entire crediting scheme those who are recidivists or have been previously convicted twice or more of any crime, disqualifying a recidivist from both full credit and the four-fifths fallback.',
+				legalBasis: 'Article 29 of the Revised Penal Code, as amended by Republic Act No. 10592, grants an accused who has undergone preventive imprisonment full credit for that period in the service of his sentence, provided he agrees in writing, after being informed of the effects and with the assistance of counsel, to abide by the same disciplinary rules imposed on convicted prisoners; if he declines to so agree, he is credited only four-fifths of the preventive imprisonment period. Both of these crediting options, however, apply only to detainees who are not recidivists; the amended provision expressly excepts from the entire crediting scheme those who are recidivists or have been previously convicted twice or more of any crime, disqualifying a recidivist from both full credit and the four-fifths fallback.; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, Kardo\'s prior conviction for serious physical injuries and his present conviction for homicide both fall under Title Eight of the Revised Penal Code (Crimes Against Persons), satisfying the definition of recidivism under Article 14, paragraph 9. While recidivism must be specifically alleged in the Information before a court may appreciate it as an aggravating circumstance affecting the imposable penalty for the new crime, Article 29\'s exclusion of recidivists from crediting preventive imprisonment is not conditioned on such an allegation; the exclusion operates simply by virtue of the accused\'s status as a recidivist established by his own record of prior conviction. Since Kardo is a recidivist, he falls outside Article 29\'s crediting scheme entirely.',
 				conclusion:
@@ -1995,8 +1982,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is Abeto correct?',
 			modelAnswer: {
 				answer: 'No, Abeto is incorrect.',
-				legalBasis:
-					'The Indeterminate Sentence Law, as applied to offenses punished under special laws, requires the court to impose a maximum term that shall not exceed the maximum fixed by the special law and a minimum term that shall not be less than the minimum prescribed by the same law; this mechanism presupposes that the special law itself provides a range—a minimum and a maximum—from which the court may draw the two terms of the indeterminate sentence. Where the special law instead prescribes only a single, fixed penalty with no range at all, there is no minimum or maximum for the court to select from, and the straight penalty as written in the law must be imposed exactly as prescribed (People v. Ducosin, 59 Phil. 109 [1933]).',
+				legalBasis: 'The Indeterminate Sentence Law, as applied to offenses punished under special laws, requires the court to impose a maximum term that shall not exceed the maximum fixed by the special law and a minimum term that shall not be less than the minimum prescribed by the same law; this mechanism presupposes that the special law itself provides a range—a minimum and a maximum—from which the court may draw the two terms of the indeterminate sentence. Where the special law instead prescribes only a single, fixed penalty with no range at all, there is no minimum or maximum for the court to select from, and the straight penalty as written in the law must be imposed exactly as prescribed (People v. Ducosin, 59 Phil. 109 [1933]).; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, Section 10(a) of RA 9208 fixes the penalty for a violation of Section 4 at a single term of twenty years imprisonment, without providing any range of years from which a minimum and maximum could be derived. Since there is no statutory range to work with, the trial court had no basis to construct an indeterminate sentence and correctly imposed the straight penalty of 20 years exactly as the law provides.',
 				conclusion:
@@ -2013,8 +1999,7 @@ export const crim1Lloren: LawModule = {
 			question: 'Is the trial court correct?',
 			modelAnswer: {
 				answer: 'No, the trial court is incorrect.',
-				legalBasis:
-					'Where the penalty prescribed by law is a divisible one composed of distinct periods, the court cannot simply impose a straight penalty even after applying the privileged mitigating circumstance of minority. Article 365 offenses, though found in the Revised Penal Code, must still be penalized applying the Indeterminate Sentence Law\'s rule for felonies under the Code, requiring both a minimum and a maximum term.',
+				legalBasis: 'Where the penalty prescribed by law is a divisible one composed of distinct periods, the court cannot simply impose a straight penalty even after applying the privileged mitigating circumstance of minority. Article 365 offenses, though found in the Revised Penal Code, must still be penalized applying the Indeterminate Sentence Law\'s rule for felonies under the Code, requiring both a minimum and a maximum term.',
 				application:
 					'Here, the privileged mitigating circumstance of minority properly lowers the imposable penalty by one degree, since Tom was seventeen years old at the time of the incident. Prision correccional in its medium and maximum periods, lowered by one degree, becomes arresto mayor in its maximum period to prision correccional in its minimum period. Applying the Indeterminate Sentence Law, the maximum term of the indeterminate sentence should be taken from this new range, while the minimum term should be taken from the range next lower still—arresto mayor in its minimum and medium periods. A straight penalty of four months and one day, being merely the minimum extreme of the arresto mayor maximum to prision correccional minimum range, is not an indeterminate sentence with a proper minimum and maximum term as the law requires.',
 				conclusion:
@@ -2032,8 +2017,7 @@ export const crim1Lloren: LawModule = {
 			modelAnswer: {
 				answer:
 					'As the trial judge, I would rule that the prescriptive period commenced to run only upon Manuel\'s actual discovery of the identity of his offenders, and that the offenders\' absence from the Philippines properly tolled the running of prescription regardless of any extradition treaty.',
-				legalBasis:
-					'Under Article 91 of the Revised Penal Code, the period of prescription for a crime begins to run from the day of its discovery by the offended party, the authorities, or their agents, not merely from the day the crime was committed, particularly where the identity of the offender was genuinely unknown to the offended party despite the commission of the crime being known. Under the same article, prescription does not run while the offender is absent from the Philippine Archipelago, a rule that applies regardless of whether an extradition treaty exists between the Philippines and the country where the offender is staying, since Article 91 draws no such distinction (People v. Alagao, G.R. No. L-20721, April 30, 1966; Del Rosario v. People, G.R. No. 235739, July 22, 2019).',
+				legalBasis: 'Under Article 91 of the Revised Penal Code, the period of prescription for a crime begins to run from the day of its discovery by the offended party, the authorities, or their agents, not merely from the day the crime was committed, particularly where the identity of the offender was genuinely unknown to the offended party despite the commission of the crime being known. Under the same article, prescription does not run while the offender is absent from the Philippine Archipelago, a rule that applies regardless of whether an extradition treaty exists between the Philippines and the country where the offender is staying, since Article 91 draws no such distinction (People v. Alagao, G.R. No. L-20721, April 30, 1966; Del Rosario v. People, G.R. No. 235739, July 22, 2019).; Reyes, The Revised Penal Code, Book One',
 				application:
 					'Here, less serious physical injuries, punishable by arresto mayor, prescribes in five years under Article 90. The prescriptive period began to run only when Manuel actually discovered the identity of Lucio and Dencio as his attackers, since before that, despite knowing a crime had been committed against him, he had no means of identifying who to charge. Furthermore, Lucio and Dencio\'s immediate departure for the United States the day after the mugging tolled the running of the prescriptive period for the entire duration of their stay abroad, regardless of the extradition treaty between the Philippines and the United States.',
 				conclusion:

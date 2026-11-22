@@ -81,6 +81,7 @@
 	<div class="fb key">
 		<b class="fb-h">🔑 Answer key</b>
 		<p><strong>Answer:</strong> {q.o[correctIdx]}</p>
+		{#if q.lb}<p class="lb"><strong>Legal basis:</strong> {q.lb}</p>{/if}
 		<p>{@html md(q.ex)}</p>
 	</div>
 {:else if reveal}
@@ -88,6 +89,7 @@
 	<div class="fb" class:ok aria-live="polite">
 		<b class="fb-h">{ok ? 'Correct' : picked === null ? 'Not answered' : 'Not this time'}</b>
 		{#if !ok}<p><strong>Answer:</strong> {q.o[correctIdx]}</p>{/if}
+		{#if q.lb}<p class="lb"><strong>Legal basis:</strong> {q.lb}</p>{/if}
 		<p>{@html md(q.ex)}</p>
 	</div>
 {/if}

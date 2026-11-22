@@ -8,6 +8,8 @@ export interface Mcq {
 	key?: string;
 	/** Explanation shown after answering. */
 	ex: string;
+	/** Authoritative legal basis (articles, rules, statutes, jurisprudence, treatises). */
+	lb?: string;
 	/** Why each choice is wrong, by index into `o` (empty for the correct choice). */
 	why: string[];
 }

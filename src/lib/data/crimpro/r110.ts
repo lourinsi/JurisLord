@@ -34,7 +34,7 @@ export const r110: RuleChapter = {
 			n: '1',
 			title: 'Institution of criminal actions',
 			text: `Criminal actions are instituted (a) for offenses that require preliminary investigation under Rule 112, Sec. 1 — by filing the complaint with the proper officer for the purpose of conducting the preliminary investigation; (b) for all other offenses — by filing the complaint or information directly with the Municipal Trial Court or Municipal Circuit Trial Court, or the complaint with the office of the prosecutor. In Manila and other chartered cities, the complaint is filed with the office of the prosecutor unless their charters provide otherwise. The last paragraph states: "The institution of the criminal action shall interrupt the running period of prescription of the offense charged unless otherwise provided in special laws."`,
-			plain: `First ask: does the offense need preliminary investigation (penalty of at least 4 years, 2 months and 1 day)? If yes, file the complaint with the investigating office. If no, you may go straight to the MTC — except in Manila and chartered cities, where you file with the prosecutor.`,
+			plain: `First ask: does the offense need mandatory full preliminary investigation (penalty of at least 6 years and 1 day under DOJ DC No. 015 [2024], upheld in <i>Meking v. Remulla</i> [2025], superseding old Rule 112's 4 years, 2 months and 1 day)? If yes, file the complaint with the investigating office. If no (including Expedited PI for 1 year and 1 day to 6 years and Summary Investigation for 1 day to 1 year under DOJ DC No. 028 [2024]), you may go straight to the MTC — except in Manila and chartered cities, where you file with the prosecutor.`,
 			reqs: `(1) Determine whether preliminary investigation is required (Rule 112, Sec. 1). (2) Identify the "proper officer": the public prosecutor (DOJ National Prosecution Service), the Ombudsman (primary jurisdiction over cases cognizable by the Sandiganbayan) or the COMELEC (election offenses, concurrently with other prosecuting arms under RA 9369). (3) File a complaint (or, where allowed, an information) in the proper place.`,
 			who: `Complainant (offended party, peace officer, or public officer charged with enforcing the law violated); the investigating officer; the MTC/MCTC for direct filing.`,
 			when: `Any time before the offense prescribes. Filing is what interrupts prescription — see the <a href="#prescription">prescription module</a>.`,
@@ -43,7 +43,7 @@ export const r110: RuleChapter = {
 			cases: `${caseLink('olarte', 'People v. Olarte (1967)')}; ${caseLink('panaguiton', 'Panaguiton v. DOJ (2008)')}; ${caseLink('pangilinan', 'People v. Pangilinan (2012)')}; ${caseLink('zaldivia', 'Zaldivia v. Reyes (1992)')}; ${caseLink('consebido', 'People v. Consebido (2025)')}.`,
 			hypo: `Estafa involving ₱2 million is committed in Quezon City (a chartered city). The victim files a complaint-affidavit with the Office of the City Prosecutor. The criminal action is instituted on that date, and prescription stops, even though no information has yet been filed in court.`,
 			trap: `"Institution" is not "filing in court." Students write that prescription stops only when the information reaches the court. For RPC offenses and most special laws that has not been the rule since <i>Francisco</i> (1983) and <i>Panaguiton</i> (2008).`,
-			update: `(1) Since August 2005 (A.M. No. 05-8-26-SC), first-level court judges no longer conduct preliminary investigation (Tiu, p. 33). (2) <i>People v. Consebido</i>, G.R. No. 258563, April 2, 2025 (En Banc): henceforth, filing the criminal complaint before the DOJ tolls prescription even for offenses covered by the 2022 Rules on Expedited Procedures; the ruling is prospective, and <i>Republic v. Desierto</i> (2023) and <i>Corpus v. People</i> (2023) are abandoned on that point. (3) DOJ Department Circulars No. 015 and No. 028 (2024) now set the prosecutors' internal procedure — see ${ruleLink('r112')}.`
+			update: `(1) Since August 2005 (A.M. No. 05-8-26-SC), first-level court judges no longer conduct preliminary investigation (Tiu, p. 33). (2) <i>People v. Consebido</i>, G.R. No. 258563, April 2, 2025 (En Banc): henceforth, filing the criminal complaint before the DOJ tolls prescription even for offenses covered by the 2022 Rules on Expedited Procedures; the ruling is prospective, and <i>Republic v. Desierto</i> (2023) and <i>Corpus v. People</i> (2023) are abandoned on that point (note: <i>Zaldivia</i>/<i>Jadewell</i> for local ordinances were not expressly overturned). (3) DOJ Department Circulars No. 015 and No. 028 (2024) — upheld as valid executive rulemaking in <i>Atty. Hazel L. Meking v. Jesus Crispin C. Remulla</i>, G.R. No. 280455, November 11, 2025 (En Banc) — now govern NPS prosecutors (≥ 6 years and 1 day for full PI; PFC + RCC) — see ${ruleLink('r112')}.`
 		},
 		{
 			n: '2',
@@ -313,7 +313,7 @@ export const r110: RuleChapter = {
 			items: [
 				{
 					t: 'By filing the complaint with the proper officer for preliminary investigation',
-					d: 'For offenses where preliminary investigation is required (penalty of at least 4 years, 2 months and 1 day). The proper officer is the public prosecutor, the Ombudsman or the COMELEC, depending on the offense.',
+					d: 'For offenses where mandatory full preliminary investigation is required (penalty of at least 6 years and 1 day under DOJ DC No. 015 [2024], upheld in Meking v. Remulla [2025], superseding old Rule 112\'s 4 years, 2 months and 1 day; 1y 1d–6y = Expedited PI and 1d–1y = Summary Investigation under DOJ DC No. 028 [2024]). The proper officer is the public prosecutor, the Ombudsman or the COMELEC, depending on the offense.',
 					s: 'for offenses requiring preliminary investigation',
 					x: 'Estafa of ₱1 million filed with the city prosecutor.'
 				},
@@ -557,7 +557,7 @@ export const r110: RuleChapter = {
 			meaning: ['Filing the complaint with the proper officer (or directly with the MTC where allowed).', 'Lodging the prosecutor\'s information with the trial court.'],
 			basis: ['Rule 110, Sec. 1', 'Rule 110, Sec. 4; Rule 112, Secs. 4–5; Crespo v. Mogul'],
 			who: ['Complainant.', 'Prosecutor.'],
-			when: ['At the start of preliminary investigation.', 'After a finding of probable cause by the prosecutor.'],
+			when: ['At the start of preliminary investigation.', 'After the prosecutor finds prima facie evidence with reasonable certainty of conviction (DOJ DC No. 015, 2024; probable cause for the Ombudsman).'],
 			reqs: ['A complaint with the proper officer.', 'An information approved by the head of office.'],
 			time: ['Before prescription.', 'Rule 112 periods; within the prescriptive period as interrupted.'],
 			exceptions: ['Special laws may require more (formerly ordinances and summary procedure — Zaldivia; now Consebido).', '—'],
@@ -575,7 +575,7 @@ export const r110: RuleChapter = {
 			basis: ['Rule 110, Secs. 1–5', 'Rule 110, Sec. 5; RPC Art. 344'],
 			who: ['Anyone may file the affidavit-complaint; the prosecutor files the information.', 'Offended spouse; offended party, parents, grandparents, guardian (successively); State as last resort.'],
 			when: ['Before prescription.', 'Before prescription and before any express pardon or consent.'],
-			reqs: ['Complaint or affidavit-complaint; probable cause.', 'Complaint by the proper person; both guilty parties (adultery/concubinage).'],
+			reqs: ['Complaint or affidavit-complaint; executive quantum to indict (PFC + RCC under DOJ DC No. 015, 2024; probable cause for the Ombudsman).', 'Complaint by the proper person; both guilty parties (adultery/concubinage).'],
 			time: ['Prescriptive periods of Art. 90 or Act 3326.', 'Same, but pardon cuts off prosecution earlier.'],
 			exceptions: ['—', 'Rape is no longer a private crime (RA 8353).'],
 			effect: ['Desistance of the complainant does not bind the State.', 'Express pardon (or consent) before filing bars the action.'],
@@ -797,7 +797,7 @@ export const r110: RuleChapter = {
 			alac: {
 				answer: 'Yes.',
 				legalBasis: 'RA 8353 (Anti-Rape Law of 1997) reclassified rape as a crime against persons (RPC Art. 266-A), removing it from the private crimes under Art. 344 and Rule 110, Sec. 5.',
-				application: 'Since rape is a public crime, anyone with knowledge may file the complaint-affidavit that starts preliminary investigation, and the prosecutor files the information if there is probable cause. The victim\'s refusal affects the strength of the evidence, not the State\'s authority to prosecute.',
+				application: 'Since rape is a public crime, anyone with knowledge may file the complaint-affidavit that starts preliminary investigation, and the prosecutor files the information if there is prima facie evidence with reasonable certainty of conviction (DOJ DC No. 015, 2024). The victim\'s refusal affects the strength of the evidence, not the State\'s authority to prosecute.',
 				conclusion: 'The prosecutor may proceed.'
 			},
 			trap: 'Older materials list rape among the private crimes. Seduction, abduction and acts of lasciviousness remain private crimes; rape does not.',

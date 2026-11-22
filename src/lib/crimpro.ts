@@ -40,6 +40,8 @@ export interface Question {
 	/** Exact text of the correct choice (matches `o[a]`). */
 	key?: string;
 	ex: string;
+	/** Authoritative legal basis (Rules, Sections, DOJ Circulars, Jurisprudence). */
+	lb?: string;
 	/** Why each choice is wrong, by index into `o` (empty for the correct choice). */
 	why: string[];
 }

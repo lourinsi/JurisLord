@@ -35,7 +35,7 @@ export const crimproTwistMcqs: McqQuestion[] = SETS.flatMap((set) =>
 			correctIndex,
 			key: q.key ?? q.o[correctIndex],
 			explanation: q.ex,
-			legalBasis: `Rule ${set.rules.join(', ')} · Twist Set: ${set.title}`,
+			legalBasis: q.lb ?? `Rule ${set.rules.join(', ')} · Twist Set: ${set.title}`,
 			hint: q.tw ? `Changed fact: ${q.tw}` : `Base scenario for ${set.title}`
 		};
 	})

@@ -7,7 +7,7 @@ export const r112: RuleChapter = {
 	title: 'Preliminary Investigation',
 	short: 'R112 Preliminary Investigation',
 	tiu: 'pp. 66–107 (including DOJ and Ombudsman rules, summary procedure and barangay conciliation)',
-	plain: `Before a serious charge (penalty of at least 4 years, 2 months and 1 day) is filed in court, a prosecutor must first check whether there is enough basis to put the respondent on trial. That check is the preliminary investigation: the complainant files affidavits, the respondent answers with counter-affidavits, and the prosecutor decides whether there is probable cause. If yes, an information is filed in court, and the judge must then decide — independently — whether there is probable cause to issue a warrant of arrest. If the person was arrested without a warrant, a quicker summary review (inquest) replaces the preliminary investigation, though the arrested person can still ask for one.`,
+	plain: `Before a serious charge (penalty of at least 6 years and 1 day under DOJ Department Circular No. 015 [2024], upheld in <i>Meking v. Remulla</i> [2025] — superseding old Rule 112's 4 years, 2 months and 1 day) is filed in court, a prosecutor must first check whether there is enough basis to put the respondent on trial. That check is the mandatory full preliminary investigation: the complainant files affidavits, the respondent answers with counter-affidavits, and the NPS prosecutor decides whether there is <b>prima facie evidence with reasonable certainty of conviction (PFC + RCC)</b> (while lighter offenses undergo Expedited Preliminary Investigation for 1 year and 1 day to 6 years or Summary Investigation for 1 day to 1 year under DOJ DC No. 028 [2024]). If an information is filed in court, the judge must then decide — independently — whether there is <b>judicial probable cause</b> to issue a warrant of arrest (Sec. 5). If the person was arrested without a warrant, a quicker summary review (inquest) replaces the preliminary investigation, though the arrested person can still ask for one.`,
 	purpose: `To protect the innocent from hasty, malicious and oppressive prosecution and from the trouble, expense and anxiety of a public trial, and to protect the State from useless and expensive trials (DO 153, Part III, Sec. 2, in Tiu, p. 70).`,
 	stage: `Between institution (${ruleLink('r110', 'sections', 'Rule 110, Sec. 1')}) and the filing of the information in court; then the judge's determination of probable cause for a warrant (Sec. 5) links to ${ruleLink('r113')} (arrest). Inquest (Sec. 6) follows a warrantless arrest.`,
 	questions: [
@@ -24,8 +24,8 @@ export const r112: RuleChapter = {
 	principles: [
 		'<b>Preliminary investigation is statutory, not constitutional</b> — but where the law grants it, it is a substantive right and a component of due process (Tiu, p. 67).',
 		'<b>It is waivable</b>: it must be invoked before or at the time of plea (Rule 114, Sec. 26; People v. Buluran, in Tiu).',
-		'<b>It determines probable cause, not guilt</b>: "Is the respondent probably guilty and should he go to trial?"',
-		'<b>Two determinations of probable cause</b>: executive (prosecutor — whether to file) and judicial (judge — whether to issue a warrant). Each is independent.',
+		'<b>It determines executive sufficiency to prosecute, not trial guilt</b>: under DOJ DC No. 015 (2024) (upheld in <i>Meking v. Remulla</i>, 2025), NPS prosecutors apply <b>prima facie evidence with reasonable certainty of conviction (PFC + RCC)</b> — replacing mere executive probable cause under old Rule 112 (while the Ombudsman retains criminal probable cause).',
+		'<b>Executive vs. judicial determinations are independent</b>: the prosecutor conducts an executive screening (PFC + RCC for DOJ/NPS; probable cause for the Ombudsman) to decide whether to file, while the judge conducts an independent <b>judicial determination of probable cause</b> (Sec. 5) to decide whether to issue a warrant.',
 		'<b>Once the information is filed, the court controls the case</b> (Crespo v. Mogul); a motion to withdraw requires the court\'s own assessment (Lanier v. People).',
 		'<b>Absence of preliminary investigation does not affect jurisdiction</b> and is not a ground to quash; the remedy is to suspend proceedings and remand for investigation.'
 	],
@@ -34,16 +34,16 @@ export const r112: RuleChapter = {
 			n: '1',
 			title: 'Preliminary investigation defined; when required',
 			text: `"Preliminary investigation is an inquiry or proceeding to determine whether there is sufficient ground to engender a well-founded belief that a crime has been committed and the respondent is probably guilty thereof, and should be held for trial." Except as provided in the section on persons lawfully arrested without a warrant, a preliminary investigation is required before the filing of a complaint or information for an offense where the penalty prescribed by law is "at least four (4) years, two (2) months and one (1) day without regard to the fine."`,
-			plain: `A preliminary investigation is a screening, not a trial. It is required when the penalty prescribed by law is at least 4 years, 2 months and 1 day — whatever the fine.`,
-			reqs: `(1) An offense with a prescribed penalty of at least 4 years, 2 months and 1 day; (2) the respondent was not lawfully arrested without a warrant (otherwise inquest applies, Sec. 6).`,
+			plain: `A preliminary investigation is a screening, not a trial. Under current governing DOJ rules (DC No. 015, 2024, upheld in <i>Meking v. Remulla</i>, 2025), mandatory full preliminary investigation is required when the penalty prescribed by law is at least 6 years and 1 day (superseding old Rule 112's 4 years, 2 months and 1 day threshold) using the PFC + RCC quantum. Offenses punishable by 1 year and 1 day to 6 years undergo Expedited Preliminary Investigation, and 1 day to 1 year (or fine) undergo Summary Investigation under DOJ DC No. 028 (2024).`,
+			reqs: `(1) An offense with a prescribed penalty of at least 6 years and 1 day for mandatory full PI under DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025; superseding old Rule 112, Sec. 1's 4 years, 2 months and 1 day threshold; 1y 1d–6y = Expedited PI and 1d–1y = Summary Investigation under DOJ DC No. 028, 2024); (2) the respondent was not lawfully arrested without a warrant (otherwise inquest applies, Sec. 6).`,
 			who: `Complainant; respondent; investigating officer.`,
 			when: `Before the complaint or information is filed in court. The right must be invoked before or at plea.`,
-			exceptions: `(1) Lawful warrantless arrest — inquest instead (Sec. 6). (2) Offenses below the threshold — Sec. 8 procedure. (3) Expedited Rules offenses — their own procedure.`,
+			exceptions: `(1) Lawful warrantless arrest — inquest instead (Sec. 6). (2) Offenses below the threshold — Expedited PI (1y 1d–6y) or Summary Investigation (1d–1y) under DOJ DC No. 028 (2024), or Sec. 8 direct filing outside chartered cities. (3) Expedited Rules offenses — their own court procedure (2022 Rules on Expedited Procedures, ≤ 1 year or fine ≤ ₱50,000; Art. 365 damage ≤ ₱150,000).`,
 			effect: `If required but not conducted: the information is not void and the court keeps jurisdiction; the accused may ask the court to suspend proceedings and remand for preliminary investigation — before plea. Failure to invoke it before plea waives it.`,
-			cases: `${caseLink('larranaga', 'Larrañaga v. CA')} (remand, not dismissal); <i>Socrates v. Sandiganbayan</i> and <i>Enriquez v. Sarmiento</i> (absence of PI not a ground to quash and does not affect jurisdiction — Tiu, p. 77).`,
-			hypo: `An information for estafa (penalty above 4 years, 2 months and 1 day) is filed without preliminary investigation. Before arraignment, the accused moves for preliminary investigation. The court should hold the proceedings in abeyance and order the prosecutor to conduct it — not dismiss the case.`,
-			trap: `Measuring the threshold by the penalty that would actually be <b>imposed</b> (after modifying circumstances). The test is the penalty <b>prescribed by law</b>, "without regard to the fine."`,
-			update: `DOJ Department Circular No. 015 (2024 DOJ-NPS Rules on Preliminary Investigations and Inquest Proceedings) applies the formal preliminary investigation to offenses with a prescribed penalty of at least six years and one day, and adopts a higher internal standard — "prima facie evidence with reasonable certainty of conviction." DOJ Department Circular No. 028 (2024) provides summary investigation (imprisonment of one day to one year, or fine) and expedited preliminary investigation (up to six years). These are executive rules for prosecutors; the Rules of Court threshold (4 years, 2 months and 1 day) and the probable-cause standard remain the standard under the Rules of Court.`,
+			cases: `${caseLink('larranaga', 'Larrañaga v. CA')} (remand, not dismissal); <i>Socrates v. Sandiganbayan</i> and <i>Enriquez v. Sarmiento</i> (absence of PI not a ground to quash and does not affect jurisdiction — Tiu, p. 77); <i>Atty. Hazel L. Meking v. Jesus Crispin C. Remulla</i>, G.R. No. 280455, November 11, 2025 (En Banc, Dimaampao, J. — upholding DOJ DC No. 015 as valid executive rulemaking).`,
+			hypo: `An information for estafa (penalty of at least 6 years and 1 day, requiring mandatory full PI under DOJ DC No. 015) is filed without preliminary investigation. Before arraignment, the accused moves for preliminary investigation. The court should hold the proceedings in abeyance and order the prosecutor to conduct it — not dismiss the case.`,
+			trap: `Measuring the threshold by the penalty that would actually be <b>imposed</b> (after modifying circumstances), or applying the superseded 4-2-1 threshold to NPS cases. The test is the penalty <b>prescribed by law</b> — now at least <b>6 years and 1 day</b> for mandatory full PI under DOJ DC No. 015 (2024), upheld in <i>Meking v. Remulla</i> (2025).`,
+			update: `<b>Governing current law:</b> DOJ Department Circular No. 015 (July 16, 2024, 2024 DOJ-NPS Rules on Preliminary Investigations and Inquest Proceedings) — upheld by the Supreme Court En Banc in <i>Atty. Hazel L. Meking v. Jesus Crispin C. Remulla</i>, G.R. No. 280455, November 11, 2025 (Dimaampao, J.) as valid executive rulemaking — governs NPS preliminary investigations: mandatory full PI applies to offenses punishable by imprisonment of <b>at least 6 years and 1 day</b> (superseding old Rule 112's 4 years, 2 months and 1 day threshold) and adopts the executive quantum of <b>prima facie evidence with reasonable certainty of conviction (PFC + RCC)</b>. DOJ Department Circular No. 028 (November 13, 2024) establishes <b>Expedited Preliminary Investigation (EPI)</b> for 1 year and 1 day to 6 years (or fine regardless of amount; 10-calendar-day MR) and <b>Summary Investigation (SI)</b> for 1 day to 1 year (or fine regardless of amount). Note: <b>probable cause</b> remains the governing standard for judicial arrest warrants (Rule 112, Sec. 5), hot pursuit arrests (Rule 113, Sec. 5[b]), search warrants (Rule 126), and Ombudsman criminal investigations (RA 6770 / A.O. No. 07).`,
 			verify: `The cross-reference in Sec. 1 ("except as provided in section 7") was not renumbered when A.M. No. 05-8-26-SC (2005) deleted the old Sec. 5 on investigating judges; it refers to the warrantless-arrest section, now Sec. 6.`
 		},
 		{
@@ -78,14 +78,14 @@ export const r112: RuleChapter = {
 			plain: `The investigating prosecutor only recommends. His boss approves within ten days. The Secretary of Justice can reverse on review. Nothing is filed or dismissed without the boss's written approval.`,
 			reqs: `Resolution; information with the certification under oath; forwarding within 5 days; action by the head within 10 days; prior written approval.`,
 			who: `Investigating prosecutor; head of office (provincial/city prosecutor, chief state prosecutor, Ombudsman or deputy); Secretary of Justice; parties.`,
-			when: `Forward within 5 days; head acts within 10 days. DOJ appeal: petition for review within 15 days from receipt of the resolution (DC 70, 2000 NPS Rule on Appeal); one motion for reconsideration (DC 70: within 15 days; DO 153: within 10 days); MR of the Secretary's resolution within 10 days. Office of the President: only for offenses punishable by reclusion perpetua to death, new and material issues, within 30 days, prescription not lapsing within 6 months (MC 58).`,
+			when: `Forward within 5 days; head acts within 10 days. Under DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025): a verified Motion for Reconsideration is filed within 15 days from receipt (10 calendar days for Expedited PI under DOJ DC No. 028, 2024); appeal is via Petition for Review to the DOJ (within 15 days from receipt of the resolution or denial of MR; superseding old DO 153 / DC 70 periods). Office of the President: only for offenses punishable by reclusion perpetua to death, new and material issues, within 30 days, prescription not lapsing within 6 months (MC 58).`,
 			exceptions: `A petition for review is not given due course if the accused had already been arraigned when it was filed; arraignment after filing does not bar review (DC 70, Sec. 7). Petitions from resolutions in MTC-cognizable cases outside NCR go to the Regional State Prosecutor (DC 70-A).`,
 			effect: `The certification is not an essential part of the information; its absence does not invalidate it (Alvizo v. Sandiganbayan, in Tiu). A pending petition for review does not bar the filing of the information, but the court proceedings should be held in abeyance; arraignment may be suspended for up to sixty days (Rule 116, Sec. 11[c]). The court is not bound by the Secretary's resolution (Crespo; Ledesma v. CA, 1997).`,
-			cases: `${caseLink('crespo', 'Crespo v. Mogul (1987)')}; ${caseLink('lanier', 'Lanier v. People (2014)')}; <i>Ledesma v. CA</i> (1997); <i>Joaquin v. Drilon</i> (the Secretary may consider unassigned errors); <i>Community Rural Bank of Guimba v. Talavera</i> (2005 — the prosecutor cannot reinvestigate to overrule the Secretary); ${caseLink('gatchalian', 'Gatchalian v. Ombudsman (2018)')}.`,
+			cases: `${caseLink('crespo', 'Crespo v. Mogul (1987)')}; ${caseLink('lanier', 'Lanier v. People (2014)')}; <i>Ledesma v. CA</i> (1997); <i>Joaquin v. Drilon</i> (the Secretary may consider unassigned errors); <i>Community Rural Bank of Guimba v. Talavera</i> (2005 — the prosecutor cannot reinvestigate to overrule the Secretary); ${caseLink('gatchalian', 'Gatchalian v. Ombudsman (2018)')}; <i>Meking v. Remulla</i> (2025, En Banc).`,
 			hypo: `The city prosecutor approves the filing of an estafa information. Respondent files a petition for review with the DOJ and, in court, a motion to suspend arraignment. The court should suspend arraignment for up to 60 days; it may still issue a warrant of arrest (Viudez v. CA, 2009, in Tiu).`,
-			trap: `Remedies differ by office: DOJ resolution → petition for review to the Secretary → Rule 65 to the CA (CTA for tax and tariff cases). Ombudsman resolution in a criminal case → Rule 65 directly to the Supreme Court (Gatchalian, 2018).`,
-			update: `DOJ Department Circular No. 015 (2024) now governs NPS preliminary investigations; check whether its periods for motions for reconsideration and petitions for review replace those of DO 153 and DC 70 reproduced in Tiu.`,
-			verify: `Periods for MR and petition for review under the 2024 DOJ rules were not confirmed.`
+			trap: `Remedies differ by office: DOJ resolution → verified MR (15 days under DC 015; 10 calendar days for EPI under DC 028) → Petition for Review to DOJ → Rule 65 to the CA (CTA for tax and tariff cases). Ombudsman resolution in a criminal case → Rule 65 directly to the Supreme Court (Gatchalian, 2018).`,
+			update: `DOJ Department Circular No. 015 (July 16, 2024) — upheld by the Supreme Court En Banc in <i>Atty. Hazel L. Meking v. Jesus Crispin C. Remulla</i>, G.R. No. 280455, November 11, 2025 — and DOJ Department Circular No. 028 (November 13, 2024) now govern NPS preliminary investigations and review: verified MR within 15 days under DC No. 015 (10 calendar days for EPI under DC No. 028), and appeal via Petition for Review to the DOJ. The prosecutor applies PFC + RCC, while the trial court retains independent judicial evaluation once the information is filed (Crespo; Lanier).`,
+			verify: `Confirmed: DOJ DC No. 015 (2024) sets a 15-day period for a verified MR (with appeal via Petition for Review to the DOJ), and DOJ DC No. 028 (2024) sets a 10-calendar-day MR period for Expedited PI; upheld as valid executive rulemaking in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc).`
 		},
 		{
 			n: '5',
@@ -130,24 +130,24 @@ export const r112: RuleChapter = {
 			n: '8',
 			title: 'Cases not requiring a preliminary investigation nor covered by the Rule on Summary Procedure',
 			text: `(a) If filed with the prosecutor: for an offense punishable by imprisonment of less than four years, two months and one day, the procedure in Sec. 3(a) is observed and the prosecutor acts on the complaint based on the complainant's affidavits and supporting documents within ten days from its filing. (b) If filed with the MTC or MCTC: the procedure in Sec. 3(a) is observed; within ten days, the judge, after personally evaluating the evidence or personally examining in writing and under oath the complainant and witnesses in the form of searching questions and answers, dismisses the complaint if he finds no probable cause; he may require additional evidence within ten days from notice and, if still no probable cause, dismiss within ten days from its submission or expiration of the period. If he finds probable cause, he issues a warrant of arrest, or a commitment order if the accused is already arrested; but if he is satisfied there is no need to place the accused under custody, he may issue summons instead.`,
-			plain: `Lighter offenses get no preliminary investigation. The prosecutor (10 days) or the MTC judge (10 days, plus 10 for more evidence) checks probable cause from the complainant's papers alone. The judge may issue a summons instead of a warrant.`,
-			reqs: `Complaint with sworn affidavits (Sec. 3[a]); probable-cause determination on the complainant's evidence.`,
+			plain: `Lighter offenses get no mandatory full preliminary investigation. Under DOJ DC No. 028 (2024), NPS prosecutors conduct Expedited Preliminary Investigation (1 year and 1 day to 6 years, or fine) or Summary Investigation (1 day to 1 year, or fine) applying PFC + RCC; under Sec. 8(b), where direct filing with the MTC/MCTC applies outside chartered cities, the judge (10 days, plus 10 for more evidence) checks judicial probable cause from the complainant's papers and may issue a summons instead of a warrant.`,
+			reqs: `Complaint with sworn affidavits (Sec. 3[a]); executive PFC + RCC before NPS prosecutors (DOJ DC No. 028) or judicial probable-cause determination by the MTC/MCTC judge on direct filing (Sec. 8[b]).`,
 			who: `Prosecutor or MTC/MCTC judge; complainant.`,
-			when: `Prosecutor: 10 days. Judge: 10 days; additional evidence within 10 days from notice; dismissal within 10 days after.`,
+			when: `Prosecutor: 10 days (Rule 112, Sec. 8[a]; see DOJ DC No. 028 for EPI/SI timelines). Judge: 10 days; additional evidence within 10 days from notice; dismissal within 10 days after.`,
 			exceptions: `Offenses under the Rule on Summary Procedure (now the 2022 Rules on Expedited Procedures) follow their own rules.`,
 			effect: `Summons in lieu of a warrant is "the only criminal procedure provision which recognizes the issuance of a summons" (Tiu, p. 90).`,
 			hypo: `Less serious physical injuries (arresto mayor) in a province: the victim files directly with the MCTC. Within ten days, the judge evaluates the affidavits, finds probable cause, and — since the accused is a local resident with a fixed job — issues a summons.`,
 			trap: `Under the 2017 Revised Guidelines, a motion for preliminary investigation in a Sec. 8 case is a prohibited motion (there is no right to it).`,
-			update: `Tiu cites this section as "Sec. 9" in places, using the pre-2005 numbering. The coverage of the summary procedure in Tiu (penalty not exceeding six months or a fine of ₱1,000) is from the 1991 Rule; the 2022 Rules on Expedited Procedures cover offenses punishable by imprisonment not exceeding one year or a fine not exceeding ₱50,000 (plus traffic, rental-law, ordinance and BP 22 cases).`
+			update: `Tiu cites this section as "Sec. 9" in places, using the pre-2005 numbering. Two governing updates apply: (1) The 2022 Rules on Expedited Procedures (A.M. No. 08-8-7-SC, effective April 11, 2022) replace the 1991 Rule (6 months / ₱1,000) and cover criminal offenses punishable by imprisonment not exceeding 1 year or a fine not exceeding ₱50,000 (Art. 365 damage to property fine ≤ ₱150,000), plus traffic, rental-law, ordinance, and BP 22 cases. (2) For NPS prosecutors, DOJ DC No. 015 (2024, upheld in Meking v. Remulla, 2025) and DOJ DC No. 028 (2024) supersede the old 4-2-1 threshold with Summary Investigation (1 day–1 year, or fine) and Expedited Preliminary Investigation (1 year and 1 day–6 years, or fine; 10-calendar-day MR).`
 		}
 	],
 	reqs: [
 		{
-			name: 'Preliminary investigation when required (Sec. 1)',
-			source: 'Rule 112, Secs. 1–3; Rule 114, Sec. 26',
-			what: 'An inquiry into probable cause, with notice to the respondent and an opportunity to submit counter-affidavits.',
+			name: 'Preliminary investigation when required (Sec. 1; DOJ DC No. 015)',
+			source: 'DOJ DC No. 015 (2024); DOJ DC No. 028 (2024); Meking v. Remulla (2025); Rule 112, Secs. 1–3; Rule 114, Sec. 26',
+			what: 'An executive screening inquiry into prima facie evidence with reasonable certainty of conviction (PFC + RCC) under DOJ DC No. 015 (probable cause for Ombudsman criminal cases and old Rule 112), with notice to the respondent and an opportunity to submit counter-affidavits.',
 			who: 'An officer authorized under Sec. 2.',
-			when: 'Before the information is filed, for offenses with a prescribed penalty of at least 4 years, 2 months and 1 day.',
+			when: 'Before the information is filed, for offenses with a prescribed penalty of at least 6 years and 1 day under DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025; superseding old Rule 112\'s 4 years, 2 months and 1 day; 1y 1d–6y = Expedited PI and 1d–1y = Summary Investigation under DOJ DC No. 028, 2024).',
 			where: 'The prosecution office (or Ombudsman/COMELEC) with territorial authority.',
 			form: 'Sworn complaint and affidavits; subpoena; sworn counter-affidavits; written resolution.',
 			missing: 'The information remains valid and the court keeps jurisdiction; on timely motion, the court suspends proceedings and remands for preliminary investigation (Larrañaga). Not a ground to quash.',
@@ -217,7 +217,7 @@ export const r112: RuleChapter = {
 			memorize: true,
 			lead: 'Probable cause must be determined in four instances',
 			items: [
-				{ t: 'By the prosecutor in preliminary investigation', d: 'Executive determination: whether to file an information (Rule 112, Secs. 1 and 3).', s: 'by the prosecutor — whether to file' },
+				{ t: 'By the prosecutor in preliminary investigation (historically probable cause; now PFC + RCC for DOJ/NPS)', d: 'Executive determination whether to file an information: DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025) replaces mere probable cause with prima facie evidence with reasonable certainty of conviction (PFC + RCC) for NPS prosecutors; the Ombudsman retains criminal probable cause (Rule 112, Secs. 1 and 3; RA 6770).', s: 'by the prosecutor — whether to file (PFC + RCC for DOJ/NPS; probable cause for Ombudsman)' },
 				{ t: 'By the judge on the filing of the information', d: 'Judicial determination: whether to issue a warrant of arrest or commitment order (Rule 112, Secs. 5 and 8).', s: 'by the judge — whether to issue a warrant' },
 				{ t: 'By a peace officer or private person making a warrantless arrest', d: 'When an offense has just been committed and he has probable cause based on personal knowledge (Rule 113, Sec. 5[b]).', s: 'by the arresting person — hot pursuit' },
 				{ t: 'By the judge issuing a search warrant', d: 'In connection with one specific offense, after personally examining the complainant and witnesses (Rule 126, Sec. 4).', s: 'by the judge — search warrant' }
@@ -323,18 +323,18 @@ export const r112: RuleChapter = {
 		{
 			id: 'E112.8',
 			name: 'Remedies against resolutions in preliminary investigation',
-			source: 'Rule 112, Sec. 4; DOJ DC 70 and 70-A (2000); MC 58 (1993); Ombudsman A.O. 07; Tiu, pp. 86–89; Gatchalian v. Ombudsman (2018)',
+			source: 'Rule 112, Sec. 4; DOJ DC 015 & 028 (2024); Meking v. Remulla (2025); MC 58 (1993); Ombudsman A.O. 07; Tiu, pp. 86–89; Gatchalian v. Ombudsman (2018)',
 			kind: 'notes',
 			memorize: true,
 			ordered: true,
 			lead: 'The remedies are',
 			items: [
-				{ t: 'Motion for reconsideration with the prosecution office', d: 'One motion only.', s: 'motion for reconsideration' },
-				{ t: 'Petition for review to the Secretary of Justice (or the Regional State Prosecutor for MTC cases outside NCR)', d: 'Within 15 days; not given due course if the accused was already arraigned when it was filed.', s: 'petition for review to the Secretary of Justice within 15 days' },
+				{ t: 'Verified motion for reconsideration with the prosecution office', d: 'One motion only: within 15 days from receipt under DOJ DC No. 015 (2024) (10 calendar days for Expedited PI under DOJ DC No. 028, 2024).', s: 'verified MR (15 days DC 015; 10 calendar days EPI DC 028)' },
+				{ t: 'Petition for review to the Secretary of Justice (or the Regional State Prosecutor for MTC cases outside NCR)', d: 'Appeal to the DOJ within 15 days from receipt of the resolution or denial of MR; not given due course if the accused was already arraigned when it was filed.', s: 'petition for review to the DOJ within 15 days' },
 				{ t: 'Appeal to the Office of the President', d: 'Only for offenses punishable by reclusion perpetua to death, on new and material issues, within 30 days, and if prescription will not lapse within 6 months (MC 58).', s: 'appeal to the Office of the President (RP to death only)' },
 				{ t: 'Petition for certiorari under Rule 65', d: 'Against the Secretary of Justice, with the CA (CTA for tax and tariff cases); against the Ombudsman in criminal cases, directly with the Supreme Court.', s: 'Rule 65 — CA (DOJ), CTA (tax), SC (Ombudsman)' }
 			],
-			verify: 'DOJ DC 015 (2024) may have changed the MR and petition-for-review periods.',
+			verify: 'Confirmed: DOJ DC No. 015 (2024) sets a 15-day verified MR period and DOJ DC No. 028 (2024) sets a 10-calendar-day MR period for EPI (upheld in Meking v. Remulla, Nov. 11, 2025, En Banc).',
 			question: 'What are the remedies of a party aggrieved by the resolution of the prosecutor? Of the Ombudsman?'
 		},
 		{
@@ -388,11 +388,11 @@ export const r112: RuleChapter = {
 	comparisons: [
 		{
 			id: 'C112.1',
-			title: 'Executive (prosecutorial) vs. judicial determination of probable cause',
-			a: 'Executive determination',
-			b: 'Judicial determination',
-			meaning: ['Whether there is sufficient ground to file an information and hold the respondent for trial.', 'Whether there is probable cause to issue a warrant of arrest (or commitment order).'],
-			basis: ['Rule 112, Secs. 1, 3, 4', 'Const., Art. III, Sec. 2; Rule 112, Secs. 5 and 8(b)'],
+			title: 'Executive (prosecutorial) vs. judicial determination',
+			a: 'Executive determination (PFC + RCC / probable cause)',
+			b: 'Judicial determination (probable cause)',
+			meaning: ['Whether there is prima facie evidence with reasonable certainty of conviction (DOJ DC No. 015, 2024; upheld in Meking v. Remulla, 2025) — or probable cause (Ombudsman / old Rule 112) — to file an information.', 'Whether there is judicial probable cause to issue a warrant of arrest (or commitment order).'],
+			basis: ['DOJ DC No. 015 & 028 (2024); Meking v. Remulla (2025); Rule 112, Secs. 1, 3, 4', 'Const., Art. III, Sec. 2; Rule 112, Secs. 5 and 8(b)'],
 			who: ['Investigating prosecutor, approved by the head of office; reviewable by the Secretary of Justice.', 'The judge, personally.'],
 			when: ['During preliminary investigation or inquest.', 'Upon the filing of the information.'],
 			reqs: ['Affidavits and counter-affidavits; resolution; certification.', 'Personal evaluation of the resolution and supporting evidence; personal examination of witnesses optional.'],
@@ -409,10 +409,10 @@ export const r112: RuleChapter = {
 			a: 'Preliminary investigation (Sec. 3)',
 			b: 'Inquest (Sec. 6)',
 			meaning: ['A full inquiry into probable cause with notice and counter-affidavits.', 'An informal, summary investigation of a person arrested without a warrant, to decide whether he should remain in custody and be charged.'],
-			basis: ['Rule 112, Secs. 1–4', 'Rule 112, Sec. 6; DO 153 Part II; DOJ Circular 61 (1993); DOJ DC 015 (2024)'],
+			basis: ['DOJ DC No. 015 (2024); Meking v. Remulla (2025); Rule 112, Secs. 1–4', 'Rule 112, Sec. 6; DOJ DC No. 015 (2024); DOJ Circular 61 (1993)'],
 			who: ['Investigating prosecutor (or other authorized officer).', 'Inquest prosecutor.'],
-			when: ['Respondent not under arrest; penalty ≥ 4y 2m 1d.', 'Lawful warrantless arrest; offense requiring preliminary investigation.'],
-			reqs: ['Complaint, subpoena, counter-affidavit, optional hearing, resolution.', 'Referral documents (affidavit of arrest, investigation report, statements); check legality of the arrest; probable cause.'],
+			when: ['Respondent not under arrest; penalty ≥ 6 years and 1 day under DOJ DC No. 015 (2024) (superseding old Rule 112\'s 4y 2m 1d; 1y 1d–6y = EPI, 1d–1y = SI under DOJ DC No. 028).', 'Lawful warrantless arrest; offense requiring preliminary investigation.'],
+			reqs: ['Complaint, subpoena, counter-affidavit, optional hearing, resolution (PFC + RCC).', 'Referral documents (affidavit of arrest, investigation report, statements); check legality of the arrest; PFC + RCC.'],
 			time: ['10/10/10 days under Sec. 3 (DO 153: resolve within 60 or 90 days).', 'Within the Art. 125 periods (12/18/36 hours).'],
 			exceptions: ['—', 'The arrested person may opt for a full PI by waiving Art. 125 with counsel, or ask for one within 5 days after filing.'],
 			effect: ['Information filed or complaint dismissed.', 'Information filed (commitment order, no warrant) or release recommended.'],
@@ -422,16 +422,16 @@ export const r112: RuleChapter = {
 		},
 		{
 			id: 'C112.3',
-			title: 'Probable cause to file an information vs. probable cause to issue a warrant of arrest',
-			a: 'Probable cause to file (charge)',
-			b: 'Probable cause for a warrant',
-			meaning: ['Facts and circumstances that would lead a person of ordinary caution to entertain an honest and strong suspicion that the respondent is guilty (Tiu, p. 67).', '"Such facts and circumstances which would lead a reasonably discreet and prudent man to believe that an offense has been committed by the person sought to be arrested" (Ocampo v. Abando).'],
-			basis: ['Rule 112, Secs. 1 and 4', 'Const., Art. III, Sec. 2; Rule 112, Sec. 5'],
+			title: 'Executive quantum to file an information (PFC + RCC) vs. judicial probable cause for a warrant of arrest',
+			a: 'Executive quantum to file (DOJ DC 015: PFC + RCC)',
+			b: 'Judicial probable cause for a warrant',
+			meaning: ['Under DOJ DC No. 015 (2024), upheld in Meking v. Remulla (2025): prima facie evidence with reasonable certainty of conviction (superseding mere executive probable cause for NPS prosecutors; the Ombudsman retains criminal probable cause).', '"Such facts and circumstances which would lead a reasonably discreet and prudent man to believe that an offense has been committed by the person sought to be arrested" (Ocampo v. Abando).'],
+			basis: ['DOJ DC No. 015 & 028 (2024); Meking v. Remulla (2025); Rule 112, Secs. 1 and 4', 'Const., Art. III, Sec. 2; Rule 112, Sec. 5'],
 			who: ['Prosecutor.', 'Judge.'],
 			when: ['Before filing.', 'After filing.'],
-			reqs: ['Evidence that engenders a well-founded belief of probable guilt; more than bare suspicion, less than proof for conviction.', 'Same quantum, plus the necessity of placing the accused under custody (in Sec. 8 cases the judge may issue summons instead).'],
-			time: ['Sec. 3 periods.', 'Sec. 5 periods.'],
-			exceptions: ['DOJ internal standard since 2024: "prima facie evidence with reasonable certainty of conviction" (DC 015).', 'No warrant if the accused is detained, after inquest, or for fine-only offenses.'],
+			reqs: ['Admissible evidence establishing every element of the offense with reasonable certainty of conviction (PFC + RCC).', 'Judicial probable cause (reasonable belief that an offense was committed by the accused), plus necessity of placing him under custody.'],
+			time: ['Sec. 3 / DOJ DC 015 & 028 periods.', 'Sec. 5 periods.'],
+			exceptions: ['Upheld as valid executive rulemaking in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc); Ombudsman retains probable cause.', 'No warrant if the accused is detained, after inquest, or for fine-only offenses.'],
 			effect: ['Respondent becomes an accused; case goes to court.', 'Accused is arrested; court acquires jurisdiction over his person.'],
 			trap: ['Thinking the judge must hold a hearing (not required — Ocampo).', 'Thinking a DOJ "reasonable certainty" standard binds the court.'],
 			decisive: 'The question asked: "Should he be tried?" (prosecutor) vs. "Should he be arrested?" (judge).',
@@ -619,7 +619,7 @@ export const r112: RuleChapter = {
 		{ ref: 'Rule 112, Sec. 3(f)', act: 'Resolve the preliminary investigation', who: 'Investigating officer', period: '10 days', start: 'End of the investigation', exceptions: 'DO 153: whole PI within 60 days (90 for capital offenses) from assignment', effect: 'Delay — administrative; speedy disposition (Cagang)', kind: 'procedural', verify: 'DO 153 periods may be superseded by DOJ DC 015 (2024)' },
 		{ ref: 'Rule 112, Sec. 4', act: 'Forward the record to the head of office', who: 'Investigating prosecutor', period: '5 days', start: 'Date of the resolution', exceptions: '—', effect: '—', kind: 'procedural' },
 		{ ref: 'Rule 112, Sec. 4', act: 'Act on the resolution', who: 'Provincial/city prosecutor, chief state prosecutor, Ombudsman or deputy', period: '10 days', start: 'Receipt of the record', exceptions: '—', effect: 'Approve, reverse or return', kind: 'procedural' },
-		{ ref: 'DOJ DC 70 (2000), Sec. 3', act: 'Petition for review to the Secretary of Justice', who: 'Aggrieved party', period: '15 days', start: 'Receipt of the resolution, or of the denial of the MR', exceptions: 'Not given due course if the accused was arraigned before filing', effect: 'Late petition dismissed', kind: 'procedural', verify: 'May be changed by DOJ DC 015 (2024)' },
+		{ ref: 'DOJ DC 015 (2024) / DC 028 (2024)', act: 'Verified motion for reconsideration (and Petition for Review to DOJ)', who: 'Aggrieved party', period: 'Verified MR: 15 days (DC 015) / 10 calendar days for EPI (DC 028); Petition for Review to DOJ: 15 days', start: 'Receipt of the resolution, or of the denial of the MR', exceptions: 'Not given due course if the accused was arraigned before filing', effect: 'Late motion/petition dismissed', kind: 'procedural' },
 		{ ref: 'DOJ DC 70, Sec. 13', act: 'MR of the Secretary\'s resolution', who: 'Aggrieved party', period: '10 days (non-extendible); one MR only', start: 'Receipt of the resolution on appeal', exceptions: '—', effect: 'Finality', kind: 'procedural' },
 		{ ref: 'MC 58 (1993)', act: 'Appeal to the Office of the President', who: 'Aggrieved party', period: '30 days', start: 'Notice of the Secretary\'s resolution', exceptions: 'Only RP-to-death offenses, new and material issues, prescription not lapsing within 6 months', effect: 'Outright dismissal', kind: 'procedural' },
 		{ ref: 'Ombudsman A.O. 07, Rule II, Sec. 7', act: 'MR of the Ombudsman\'s resolution', who: 'Aggrieved party', period: '5 days; one MR only', start: 'Notice', exceptions: '—', effect: 'Finality; then Rule 65 to the SC', kind: 'procedural', verify: 'Ombudsman rules have since been revised; check the current period' },
@@ -634,7 +634,7 @@ export const r112: RuleChapter = {
 	],
 	traps: [
 		{ wrong: 'Preliminary investigation is a constitutional right.', right: 'It is statutory, though a component of due process when granted, and waivable.', example: 'Accused pleads without asking for PI — waived.' },
-		{ wrong: 'The threshold is based on the penalty the court will likely impose.', right: 'It is the penalty prescribed by law, without regard to the fine.', example: 'An offense punishable by prision correccional in its medium period (2y 4m 1d to 4y 2m) plus a ₱100,000 fine needs no PI — the fine is disregarded.' },
+		{ wrong: 'The threshold is based on the penalty the court will likely impose, or remains 4 years, 2 months and 1 day for NPS prosecutors.', right: 'It is the penalty prescribed by law, without regard to the fine — now at least 6 years and 1 day for mandatory full PI under DOJ DC No. 015 (2024), upheld in Meking v. Remulla (2025) (1y 1d–6y = EPI; 1d–1y = SI under DOJ DC No. 028).', example: 'An offense punishable by prision correccional (up to 6 years) plus a ₱100,000 fine gets Expedited PI under DC 028, not full PI — the fine is disregarded for the 6-year-and-1-day threshold.' },
 		{ wrong: 'The absence of preliminary investigation is a ground to quash.', right: 'It is not; the court suspends and remands (Larrañaga; Socrates).', example: 'Motion to quash on that ground — denied; motion to remand — granted if timely.' },
 		{ wrong: 'The respondent may file a motion to dismiss instead of a counter-affidavit.', right: 'Not allowed (Sec. 3[c]); Ombudsman rules allow it only for lack of jurisdiction.', example: 'Respondent who files only a motion to dismiss is deemed not to have controverted the complaint.' },
 		{ wrong: 'The respondent may cross-examine the complainant\'s witnesses at the clarificatory hearing.', right: 'No; he may submit questions (Sec. 3[e]; Estrada v. Ombudsman).', example: '—' },
@@ -647,8 +647,8 @@ export const r112: RuleChapter = {
 		{ wrong: 'A dismissal by the judge for lack of probable cause is reviewed by certiorari.', right: 'It is a final order; appeal (Cajipe).', example: '—' }
 	],
 	corrections: [
-		{ old: 'Summary procedure covers offenses punishable by imprisonment not exceeding six months or a fine not exceeding ₱1,000 (1991 Rule).', fix: 'The 2022 Rules on Expedited Procedures (effective April 11, 2022) cover offenses punishable by imprisonment not exceeding one year or a fine not exceeding ₱50,000, plus traffic, rental, ordinance and BP 22 cases.', source: 'A.M. No. 08-8-7-SC, Rule I, Sec. 1(B), as quoted in People v. Consebido (2025)' },
-		{ old: 'DO 153 (1996) and DC 70 (2000) govern the prosecutors\' procedure.', fix: 'DOJ DC 015 (2024 DOJ-NPS Rules on Preliminary Investigations and Inquest Proceedings) and DC 028 (2024 Rules on Summary Investigation and Expedited Preliminary Investigation) now govern NPS procedure: PI for offenses of at least 6 years and 1 day; standard "prima facie evidence with reasonable certainty of conviction"; summary investigation for 1 day to 1 year; expedited PI up to 6 years. The Rules of Court are unchanged.', source: 'DOJ DC 015 and DC 028 (2024), as described in secondary sources and in Consebido' },
+		{ old: 'Summary procedure covers offenses punishable by imprisonment not exceeding six months or a fine not exceeding ₱1,000 (1991 Rule).', fix: 'The 2022 Rules on Expedited Procedures (A.M. No. 08-8-7-SC, effective April 11, 2022) cover offenses punishable by imprisonment not exceeding one year or a fine not exceeding ₱50,000 (Art. 365 damage to property fine ≤ ₱150,000), plus traffic, rental, ordinance and BP 22 cases.', source: 'A.M. No. 08-8-7-SC, Rule I, Sec. 1(B), as quoted in People v. Consebido (2025)' },
+		{ old: 'DO 153 (1996), DC 70 (2000), and Rule 112\'s 4-2-1 / probable-cause executive standard govern NPS prosecutors.', fix: 'DOJ Department Circular No. 015 (July 16, 2024) — upheld by the Supreme Court En Banc in Atty. Hazel L. Meking v. Jesus Crispin C. Remulla (G.R. No. 280455, November 11, 2025, Dimaampao, J.) as valid executive rulemaking — and DOJ Department Circular No. 028 (November 13, 2024) govern NPS procedure: mandatory full PI for imprisonment of at least 6 years and 1 day (superseding old Rule 112 4-2-1); executive quantum of prima facie evidence with reasonable certainty of conviction (PFC + RCC); verified MR within 15 days under DC 015 and appeal via Petition for Review to DOJ; Expedited PI for 1y 1d–6y (or fine; 10-calendar-day MR) and Summary Investigation for 1d–1y (or fine) under DC 028. Judicial probable cause remains intact for arrest warrants (Rule 112, Sec. 5), hot pursuit arrests (Rule 113, Sec. 5[b]), search warrants (Rule 126), and Ombudsman criminal probable cause.', source: 'DOJ DC No. 015 (July 16, 2024); DOJ DC No. 028 (Nov. 13, 2024); Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc)' },
 		{ old: 'Remedy against an Ombudsman probable-cause finding: Rule 65 to the SC (Baviera v. Zoleta).', fix: 'Reaffirmed in Gatchalian v. Ombudsman (2018).', source: 'G.R. No. 229288, August 1, 2018' },
 		{ old: 'Speedy disposition — no fixed rule on when the delay is counted.', fix: 'Cagang (2018, En Banc): counted from the formal complaint; fact-finding excluded; burden depends on whether the periods were exceeded; must be invoked timely.', source: 'G.R. Nos. 206438 and 206458, July 31, 2018' }
 	],
@@ -663,7 +663,7 @@ export const r112: RuleChapter = {
 		{ cat: 'B', level: 3, topic: 'Inquest', q: 'Distinguish preliminary investigation from inquest.', a: 'See C112.2.', keys: 'warrantless arrest; Art. 125; summary' },
 		{ cat: 'B', level: 3, topic: 'Remedies', q: 'Distinguish the remedy against a DOJ resolution from the remedy against an Ombudsman resolution in a criminal case.', a: 'See C112.4.', keys: 'Secretary → CA; Ombudsman → SC' },
 		{ cat: 'C', level: 1, topic: 'Nature', q: 'The right to preliminary investigation is guaranteed by the Bill of Rights.', tf: false, short: 'False. It is a statutory right — but a substantive one and a component of due process when granted (Tiu, p. 67).', keys: 'statutory; substantive; waivable' },
-		{ cat: 'C', level: 1, topic: 'Threshold', q: 'Preliminary investigation is required for offenses where the penalty prescribed by law is at least four years, two months and one day, without regard to the fine.', tf: true, short: 'True (Sec. 1).', keys: 'Sec. 1' },
+		{ cat: 'C', level: 1, topic: 'Threshold', q: 'Preliminary investigation is required for offenses where the penalty prescribed by law is at least four years, two months and one day, without regard to the fine.', tf: false, short: 'False. While old Rule 112, Sec. 1 set the threshold at 4 years, 2 months and 1 day, DOJ Department Circular No. 015 (2024) — upheld by the Supreme Court En Banc in Atty. Hazel L. Meking v. Jesus Crispin C. Remulla (G.R. No. 280455, Nov. 11, 2025) — raised mandatory full preliminary investigation to imprisonment of at least 6 years and 1 day under the PFC + RCC quantum. Under DOJ DC No. 028 (2024), 1y 1d–6y undergoes Expedited PI and 1d–1y undergoes Summary Investigation.', keys: 'DOJ DC 015; DOJ DC 028; Meking v. Remulla (2025); Rule 112, Sec. 1' },
 		{ cat: 'C', level: 2, topic: 'Officers', q: 'Municipal trial court judges may conduct preliminary investigations of cases within their territory.', tf: false, short: 'False. That authority was removed by A.M. No. 05-8-26-SC, effective October 3, 2005.', keys: 'A.M. No. 05-8-26-SC' },
 		{ cat: 'C', level: 2, topic: 'Procedure', q: 'A respondent may file a motion to dismiss in lieu of a counter-affidavit.', tf: false, short: 'False. Sec. 3(c) expressly disallows it.', keys: 'Sec. 3(c)' },
 		{ cat: 'C', level: 2, topic: 'Procedure', q: 'At the clarificatory hearing, the respondent\'s counsel may cross-examine the complainant\'s witnesses.', tf: false, short: 'False. The parties may be present but without the right to examine or cross-examine; they may submit questions (Sec. 3[e]).', keys: 'Sec. 3(e)' },
@@ -671,17 +671,17 @@ export const r112: RuleChapter = {
 		{ cat: 'C', level: 3, topic: 'Judicial probable cause', q: 'Before issuing a warrant of arrest, the judge must personally examine the complainant and his witnesses.', tf: false, short: 'False. Personal evaluation of the prosecutor\'s resolution and supporting evidence suffices; personal examination is optional (Soliven v. Makasiar; Ocampo v. Abando).', keys: 'Soliven; Ocampo; personal evaluation' },
 		{ cat: 'C', level: 3, topic: 'Warrantless arrest', q: 'A person arrested without a warrant may ask for preliminary investigation before the information is filed only if he signs a waiver of Art. 125 in the presence of counsel.', tf: true, short: 'True (Sec. 6; RA 7438). He may still apply for bail, and the PI must end within 15 days.', keys: 'Sec. 6; Art. 125 waiver; counsel' },
 		{ cat: 'C', level: 3, topic: 'Motion', q: 'The accused may file a motion for judicial determination of probable cause before arraignment.', tf: false, short: 'False. It is a prohibited motion under the 2017 Revised Guidelines for Continuous Trial, denied outright.', update: 'Tiu describes the practice of filing such motions; the 2017 Guidelines prohibited them.', keys: 'A.M. No. 15-06-10-SC' },
-		{ cat: 'C', level: 4, topic: 'DOJ review', q: 'Once the Secretary of Justice reverses a finding of probable cause, the trial court must grant the prosecution\'s motion to withdraw the information.', tf: false, short: 'False. The court must make its own independent assessment; the Secretary\'s resolution is persuasive, not binding (Crespo; Lanier v. People, 2014).', keys: 'Crespo; Lanier' },
+		{ cat: 'C', level: 4, topic: 'DOJ review', q: 'Once the Secretary of Justice reverses a prosecutor\'s finding of prima facie evidence with reasonable certainty of conviction, the trial court must grant the prosecution\'s motion to withdraw the information.', tf: false, short: 'False. Even under DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025), once the information is filed, the trial court must make its own independent judicial assessment; the Secretary\'s resolution is persuasive, not binding (Crespo; Lanier v. People, 2014).', keys: 'Crespo; Lanier; DOJ DC 015; Meking' },
 		{ cat: 'C', level: 4, topic: 'Ombudsman', q: 'A respondent may challenge the Ombudsman\'s finding of probable cause in a criminal case by Rule 65 certiorari in the Court of Appeals.', tf: false, short: 'False. The petition is filed directly with the Supreme Court (Gatchalian v. Ombudsman, 2018).', keys: 'Gatchalian; Rule 65; SC' },
 		{ cat: 'C', level: 5, topic: 'Delay', q: 'If the prosecutor takes three years to resolve a simple complaint, the offense prescribes.', tf: false, short: 'False. The filing interrupted prescription; delay may violate the right to speedy disposition (Cagang), which is a different ground for dismissal.', trap: 'Confusing prescription with speedy disposition.', keys: 'interruption; Cagang' },
 		{
 			cat: 'D', level: 4, topic: 'Absence of PI', title: 'No preliminary investigation — what to do',
-			facts: 'An information for qualified theft (penalty above 4 years, 2 months and 1 day) is filed directly in the RTC without preliminary investigation. The accused is arrested on a warrant. Before arraignment, he moves to quash on the ground that no preliminary investigation was held.',
+			facts: 'An information for qualified theft (penalty of at least 6 years and 1 day) is filed directly in the RTC without preliminary investigation. The accused is arrested on a warrant. Before arraignment, he moves to quash on the ground that no preliminary investigation was held.',
 			q: 'Rule on the motion. What should the court do?',
 			issue: 'Whether the absence of preliminary investigation is a ground to quash, and the proper remedy.',
 			alac: {
 				answer: 'Deny the motion to quash, but suspend the proceedings and remand the case for preliminary investigation.',
-				legalBasis: 'Rule 112, Sec. 1: PI is required for offenses with a penalty of at least 4 years, 2 months and 1 day. Rule 117, Sec. 3 does not list its absence as a ground to quash. Larrañaga v. CA; Socrates v. Sandiganbayan: the court holds the proceedings in abeyance and remands. Rule 114, Sec. 26: the objection must be raised before plea.',
+				legalBasis: 'DOJ DC No. 015 (2024), upheld in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc): mandatory full PI is required for offenses punishable by imprisonment of at least 6 years and 1 day (superseding old Rule 112, Sec. 1\'s 4 years, 2 months and 1 day threshold). Rule 117, Sec. 3 does not list its absence as a ground to quash. Larrañaga v. CA; Socrates v. Sandiganbayan: the court holds the proceedings in abeyance and remands. Rule 114, Sec. 26: the objection must be raised before plea.',
 				application: 'The offense required PI; none was held. The accused raised it before arraignment. The proper relief is remand, not dismissal; the information remains valid and the court keeps jurisdiction.',
 				conclusion: 'Treat the motion as one for preliminary investigation: suspend and remand.'
 			},
@@ -735,23 +735,23 @@ export const r112: RuleChapter = {
 			q: 'Which procedure applies to each? Does any require preliminary investigation?',
 			issue: 'Determining the applicable procedure from the prescribed penalty.',
 			alac: {
-				answer: '(1) Expedited (summary) procedure; (2) Sec. 8 procedure if not covered by the Expedited Rules — but arresto mayor (up to 6 months) is within the one-year ceiling, so it is also under the Expedited Rules; (3) preliminary investigation.',
-				legalBasis: 'Rule 112, Sec. 1 (PI for at least 4y 2m 1d); Sec. 8 (cases below the threshold not under the summary rule); 2022 Rules on Expedited Procedures, Rule I, Sec. 1(B) (imprisonment not exceeding one year or fine not exceeding ₱50,000); Rule 110, Sec. 1 (in chartered cities, file with the prosecutor).',
-				application: 'Arresto menor and arresto mayor both fall within one year — expedited procedure, filed with the city prosecutor (chartered city). The estafa\'s maximum (prision mayor minimum, 6y 1d to 8y) exceeds 4y 2m 1d — preliminary investigation required.',
-				conclusion: '(1) and (2): expedited procedure via the city prosecutor; (3): preliminary investigation.'
+				answer: '(1) and (2): Summary Investigation before the city prosecutor under DOJ DC No. 028 (2024), and Expedited (Summary) Procedure in the MeTC under the 2022 Rules on Expedited Procedures; (3) mandatory full Preliminary Investigation under DOJ DC No. 015 (2024).',
+				legalBasis: 'DOJ DC No. 015 (2024), upheld in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc) (mandatory full PI for at least 6 years and 1 day; PFC + RCC; superseding old Rule 112, Sec. 1\'s 4y 2m 1d); DOJ DC No. 028 (2024) (Summary Investigation for 1 day–1 year; Expedited PI for 1y 1d–6y); 2022 Rules on Expedited Procedures (A.M. No. 08-8-7-SC), Rule I, Sec. 1(B) (imprisonment ≤ 1 year or fine ≤ ₱50,000; Art. 365 damage ≤ ₱150,000); Rule 110, Sec. 1 (in chartered cities, file with the prosecutor).',
+				application: 'Arresto menor and arresto mayor (up to 6 months) both fall within the 1-year ceiling — Summary Investigation before the city prosecutor (chartered city) under DOJ DC No. 028, and Expedited Procedure in court. The estafa\'s maximum (prision mayor minimum, 6y 1d to 8y) reaches at least 6 years and 1 day — mandatory full preliminary investigation under DOJ DC No. 015 (and would also exceed old Rule 112\'s 4y 2m 1d).',
+				conclusion: '(1) and (2): Summary Investigation via the city prosecutor and Expedited Procedure in court; (3): mandatory full preliminary investigation.'
 			},
-			trap: 'Using Tiu\'s 1991 summary-procedure ceiling (six months) would put case (2) under Sec. 8 instead.',
-			update: 'Under the DOJ\'s 2024 circulars, the prosecutor would use summary investigation for (1) and (2) and — internally — expedited PI for offenses up to 6 years; (3) would get formal PI only if its prescribed penalty reaches 6y 1d (it does, at the maximum).',
-			keys: 'Sec. 1; Sec. 8; 2022 Expedited Rules; chartered city'
+			trap: 'Using Tiu\'s 1991 summary-procedure ceiling (6 months / ₱1,000) or the superseded 4-2-1 threshold.',
+			update: 'DOJ DC No. 015 and DC No. 028 (2024), upheld as valid executive rulemaking in Meking v. Remulla (2025, En Banc), now govern NPS prosecutors: Summary Investigation (1d–1y), Expedited PI (1y 1d–6y), and mandatory full PI (≥ 6y 1d) — all under the PFC + RCC quantum.',
+			keys: 'DOJ DC 015 & 028; Meking (2025); 2022 Expedited Rules; chartered city'
 		},
 		{
 			cat: 'E', level: 5, topic: 'Crespo / Lanier', title: 'DOJ reverses after arraignment',
-			facts: 'After A is arraigned for estafa, the Secretary of Justice — on a petition filed before arraignment — reverses the finding of probable cause and directs the prosecutor to move for withdrawal of the information. The judge grants the motion, stating: "The Court defers to the expertise of the DOJ."',
+			facts: 'After A is arraigned for estafa, the Secretary of Justice — on a petition filed before arraignment — reverses the prosecutor\'s finding of prima facie evidence with reasonable certainty of conviction and directs the prosecutor to move for withdrawal of the information. The judge grants the motion, stating: "The Court defers to the expertise of the DOJ."',
 			q: '(a) Could the Secretary still act after arraignment? (b) Was the judge\'s order proper? (c) What may the private complainant do?',
 			issue: 'Effect of a DOJ reversal after the information is filed, and the court\'s duty.',
 			alac: {
 				answer: '(a) Yes. (b) No. (c) File a petition for certiorari under Rule 65.',
-				legalBasis: 'DC 70, Sec. 7: arraignment after the filing of the petition does not bar the Secretary from exercising his power of review. Crespo v. Mogul; Lanier v. People (2014): the trial court must make an independent assessment of a motion to withdraw; deferring entirely to the DOJ is grave abuse of discretion. Tiu (p. 94): the private offended party may file Rule 65 when the court allows withdrawal without its own finding.',
+				legalBasis: 'DOJ review rules (DOJ DC No. 015, 2024; DC 70, Sec. 7): arraignment after the filing of the petition does not bar the Secretary from exercising his power of review. Crespo v. Mogul; Lanier v. People (2014): even under the DOJ\'s PFC + RCC executive quantum (upheld in Meking v. Remulla, 2025), the trial court must make an independent judicial assessment of a motion to withdraw; deferring entirely to the DOJ is grave abuse of discretion. Tiu (p. 94): the private offended party may file Rule 65 when the court allows withdrawal without its own finding.',
 				application: 'The petition was filed before arraignment, so the Secretary could act. But the judge merely deferred, without evaluating the evidence himself.',
 				conclusion: 'The order granting withdrawal is void; the complainant may seek its annulment by certiorari.'
 			},
@@ -760,7 +760,7 @@ export const r112: RuleChapter = {
 		},
 		{
 			cat: 'E', level: 5, topic: 'Inquest — offense mismatch', title: 'Arrested for one crime, inquested for another',
-			facts: 'Police arrest Y without a warrant for allegedly inciting to sedition during a rally. At the inquest, the prosecutor, on the same referral, finds probable cause for rebellion — a different and graver offense — and files an information for rebellion.',
+			facts: 'Police arrest Y without a warrant for allegedly inciting to sedition during a rally. At the inquest, the prosecutor, on the same referral, finds prima facie evidence with reasonable certainty of conviction for rebellion — a different and graver offense — and files an information for rebellion.',
 			q: 'Is the inquest valid?',
 			issue: 'Whether an inquest may be conducted for an offense other than the one for which the person was arrested.',
 			alac: {
@@ -791,7 +791,7 @@ export const r112: RuleChapter = {
 		{ cat: 'F', level: 4, topic: 'Cajipe v. People', q: 'What is the prosecution\'s remedy when the trial court dismisses the information for lack of probable cause, and why is there no double jeopardy?', a: 'Appeal (the order is final) — or refiling with new evidence. No double jeopardy because the accused has not been arraigned (Cajipe v. People, 2014). Certiorari is not the remedy.', keys: 'final order; appeal; no arraignment' },
 		{
 			cat: 'G', level: 5, topic: 'Integrated Rule 112', title: 'Rule 112 integrated — from complaint to warrant',
-			facts: 'On June 1, C files an estafa complaint (penalty above 6 years) against R in Quezon City, with affidavits notarized by a notary public although an assistant prosecutor was available in the same building. On June 20, the prosecutor issues a subpoena. R receives it on June 25 and, on July 5, files a "Motion to Dismiss for Lack of Jurisdiction" arguing the transaction occurred in Makati. The prosecutor resolves on July 30 finding probable cause; the city prosecutor approves on August 20. The information is filed on August 25. On August 26, R files a "Motion for Judicial Determination of Probable Cause." On September 15, the judge, without reading the affidavits, issues a warrant.',
+			facts: 'On June 1, C files an estafa complaint (penalty above 6 years) against R in Quezon City, with affidavits notarized by a notary public although an assistant prosecutor was available in the same building. On June 20, the prosecutor issues a subpoena. R receives it on June 25 and, on July 5, files a "Motion to Dismiss for Lack of Jurisdiction" arguing the transaction occurred in Makati. The prosecutor resolves on July 30 finding prima facie evidence with reasonable certainty of conviction; the city prosecutor approves on August 20. The information is filed on August 25. On August 26, R files a "Motion for Judicial Determination of Probable Cause." On September 15, the judge, without reading the affidavits, issues a warrant.',
 			q: 'Identify every procedural defect and its effect.',
 			issue: 'Compliance with Rule 112, Secs. 3–5, the 2017 Guidelines, and the effect of each defect.',
 			alac: {
@@ -805,19 +805,19 @@ export const r112: RuleChapter = {
 		}
 	],
 	memorize: [
-		'Definition of PI (Sec. 1) and the threshold: at least 4 years, 2 months, 1 day, without regard to the fine',
+		'Mandatory full PI (DOJ DC No. 015, 2024; Meking v. Remulla, Nov. 11, 2025, En Banc): penalty ≥ 6 years and 1 day + PFC + RCC quantum (superseding old Rule 112, Sec. 1 4-2-1); EPI (1y 1d–6y, 10-day MR) & SI (1d–1y) under DOJ DC No. 028 (2024)',
 		'Officers (Sec. 2): prosecutors and state prosecutors; others by law; no MTC judges since 2005',
 		'Sec. 3 steps and periods: 10 / 10 / hearing 10 & 5 / 10',
 		'Sec. 4: forward in 5 days; head acts in 10; no filing or dismissal without prior written approval',
-		'Sec. 5: judge evaluates in 10 days; additional evidence in 5; resolve in 30; when no warrant',
+		'Sec. 5: judge evaluates judicial probable cause in 10 days; additional evidence in 5; resolve in 30; when no warrant',
 		'Sec. 6: inquest; PI before filing with Art. 125 waiver and counsel (15 days); PI within 5 days after learning of filing',
 		'Art. 125: 12 / 18 / 36 hours',
-		'Remedies: MR → Secretary (15 days) → CA via Rule 65; Ombudsman → SC via Rule 65 (Gatchalian)',
-		'2017 Guidelines prohibited motions; 2024 DOJ circulars (DC 015, DC 028)'
+		'Remedies: verified MR (15 days DC 015; 10 calendar days EPI DC 028) → Petition for Review to DOJ (15 days) → CA via Rule 65; Ombudsman → SC via Rule 65 (Gatchalian)',
+		'2017 Guidelines prohibited motions; 2024 DOJ circulars (DC 015, DC 028) & Meking v. Remulla (2025)'
 	],
 	flashcards: [
-		['Define preliminary investigation.', 'An inquiry or proceeding to determine whether there is sufficient ground to engender a well-founded belief that a crime has been committed and the respondent is probably guilty thereof, and should be held for trial.'],
-		['When is PI required?', 'For offenses with a prescribed penalty of at least 4 years, 2 months and 1 day, without regard to the fine (except lawful warrantless arrests — inquest).'],
+		['What is preliminary investigation, and what quantum governs NPS prosecutors?', 'A pre-filing screening inquiry (not a trial). Under DOJ DC No. 015 (2024), upheld in Meking v. Remulla (Nov. 11, 2025, En Banc), NPS prosecutors determine prima facie evidence with reasonable certainty of conviction (PFC + RCC) — replacing mere executive probable cause under old Rule 112 (judicial probable cause remains for Sec. 5 arrest warrants, search warrants, hot pursuit, and Ombudsman criminal cases).'],
+		['When is mandatory full PI required?', 'For offenses with a prescribed penalty of at least 6 years and 1 day under DOJ DC No. 015 (2024) (upheld in Meking v. Remulla, 2025), superseding old Rule 112\'s 4 years, 2 months and 1 day (except lawful warrantless arrests — inquest). Under DOJ DC No. 028 (2024), 1y 1d–6y = Expedited PI and 1d–1y = Summary Investigation.'],
 		['Can an MTC judge conduct PI?', 'No, since October 3, 2005.'],
 		['Period to subpoena or dismiss?', '10 days from filing.'],
 		['Period for counter-affidavit?', '10 days from receipt of subpoena.'],
@@ -834,11 +834,11 @@ export const r112: RuleChapter = {
 	],
 	oral: [
 		['"Is preliminary investigation a constitutional right?"', 'No. It is statutory, but once granted it is a substantive right and part of due process. It is waived if not invoked before or at plea.'],
-		['"What does the prosecutor determine in a preliminary investigation?"', 'Probable cause — whether there is sufficient ground to believe a crime was committed and the respondent is probably guilty and should be tried. Not guilt beyond reasonable doubt.'],
+		['"What does the prosecutor determine in a preliminary investigation?"', 'Under DOJ DC No. 015 (2024), upheld as valid executive rulemaking in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025, En Banc), an NPS prosecutor determines whether there is prima facie evidence with reasonable certainty of conviction (PFC + RCC) to file an Information — replacing mere executive probable cause under old Rule 112 (though still not trial proof beyond reasonable doubt). By contrast, the Ombudsman retains criminal probable cause, and the judge independently determines judicial probable cause for an arrest warrant under Sec. 5.'],
 		['"The judge received the information. What must he do?"', 'Within ten days, personally evaluate the prosecutor\'s resolution and supporting evidence. Dismiss if probable cause is clearly lacking; issue a warrant or commitment order if present; if in doubt, require additional evidence within five days and resolve within thirty days from filing.'],
 		['"What if there was no preliminary investigation?"', 'The information is valid and the court has jurisdiction; it is not a ground to quash. The accused should, before plea, ask the court to suspend proceedings and remand for preliminary investigation.'],
 		['"Distinguish inquest from preliminary investigation."', 'Inquest is a summary investigation of a person lawfully arrested without a warrant, done within the Art. 125 periods, to decide whether he stays in custody and is charged. PI is the full inquiry with subpoena and counter-affidavits. The arrested person may opt for PI by waiving Art. 125 with counsel, or within five days after learning of the filing.'],
-		['"What is your remedy against a DOJ resolution? Against the Ombudsman\'s?"', 'For DOJ: MR, petition for review to the Secretary within 15 days, then Rule 65 in the CA (CTA for tax cases). For the Ombudsman in criminal cases: MR, then Rule 65 directly in the Supreme Court.']
+		['"What is your remedy against a DOJ resolution? Against the Ombudsman\'s?"', 'For DOJ: verified MR (15 days under DC 015; 10 calendar days for EPI under DC 028), Petition for Review to the Secretary within 15 days, then Rule 65 in the CA (CTA for tax cases). For the Ombudsman in criminal cases: MR, then Rule 65 directly in the Supreme Court.']
 	],
 	checklist: [
 		'I can define preliminary investigation and state the threshold penalty.',
@@ -853,19 +853,19 @@ export const r112: RuleChapter = {
 		'I can apply Cagang to delay in preliminary investigation.'
 	],
 	sheet: [
-		'<b>PI (Sec. 1):</b> probable cause, not guilt; required if penalty ≥ 4y 2m 1d (prescribed, regardless of fine). Statutory, substantive, waivable before plea.',
+		'<b>PI (DOJ DC 015 & 028, 2024; Meking v. Remulla, 2025; Rule 112, Sec. 1):</b> executive PFC + RCC (not guilt); mandatory full PI if penalty ≥ 6y 1d (superseding old Rule 112 4y 2m 1d); EPI for 1y 1d–6y (10-day MR); SI for 1d–1y. Statutory, substantive, waivable before plea.',
 		'<b>Who (Sec. 2):</b> prosecutors; state prosecutors; Ombudsman, COMELEC, PCGG. No MTC judges since 2005.',
 		'<b>Procedure (Sec. 3):</b> sworn affidavits → 10 days subpoena/dismiss → 10 days counter-affidavit (no MTD) → optional hearing (10/5, no cross) → 10 days resolve.',
 		'<b>Review (Sec. 4):</b> forward 5 days; head acts 10 days; prior written approval; Secretary may reverse; court not bound (Crespo, Lanier).',
-		'<b>Warrant (Sec. 5):</b> judge personally evaluates within 10 days; extra evidence 5 days; resolve 30 days. No warrant if detained, after inquest, fine only.',
+		'<b>Warrant (Sec. 5):</b> judge personally evaluates judicial probable cause within 10 days; extra evidence 5 days; resolve 30 days. No warrant if detained, after inquest, fine only.',
 		'<b>Inquest (Sec. 6):</b> warrantless arrest; Art. 125 (12/18/36 h); PI with waiver + counsel (15 days); PI within 5 days after learning of filing.',
-		'<b>Sec. 8:</b> below threshold — prosecutor 10 days; MTC judge 10/10/10; summons possible.',
-		'<b>Remedies:</b> DOJ → Secretary (15 days) → CA Rule 65; Ombudsman → SC Rule 65 (Gatchalian). 2017 Guidelines: no motion for judicial determination of PC. 2024 DOJ DC 015/028.'
+		'<b>Sec. 8 / DC 028:</b> below 6y 1d — EPI (1y 1d–6y) or SI (1d–1y) before NPS prosecutor; direct filing outside chartered cities: MTC judge 10/10/10, summons possible.',
+		'<b>Remedies:</b> DOJ → verified MR (15d DC 015 / 10d EPI DC 028) → Petition for Review to DOJ (15d) → CA Rule 65; Ombudsman → SC Rule 65 (Gatchalian). 2017 Guidelines: no motion for judicial determination of PC.'
 	],
 	watchFor: `<strong>Watch for: the penalty, the arrest, and who acted when.</strong>
 <ul>
-<li>Prescribed penalty ≥ 4y 2m 1d? Was the respondent arrested without a warrant (inquest)?</li>
-<li>Count the periods: 10/10/10 (Sec. 3), 5/10 (Sec. 4), 10/5/30 (Sec. 5), 15 and 5 (Sec. 6).</li>
+<li>Prescribed penalty ≥ 6 years and 1 day (mandatory full PI + PFC + RCC under DOJ DC 015 / <em>Meking v. Remulla</em>, 2025; 1y 1d–6y = Expedited PI, 1d–1y = Summary Investigation under DOJ DC 028; old Rule 112 was 4y 2m 1d)? Was the respondent arrested without a warrant (inquest)?</li>
+<li>Count the periods: 10/10/10 (Sec. 3), 5/10 (Sec. 4), 10/5/30 (Sec. 5), 15 and 5 (Sec. 6), 15-day MR (DC 015) / 10-day EPI MR (DC 028).</li>
 <li>DOJ or Ombudsman? Before or after the information was filed (Crespo)? Before or after arraignment?</li>
 </ul>`
 };

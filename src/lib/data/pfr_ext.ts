@@ -274,8 +274,11 @@ ${notes([
 ${h3('fc-art-176', 'Art. 176', 'Surname, parental authority, support, legitime')}
 ${codal('<p>Illegitimate children shall use the surname and shall be under the parental authority of their mother, and shall be entitled to support in conformity with this Code. However, illegitimate children may use the surname of their father if their filiation has been expressly recognized by the father through the record of birth appearing in the civil register, or when an admission in a public document or private handwritten instrument is made by the father. Provided, the father has the right to institute an action before the regular courts to prove non-filiation during his lifetime. The legitime of each illegitimate child shall consist of one-half of the legitime of a legitimate child. <em>(As amended by R.A. 9255)</em></p>')}
 ${notes([
-	['yellow', 'Memorize', `<p><strong>Surname:</strong> the mother's, as a rule. The father's only if he <strong>expressly recognized</strong> the child through the record of birth, a public document, or a private handwritten instrument.</p><p><strong>Parental authority:</strong> the mother's.</p><p><strong>Support:</strong> under the Code. It comes from the parent's separate property; if that is insufficient, the ACP or CPG advances it, charged to that parent at liquidation (Arts. 94, 121–122, 197).</p><p><strong>Legitime:</strong> one-half of a legitimate child's.</p>`],
-	['red', 'Case', '<em>Grande v. Antonio</em>, G.R. No. 206248, Feb. 18, 2014: "may" is permissive. The choice to use the father\'s surname belongs to the child; the father cannot compel it. Recognition does not give the father parental authority. The rules of the civil registrar\'s administrative order making the father\'s surname mandatory were struck down.'],
+	['yellow', 'Memorize', `<p><strong>Surname:</strong> the mother's, as a rule. The father's only if he <strong>expressly recognized</strong> the child through the record of birth, a public document, or a private handwritten instrument.</p><p><strong>Parental authority:</strong> the mother's.</p><p><strong>Support:</strong> under the Code. It comes from the parent's separate property; if that is insufficient, the ACP or CPG advances it, charged to that parent at liquidation (Arts. 94, 121–122, 197).</p><p><strong>Legitime &amp; Succession:</strong> one-half of a legitimate child's legitime (Art. 176 FC). Under <em>Aquino v. Aquino</em> (2021, En Banc), nonmarital children may now inherit <em>ab intestato</em> from their grandparents by right of representation under Art. 982 CC, softening Art. 992's "iron curtain" in the direct ascending line.</p>`],
+	['red', 'Cases', ul([
+		'<em>Grande v. Antonio</em>, G.R. No. 206248, Feb. 18, 2014: "may" is permissive. The choice to use the father\'s surname belongs to the child; the father cannot compel it. Recognition does not give the father parental authority. The rules of the civil registrar\'s administrative order making the father\'s surname mandatory were struck down.',
+		'<em>Aquino v. Aquino</em>, G.R. Nos. 208912 &amp; 209018, Dec. 7, 2021 (En Banc): reinterpreting Art. 992 CC harmoniously with Art. 982 CC, a nonmarital (illegitimate) child may inherit <em>ab intestato</em> from a grandparent by right of representation regardless of the marital status of the grandparent or the parent; the "iron curtain" in Art. 992 is confined to collateral relatives and no longer bars direct-line representation (see also Rabuya, <em>The Law on Persons and Family Relations</em>).'
+	])],
 	['orange', 'Trap', 'If filiation is proved only by secondary evidence, such as open and continuous possession, the exception for the father\'s surname does not apply. It requires express recognition through one of the listed documents.']
 ])}
 ${table(['Right', 'Legitimate (Art. 174)', 'Illegitimate (Art. 176)'], [
@@ -305,7 +308,7 @@ ${h3('fc-arts-179-182', 'Arts. 179–182', 'Effects and challenge')}
 ${codal('<p><strong>Art. 179.</strong> Legitimated children shall enjoy the same rights as legitimate children.</p><p><strong>Art. 180.</strong> The effects of legitimation shall retroact to the time of the child\'s birth.</p><p><strong>Art. 181.</strong> The legitimation of children who died before the celebration of the marriage shall benefit their descendants.</p><p><strong>Art. 182.</strong> Legitimation may be impugned only by those who are prejudiced in their rights, within five years from the time their cause of action accrues.</p>')}
 ${notes([
 	['yellow', 'Memorize', 'Same rights as legitimate children · retroacts to <strong>birth</strong> · benefits the descendants of a child who already died · impugned only by <strong>those prejudiced</strong>, within <strong>five years</strong> from accrual.'],
-	['purple', 'Why Art. 181', 'So the deceased child\'s own children can inherit from their grandparents as legitimate descendants, by right of representation.'],
+	['purple', 'Why Art. 181', 'So the deceased child\'s own children can inherit from their grandparents as legitimate descendants, by right of representation. Note that even without legitimation, under <em>Aquino v. Aquino</em> (G.R. Nos. 208912 &amp; 209018, Dec. 7, 2021, En Banc), nonmarital grandchildren may already inherit <em>ab intestato</em> from their grandparents by right of representation under Art. 982 CC, softening Art. 992\'s iron curtain in the direct ascending line (Rabuya, <em>The Law on Persons and Family Relations</em>).'],
 	['orange', 'Trap', 'Saying legitimation takes effect from the parents\' marriage. It retroacts to the child\'s birth.']
 ])}
 `;
@@ -509,22 +512,23 @@ export const pfrFinalsWatchFor: Record<string, string> = {
       <li><strong>Art. 120 improvements on exclusive land</strong>: if the cost of the improvement + resulting increase in value exceeds the value of the land at the time of improvement, the entire property becomes <em>conjugal</em>, with reimbursement of the land's value at liquidation (ownership transfers only upon reimbursement).</li>
       <li><strong>Art. 147 vs. Art. 148</strong>: Art. 147 presumes equal contributions and counts household care; Art. 148 (impediment exists) requires <em>proof of actual joint contribution</em> of money, property, or industry.</li>
     </ul>`,
-	family_filiation: `<strong>Watch for: Art. 151 non-family exclusions, Art. 155 T-P-M-B exceptions, and Art. 172 vs. Art. 175 deadlines.</strong>
+	family_filiation: `<strong>Watch for: Art. 151 non-family exclusions, Art. 155 T-P-M-B exceptions, Art. 172 vs. Art. 175 deadlines, and <em>Aquino v. Aquino</em> (Art. 992).</strong>
     <ul>
       <li><strong>Art. 150/151 earnest efforts</strong>: brothers-in-law, sisters-in-law, uncles/aunts, nephews/nieces, cousins, and strangers are <em>excluded</em>; including a stranger co-defendant dispenses with the requirement.</li>
       <li><strong>Art. 155 family-home exceptions (T-P-M-B)</strong>: Taxes, Prior debts (incurred before constitution), Mortgages, and Builders/materialmen.</li>
       <li><strong>Art. 172/175 proof of filiation</strong>: primary evidence (birth record, final judgment, admission in public or signed private handwritten instrument) may be brought during the <em>child's lifetime</em>; secondary evidence (open and continuous possession of status, other evidence) must be brought during the <em>putative parent's lifetime</em>.</li>
+      <li><strong>Art. 992 Iron Curtain softened (<em>Aquino v. Aquino</em>, G.R. Nos. 208912 &amp; 209018, Dec. 7, 2021, En Banc)</strong>: nonmarital children may now inherit <em>ab intestato</em> from their grandparents by right of representation under Art. 982 CC, limiting Art. 992's barrier to collateral relatives (Rabuya, <em>The Law on Persons and Family Relations</em>).</li>
     </ul>`,
-	adoption_support: `<strong>Watch for: RA 11642 administrative venue, age gaps, and future vs. past support.</strong>
+	adoption_support: `<strong>Watch for: R.A. No. 11642 administrative venue (NACC/RACCO), age/residency rules, and future vs. past support.</strong>
     <ul>
-      <li><strong>RA 11642</strong> moved domestic adoption from the courts to the <strong>NACC</strong> (administrative process); only the <em>adoptee</em> may petition to rescind,never the adopter (who may only disinherit on legal grounds).</li>
-      <li><strong>16-year age gap</strong> between adopter and adoptee is waived only if the adopter is the biological parent or the spouse of the adoptee's parent.</li>
-      <li><strong>Future support</strong> can never be waived, renounced, transmitted, or compromised (Art. 2035); <strong>support in arrears</strong> (past-due) may be waived or compromised.</li>
+      <li><strong>R.A. No. 11642 (Jan. 6, 2022)</strong> repealed R.A. 8552 and made domestic adoption purely <em>administrative</em> before the <strong>NACC / RACCO</strong> (not RTC): minimum age is <strong>25</strong> (Sec. 21[a]); foreign nationals need <strong>5 years</strong> continuous/habitual residence (Sec. 21[e], up from 3 yrs under old R.A. 8552, subject to statutory waivers); <strong>6-month</strong> wait after parents' death (Sec. 22[g]); and rescission is administrative before NACC by the <em>adoptee only</em>, never the adopter, who may only disinherit on Civil Code grounds (Sec. 47; <em>Lahom v. Sibulo</em>; Rabuya).</li>
+      <li><strong>16-year age gap</strong> between adopter and adoptee is waived only if the adopter is the biological parent or the spouse of the adoptee's parent (Sec. 21[a]).</li>
+      <li><strong>Future support</strong> can never be waived, renounced, transmitted, or compromised (Art. 2035 CC); <strong>support in arrears</strong> (past-due) may be waived or compromised.</li>
     </ul>`,
 	parental_other: `<strong>Watch for: tender-age rule, substitute vs. special liability, and Art. 41 vs. CC 390–391.</strong>
     <ul>
       <li><strong>Art. 213 tender-age rule</strong>: no child under 7 shall be separated from the mother unless the court finds compelling reasons — applies even to an illegitimate child (who is under the mother's sole parental authority under Art. 176).</li>
-      <li><strong>Substitute (Art. 216) vs. Special (Art. 218) parental authority</strong>: special authority (school, administrators, teachers) attaches while the minor is under their supervision, instruction, or custody, and makes them <em>principally and solidarily</em> liable for the minor's damages, with parents Subsidiarily liable (Art. 219).</li>
+      <li><strong>Substitute (Art. 216) vs. Special (Art. 218) parental authority</strong>: special authority (school, administrators, teachers) attaches while the minor is under their supervision, instruction, or custody, and makes them <em>principally and solidarily</em> liable for the minor's damages, with parents subsidiarily liable (Art. 219).</li>
       <li><strong>Art. 41 (remarriage) vs. CC 390–391 (ordinary absence)</strong>: judicial declaration of presumptive death is needed <em>only</em> for remarriage under Art. 41 (4 years ordinary absence; 2 years in danger of death), and automatically terminates the subsequent marriage upon the recording of the reappearing spouse's affidavit of reappearance.</li>
     </ul>`
 };
@@ -557,7 +561,7 @@ export const pfrFinalsMcqs: McqQuestion[] = (PFR.mcqs ?? []).map((m) => {
 		correctIndex,
 		key: m.key ?? m.o[correctIndex],
 		explanation: m.ex,
-		legalBasis: `PFR Finals · ${GROUP_LABEL[m.group]}`
+		legalBasis: m.lb ?? `PFR Finals · ${GROUP_LABEL[m.group]}`
 	};
 });
 

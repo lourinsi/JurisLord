@@ -548,7 +548,7 @@ export function trueFalseMcqs(moduleId: string, topicId: string, topic: string, 
 			correctIndex: x.tf ? 0 : 1,
 			key: x.tf ? 'True' : 'False',
 			explanation: plain([x.short, x.a].filter(Boolean).join(' ')),
-			legalBasis: x.keys ? plain(x.keys) : undefined
+			legalBasis: x.keys ? `${plain(x.keys)}; Agpalo, Statutory Construction (${topic})` : `Agpalo, Statutory Construction (${topic})`
 		}));
 }
 

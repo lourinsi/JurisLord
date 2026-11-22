@@ -164,7 +164,7 @@ export const crimproTopics: ModuleTopic[] = [
 export const ruleWatchFor: Record<string, string> = {
 	"r110": "<strong>Watch for: which document, signed by whom, changed when.</strong>\n<ul>\n<li>Is it a <em>complaint</em> (sworn; victim or officer) or an <em>information</em> (prosecutor)? Is it a private crime?</li>\n<li>Amendment questions: before or after plea? Downgrade or exclusion? Did the <em>facts</em> change or only the caption?</li>\n<li>Venue is jurisdictional. Lack of the prosecutor's authority is not (Villa Gomez, 2020).</li>\n</ul>",
 	"r111": "<strong>Watch for: the source of the civil claim and the timing.</strong>\n<ul>\n<li>Is the claim ex delicto (rides with the case) or independent (Arts. 32, 33, 34, 2176)?</li>\n<li>Reservation: before the prosecution presents evidence. Prejudicial question: before the prosecution rests.</li>\n<li>Acquittal: \"act did not exist\" vs. \"reasonable doubt.\" Death: before arraignment, pending appeal, or after finality?</li>\n</ul>",
-	"r112": "<strong>Watch for: the penalty, the arrest, and who acted when.</strong>\n<ul>\n<li>Prescribed penalty ≥ 4y 2m 1d? Was the respondent arrested without a warrant (inquest)?</li>\n<li>Count the periods: 10/10/10 (Sec. 3), 5/10 (Sec. 4), 10/5/30 (Sec. 5), 15 and 5 (Sec. 6).</li>\n<li>DOJ or Ombudsman? Before or after the information was filed (Crespo)? Before or after arraignment?</li>\n</ul>",
+	"r112": "<strong>Watch for: the penalty, the arrest, and who acted when.</strong>\n<ul>\n<li>Prescribed penalty ≥ 6 years and 1 day (mandatory full PI + PFC + RCC under DOJ DC 015 / <em>Meking v. Remulla</em>, 2025; 1y 1d–6y = Expedited PI, 1d–1y = Summary Investigation under DOJ DC 028; old Rule 112 was 4y 2m 1d)? Was the respondent arrested without a warrant (inquest)?</li>\n<li>Count the periods: 10/10/10 (Sec. 3), 5/10 (Sec. 4), 10/5/30 (Sec. 5), 15 and 5 (Sec. 6), 15-day MR (DC 015) / 10-day EPI MR (DC 028).</li>\n<li>DOJ or Ombudsman? Before or after the information was filed (Crespo)? Before or after arraignment?</li>\n</ul>",
 	"r113": "<strong>Watch for: what the arresting officer personally saw or knew, and when.</strong>\n<ul>\n<li>Did he see an overt act (in flagrante), or arrive right after and gather facts himself (hot pursuit)? A tip is neither.</li>\n<li>How much time passed since the crime?</li>\n<li>Was the illegality raised before plea? Is the question about jurisdiction or about evidence?</li>\n</ul>",
 	"r114": "<strong>Watch for: the penalty prescribed, the stage, and the court.</strong>\n<ul>\n<li>RP/life prescribed? Before or after conviction? Which court convicted (MTC or RTC)?</li>\n<li>Penalty imposed above six years? Any bail-negating circumstance? Did the conviction downgrade a non-bailable charge?</li>\n<li>Was there a hearing with a summary of evidence? Where was the bail filed?</li>\n</ul>",
 	"r115": "<strong>Watch for: arraignment, notice, and what the accused said on direct.</strong>\n<ul>\n<li>Was he arraigned before he disappeared? Was he notified?</li>\n<li>Did he testify? On what? Is the question about the crime charged or a different one?</li>\n<li>Speedy trial or speedy disposition? Did he ask for trial before moving to dismiss?</li>\n</ul>",
@@ -196,9 +196,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only a complaint must be sworn (Sec. 3); an information is subscribed by the prosecutor, who acts under his oath of office (Sec. 4).",
-		"legalBasis": "Rule 110, Secs. 3–4"
+		"legalBasis": "Rule 110, Secs. 3–4; Rule 110, Sec. 3; Rule 110, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf2",
@@ -210,9 +211,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. Sec. 3 lists the offended party, any peace officer, or other public officer charged with enforcing the law violated.",
-		"legalBasis": "Rule 110, Sec. 3"
+		"legalBasis": "Rule 110, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf3",
@@ -224,9 +226,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The recital of facts in the body controls, not the caption or the law cited. Tiu, pp. 46–47; Malto v. People; Pacoy v. Cajigal. Trap: Students anchor on the caption because it is the first thing they read.",
-		"legalBasis": "recital of ultimate facts controls"
+		"legalBasis": "Rule 110, Revised Rules of Criminal Procedure; Malto v. People (G.R. No. 164733, Sept. 21, 2007); Pacoy v. Cajigal (G.R. No. 157472, Sept. 28, 2007)"
 	},
 	{
 		"id": "crimpro:r110:tf4",
@@ -238,9 +241,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. An amendment before plea that downgrades the offense or excludes an accused requires a motion by the prosecutor, notice to the offended party and leave of court (Sec. 14).",
-		"legalBasis": "downgrade; exclude; notice to offended party; leave"
+		"legalBasis": "Rule 110, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf5",
@@ -252,9 +256,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. After plea, a formal amendment needs both leave of court and absence of prejudice.",
-		"legalBasis": "Sec. 14; leave of court"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. After plea, a formal amendment needs both leave of court and absence of prejudice. Under Rule 110, Sec. 14 and Revised Rules of Criminal Procedure, the governing rule on \"After plea, a formal amendment may be made without leave of court so long as it does not prejudice the accused.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 110, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf6",
@@ -266,9 +271,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Venue is jurisdictional in criminal cases; lack of jurisdiction over the offense is not waived (Rule 117, Sec. 9) and may be raised at any stage.",
-		"legalBasis": "venue jurisdictional; Isip v. People; Rule 117, Sec. 9"
+		"legalBasis": "Rule 117, Sec. 9; Rule 117, Sec. 9) and may; Rule 110, Sec. 9; Isip v. People (G.R. No. 170298, June 26, 2007); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf7",
@@ -280,9 +286,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True — as may any peace officer or the public officer charged with enforcing the law violated, until the prosecutor actually intervenes or the case is elevated to the RTC (Sec. 5; OCA Circular No. 39-2002).",
-		"legalBasis": "MTC/MCTC; prosecutor unavailable; ceases on intervention or elevation"
+		"legalBasis": "Rule 110, Sec. 5; OCA Circular No. 39-2002; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf8",
@@ -294,9 +301,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only the State, through the OSG, may appeal the criminal aspect; the private complainant may appeal the civil aspect (Villareal v. Aliga).",
-		"legalBasis": "OSG; civil aspect only"
+		"legalBasis": "Rule 110, Revised Rules of Criminal Procedure; Villareal v. Aliga (G.R. No. 166995, Jan. 13, 2014)"
 	},
 	{
 		"id": "crimpro:r110:tf9",
@@ -308,9 +316,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. RA 8353 (1997) reclassified rape as a crime against persons; it is a public crime. Trap: Old reviewers list rape among the private crimes of Art. 344.",
-		"legalBasis": "RA 8353; crime against persons"
+		"legalBasis": "Rule 110, Revised Rules of Criminal Procedure; Art. 344; RA 8353"
 	},
 	{
 		"id": "crimpro:r110:tf10",
@@ -322,9 +331,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under Villa Gomez v. People (2020, En Banc), the defect is not jurisdictional and is waived if not raised in a motion to quash before plea.",
-		"legalBasis": "Villa Gomez; Rule 117, Sec. 3(d); waivable"
+		"legalBasis": "Rule 117, Sec. 3(d); Rule 110, Sec. 3(d); Villa Gomez v. People (G.R. No. 216824, Nov. 10, 2020, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r110:tf11",
@@ -336,9 +346,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under People v. Solar (2019), the bare label is insufficient, but if the accused fails to move to quash or for a bill of particulars before arraignment, the defect is waived and treachery may be appreciated if proven. Trap: Confusing a defectively alleged circumstance (waivable) with an unalleged one (never appreciated).",
-		"legalBasis": "Solar; ultimate facts; waiver"
+		"legalBasis": "Rule 110, Revised Rules of Criminal Procedure; People v. Solar (G.R. No. 225595, Aug. 6, 2019, En Banc)"
 	},
 	{
 		"id": "crimpro:r110:tf12",
@@ -350,9 +361,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Duplicity is a ground to quash (Rule 117, Sec. 3[f]); if not raised before plea it is waived, and the court may convict of as many offenses as are charged and proved (Rule 120, Sec. 3).",
-		"legalBasis": "Sec. 13; waiver; Rule 120, Sec. 3"
+		"legalBasis": "Rule 120, Sec. 3; Rule 117, Sec. 3; Rule 120, Sec. 3); Rule 110, Sec. 13; Rule 110, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf1",
@@ -364,9 +376,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only the civil action for civil liability arising from the offense charged (ex delicto) is deemed instituted; independent civil actions under Arts. 32, 33, 34 and 2176 are not.",
-		"legalBasis": "Sec. 1(a); Sec. 3"
+		"legalBasis": "Rule 111, Sec. 1(a); Rule 111, Sec. 3; Arts. 32; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf2",
@@ -378,9 +391,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Sec. 1(b): no reservation is allowed; the criminal action is deemed to include the civil action.",
-		"legalBasis": "Sec. 1(b)"
+		"legalBasis": "Rule 111, Sec. 1(b); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf3",
@@ -392,9 +406,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It must be made before the prosecution starts presenting its evidence (Sec. 1[a]). Trap: Confusing it with the period for a petition to suspend for prejudicial question (before the prosecution rests).",
-		"legalBasis": "before the prosecution starts presenting its evidence"
+		"legalBasis": "Rule 111, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf4",
@@ -406,9 +421,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. No counterclaim, cross-claim or third-party complaint may be filed by the accused in the criminal case; he may litigate it in a separate civil action (Sec. 1[a]; Casupanan v. Laroya).",
-		"legalBasis": "no counterclaim; separate civil action"
+		"legalBasis": "Rule 111, Sec. 1; Casupanan v. Laroya (G.R. No. 145391, Aug. 26, 2002); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf5",
@@ -420,9 +436,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under the 2000 Rules, independent civil actions are not deemed instituted with the criminal action and need not be reserved (Tiu, p. 60).",
-		"legalBasis": "Sec. 3; no reservation"
+		"legalBasis": "Rule 111, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf6",
@@ -434,9 +451,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Civil liability survives and may be proved by preponderance of evidence, in the same case or separately (Art. 29; Padilla v. CA). It is extinguished only by a finding that the act did not exist.",
-		"legalBasis": "Art. 29; Sec. 2 last par."
+		"legalBasis": "Rule 111, Sec. 2; Art. 29; Padilla v. Court of Appeals (G.R. No. L-39999, May 31, 1984); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf7",
@@ -448,9 +466,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Sec. 5: it is not a bar.",
-		"legalBasis": "Sec. 5"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Sec. 5: it is not a bar. Under Rule 111, Sec. 5 and Revised Rules of Criminal Procedure, the governing rule on \"A final judgment in a civil action absolving the defendant bars a criminal action for the same act.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 111, Sec. 5; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf8",
@@ -462,9 +481,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A petition is required; suspension is not motu proprio (Sec. 6; Tiu, citing IBP v. Atienza).",
-		"legalBasis": "petition; no motu proprio"
+		"legalBasis": "Rule 111, Sec. 6; IBP v. Atienza (G.R. No. 175241, Feb. 24, 2010); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf9",
@@ -476,9 +496,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Death before final judgment extinguishes criminal liability and civil liability ex delicto (Sec. 4; Art. 89[1]; Bayotas). Claims from other sources must be pursued separately.",
-		"legalBasis": "Sec. 4; Bayotas"
+		"legalBasis": "Rule 111, Sec. 4; Art. 89; People v. Bayotas (G.R. No. 102007, Sept. 2, 1994, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r111:tf10",
@@ -490,9 +511,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The civil action must be previously instituted, and its outcome would not determine guilt, since the marriage subsisted when the crime was committed (Pimentel v. Pimentel, 2010).",
-		"legalBasis": "Pimentel; previously instituted"
+		"legalBasis": "Rule 111, Revised Rules of Criminal Procedure; Pimentel v. Pimentel (G.R. No. 172060, Sept. 13, 2010)"
 	},
 	{
 		"id": "crimpro:r111:tf11",
@@ -504,9 +526,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Payment and compromise affect only civil liability; estafa is a public offense (Art. 2034; Metrobank v. Reynaldo; Cabico v. Dimaculangan). The court may dismiss only if, without the complainant, the evidence is insufficient — a judgment on the evidence, not on the payment. Trap: In practice desistance often leads to dismissal for lack of evidence; the trap is giving payment as the legal ground.",
-		"legalBasis": "Art. 2034; Metrobank v. Reynaldo"
+		"legalBasis": "Rule 111, Revised Rules of Criminal Procedure; Art. 2034; Metrobank v. Reynaldo (G.R. No. 164538, Aug. 9, 2010)"
 	},
 	{
 		"id": "crimpro:r112:tf1",
@@ -518,9 +541,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is a statutory right — but a substantive one and a component of due process when granted (Tiu, p. 67).",
-		"legalBasis": "statutory; substantive; waivable"
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf2",
@@ -532,9 +556,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. While old Rule 112, Sec. 1 set the threshold at 4 years, 2 months and 1 day, DOJ Department Circular No. 015 (2024) — upheld by the Supreme Court En Banc in Atty. Hazel L. Meking v. Jesus Crispin C. Remulla (G.R. No. 280455, November 11, 2025) as valid executive rulemaking — requires mandatory full preliminary investigation for offenses punishable by imprisonment of at least 6 years and 1 day under the prima facie evidence with reasonable certainty of conviction (PFC + RCC) quantum. Under DOJ Department Circular No. 028 (2024), offenses punishable by 1 year and 1 day to 6 years undergo Expedited Preliminary Investigation, and 1 day to 1 year (or fine) undergo Summary Investigation.",
+		"legalBasis": "Rule 112, Sec. 1; DOJ DC No. 015 (2024); DOJ DC No. 028 (2024); DOJ Department Circular No. 015 (2024); DOJ Department Circular No. 028 (2024); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf3",
@@ -546,9 +571,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. That authority was removed by A.M. No. 05-8-26-SC, effective October 3, 2005.",
-		"legalBasis": "A.M. No. 05-8-26-SC"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. That authority was removed by A.M. No. 05-8-26-SC, effective October 3, 2005. Under Rule 112, Revised Rules of Criminal Procedure and A.M. No. 05-8-26-SC, the governing rule on \"Municipal trial court judges may conduct preliminary investigations of cases within their territory.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; A.M. No. 05-8-26-SC"
 	},
 	{
 		"id": "crimpro:r112:tf4",
@@ -560,9 +586,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Sec. 3(c) expressly disallows it.",
-		"legalBasis": "Sec. 3(c)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Sec. 3(c) expressly disallows it. Under Rule 112, Sec. 3(c) and Revised Rules of Criminal Procedure, the governing rule on \"A respondent may file a motion to dismiss in lieu of a counter-affidavit.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 112, Sec. 3(c); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf5",
@@ -574,9 +601,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The parties may be present but without the right to examine or cross-examine; they may submit questions (Sec. 3[e]).",
-		"legalBasis": "Sec. 3(e)"
+		"legalBasis": "Rule 112, Sec. 3(e); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf6",
@@ -588,9 +616,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is not among the grounds in Rule 117, Sec. 3; the remedy is to ask the court to suspend proceedings and remand for PI, before plea (Larrañaga; Socrates v. Sandiganbayan).",
-		"legalBasis": "not a ground to quash; remand"
+		"legalBasis": "Rule 117, Sec. 3; Rule 112, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf7",
@@ -602,9 +631,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Personal evaluation of the prosecutor's resolution and supporting evidence suffices; personal examination is optional (Soliven v. Makasiar; Ocampo v. Abando).",
-		"legalBasis": "Soliven; Ocampo; personal evaluation"
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; Soliven v. Makasiar (G.R. No. 82585, Nov. 14, 1988); Ocampo v. Abando (G.R. No. 176830, Feb. 11, 2014)"
 	},
 	{
 		"id": "crimpro:r112:tf8",
@@ -616,9 +646,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 6; RA 7438). He may still apply for bail, and the PI must end within 15 days.",
-		"legalBasis": "Sec. 6; Art. 125 waiver; counsel"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 6; RA 7438). He may still apply for bail, and the PI must end within 15 days. Under Rule 112, Sec. 6 and Art. 125, the governing rule on \"A person arrested without a warrant may ask for preliminary investigation before the information is filed only if he signs a waiver of Art. 125 in the presence of counsel.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 112, Sec. 6; Art. 125; RA 7438; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r112:tf9",
@@ -630,23 +661,25 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is a prohibited motion under the 2017 Revised Guidelines for Continuous Trial, denied outright.",
-		"legalBasis": "A.M. No. 15-06-10-SC"
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; A.M. No. 15-06-10-SC"
 	},
 	{
 		"id": "crimpro:r112:tf10",
 		"topicId": "r112",
 		"topic": "R112 Preliminary Investigation",
 		"tag": "memorization",
-		"question": "True or false? Once the Secretary of Justice reverses a finding of probable cause, the trial court must grant the prosecution's motion to withdraw the information.",
+		"question": "True or false? Once the Secretary of Justice reverses a prosecutor's finding of prima facie evidence with reasonable certainty of conviction, the trial court must grant the prosecution's motion to withdraw the information.",
 		"options": [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The court must make its own independent assessment; the Secretary's resolution is persuasive, not binding (Crespo; Lanier v. People, 2014).",
-		"legalBasis": "Crespo; Lanier"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Even under the executive quantum of prima facie evidence with reasonable certainty of conviction (PFC + RCC) under DOJ Department Circular No. 015 (2024) (upheld in Meking v. Remulla, G.R. No. 280455, Nov. 11, 2025, En Banc), once the information is filed in court, the trial judge must make an independent judicial assessment; the Secretary's resolution is persuasive, not binding (Crespo v. Mogul; Lanier v. People, 2014).",
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; DOJ DC No. 015 (2024); DOJ Department Circular No. 015 (2024)"
 	},
 	{
 		"id": "crimpro:r112:tf11",
@@ -658,9 +691,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The petition is filed directly with the Supreme Court (Gatchalian v. Ombudsman, 2018).",
-		"legalBasis": "Gatchalian; Rule 65; SC"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The petition is filed directly with the Supreme Court (Gatchalian v. Ombudsman, 2018). Under Rule 112, Revised Rules of Criminal Procedure and Rule 65, the governing rule on \"A respondent may challenge the Ombudsman's finding of probable cause in a criminal case by Rule 65 certiorari in the Court of Appeals.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; Rule 65; Gatchalian v. Office of the Ombudsman (G.R. No. 229288, Aug. 1, 2018)"
 	},
 	{
 		"id": "crimpro:r112:tf12",
@@ -672,9 +706,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The filing interrupted prescription; delay may violate the right to speedy disposition (Cagang), which is a different ground for dismissal. Trap: Confusing prescription with speedy disposition.",
-		"legalBasis": "interruption; Cagang"
+		"legalBasis": "Rule 112, Revised Rules of Criminal Procedure; Cagang v. Sandiganbayan (G.R. Nos. 206438 & 206458, July 31, 2018, En Banc)"
 	},
 	{
 		"id": "crimpro:r113:tf1",
@@ -686,9 +721,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It may also be made by the person's submission to the custody of the person making the arrest (Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"legalBasis": "Rule 113, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf2",
@@ -700,9 +736,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 6).",
-		"legalBasis": "Sec. 6"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 6). Under Rule 113, Sec. 6 and Revised Rules of Criminal Procedure, the governing rule on \"An arrest may be made at any time of the day or night.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 113, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf3",
@@ -714,9 +751,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The 10 days is the period for the officers to execute and report; the warrant remains valid until served or recalled (Tiu, p. 110). Trap: Confusing it with the 10-day life of a search warrant.",
-		"legalBasis": "Sec. 4"
+		"legalBasis": "Rule 113, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf4",
@@ -728,9 +766,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He need not, but must show it as soon as practicable if the person arrested asks (Sec. 7).",
-		"legalBasis": "Sec. 7"
+		"legalBasis": "Rule 113, Sec. 7; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf5",
@@ -742,9 +781,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. Sec. 5 applies to \"a peace officer or a private person.\" A private person informs the arrestee of his intention to arrest and the cause (Sec. 9).",
-		"legalBasis": "Sec. 5; Sec. 9"
+		"legalBasis": "Rule 113, Sec. 5; Rule 113, Sec. 9; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf6",
@@ -756,9 +796,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Without an overt act indicative of a crime in the officer's presence, a tip is insufficient (People v. Molina; People v. Laguio).",
-		"legalBasis": "overt act; Molina; Laguio"
+		"legalBasis": "Rule 113, Revised Rules of Criminal Procedure; People v. Molina (G.R. No. 133917, Feb. 19, 2001); People v. Laguio, Jr. (G.R. No. 128587, Mar. 16, 2007)"
 	},
 	{
 		"id": "crimpro:r113:tf7",
@@ -770,9 +811,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He needs probable cause based on personal knowledge of facts or circumstances; he may rely on information from the victim or witnesses gathered at the scene (Pestilos v. Generoso).",
-		"legalBasis": "Pestilos"
+		"legalBasis": "Rule 113, Revised Rules of Criminal Procedure; Pestilos v. Generoso (G.R. No. 182601, Nov. 10, 2014)"
 	},
 	{
 		"id": "crimpro:r113:tf8",
@@ -784,9 +826,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It must be raised before plea; otherwise it is waived (People v. Cunanan; People v. Palma).",
-		"legalBasis": "before plea; waiver"
+		"legalBasis": "Rule 113, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf9",
@@ -798,9 +841,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Waiver of the illegal arrest is not a waiver of the inadmissibility of evidence seized (De la Cruz v. People; Villanueva v. People, 2014).",
-		"legalBasis": "De la Cruz; Villanueva"
+		"legalBasis": "Rule 113, Revised Rules of Criminal Procedure; People v. De la Cruz (G.R. No. 205821, Oct. 1, 2014); Villanueva v. People (G.R. No. 199042, Nov. 17, 2014)"
 	},
 	{
 		"id": "crimpro:r113:tf10",
@@ -812,9 +856,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Illegality of arrest is not a ground for acquittal; conviction may rest on other evidence (People v. Yau; People v. Velasco).",
-		"legalBasis": "Yau; Velasco"
+		"legalBasis": "Rule 113, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r113:tf11",
@@ -826,9 +871,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under Rule 114, Sec. 26, bail does not bar the challenge, provided it is raised before plea.",
-		"legalBasis": "Rule 114, Sec. 26"
+		"legalBasis": "Rule 114, Sec. 26; Rule 114, Sec. 26, bail; Rule 113, Sec. 26; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf1",
@@ -840,9 +886,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Bail is security for the release of a person \"in custody of the law\"; a fugitive must first surrender (Sec. 1; Tiu, p. 116).",
-		"legalBasis": "custody of the law"
+		"legalBasis": "Rule 114, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf2",
@@ -854,9 +901,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True. Homicide (reclusion temporal) is not punishable by death, RP or life (Sec. 4[b]).",
-		"legalBasis": "Sec. 4"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True. Homicide (reclusion temporal) is not punishable by death, RP or life (Sec. 4[b]). Under Rule 114, Sec. 4 and Revised Rules of Criminal Procedure, the governing rule on \"Before conviction by the RTC, an accused charged with homicide is entitled to bail as a matter of right.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 114, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf3",
@@ -868,9 +916,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It remains in force until promulgation of the RTC judgment (Sec. 2[a]); continued liberty on appeal requires bail pending appeal and the bondsman's consent.",
-		"legalBasis": "Sec. 2(a); Maguddatu"
+		"legalBasis": "Rule 114, Sec. 2(a); Maguddatu v. Court of Appeals (G.R. No. 139599, Feb. 23, 2000); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf4",
@@ -882,9 +931,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Bail in a murder case is discretionary; the application may only be filed in the court where the case is pending (Sec. 17[b]).",
-		"legalBasis": "Sec. 17(b)"
+		"legalBasis": "Rule 114, Sec. 17(b); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf5",
@@ -896,9 +946,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Cash is deposited with the collector of internal revenue or the provincial, city or municipal treasurer (or the clerk of court); a judge who receives it commits gross misconduct (Lachica v. Tormis).",
-		"legalBasis": "Sec. 14; Lachica"
+		"legalBasis": "Rule 114, Sec. 14; Lachica v. Tormis (A.M. No. MTJ-05-1609, Sept. 20, 2005); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf6",
@@ -910,9 +961,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A hearing is mandatory where bail is discretionary, regardless of the prosecution's stance (Serapio; Domingo v. Pagayatan).",
-		"legalBasis": "mandatory hearing"
+		"legalBasis": "Rule 114, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf7",
@@ -924,9 +976,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The prosecution has the burden of showing that evidence of guilt is strong (Sec. 8).",
-		"legalBasis": "Sec. 8"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The prosecution has the burden of showing that evidence of guilt is strong (Sec. 8). Under Rule 114, Sec. 8 and Revised Rules of Criminal Procedure, the governing rule on \"In a bail hearing for an offense punishable by reclusion perpetua, the accused must prove that the evidence of his guilt is not strong.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 114, Sec. 8; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf8",
@@ -938,9 +991,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The penalty prescribed by law controls, not the imposable penalty (People v. Valdez, 2015, in Tiu; Sec. 6).",
-		"legalBasis": "prescribed penalty"
+		"legalBasis": "Rule 114, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf9",
@@ -952,9 +1006,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Bail remains discretionary; the court may still deny it (Leviste v. CA, 2010).",
-		"legalBasis": "Leviste"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Bail remains discretionary; the court may still deny it (Leviste v. CA, 2010). Under Rule 114, Revised Rules of Criminal Procedure and Leviste v. Court of Appeals (G.R. No. 189122, Mar. 17, 2010), the governing rule on \"After conviction by the RTC imposing a penalty of 10 years, the accused must be granted bail pending appeal if the prosecution fails to prove any bail-negating circumstance.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 114, Revised Rules of Criminal Procedure; Leviste v. Court of Appeals (G.R. No. 189122, Mar. 17, 2010)"
 	},
 	{
 		"id": "crimpro:r114:tf10",
@@ -966,9 +1021,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Sec. 26: bail does not bar the challenge, if raised before plea.",
-		"legalBasis": "Sec. 26"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Sec. 26: bail does not bar the challenge, if raised before plea. Under Rule 114, Sec. 26 and Revised Rules of Criminal Procedure, the governing rule on \"By posting bail, the accused waives his right to question the legality of his warrantless arrest.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 114, Sec. 26; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r114:tf11",
@@ -980,9 +1036,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. When the conviction changed the offense from non-bailable to bailable, the application can only be filed with and resolved by the appellate court (Sec. 5, par. 1; Rule 120, Sec. 6). Trap: The general rule (RTC acts until it transmits the record) has this exception.",
-		"legalBasis": "Sec. 5; non-bailable to bailable"
+		"legalBasis": "Rule 120, Sec. 6); Rule 114, Sec. 5; Rule 114, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf1",
@@ -994,9 +1051,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]).",
-		"legalBasis": "arraignment"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]). Under Rule 115, Sec. 14 and Const., Art. III, Sec. 14, the governing rule on \"An accused may be tried in absentia even before arraignment if he was duly notified.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 115, Sec. 14; Const., Art. III, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf2",
@@ -1008,9 +1066,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. \"His silence shall not in any manner prejudice him\" (Sec. 1[d]).",
-		"legalBasis": "Sec. 1(d)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. \"His silence shall not in any manner prejudice him\" (Sec. 1[d]). Under Rule 115, Sec. 1(d) and Revised Rules of Criminal Procedure, the governing rule on \"The accused's refusal to testify may be considered as evidence of guilt.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 115, Sec. 1(d); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf3",
@@ -1022,9 +1081,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He waives presence \"on all subsequent trial dates until custody over him is regained\" (Sec. 1[c]).",
-		"legalBasis": "Sec. 1(c)"
+		"legalBasis": "Rule 115, Sec. 1(c); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf4",
@@ -1036,9 +1096,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Libuit v. People; Rule 116, Sec. 6).",
-		"legalBasis": "arraignment"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Libuit v. People; Rule 116, Sec. 6). Under Rule 116, Sec. 6) and Rule 115, Sec. 6, the governing rule on \"The court's duty to appoint counsel de officio is mandatory at arraignment.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 6); Rule 115, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf5",
@@ -1050,9 +1111,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Fingerprinting is a mechanical act, not testimonial; the right covers testimony and acts requiring intelligence and attention.",
-		"legalBasis": "mechanical act"
+		"legalBasis": "Rule 115, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf6",
@@ -1064,9 +1126,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He may be cross-examined on matters covered by his direct and connected matters; he may refuse only questions that would incriminate him for a different offense (Ayson).",
-		"legalBasis": "Ayson"
+		"legalBasis": "Rule 115, Revised Rules of Criminal Procedure; People v. Ayson (G.R. No. 85215, July 7, 1989)"
 	},
 	{
 		"id": "crimpro:r115:tf7",
@@ -1078,9 +1141,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Opportunity to cross-examine suffices, with unavailability of the witness and identity of parties and subject matter (Sec. 1[f]).",
-		"legalBasis": "opportunity"
+		"legalBasis": "Rule 115, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf8",
@@ -1092,9 +1156,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is equivalent to an acquittal; double jeopardy attaches (Rule 119, Sec. 9; Condrada, in Tiu).",
-		"legalBasis": "acquittal; double jeopardy"
+		"legalBasis": "Rule 119, Sec. 9; Rule 115, Sec. 9; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf9",
@@ -1106,9 +1171,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. Art. III, Sec. 16 covers all judicial, quasi-judicial and administrative bodies (Coscolluela; Cagang).",
-		"legalBasis": "Art. III, Sec. 16"
+		"legalBasis": "Rule 115, Sec. 16; Art. III, Sec. 16; Cagang v. Sandiganbayan (G.R. Nos. 206438 & 206458, July 31, 2018, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r115:tf10",
@@ -1120,9 +1186,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The equipoise rule favors the accused; the presumption of innocence prevails over the presumption of regularity.",
-		"legalBasis": "equipoise; presumption of innocence"
+		"legalBasis": "Rule 115, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf1",
@@ -1134,9 +1201,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The accused must be present and personally enter his plea (Sec. 1[b]).",
-		"legalBasis": "Sec. 1(b)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The accused must be present and personally enter his plea (Sec. 1[b]). Under Rule 116, Sec. 1(b) and Revised Rules of Criminal Procedure, the governing rule on \"Counsel may enter the plea for the accused at arraignment if the accused is sick.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 1(b); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf2",
@@ -1148,9 +1216,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1[c]).",
-		"legalBasis": "Sec. 1(c)"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1[c]). Under Rule 116, Sec. 1(c) and Revised Rules of Criminal Procedure, the governing rule on \"When the accused makes a conditional plea of guilty, the court shall enter a plea of not guilty.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 1(c); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf3",
@@ -1162,9 +1231,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. His plea is deemed withdrawn and a plea of not guilty entered (Sec. 1[d]).",
-		"legalBasis": "Sec. 1(d)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. His plea is deemed withdrawn and a plea of not guilty entered (Sec. 1[d]). Under Rule 116, Sec. 1(d) and Revised Rules of Criminal Procedure, the governing rule on \"An accused who pleads guilty but claims self-defense remains bound by his plea of guilty.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 1(d); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf4",
@@ -1176,9 +1246,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. At arraignment, or after arraignment but before trial (Sec. 2).",
-		"legalBasis": "before trial"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. At arraignment, or after arraignment but before trial (Sec. 2). Under Rule 116, Sec. 2 and Revised Rules of Criminal Procedure, the governing rule on \"A plea of guilty to a lesser offense may be made at any time before judgment.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf5",
@@ -1190,9 +1261,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. \"No amendment of the complaint or information is necessary\" (Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. \"No amendment of the complaint or information is necessary\" (Sec. 2). Under Rule 116, Sec. 2 and Revised Rules of Criminal Procedure, the governing rule on \"When the accused pleads guilty to a lesser offense, the information must be amended to charge that offense.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf6",
@@ -1204,9 +1276,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1[f]).",
-		"legalBasis": "Sec. 1(f)"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1[f]). Under Rule 116, Sec. 1(f) and Revised Rules of Criminal Procedure, the governing rule on \"If the offended party fails to appear at arraignment despite notice, the court may allow a plea of guilty to a lesser included offense with the conformity of the prosecutor alone.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Sec. 1(f); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf7",
@@ -1218,9 +1291,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only a petition for review pending at the DOJ or OP (Sec. 11[c]; Ramiscal v. Sandiganbayan).",
-		"legalBasis": "Sec. 11(c); Ramiscal"
+		"legalBasis": "Rule 116, Sec. 11(c); Ramiscal, Jr. v. Sandiganbayan (G.R. Nos. 172476–99, Sept. 15, 2010); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf8",
@@ -1232,9 +1306,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Jalbuena; Solar).",
-		"legalBasis": "before arraignment"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Jalbuena; Solar). Under Rule 116, Revised Rules of Criminal Procedure and People v. Solar (G.R. No. 225595, Aug. 6, 2019, En Banc), the governing rule on \"Failure to move for a bill of particulars before arraignment waives the details desired.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 116, Revised Rules of Criminal Procedure; People v. Solar (G.R. No. 225595, Aug. 6, 2019, En Banc)"
 	},
 	{
 		"id": "crimpro:r116:tf9",
@@ -1246,9 +1321,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Estipona v. Lobrigo (2017) declared RA 9165, Sec. 23 unconstitutional; plea bargaining in drug cases follows the Supreme Court's framework.",
-		"legalBasis": "Estipona"
+		"legalBasis": "Rule 116, Sec. 23; RA 9165; Estipona, Jr. v. Lobrigo (G.R. No. 226679, Aug. 15, 2017, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf10",
@@ -1260,9 +1336,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only if the plea was the sole basis; if supported by independent evidence, it stands (Documento; Gambao).",
-		"legalBasis": "sole basis"
+		"legalBasis": "Rule 116, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r116:tf11",
@@ -1274,9 +1351,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True (People v. Montierro, 2022) — but not if the objection is valid and supported by evidence, e.g., strong evidence of guilt or recidivism.",
-		"legalBasis": "Montierro"
+		"legalBasis": "Rule 116, Revised Rules of Criminal Procedure; People v. Montierro (G.R. No. 254564, July 26, 2022, En Banc)"
 	},
 	{
 		"id": "crimpro:r117:tf1",
@@ -1288,9 +1366,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Before plea (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Before plea (Sec. 1). Under Rule 117, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"A motion to quash may be filed at any time before the prosecution rests.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf2",
@@ -1302,9 +1381,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It must be in writing, signed and specify its grounds (Sec. 2). (A provisional dismissal may be oral.)",
-		"legalBasis": "Sec. 2"
+		"legalBasis": "Rule 117, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf3",
@@ -1316,9 +1396,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only lack of jurisdiction over the offense may be considered though not raised (Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"legalBasis": "Rule 117, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf4",
@@ -1330,9 +1411,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The prosecution must first be given the opportunity to amend (Sec. 4).",
-		"legalBasis": "Sec. 4"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The prosecution must first be given the opportunity to amend (Sec. 4). Under Rule 117, Sec. 4 and Revised Rules of Criminal Procedure, the governing rule on \"If the motion to quash is based on the ground that the facts charged do not constitute an offense, the court must immediately dismiss the case.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf5",
@@ -1344,9 +1426,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Quashal on extinction of liability (g) or double jeopardy (i) bars another prosecution (Sec. 6).",
-		"legalBasis": "Sec. 6"
+		"legalBasis": "Rule 117, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf6",
@@ -1358,9 +1441,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. Duplicity (f) is waivable; he may be convicted of as many offenses as are charged and proved (Rule 120, Sec. 3).",
-		"legalBasis": "Sec. 9; duplicity"
+		"legalBasis": "Rule 120, Sec. 3); Rule 117, Sec. 9; Rule 117, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf7",
@@ -1372,9 +1456,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Extinction of criminal liability (g) is not waived (Sec. 9).",
-		"legalBasis": "Sec. 9; (g)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Extinction of criminal liability (g) is not waived (Sec. 9). Under Rule 117, Sec. 9 and Revised Rules of Criminal Procedure, the governing rule on \"The defense of prescription is waived if not raised in a motion to quash before plea.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Sec. 9; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf8",
@@ -1386,9 +1471,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It also requires arraignment and a valid plea, and a valid termination of the first case.",
-		"legalBasis": "Sec. 7"
+		"legalBasis": "Rule 117, Sec. 7; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r117:tf9",
@@ -1400,9 +1486,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Reckless imprudence is a single quasi-offense; the acquittal bars the second prosecution (Ivler, 2010).",
-		"legalBasis": "Ivler"
+		"legalBasis": "Rule 117, Revised Rules of Criminal Procedure; Ivler v. Modesto-San Pedro (G.R. No. 172716, Nov. 17, 2010)"
 	},
 	{
 		"id": "crimpro:r117:tf10",
@@ -1414,9 +1501,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Express consent must be positive and unequivocal; silence is not enough (Lacson).",
-		"legalBasis": "Lacson; express consent"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Express consent must be positive and unequivocal; silence is not enough (Lacson). Under Rule 117, Revised Rules of Criminal Procedure and People v. Lacson (G.R. No. 149453, Apr. 1, 2003, En Banc), the governing rule on \"The accused's failure to object to the prosecution's motion for provisional dismissal is express consent.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Revised Rules of Criminal Procedure; People v. Lacson (G.R. No. 149453, Apr. 1, 2003, En Banc)"
 	},
 	{
 		"id": "crimpro:r117:tf11",
@@ -1428,9 +1516,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. From issuance of the order (A.M. No. 12-11-2-SC, Sec. 14; 2017 Guidelines).",
-		"legalBasis": "issuance of the order"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. From issuance of the order (A.M. No. 12-11-2-SC, Sec. 14; 2017 Guidelines). Under Rule 117, Sec. 14 and A.M. No. 12-11-2-SC, the governing rule on \"The one-year period to revive a provisionally dismissed case is reckoned from the prosecution's receipt of the order.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Sec. 14; A.M. No. 12-11-2-SC; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf1",
@@ -1442,9 +1531,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. It is mandatory in the Sandiganbayan, RTCs and all first-level courts (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. It is mandatory in the Sandiganbayan, RTCs and all first-level courts (Sec. 1). Under Rule 118, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"Pre-trial is mandatory in criminal cases before the RTC but optional before first-level courts.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 118, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf2",
@@ -1456,9 +1546,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. They must be in writing and signed by the accused and counsel (Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. They must be in writing and signed by the accused and counsel (Sec. 2). Under Rule 118, Sec. 2 and Revised Rules of Criminal Procedure, the governing rule on \"Admissions made by the accused at pre-trial need not be in writing to be used against him.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 118, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf3",
@@ -1470,9 +1561,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The court may impose sanctions on counsel; there is no \"as in default\" in criminal cases (Sec. 3).",
-		"legalBasis": "Sec. 3"
+		"legalBasis": "Rule 118, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf4",
@@ -1484,9 +1576,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 4).",
-		"legalBasis": "Sec. 4"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 4). Under Rule 118, Sec. 4 and Revised Rules of Criminal Procedure, the governing rule on \"The pre-trial order may be modified by the court to prevent manifest injustice.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 118, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf5",
@@ -1498,9 +1591,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A compromise on civil liability does not extinguish the public action (Civil Code Art. 2034; Metrobank v. Reynaldo).",
-		"legalBasis": "Art. 2034"
+		"legalBasis": "Rule 118, Revised Rules of Criminal Procedure; Art. 2034; Metrobank v. Reynaldo (G.R. No. 164538, Aug. 9, 2010)"
 	},
 	{
 		"id": "crimpro:r118:tf6",
@@ -1512,9 +1606,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Rule 119, Sec. 15 requires conditional examination before the court where the case is pending (Manguerra v. Risos, 2008).",
-		"legalBasis": "Manguerra"
+		"legalBasis": "Rule 119, Sec. 15; Rule 118, Sec. 15; Vda. de Manguerra v. Risos (G.R. No. 152643, Aug. 28, 2008); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r118:tf7",
@@ -1526,9 +1621,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only listed cases (e.g., BP 22, certain property and honor crimes, criminal negligence) are referred, and only after arraignment and pre-trial; mediation must end in 30 days.",
-		"legalBasis": "III.9"
+		"legalBasis": "Rule 118, Revised Rules of Criminal Procedure; BP 22"
 	},
 	{
 		"id": "crimpro:r118:tf8",
@@ -1540,9 +1636,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Recantations after conviction deserve scant consideration (People v. Lamsen, 2013).",
-		"legalBasis": "Lamsen"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Recantations after conviction deserve scant consideration (People v. Lamsen, 2013). Under Rule 118, Revised Rules of Criminal Procedure and People v. Lamsen (G.R. No. 198338, Nov. 13, 2013), the governing rule on \"An affidavit of desistance executed by the private complainant after conviction is a ground for acquittal.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 118, Revised Rules of Criminal Procedure; People v. Lamsen (G.R. No. 198338, Nov. 13, 2013)"
 	},
 	{
 		"id": "crimpro:r119:tf1",
@@ -1554,9 +1651,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1). Under Rule 119, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"After a plea of not guilty, the accused shall have at least fifteen days to prepare for trial.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf2",
@@ -1568,9 +1666,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 2), subject to excluded delays.",
-		"legalBasis": "Sec. 2"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 2), subject to excluded delays. Under Rule 119, Sec. 2 and Revised Rules of Criminal Procedure, the governing rule on \"The entire trial period may not exceed 180 days from the first day of trial, except as authorized by the Supreme Court.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf3",
@@ -1582,9 +1681,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Prohibited ground (Sec. 4).",
-		"legalBasis": "Sec. 4"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Prohibited ground (Sec. 4). Under Rule 119, Sec. 4 and Revised Rules of Criminal Procedure, the governing rule on \"A continuance may be granted because the prosecutor failed to subpoena an available witness.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf4",
@@ -1596,9 +1696,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only before the court where the case is pending (Sec. 15; Manguerra). The broader rule is for defense witnesses (Sec. 13).",
-		"legalBasis": "Sec. 15"
+		"legalBasis": "Rule 119, Sec. 15; Rule 119, Sec. 13; Vda. de Manguerra v. Risos (G.R. No. 152643, Aug. 28, 2008); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf5",
@@ -1610,9 +1711,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. He must not appear to be the most guilty (Sec. 17[d]; Jimenez v. People).",
-		"legalBasis": "not the most guilty"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. He must not appear to be the most guilty (Sec. 17[d]; Jimenez v. People). Under Rule 119, Sec. 17 and Revised Rules of Criminal Procedure, the governing rule on \"A proposed state witness must appear to be the least guilty among the accused.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 17; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf6",
@@ -1624,9 +1726,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. It is inadmissible (Sec. 17).",
-		"legalBasis": "Sec. 17"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. It is inadmissible (Sec. 17). Under Rule 119, Sec. 17 and Revised Rules of Criminal Procedure, the governing rule on \"If the motion to discharge an accused as state witness is denied, his sworn statement may still be used against his co-accused.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 17; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf7",
@@ -1638,9 +1741,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. He waives the right and the case is decided on the prosecution's evidence (Sec. 23).",
-		"legalBasis": "without leave"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. He waives the right and the case is decided on the prosecution's evidence (Sec. 23). Under Rule 119, Sec. 23 and Revised Rules of Criminal Procedure, the governing rule on \"When a demurrer filed without leave is denied, the accused may still present evidence.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 23; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf8",
@@ -1652,9 +1756,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. It is not reviewable by appeal or certiorari before judgment (Sec. 23).",
-		"legalBasis": "Sec. 23"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. It is not reviewable by appeal or certiorari before judgment (Sec. 23). Under Rule 119, Sec. 23 and Revised Rules of Criminal Procedure, the governing rule on \"An order denying a demurrer to evidence may be challenged by certiorari before judgment.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 119, Sec. 23; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r119:tf9",
@@ -1666,9 +1771,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A grant is an acquittal; the remedy is certiorari only for grave abuse of discretion (Dayap v. Sendiong).",
-		"legalBasis": "acquittal; certiorari"
+		"legalBasis": "Rule 119, Revised Rules of Criminal Procedure; Dayap v. Sendiong (G.R. No. 177960, Jan. 29, 2009)"
 	},
 	{
 		"id": "crimpro:r119:tf10",
@@ -1680,9 +1786,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The accused must be allowed to present evidence on the civil aspect (Salazar v. People, 2003).",
-		"legalBasis": "Salazar"
+		"legalBasis": "Rule 119, Revised Rules of Criminal Procedure; Salazar v. People (G.R. No. 151931, Sept. 23, 2003)"
 	},
 	{
 		"id": "crimpro:r119:tf11",
@@ -1694,9 +1801,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It may be ordered at any time before finality of the judgment of conviction — even before judgment — after hearing (Sec. 24).",
-		"legalBasis": "Sec. 24"
+		"legalBasis": "Rule 119, Sec. 24; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf1",
@@ -1708,9 +1816,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It must be personally and directly prepared by the judge and state clearly and distinctly the facts and the law (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"legalBasis": "Rule 120, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf2",
@@ -1722,9 +1831,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 6).",
-		"legalBasis": "Sec. 6"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 6). Under Rule 120, Sec. 6 and Revised Rules of Criminal Procedure, the governing rule on \"For a light offense, the judgment may be promulgated in the presence of the accused's counsel or representative.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 120, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf3",
@@ -1736,9 +1846,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He may be convicted only of homicide, the offense charged, which is included in murder (Secs. 4–5).",
-		"legalBasis": "Sec. 4"
+		"legalBasis": "Rule 120, Sec. 4; Rule 120, Secs. 4–5; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf4",
@@ -1750,9 +1861,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 3), with separate findings for each.",
-		"legalBasis": "Sec. 3"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 3), with separate findings for each. Under Rule 120, Sec. 3 and Revised Rules of Criminal Procedure, the governing rule on \"When an information charges two offenses and the accused does not object, the court may convict him of both if proved.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 120, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf5",
@@ -1764,9 +1876,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He loses his remedies unless, within 15 days, he surrenders and moves for leave, proving justifiable cause (Sec. 6; Jaylo).",
-		"legalBasis": "Sec. 6; Jaylo"
+		"legalBasis": "Rule 120, Sec. 6; Jaylo v. Sandiganbayan (G.R. Nos. 183152–54, Jan. 21, 2015); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf6",
@@ -1778,9 +1891,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Sec. 7 allows modification only \"upon motion of the accused.\"",
-		"legalBasis": "Sec. 7"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Sec. 7 allows modification only \"upon motion of the accused.\" Under Rule 120, Sec. 7 and Revised Rules of Criminal Procedure, the governing rule on \"The prosecution may move to modify a judgment of conviction to impose the correct, higher penalty before it becomes final.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 120, Sec. 7; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf7",
@@ -1792,9 +1906,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It must state whether the evidence absolutely failed or merely failed beyond reasonable doubt, and whether the act from which civil liability might arise did not exist (Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"legalBasis": "Rule 120, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r120:tf8",
@@ -1806,9 +1921,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under RA 10707, if the appellate court reduces a non-probationable penalty to a probationable one, he may apply based on the modified decision before it becomes final. Otherwise, appeal and probation are mutually exclusive (Almero).",
-		"legalBasis": "RA 10707; Almero"
+		"legalBasis": "Rule 120, Revised Rules of Criminal Procedure; RA 10707; Almero v. People (G.R. No. 188191, Mar. 12, 2014)"
 	},
 	{
 		"id": "crimpro:r120:tf9",
@@ -1820,9 +1936,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Not if slight physical injuries (2-month prescriptive period) had already prescribed when the information was filed (Corpus v. People, 2023).",
-		"legalBasis": "Corpus; variance"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Not if slight physical injuries (2-month prescriptive period) had already prescribed (Corpus v. People, 2023). Note the prospective caveat in People v. Consebido (G.R. No. 258563, April 2, 2025, En Banc): henceforth, filing the criminal complaint with the DOJ/prosecutor interrupts prescription even for expedited-procedure offenses (abandoning Corpus and Desierto prospectively), though slight physical injuries still bars conviction if the complaint itself was filed beyond 2 months or if filed before Consebido without timely court filing.",
+		"legalBasis": "Rule 120, Revised Rules of Criminal Procedure; People v. Consebido (G.R. No. 258563, Apr. 2, 2025, En Banc)"
 	},
 	{
 		"id": "crimpro:r121:tf1",
@@ -1834,9 +1951,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Rule 121 covers only judgments of conviction, on motion of the accused; reconsidering an acquittal violates double jeopardy.",
-		"legalBasis": "Sec. 1; double jeopardy"
+		"legalBasis": "Rule 121; Rule 121, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf2",
@@ -1848,9 +1966,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1). Under Rule 121, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"The court may grant a new trial at its own instance, but only with the consent of the accused.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 121, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf3",
@@ -1862,9 +1981,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 4).",
-		"legalBasis": "Sec. 4"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 4). Under Rule 121, Sec. 4 and Revised Rules of Criminal Procedure, the governing rule on \"A motion for new trial based on newly discovered evidence must be supported by affidavits of the witnesses or authenticated copies of the documents.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 121, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf4",
@@ -1876,9 +1996,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The evidence already adduced stands; the new evidence is considered with it (Sec. 6[b]). Setting aside applies to new trial for errors or irregularities (Sec. 6[a]).",
-		"legalBasis": "Sec. 6"
+		"legalBasis": "Rule 121, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf5",
@@ -1890,9 +2011,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Reconsideration covers errors of law or fact \"which requires no further proceedings\" (Sec. 3); if evidence is needed, the remedy is new trial.",
-		"legalBasis": "Sec. 3"
+		"legalBasis": "Rule 121, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf6",
@@ -1904,9 +2026,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under the fresh-period rule, he has a fresh 15 days from notice of the denial (Neypes, applied in Yu v. Samson-Tatad, 2011).",
-		"legalBasis": "Rule 122, Sec. 6; Neypes; Yu v. Samson-Tatad"
+		"legalBasis": "Rule 122, Sec. 6; Rule 121, Sec. 6; Neypes v. Court of Appeals (G.R. No. 141524, Sept. 14, 2005, En Banc); Yu v. Samson-Tatad (G.R. No. 170979, Feb. 9, 2011); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf7",
@@ -1918,9 +2041,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It could have been discovered and produced at trial with reasonable diligence (Sec. 2[b]).",
-		"legalBasis": "Sec. 2(b); reasonable diligence"
+		"legalBasis": "Rule 121, Sec. 2(b); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r121:tf8",
@@ -1932,9 +2056,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. In the CA, a motion for new trial lies only on newly discovered evidence material to the defense (Rule 124, Sec. 14); trial irregularities are raised as assigned errors in the appeal.",
-		"legalBasis": "Rule 124, Sec. 14"
+		"legalBasis": "Rule 124, Sec. 14; Rule 124, Sec. 14); Rule 121, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf1",
@@ -1946,9 +2071,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 6).",
-		"legalBasis": "Sec. 6"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 6). Under Rule 122, Sec. 6 and Revised Rules of Criminal Procedure, the governing rule on \"An appeal in a criminal case must be taken within 15 days from promulgation of the judgment.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 122, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf2",
@@ -1960,9 +2086,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is filed with the court that rendered the judgment — the RTC — and served on the adverse party (Sec. 3[a]).",
-		"legalBasis": "Sec. 3(a)"
+		"legalBasis": "Rule 122, Sec. 3(a); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf3",
@@ -1974,9 +2101,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Ching v. Nicdao, 2007), within the same period as the accused.",
-		"legalBasis": "Sec. 1; Ching v. Nicdao"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Ching v. Nicdao, 2007), within the same period as the accused. Under Rule 122, Sec. 1 and Ching v. Nicdao (G.R. No. 141181, Apr. 27, 2007), the governing rule on \"The offended party may appeal the civil aspect of a judgment of acquittal.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 122, Sec. 1; Ching v. Nicdao (G.R. No. 141181, Apr. 27, 2007); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf4",
@@ -1988,9 +2116,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 3[b]).",
-		"legalBasis": "Sec. 3(b)"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 3[b]). Under Rule 122, Sec. 3(b) and Revised Rules of Criminal Procedure, the governing rule on \"An RTC decision affirming an MTC conviction is appealed to the CA by petition for review under Rule 42.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 122, Sec. 3(b); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf5",
@@ -2002,9 +2131,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Since People v. Mateo (2004) and A.M. No. 00-5-03-SC, it is appealed by notice of appeal to the CA (Sec. 3[c]).",
-		"legalBasis": "Sec. 3(c); Mateo"
+		"legalBasis": "Rule 122, Sec. 3(c); A.M. No. 00-5-03-SC; People v. Mateo (G.R. Nos. 147678–87, July 7, 2004, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf6",
@@ -2016,9 +2146,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The appeal throws the whole case open; the appellate court may increase the penalty (Trono; Bu Lin; Rule 124, Sec. 11).",
-		"legalBasis": "Trono; Rule 124, Sec. 11"
+		"legalBasis": "Rule 124, Sec. 11; Rule 124, Sec. 11); Rule 122, Sec. 11; Trono v. United States (199 U.S. 521, 1905); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf7",
@@ -2030,9 +2161,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Only as to the appealing party (Sec. 11[c]).",
-		"legalBasis": "Sec. 11(c)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Only as to the appealing party (Sec. 11[c]). Under Rule 122, Sec. 11(c) and Revised Rules of Criminal Procedure, the governing rule on \"Execution of a judgment is stayed as to all accused once any one of them perfects an appeal.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 122, Sec. 11(c); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf8",
@@ -2044,9 +2176,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Certiorari corrects errors of jurisdiction, not errors of judgment; misappreciation of evidence is not grave abuse (Ysidoro; Villareal v. Aliga).",
-		"legalBasis": "Rule 65; errors of jurisdiction"
+		"legalBasis": "Rule 122, Revised Rules of Criminal Procedure; Rule 65; Villareal v. Aliga (G.R. No. 166995, Jan. 13, 2014)"
 	},
 	{
 		"id": "crimpro:r122:tf9",
@@ -2058,9 +2191,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The wrong mode does not toll the period; the judgment becomes final, save exceptionally in the interest of justice (Tiu, p. 214).",
-		"legalBasis": "wrong mode; finality"
+		"legalBasis": "Rule 122, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf10",
@@ -2072,9 +2206,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. Jeopardy does not attach before a valid plea, so the appeal does not place the accused twice in jeopardy (Sec. 1).",
-		"legalBasis": "Sec. 1; no jeopardy before plea"
+		"legalBasis": "Rule 122, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf11",
@@ -2086,9 +2221,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The trial court may allow withdrawal before the record is forwarded to the appellate court; the judgment then becomes final (Sec. 12).",
-		"legalBasis": "Sec. 12"
+		"legalBasis": "Rule 122, Sec. 12; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r122:tf12",
@@ -2100,9 +2236,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. By notice of appeal filed with the CA (Rule 124, Sec. 13[c]); the SC may then review facts as well as law.",
-		"legalBasis": "Rule 124, Sec. 13(c)"
+		"legalBasis": "Rule 124, Sec. 13(c); Rule 124, Sec. 13; Rule 122, Sec. 13(c); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r123:tf1",
@@ -2114,9 +2251,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True (Sec. 1), except court-specific provisions and cases under the special procedure for minor offenses.",
-		"legalBasis": "Sec. 1"
+		"legalBasis": "Rule 123, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r123:tf2",
@@ -2128,9 +2266,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The 1991 Rule was replaced by the 2022 Rules on Expedited Procedures in the First Level Courts (A.M. No. 08-8-7-SC).",
-		"legalBasis": "A.M. No. 08-8-7-SC"
+		"legalBasis": "Rule 123, Revised Rules of Criminal Procedure; A.M. No. 08-8-7-SC"
 	},
 	{
 		"id": "crimpro:r123:tf3",
@@ -2142,9 +2281,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Since A.M. No. 05-8-26-SC (2005), MTC judges no longer conduct preliminary investigation.",
-		"legalBasis": "Rule 112, Sec. 2"
+		"legalBasis": "Rule 112, Sec. 2; Rule 123, Sec. 2; A.M. No. 05-8-26-SC; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r123:tf4",
@@ -2156,9 +2296,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True (Rule 114, Sec. 4): in first-level courts, bail is a matter of right before and after conviction.",
-		"legalBasis": "Rule 114, Sec. 4"
+		"legalBasis": "Rule 114, Sec. 4; Rule 114, Sec. 4); Rule 123, Sec. 4; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf1",
@@ -2170,9 +2311,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The title remains as in the court of origin; the parties are called appellant and appellee (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"legalBasis": "Rule 124, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf2",
@@ -2184,9 +2326,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Within 30 days from receipt of the notice that the evidence is attached to the record (Sec. 3). 45 days is the civil period.",
-		"legalBasis": "Sec. 3"
+		"legalBasis": "Rule 124, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf3",
@@ -2198,9 +2341,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 8, par. 2), on motion or motu proprio.",
-		"legalBasis": "Sec. 8"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 8, par. 2), on motion or motu proprio. Under Rule 124, Sec. 8 and Revised Rules of Criminal Procedure, the governing rule on \"The CA may dismiss an appeal if the appellant jumps bail while the appeal is pending.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 124, Sec. 8; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf4",
@@ -2212,9 +2356,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The exception in Sec. 8 bars dismissal on that ground where the appellant is represented by counsel de oficio.",
-		"legalBasis": "Sec. 8"
+		"legalBasis": "Rule 124, Sec. 8; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf5",
@@ -2226,9 +2371,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 9).",
-		"legalBasis": "Sec. 9"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 9). Under Rule 124, Sec. 9 and Revised Rules of Criminal Procedure, the governing rule on \"The accused need not be present in court during the hearing of his appeal.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 124, Sec. 9; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf6",
@@ -2240,9 +2386,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 11). The appeal throws the whole case open for review.",
-		"legalBasis": "Sec. 11; Trono"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 11). The appeal throws the whole case open for review. Under Rule 124, Sec. 11 and Trono v. United States (199 U.S. 521, 1905), the governing rule on \"On the accused's appeal, the CA may increase the penalty imposed by the trial court.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 124, Sec. 11; Trono v. United States (199 U.S. 521, 1905); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf7",
@@ -2254,9 +2401,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Only on newly discovered evidence material to his defense (Sec. 14).",
-		"legalBasis": "Sec. 14"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Only on newly discovered evidence material to his defense (Sec. 14). Under Rule 124, Sec. 14 and Revised Rules of Criminal Procedure, the governing rule on \"In the CA, the appellant may move for a new trial on the ground of errors of law committed during the trial.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 124, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf8",
@@ -2268,9 +2416,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 16). Only one MR is allowed, within 15 days.",
-		"legalBasis": "Sec. 16"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 16). Only one MR is allowed, within 15 days. Under Rule 124, Sec. 16 and Revised Rules of Criminal Procedure, the governing rule on \"The pendency of a motion for reconsideration in the CA stays the mittimus.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 124, Sec. 16; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r124:tf9",
@@ -2282,9 +2431,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. That is the procedure for death (Sec. 13[a]). For RP or LI, the CA renders and enters judgment, appealable to the SC by notice of appeal filed with the CA (Sec. 13[c]).",
-		"legalBasis": "Sec. 13"
+		"legalBasis": "Rule 124, Sec. 13; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r125:tf1",
@@ -2296,9 +2446,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1).",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1). Under Rule 125, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"The procedure in the Supreme Court in criminal cases is the same as in the Court of Appeals, unless the Constitution or law provides otherwise.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 125, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r125:tf2",
@@ -2310,9 +2461,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True (Sec. 2) — generally Rule 45 — except RP/LI cases, which go up by notice of appeal (Rule 124, Sec. 13[c]).",
-		"legalBasis": "Sec. 2"
+		"legalBasis": "Rule 45; Rule 124, Sec. 13; Rule 125, Sec. 2; Rule 125, Sec. 13; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r125:tf3",
@@ -2324,9 +2476,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The conviction is reversed and the accused acquitted (Sec. 3).",
-		"legalBasis": "Sec. 3"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The conviction is reversed and the accused acquitted (Sec. 3). Under Rule 125, Sec. 3 and Revised Rules of Criminal Procedure, the governing rule on \"When the SC en banc is equally divided on whether to acquit and remains so after re-deliberation, the judgment of conviction is affirmed.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 125, Sec. 3; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r125:tf4",
@@ -2338,9 +2491,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Art. VIII, Sec. 5[2][d]) — but Mateo held this does not bar an intermediate CA review.",
-		"legalBasis": "Art. VIII, Sec. 5(2)(d); Mateo"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Art. VIII, Sec. 5[2][d]) — but Mateo held this does not bar an intermediate CA review. Under Rule 125, Sec. 5(2) and Art. VIII, Sec. 5(2)(d), the governing rule on \"The Constitution requires the Supreme Court to have the power to review all criminal cases in which the penalty imposed is reclusion perpetua or higher.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 125, Sec. 5(2); Art. VIII, Sec. 5(2)(d); People v. Mateo (G.R. Nos. 147678–87, July 7, 2004, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf1",
@@ -2352,9 +2506,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 10). Thereafter it is void.",
-		"legalBasis": "Sec. 10"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 10). Thereafter it is void. Under Rule 126, Sec. 10 and Revised Rules of Criminal Procedure, the governing rule on \"A search warrant is valid for ten days from its date.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 126, Sec. 10; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf2",
@@ -2366,9 +2521,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Daytime, unless the affidavit asserts the property is on the person or in the place, in which case the warrant may direct service at any time (Sec. 9).",
-		"legalBasis": "Sec. 9"
+		"legalBasis": "Rule 126, Sec. 9; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf3",
@@ -2380,9 +2536,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. One specific offense only (Sec. 4); a warrant for several offenses is a scatter-shot warrant (Stonehill; Vallejo).",
-		"legalBasis": "Sec. 4"
+		"legalBasis": "Rule 126, Sec. 4; Stonehill v. Diokno (G.R. No. L-19550, June 19, 1967); Vallejo v. Court of Appeals (G.R. No. 156413, Apr. 14, 2004); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf4",
@@ -2394,9 +2551,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. He must personally examine them by searching questions and answers, in writing and under oath (Sec. 5; Bache; Silva). Evaluation of documents suffices only for a warrant of arrest (Soliven).",
-		"legalBasis": "Sec. 5; Bache; Soliven"
+		"legalBasis": "Rule 126, Sec. 5; Soliven v. Makasiar (G.R. No. 82585, Nov. 14, 1988); Bache & Co. (Phil.), Inc. v. Ruiz (G.R. No. L-32409, Feb. 27, 1971); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf5",
@@ -2408,9 +2566,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Control or possession suffices (Yao v. People, 2007).",
-		"legalBasis": "Yao"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Control or possession suffices (Yao v. People, 2007). Under Rule 126, Revised Rules of Criminal Procedure and Yao, Sr. v. People (G.R. No. 168306, June 19, 2007), the governing rule on \"The property to be seized must be owned by the person against whom the search warrant is directed.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; Yao, Sr. v. People (G.R. No. 168306, June 19, 2007)"
 	},
 	{
 		"id": "crimpro:r126:tf6",
@@ -2422,9 +2581,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The two witnesses must be of sufficient age and discretion and residing in the same locality (Sec. 8).",
-		"legalBasis": "Sec. 8"
+		"legalBasis": "Rule 126, Sec. 8; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf7",
@@ -2436,9 +2596,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. The constitutional guarantee and exclusionary rule apply to the State, not private individuals acting on their own (People v. Marti, 1991).",
-		"legalBasis": "Marti"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; People v. Marti (G.R. No. 81561, Jan. 18, 1991)"
 	},
 	{
 		"id": "crimpro:r126:tf8",
@@ -2450,9 +2611,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 2, last par.).",
-		"legalBasis": "Sec. 2"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 2, last par.). Under Rule 126, Sec. 2 and Revised Rules of Criminal Procedure, the governing rule on \"Once a criminal action has been filed, an application for a search warrant related to it may be filed only in the court where the action is pending.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 126, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf9",
@@ -2464,9 +2626,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. An application for a search warrant is not a criminal action; improper venue is waived if not raised in the first motion to quash (Pilipinas Shell v. Romars, 2015).",
-		"legalBasis": "Pilipinas Shell; omnibus motion"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; Pilipinas Shell Petroleum Corp. v. Romars International Gases Corp. (G.R. No. 189669, Feb. 16, 2015)"
 	},
 	{
 		"id": "crimpro:r126:tf10",
@@ -2478,9 +2641,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A warrant is severable; it remains valid as to the items particularly described (Uy v. BIR; Microsoft v. Maxicorp).",
-		"legalBasis": "severability"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf11",
@@ -2492,9 +2656,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. The search is limited to the person and the place of arrest (Nolasco v. Paño).",
-		"legalBasis": "Sec. 13; Nolasco"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. The search is limited to the person and the place of arrest (Nolasco v. Paño). Under Rule 126, Sec. 13 and Nolasco v. Paño (G.R. No. L-69803, Oct. 8, 1985), the governing rule on \"A person lawfully arrested in a mall may be searched, as an incident of the arrest, together with his house located elsewhere.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 126, Sec. 13; Nolasco v. Paño (G.R. No. L-69803, Oct. 8, 1985); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r126:tf12",
@@ -2506,9 +2671,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It requires less than probable cause but more than a hunch: a genuine reason, from the officer's experience and the surroundings, to believe the person is armed or carries contraband (Malacat; Esquillo).",
-		"legalBasis": "Malacat; genuine reason"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; Malacat v. Court of Appeals (G.R. No. 123595, Dec. 12, 1997)"
 	},
 	{
 		"id": "crimpro:r126:tf13",
@@ -2520,9 +2686,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A solitary tip is not probable cause; personally observed, corroborating circumstances are needed (People v. Sapla, 2020, En Banc; Cogaed, 2014).",
-		"legalBasis": "Sapla; Cogaed"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; People v. Sapla (G.R. No. 244045, June 16, 2020, En Banc); People v. Cogaed (G.R. No. 200334, July 30, 2014)"
 	},
 	{
 		"id": "crimpro:r126:tf14",
@@ -2534,9 +2701,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Ample time and opportunity to secure a warrant defeats the exception (Aminnudin, 1988; Racho, 2010).",
-		"legalBasis": "Aminnudin; Racho"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; People v. Aminnudin (G.R. No. 74869, July 6, 1988); People v. Racho (G.R. No. 186529, Aug. 3, 2010)"
 	},
 	{
 		"id": "crimpro:r126:tf15",
@@ -2548,9 +2716,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Consent must be unequivocal, specific and freely given; passive submission to a show of authority is not consent, and the State must prove consent by clear and positive evidence (Aruta; Luz).",
-		"legalBasis": "Aruta; Luz; voluntariness"
+		"legalBasis": "Rule 126, Revised Rules of Criminal Procedure; People v. Aruta (G.R. No. 120915, Apr. 3, 1998); Luz v. People (G.R. No. 197788, Feb. 29, 2012)"
 	},
 	{
 		"id": "crimpro:r127:tf1",
@@ -2562,9 +2731,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 1), insofar as they are applicable.",
-		"legalBasis": "Sec. 1"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 1), insofar as they are applicable. Under Rule 127, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"Provisional remedies in civil actions may be availed of in connection with the civil action deemed instituted with the criminal action.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 127, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r127:tf2",
@@ -2576,9 +2746,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Provisional remedies attach to the civil action deemed instituted; once reserved, it is not in the criminal case (Sec. 1; Rule 111, Sec. 1).",
-		"legalBasis": "Sec. 1; reservation"
+		"legalBasis": "Rule 111, Sec. 1); Rule 127, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r127:tf3",
@@ -2590,9 +2761,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Sec. 2[d]).",
-		"legalBasis": "Sec. 2(d)"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Sec. 2[d]). Under Rule 127, Sec. 2(d) and Revised Rules of Criminal Procedure, the governing rule on \"The property of an accused who resides outside the Philippines may be attached in the criminal case.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 127, Sec. 2(d); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:r127:tf4",
@@ -2604,9 +2776,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It secures \"any judgment that may be recovered from the accused\" by the offended party — the civil liability (Sec. 2).",
-		"legalBasis": "Sec. 2; civil liability"
+		"legalBasis": "Rule 127, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf1",
@@ -2618,9 +2791,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
+		"correctIndex": 0,
+		"key": "True",
 		"explanation": "True. RPC Art. 90, par. 3: correctional penalties prescribe in ten years, \"with the exception of those punishable by arresto mayor, which shall prescribe in five years.\"",
-		"legalBasis": "Art. 90"
+		"legalBasis": "Art. 90; RPC Art. 90; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf2",
@@ -2632,9 +2806,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It runs from the day of commission; discovery applies only if the violation was not known at the time (Act 3326, Sec. 2; blameless ignorance).",
-		"legalBasis": "Act 3326, Sec. 2"
+		"legalBasis": "Act 3326, Sec. 2; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf3",
@@ -2646,9 +2821,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Act 3326 has no absence provision, and Art. 91 cannot be applied to special laws (Romualdez v. Marcelo, 2006).",
-		"legalBasis": "Romualdez v. Marcelo"
+		"legalBasis": "Art. 91; Act 3326; Romualdez v. Marcelo (G.R. Nos. 165510–33, July 28, 2006); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf4",
@@ -2660,9 +2836,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Under Olarte (1967), followed in Arambulo v. Laqui (2000), filing interrupts prescription even if the court cannot try the case on the merits.",
-		"legalBasis": "Olarte; Arambulo"
+		"legalBasis": "People v. Olarte (G.R. No. L-22465, Feb. 28, 1967); Arambulo v. Laqui (G.R. No. 138596, Oct. 12, 2000); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf5",
@@ -2674,9 +2851,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A Sunday or holiday does not extend the State's prescriptive period (Yapdiangco v. Buencamino, 1983). The next-working-day rule applies to procedural periods. Trap: Importing Rule 22, Sec. 1 into a substantive period.",
-		"legalBasis": "Yapdiangco"
+		"legalBasis": "Rule 22, Sec. 1; Yapdiangco v. Buencamino (G.R. No. L-28841, June 24, 1983); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf6",
@@ -2688,9 +2866,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It is based on the penalty prescribed by law; for a compound penalty, the highest penalty is the basis (Art. 90, last par.).",
-		"legalBasis": "penalty prescribed by law; compound penalty"
+		"legalBasis": "Art. 90; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf7",
@@ -2702,9 +2881,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Causing v. People (2023; reconsideration denied 2026): one year from discovery, as with libel under Art. 90. The fifteen-year view from an unsigned 2018 resolution is not binding.",
-		"legalBasis": "Causing; Art. 90; one year"
+		"legalBasis": "Art. 90; Causing v. People (G.R. No. 258524, Oct. 11, 2023); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:prescription:tf8",
@@ -2716,9 +2896,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False, on the Court's own terms: the Consebido rule applies \"henceforth,\" prospectively. For complaints filed before it, Desierto and Corpus applied: only filing in court tolled.",
-		"legalBasis": "Consebido; prospective; Desierto; Corpus"
+		"legalBasis": "People v. Consebido (G.R. No. 258563, Apr. 2, 2025, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf1",
@@ -2730,9 +2911,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Not jurisdictional; waived if not raised in a motion to quash before plea (Villa Gomez v. People, 2020, En Banc).",
-		"legalBasis": "Villa Gomez"
+		"legalBasis": "Villa Gomez v. People (G.R. No. 216824, Nov. 10, 2020, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf2",
@@ -2744,9 +2926,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. Only the civil aspect; the criminal aspect may be appealed only by the State through the OSG, and an acquittal is generally unappealable (Villareal v. Aliga).",
-		"legalBasis": "civil aspect only"
+		"legalBasis": "Villareal v. Aliga (G.R. No. 166995, Jan. 13, 2014); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf3",
@@ -2758,9 +2941,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False (Rule 111, Sec. 1[b]).",
-		"legalBasis": "Sec. 1(b)"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False (Rule 111, Sec. 1[b]). Under Rule 111, Sec. 1 and Revised Rules of Criminal Procedure, the governing rule on \"In BP 22 cases, the offended party may reserve the civil action.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 111, Sec. 1; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf4",
@@ -2772,9 +2956,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Removed by A.M. No. 05-8-26-SC (effective October 3, 2005).",
-		"legalBasis": "A.M. No. 05-8-26-SC"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Removed by A.M. No. 05-8-26-SC (effective October 3, 2005). Under A.M. No. 05-8-26-SC and Revised Rules of Criminal Procedure, the governing rule on \"Municipal trial court judges may still conduct preliminary investigations.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "A.M. No. 05-8-26-SC; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf5",
@@ -2786,9 +2971,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. It remains valid until served or recalled; the 10 days govern execution and reporting (Rule 113, Sec. 4).",
-		"legalBasis": "Sec. 4"
+		"legalBasis": "Rule 113, Sec. 4); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf6",
@@ -2800,9 +2986,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False, if he raises it before plea (Rule 114, Sec. 26).",
-		"legalBasis": "Sec. 26"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False, if he raises it before plea (Rule 114, Sec. 26). Under Rule 114, Sec. 26) and Revised Rules of Criminal Procedure, the governing rule on \"By posting bail, the accused waives his right to question the legality of his warrantless arrest.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 114, Sec. 26); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf7",
@@ -2814,9 +3001,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]).",
-		"legalBasis": "arraignment"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Trial in absentia requires prior arraignment (Const., Art. III, Sec. 14[2]). Under Const., Art. III, Sec. 14 and Revised Rules of Criminal Procedure, the governing rule on \"An accused who jumps bail before arraignment may be tried in absentia if he was duly notified.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Const., Art. III, Sec. 14; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf8",
@@ -2828,9 +3016,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. RA 9165, Sec. 23 was struck down (Estipona, 2017); a Supreme Court framework governs; courts may overrule objections based solely on inconsistent DOJ circulars (Montierro, 2022).",
-		"legalBasis": "Estipona; Montierro"
+		"legalBasis": "RA 9165; Estipona, Jr. v. Lobrigo (G.R. No. 226679, Aug. 15, 2017, En Banc); People v. Montierro (G.R. No. 254564, July 26, 2022, En Banc); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf9",
@@ -2842,9 +3031,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 0,"key":"True",
-		"explanation": "True (Rule 117, Sec. 6 — grounds [g] and [i]).",
-		"legalBasis": "Sec. 6"
+		"correctIndex": 0,
+		"key": "True",
+		"explanation": "True (Rule 117, Sec. 6 — grounds [g] and [i]). Under Rule 117, Sec. 6 and Revised Rules of Criminal Procedure, the governing rule on \"An order quashing an information on the ground of prescription bars another prosecution for the same offense.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 117, Sec. 6; Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf10",
@@ -2856,9 +3046,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. It must be in writing and signed by the accused and counsel (Rule 118, Sec. 2).",
-		"legalBasis": "Sec. 2"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. It must be in writing and signed by the accused and counsel (Rule 118, Sec. 2). Under Rule 118, Sec. 2) and Revised Rules of Criminal Procedure, the governing rule on \"A stipulation made by defense counsel at pre-trial binds the accused even if the accused did not sign it.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 118, Sec. 2); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf11",
@@ -2870,9 +3061,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False. A granted demurrer is an acquittal; only certiorari for grave abuse lies (Dayap v. Sendiong).",
-		"legalBasis": "acquittal"
+		"legalBasis": "Dayap v. Sendiong (G.R. No. 177960, Jan. 29, 2009); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf12",
@@ -2884,9 +3076,10 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
-		"explanation": "False. Convict of homicide; treachery was not alleged (Rule 120, Secs. 4–5; Rule 110, Sec. 8).",
-		"legalBasis": "variance; qualifying circumstance must be alleged"
+		"correctIndex": 1,
+		"key": "False",
+		"explanation": "False. Convict of homicide; treachery was not alleged (Rule 120, Secs. 4–5; Rule 110, Sec. 8). Under Rule 120, Secs. 4–5 and Rule 110, Sec. 8), the governing rule on \"An accused charged with homicide may be convicted of murder if treachery is proved at trial.\" is strictly applied as part of Philippine criminal procedure.",
+		"legalBasis": "Rule 120, Secs. 4–5; Rule 110, Sec. 8); Revised Rules of Criminal Procedure"
 	},
 	{
 		"id": "crimpro:mock:tf13",
@@ -2898,8 +3091,9 @@ export const ruleTrueFalseMcqs: McqQuestion[] = [
 			"True",
 			"False"
 		],
-		"correctIndex": 1,"key":"False",
+		"correctIndex": 1,
+		"key": "False",
 		"explanation": "False — unsettled. Consebido's words reach offenses covered by the 2022 Expedited Rules (which include ordinances) and it abandoned Desierto and Corpus, but it did not expressly abandon Zaldivia or Jadewell.",
-		"legalBasis": "Consebido; Zaldivia; Jadewell"
+		"legalBasis": "People v. Consebido (G.R. No. 258563, Apr. 2, 2025, En Banc); Zaldivia v. Reyes, Jr. (G.R. No. 102342, July 3, 1992); Jadewell Parking Systems Corp. v. Judge Lidua, Sr. (G.R. No. 169588, Oct. 7, 2013); Revised Rules of Criminal Procedure"
 	}
 ];

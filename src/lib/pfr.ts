@@ -22,6 +22,7 @@ interface RawMcq {
 	a: number;
 	key?: string;
 	x: string;
+	lb?: string;
 }
 interface RawTopic {
 	id: string;
@@ -150,6 +151,7 @@ const MCQS: KitMcq[] = data.M.map((m, i) => {
 		a: correctIdx,
 		key: m.key ?? m.o[correctIdx],
 		ex: m.x,
+		lb: m.lb,
 		why: m.o.map((_, j) => (j === correctIdx ? '' : wrong.shift()!)),
 		star: !!m.hot
 	};

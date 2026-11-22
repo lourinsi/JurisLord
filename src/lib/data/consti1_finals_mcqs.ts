@@ -25,7 +25,7 @@ export const constiFinalsWatchFor = `<strong>Watch for: combination choices (A�
 <ul>
   <li><strong>Part 1 (Judicial Department — Art. VIII, Q1–Q25):</strong> SC has 15 Members (CJ + 14 Associate Justices) sitting En Banc or in divisions of 3, 5, or 7 (never even numbers). Vacancies filled within 90 days (exception to Art. VII, Sec. 15 midnight ban under <em>De Castro v. JBC</em>). Congress gets only 1 representative with 1 vote in the JBC (<em>Chavez v. JBC</em>). Decision periods (24m SC / 12m collegiate / 3m lower) are directory on adjudicative authority (<em>Sesbreño v. CA</em>).</li>
   <li><strong>Part 2 (Constitutional Commissions — Art. IX, Q26–Q75):</strong> Staggered 7-year terms without reappointment run from Feb. 2, 1987 (<em>Gaminde v. COA</em>); promotion of a Commissioner to Chairman cannot exceed 7 years aggregate tenure (<em>Funa v. Villar</em>). No acting Chairman by presidential designation (<em>Brillantes v. Yorac</em>). COMELEC must hear election cases in Division first before En Banc on MR (<em>Cagas v. COMELEC</em>). Decisions require a majority vote of <em>all</em> Members within 60 days; certiorari to SC within 30 days.</li>
-  <li><strong>Part 3 (Accountability, Amendments &amp; Elections — Arts. V, XI &amp; XVII, Q76–Q95):</strong> Impeachment is initiated by filing + referral to the Justice Committee (<em>Francisco</em>); multiple complaints referred simultaneously count as one proceeding (<em>Gutierrez</em>). 1/3 House vote to impeach; 2/3 Senate vote to convict. People’s Initiative applies to amendments only, never revisions under the quantitative/qualitative tests (<em>Lambino</em>), and amendments must be submitted in a single plebiscite 60–90 days after approval (<em>Tolentino</em>).</li>
+  <li><strong>Part 3 (Accountability, Amendments &amp; Elections — Arts. V, XI &amp; XVII, Q76–Q95):</strong> Impeachment is initiated by filing + referral to the Justice Committee (<em>Francisco</em>); multiple complaints referred simultaneously count as one proceeding (<em>Gutierrez</em>), whereas circumventing the one-year bar or violating Bill of Rights due process renders Articles of Impeachment <em>void ab initio</em> (<em>Duterte v. House of Representatives</em>, 2025/2026). 1/3 House vote to impeach; 2/3 Senate vote to convict. People’s Initiative applies to amendments only, never revisions under the quantitative/qualitative tests (<em>Lambino</em>), and amendments must be submitted in a single plebiscite 60–90 days after approval (<em>Tolentino</em>).</li>
   <li><strong>Part 4 (General Principles to Powers of the President — Q96–Q120):</strong> Change of sovereignty abrogates political laws but preserves municipal laws (<em>People v. Perfecto</em>); belligerent occupation suspends only the exercise of sovereignty while allegiance continues (<em>Laurel v. Misa</em>). Valid delegation requires both the Completeness Test and Sufficient Standard Test concurrently (<em>Pelaez</em>). Congress voting jointly by a majority of all its Members may revoke martial law or suspension of the writ.</li>
   <li><strong>Part 5 (Jurisprudence Master Drill — Ch. 12–19, Q121–Q210):</strong> Watch paired cases that flip or qualify each other — <em>Kilosbayan v. Guingona</em> (relaxed standing) vs. <em>Kilosbayan v. Morato</em> (strict standing); <em>Perfecto v. Meer / Endencia</em> vs. <em>Nitafan v. CIR</em> (judicial income tax); <em>Lanot</em> vs. <em>Penera</em> (campaign period start); <em>Borromeo / Mahawan</em> (minute resolutions) vs. <em>Yao</em> (void decisions); and <em>League of Cities v. COMELEC</em> (2011 final resolution upholding the 16 cityhood laws).</li>
 </ul>`;
@@ -139,8 +139,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 5,
 		key: 'a, b, and c are true',
 		explanation:
-			'F (a, b, and c are true). Article VIII, Section 1, Paragraph 2 of the 1987 Philippine Constitution provides that judicial power includes the duty of the courts of justice to settle actual controversies involving rights which are legally demandable and enforceable, and to determine whether or not there has been a grave abuse of discretion amounting to lack or excess of jurisdiction on the part of any branch or instrumentality of the Government. This expanded concept of judicial review was deliberately incorporated to restrict the invocation of the political question doctrine and ensure that no governmental act remains completely immune from constitutional scrutiny when tainted with arbitrariness or grave abuse (Tañada v. Angara, G.R. No. 118295, 1997; Francisco v. House of Representatives, 415 SCRA 44, 2003).',
-		legalBasis: 'Art. VIII, Sec. 1, par. 2, 1987 Constitution; Tañada v. Angara (1997); Francisco v. House of Representatives (2003)'
+			'F (a, b, and c are true). Article VIII, Section 1, Paragraph 2 of the 1987 Philippine Constitution provides that judicial power includes the duty of the courts of justice to settle actual controversies involving rights which are legally demandable and enforceable, and to determine whether or not there has been a grave abuse of discretion amounting to lack or excess of jurisdiction on the part of any branch or instrumentality of the Government. This expanded concept of judicial review was deliberately incorporated to restrict the invocation of the political question doctrine and ensure that no governmental act remains completely immune from constitutional scrutiny when tainted with arbitrariness or grave abuse (Tañada v. Angara, G.R. No. 118295, 1997; Francisco v. House of Representatives, 415 SCRA 44, 2003). As Justice Cruz explains (Philippine Political Law), this expanded certiorari jurisdiction deliberately contracts the traditional political question defense whenever grave abuse of discretion is shown.',
+		legalBasis: 'Art. VIII, Sec. 1, par. 2, 1987 Constitution; Tañada v. Angara (1997); Francisco v. House of Representatives (2003); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:2',
@@ -172,7 +172,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VIII, Section 4(1) provides: \"The Supreme Court shall be composed of a Chief Justice and fourteen Associate Justices. It may sit en banc or in its discretion, in division of three, five, or seven Members. Any vacancy shall be filled within ninety days from the occurrence thereof.\" Option a erroneously states fifteen Associate Justices (which would total sixteen members), option b erroneously includes nine-member divisions, and option c lists prohibited even-numbered divisions.",
 		legalBasis:
-			"Art. VIII, Sec. 4(1), 1987 Constitution"
+			"Art. VIII, Sec. 4(1), 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:3',
@@ -202,7 +202,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: '90 days from occurrence',
 		explanation:
 			'C (90 days from occurrence). Article VIII, Section 4(1) explicitly commands that "Any vacancy shall be filled within ninety days from the occurrence thereof." In De Castro v. Judicial and Bar Council (G.R. No. 191002, March 17, 2010), the Supreme Court ruled that this ninety-day mandate operates as an exception to the midnight appointments ban under Article VII, Section 15, obligating the President to fill vacancies in the Supreme Court within the prescribed period.',
-		legalBasis: 'Art. VIII, Sec. 4(1), 1987 Constitution; De Castro v. Judicial and Bar Council (2010)'
+		legalBasis: 'Art. VIII, Sec. 4(1), 1987 Constitution; De Castro v. Judicial and Bar Council (2010); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:4',
@@ -234,7 +234,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VIII, Section 7(1) states: \"No person shall be appointed Member of the Supreme Court or any lower collegiate court unless he is a natural-born citizen of the Philippines. A Member of the Supreme Court must be at least forty years of age, and must have been for fifteen years or more a judge of a lower court or engaged in the practice of law in the Philippines.\" All three choices fail these requirements by allowing naturalized citizens, lowering the age to 35, and reducing required legal experience to 10 years.",
 		legalBasis:
-			"Art. VIII, Sec. 7(1), 1987 Constitution"
+			"Art. VIII, Sec. 7(1), 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:5',
@@ -325,7 +325,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article VIII, Section 8(1) provides: "A Judicial and Bar Council is hereby created under the supervision of the Supreme Court, composed of the Chief Justice as ex officio Chairman, the Secretary of Justice, and a representative of the Congress as ex officio Members, a representative of the Integrated Bar, a professor of law, a retired Member of the Supreme Court, and a representative of the private sector."',
-		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution'
+		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:8',
@@ -355,7 +355,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article VIII, Section 8(1) enumerates the four regular members appointed by the President with Commission on Appointments consent: (1) a representative of the Integrated Bar of the Philippines, (2) a professor of law, (3) a retired Member of the Supreme Court, and (4) a representative of the private sector.',
-		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution'
+		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:9',
@@ -365,9 +365,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'In Chavez v. Judicial and Bar Council (2012 and 2013), the Supreme Court ruled on congressional representation in the JBC by holding that:',
 		options: [
-			'The Senate and the House are each entitled to seat one member with one full vote',
-			'Congress as a bicameral institution is entitled to only one representative with one vote',
-			'The JBC may divide one vote into half-votes (1/2 vote each) between the two chambers',
+			'Each chamber of Congress gets one seat and one vote',
+			'Congress is entitled to one representative with one vote',
+			'Both chambers share one vote split into half-votes',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -383,10 +383,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Congress as a bicameral institution is entitled to only one representative with one vote',
+		key: 'Congress is entitled to one representative with one vote',
 		explanation:
 			'B (Congress as a bicameral institution is entitled to only one representative with one vote). In Chavez v. Judicial and Bar Council (676 SCRA 579, 2012; Resolution on Motion for Reconsideration, 696 SCRA 496, 2013), the Supreme Court held that the phrase "a representative of the Congress" in Section 8(1) is singular. Permitting one Senator and one Representative to sit with one full vote each gave Congress two votes, altering the constitutional composition of the JBC. Congress is entitled to only one representative and one vote.',
-		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution; Chavez v. Judicial and Bar Council (2012, 2013)'
+		legalBasis: 'Art. VIII, Sec. 8(1), 1987 Constitution; Chavez v. Judicial and Bar Council (2012, 2013); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:10',
@@ -418,7 +418,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VIII, Section 9 provides: \"The Members of the Supreme Court and judges of lower courts shall be appointed by the President from a list of at least three nominees prepared by the Judicial and Bar Council for every vacancy. Such appointments need no confirmation. For the lower courts, the President shall issue the appointments within ninety days from the submission of the list.\" Every option contains a constitutional error (five instead of three nominees, CA confirmation instead of none, and 60 instead of 90 days).",
 		legalBasis:
-			"Art. VIII, Sec. 9, 1987 Constitution"
+			"Art. VIII, Sec. 9, 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:11',
@@ -448,7 +448,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article VIII, Section 5(5) authorizes the Supreme Court to promulgate rules of pleading, practice, and procedure in all courts, providing that: "Such rules shall provide a simplified and inexpensive procedure for the speedy disposition of cases, shall be uniform for all courts of the same grade, and shall not diminish, increase, or modify substantive rights" (Abellana v. Marave, 57 SCRA 106; Echegaray v. Secretary of Justice, 301 SCRA 96).',
-		legalBasis: 'Art. VIII, Sec. 5(5), 1987 Constitution; Echegaray v. Secretary of Justice'
+		legalBasis: 'Art. VIII, Sec. 5(5), 1987 Constitution; Echegaray v. Secretary of Justice; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:12',
@@ -478,7 +478,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'Belongs exclusively to the Supreme Court',
 		explanation:
 			'A (Belongs exclusively to the Supreme Court). Article VIII, Section 6 vests exclusive administrative supervision over all courts in the Supreme Court. Section 11 specifies that no lower court judge shall be dismissed except by the Court sitting En Banc. In Maceda v. Vasquez (221 SCRA 464, 1993), the Court ruled that the Ombudsman cannot initiate an investigation against a judge for acts related to judicial functions without the Supreme Court first determining that an administrative violation was committed.',
-		legalBasis: 'Art. VIII, Secs. 6 & 11, 1987 Constitution; Maceda v. Vasquez (1993)'
+		legalBasis: 'Art. VIII, Secs. 6 & 11, 1987 Constitution; Maceda v. Vasquez (1993); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:13',
@@ -510,7 +510,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VIII, Section 15(1) provides: \"All cases or matters filed after the effectivity of this Constitution must be decided or resolved within twenty-four months from date of submission for the Supreme Court, and, unless reduced by the Supreme Court, twelve months for all lower collegiate courts, and three months for all other lower courts.\" None of the choices match the 24–12–3 month periods.",
 		legalBasis:
-			"Art. VIII, Sec. 15(1), 1987 Constitution"
+			"Art. VIII, Sec. 15(1), 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:14',
@@ -520,9 +520,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Sesbreño v. Court of Appeals (2008), what happens if a court fails to decide a case within the constitutional periods set in Article VIII, Section 15?',
 		options: [
-			'The court immediately forfeits jurisdiction over the controversy',
-			'The judgment rendered after the expiration of the period is null and void',
-			"The constitutional periods are directory upon the court's adjudicative authority",
+			'The court immediately loses jurisdiction over it',
+			'Any judgment rendered after the period is void',
+			"The periods are merely directory on judicial authority",
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -538,7 +538,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option c is true.'
 		],
 		correctIndex: 2,
-		key: 'The constitutional periods are directory upon the court\'s adjudicative authority',
+		key: 'The periods are merely directory on judicial authority',
 		explanation:
 			'C (The constitutional periods are directory upon the court\'s adjudicative authority). In Sesbreño v. Court of Appeals (556 SCRA 715, 2008), the Supreme Court reiterated that constitutional periods for deciding cases are directory upon the court\'s adjudicative power. Failure to render a decision within the prescribed period does not strip the court of jurisdiction nor render the belated decision void, although the delayed judge may face administrative sanctions.',
 		legalBasis: 'Art. VIII, Sec. 15, 1987 Constitution; Sesbreño v. Court of Appeals (2008)'
@@ -573,7 +573,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VIII, Section 3 provides: \"The Judiciary shall enjoy fiscal autonomy. Appropriations for the Judiciary may not be reduced by the legislature below the amount appropriated for the previous year and, after approval, shall be automatically and regularly released.\" (Bengzon v. Drilon, 208 SCRA 133, 1992). None of the choices accurately state these guarantees.",
 		legalBasis:
-			"Art. VIII, Sec. 3, 1987 Constitution; Bengzon v. Drilon (1992)"
+			"Art. VIII, Sec. 3, 1987 Constitution; Bengzon v. Drilon (1992); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:16',
@@ -602,8 +602,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 5,
 		key: 'a, b, and c are true',
 		explanation:
-			'F (a, b, and c are true). Article VIII, Section 4(2) provides: "All cases involving the constitutionality of a treaty, international or executive agreement, or law, which shall be heard by the Supreme Court en banc, and all other cases which under the Rules of Court are required to be heard en banc, including those involving the constitutionality, application, or operation of presidential decrees, proclamations, orders, instructions, ordinances, and other regulations, shall be decided with the concurrence of a majority of the Members who actually took part in the deliberations on the issues in the case and voted thereon."',
-		legalBasis: 'Art. VIII, Sec. 4(2), 1987 Constitution'
+			'F (a, b, and c are true). Article VIII, Section 4(2) provides: "All cases involving the constitutionality of a treaty, international or executive agreement, or law, which shall be heard by the Supreme Court en banc, and all other cases which under the Rules of Court are required to be heard en banc, including those involving the constitutionality, application, or operation of presidential decrees, proclamations, orders, instructions, ordinances, and other regulations, shall be decided with the concurrence of a majority of the Members who actually took part in the deliberations on the issues in the case and voted thereon." As Justice Cruz emphasizes (Philippine Political Law), the en banc mandate ensures that the grave step of invalidating a statute or treaty reflects the collective judgment of the full Court.',
+		legalBasis: 'Art. VIII, Sec. 4(2), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:17',
@@ -612,9 +612,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'exceptions',
 		question: 'Under Article VIII, Section 4(3), a legal doctrine or principle of law laid down by the Supreme Court:',
 		options: [
-			'In division may be modified or reversed by the same division in a subsequent case',
-			'Can only be modified or reversed by the Supreme Court sitting En Banc',
-			'May be reversed by the Court of Appeals if the doctrine was established more than twenty years ago',
+			'In division may be reversed by the same division',
+			'Can only be modified or reversed by the Court En Banc',
+			'May be reversed by the CA if over twenty years old',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -630,10 +630,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Can only be modified or reversed by the Supreme Court sitting En Banc',
+		key: 'Can only be modified or reversed by the Court En Banc',
 		explanation:
-			'B (Can only be modified or reversed by the Supreme Court sitting En Banc). Article VIII, Section 4(3) explicitly dictates: "Provided, that no doctrine or principle of law laid down by the court in a decision rendered en banc or in division may be modified or reversed except by the court sitting en banc."',
-		legalBasis: 'Art. VIII, Sec. 4(3), 1987 Constitution'
+			'B (Can only be modified or reversed by the Supreme Court sitting En Banc). Article VIII, Section 4(3) explicitly dictates: "Provided, that no doctrine or principle of law laid down by the court in a decision rendered en banc or in division may be modified or reversed except by the court sitting en banc." Justice Cruz notes (Philippine Political Law) that this safeguard preserves doctrinal stability and prevents conflicting rulings among Supreme Court divisions.',
+		legalBasis: 'Art. VIII, Sec. 4(3), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:18',
@@ -663,7 +663,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article VIII, Section 5(1) grants the Supreme Court original jurisdiction over "cases affecting ambassadors, other public ministers and consuls, and over petitions for certiorari, prohibition, mandamus, quo warranto, and habeas corpus." Under the doctrine of hierarchy of courts, this jurisdiction over extraordinary writs is shared concurrently with Regional Trial Courts and the Court of Appeals (Gios-Samar v. DOTC, G.R. No. 217158, 2019).',
-		legalBasis: 'Art. VIII, Sec. 5(1), 1987 Constitution; Gios-Samar v. DOTC (2019)'
+		legalBasis: 'Art. VIII, Sec. 5(1), 1987 Constitution; Gios-Samar v. DOTC (2019); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:19',
@@ -693,7 +693,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article VIII, Section 14 provides: "No decision shall be rendered by any court without expressing therein clearly and distinctly the facts and the law on which it is based. No petition for review or motion for reconsideration of a decision of the court shall be refused due course or denied without stating the legal basis thereof."',
-		legalBasis: 'Art. VIII, Sec. 14, 1987 Constitution'
+		legalBasis: 'Art. VIII, Sec. 14, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:20',
@@ -702,9 +702,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'exceptions',
 		question: 'Under Article VIII, Section 12, what is the rule regarding the designation of judges to non-judicial agencies?',
 		options: [
-			'Judges may be designated to executive administrative agencies provided they receive no extra salary',
-			'Members of the Supreme Court and lower courts shall not be designated to any agency performing quasi-judicial or administrative functions',
-			'Trial court judges may sit on provincial election canvassing boards as regular members',
+			'Judges may serve in executive agencies if unpaid',
+			'Judges and Justices cannot hold non-judicial designations',
+			'Trial judges may serve on provincial canvassing boards',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -720,10 +720,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Members of the Supreme Court and lower courts shall not be designated to any agency performing quasi-judicial or administrative functions',
+		key: 'Judges and Justices cannot hold non-judicial designations',
 		explanation:
-			'B (Members of the Supreme Court and lower courts shall not be designated to any agency performing quasi-judicial or administrative functions). Article VIII, Section 12 explicitly dictates: "The Members of the Supreme Court and of other courts established by law shall not be designated to any agency performing quasi-judicial or administrative functions." In In re Judge Manzano (166 SCRA 246), the Court held that designating a judge to an executive administrative committee undermines judicial independence and violates the separation of powers.',
-		legalBasis: 'Art. VIII, Sec. 12, 1987 Constitution; In re Judge Manzano (1988)'
+			'B (Members of the Supreme Court and lower courts shall not be designated to any agency performing quasi-judicial or administrative functions). Article VIII, Section 12 explicitly dictates: "The Members of the Supreme Court and of other courts established by law shall not be designated to any agency performing quasi-judicial or administrative functions." In In re Judge Manzano (166 SCRA 246), the Court held that designating a judge to an executive administrative committee undermines judicial independence and violates the separation of powers. Justice Cruz underscores (Philippine Political Law) that Art. VIII, Sec. 12 fortifies judicial independence and separation of powers by shielding judges from executive entanglement.',
+		legalBasis: 'Art. VIII, Sec. 12, 1987 Constitution; In re Judge Manzano (1988); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:21',
@@ -740,8 +740,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'True',
 		explanation:
-			'TRUE. Article VIII, Section 11 provides: "The Members of the Supreme Court and judges of lower courts shall hold office during good behavior until they reach the age of seventy years or become incapacitated to discharge the duties of their office."',
-		legalBasis: 'Art. VIII, Sec. 11, 1987 Constitution'
+			'TRUE. Article VIII, Section 11 provides: "The Members of the Supreme Court and judges of lower courts shall hold office during good behavior until they reach the age of seventy years or become incapacitated to discharge the duties of their office." As Justice Cruz stresses (Philippine Political Law), security of tenure during good behavior until age 70 is a cornerstone guarantee of judicial independence.',
+		legalBasis: 'Art. VIII, Sec. 11, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:22',
@@ -759,7 +759,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VIII, Section 2 explicitly provides: "The Congress shall have the power to define, prescribe, and apportion the jurisdiction of the various courts, but may not deprive the Supreme Court of its jurisdiction over cases enumerated in Section 5 hereof. No law shall be passed reorganizing the Judiciary when it undermines the security of tenure of its Members" (De la Llana v. Alba, 112 SCRA 294).',
-		legalBasis: 'Art. VIII, Sec. 2, 1987 Constitution; De la Llana v. Alba'
+		legalBasis: 'Art. VIII, Sec. 2, 1987 Constitution; De la Llana v. Alba; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:23',
@@ -777,7 +777,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VIII, Section 10 states: "The salary of the Chief Justice and of the Associate Justices of the Supreme Court, and of judges of lower courts shall be fixed by law. During their continuance in office, their salary shall not be decreased." While judges pay general income taxes (Nitafan v. CIR, 152 SCRA 284), Congress cannot enact targeted laws reducing base judicial compensation.',
-		legalBasis: 'Art. VIII, Sec. 10, 1987 Constitution; Nitafan v. CIR (1987)'
+		legalBasis: 'Art. VIII, Sec. 10, 1987 Constitution; Nitafan v. CIR (1987); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:24',
@@ -795,7 +795,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VI, Section 30 provides: "No law shall be passed increasing the appellate jurisdiction of the Supreme Court as provided in this Constitution without its advice and concurrence."',
-		legalBasis: 'Art. VI, Sec. 30, 1987 Constitution'
+		legalBasis: 'Art. VI, Sec. 30, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:25',
@@ -813,7 +813,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'True',
 		explanation:
 			'TRUE. In Vargas v. Rilloraza (80 Phil. 297, 1948), the Supreme Court invalidated Section 14 of the People\'s Court Act, which authorized the President to designate temporary judges to sit as a special Division of the Supreme Court when regular justices were disqualified. The Court ruled that the Constitution vests judicial power in "one Supreme Court"; Congress has no power to create an alternate or temporary Supreme Court.',
-		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Vargas v. Rilloraza (1948)'
+		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Vargas v. Rilloraza (1948); Cruz, Philippine Political Law'
 	},
 
 	// =========================================================================
@@ -847,9 +847,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article IX-A, Section 1 provides: \"The Constitutional Commissions, which shall be independent, are the Civil Service Commission, the Commission on Elections, and the Commission on Audit.\" While the CHR (Art. XIII), Commission on Appointments (Art. VI), and Ombudsman (Art. XI) are constitutional bodies, none of them are Article IX Constitutional Commissions.",
+			"G (none of the above). Article IX-A, Section 1 provides: \"The Constitutional Commissions, which shall be independent, are the Civil Service Commission, the Commission on Elections, and the Commission on Audit.\" While the CHR (Art. XIII), Commission on Appointments (Art. VI), and Ombudsman (Art. XI) are constitutional bodies, none of them are Article IX Constitutional Commissions. As Justice Cruz explains (Philippine Political Law), the Constitutional Commissions are independent constitutional organs insulated from executive and legislative control so they can perform vital public functions impartially.",
 		legalBasis:
-			"Art. IX-A, Sec. 1, 1987 Constitution"
+			"Art. IX-A, Sec. 1, 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:27',
@@ -879,7 +879,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-A, Section 2 states: "No member of a Constitutional Commission shall, during his tenure, hold any other office or employment. Neither shall he engage in the practice of any profession or in the active management or control of any business which, in any way, may be affected by the functions of his office, nor shall he be financially interested, directly or indirectly, in any contract with, or in any franchise or privilege granted by the Government, any of its subdivisions, agencies, or instrumentalities, including government-owned or controlled corporations or their subsidiaries."',
-		legalBasis: 'Art. IX-A, Sec. 2, 1987 Constitution'
+		legalBasis: 'Art. IX-A, Sec. 2, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:28',
@@ -911,7 +911,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article IX-A, Section 7 provides: \"Each Commission shall decide by a majority vote of all its Members, any case or matter brought before it within sixty days from the date of its submission for decision or resolution.\" Because 60 days is not among options a, b, or c, none of the above is correct.",
 		legalBasis:
-			"Art. IX-A, Sec. 7, 1987 Constitution"
+			"Art. IX-A, Sec. 7, 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:29',
@@ -942,7 +942,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: '30 days from notice',
 		explanation:
 			'B (30 days from notice). Article IX-A, Section 7 states: "Unless otherwise provided by this Constitution or by law, any decision, order, or ruling of each Commission may be brought to the Supreme Court on certiorari by the aggrieved party within thirty days from receipt of a copy thereof." Under the Rules of Court, this review is governed by Rule 64. Final decisions of the Civil Service Commission are appealed to the Court of Appeals under Rule 43 pursuant to Fabian v. Desierto (295 SCRA 470).',
-		legalBasis: 'Art. IX-A, Sec. 7, 1987 Constitution; Rule 64, Rules of Court; Fabian v. Desierto (1998)'
+		legalBasis: 'Art. IX-A, Sec. 7, 1987 Constitution; Rule 64, Rules of Court; Fabian v. Desierto (1998); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:30',
@@ -951,9 +951,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'Under Gaminde v. Commission on Audit (2000), how are the staggered terms of members of the Constitutional Commissions reckoned?',
 		options: [
-			'From the date of actual issuance of the appointment',
-			'From the date of assumption of office by the appointee',
-			'From a common fixed constitutional starting date of February 2, 1987',
+			'From the date the appointment is issued',
+			'From the date the appointee assumes office',
+			'From the common starting date of February 2, 1987',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -969,10 +969,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option c is true.'
 		],
 		correctIndex: 2,
-		key: 'From a common fixed constitutional starting date of February 2, 1987',
+		key: 'From the common starting date of February 2, 1987',
 		explanation:
-			'C (From a common fixed constitutional starting date of February 2, 1987). In Gaminde v. Commission on Audit (347 SCRA 655, 2000), the Supreme Court ruled that the terms of office of the Commissioners under the 3-5-7 staggered rotation scheme have a common starting point: February 2, 1987. The term of an appointee chosen to fill a regular vacancy or a delayed vacancy runs only for the unexpired portion of the term; it does not start anew from the date of appointment or assumption.',
-		legalBasis: 'Art. IX-D, Sec. 1(2), 1987 Constitution; Gaminde v. Commission on Audit (2000)'
+			'C (From a common fixed constitutional starting date of February 2, 1987). In Gaminde v. Commission on Audit (347 SCRA 655, 2000), the Supreme Court ruled that the terms of office of the Commissioners under the 3-5-7 staggered rotation scheme have a common starting point: February 2, 1987. The term of an appointee chosen to fill a regular vacancy or a delayed vacancy runs only for the unexpired portion of the term; it does not start anew from the date of appointment or assumption. Justice Cruz notes (Philippine Political Law) that staggered 7-year terms without reappointment preserve institutional continuity while preventing any single President from capturing a Commission.',
+		legalBasis: 'Art. IX-D, Sec. 1(2), 1987 Constitution; Gaminde v. Commission on Audit (2000); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:31',
@@ -982,8 +982,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Brillantes v. Yorac (1990), can the President appoint an Associate Commissioner of the COMELEC as "Acting Chairman"?',
 		options: [
 			"Yes, under the President's constitutional power of control",
-			"Yes, under the President's residual executive authority",
-			'No, because it undermines the independence of the Constitutional Commission',
+			"Yes, under residual executive authority",
+			"No, because it impairs the Commission's independence",
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -999,10 +999,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option c is true.'
 		],
 		correctIndex: 2,
-		key: 'No, because it undermines the independence of the Constitutional Commission',
+		key: "No, because it impairs the Commission's independence",
 		explanation:
-			'C (No, because it undermines the independence of the Constitutional Commission). In Brillantes v. Yorac (192 SCRA 358, 1990), President Corazon Aquino designated Associate Commissioner Haydee Yorac as Acting Chairman of the COMELEC. The Supreme Court struck down the designation, holding that the President has no power to designate an Acting Chairman of a Constitutional Commission. Allowing the President to appoint an acting head creates an implied dependence, violating the institutional independence guaranteed by Article IX-A, Section 1.',
-		legalBasis: 'Art. IX-A, Sec. 1 & Art. IX-C, Sec. 1(2), 1987 Constitution; Brillantes v. Yorac (1990)'
+			'C (No, because it undermines the independence of the Constitutional Commission). In Brillantes v. Yorac (192 SCRA 358, 1990), President Corazon Aquino designated Associate Commissioner Haydee Yorac as Acting Chairman of the COMELEC. The Supreme Court struck down the designation, holding that the President has no power to designate an Acting Chairman of a Constitutional Commission. Allowing the President to appoint an acting head creates an implied dependence, violating the institutional independence guaranteed by Article IX-A, Section 1. As Justice Cruz points out (Philippine Political Law), disallowing presidentially designated acting chairpersons safeguards the Constitutional Commissions from executive dominance.',
+		legalBasis: 'Art. IX-A, Sec. 1 & Art. IX-C, Sec. 1(2), 1987 Constitution; Brillantes v. Yorac (1990); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:32',
@@ -1064,7 +1064,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article IX-B, Section 2(1) provides: "The civil service embraces all branches, subdivisions, instrumentalities, and agencies of the Government, including government-owned or controlled corporations with original charters." In NASECO v. NLRC (168 SCRA 122) and Lumanta v. NLRC (170 SCRA 79), the Court held that GOCCs incorporated under the general Corporation Code are governed by the Labor Code, not by the Civil Service Commission.',
-		legalBasis: 'Art. IX-B, Sec. 2(1), 1987 Constitution; NASECO v. NLRC; Lumanta v. NLRC'
+		legalBasis: 'Art. IX-B, Sec. 2(1), 1987 Constitution; NASECO v. NLRC; Lumanta v. NLRC; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:34',
@@ -1095,7 +1095,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-B, Section 2(2) states: "Appointments in the civil service shall be made only according to merit and fitness to be determined, as far as practicable, and, except to positions which are policy-determining, primarily confidential or highly technical, by competitive examination."',
-		legalBasis: 'Art. IX-B, Sec. 2(2), 1987 Constitution'
+		legalBasis: 'Art. IX-B, Sec. 2(2), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:35',
@@ -1105,9 +1105,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Luego v. Civil Service Commission (1986), what is the extent of the authority of the CSC over appointments made by an appointing authority?',
 		options: [
-			'It can revoke an appointment and substitute its own preferred candidate',
-			'It can only determine whether the appointee possesses the legal qualifications for the post',
-			'It can order the appointing power to select the candidate with the highest exam score',
+			'It can revoke appointments and pick its own choice',
+			'It can only verify if the appointee is legally qualified',
+			'It can require selecting the top examinee by score',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -1123,10 +1123,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'It can only determine whether the appointee possesses the legal qualifications for the post',
+		key: 'It can only verify if the appointee is legally qualified',
 		explanation:
 			'B (It can only determine whether the appointee possesses the legal qualifications for the post). In Luego v. Civil Service Commission (143 SCRA 327, 1986), the Supreme Court ruled that the CSC is not an appointing authority. Its power is limited to determining whether the appointee possesses the qualifications required by law. If the appointee is legally qualified, the CSC has the ministerial duty to attest the appointment; it has no power to revoke an appointment simply because it believes another candidate is better qualified.',
-		legalBasis: 'Art. IX-B, Sec. 2(2), 1987 Constitution; Luego v. Civil Service Commission (1986)'
+		legalBasis: 'Art. IX-B, Sec. 2(2), 1987 Constitution; Luego v. Civil Service Commission (1986); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:36',
@@ -1157,7 +1157,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'Yes, but the reorganization must be pursued in good faith',
 		explanation:
 			'A (Yes, but the reorganization must be pursued in good faith). In Dario v. Mison (176 SCRA 84, 1989), the Supreme Court held that while the State may reorganize the bureaucracy, such reorganization must be carried out in good faith. A reorganization is considered in bad faith when employees are separated to create vacancies for political protégés or when newly created positions perform essentially the same duties as abolished posts. Removals tainted with bad faith violate constitutional security of tenure.',
-		legalBasis: 'Art. IX-B, Sec. 2(3), 1987 Constitution; Dario v. Mison (1989)'
+		legalBasis: 'Art. IX-B, Sec. 2(3), 1987 Constitution; Dario v. Mison (1989); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:37',
@@ -1187,7 +1187,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'Any electioneering or partisan political campaign',
 		explanation:
 			'A (Any electioneering or partisan political campaign). Article IX-B, Section 2(4) states: "No officer or employee in the civil service shall engage, directly or indirectly, in any electioneering or partisan political campaign." Civil servants may vote and express private views, but they are barred from active participation in partisan political operations (Santos v. Yatco, 106 Phil. 745).',
-		legalBasis: 'Art. IX-B, Sec. 2(4), 1987 Constitution; Santos v. Yatco'
+		legalBasis: 'Art. IX-B, Sec. 2(4), 1987 Constitution; Santos v. Yatco; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:38',
@@ -1230,7 +1230,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Article IX-C, Section 3, how must election cases and pre-proclamation controversies be heard and decided by the COMELEC?',
 		options: [
 			'Directly by the Commission En Banc at first instance',
-			'First in Division, with motions for reconsideration resolved by the Commission En Banc',
+			'In Division first, then En Banc on reconsideration',
 			'Exclusively by the Chairman acting alone',
 			'a and c are true',
 			'a and b are true',
@@ -1247,10 +1247,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'First in Division, with motions for reconsideration resolved by the Commission En Banc',
+		key: 'In Division first, then En Banc on reconsideration',
 		explanation:
 			'B (First in Division, with motions for reconsideration resolved by the Commission En Banc). Article IX-C, Section 3 explicitly provides: "The Commission on Elections may sit en banc or in two divisions, and shall promulgate its rules of procedure in order to expedite disposition of election cases, including pre-proclamation controversies. All such election cases shall be heard and decided in division, provided that motions for reconsideration of decisions shall be decided by the Commission en banc" (Canicosa v. COMELEC, 282 SCRA 512; Cagas v. COMELEC, G.R. No. 194139, 2012).',
-		legalBasis: 'Art. IX-C, Sec. 3, 1987 Constitution; Canicosa v. COMELEC; Cagas v. COMELEC (2012)'
+		legalBasis: 'Art. IX-C, Sec. 3, 1987 Constitution; Canicosa v. COMELEC; Cagas v. COMELEC (2012); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:40',
@@ -1281,7 +1281,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'The decision is null and void for lack of jurisdiction',
 		explanation:
 			'B (The decision is null and void for lack of jurisdiction). Under Article IX-C, Section 3, as applied in Sarmiento v. COMELEC (212 SCRA 307, 1992) and Cagas v. COMELEC (664 SCRA 333, 2012), hearing and deciding election cases in division first is a mandatory jurisdictional requirement. The COMELEC En Banc has no authority to hear and decide an election case at first instance; any resolution or decision rendered directly by the COMELEC En Banc without passing through a Division is void for lack of jurisdiction.',
-		legalBasis: 'Art. IX-C, Sec. 3, 1987 Constitution; Sarmiento v. COMELEC (1992); Cagas v. COMELEC (2012)'
+		legalBasis: 'Art. IX-C, Sec. 3, 1987 Constitution; Sarmiento v. COMELEC (1992); Cagas v. COMELEC (2012); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:41',
@@ -1313,7 +1313,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article IX-C, Section 2(2) grants the COMELEC exclusive original jurisdiction strictly over all contests relating to the elections, returns, and qualifications of elective regional, provincial, and city officials. Municipal contests originate in the RTC, barangay contests originate in the MTC, and seated congressional members fall under the SET/HRET (Art. VI, Sec. 17; Reyes v. COMELEC).",
 		legalBasis:
-			"Art. IX-C, Sec. 2(2) & Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC"
+			"Art. IX-C, Sec. 2(2) & Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:42',
@@ -1376,7 +1376,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article IX-D, Section 2(1) explicitly provides: "The Commission on Audit shall have the power, authority, and duty to examine, audit, and settle all accounts pertaining to the revenue and receipts of, and expenditures or uses of funds and property, owned or held in trust by, or pertaining to, the Government, or any of its subdivisions, agencies, or instrumentalities, including government-owned or controlled corporations with original charters..."',
-		legalBasis: 'Art. IX-D, Sec. 2(1), 1987 Constitution'
+		legalBasis: 'Art. IX-D, Sec. 2(1), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:44',
@@ -1407,7 +1407,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-D, Section 2(2) explicitly mandates that COA shall promulgate "accounting and auditing rules and regulations, including those for the prevention and disallowance of irregular, unnecessary, excessive, extravagant, or unconscionable expenditures or uses of government funds and properties."',
-		legalBasis: 'Art. IX-D, Sec. 2(2), 1987 Constitution'
+		legalBasis: 'Art. IX-D, Sec. 2(2), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:45',
@@ -1417,8 +1417,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Caltex Philippines, Inc. v. Commission on Audit (1992), what is the legal character of collections under the Oil Price Stabilization Fund (OPSF)?',
 		options: [
-			'Private funds held by oil companies exempt from COA audit',
-			'Public trust funds subject to the full audit and settlement jurisdiction of COA',
+			'Private oil company funds exempt from COA audit',
+			'Public trust funds subject to COA audit jurisdiction',
 			'Foreign loan advances exempt from government accounting rules',
 			'a and c are true',
 			'a and b are true',
@@ -1435,7 +1435,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Public trust funds subject to the full audit and settlement jurisdiction of COA',
+		key: 'Public trust funds subject to COA audit jurisdiction',
 		explanation:
 			'B (Public trust funds subject to the full audit and settlement jurisdiction of COA). In Caltex Philippines, Inc. v. Commission on Audit (208 SCRA 726, 1992), the Supreme Court ruled that OPSF levies are collected through the State\'s police and taxing powers. They constitute public funds held in trust for a public purpose and are subject to the examination, audit, and settlement jurisdiction of the Commission on Audit.',
 		legalBasis: 'Art. IX-D, Sec. 2(1), 1987 Constitution; Caltex Philippines, Inc. v. COA (1992)'
@@ -1447,9 +1447,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'exceptions',
 		question: "Under Article IX-D, Section 3, what is the constitutional limitation on legislative power regarding COA's audit jurisdiction?",
 		options: [
-			'Congress may exempt any government corporation from audit by a two-thirds vote',
-			'No law shall be passed exempting any entity of the Government or its subsidiary in any guise whatever from COA jurisdiction',
-			'The President may suspend COA audits of defense corporations during states of emergency',
+			'Congress may exempt GOCCs by a two-thirds vote',
+			'No law may exempt any government entity from COA audit',
+			'The President may suspend audits during emergencies',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -1465,10 +1465,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No law shall be passed exempting any entity of the Government or its subsidiary in any guise whatever from COA jurisdiction',
+		key: 'No law may exempt any government entity from COA audit',
 		explanation:
 			'B (No law shall be passed exempting any entity of the Government or its subsidiary in any guise whatever from COA jurisdiction). Article IX-D, Section 3 commands: "No law shall be passed exempting any entity of the Government or its subsidiary in any guise whatever, or any investment of public funds, from the jurisdiction of the Commission on Audit."',
-		legalBasis: 'Art. IX-D, Sec. 3, 1987 Constitution'
+		legalBasis: 'Art. IX-D, Sec. 3, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:47',
@@ -1477,8 +1477,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'requisites',
 		question: 'Under Article IX-A, Section 6, the rule-making power of each Constitutional Commission allows it to:',
 		options: [
-			'Promulgate its own rules concerning pleadings and practice before it or before any of its offices',
-			'Enact rules that alter or expand substantive statutory rights',
+			'Promulgate rules on pleadings and practice before it',
+			'Enact rules altering substantive statutory rights',
 			'Enact rules governing trial court procedure in the Regional Trial Courts',
 			'a and c are true',
 			'a and b are true',
@@ -1495,10 +1495,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Promulgate its own rules concerning pleadings and practice before it or before any of its offices',
+		key: 'Promulgate rules on pleadings and practice before it',
 		explanation:
 			'A (Promulgate its own rules concerning pleadings and practice before it or before any of its offices). Article IX-A, Section 6 provides: "Each Commission en banc may promulgate its own rules concerning pleadings and practice before it or before any of its offices. Such rules, however, shall not diminish, increase, or modify substantive rights." In Aruelo v. Court of Appeals (227 SCRA 311), the Court emphasized that commission rules apply only to proceedings before the commission itself, not to proceedings before regular judicial courts.',
-		legalBasis: 'Art. IX-A, Sec. 6, 1987 Constitution; Aruelo v. Court of Appeals'
+		legalBasis: 'Art. IX-A, Sec. 6, 1987 Constitution; Aruelo v. Court of Appeals; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:48',
@@ -1508,9 +1508,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Macalintal v. Commission on Elections (2003), was the provision in the Overseas Absentee Voting Act subjecting COMELEC rules to congressional oversight constitutional?',
 		options: [
-			'Yes, because Congress has plenary power to supervise statutory implementation',
-			'No, because legislative review and approval of COMELEC rules violates its constitutional independence',
-			'Yes, provided the Joint Congressional Oversight Committee acted unanimously',
+			"Yes, under Congress's power to oversee statutes",
+			'No, because legislative review violates its independence',
+			'Yes, if the congressional committee votes unanimously',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -1526,10 +1526,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No, because legislative review and approval of COMELEC rules violates its constitutional independence',
+		key: 'No, because legislative review violates its independence',
 		explanation:
 			'B (No, because legislative review and approval of COMELEC rules violates its constitutional independence). In Macalintal v. Commission on Elections (405 SCRA 614, 2003), the Supreme Court struck down Section 19 of Republic Act No. 9189, which required the COMELEC to submit its implementing rules to a Joint Congressional Oversight Committee for approval. The Court held that this legislative veto mechanism infringed upon the constitutional independence of the COMELEC and violated Article IX-A, Section 6.',
-		legalBasis: 'Art. IX-A, Secs. 1 & 6, 1987 Constitution; Macalintal v. COMELEC (2003)'
+		legalBasis: 'Art. IX-A, Secs. 1 & 6, 1987 Constitution; Macalintal v. COMELEC (2003); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:49',
@@ -1558,8 +1558,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 4,
 		key: 'a and b are true',
 		explanation:
-			'E (a and b are true). Article IX-A, Section 5 states: "The Commission shall enjoy fiscal autonomy. Their approved annual appropriations shall be automatically and regularly released." In Civil Service Commission v. Department of Budget and Management (464 SCRA 115, 2005), the Court confirmed that automatic release means funds cannot be subjected to executive clearance or DBM withholding.',
-		legalBasis: 'Art. IX-A, Sec. 5, 1987 Constitution; CSC v. DBM (2005)'
+			'E (a and b are true). Article IX-A, Section 5 states: "The Commission shall enjoy fiscal autonomy. Their approved annual appropriations shall be automatically and regularly released." In Civil Service Commission v. Department of Budget and Management (464 SCRA 115, 2005), the Court confirmed that automatic release means funds cannot be subjected to executive clearance or DBM withholding. Justice Cruz highlights (Philippine Political Law) that automatic and regular release of approved appropriations is indispensable to genuine institutional independence.',
+		legalBasis: 'Art. IX-A, Sec. 5, 1987 Constitution; CSC v. DBM (2005); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:50',
@@ -1570,7 +1570,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Civil Liberties Union v. Executive Secretary (1991), does the exception under Article IX-B, Section 7 permit Cabinet members to hold multiple corporate directorships in government corporations?',
 		options: [
 			'Yes, because Article IX-B is a general provision governing all appointive officials',
-			'No, because Cabinet members are governed by the strict prohibition under Article VII, Section 13',
+			'No, because Cabinet members face a stricter office ban',
 			'Yes, provided they waive all per diems and allowances',
 			'a and c are true',
 			'a and b are true',
@@ -1587,10 +1587,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No, because Cabinet members are governed by the strict prohibition under Article VII, Section 13',
+		key: 'No, because Cabinet members face a stricter office ban',
 		explanation:
 			'B (No, because Cabinet members are governed by the strict prohibition under Article VII, Section 13). In Civil Liberties Union v. Executive Secretary (194 SCRA 317, 1991), the Supreme Court held that Executive Order No. 284, which allowed Cabinet members to hold up to two additional government positions, was unconstitutional. The Court held that while Article IX-B, Section 7 allows exceptions by law for ordinary appointive officials, the President, Vice-President, and Cabinet are governed by the stricter prohibition under Article VII, Section 13 ("unless otherwise provided in this Constitution").',
-		legalBasis: 'Art. VII, Sec. 13 & Art. IX-B, Sec. 7, 1987 Constitution; Civil Liberties Union v. Executive Secretary (1991)'
+		legalBasis: 'Art. VII, Sec. 13 & Art. IX-B, Sec. 7, 1987 Constitution; Civil Liberties Union v. Executive Secretary (1991); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:51',
@@ -1630,8 +1630,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Philippine Press Institute v. Commission on Elections (1995), was the COMELEC resolution requiring print newspapers to donate free advertising space ("COMELEC space") constitutional?',
 		options: [
-			'Yes, under the exercise of police power to ensure equal opportunity',
-			'No, because it constitutes an unconstitutional taking of private property without just compensation',
+			'Yes, as police power to ensure equal opportunity',
+			'No, because it is a taking without just compensation',
 			'Yes, because news organizations operate under government licenses',
 			'a and c are true',
 			'a and b are true',
@@ -1648,7 +1648,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No, because it constitutes an unconstitutional taking of private property without just compensation',
+		key: 'No, because it is a taking without just compensation',
 		explanation:
 			'B (No, because it constitutes an unconstitutional taking of private property without just compensation). In Philippine Press Institute v. COMELEC (244 SCRA 272, 1995), the Supreme Court declared unconstitutional a COMELEC resolution directing newspapers to provide free "COMELEC space." The Court held that forcing private publishers to donate advertising space without payment constituted an unconstitutional taking of private property without just compensation.',
 		legalBasis: 'Art. III, Sec. 9 & Art. IX-C, Sec. 4, 1987 Constitution; Philippine Press Institute v. COMELEC (1995)'
@@ -1661,8 +1661,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Social Weather Stations v. Commission on Elections (2001), what was the ruling on statutory bans prohibiting the publication of pre-election surveys?',
 		options: [
-			'Upheld as a valid measure to prevent bandwagon voting effects',
-			'Struck down as an unconstitutional prior restraint on freedom of speech and the press',
+			'Upheld as a valid bar against bandwagon effects',
+			'Struck down as a prior restraint on speech and press',
 			'Upheld provided the ban applied only during the final 48 hours before voting',
 			'a and c are true',
 			'a and b are true',
@@ -1679,7 +1679,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Struck down as an unconstitutional prior restraint on freedom of speech and the press',
+		key: 'Struck down as a prior restraint on speech and press',
 		explanation:
 			'B (Struck down as an unconstitutional prior restraint on freedom of speech and the press). In Social Weather Stations v. COMELEC (357 SCRA 496, 2001), the Supreme Court invalidated Section 5.4 of Republic Act No. 9006, which banned the publication of election surveys fifteen days before national elections and seven days before local elections. The Court ruled that the prohibition amounted to an unconstitutional prior restraint on freedom of expression.',
 		legalBasis: 'Art. III, Sec. 4 & Art. IX-C, Sec. 4, 1987 Constitution; Social Weather Stations v. COMELEC (2001)'
@@ -1693,7 +1693,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Penera v. Commission on Elections (2009), when does a person who files a certificate of candidacy legally become a "candidate" subject to election offenses like premature campaigning?',
 		options: [
 			'On the date the certificate of candidacy is filed with the election officer',
-			'Only at the start of the official campaign period prescribed by law',
+			'Only at the start of the official campaign period',
 			"Upon approval of the candidate's certificate by the COMELEC En Banc",
 			'a and c are true',
 			'a and b are true',
@@ -1710,7 +1710,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Only at the start of the official campaign period prescribed by law',
+		key: 'Only at the start of the official campaign period',
 		explanation:
 			'B (Only at the start of the official campaign period prescribed by law). In Penera v. Commission on Elections (605 SCRA 574, 2009), the Supreme Court ruled that under Section 15 of Republic Act No. 9369, a person who files a certificate of candidacy is deemed a candidate only at the start of the campaign period. Consequently, political acts performed prior to the official campaign period cannot be penalized as premature campaigning.',
 		legalBasis: 'Sec. 15, R.A. No. 9369; Penera v. COMELEC (2009)'
@@ -1848,9 +1848,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Funa v. Commission on Audit Chairman (2012), what is the rule regarding the promotion of an incumbent Commissioner to Chairman of a Constitutional Commission?',
 		options: [
-			'The promoted appointee receives a fresh seven-year term as Chairman regardless of prior service',
-			"The appointment is valid only for the unexpired portion of the departing Chairman's term, provided total service does not exceed seven years",
-			'Promotional appointments within a Constitutional Commission are absolutely prohibited',
+			'The appointee receives a fresh full seven-year term',
+			"Valid only for the unexpired term, up to seven years total",
+			'Promotions within a Commission are strictly barred',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -1866,10 +1866,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'The appointment is valid only for the unexpired portion of the departing Chairman\'s term, provided total service does not exceed seven years',
+		key: 'Valid only for the unexpired term, up to seven years total',
 		explanation:
 			'B (The appointment is valid only for the unexpired portion of the departing Chairman\'s term, provided total service does not exceed seven years). In Funa v. Villar / Funa v. Commission on Audit Chairman (670 SCRA 579, 2012), the Supreme Court ruled that promoting a sitting Commissioner to Chairman is a new appointment rather than a prohibited reappointment. However, the appointee can serve as Chairman only for the unexpired portion of the departing Chairman\'s term, and the aggregate period of service as Commissioner and Chairman cannot exceed seven (7) years.',
-		legalBasis: 'Art. IX-D, Sec. 1(2), 1987 Constitution; Funa v. Villar (2012)'
+		legalBasis: 'Art. IX-D, Sec. 1(2), 1987 Constitution; Funa v. Villar (2012); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:60',
@@ -1908,9 +1908,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'exceptions',
 		question: 'Under Article IX-C, Section 5, how does the presidential pardoning power operate with respect to violations of election laws?',
 		options: [
-			'The President can grant pardons for election offenses without limitation',
-			'No pardon, amnesty, parole, or suspension of sentence for violation of election laws shall be granted without the favorable recommendation of the COMELEC',
-			'The President must secure the consent of the Senate before pardoning election violators',
+			'The President may pardon election offenses freely',
+			'It requires the favorable recommendation of the COMELEC',
+			'The President needs prior Senate consent to pardon',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -1926,10 +1926,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No pardon, amnesty, parole, or suspension of sentence for violation of election laws shall be granted without the favorable recommendation of the COMELEC',
+		key: 'It requires the favorable recommendation of the COMELEC',
 		explanation:
 			'B (No pardon, amnesty, parole, or suspension of sentence for violation of election laws shall be granted without the favorable recommendation of the COMELEC). Article IX-C, Section 5 explicitly provides: "No pardon, amnesty, parole, or suspension of sentence for violation of election laws, rules, and regulations shall be granted by the President without the favorable recommendation of the Commission."',
-		legalBasis: 'Art. IX-C, Sec. 5, 1987 Constitution'
+		legalBasis: 'Art. IX-C, Sec. 5, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:62',
@@ -1970,8 +1970,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'exceptions',
 		question: 'Under Article IX-C, Section 7, votes cast in favor of political parties are governed by which constitutional rule?',
 		options: [
-			'Block voting for political party slates is mandatory in all national elections',
-			'No votes cast in favor of a political party, organization, or coalition shall be valid, except for those registered under the party-list system',
+			'Block voting for party slates is mandatory nationwide',
+			'Party votes are invalid except under the party-list system',
 			'Voters may cast straight-party tickets for all elective national and local positions',
 			'a and c are true',
 			'a and b are true',
@@ -1988,7 +1988,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No votes cast in favor of a political party, organization, or coalition shall be valid, except for those registered under the party-list system',
+		key: 'Party votes are invalid except under the party-list system',
 		explanation:
 			'B (No votes cast in favor of a political party, organization, or coalition shall be valid, except for those registered under the party-list system). Article IX-C, Section 7 states: "No votes cast in favor of a political party, organization, or coalition shall be valid, except for those registered under the party-list system as provided in this Constitution."',
 		legalBasis: 'Art. IX-C, Sec. 7, 1987 Constitution'
@@ -2031,8 +2031,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Article IX-D, Section 2(1), where the internal control system of an audited agency is inadequate, the COA:',
 		options: [
 			'Can only perform post-audit and is absolutely barred from instituting pre-audit measures',
-			'May adopt such measures, including temporary or special pre-audit, as are necessary and appropriate to correct deficiencies',
-			'Must file an immediate petition for receivership before the Regional Trial Court',
+			'May institute temporary or special pre-audit measures',
+			'Must seek receivership in the Regional Trial Court',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -2048,7 +2048,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'May adopt such measures, including temporary or special pre-audit, as are necessary and appropriate to correct deficiencies',
+		key: 'May institute temporary or special pre-audit measures',
 		explanation:
 			'B (May adopt such measures, including temporary or special pre-audit, as are necessary and appropriate to correct deficiencies). Article IX-D, Section 2(1) states: "However, where the internal control system of the audited agencies is inadequate, the Commission may adopt such measures, including temporary or special pre-audit, as are necessary and appropriate to correct the deficiencies."',
 		legalBasis: 'Art. IX-D, Sec. 2(1), 1987 Constitution'
@@ -2105,7 +2105,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Under Article XI, Section 2, the Members of the Constitutional Commissions are impeachable officials. They cannot be dismissed or removed by the President, but can only be removed on impeachment for, and conviction of, culpable violation of the Constitution, treason, bribery, graft and corruption, other high crimes, or betrayal of public trust.',
-		legalBasis: 'Art. IX-A, Sec. 1 & Art. XI, Sec. 2, 1987 Constitution'
+		legalBasis: 'Art. IX-A, Sec. 1 & Art. XI, Sec. 2, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:69',
@@ -2265,9 +2265,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article XI, Section 2 provides an exclusive list of impeachable officers: the President, the Vice-President, the Members of the Supreme Court, the Members of the Constitutional Commissions, and the Ombudsman. Cabinet secretaries, appellate justices, the CHR Chairperson, and Deputy Ombudsmen are removed as provided by law, not by impeachment.",
+			"G (none of the above). Article XI, Section 2 provides an exclusive list of impeachable officers: the President, the Vice-President, the Members of the Supreme Court, the Members of the Constitutional Commissions, and the Ombudsman. Cabinet secretaries, appellate justices, the CHR Chairperson, and Deputy Ombudsmen are removed as provided by law, not by impeachment. As Justice Cruz notes (Philippine Political Law), the constitutional enumeration of impeachable officers in Art. XI, Sec. 2 is exclusive and cannot be expanded or reduced by ordinary statute.",
 		legalBasis:
-			"Art. XI, Sec. 2, 1987 Constitution"
+			"Art. XI, Sec. 2, 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:77',
@@ -2299,7 +2299,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Under Article XI, Section 3(3)–(4), a vote of at least one-third (1/3) of all the Members of the House of Representatives is required to affirm a favorable resolution with the Articles of Impeachment or override a contrary committee report. Under Section 3(6), conviction requires the concurrence of two-thirds (2/3) of all the Members of the Senate. None of the choices state these exact constitutional thresholds.",
 		legalBasis:
-			"Art. XI, Sec. 3(3), (4) & (6), 1987 Constitution"
+			"Art. XI, Sec. 3(3), (4) & (6), 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:78',
@@ -2309,9 +2309,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Francisco v. House of Representatives (2003), how is the one-year ban on initiating impeachment proceedings under Article XI, Section 3(5) interpreted?',
 		options: [
-			'The proceeding is initiated upon transmittal of Articles of Impeachment to the Senate',
-			'The proceeding is initiated upon the filing of a verified complaint and its referral to the House Committee on Justice',
-			'The proceeding is initiated only when the House takes a final plenary floor vote',
+			'Initiated upon transmittal of Articles to the Senate',
+			'Initiated on filing and referral to the Justice Committee',
+			'Initiated only when the House takes a plenary vote',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -2327,10 +2327,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'The proceeding is initiated upon the filing of a verified complaint and its referral to the House Committee on Justice',
+		key: 'Initiated on filing and referral to the Justice Committee',
 		explanation:
-			'B (The proceeding is initiated upon the filing of a verified complaint and its referral to the House Committee on Justice). In Francisco v. House of Representatives (415 SCRA 44, 2003), the Supreme Court ruled that an impeachment proceeding is initiated when a verified complaint is filed by any Member of the House or by any citizen endorsed by a Member, and is referred to the House Committee on Justice under Section 3(2) (or when filed by at least 1/3 of all House Members). Once initiated, no second impeachment proceeding can be initiated against the same official within a period of one year.',
-		legalBasis: 'Art. XI, Sec. 3(5), 1987 Constitution; Francisco v. House of Representatives (2003)'
+			'B (The proceeding is initiated upon the filing of a verified complaint and its referral to the House Committee on Justice). In Francisco v. House of Representatives (415 SCRA 44, 2003), the Supreme Court ruled that an impeachment proceeding is initiated when a verified complaint is filed by any Member of the House or by any citizen endorsed by a Member, and is referred to the House Committee on Justice under Section 3(2) (or when filed by at least 1/3 of all House Members). Once initiated, no second impeachment proceeding can be initiated against the same official within one year. In Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied with finality Jan. 28, 2026, En Banc), the Court reaffirmed judicial review over the constitutional boundaries of impeachment, strictly enforced the Art. XI, Sec. 3(5) one-year bar against archiving unacted complaints to fast-track a subsequent fourth complaint under Sec. 3(4), and held that Bill of Rights due process applies throughout impeachment proceedings — rendering non-compliant Articles of Impeachment void ab initio (consistent with Justice Cruz, Philippine Political Law, on strict observance of constitutional impeachment safeguards).',
+		legalBasis: 'Art. XI, Sec. 3(5), 1987 Constitution; Francisco v. House of Representatives (2003); Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied Jan. 28, 2026, En Banc); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:79',
@@ -2340,9 +2340,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Gutierrez v. House of Representatives (2011), can a single initiated impeachment proceeding encompass multiple complaints referred simultaneously?',
 		options: [
-			'Yes, because multiple complaints referred together on the same day constitute a single initiated proceeding',
+			'Yes, simultaneous referral counts as a single proceeding',
 			'No, because each individual complaint requires a separate proceeding separated by one year',
-			'Yes, but only if approved by a two-thirds vote of the Senate',
+			'Yes, if approved by a two-thirds vote of the Senate',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -2358,10 +2358,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Yes, because multiple complaints referred together on the same day constitute a single initiated proceeding',
+		key: 'Yes, simultaneous referral counts as a single proceeding',
 		explanation:
-			'A (Yes, because multiple complaints referred together on the same day constitute a single initiated proceeding). In Gutierrez v. House of Representatives (643 SCRA 198, 2011), the Supreme Court clarified that the one-year bar rule prohibits the initiation of more than one impeachment proceeding within a year. When multiple impeachment complaints are filed and referred together to the Committee on Justice on the same day, they form part of a single proceeding and do not violate Article XI, Section 3(5).',
-		legalBasis: 'Art. XI, Sec. 3(5), 1987 Constitution; Gutierrez v. House of Representatives (2011)'
+			'A (Yes, because multiple complaints referred together on the same day constitute a single initiated proceeding). In Gutierrez v. House of Representatives (643 SCRA 198, 2011), the Supreme Court clarified that the one-year bar rule prohibits the initiation of more than one impeachment proceeding within a year; when multiple impeachment complaints are filed and referred together to the Committee on Justice on the same day, they form part of a single proceeding and do not violate Article XI, Section 3(5). By contrast, in Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied with finality Jan. 28, 2026, En Banc), the Court held that abruptly archiving earlier unacted-upon complaints to pave the way for a fast-tracked fourth complaint under Sec. 3(4) unconstitutionally circumvents the one-year bar and violates Bill of Rights due process, rendering the Articles of Impeachment void ab initio (see also Cruz, Philippine Political Law).',
+		legalBasis: 'Art. XI, Sec. 3(5), 1987 Constitution; Gutierrez v. House of Representatives (2011); Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied Jan. 28, 2026, En Banc); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:80',
@@ -2370,8 +2370,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'Under Republic v. Sereno (2018), what is the distinction between Impeachment and Quo Warranto?',
 		options: [
-			'Impeachment tests continuing fitness during tenure, while Quo Warranto assails eligibility and validity of title at inception',
-			'Impeachment is a judicial proceeding, while Quo Warranto is a purely political inquest',
+			'Impeachment tests tenure fitness; Quo Warranto tests title',
+			'Impeachment is judicial; Quo Warranto is purely political',
 			'Impeachment can be filed against any public employee, while Quo Warranto applies only to the President',
 			'a and c are true',
 			'a and b are true',
@@ -2388,10 +2388,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Impeachment tests continuing fitness during tenure, while Quo Warranto assails eligibility and validity of title at inception',
+		key: 'Impeachment tests tenure fitness; Quo Warranto tests title',
 		explanation:
 			"A (Impeachment tests continuing fitness during tenure, while Quo Warranto assails eligibility and validity of title at inception). In Republic v. Sereno (G.R. No. 237428, May 11, 2018), the Supreme Court ruled that quo warranto and impeachment are concurrent, distinct remedies. Impeachment is a political process to remove a validly appointed public officer for impeachable offenses committed during tenure, whereas quo warranto is a judicial proceeding to determine the validity of an appointee's title and eligibility at inception.",
-		legalBasis: 'Art. VIII, Sec. 5(1) & Art. XI, Sec. 2, 1987 Constitution; Republic v. Sereno (2018)'
+		legalBasis: 'Art. VIII, Sec. 5(1) & Art. XI, Sec. 2, 1987 Constitution; Republic v. Sereno (2018); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:81',
@@ -2401,9 +2401,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Article XI, Section 15, does the right of the State to recover ill-gotten wealth unlawfully acquired by public officials prescribe?',
 		options: [
-			'Yes, it prescribes after 10 years',
-			'Yes, it prescribes after 20 years',
-			'No, the right of the State to recover ill-gotten wealth is not barred by prescription, laches, or estoppel',
+			'Yes, it prescribes ten years after leaving office',
+			'Yes, it prescribes twenty years after leaving office',
+			'No; prescription, laches, and estoppel do not apply',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -2419,7 +2419,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option c is true.'
 		],
 		correctIndex: 2,
-		key: 'No, the right of the State to recover ill-gotten wealth is not barred by prescription, laches, or estoppel',
+		key: 'No; prescription, laches, and estoppel do not apply',
 		explanation:
 			'C (No, the right of the State to recover ill-gotten wealth is not barred by prescription, laches, or estoppel). Article XI, Section 15 explicitly provides: "The right of the State to recover properties unlawfully acquired by public officials or employees, from them or from their nominees or transferees, shall not be barred by prescription, laches, or estoppel." Under Presidential Commission on Good Government v. Peña (159 SCRA 556), this imprescriptibility applies strictly to civil actions for asset recovery, whereas criminal actions remain subject to statutory prescription.',
 		legalBasis: 'Art. XI, Sec. 15, 1987 Constitution; PCGG v. Peña'
@@ -2492,7 +2492,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Article XI, Section 18, what is the consequence when a public officer or employee seeks to change citizenship during tenure?',
 		options: [
 			"The officer incurs an administrative fine equal to six months' salary",
-			'The officer forfeits public office and shall be dealt with by law',
+			'The officer forfeits office and shall be dealt with by law',
 			'The officer may retain office provided he takes a dual citizenship oath',
 			'a and c are true',
 			'a and b are true',
@@ -2509,7 +2509,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'The officer forfeits public office and shall be dealt with by law',
+		key: 'The officer forfeits office and shall be dealt with by law',
 		explanation:
 			'B (The officer forfeits public office and shall be dealt with by law). Article XI, Section 18 dictates: "Public officers and employees owe the State and this Constitution allegiance at all times and any public officer or employee who seeks to change his citizenship or acquire the status of an immigrant of another country during his tenure shall be dealt with by law." Seeking immigrant status or foreign citizenship during tenure operates as a forfeiture of public office.',
 		legalBasis: 'Art. XI, Sec. 18, 1987 Constitution'
@@ -2522,9 +2522,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Gonzales III v. Office of the President (2012 and 2014), what was the ruling regarding presidential disciplinary authority over the Deputy Ombudsman?',
 		options: [
-			'Upheld because the President has inherent power to remove officials he appoints',
-			'Struck down because granting the President power to remove a Deputy Ombudsman violates the constitutional independence of the Office of the Ombudsman',
-			'Upheld provided the removal is concurred in by the Judicial and Bar Council',
+			"Upheld under the President's power of removal",
+			"Struck down for violating the Ombudsman's independence",
+			'Upheld provided the JBC concurs in the removal',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -2540,10 +2540,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Struck down because granting the President power to remove a Deputy Ombudsman violates the constitutional independence of the Office of the Ombudsman',
+		key: "Struck down for violating the Ombudsman's independence",
 		explanation:
 			'B (Struck down because granting the President power to remove a Deputy Ombudsman violates the constitutional independence of the Office of the Ombudsman). In Gonzales III v. Office of the President (G.R. No. 196231, September 4, 2012; Resolution on Motion for Reconsideration, January 28, 2014), the Supreme Court declared unconstitutional Section 8(2) of Republic Act No. 6770 insofar as it granted the President disciplinary authority over the Deputy Ombudsman. The Court held that subjecting the Deputy Ombudsman to presidential discipline destroys the political and functional independence guaranteed to the Office under Article XI.',
-		legalBasis: 'Art. XI, Sec. 5, 1987 Constitution; Gonzales III v. Office of the President (2012, 2014)'
+		legalBasis: 'Art. XI, Sec. 5, 1987 Constitution; Gonzales III v. Office of the President (2012, 2014); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:86',
@@ -2573,9 +2573,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article XVII, Section 1 provides: \"Any amendment to, or revision of, this Constitution may be proposed by: (1) The Congress, upon a vote of three-fourths of all its Members; or (2) A constitutional convention.\" Option a traps readers by substituting the 2/3 vote required to call a Constitutional Convention under Section 3, while option b falsely extends People's Initiative to revisions.",
+			"G (none of the above). Article XVII, Section 1 provides: \"Any amendment to, or revision of, this Constitution may be proposed by: (1) The Congress, upon a vote of three-fourths of all its Members; or (2) A constitutional convention.\" Option a traps readers by substituting the 2/3 vote required to call a Constitutional Convention under Section 3, while option b falsely extends People's Initiative to revisions. Justice Cruz distinguishes constituent power from ordinary legislative power (Philippine Political Law), noting that sovereign authority to alter the Constitution may only be exercised through the strict modes in Art. XVII.",
 		legalBasis:
-			"Art. XVII, Secs. 1–3, 1987 Constitution; Lambino v. COMELEC (2006)"
+			"Art. XVII, Secs. 1–3, 1987 Constitution; Lambino v. COMELEC (2006); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:87',
@@ -2605,8 +2605,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 4,
 		key: 'a and b are true',
 		explanation:
-			"E (a and b are true). In Lambino v. Commission on Elections (505 SCRA 160, 2006), the Supreme Court established two tests: (1) The Quantitative Test, which inquires whether the proposed change is so extensive as to overhaul the substantial entirety of the Constitution, and (2) The Qualitative Test, which inquires whether the change accomplishes far-reaching structural alterations in the basic governmental plan (such as changing from presidential-bicameral to parliamentary-unicameral). A People's Initiative can only propose amendments, never revisions.",
-		legalBasis: 'Art. XVII, Secs. 1–2, 1987 Constitution; Lambino v. COMELEC (2006)'
+			"E (a and b are true). In Lambino v. Commission on Elections (505 SCRA 160, 2006), the Supreme Court established two tests: (1) The Quantitative Test, which inquires whether the proposed change is so extensive as to overhaul the substantial entirety of the Constitution, and (2) The Qualitative Test, which inquires whether the change accomplishes far-reaching structural alterations in the basic governmental plan (such as changing from presidential-bicameral to parliamentary-unicameral). A People's Initiative can only propose amendments, never revisions. Consistent with Justice Cruz’s discussion of amendments versus revisions (Philippine Political Law), a people’s initiative may propose only piecemeal amendments, never a structural revision of the Constitution.",
+		legalBasis: 'Art. XVII, Secs. 1–2, 1987 Constitution; Lambino v. COMELEC (2006); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:88',
@@ -2636,7 +2636,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'In a single, unified plebiscite for all proposals',
 		explanation:
 			'B (In a single, unified plebiscite for all proposals). In Tolentino v. Commission on Elections (41 SCRA 702, 1971), the 1971 Constitutional Convention attempted to hold an advance plebiscite on lowering the voting age to 18 before completing the rest of the draft charter. The Supreme Court prohibited the plebiscite, establishing the Doctrine of Single Submission: all constitutional amendments or revisions must be submitted for ratification in a single, unified plebiscite so the electorate can evaluate the changes as an integrated whole.',
-		legalBasis: 'Art. XVII, Sec. 4, 1987 Constitution; Tolentino v. COMELEC (1971)'
+		legalBasis: 'Art. XVII, Sec. 4, 1987 Constitution; Tolentino v. COMELEC (1971); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:89',
@@ -2698,7 +2698,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article V, Section 1 provides: "Suffrage may be exercised by all citizens of the Philippines not otherwise disqualified by law, who are at least eighteen years of age, and who shall have resided in the Philippines for at least one year and in the place wherein they propose to vote for at least six months immediately preceding the election. No literacy, property, or other substantive requirement shall be imposed on the exercise of suffrage."',
-		legalBasis: 'Art. V, Sec. 1, 1987 Constitution'
+		legalBasis: 'Art. V, Sec. 1, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:91',
@@ -2716,7 +2716,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'True',
 		explanation:
 			'TRUE. Article XI, Section 3(7) explicitly provides: "Judgment in cases of impeachment shall not extend further than removal from office and disqualification to hold any office of honor, trust, or profit under the Republic of the Philippines, but the party convicted shall nevertheless be liable and subject to prosecution, trial, and punishment according to law."',
-		legalBasis: 'Art. XI, Sec. 3(7), 1987 Constitution'
+		legalBasis: 'Art. XI, Sec. 3(7), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:92',
@@ -2770,7 +2770,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. In Sanidad v. Commission on Elections (73 SCRA 333, 1976), the Supreme Court held that the process of amending the Constitution is not a purely political question. The courts have the jurisdiction and duty to determine whether the constitutional provisions governing the amendatory process have been observed.',
-		legalBasis: 'Art. VIII, Sec. 1 & Art. XVII, 1987 Constitution; Sanidad v. COMELEC (1976)'
+		legalBasis: 'Art. VIII, Sec. 1 & Art. XVII, 1987 Constitution; Sanidad v. COMELEC (1976); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:95',
@@ -2788,7 +2788,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article XVII, Section 2 explicitly limits popular initiative: "Amendments to this Constitution may likewise be directly proposed by the people through initiative..." In Lambino v. COMELEC (505 SCRA 160, 2006) and Defensor-Santiago v. COMELEC (270 SCRA 106, 1997), the Supreme Court ruled that a People\'s Initiative can only propose amendments and cannot be utilized for constitutional revisions.',
-		legalBasis: 'Art. XVII, Sec. 2, 1987 Constitution; Lambino v. COMELEC (2006); Defensor-Santiago v. COMELEC (1997)'
+		legalBasis: 'Art. XVII, Sec. 2, 1987 Constitution; Lambino v. COMELEC (2006); Defensor-Santiago v. COMELEC (1997); Cruz, Philippine Political Law'
 	},
 
 	// =========================================================================
@@ -2822,8 +2822,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 4,
 		key: 'a and b are true',
 		explanation:
-			'E (a and b are true). In People v. Perfecto (43 Phil. 887, 1922), the Supreme Court held that upon a change of sovereignty (from Spain to the United States), all political laws of the former sovereign are automatically abrogated (ipso facto abolished) because they owe their existence to political allegiance to the displaced sovereign. In contrast, municipal laws regulating private domestic relations remain in force until altered or repealed (Macariola v. Asuncion, 114 SCRA 77).',
-		legalBasis: 'People v. Perfecto (1922); Macariola v. Asuncion'
+			'E (a and b are true). In People v. Perfecto (43 Phil. 887, 1922), the Supreme Court held that upon a change of sovereignty (from Spain to the United States), all political laws of the former sovereign are automatically abrogated (ipso facto abolished) because they owe their existence to political allegiance to the displaced sovereign. In contrast, municipal laws regulating private domestic relations remain in force until altered or repealed (Macariola v. Asuncion, 114 SCRA 77). As Justice Cruz explains (Philippine Political Law), a change of sovereignty automatically abrogates political laws governing relations between the sovereign and inhabitants, while non-political municipal laws remain in force unless repealed.',
+		legalBasis: 'People v. Perfecto (1922); Macariola v. Asuncion; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:97',
@@ -2852,8 +2852,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 1,
 		key: 'A de facto government of paramount force',
 		explanation:
-			'B (A de facto government of paramount force). In Co Kim Chan v. Valdez Tan Keh (75 Phil. 113, 1945), the Supreme Court recognized that the government established in the Philippines by the Japanese military was a de facto government of paramount force. Under international law and the principle of state continuity, judicial acts and municipal proceedings of that government which were not of a political complexion remained valid and survived the liberation of the Philippines.',
-		legalBasis: 'Co Kim Chan v. Valdez Tan Keh (1945)'
+			'B (A de facto government of paramount force). In Co Kim Chan v. Valdez Tan Keh (75 Phil. 113, 1945), the Supreme Court recognized that the government established in the Philippines by the Japanese military was a de facto government of paramount force. Under international law and the principle of state continuity, judicial acts and municipal proceedings of that government which were not of a political complexion remained valid and survived the liberation of the Philippines. Justice Cruz classifies the Philippine Executive Commission under Japanese occupation as a de facto government of paramount force (Philippine Political Law), whose non-political judicial acts remained valid after liberation.',
+		legalBasis: 'Co Kim Chan v. Valdez Tan Keh (1945); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:98',
@@ -2863,7 +2863,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Tañada v. Tuvera (1985 and 1986), what is the constitutional prerequisite for laws, presidential decrees, and administrative rules with penal sanctions to become effective?',
 		options: [
-			'Publication in full in the Official Gazette or in a newspaper of general circulation',
+			'Full publication in the Official Gazette or newspapers',
 			'Approval by a majority of the Supreme Court',
 			'A broadcast reading over nationwide radio and television',
 			'a and c are true',
@@ -2881,10 +2881,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Publication in full in the Official Gazette or in a newspaper of general circulation',
+		key: 'Full publication in the Official Gazette or newspapers',
 		explanation:
 			'A (Publication in full in the Official Gazette or in a newspaper of general circulation). In Tañada v. Tuvera (146 SCRA 446, 1986), the Supreme Court held that Article 2 of the Civil Code requires all laws, presidential decrees, executive orders, and administrative circulars enforcing penal sanctions to be published in full in the Official Gazette or in a newspaper of general circulation as a condition precedent to their effectivity. The clause "unless it is otherwise provided" refers to the date of effectivity, but never dispenses with publication itself.',
-		legalBasis: 'Art. III, Sec. 1, 1987 Constitution; Art. 2, Civil Code; Tañada v. Tuvera (1985, 1986)'
+		legalBasis: 'Art. III, Sec. 1, 1987 Constitution; Art. 2, Civil Code; Tañada v. Tuvera (1985, 1986); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:99',
@@ -2894,8 +2894,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question:
 			'Under Laurel v. Misa (1947), what happened to the sovereignty of the legitimate government and the allegiance of Filipino citizens during the Japanese belligerent occupation?',
 		options: [
-			'Sovereignty was suspended and political allegiance was extinguished',
-			'Sovereignty itself was not suspended; only the exercise of sovereign power was temporarily suspended',
+			'Sovereignty ceased and allegiance was extinguished',
+			'Sovereignty remained; only its exercise was suspended',
 			'Citizens were permanently absolved of their allegiance to the Commonwealth Government',
 			'a and c are true',
 			'a and b are true',
@@ -2912,10 +2912,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Sovereignty itself was not suspended; only the exercise of sovereign power was temporarily suspended',
+		key: 'Sovereignty remained; only its exercise was suspended',
 		explanation:
-			'B (Sovereignty itself was not suspended; only the exercise of sovereign power was temporarily suspended). In Laurel v. Misa (77 Phil. 856, 1947), the Supreme Court ruled that belligerent occupation does not transfer sovereignty nor suspend it. Sovereignty itself was not suspended; only the exercise of sovereign rights was temporarily suspended. Allegiance to the legitimate government remains continuous; hence, citizens who adhered to the enemy giving aid and comfort could be prosecuted for treason.',
-		legalBasis: 'Laurel v. Misa (1947)'
+			'B (Sovereignty itself was not suspended; only the exercise of sovereign power was temporarily suspended). In Laurel v. Misa (77 Phil. 856, 1947), the Supreme Court ruled that belligerent occupation does not transfer sovereignty nor suspend it. Sovereignty itself was not suspended; only the exercise of sovereign rights was temporarily suspended. Allegiance to the legitimate government remains continuous; hence, citizens who adhered to the enemy giving aid and comfort could be prosecuted for treason. As Justice Cruz underscores (Philippine Political Law), belligerent occupation suspends only the exercise of sovereignty without transferring it, leaving a citizen’s permanent allegiance — and thus the law on treason — intact.',
+		legalBasis: 'Laurel v. Misa (1947); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:100',
@@ -2945,9 +2945,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). In Pelaez v. Auditor General (15 SCRA 569, 1965), the Supreme Court held that a valid delegation of legislative power must satisfy BOTH the Completeness Test and the Sufficient Standard Test concurrently—never one alone or either in the alternative.",
+			"G (none of the above). In Pelaez v. Auditor General (15 SCRA 569, 1965), the Supreme Court held that a valid delegation of legislative power must satisfy BOTH the Completeness Test and the Sufficient Standard Test concurrently—never one alone or either in the alternative. As Justice Cruz explains (Philippine Political Law), the maxim potestas delegata non delegari potest permits subordinate legislation only when the delegating statute satisfies both the completeness test and the sufficient standard test.",
 		legalBasis:
-			"Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (1965)"
+			"Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (1965); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:101',
@@ -2956,7 +2956,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'Under Araneta v. Gatmaitan (1957), why was the Fisheries Act upheld as a valid, complete statute?',
 		options: [
-			'Because Congress enacted the policy (protecting fish fry and eggs) and left only technical net regulations to the department head',
+			'Because Congress set the policy and delegated only details',
 			'Because the Secretary of Agriculture possessed inherent constitutional power to define penal offenses',
 			'Because the President ratified the regulation through an unwritten proclamation',
 			'a and c are true',
@@ -2974,10 +2974,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Because Congress enacted the policy (protecting fish fry and eggs) and left only technical net regulations to the department head',
+		key: 'Because Congress set the policy and delegated only details',
 		explanation:
 			'A (Because Congress enacted the policy [protecting fish fry and eggs] and left only technical net regulations to the department head). In Araneta v. Gatmaitan (101 Phil. 328, 1957), the Supreme Court upheld executive orders banning trawl fishing in San Miguel Bay issued under the Fisheries Act. The Court held that the law was complete in itself because Congress declared the basic policy—to protect fish fry and fish eggs—leaving the administrative agency merely to ascertain which technical devices destroyed them.',
-		legalBasis: 'Araneta v. Gatmaitan (1957)'
+		legalBasis: 'Araneta v. Gatmaitan (1957); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:102',
@@ -2987,7 +2987,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Angara v. Electoral Commission (1936), what is the function of the Supreme Court in the constitutional system of separation of powers?',
 		options: [
 			'It acts as an assertive superior department with supremacy over the legislature and executive',
-			'It acts as a constitutional arbiter to enforce the supremacy of the Constitution',
+			'It acts as arbiter to uphold constitutional supremacy',
 			'It can veto bills passed by the National Assembly before presidential signature',
 			'a and c are true',
 			'a and b are true',
@@ -3004,10 +3004,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'It acts as a constitutional arbiter to enforce the supremacy of the Constitution',
+		key: 'It acts as arbiter to uphold constitutional supremacy',
 		explanation:
-			'B (It acts as a constitutional arbiter to enforce the supremacy of the Constitution). In Angara v. Electoral Commission (63 Phil. 139, 1936), Justice Jose P. Laurel established that the judiciary does not assert superiority over coordinate branches; when it exercises judicial review, it is merely enforcing the supremacy of the Constitution as the ordained will of the people. The Court functions as a constitutional mediator to allocate power and ensure each branch remains within its constitutional boundaries.',
-		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Angara v. Electoral Commission (1936)'
+			'B (It acts as a constitutional arbiter to enforce the supremacy of the Constitution). In Angara v. Electoral Commission (63 Phil. 139, 1936), Justice Jose P. Laurel established that the judiciary does not assert superiority over coordinate branches; when it exercises judicial review, it is merely enforcing the supremacy of the Constitution as the ordained will of the people. The Court functions as a constitutional mediator to allocate power and ensure each branch remains within its constitutional boundaries. Justice Cruz highlights Angara as the classic exposition of separation of powers and checks and balances in Philippine Political Law, defining judicial review as enforcement of constitutional supremacy rather than judicial superiority.',
+		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Angara v. Electoral Commission (1936); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:103',
@@ -3018,7 +3018,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Astorga v. Villegas (1974), what happens when the presiding officers of Congress repudiate and withdraw their signatures from an enrolled bill?',
 		options: [
 			'The bill remains conclusive upon the courts under the Enrolled Bill Doctrine',
-			'The document loses its status as an enrolled bill, and the court can examine the Legislative Journal',
+			'It loses enrolled bill status and courts check the journal',
 			'The bill automatically becomes law by operation of law after thirty days',
 			'a and c are true',
 			'a and b are true',
@@ -3035,10 +3035,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'The document loses its status as an enrolled bill, and the court can examine the Legislative Journal',
+		key: 'It loses enrolled bill status and courts check the journal',
 		explanation:
 			'B (The document loses its status as an enrolled bill, and the court can examine the Legislative Journal). In Astorga v. Villegas (56 SCRA 714, 1974), the presiding officers of Congress withdrew their signatures from House Bill No. 9266 after discovering that amendments approved by the Senate were omitted from the printed text. The Supreme Court held that because the authentication was retracted, the bill ceased to be an enrolled bill; hence, the Court consulted the Legislative Journal, which proved that the text signed by the President was never passed by Congress, rendering the measure void.',
-		legalBasis: 'Art. VI, Sec. 16(4), 1987 Constitution; Astorga v. Villegas (1974)'
+		legalBasis: 'Art. VI, Sec. 16(4), 1987 Constitution; Astorga v. Villegas (1974); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:104',
@@ -3048,7 +3048,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Marcos v. Manglapus (1989), what is the scope of Executive Power vested in the President under Article VII, Section 1?',
 		options: [
 			'It is limited strictly and exclusively to the express powers enumerated in Article VII',
-			'It includes residual, unstated powers necessary to safeguard public welfare and national security',
+			'It includes residual powers to protect the general welfare',
 			'It authorizes the President to unilaterally suspend the Constitution during economic crises',
 			'a and c are true',
 			'a and b are true',
@@ -3065,10 +3065,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'It includes residual, unstated powers necessary to safeguard public welfare and national security',
+		key: 'It includes residual powers to protect the general welfare',
 		explanation:
-			'B (It includes residual, unstated powers necessary to safeguard public welfare and national security). In Marcos v. Manglapus (177 SCRA 668, 1989), the Supreme Court ruled that the powers of the President are not confined strictly to those specifically enumerated in Article VII. Executive power is a grant of broad authority, which includes residual unstated powers inherent in the office of the Chief Executive necessary to protect the peace, safety, and general welfare of the nation.',
-		legalBasis: 'Art. VII, Sec. 1, 1987 Constitution; Marcos v. Manglapus (1989)'
+			'B (It includes residual, unstated powers necessary to safeguard public welfare and national security). In Marcos v. Manglapus (177 SCRA 668, 1989), the Supreme Court ruled that the powers of the President are not confined strictly to those specifically enumerated in Article VII. Executive power is a grant of broad authority, which includes residual unstated powers inherent in the office of the Chief Executive necessary to protect the peace, safety, and general welfare of the nation. As discussed by Justice Cruz (Philippine Political Law), Art. VII, Sec. 1 vests executive power broadly in the President, encompassing residual unstated powers necessary to protect the general welfare within constitutional bounds.',
+		legalBasis: 'Art. VII, Sec. 1, 1987 Constitution; Marcos v. Manglapus (1989); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:105',
@@ -3079,7 +3079,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			"Under Lansang v. Garcia (1971), does the Supreme Court have the authority to review the factual basis of the President's suspension of the privilege of the writ of habeas corpus?",
 		options: [
 			'No, because the declaration of emergency is a non-justiciable political question',
-			'Yes, the Court has the jurisdiction to inquire into whether the President acted with arbitrary factual basis',
+			'Yes, to determine whether the factual basis was arbitrary',
 			'Yes, but only if Congress grants express permission through a concurrent resolution',
 			'a and c are true',
 			'a and b are true',
@@ -3096,10 +3096,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Yes, the Court has the jurisdiction to inquire into whether the President acted with arbitrary factual basis',
+		key: 'Yes, to determine whether the factual basis was arbitrary',
 		explanation:
-			'B (Yes, the Court has the jurisdiction to inquire into whether the President acted with arbitrary factual basis). In Lansang v. Garcia (42 SCRA 448, 1971), the Supreme Court abandoned the old doctrine of Barcelon v. Baker and Montenegro v. Castañeda (which treated suspension of the writ as an unreviewable political question). The Court held that the judiciary has the jurisdiction to review the sufficiency of the factual basis of the suspension of the privilege of the writ of habeas corpus to determine whether the President acted arbitrarily. This doctrine was subsequently elevated to an express constitutional rule in Article VII, Section 18 of the 1987 Constitution.',
-		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Lansang v. Garcia (1971)'
+			'B (Yes, the Court has the jurisdiction to inquire into whether the President acted with arbitrary factual basis). In Lansang v. Garcia (42 SCRA 448, 1971), the Supreme Court abandoned the old doctrine of Barcelon v. Baker and Montenegro v. Castañeda (which treated suspension of the writ as an unreviewable political question). The Court held that the judiciary has the jurisdiction to review the sufficiency of the factual basis of the suspension of the privilege of the writ of habeas corpus to determine whether the President acted arbitrarily. This doctrine was subsequently elevated to an express constitutional rule in Article VII, Section 18 of the 1987 Constitution. Justice Cruz notes (Philippine Political Law) that Lansang marked the pivotal rejection of the blanket political-question bar over emergency powers, later codified into Art. VII, Sec. 18.',
+		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Lansang v. Garcia (1971); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:106',
@@ -3129,9 +3129,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article VII, Section 18 provides: \"The Congress, voting jointly, by a vote of at least a majority of all its Members in regular or special session, may revoke such proclamation or suspension, which revocation shall not be set aside by the President.\" Option a falsely states separate voting and a 2/3 threshold, option b allows presidential override, and option c adds a non-existent judicial concurrence requirement.",
+			"G (none of the above). Article VII, Section 18 provides: \"The Congress, voting jointly, by a vote of at least a majority of all its Members in regular or special session, may revoke such proclamation or suspension, which revocation shall not be set aside by the President.\" Option a falsely states separate voting and a 2/3 threshold, option b allows presidential override, and option c adds a non-existent judicial concurrence requirement. As Justice Cruz details (Philippine Political Law), the 1987 Constitution intentionally surrounded the President’s Commander-in-Chief powers with strict temporal, congressional, and judicial checks to prevent martial-law abuse.",
 		legalBasis:
-			"Art. VII, Sec. 18, 1987 Constitution"
+			"Art. VII, Sec. 18, 1987 Constitution; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:107',
@@ -3140,7 +3140,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		tag: 'jurisprudence',
 		question: 'Under U.S. v. Ang Tang Ho (43 Phil. 1), why was Act No. 2868 delegating price-fixing authority to the Governor-General invalidated?',
 		options: [
-			'Because the Legislature failed to define what constituted an "extraordinary rise" in rice prices, failing the Completeness Test',
+			'Because the statute failed the Completeness Test',
 			'Because the Governor-General was a foreign national',
 			'Because the price of rice was below market cost',
 			'a and c are true',
@@ -3158,10 +3158,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option a is true.'
 		],
 		correctIndex: 0,
-		key: 'Because the Legislature failed to define what constituted an "extraordinary rise" in rice prices, failing the Completeness Test',
+		key: 'Because the statute failed the Completeness Test',
 		explanation:
 			'A (Because the Legislature failed to define what constituted an "extraordinary rise" in rice prices, failing the Completeness Test). In U.S. v. Ang Tang Ho (43 Phil. 1, 1922), the Supreme Court struck down Act No. 2868, which authorized the Governor-General to fix rice prices whenever conditions arose resulting in an "extraordinary rise." The Court held that the Legislature failed to establish what constituted an extraordinary rise, leaving the executive to determine what the policy should be, which violated the non-delegation doctrine.',
-		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; U.S. v. Ang Tang Ho (1922)'
+		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; U.S. v. Ang Tang Ho (1922); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:108',
@@ -3171,7 +3171,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Calalang v. Williams (70 Phil. 726), how did the Supreme Court define Social Justice?',
 		options: [
 			'Equal division of all private landholdings among the poor',
-			'The humanization of laws and the equalization of social and economic forces by the State',
+			'Humanizing laws and equalizing social and economic forces',
 			'Total immunity of labor unions from civil and criminal liability',
 			'a and c are true',
 			'a and b are true',
@@ -3188,10 +3188,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'The humanization of laws and the equalization of social and economic forces by the State',
+		key: 'Humanizing laws and equalizing social and economic forces',
 		explanation:
 			'B (The humanization of laws and the equalization of social and economic forces by the State). In Calalang v. Williams (70 Phil. 726, 1940), Justice Jose P. Laurel defined social justice: "Social justice is \'neither communism, nor despotism, nor atomism, nor anarchy,\' but the humanization of laws and the equalization of social and economic forces by the State so that justice in its rational and objectively secular conception may at least be approximated."',
-		legalBasis: 'Art. II, Sec. 10, 1987 Constitution; Calalang v. Williams (1940)'
+		legalBasis: 'Art. II, Sec. 10, 1987 Constitution; Calalang v. Williams (1940); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:109',
@@ -3221,7 +3221,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). In Oposa v. Factoran (224 SCRA 792, 1993), the Supreme Court ruled that Article II, Section 16 (the right to a balanced and healthful ecology) is a self-executing provision that does not require implementing legislation. The Court recognized that minor children possess legal standing to sue on behalf of themselves and succeeding generations under the doctrine of Intergenerational Responsibility, and held that timber license agreements are revocable privileges rather than contracts protected by the non-impairment clause.',
-		legalBasis: 'Art. II, Sec. 16, 1987 Constitution; Oposa v. Factoran (1993)'
+		legalBasis: 'Art. II, Sec. 16, 1987 Constitution; Oposa v. Factoran (1993); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:110',
@@ -3251,9 +3251,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). In Republic v. Villasor (54 SCRA 83, 1973), the Supreme Court held that public funds in the custody of government officials or depository banks cannot be garnished to satisfy a court judgment against the State. Under Article VI, Section 29(1), no money shall be paid out of the Treasury except in pursuance of an appropriation made by law.",
+			"G (none of the above). In Republic v. Villasor (54 SCRA 83, 1973), the Supreme Court held that public funds in the custody of government officials or depository banks cannot be garnished to satisfy a court judgment against the State. Under Article VI, Section 29(1), no money shall be paid out of the Treasury except in pursuance of an appropriation made by law. As Justice Cruz explains (Philippine Political Law), state immunity from suit (\"the State may not be sued without its consent\") extends to the disbursement of public funds, which cannot be reached by ordinary execution without legislative appropriation.",
 		legalBasis:
-			"Art. VI, Sec. 29(1) & Art. XVI, Sec. 3, 1987 Constitution; Republic v. Villasor (1973)"
+			"Art. VI, Sec. 29(1) & Art. XVI, Sec. 3, 1987 Constitution; Republic v. Villasor (1973); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:111',
@@ -3263,7 +3263,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		question: 'Under Estrada v. Desierto (2001), what is the extent of presidential immunity from suit after leaving office?',
 		options: [
 			'Absolute immunity from all civil and criminal suits for acts committed during life',
-			'Immunity covers only official acts performed during tenure, and does not shield a former President from prosecution for non-official or criminal acts',
+			'It does not shield criminal or non-official acts in office',
 			'Former presidents can never be prosecuted unless first impeached by Congress',
 			'a and c are true',
 			'a and b are true',
@@ -3280,10 +3280,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'Immunity covers only official acts performed during tenure, and does not shield a former President from prosecution for non-official or criminal acts',
+		key: 'It does not shield criminal or non-official acts in office',
 		explanation:
-			'B (Immunity covers only official acts performed during tenure, and does not shield a former President from prosecution for non-official or criminal acts). In Estrada v. Desierto (353 SCRA 452, 2001), the Supreme Court held that absolute presidential immunity from suit applies only during incumbency. Once a president ceases to hold office, unlawful, non-official, or criminal acts committed while in office (such as plunder) are not protected by post-tenure immunity.',
-		legalBasis: 'Art. VII, Sec. 1, 1987 Constitution; Estrada v. Desierto (2001)'
+			'B (Immunity covers only official acts performed during tenure, and does not shield a former President from prosecution for non-official or criminal acts). In Estrada v. Desierto (353 SCRA 452, 2001), the Supreme Court held that absolute presidential immunity from suit applies only during incumbency. Once a president ceases to hold office, unlawful, non-official, or criminal acts committed while in office (such as plunder) are not protected by post-tenure immunity. Consistent with Justice Cruz’s commentary (Philippine Political Law), presidential immunity from suit exists solely during incumbency to prevent distraction from executive duties and never immunizes a former President for unofficial or criminal acts.',
+		legalBasis: 'Art. VII, Sec. 1, 1987 Constitution; Estrada v. Desierto (2001); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:112',
@@ -3294,7 +3294,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Olaguer v. Military Commission No. 34 (1987), do military commissions have jurisdiction to try civilians when civil courts are open and functioning?',
 		options: [
 			'Yes, during any proclaimed state of martial law',
-			'No, civilians cannot be tried by military tribunals as long as regular civil courts are open and functioning',
+			'No, civilians must be tried in open regular civil courts',
 			'Yes, provided the civilian is charged with rebellion or sedition',
 			'a and c are true',
 			'a and b are true',
@@ -3311,10 +3311,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No, civilians cannot be tried by military tribunals as long as regular civil courts are open and functioning',
+		key: 'No, civilians must be tried in open regular civil courts',
 		explanation:
 			'B (No, civilians cannot be tried by military tribunals as long as regular civil courts are open and functioning). In Olaguer v. Military Commission No. 34 (150 SCRA 144, 1987), the Supreme Court overruled Aquino v. Military Commission No. 2, ruling that military tribunals have no jurisdiction to try civilians for alleged offenses as long as regular civil courts are open and functioning. This doctrine was elevated to an express constitutional rule in Article VII, Section 18 of the 1987 Constitution.',
-		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Olaguer v. Military Commission No. 34 (1987)'
+		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Olaguer v. Military Commission No. 34 (1987); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:113',
@@ -3344,9 +3344,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article VI, Section 11 provides: \"A Senator or Member of the House of Representatives shall, in all offenses punishable by not more than six years imprisonment, be privileged from arrest while the Congress is in session.\" (People v. Jalosjos, 324 SCRA 689). Option a fails by extending the privilege to congressional recess, while option b doubles the 6-year threshold.",
+			"G (none of the above). Article VI, Section 11 provides: \"A Senator or Member of the House of Representatives shall, in all offenses punishable by not more than six years imprisonment, be privileged from arrest while the Congress is in session.\" (People v. Jalosjos, 324 SCRA 689). Option a fails by extending the privilege to congressional recess, while option b doubles the 6-year threshold. As Justice Cruz emphasizes (Philippine Political Law), parliamentary immunity from arrest is a narrow privilege designed to allow legislators to attend sessions, never a license to evade punishment for serious offenses.",
 		legalBasis:
-			"Art. VI, Sec. 11, 1987 Constitution; People v. Jalosjos (2000)"
+			"Art. VI, Sec. 11, 1987 Constitution; People v. Jalosjos (2000); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:114',
@@ -3357,7 +3357,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Osmeña v. Pendatun (109 Phil. 863), does the constitutional speech and debate privilege protect a legislator from internal disciplinary sanctions imposed by his own legislative chamber?',
 		options: [
 			'Yes, because speech on the floor of Congress is completely immune from any sanction',
-			'No, because the speech and debate clause protects legislators from liability in outside forums, but does not bar internal discipline by their own house',
+			'No, it covers only outside forums, not internal discipline',
 			'Yes, unless the speech constitutes treason against the Republic',
 			'a and c are true',
 			'a and b are true',
@@ -3374,10 +3374,10 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'False because option b is true.'
 		],
 		correctIndex: 1,
-		key: 'No, because the speech and debate clause protects legislators from liability in outside forums, but does not bar internal discipline by their own house',
+		key: 'No, it covers only outside forums, not internal discipline',
 		explanation:
-			'B (No, because the speech and debate clause protects legislators from liability in outside forums, but does not bar internal discipline by their own house). In Osmeña v. Pendatun (109 Phil. 863, 1960), the Supreme Court held that the constitutional parliamentary immunity for speech and debate protects members from being questioned in "any other place," but does not shield a legislator from disciplinary action (such as suspension or expulsion) by his own legislative chamber under Article VI, Section 16(3) for disorderly behavior.',
-		legalBasis: 'Art. VI, Secs. 11 & 16(3), 1987 Constitution; Osmeña v. Pendatun (1960)'
+			'B (No, because the speech and debate clause protects legislators from liability in outside forums, but does not bar internal discipline by their own house). In Osmeña v. Pendatun (109 Phil. 863, 1960), the Supreme Court held that the constitutional parliamentary immunity for speech and debate protects members from being questioned in "any other place," but does not shield a legislator from disciplinary action (such as suspension or expulsion) by his own legislative chamber under Article VI, Section 16(3) for disorderly behavior. Justice Cruz explains (Philippine Political Law) that parliamentary immunity for speech or debate shields legislators from outside liability while preserving each House’s power to discipline its own members for disorderly behavior.',
+		legalBasis: 'Art. VI, Secs. 11 & 16(3), 1987 Constitution; Osmeña v. Pendatun (1960); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:115',
@@ -3406,8 +3406,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 4,
 		key: 'a and b are true',
 		explanation:
-			'E (a and b are true). In Belgica v. Ochoa (G.R. No. 208566, November 19, 2013), the Supreme Court struck down the Priority Development Assistance Fund (PDAF). The Court held that allowing legislators to identify projects post-enactment violated the separation of powers, as the power of Congress ends at budget enactment, leaving execution exclusively to the Executive. Additionally, conferring lump-sum funds for individual allocation violated the non-delegation doctrine.',
-		legalBasis: 'Art. VI, Secs. 1 & 27(2), Art. VII, Sec. 17, 1987 Constitution; Belgica v. Ochoa (2013)'
+			'E (a and b are true). In Belgica v. Ochoa (G.R. No. 208566, November 19, 2013), the Supreme Court struck down the Priority Development Assistance Fund (PDAF). The Court held that allowing legislators to identify projects post-enactment violated the separation of powers, as the power of Congress ends at budget enactment, leaving execution exclusively to the Executive. Additionally, conferring lump-sum funds for individual allocation violated the non-delegation doctrine. Applying the separation-of-powers doctrine expounded by Justice Cruz (Philippine Political Law), legislators cannot encroach on executive budget implementation through post-enactment project identification.',
+		legalBasis: 'Art. VI, Secs. 1 & 27(2), Art. VII, Sec. 17, 1987 Constitution; Belgica v. Ochoa (2013); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:116',
@@ -3425,7 +3425,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VI, Section 13 creates two distinct prohibitions: (1) Incompatible offices, which a legislator cannot hold without forfeiting his seat; and (2) Forbidden offices, which provides: "Neither shall he be appointed to any office which may have been created or the emoluments whereof increased during the term for which he was elected." A legislator cannot accept a forbidden office during the term for which he was elected even if he resigns from Congress before accepting the appointment.',
-		legalBasis: 'Art. VI, Sec. 13, 1987 Constitution'
+		legalBasis: 'Art. VI, Sec. 13, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:117',
@@ -3443,7 +3443,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. In Endencia v. David (93 Phil. 696, 1953), the Supreme Court declared unconstitutional Section 13 of Republic Act No. 590, in which Congress declared that taxing judicial salaries did not constitute a diminution of compensation. The Court held that the power to interpret and construe the Constitution belongs exclusively to the Judiciary; Congress cannot usurp this function by passing an interpretive statute overriding a judicial decision.',
-		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Endencia v. David (1953)'
+		legalBasis: 'Art. VIII, Sec. 1, 1987 Constitution; Endencia v. David (1953); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:118',
@@ -3461,7 +3461,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'True',
 		explanation:
 			'TRUE. Article VI, Section 28(2) provides: "The Congress may, by law, authorize the President to fix within specified limits, and subject to such limitations and restrictions as it may impose, tariff rates, import and export quotas, tonnage and wharfage dues, and other duties or imposts within the framework of the national development program of the Government."',
-		legalBasis: 'Art. VI, Sec. 28(2), 1987 Constitution'
+		legalBasis: 'Art. VI, Sec. 28(2), 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:119',
@@ -3478,8 +3478,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'True',
 		explanation:
-			'TRUE. Article VII, Section 17 provides: "The President shall have control of all the executive departments, bureaus, and offices. He shall ensure that the laws be faithfully executed." Under Mondano v. Silvosa (97 Phil. 143), control is the power of an officer to alter, modify, or set aside what a subordinate officer has done and substitute the superior\'s own judgment.',
-		legalBasis: 'Art. VII, Sec. 17, 1987 Constitution; Mondano v. Silvosa (1955)'
+			'TRUE. Article VII, Section 17 provides: "The President shall have control of all the executive departments, bureaus, and offices. He shall ensure that the laws be faithfully executed." Under Mondano v. Silvosa (97 Phil. 143), control is the power of an officer to alter, modify, or set aside what a subordinate officer has done and substitute the superior\'s own judgment. Justice Cruz draws the classic distinction between executive control (power to alter, modify, or set aside acts of subordinates) and mere general supervision (power to see that laws are faithfully executed, as over LGUs) in Philippine Political Law.',
+		legalBasis: 'Art. VII, Sec. 17, 1987 Constitution; Mondano v. Silvosa (1955); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:120',
@@ -3497,7 +3497,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. In Abakada Guro Party List v. Executive Secretary (469 SCRA 1, 2005), the Supreme Court upheld Republic Act No. 9337. The Court held that granting standby authority to the President to raise the VAT rate from 10% to 12% upon verification of specific revenue thresholds was valid contingent legislation. Congress enacted a complete policy and set exact mathematical triggers; the Executive exercised no legislative discretion and merely verified the factual contingency upon which the statutory rate took effect.',
-		legalBasis: 'Art. VI, Secs. 1 & 28, 1987 Constitution; Abakada Guro Party List v. Executive Secretary (2005)'
+		legalBasis: 'Art. VI, Secs. 1 & 28, 1987 Constitution; Abakada Guro Party List v. Executive Secretary (2005); Cruz, Philippine Political Law'
 	},
 
 	// =========================================================================
@@ -3553,7 +3553,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VIII, Section 1 vests plenary judicial power in one Supreme Court and lower statutory courts, but the Constitution expressly confers adjudicatory jurisdiction over election contests upon the COMELEC (Article IX-C, Section 2(2)), the Senate and House Electoral Tribunals (Article VI, Section 17), and the Supreme Court sitting en banc as the Presidential Electoral Tribunal (Article VII, Section 4). In Macalintal v. PET (G.R. No. 191618, Nov. 23, 2010), the Supreme Court affirmed that these bodies exercise essentially judicial functions by express constitutional mandate, subject to Supreme Court review via certiorari for grave abuse of discretion.',
-		legalBasis: 'Art. VIII, Sec. 1; Art. VI, Sec. 17; Art. VII, Sec. 4; Art. IX-C, Sec. 2(2); Macalintal v. PET (2010)'
+		legalBasis: 'Art. VIII, Sec. 1; Art. VI, Sec. 17; Art. VII, Sec. 4; Art. IX-C, Sec. 2(2); Macalintal v. PET (2010); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:213',
@@ -3570,8 +3570,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 0,
 		key: 'True',
 		explanation:
-			'TRUE. Under the Preamble and Article II, Section 1 of the 1987 Constitution, sovereignty resides in the people and all government authority emanates from them. Through Article VIII, Section 1, the people directly established one Supreme Court and vested judicial power in it, making it a co-equal constitutional creation that Congress cannot abolish or dismantle by ordinary statute (Angara v. Electoral Commission, 63 Phil. 139).',
-		legalBasis: 'Preamble; Art. II, Sec. 1; Art. VIII, Sec. 1, 1987 Constitution; Angara v. Electoral Commission'
+			'TRUE. Under the Preamble and Article II, Section 1 of the 1987 Constitution, sovereignty resides in the people and all government authority emanates from them. Through Article VIII, Section 1, the people directly established one Supreme Court and vested judicial power in it, making it a co-equal constitutional creation that Congress cannot abolish or dismantle by ordinary statute (Angara v. Electoral Commission, 63 Phil. 139). As Justice Cruz affirms (Philippine Political Law), the Supreme Court is a constitutional creation whose existence and core jurisdiction cannot be abolished or diminished by Congress.',
+		legalBasis: 'Preamble; Art. II, Sec. 1; Art. VIII, Sec. 1, 1987 Constitution; Angara v. Electoral Commission; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:214',
@@ -3664,7 +3664,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'Define, prescribe, and apportion court jurisdiction',
 		explanation:
 			'A (Define, prescribe, and apportion court jurisdiction). Article VIII, Section 2 vests Congress with plenary power to define, prescribe, and apportion the jurisdiction of the various courts (such as through B.P. Blg. 129), but explicitly establishes an irreducible minimum guardrail barring Congress from stripping the Supreme Court of its Section 5 jurisdiction or undermining judicial security of tenure. Furthermore, Article VI, Section 30 prohibits Congress from passing any law increasing the Supreme Court’s appellate jurisdiction without its advice and concurrence.',
-		legalBasis: 'Art. VIII, Sec. 2 & Art. VI, Sec. 30, 1987 Constitution'
+		legalBasis: 'Art. VIII, Sec. 2 & Art. VI, Sec. 30, 1987 Constitution; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:217',
@@ -3700,7 +3700,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. Article VIII, Section 1 vests pure judicial power in the Supreme Court and lower courts, whereas quasi-judicial power refers to adjudicatory authority granted to executive or administrative bodies (such as the NLRC, SEC, or COA). Moreover, Article VIII, Section 12 explicitly prohibits Members of the Supreme Court and other courts from being designated to any agency performing quasi-judicial or administrative functions (In re Judge Manzano, 166 SCRA 246, 1988; Noblejas v. Teehankee, 23 SCRA 405, 1968).',
-		legalBasis: 'Art. VIII, Secs. 1 & 12, 1987 Constitution; In re Judge Manzano (1988); Noblejas v. Teehankee (1968)'
+		legalBasis: 'Art. VIII, Secs. 1 & 12, 1987 Constitution; In re Judge Manzano (1988); Noblejas v. Teehankee (1968); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:219',
@@ -3794,7 +3794,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article VIII, Section 3 expressly decrees that the Judiciary shall enjoy fiscal autonomy, that its appropriations may not be reduced by the legislature below the amount appropriated for the previous year, and that after approval, such funds shall be automatically and regularly released (Bengzon v. Drilon, 208 SCRA 133; CSC v. DBM). However, under Article IX-D, Sections 2(1) and 3, constitutional bodies granted fiscal autonomy remain strictly subject to COA post-audit.',
-		legalBasis: 'Art. VIII, Sec. 3 & Art. IX-D, Secs. 2–3, 1987 Constitution; Bengzon v. Drilon; CSC v. DBM'
+		legalBasis: 'Art. VIII, Sec. 3 & Art. IX-D, Secs. 2–3, 1987 Constitution; Bengzon v. Drilon; CSC v. DBM; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:222',
@@ -3825,7 +3825,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Articles VIII (Secs. 1, 3, 5(5)–(6), 10) and IX-A (Secs. 1, 3–6), together with Article VI, Section 25(5) (budgetary augmentation) and Article XI, Section 2 (impeachment), bestow parallel structural independence upon both the Supreme Court and the Constitutional Commissions. However, under Article VIII, Section 9, Supreme Court Justices are appointed from a JBC shortlist without CA confirmation, unlike Article IX Commissioners who require CA consent.',
-		legalBasis: 'Art. VIII, Secs. 1, 3, 5, 9–10; Art. IX-A, Secs. 1, 3–6; Art. VI, Sec. 25(5); Art. XI, Sec. 2'
+		legalBasis: 'Art. VIII, Secs. 1, 3, 5, 9–10; Art. IX-A, Secs. 1, 3–6; Art. VI, Sec. 25(5); Art. XI, Sec. 2; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:223',
@@ -3938,7 +3938,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Under Article IX, the CSC, COMELEC, and COA are independent constitutional bodies separate from the three traditional branches. While plenary lawmaking belongs exclusively to Congress under Article VI, Section 1, each Commission performs executive/administrative tasks, quasi-legislative subordinate rule-making ("filling in the details" with regulations having the force of law, City Government of Makati v. CSC), and quasi-judicial adjudication (disciplinary appeals for CSC, election contests for COMELEC, and audit disallowance appeals for COA).',
-		legalBasis: 'Art. IX, 1987 Constitution; City Government of Makati v. CSC'
+		legalBasis: 'Art. IX, 1987 Constitution; City Government of Makati v. CSC; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:227',
@@ -3969,7 +3969,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-B, C, and D, Section 1(2) prescribe initial uneven terms of 7, 5, and 3 years, full 7-year regular terms thereafter, and unexpired-portion-only appointments for mid-term vacancies. In Gaminde v. Commission on Audit (347 SCRA 655, 2000), the Supreme Court held that all 7-year term cycles are reckoned strictly from February 2, 1987, ensuring staggered 2-year intervals remain unbroken even when an appointee assumes office late.',
-		legalBasis: 'Art. IX-B, C & D, Sec. 1(2), 1987 Constitution; Gaminde v. COA (2000)'
+		legalBasis: 'Art. IX-B, C & D, Sec. 1(2), 1987 Constitution; Gaminde v. COA (2000); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:228',
@@ -4037,7 +4037,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Under Article IX, Section 1(2) and Funa v. COA Chairman / Villar (670 SCRA 579, 2012), promoting a sitting Commissioner to Chairman cannot confer a fresh 7-year term and is capped at an aggregate 7-year ceiling, while moving down from Chairman to Commissioner is a prohibited reappointment. Similarly, Article VII, Section 4 expressly declares that \"The President shall not be eligible for any reelection.\"",
 		legalBasis:
-			"Art. VII, Sec. 4; Art. IX-C & IX-D, Sec. 1(2); Matibag v. Benipayo; Funa v. Villar (2012)"
+			"Art. VII, Sec. 4; Art. IX-C & IX-D, Sec. 1(2); Matibag v. Benipayo; Funa v. Villar (2012); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:231',
@@ -4165,7 +4165,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article IX-B, Section 2(1) states that the civil service embraces all branches, subdivisions, instrumentalities, and agencies of the Government, including GOCCs with original charters. Non-chartered GOCCs, corporate subsidiaries formed under the Corporation Code (NASECO v. NLRC; Lumanta v. NLRC), and private utility franchisees are all governed by the Labor Code.",
 		legalBasis:
-			"Art. IX-B, Sec. 2(1), 1987 Constitution; NASECO v. NLRC; Lumanta v. NLRC"
+			"Art. IX-B, Sec. 2(1), 1987 Constitution; NASECO v. NLRC; Lumanta v. NLRC; Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:235',
@@ -4196,7 +4196,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article IX-D, Section 2(1) vests COA with power to examine, audit, and settle all accounts pertaining to government revenues, receipts, expenditures, and uses of funds/property across all branches, LGUs, fiscally autonomous bodies, state universities, GOCCs and their subsidiaries (Davao City Water District v. COA), subsidized NGOs, and special statutory funds (COCOFED v. Republic; Caltex v. COA). Under Section 2(2), COA has exclusive power to disallow Irregular, Unnecessary, Excessive, Extravagant, or Unconscionable (IUEEU) expenditures.',
-		legalBasis: 'Art. IX-D, Sec. 2(1)–(2), 1987 Constitution; Davao City Water District v. COA; COCOFED v. Republic'
+		legalBasis: 'Art. IX-D, Sec. 2(1)–(2), 1987 Constitution; Davao City Water District v. COA; COCOFED v. Republic; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:236',
@@ -4326,7 +4326,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			'F (a, b, and c are true). Article IX-C, Section 2(2), Article VI, Section 17, and Article VII, Section 4 use the comprehensive phrase "elections, returns, and qualifications." In Javier v. COMELEC (G.R. Nos. L-68379-81), the Supreme Court held that "contest" is liberally construed to cover any matter involving the title or claim of title to an elective office, made before or after proclamation, materialized through election protests, quo warranto petitions, pre-proclamation controversies, or COC cancellations.',
 		legalBasis:
-			'Art. IX-C, Sec. 2(2); Art. VI, Sec. 17; Art. VII, Sec. 4; Javier v. COMELEC (Mnemonic: Q-R-E — Qualifications, Returns, Elections)'
+			'Art. IX-C, Sec. 2(2); Art. VI, Sec. 17; Art. VII, Sec. 4; Javier v. COMELEC (Mnemonic: Q-R-E — Qualifications, Returns, Elections); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:241',
@@ -4337,8 +4337,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 			'Under Article IX-C, Section 2(2) of the 1987 Constitution, election contests involving which of the following elective local officials fall within the exclusive ORIGINAL jurisdiction of the COMELEC?',
 		options: [
 			'Regional, provincial, and city officials',
-			'Municipal officials',
-			'Barangay and SK officials',
+			'Elective municipal officials',
+			'Barangay and Sangguniang Kabataan officials',
 			'a and c are true',
 			'a and b are true',
 			'a, b, and c are true',
@@ -4424,7 +4424,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Under Article VI, Section 17 and Reyes v. COMELEC, the HRET and SET acquire exclusive jurisdiction as sole judge of contests relating to their respective members only after the winning candidate becomes a full "Member" through the concurrence of three requisites: (1) valid proclamation, (2) proper oath of office, and (3) assumption of office. Prior to all three, COMELEC retains jurisdiction over pre-proclamation controversies and COC cancellations.',
-		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC'
+		legalBasis: 'Art. VI, Sec. 17, 1987 Constitution; Reyes v. COMELEC; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:245',
@@ -4581,7 +4581,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article XI, Section 1 explicitly states: "Public office is a public trust. Public officers and employees must, at all times, be accountable to the people, serve them with utmost responsibility, integrity, loyalty, and efficiency; act with patriotism and justice, and lead modest lives." As held in Cornejo v. Gabriel, public officers are mere agents and trustees of the people who hold no proprietary right to their offices, enforced through SALNs (Sec. 17), anti-graft laws, impeachment, and the Ombudsman.',
-		legalBasis: 'Art. XI, Secs. 1 & 17, 1987 Constitution; Cornejo v. Gabriel'
+		legalBasis: 'Art. XI, Secs. 1 & 17, 1987 Constitution; Cornejo v. Gabriel; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:250',
@@ -4612,7 +4612,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article XI, Section 2 enumerates six exclusive grounds for impeachment: culpable violation of the Constitution, treason, bribery, graft and corruption, other high crimes, and betrayal of public trust (covering gross faithlessness or abuse of power short of crime, Gonzales v. Office of the President). Separately, an official’s lack of constitutional qualification at the inception of appointment may be challenged via a Petition for Quo Warranto filed by the Solicitor General (Republic v. Sereno, G.R. No. 237428, May 11, 2018).',
-		legalBasis: 'Art. XI, Sec. 2, 1987 Constitution; Gonzales v. Office of the President; Republic v. Sereno (2018)'
+		legalBasis: 'Art. XI, Sec. 2, 1987 Constitution; Gonzales v. Office of the President; Republic v. Sereno (2018); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:251',
@@ -4642,8 +4642,8 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 5,
 		key: 'a, b, and c are true',
 		explanation:
-			'F (a, b, and c are true). Article XI, Section 3 grants the House exclusive power to initiate and prosecute impeachment (1/3 vote of all members; subject to the one-year bar rule in Francisco v. House of Representatives, 415 SCRA 44, 2003) and grants the Senate sole power to try and decide (2/3 vote of all members; Chief Justice presides without voting when the President is on trial). Under Section 3(7) and Article VII, Section 19, conviction extends only to removal and perpetual disqualification, is beyond presidential pardon, and leaves the official liable to ordinary criminal, civil, or administrative prosecution.',
-		legalBasis: 'Art. XI, Sec. 3 & Art. VII, Sec. 19, 1987 Constitution; Francisco v. House of Representatives (2003)'
+			'F (a, b, and c are true). Article XI, Section 3 grants the House exclusive power to initiate and prosecute impeachment (1/3 vote of all members; subject to the one-year bar in Francisco v. House of Representatives, 415 SCRA 44, 2003, and Gutierrez v. House of Representatives, 643 SCRA 198, 2011) and grants the Senate sole power to try and decide (2/3 vote of all members; Chief Justice presides without voting when the President is on trial). In Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied with finality Jan. 28, 2026, En Banc), the Court reaffirmed judicial review over constitutional impeachment boundaries, strictly enforced the one-year bar against circumventing complaints, and ruled that Bill of Rights due process governs all stages of impeachment — rendering non-compliant Articles of Impeachment void ab initio and depriving the Senate of trial jurisdiction. Under Section 3(7) and Article VII, Section 19 (Cruz, Philippine Political Law), conviction extends only to removal and perpetual disqualification, is beyond presidential pardon, and leaves the official liable to ordinary criminal, civil, or administrative prosecution.',
+		legalBasis: 'Art. XI, Sec. 3 & Art. VII, Sec. 19, 1987 Constitution; Francisco v. House of Representatives (2003); Gutierrez v. House of Representatives (2011); Duterte v. House of Representatives (G.R. Nos. 278353 & 278359, July 25, 2025; MR denied Jan. 28, 2026, En Banc); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:252',
@@ -4692,7 +4692,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article XI, Sections 5 and 8–14 create the independent Office of the Ombudsman with fiscal autonomy, JBC nomination without CA confirmation, fixed 7-year non-renewable term, salary protection, and impeachment security (Gonzales v. Office of the President). As "protector of the people," it investigates and prosecutes public malfeasance (R.A. No. 6770), filing criminal cases before the Sandiganbayan (for Salary Grade 27+ officials under Art. XI, Sec. 4; R.A. 8249/10660) or regular courts, while its administrative disciplinary rulings are appealable to the Court of Appeals under Rule 43.',
-		legalBasis: 'Art. XI, Secs. 4–5 & 8–14; R.A. 6770; R.A. 8249/10660; Gonzales v. Office of the President'
+		legalBasis: 'Art. XI, Secs. 4–5 & 8–14; R.A. 6770; R.A. 8249/10660; Gonzales v. Office of the President; Cruz, Philippine Political Law'
 	},
 
 	// ---- Section V: Delegation of Powers, Congress, Electoral Tribunals, Martial Law & LGUs (12 Items) ----
@@ -4712,7 +4712,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'False',
 		explanation:
 			'FALSE. In Pelaez v. Auditor General (15 SCRA 569), the Supreme Court laid down the concurrent rule that every valid delegation of legislative power must satisfy BOTH the Completeness Test (the law must be complete in all its essential terms and conditions when it leaves Congress) and the Sufficient Standard Test (sufficiently determinate guidelines must map out the delegate’s boundaries so administrative discretion does not overflow). Failing either test renders the delegation unconstitutional and void.',
-		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (15 SCRA 569)'
+		legalBasis: 'Art. VI, Sec. 1, 1987 Constitution; Pelaez v. Auditor General (15 SCRA 569); Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:255',
@@ -4743,7 +4743,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Article VII, Section 17 commands that the President "shall ensure that the laws be faithfully executed." Because Congress already exercised legislative discretion in establishing a complete policy with sufficient standards (Abakada Guro v. Executive Secretary), the Executive’s delegated authority is purely subordinate execution, bound by the rule of law (Gonzalez v. Hechanova).',
-		legalBasis: 'Art. VII, Sec. 17, 1987 Constitution; Abakada Guro v. Executive Secretary; Gonzalez v. Hechanova'
+		legalBasis: 'Art. VII, Sec. 17, 1987 Constitution; Abakada Guro v. Executive Secretary; Gonzalez v. Hechanova; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:256',
@@ -4774,7 +4774,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article VI, Section 13 bars legislators from holding any other government or GOCC post during their term without forfeiting their seat (incompatible office, preserving legislative independence and taking effect automatically upon oath under Adaza v. Pacana, 135 SCRA 431; see also common-law incompatibility in Public Interest Center v. Elma), and strictly prohibits appointment to any office created or whose emoluments were increased during the term for which they were elected (forbidden office, remaining void for the entire elected term even after early resignation).',
-		legalBasis: 'Art. VI, Sec. 13, 1987 Constitution; Adaza v. Pacana (135 SCRA 431); Public Interest Center v. Elma'
+		legalBasis: 'Art. VI, Sec. 13, 1987 Constitution; Adaza v. Pacana (135 SCRA 431); Public Interest Center v. Elma; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:257',
@@ -4804,9 +4804,9 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		correctIndex: 6,
 		key: "none of the above",
 		explanation:
-			"G (none of the above). Article VI, Section 17 constitutes each Electoral Tribunal with 3 Supreme Court Justices \"designated\" by the Chief Justice and 6 Members of the respective House \"chosen\" on the basis of proportional representation of political parties and party-list organizations (Tañada v. Cuenco; Abbas v. SET). This explicit blending of powers creates an independent quasi-judicial body whose legislator-members enjoy security of tenure against party removal for independent votes (Bondoc v. Pineda, 201 SCRA 792).",
+			"G (none of the above). Article VI, Section 17 constitutes each Electoral Tribunal with 3 Supreme Court Justices \"designated\" by the Chief Justice and 6 Members of the respective House \"chosen\" on the basis of proportional representation of political parties and party-list organizations (Tañada v. Cuenco; Abbas v. SET). This explicit blending of powers creates an independent quasi-judicial body whose legislator-members enjoy security of tenure against party removal for independent votes (Bondoc v. Pineda, 201 SCRA 792). As Justice Cruz observes (Philippine Political Law), the Electoral Tribunals embody a deliberate constitutional blending of judicial and legislative members to assure impartial, independent adjudication of congressional election contests.",
 		legalBasis:
-			"Art. VI, Sec. 17, 1987 Constitution; Tañada v. Cuenco; Abbas v. SET; Bondoc v. Pineda (1991)"
+			"Art. VI, Sec. 17, 1987 Constitution; Tañada v. Cuenco; Abbas v. SET; Bondoc v. Pineda (1991); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:258',
@@ -4901,7 +4901,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		explanation:
 			"G (none of the above). Article VI, Section 10 decrees that \"no increase in said compensation shall take effect until after the expiration of the full term of all the Members of the Senate and the House of Representatives approving such increase\" (Philconsa v. Mathay, 18 SCRA 300), and retirement gratuities cannot be retroactively pegged to the unimplemented higher rate (Ligot v. Mathay, 56 SCRA 823).",
 		legalBasis:
-			"Art. VI, Sec. 10, 1987 Constitution; Philconsa v. Mathay (18 SCRA 300); Ligot v. Mathay (56 SCRA 823)"
+			"Art. VI, Sec. 10, 1987 Constitution; Philconsa v. Mathay (18 SCRA 300); Ligot v. Mathay (56 SCRA 823); Cruz, Philippine Political Law"
 	},
 	{
 		id: 'consti1:finals:261',
@@ -4932,7 +4932,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a, b, and c are true',
 		explanation:
 			'F (a, b, and c are true). Under Article VI, Sections 24 and 27(1) and Tolentino v. Secretary of Finance (235 SCRA 630), consolidating parallel committee measures or differing House and Senate bills into one identical consolidated text is constitutionally valid. While an enrolled bill is generally conclusive upon courts (Mabanag v. Lopez Vito), Astorga v. Villegas (56 SCRA 714) held that when the Senate President and President withdraw their signatures due to omitted floor amendments, the enrolled bill ceases to exist and courts must follow the Legislative Journal mandated by Article VI, Section 16(4) (U.S. v. Pons, 34 Phil. 729).',
-		legalBasis: 'Art. VI, Secs. 16(4), 24 & 27(1); Tolentino v. Sec. of Finance; Astorga v. Villegas; U.S. v. Pons'
+		legalBasis: 'Art. VI, Secs. 16(4), 24 & 27(1); Tolentino v. Sec. of Finance; Astorga v. Villegas; U.S. v. Pons; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:262',
@@ -4950,7 +4950,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'True',
 		explanation:
 			'TRUE. Article VII, Section 18, Paragraph 1 of the 1987 Constitution expressly provides that Congress, voting jointly by a vote of at least a majority of all its Members in regular or special session, may revoke a proclamation of martial law or suspension of the privilege of the writ of habeas corpus, which revocation shall not be set aside by the President. Separately, Paragraph 3 empowers the Supreme Court to review the sufficiency of its factual basis upon petition by any citizen (Lagman v. Medialdea).',
-		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Lagman v. Medialdea'
+		legalBasis: 'Art. VII, Sec. 18, 1987 Constitution; Lagman v. Medialdea; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:263',
@@ -4999,7 +4999,7 @@ export const constiFinalsMcqs: McqQuestion[] = [
 		key: 'a and b are true',
 		explanation:
 			'E (a and b are true). Article X, Section 10 mandates that no province, city, municipality, or barangay may be created, divided, merged, abolished, or its boundary substantially altered except in accordance with the criteria established in the Local Government Code (R.A. No. 7160) and subject to approval by a majority of votes cast in a plebiscite in the political units directly affected; under Pelaez v. Auditor General (15 SCRA 569), creating municipalities is exclusively legislative. Autonomous regions are separately created through an Organic Act passed by Congress with a Regional Consultative Commission and ratified by plebiscite, including only favorably voting units (Art. X, Secs. 15 & 18).',
-		legalBasis: 'Art. X, Secs. 1, 10, 15 & 18, 1987 Constitution; R.A. 7160; Pelaez v. Auditor General'
+		legalBasis: 'Art. X, Secs. 1, 10, 15 & 18, 1987 Constitution; R.A. 7160; Pelaez v. Auditor General; Cruz, Philippine Political Law'
 	},
 	{
 		id: 'consti1:finals:265',

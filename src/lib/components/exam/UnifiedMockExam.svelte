@@ -919,6 +919,7 @@
 			const url = new URL(page.url.href);
 			url.searchParams.delete('autostart');
 			goto(url, { replace: true });
+			if (totalSelected === 0) resetToFinalsDefault();
 			startExam();
 		} else if (forceSetup === '1') {
 			const url = new URL(page.url.href);

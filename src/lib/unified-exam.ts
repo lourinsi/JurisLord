@@ -893,6 +893,10 @@ export function loadSavedExamSettings(
 				};
 		const scopePreset = parsed.scopePreset ?? fallback.scopePreset;
 		const pureFinalsMcqOnly = subjectId === 'consti1';
+		// If consti1 had a stale 0-MCQ saved setting (e.g. from an old essays-only run), restore defaults.
+		if (pureFinalsMcqOnly && (parsed.counts.mcq ?? 0) <= 0) {
+			return bank ? defaultExamSettings(bank) : fallback;
+		}
 		return {
 			mode: parsed.mode === 'practice' ? 'practice' : 'exam',
 			scopePreset,

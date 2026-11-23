@@ -23,7 +23,7 @@ export function extractSourceTag(src: string): { id: string; label: string; rule
 	if (/17-11-03|10175/i.test(s)) {
 		return { id: 'cybercrime', label: 'Cybercrime Warrants' };
 	}
-	const artRoman = s.match(/\bArt\.\s*([IVX]+)\b/);
+	const artRoman = s.match(/\bArt\.\s*([IVX]+(?:-[A-D])?)\b/);
 	if (artRoman) {
 		return { id: `art-${artRoman[1]}`, label: `Art. ${artRoman[1]}` };
 	}
@@ -140,7 +140,7 @@ function parseRow(n: string, what: string): ParsedRow {
 	}
 
 	// 6. Quorums, votes, court divisions & body membership
-	if (/\b(?:justices?|divisions?|members?|nominees|majority|2\/3|1\/3)\b/.test(sl)) {
+	if (/\b(?:justices?|divisions?|members?|nominees|majority|3\/4|2\/3|1\/3|senators?|commissions?|seats?)\b/.test(sl)) {
 		const m = noParen.match(/(\d+)/);
 		return { kind: 'quorum', val: m ? Number(m[1]) : 0 };
 	}
@@ -401,7 +401,7 @@ export function clusterNumberRows(rows: readonly AnyNumberRow[]): NumberCluster[
 		const sortedMoney = [...money].sort((a, b) => a.numVal - b.numVal || a.index - b.index);
 		clusters.push({
 			id: 'money',
-			title: 'Amounts, Fines & Shares',
+			title: 'Amounts, Fines, Percentages & Shares',
 			exact: false,
 			scaleOrder: 6000,
 			items: sortedMoney

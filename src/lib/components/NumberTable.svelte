@@ -305,14 +305,14 @@
 	{#if filterMode === 'finals' && finalsTopics}
 		<div class="card filter-panel finals-panel">
 			<div class="range-bar">
-				<span class="range-label">★ Final Exam Notes — 5 Topics (toggle topics to include):</span>
+				<span class="range-label">★ Finals Coverage — {finalsTopics.length} Topics (toggle topics to include):</span>
 				<div class="preset-group">
 					<button
 						class="action-pill"
 						onclick={() => {
 							for (const t of finalsTopics) selectedFinalsTopics.add(t.id);
 							activeClusterId = 'all';
-						}}>All 5 topics</button
+						}}>All {finalsTopics.length} topics</button
 					>
 					<button
 						class="action-pill"

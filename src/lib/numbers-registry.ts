@@ -29,137 +29,6 @@ export interface SubjectNumbersConfig {
 	};
 }
 
-// ---- Constitutional Law I ----
-const constiRows: AnyNumberRow[] = [
-	[
-		'2 months',
-		'Window prior to the next presidential election (running until the end of the President’s term) during which the midnight appointment ban applies',
-		'Art. VII, Sec. 15',
-		'Applies to executive appointments by the President or Acting President, except temporary appointments to executive positions when continued vacancies will prejudice public service or endanger public safety. Does not apply to judicial appointments (De Castro v. JBC).'
-	],
-	[
-		'4 steps',
-		'Number of sequential stages required to complete a valid appointment before the appointment ban takes effect',
-		'Velicaria-Garafil v. Office of the President',
-		'The 4 steps: (1) Signing of the appointment; (2) Transmittal; (3) Receipt; and (4) Acceptance by the appointee.'
-	],
-	[
-		'90 days',
-		'Period within which the President must fill a vacancy in the Supreme Court, counted from when the vacancy occurs',
-		'Art. VIII, Sec. 4(1)'
-	],
-	[
-		'90 days',
-		'Period within which the President must fill a vacancy in a lower court, counted from submission of the JBC list',
-		'Art. VIII, Sec. 9'
-	],
-	[
-		'7 members',
-		'Total number of members composing the Judicial and Bar Council (JBC)',
-		'Art. VIII, Sec. 8(1)',
-		'3 ex officio (Chief Justice as Chair, Secretary of Justice, 1 representative of Congress) + 4 regular members (IBP representative, law professor, retired SC Justice, private sector representative).'
-	],
-	[
-		'1 representative (1 vote)',
-		'Number of representatives (and votes) Congress is entitled to in the Judicial and Bar Council (JBC)',
-		'Art. VIII, Sec. 8(1); Chavez v. JBC',
-		'Having one representative each from the Senate and House with separate votes or rotating half-votes violates the constitutional text.'
-	],
-	[
-		'At least 3',
-		'Minimum number of nominees the Judicial and Bar Council (JBC) must submit to the President for every judicial vacancy',
-		'Art. VIII, Sec. 9'
-	],
-	[
-		'4 years',
-		'Term of office of the regular (non-ex officio) members of the Judicial and Bar Council (JBC)',
-		'Art. VIII, Sec. 8(2)'
-	],
-	[
-		'5 years',
-		'Minimum years of service as a first-level court judge required before promotion to a second-level court (JBC policy)',
-		'Villanueva v. JBC'
-	],
-	[
-		'70 years',
-		'Compulsory retirement age of Supreme Court Justices and judges of lower courts (during good behavior)',
-		'Art. VIII, Sec. 11'
-	],
-	[
-		'Majority of all Members of Congress',
-		'Congressional voting threshold (concurrence) required for the President to grant an amnesty',
-		'Art. VII, Sec. 19'
-	],
-	[
-		'2/3 of all Members of the Senate',
-		'Senate voting threshold (concurrence) required for a treaty or international agreement to be valid and effective',
-		'Art. VII, Sec. 21'
-	],
-	[
-		'30 days',
-		'Period counted from the end of every quarter within which the Monetary Board must submit a complete report to Congress on foreign loans',
-		'Art. VII, Sec. 20'
-	],
-	[
-		'1/3 of all Members of the House',
-		'House of Representatives voting threshold required to affirm a favorable resolution with the Articles of Impeachment (or verify an impeachment complaint)',
-		'Art. XI, Sec. 3(3)'
-	],
-	[
-		'2/3 of all Members of the Senate',
-		'Senate voting threshold required to convict an impeachable official in an impeachment trial',
-		'Art. XI, Sec. 3(6)'
-	],
-	[
-		'1 year',
-		'Reglementary period to file a petition for quo warranto, counted from ouster or when the right of action accrues',
-		'Rule 66; Republic v. Sereno',
-		'Prescription does not run against the State (Republic v. Sereno).'
-	],
-	[
-		'7 years',
-		'Full term of the Chairman and Commissioners of the CSC, COMELEC, and COA, without reappointment',
-		'Art. IX-B, C, D, Sec. 1(2)'
-	],
-	[
-		'Never over 7 years',
-		'Maximum aggregate tenure a member of a Constitutional Commission may serve in total, including a promotion from Commissioner to Chairman',
-		'Funa v. Villar'
-	],
-	[
-		'7, 5, 3 years',
-		'Staggered rotational terms of the first appointees to the Constitutional Commissions (Chairman / 1st Commissioner / 2nd Commissioner)',
-		'Art. IX-B, C, D, Sec. 1(2)'
-	],
-	[
-		'35 years old',
-		'Minimum age qualification at the time of appointment for a Chairman or Commissioner of the CSC, COMELEC, or COA',
-		'Art. IX-B, C, D, Sec. 1(1)'
-	],
-	[
-		'60 days',
-		'Period within which each Constitutional Commission must decide any case or matter brought before it, counted from the date of its submission for decision or resolution',
-		'Art. IX-A, Sec. 7'
-	],
-	[
-		'30 days',
-		'Period within which an aggrieved party may bring a Constitutional Commission’s decision, order, or ruling to the Supreme Court on certiorari, counted from receipt of a copy thereof',
-		'Art. IX-A, Sec. 7'
-	],
-	['65 years', 'Compulsory retirement age in the career civil service', 'CSC v. Pililla Water District'],
-	[
-		'90 days / 45 days',
-		'Campaign period duration before election day for (1) national positions (President, VP, Senators, Party-List) and (2) House of Representatives and local positions',
-		'Omnibus Election Code, Sec. 3; Peñera'
-	],
-	[
-		'3 bodies (Judiciary, Constitutional Commissions, Ombudsman)',
-		'Number and identity of constitutional bodies granted fiscal autonomy under the 1987 Constitution',
-		'Arts. VIII, IX-A, XI; CHREA v. CHR',
-		'The Commission on Human Rights (CHR) does NOT enjoy fiscal autonomy (CHREA v. CHR).'
-	]
-];
-
 // ---- Persons and Family Relations ----
 const pfrRows: AnyNumberRow[] = [
 	[
@@ -521,12 +390,15 @@ const crim1NumbersConfig: SubjectNumbersConfig = {
  */
 export async function loadNumbersForSubject(slug: string): Promise<SubjectNumbersConfig | undefined> {
 	switch (slug) {
-		case 'consti1':
+		case 'consti1': {
+			const { CONSTI1_ALL_NUMBER_ROWS, CONSTI1_FINALS_TOPICS } = await import('$lib/consti1-numbers');
 			return {
 				desc: 'Numbers to memorize (self-test)',
-				intro: 'Every period, vote, age and count you may be asked for in this coverage. Hide the numbers, say each one, then tap to check.',
-				sections: [{ rows: constiRows }]
+				intro:
+					'Every period, vote, age, composition, and threshold across Chapters 12–19 (Arts. V–XVIII) plus Executive & jurisprudence numbers. Hide the numbers to self-test, switch to ★ FINALS for Chapters 12–19 grouped by chapter, or cluster similar values.',
+				sections: [{ rows: CONSTI1_ALL_NUMBER_ROWS, finalsTopics: CONSTI1_FINALS_TOPICS }]
 			};
+		}
 		case 'pfr':
 			return {
 				desc: 'Periods, amounts & ages to memorize',
